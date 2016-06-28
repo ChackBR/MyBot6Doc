@@ -73,7 +73,7 @@ EndFunc   ;==>chkPBenabled
 Func chkPBenabled2()
 	If GUICtrlRead($chkPBenabled2) = $GUI_CHECKED Then
 		$PushBulletEnabled2 = 1
-		GUICtrlSetState($PushBTokenValue2, $GUI_ENABLE)
+		GUICtrlSetState($PushBulletTokenValue2, $GUI_ENABLE)
 		GUICtrlSetState($chkPBRemote, $GUI_ENABLE)
 		GUICtrlSetState($OrigPushBullet, $GUI_ENABLE)
 		GUICtrlSetState($chkAlertPBVMFound, $GUI_ENABLE)
@@ -88,10 +88,10 @@ Func chkPBenabled2()
 		GUICtrlSetState($chkAlertPBCampFull, $GUI_ENABLE)
    Else
 	    $PushBulletEnabled2 = 0
-	    GUICtrlSetState($PushBTokenValue2, $GUI_DISABLE)
+	    GUICtrlSetState($PushBulletTokenValue2, $GUI_DISABLE)
 		If $PushBulletEnabled = 0 Then
 		 GUICtrlSetState($chkPBRemote, $GUI_DISABLE)
-		 GUICtrlSetState($OrigPushB, $GUI_DISABLE)
+		 GUICtrlSetState($OrigPushBullet, $GUI_DISABLE)
 		 GUICtrlSetState($chkAlertPBVMFound, $GUI_DISABLE)
 		 GUICtrlSetState($chkAlertPBLastRaid, $GUI_DISABLE)
 		 GUICtrlSetState($chkAlertPBWallUpgrade, $GUI_DISABLE)
