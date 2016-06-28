@@ -19,6 +19,20 @@
 #include <Array.au3>
 #include <String.au3>
 
+Func ansi2unicode($str)
+	Local $keytxt = StringSplit($str,"\n",1)
+	Local $aSRE = StringRegExp($keytxt[1], "\\u(....)", 3)
+	For $i = 0 To UBound($aSRE) - 1
+		$keytxt[1] = StringReplace($keytxt[1], "\u" & $aSRE[$i], BinaryToString("0x" & $aSRE[$i], 3))
+	Next
+	if $keytxt[0] > 1  Then
+		$ansiStr = $keytxt[1] &"\n" & $keytxt[2]
+	Else
+		$ansiStr = $keytxt[1]
+	EndIf
+	Return $ansiStr
+EndFunc
+
 Func _RemoteControlPushBullet()
 	;$PushBulletEnabled2 new var for telegram
 	If $PushBulletEnabled = 0 and $PushBulletEnabled2 = 0 Or $pRemote = 0 Then Return
