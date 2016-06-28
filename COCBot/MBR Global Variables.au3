@@ -352,6 +352,7 @@ Global $ScreenshotLootInfo = False
 Global $AlertSearch = True
 Global $iChkAttackNow, $iAttackNowDelay, $bBtnAttackNowPressed = False
 Global $PushBulletToken = ""
+Global $PushBulletToken2 = ""
 Global $TelegramToken = ""
 
 Global $iGUIMasterWidth = 470
@@ -377,10 +378,12 @@ Global $iAtkAlgorithm[$iModeCount]
 ;PushBullet---------------------------------------------------------------
 Global $PBRemoteControlInterval = 60000 ; 60 secs
 Global $PBDeleteOldPushesInterval = 1800000 ; 30 mins
+Global $access_token2
 Global $iOrigPushBullet
 Global $iLastAttackPB
 Global $iAlertPBVillage
 Global $PushBulletEnabled
+Global $PushBulletEnabled2
 Global $pRemote
 Global $pMatchFound
 Global $pLastRaidImg
