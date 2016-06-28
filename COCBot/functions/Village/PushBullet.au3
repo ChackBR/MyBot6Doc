@@ -161,7 +161,7 @@ Func _RemoteControlPushBullet()
 	EndIf
 	;add code for telegram
 	if $PushBulletEnabled2 = 1 then
-	;$access_token2 = $PushToken2
+	;$access_token2 = $PushBulletToken2
 	  $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 	  $url= "https://api.telegram.org/bot"
 	  $oHTTP.Open("Get", $url & $access_token2 & "/getupdates" , False)
@@ -352,7 +352,7 @@ Func _PushBullet($pMessage = "")
 	$oHTTP.Send($pPush)
 	EndIf
 	if $PushBulletEnabled2 = 1 then 
-	$access_token2 = $PushToken2
+	$access_token2 = $PushBulletToken2
 		 $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 		 $oHTTP.Open("Get", "https://api.telegram.org/bot" & $access_token2 & "/getupdates" , False)
 		 $oHTTP.Send()
@@ -382,7 +382,7 @@ Func _PushToPushBullet($pMessage)
 	$oHTTP.Send($pPush)
 	EndIf
 	if $PushBulletEnabled2 = 1 then
-			$access_token2 = $PushToken2
+			$access_token2 = $PushBulletToken2
 			$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 			$url= "https://api.telegram.org/bot"
 			$oHTTP.Open("Post",  $url & $access_token2&"/sendmessage", False)
@@ -396,8 +396,8 @@ EndFunc   ;==>_Push
 
 
 Func Getchatid()
-    If $PushBulletEnabled2 = 0 Or $PushToken2 = "" Then Return
-		$access_token2 = $PushToken2
+    If $PushBulletEnabled2 = 0 Or $PushBulletToken2= "" Then Return
+		$access_token2 = $PushBulletToken2
 		$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 		$oHTTP.Open("Get", "https://api.telegram.org/bot" & $access_token2 & "/getupdates" , False)
 		$oHTTP.Send()
@@ -448,7 +448,7 @@ Func _PushFileToPushBullet($File, $Folder, $FileType, $body)
 	EndIf
 	if $PushBulletEnabled2 = 1 then
 	If FileExists($sProfilePath & "\" & $sCurrProfile & '\' & $Folder & '\' & $File) Then
-			$access_token2 = $PushToken2
+			$access_token2 = $PushBulletToken2
 			$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 			Local $telegram_url = "https://api.telegram.org/bot" & $access_token2 & "/sendPhoto"
 			$Result = RunWait($pCurl & " -i -X POST " & $telegram_url & ' -F chat_id="' & $chat_id2 &' " -F photo=@"' & $sProfilePath & "\" & $sCurrProfile & '\' & $Folder & '\' & $File  & '"', "", @SW_HIDE)
