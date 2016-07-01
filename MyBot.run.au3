@@ -186,6 +186,7 @@ AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
 
 
 CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
+Getchatid() ; receive Telegram chat id and send keyboard
 
 
 

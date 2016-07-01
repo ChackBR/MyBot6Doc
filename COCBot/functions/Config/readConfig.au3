@@ -601,13 +601,15 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 
 		;PushBullet Settings ---------------------------------------------
 		IniReadS($PushBulletToken, $config, "pushbullet", "AccountToken", "")
+		;load token telegram
+		IniReadS($PushBulletToken2, $config, "pushbullet", "AccountToken2", "")
 		IniReadS($iOrigPushBullet, $config, "pushbullet", "OrigPushBullet", $sCurrProfile)
-
 		IniReadS($iAlertPBVillage, $config, "pushbullet", "AlertPBVillage", "0")
 		IniReadS($iLastAttackPB, $config, "pushbullet", "AlertPBLastAttack", "0")
 		IniReadS($iAlertPBLastRaidTxt, $config, "pushbullet", "AlertPBLastRaidTxt", "0")
-
 		IniReadS($PushBulletEnabled, $config, "pushbullet", "PBEnabled", "0")
+		;load var telegram
+		IniReadS($PushBulletEnabled2, $config, "pushbullet", "PBEnabled2", "0")
 		IniReadS($pRemote, $config, "pushbullet", "PBRemote", "0")
 		IniReadS($iDeleteAllPBPushes, $config, "pushbullet", "DeleteAllPBPushes", "0")
 		IniReadS($pMatchFound, $config, "pushbullet", "AlertPBVMFound", "0")

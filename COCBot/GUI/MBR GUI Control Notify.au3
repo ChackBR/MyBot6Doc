@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func PushBulletRemoteControl()
-	If $PushBulletEnabled And $pRemote Then _RemoteControl()
+	If ($PushBulletEnabled or $PushBulletEnabled2) And $pRemote Then _RemoteControl()
 EndFunc   ;==>PushBulletRemoteControl
 
 Func PushBulletDeleteOldPushes()
@@ -67,6 +67,44 @@ Func chkPBenabled()
 
 	EndIf
 EndFunc   ;==>chkPBenabled
+
+;function for gui telegram
+
+Func chkPBenabled2()
+	If GUICtrlRead($chkPBenabled2) = $GUI_CHECKED Then
+		$PushBulletEnabled2 = 1
+		GUICtrlSetState($PushBulletTokenValue2, $GUI_ENABLE)
+		GUICtrlSetState($chkPBRemote, $GUI_ENABLE)
+		GUICtrlSetState($OrigPushBullet, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBVMFound, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBLastRaid, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBWallUpgrade, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBLastRaidTxt, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBOOS, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBVBreak, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBVillage, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBLastAttack, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBOtherDevice, $GUI_ENABLE)
+		GUICtrlSetState($chkAlertPBCampFull, $GUI_ENABLE)
+   Else
+	    $PushBulletEnabled2 = 0
+	    GUICtrlSetState($PushBulletTokenValue2, $GUI_DISABLE)
+		If $PushBulletEnabled = 0 Then
+		 GUICtrlSetState($chkPBRemote, $GUI_DISABLE)
+		 GUICtrlSetState($OrigPushBullet, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBVMFound, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBLastRaid, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBWallUpgrade, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBLastRaidTxt, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBOOS, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBVBreak, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBVillage, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBLastAttack, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBOtherDevice, $GUI_DISABLE)
+		 GUICtrlSetState($chkAlertPBCampFull, $GUI_DISABLE)
+		 Endif
+	     EndIf
+EndFunc   ;==>chkPBenabled2
 
 Func chkDeleteOldPBPushes()
 	If GUICtrlRead($chkDeleteOldPBPushes) = $GUI_CHECKED Then

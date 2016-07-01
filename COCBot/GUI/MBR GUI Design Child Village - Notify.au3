@@ -22,8 +22,8 @@ $hGUI_NOTIFY_TAB = GUICtrlCreateTab(0, 0, $_GUI_MAIN_WIDTH - 30, $_GUI_MAIN_HEIG
 ;GUICtrlCreateTabItem("")
 
 $hGUI_NOTIFY_TAB_ITEM2 = GUICtrlCreateTabItem(GetTranslated(600,18,"PushBullet"))
-	Global $grpPushBullet, $chkPBenabled,$chkPBRemote,$chkDeleteAllPBPushes,$btnDeletePBmessages,$chkDeleteOldPBPushes,$cmbHoursPushBullet
-	Global $PushBulletTokenValue, $OrigPushBullet, $chkAlertPBVMFound, $chkAlertPBLastRaid, $chkAlertPBLastRaidTxt, $chkAlertPBCampFull
+	Global $grpPushBullet,$chkPBenabled,$chkPBenabled2,$chkPBRemote,$chkDeleteAllPBPushes,$btnDeletePBmessages,$chkDeleteOldPBPushes,$cmbHoursPushBullet
+	Global $PushBulletTokenValue, $PushBulletTokenValue2, $OrigPushBullet, $chkAlertPBVMFound, $chkAlertPBLastRaid, $chkAlertPBLastRaidTxt, $chkAlertPBCampFull
 	Global $chkAlertPBWallUpgrade, $chkAlertPBOOS, $chkAlertPBVBreak, $chkAlertPBVillage, $chkAlertPBLastAttack
 	Global $chkAlertPBOtherDevice
 
@@ -34,7 +34,12 @@ $hGUI_NOTIFY_TAB_ITEM2 = GUICtrlCreateTabItem(GetTranslated(600,18,"PushBullet")
 		$chkPBenabled = GUICtrlCreateCheckbox(GetTranslated(619,3, "Enable"), $x + 40, $y)
 			GUICtrlSetOnEvent(-1, "chkPBenabled")
 			GUICtrlSetTip(-1, GetTranslated(619,4, "Enable PushBullet notifications"))
-		$y += 22
+		
+		;add telegram bottom
+		$chkPBenabled2 = GUICtrlCreateCheckbox(GetTranslated(9,4,"Enable Telegram"), $x + 40, $y +20 )
+	    GUICtrlSetOnEvent(-1, "chkPBenabled2")
+	    GUICtrlSetTip(-1,GetTranslated(9,55, "Enable Telegram notifications"))
+		$y += 40
 		$chkPBRemote = GUICtrlCreateCheckbox(GetTranslated(619,5, "Remote Control"), $x + 40, $y)
 			GUICtrlSetTip(-1, GetTranslated(619,6, "Enables PushBullet Remote function"))
 			GUICtrlSetState(-1, $GUI_DISABLE)
@@ -58,21 +63,28 @@ $hGUI_NOTIFY_TAB_ITEM2 = GUICtrlCreateTabItem(GetTranslated(600,18,"PushBullet")
 			GUICtrlSetData(-1, "1 " & GetTranslated(603,15, "Hour") &"|2 " & $sTxtHours & "|3 " & $sTxtHours & "|4 " & $sTxtHours & "|5 " & $sTxtHours & "|6 " & $sTxtHours & "|7 " & $sTxtHours & "|8 " &$sTxtHours & "|9 " & $sTxtHours & "|10 " & $sTxtHours & "|11 " & $sTxtHours & "|12 " & $sTxtHours & "|13 " & $sTxtHours & "|14 " & $sTxtHours & "|15 " & $sTxtHours & "|16 " & $sTxtHours & "|17 " & $sTxtHours & "|18 " & $sTxtHours & "|19 " & $sTxtHours & "|20 " & $sTxtHours & "|21 " & $sTxtHours & "|22 " & $sTxtHours & "|23 " & $sTxtHours & "|24 " & $sTxtHours )
 			_GUICtrlComboBox_SetCurSel(-1,0)
 			GUICtrlSetState (-1, $GUI_DISABLE)
-		$y += 30
+		$y += 50
 		$lblPushBulletTokenValue = GUICtrlCreateLabel(GetTranslated(619,14, "Access Token") & ":", $x, $y, -1, -1, $SS_RIGHT)
 		$PushBulletTokenValue = GUICtrlCreateInput("", $x + 120, $y - 3, 280, 19)
 			GUICtrlSetTip(-1, GetTranslated(619,15, "You need a Token to use PushBullet notifications. Get a token from PushBullet.com"))
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$y += 25
+		
+		;add telegram token
+		$y += 10
+		$lblPushBulletTokenValue2 = GUICtrlCreateLabel(GetTranslated(9,54,"Telegram Token"), $x, $y+23, -1, -1, $SS_RIGHT)
+		$PushBulletTokenValue2 = GUICtrlCreateInput("", $x + 120, $y + 21, 280, 19)
+		GUICtrlSetTip(-1, GetTranslated(9,56,"You need a Token to use Telegram notifications. Get a token from @BotFather"))
+		GUICtrlSetState(-1, $GUI_DISABLE)
+		$y += 60
 		$lblOrigPushBullet = GUICtrlCreateLabel(GetTranslated(619,16, "Origin") & ":", $x, $y, -1, -1, $SS_RIGHT)
 			$txtTip = GetTranslated(619,17, "Origin - Village name.")
 			GUICtrlSetTip(-1, $txtTip)
 		$OrigPushBullet = GUICtrlCreateInput("", $x + 120, $y - 3, 280, 19)
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$y += 25
+		$y += 30
 		$lblNotifyPBWhen = GUICtrlCreateLabel(GetTranslated(619,18, "Send a PushBullet message for these options") & ":", $x, $y, -1, -1, $SS_RIGHT)
-		$y += 15
+		$y += 30
 		$chkAlertPBVMFound = GUICtrlCreateCheckbox(GetTranslated(619,19, "Match Found"), $x + 10, $y)
 			GUICtrlSetTip(-1, GetTranslated(619,20, "Send the amount of available loot when bot finds a village to attack."))
 			GUICtrlSetState(-1, $GUI_DISABLE)

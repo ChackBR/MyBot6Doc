@@ -271,6 +271,8 @@ EndFunc   ;==>OpenURL_Label
 Func BotClose()
    ResumeAndroid()
    SetLog("Closing " & $sBotTitle & " ...")
+   $pStop = 1
+   PushMsg("StopMybot")
    If $RunState = True Then AndroidBotStopEvent() ; signal android that bot is now stoppting
    setupProfile()
    SaveConfig()

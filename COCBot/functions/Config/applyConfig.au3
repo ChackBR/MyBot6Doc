@@ -1437,6 +1437,14 @@ EndIf
 		GUICtrlSetState($chkPBenabled, $GUI_UNCHECKED)
 		chkPBenabled()
 	EndIf
+	
+	If $PushBulletEnabled2 = 1 Then
+		GUICtrlSetState($chkPBenabled2, $GUI_CHECKED)
+		chkPBenabled()
+	ElseIf $PushBulletEnabled2 = 0 Then
+		GUICtrlSetState($chkPBenabled2, $GUI_UNCHECKED)
+		chkPBenabled()
+	EndIf
 
 	If $pRemote = 1 Then
 		GUICtrlSetState($chkPBRemote, $GUI_CHECKED)
@@ -1525,6 +1533,7 @@ EndIf
 		GUICtrlSetState($chkAlertPBLastAttack, $GUI_UNCHECKED)
 	EndIf
 	GUICtrlSetData($PushBulletTokenValue, $PushBulletToken)
+	GUICtrlSetData($PushBulletTokenValue2, $PushBulletToken2)
 	GUICtrlSetData($OrigPushBullet, $iOrigPushBullet)
 
 	; apply upgrade buildings -------------------------------------------------------------------
