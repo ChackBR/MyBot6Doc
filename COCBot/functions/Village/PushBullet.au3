@@ -220,21 +220,21 @@ Func _RemoteControlPushBullet()
 						$txtHelp &= "\n" & GetTranslated(18,28,"POWER - select powr option")
 						$txtHelp &= "\n"
 						$txtHelp &= "\n" & GetTranslated(18,101,"Send and recieve chats via Telegram. Use GETCHATS <interval|NOW|STOP> to get the latest clan chat as an image, and SENDCHAT <chat message> to send a chat to your clan")
-						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,29,"Request for Help") & "\n" & $txtHelp)
+						_Push($iOrigPushBullet & " | " & GetTranslated(18,29,"Request for Help") & "\n" & $txtHelp)
 						SetLog("Telegram: Your request has been received from ' " & $iOrigPushBullet & ". Help has been sent", $COLOR_GREEN)
 					Case GetTranslated(18,3,"Pause") & "\N\U23F8"
 						If $TPaused = False And $Runstate = True Then
 						 TogglePauseImpl("Push")
 						Else
 						 SetLog("Telegram: Your bot is currently paused, no action was taken", $COLOR_GREEN)
-						 _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,30,"Request to Pause") & "\n" & GetTranslated(18,93,"Your bot is currently paused, no action was taken"))
+						 _Push($iOrigPushBullet & " | " & GetTranslated(18,30,"Request to Pause") & "\n" & GetTranslated(18,93,"Your bot is currently paused, no action was taken"))
 						EndIf
 					Case GetTranslated(18,4,"Resume") & "\N\U25B6"
 						If $TPaused = True And $Runstate = True Then
 						 TogglePauseImpl("Push")
 						Else
 						 SetLog("Telegram: Your bot is currently resumed, no action was taken", $COLOR_GREEN)
-						 _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,31,"Request to Resume") & "\n" & GetTranslated(18,94,"Your bot is currently resumed, no action was taken"))
+						 _Push($iOrigPushBullet & " | " & GetTranslated(18,31,"Request to Resume") & "\n" & GetTranslated(18,94,"Your bot is currently resumed, no action was taken"))
 						EndIf
 					Case GetTranslated(18,5,"Delete") & "\N\UD83D\UDEAE"
 		                $oHTTP.Open("Get", $url & $access_token2 & "/getupdates?offset=" & $lastuid  , False)
@@ -280,32 +280,32 @@ Func _RemoteControlPushBullet()
 						$oHTTP.Send($pPush3)
 					Case GetTranslated(18,11,"Lastraid") & "\N\UD83D\UDCD1"
 						 If $LootFileName <> "" Then
-						 _PushFileToPushBullet($LootFileName, "Loots", "image/jpeg", $iOrigPushBullet & " | " & GetTranslated(18,95,"Last Raid") & "\n" & $LootFileName)
+						 _PushFile($LootFileName, "Loots", "image/jpeg", $iOrigPushBullet & " | " & GetTranslated(18,95,"Last Raid") & "\n" & $LootFileName)
 						Else
-						 _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,32,"There is no last raid screenshot."))
+						 _Push($iOrigPushBullet & " | " & GetTranslated(18,32,"There is no last raid screenshot."))
 						EndIf
 						SetLog("Telegram: Push Last Raid Snapshot...", $COLOR_GREEN)
 					Case GetTranslated(18,12,"Last raid txt") & "\N\UD83D\UDCC4"
 						SetLog("Telegram: Your request has been received. Last Raid txt sent", $COLOR_GREEN)
-						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,33,"Last Raid txt") & "\n" & "[G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [D]: " & _NumberFormat($iDarkLast) & " [T]: " & $iTrophyLast)
+						_Push($iOrigPushBullet & " | " & GetTranslated(18,33,"Last Raid txt") & "\n" & "[G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [D]: " & _NumberFormat($iDarkLast) & " [T]: " & $iTrophyLast)
 					Case GetTranslated(18,13,"Stats") & "\N\UD83D\UDCCA"
 						SetLog("Telegram: Your request has been received. Statistics sent", $COLOR_GREEN)
-						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,34,"Stats Village Report") & "\n" & GetTranslated(18,35,"At Start") & "\n[G]: " & _NumberFormat($iGoldStart) & " [E]: " & _NumberFormat($iElixirStart) & " [D]: " & _NumberFormat($iDarkStart) & " [T]: " & $iTrophyStart & "\n\n" & GetTranslated(18,36,"Now (Current Resources)") & "\n[G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [D]: " & _NumberFormat($iDarkCurrent) & " [T]: " & $iTrophyCurrent & " [GEM]: " & $iGemAmount & "\n \n[" & GetTranslated(18,37,"No. of Free Builders") &"]:"  & $iFreeBuilderCount & "\n [" & GetTranslated(18,38,"No. of Wall Up") & "]: G: " & $iNbrOfWallsUppedGold & "/ E: " & $iNbrOfWallsUppedElixir & "\n\n" & GetTranslated(18,39,"Attacked") & ": " & GUICtrlRead($lblresultvillagesattacked) & "\n" & GetTranslated(18,40,"Skipped") & ": " & $iSkippedVillageCount)
+						_Push($iOrigPushBullet & " | " & GetTranslated(18,34,"Stats Village Report") & "\n" & GetTranslated(18,35,"At Start") & "\n[G]: " & _NumberFormat($iGoldStart) & " [E]: " & _NumberFormat($iElixirStart) & " [D]: " & _NumberFormat($iDarkStart) & " [T]: " & $iTrophyStart & "\n\n" & GetTranslated(18,36,"Now (Current Resources)") & "\n[G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [D]: " & _NumberFormat($iDarkCurrent) & " [T]: " & $iTrophyCurrent & " [GEM]: " & $iGemAmount & "\n \n[" & GetTranslated(18,37,"No. of Free Builders") &"]:"  & $iFreeBuilderCount & "\n [" & GetTranslated(18,38,"No. of Wall Up") & "]: G: " & $iNbrOfWallsUppedGold & "/ E: " & $iNbrOfWallsUppedElixir & "\n\n" & GetTranslated(18,39,"Attacked") & ": " & GUICtrlRead($lblresultvillagesattacked) & "\n" & GetTranslated(18,40,"Skipped") & ": " & $iSkippedVillageCount)
 					Case GetTranslated(18,14,"Screenshot") & "\N\UD83C\UDFA6"
 						SetLog("Telegram: ScreenShot request received", $COLOR_GREEN)
 						$RequestScreenshot = 1
 					Case GetTranslated(18,15,"Restart") & "\N\U21AA"
 						SetLog("Telegram: Your request has been received. Bot and BS restarting...", $COLOR_GREEN)
-						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,41,"Request to Restart...") & "\n" & GetTranslated(18,42,"Your bot and BS are now restarting..."))
+						_Push($iOrigPushBullet & " | " & GetTranslated(18,41,"Request to Restart...") & "\n" & GetTranslated(18,42,"Your bot and BS are now restarting..."))
 						SaveConfig()
 						_Restart()
 					Case GetTranslated(18,16,"Stop") & "\N\U23F9"
 						SetLog("Telegram: Your request has been received. Bot is now stopped", $COLOR_GREEN)
 						If $Runstate = True Then
-						 _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,43,"Request to Stop...") & "\n" & GetTranslated(18,44,"Your bot is now stopping..."))
+						 _Push($iOrigPushBullet & " | " & GetTranslated(18,43,"Request to Stop...") & "\n" & GetTranslated(18,44,"Your bot is now stopping..."))
 						 btnStop()
 						Else
-						 _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,43,"Request to Stop...") & "\n" & GetTranslated(18,45,"Your bot is currently stopped, no action was taken"))
+						 _Push($iOrigPushBullet & " | " & GetTranslated(18,43,"Request to Stop...") & "\n" & GetTranslated(18,45,"Your bot is currently stopped, no action was taken"))
 						EndIf
 					Case Else ; Chat Bot
 						$startCmd = StringLeft($iuclm, StringLen("SENDCHAT "))
@@ -313,27 +313,27 @@ Func _RemoteControlPushBullet()
 							$chatMessage = StringRight($iuclm, StringLen($iuclm) - StringLen("SENDCHAT "))
 							$chatMessage = StringLower($chatMessage)
 							ChatbotPushbulletQueueChat($chatMessage)
-							_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,97,"Chat queued, will send on next idle"))
+							_Push($iOrigPushBullet & " | " & GetTranslated(18,97,"Chat queued, will send on next idle"))
 						Else
 							$startCmd = StringLeft($iuclm, StringLen("GETCHATS "))
 							If $startCmd == "GETCHATS " Then
 								$Interval = StringRight($iuclm, StringLen($iuclm) - StringLen("GETCHATS "))
 								If $Interval = "STOP" Then
 									ChatbotPushbulletStopChatRead()
-									_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,98,"Stopping interval sending"))
+									_Push($iOrigPushBullet & " | " & GetTranslated(18,98,"Stopping interval sending"))
 								ElseIf $Interval = "NOW" Then
 									ChatbotPushbulletQueueChatRead()
-									_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,99,"Command queued, will send clan chat image on next idle"))
+									_Push($iOrigPushBullet & " | " & GetTranslated(18,99,"Command queued, will send clan chat image on next idle"))
 								Else
 									ChatbotPushbulletIntervalChatRead(Number($Interval))
-									_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,100,"Command queued, will send clan chat image on interval"))
+									_Push($iOrigPushBullet & " | " & GetTranslated(18,100,"Command queued, will send clan chat image on interval"))
 								EndIf
 							Else
 								Local $lenstr = StringLen("Test ")
 								Local $teststr = StringLeft($iuclm, $lenstr)
 								If $teststr = ("Test ") Then
 									SetLog("Telegram: received command syntax wrong, command ignored.", $COLOR_RED)
-									_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(18,46,"Command not recognized") & "\n" & GetTranslated(18,47,"Please push BOT HELP to obtain a complete command list."))
+									_Push($iOrigPushBullet & " | " & GetTranslated(18,46,"Command not recognized") & "\n" & GetTranslated(18,47,"Please push BOT HELP to obtain a complete command list."))
 								EndIf
 							EndIf
 						EndIf
@@ -545,6 +545,9 @@ Func PushMsgToPushBullet($Message, $Source = "")
 			If ($PushBulletEnabled = 1 or $PushBulletEnabled2 = 1) And $pAnotherDevice = 1 Then _PushToPushBullet($iOrigPushBullet & " | 3. " & GetTranslated(620,65, "Another Device has connected") & "\n" & GetTranslated(620,66, "Another Device has connected, waiting") & " " & Floor(Mod($sTimeWakeUp, 60)) & " " & GetTranslated(603,8, "seconds"))
 		Case "TakeBreak"
 			If ($PushBulletEnabled = 1 or $PushBulletEnabled2 = 1) And $pTakeAbreak = 1 Then _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,67, "Chief, we need some rest!") & "\n" & GetTranslated(620,68, "Village must take a break.."))
+		;msg when MyBot closing
+		Case "StopMyBot" 
+			If ($PushBulletEnabled = 1 or $PushBulletEnabled2 = 1) And $pStop = 1 Then _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,86, "Your BOT is now stopping"))
 		Case "CocError"
 			If ($PushBulletEnabled = 1 or $PushBulletEnabled2 = 1) And $pOOS = 1 Then _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,69, "CoC Has Stopped Error") & ".....")
 		Case "Pause"
@@ -587,7 +590,8 @@ Func PushMsgToPushBullet($Message, $Source = "")
 				If $ichkAlertPBCampFullTest = 0 Then
 					_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,85, "Your Army Camps are now Full"))
 					$ichkAlertPBCampFullTest = 1
-				EndIf
+				
+			EndIf	
 			EndIf
 	EndSwitch
 EndFunc   ;==>PushMsgToPushBullet
