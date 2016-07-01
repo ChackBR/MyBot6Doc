@@ -402,6 +402,7 @@ Global $icmbHoursPushBullet
 Global $chkDeleteAllPBPushes
 Global $ichkAlertPBCampFull
 Global $ichkAlertPBCampFullTest = 0
+Global $pStop = 0
 
 Global $sLogFName
 Global $sAttackLogFName
