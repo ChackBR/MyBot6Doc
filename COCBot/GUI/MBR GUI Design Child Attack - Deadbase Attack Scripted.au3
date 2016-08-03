@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Global $cmbScriptNameDB, $lblNotesScriptAB, $sldSelectedSpeedDB, $lbltxtSelectedSpeedDB
+Global $cmbScriptNameDB, $lblNotesScriptAB
 
 $hGUI_DEADBASE_ATTACK_SCRIPTED = GUICreate("", $_GUI_MAIN_WIDTH - 195, $_GUI_MAIN_HEIGHT - 344, 150, 25, BitOR($WS_CHILD, $WS_TABSTOP), -1, $hGUI_DEADBASE)
 ;GUISetBkColor($COLOR_WHITE, $hGUI_DEADBASE_ATTACK_SCRIPTED)
@@ -53,19 +53,6 @@ Local $x = 25, $y = 20
 			$txtTip =  GetTranslated(607,8, "Copy current Attack Script to a new name")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "DuplicateScriptDB")
-
-		; CSV Deployment Speed Mod
-		$y += 134
-		$grpScriptSpeedDB = GUICtrlCreateGroup("CSV Deployment Speed", $x, $y, 230, 50)
-			$lbltxtSelectedSpeedDB = GUICtrlCreateLabel("Normal speed", $x + 15, $y + 20, 75, 25)
-				GUICtrlSetTip(-1, "Increase or decrease the speed at which the CSV attack script deploys troops and waves.")
-			$sldSelectedSpeedDB = GUICtrlCreateSlider($x + 98, $y + 20, 125, 25, BitOR($TBS_TOOLTIPS, $TBS_AUTOTICKS))
-				GUICtrlSetTip(-1, "Increase or decrease the speed at which the CSV attack script deploys troops and waves.")
-				_GUICtrlSlider_SetTipSide(-1, $TBTS_BOTTOM)
-				_GUICtrlSlider_SetTicFreq(-1, 1)
-				GUICtrlSetLimit(-1, 12, 0) ; change max/min value
-				GUICtrlSetData(-1, 4) ; default value
-				GUICtrlSetOnEvent(-1, "sldSelectedSpeedDB")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 ;GUISetState()

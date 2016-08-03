@@ -280,18 +280,3 @@ Func DuplicateScriptAB()
 		EndIf
 	EndIf
 EndFunc   ;==>DuplicateScriptAB
-
-; CSV Deployment Speed Mod
-Func sldSelectedSpeedDB()
-	$isldSelectedCSVSpeed[$DB] = GUICtrlRead($sldSelectedSpeedDB)
-	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$DB]] & "x";
-	IF $isldSelectedCSVSpeed[$DB] = 4 Then $speedText = "Normal"
-	GUICtrlSetData($lbltxtSelectedSpeedDB, $speedText & " speed")
-EndFunc   ;==>sldSelectedSpeedDB
-
-Func sldSelectedSpeedAB()
-	$isldSelectedCSVSpeed[$LB] = GUICtrlRead($sldSelectedSpeedAB)
-	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$LB]] & "x";
-	IF $isldSelectedCSVSpeed[$LB] = 4 Then $speedText = "Normal"
-	GUICtrlSetData($lbltxtSelectedSpeedAB, $speedText & " speed")
-EndFunc   ;==>sldSelectedSpeedAB

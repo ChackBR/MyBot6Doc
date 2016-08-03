@@ -406,7 +406,6 @@ Local $x = $xStart + 25, $y = $yStart +  80 + 25 - 60
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 		$lblTimesSkeletonS = GUICtrlCreateLabel("x", $x + 137, $y, -1, -1)
 
-
 	; SmartZap Settings
 	Local $x = $xStart + 210, $y = $yStart +  80 + 25 - 60
 	$grpStatsMisc = GUICtrlCreateGroup("SmartZap", $x - 20, $y - 20, 243, 335)

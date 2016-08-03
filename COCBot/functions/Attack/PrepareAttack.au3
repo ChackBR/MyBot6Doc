@@ -82,10 +82,6 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 			If $troopKind <> -1 Then SetLog("-*-" & $atkTroops[$i][0] & " " & NameOfTroop($atkTroops[$i][0]) & " " & $atkTroops[$i][1], $COLOR_GREEN)
 		EndIf
     Next
-	
-	;AwesomeGamer CSV mod
-	$remainingTroops = $atkTroops
-	$TroopDropNumber = 0
 
     ;ResumeAndroid()
 

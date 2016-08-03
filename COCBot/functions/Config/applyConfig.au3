@@ -2582,13 +2582,6 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkDontRemove, $GUI_UNCHECKED)
 	EndIf
 
-	; CSV Deployment Speed Mod
-	GUICtrlSetData($sldSelectedSpeedDB, $isldSelectedCSVSpeed[$DB])
-	GUICtrlSetData($sldSelectedSpeedAB, $isldSelectedCSVSpeed[$LB])
-	sldSelectedSpeedDB()
-	sldSelectedSpeedAB()
-	; CSV Deployment Speed Mod - end
-
 	; SmartZap Settings - Added by LunaEclipse
 	If $ichkSmartZap = 1 Then
 		GUICtrlSetState($chkSmartLightSpell, $GUI_CHECKED)

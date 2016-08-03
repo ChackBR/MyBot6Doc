@@ -73,7 +73,8 @@ Local $sModversion
 ; "1404" ; Remove Pre-Train spells
 ; "1405" ; Classic Four Fingers
 ; "2001" ; Upgrade to MyBot v6.2.0
-$sModversion = "2101" ; Upgrade to MyBot v6.2.1
+; "2101" ; Upgrade to MyBot v6.2.1
+$sModversion = "2102" ; Removed CSV Spiral Attacks ( MyBot v6.2.1 )
 $sBotVersion = "v6.2.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
