@@ -30,6 +30,10 @@ Global $iOldAttackedCount, $iOldAttackedVillageCount[$iModeCount + 1] ; number o
 Global $iOldTotalGoldGain[$iModeCount + 1], $iOldTotalElixirGain[$iModeCount + 1], $iOldTotalDarkGain[$iModeCount + 1], $iOldTotalTrophyGain[$iModeCount + 1] ; total resource gains for DB, LB, TB, TS
 Global $iOldNbrOfDetectedMines[$iModeCount + 1], $iOldNbrOfDetectedCollectors[$iModeCount + 1], $iOldNbrOfDetectedDrills[$iModeCount + 1] ; number of mines, collectors, drills detected for DB, LB, TB
 
+; Smart Zap Totals
+Global $iOldsmartZapGain = 0
+Global $iOldNumLTSpellsUsed = 0
+
 Func UpdateStats()
 	If $FirstRun = 1 Then
 		GUICtrlSetState($lblResultStatsTemp, $GUI_HIDE)
@@ -301,6 +305,18 @@ Func UpdateStats()
 		$iOldDElixirFromDrills = $iDElixirFromDrills
 	EndIf
 
+   ; SmartZap DE Gain
+	If $iOldSmartZapGain <> $smartZapGain Then
+		GUICtrlSetData($lblSmartZap, _NumberFormat($smartZapGain, True))
+		$iOldSmartZapGain = $smartZapGain
+	EndIf
+
+	; SmartZap Spells Used
+	If $iOldNumLTSpellsUsed <> $numLSpellsUsed Then
+		GUICtrlSetData($lblLightningUsed, _NumberFormat($numLSpellsUsed, True))
+		$iOldNumLTSpellsUsed = $numLSpellsUsed
+ 	EndIf
+
 	$iAttackedCount = 0
 
 	For $i = 0 To $iModeCount
@@ -429,6 +445,11 @@ Func ResetStats()
 	$iGoldFromMines = 0
 	$iElixirFromCollectors = 0
 	$iDElixirFromDrills = 0
+
+	; Reset SmartZap stats
+	$smartZapGain = 0
+	$numLSpellsUsed = 0
+
 	For $i = 0 To $iModeCount
 		$iAttackedVillageCount[$i] = 0
 		$iTotalGoldGain[$i] = 0

@@ -19,7 +19,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	If _Sleep($iDelayalgorithm_AllTroops1) Then Return
 
-	If $iChkDeploySettings[$iMatchMode] < 4 Then
+	If $iChkDeploySettings[$iMatchMode] < 4 Then	; SmartAttack cannot stand together with FourFinger - DEMEN
 		SmartAttackStrategy($iMatchMode) ; detect redarea first to drop any troops
 	EndIf
 
@@ -44,7 +44,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 			If $ichkSmartZap = 1 Then SetLog("Skipping SmartZap to protect your royals!", $COLOR_FUCHSIA)
 		ElseIf IsAttackPage() And Not SmartZap() And $THusedKing = 0 And $THusedQueen = 0 Then
 			Setlog("Wait few sec before close attack")
-			If _Sleep(Random(0, 2, 1) * 1000) Then Return ;wait 0-2 second before exit if king and queen are not dropped
+			If _Sleep(Random(0, 2, 1) * 1000) Then Return ;	wait 0-2 second before exit if king and queen are not dropped
 		EndIf
 
 		;Apply to switch Attack Standard after THSnipe End  ==>

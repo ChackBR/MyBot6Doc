@@ -130,7 +130,7 @@ Func AttackReport()
 		EndIf
 		;Display League in Stats ==>
 		GUICtrlSetData($lblLeague, "")
-		
+
 		If StringInStr($LeagueShort, "1") > 1 Then
 			GUICtrlSetData($lblLeague, "1")
 		ElseIf StringInStr($LeagueShort, "2") > 1 Then

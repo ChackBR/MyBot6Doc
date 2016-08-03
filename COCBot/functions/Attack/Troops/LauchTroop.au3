@@ -240,7 +240,7 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 	Else
 		For $i = 0 To UBound($listInfoDeploy) - 1
 			If (IsString($listInfoDeploy[$i][0]) And ($listInfoDeploy[$i][0] = "CC" Or $listInfoDeploy[$i][0] = "HEROES")) Then
-				If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 4 Then ; Used for DE or TH side attack
+				If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 5 Then ; Used for DE or TH side attack
 					Local $RandomEdge = $Edges[$BuildingEdge]
 					Local $RandomXY = 2
 				Else
