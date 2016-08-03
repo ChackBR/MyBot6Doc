@@ -14,9 +14,7 @@
 ; ===============================================================================================================================
 
 Func PushBulletRemoteControl()
-	; Telegram
-	; If $PushBulletEnabled And $pRemote Then _RemoteControl()
-	_RemoteControl()
+	If $PushBulletEnabled And $pRemote Then _RemoteControl()
 EndFunc   ;==>PushBulletRemoteControl
 
 Func PushBulletDeleteOldPushes()
@@ -131,65 +129,5 @@ Func _Restart()
 	Return SetError(2, 0, 0)
 EndFunc   ;==>_Restart
 
-;Telegram[Surbiks]
-Func chkTEnabled()
-	If GUICtrlRead($chkTEnabled) = $GUI_CHECKED Then
-		$TelegramEnabled = 1
-		GUICtrlSetState($chkTRemote, $GUI_ENABLE)
-		GUICtrlSetState($TelegramTokenValue, $GUI_ENABLE)
-		GUICtrlSetState($OrigTelegram, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTVMFound, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTLastRaid, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTWallUpgrade, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTLastRaidTxt, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTOOS, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTVBreak, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTVillage, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTLastAttack, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTOtherDevice, $GUI_ENABLE)
-		GUICtrlSetState($chkDeleteAllTPushes, $GUI_ENABLE)
-		GUICtrlSetState($chkDeleteOldTPushes, $GUI_ENABLE)
-		GUICtrlSetState($btnDeleteTMessages, $GUI_ENABLE)
-		GUICtrlSetState($chkAlertTCampFull, $GUI_ENABLE)
 
-		If $ichkDeleteOldTPushes = 1 Then
-			GUICtrlSetState($cmbHoursTelegram, $GUI_ENABLE)
-		EndIf
-	Else
-		$TelegramEnabled = 0
-		GUICtrlSetState($chkTRemote, $GUI_DISABLE)
-		GUICtrlSetState($TelegramTokenValue, $GUI_DISABLE)
-		GUICtrlSetState($OrigTelegram, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTVMFound, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTLastRaid, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTWallUpgrade, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTLastRaidTxt, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTOOS, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTVBreak, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTVillage, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTLastAttack, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTOtherDevice, $GUI_DISABLE)
-		GUICtrlSetState($chkDeleteAllTPushes, $GUI_DISABLE)
-		GUICtrlSetState($chkDeleteOldTPushes, $GUI_DISABLE)
-		GUICtrlSetState($btnDeleteTMessages, $GUI_DISABLE)
-		GUICtrlSetState($chkAlertTCampFull, $GUI_DISABLE)
 
-		GUICtrlSetState($cmbHoursTelegram, $GUI_DISABLE)
-
-	EndIf
-EndFunc
-
-Func btnDeleteTMessages()
-	$iDeleteAllTPushesNow = True
-EndFunc
-
-Func chkDeleteOldTPushes()
-	If GUICtrlRead($chkDeleteOldTPushes) = $GUI_CHECKED Then
-		$ichkDeleteOldTPushes = 1
-		If $TelegramEnabled Then GUICtrlSetState($cmbHoursTelegram, $GUI_ENABLE)
-	Else
-		$ichkDeleteOldTPushes = 0
-		GUICtrlSetState($cmbHoursTelegram, $GUI_DISABLE)
-	EndIf
-EndFunc
-;Telegram

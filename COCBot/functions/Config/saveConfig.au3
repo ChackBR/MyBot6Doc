@@ -87,6 +87,20 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	$sTxtDonatePekkas = GUICtrlRead($txtDonatePekkas)
 	$sTxtBlacklistPekkas = GUICtrlRead($txtBlacklistPekkas)
+	If GUICtrlRead($chkDonateBabyDragons) = $GUI_CHECKED Then
+		$ichkDonateBabyDragons = 1
+	Else
+		$ichkDonateBabyDragons = 0
+	EndIf
+	$sTxtDonateBabyDragons = GUICtrlRead($txtDonateBabyDragons)
+	$sTxtBlacklistBabyDragons = GUICtrlRead($txtBlacklistBabyDragons)
+	If GUICtrlRead($chkDonateMiners) = $GUI_CHECKED Then
+		$ichkDonateMiners = 1
+	Else
+		$ichkDonateMiners = 0
+	EndIf
+	$sTxtDonateMiners = GUICtrlRead($txtDonateMiners)
+	$sTxtBlacklistMiners = GUICtrlRead($txtBlacklistMiners)
 	If GUICtrlRead($chkDonateMinions) = $GUI_CHECKED Then
 		$ichkDonateMinions = 1
 	Else
@@ -129,6 +143,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	$sTxtDonateLavaHounds = GUICtrlRead($txtDonateLavaHounds)
 	$sTxtBlacklistLavaHounds = GUICtrlRead($txtBlacklistLavaHounds)
+	If GUICtrlRead($chkDonateBowlers) = $GUI_CHECKED Then
+		$ichkDonateBowlers = 1
+	Else
+		$ichkDonateBowlers = 0
+	EndIf
+	$sTxtDonateBowlers = GUICtrlRead($txtDonateBowlers)
+	$sTxtBlacklistBowlers = GUICtrlRead($txtBlacklistBowlers)
 	If GUICtrlRead($chkDonatePoisonSpells) = $GUI_CHECKED Then
 		$ichkDonatePoisonSpells = 1
 	Else
@@ -150,21 +171,45 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	$sTxtDonateHasteSpells = GUICtrlRead($txtDonateHasteSpells)
 	$sTxtBlacklistHasteSpells = GUICtrlRead($txtBlacklistHasteSpells)
-	;;; Custom Combination Donate by ChiefM3
-	If GUICtrlRead($chkDonateCustom) = $GUI_CHECKED Then
-		$ichkDonateCustom = 1
+	If GUICtrlRead($chkDonateSkeletonSpells) = $GUI_CHECKED Then
+		$ichkDonateSkeletonSpells = 1
 	Else
-		$ichkDonateCustom = 0
+		$ichkDonateSkeletonSpells = 0
 	EndIf
-	$sTxtDonateCustom = GUICtrlRead($txtDonateCustom)
-	$sTxtBlacklistCustom = GUICtrlRead($txtBlacklistCustom)
+	$sTxtDonateSkeletonSpells = GUICtrlRead($txtDonateSkeletonSpells)
+	$sTxtBlacklistSkeletonSpells = GUICtrlRead($txtBlacklistSkeletonSpells)
 
-	$varDonateCustom[0][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustom1)
-	$varDonateCustom[0][1] = GUICtrlRead($txtDonateCustom1)
-	$varDonateCustom[1][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustom2)
-	$varDonateCustom[1][1] = GUICtrlRead($txtDonateCustom2)
-	$varDonateCustom[2][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustom3)
-	$varDonateCustom[2][1] = GUICtrlRead($txtDonateCustom3)
+	;;; Custom Combination Donate by ChiefM3
+	If GUICtrlRead($chkDonateCustomA) = $GUI_CHECKED Then
+		$ichkDonateCustomA = 1
+	Else
+		$ichkDonateCustomA = 0
+	EndIf
+	$sTxtDonateCustomA = GUICtrlRead($txtDonateCustomA)
+	$sTxtBlacklistCustomA = GUICtrlRead($txtBlacklistCustomA)
+
+	$varDonateCustomA[0][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustomA1)
+	$varDonateCustomA[0][1] = GUICtrlRead($txtDonateCustomA1)
+	$varDonateCustomA[1][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustomA2)
+	$varDonateCustomA[1][1] = GUICtrlRead($txtDonateCustomA2)
+	$varDonateCustomA[2][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustomA3)
+	$varDonateCustomA[2][1] = GUICtrlRead($txtDonateCustomA3)
+
+	If GUICtrlRead($chkDonateCustomB) = $GUI_CHECKED Then
+		$ichkDonateCustomB = 1
+	Else
+		$ichkDonateCustomB = 0
+	EndIf
+	$sTxtDonateCustomB = GUICtrlRead($txtDonateCustomB)
+	$sTxtBlacklistCustomB = GUICtrlRead($txtBlacklistCustomB)
+
+	$varDonateCustomB[0][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustomB1)
+	$varDonateCustomB[0][1] = GUICtrlRead($txtDonateCustomB1)
+	$varDonateCustomB[1][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustomB2)
+	$varDonateCustomB[1][1] = GUICtrlRead($txtDonateCustomB2)
+	$varDonateCustomB[2][0] = _GUICtrlComboBox_GetCurSel($cmbDonateCustomB3)
+	$varDonateCustomB[2][1] = GUICtrlRead($txtDonateCustomB3)
+
 	$sTxtBlacklist = GUICtrlRead($txtBlacklist)
 
 	If GUICtrlRead($chkDonateAllBarbarians) = $GUI_CHECKED Then
@@ -217,6 +262,16 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		$ichkDonateAllPekkas = 0
 	EndIf
+	If GUICtrlRead($chkDonateAllBabyDragons) = $GUI_CHECKED Then
+		$ichkDonateAllBabyDragons = 1
+	Else
+		$ichkDonateAllBabyDragons = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllMiners) = $GUI_CHECKED Then
+		$ichkDonateAllMiners = 1
+	Else
+		$ichkDonateAllMiners = 0
+	EndIf
 	If GUICtrlRead($chkDonateAllMinions) = $GUI_CHECKED Then
 		$ichkDonateAllMinions = 1
 	Else
@@ -247,6 +302,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		$ichkDonateAllLavaHounds = 0
 	EndIf
+	If GUICtrlRead($chkDonateAllBowlers) = $GUI_CHECKED Then
+		$ichkDonateAllBowlers = 1
+	Else
+		$ichkDonateAllBowlers = 0
+	EndIf
 	If GUICtrlRead($chkDonateAllPoisonSpells) = $GUI_CHECKED Then
 		$ichkDonateAllPoisonSpells = 1
 	Else
@@ -262,10 +322,21 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		$ichkDonateAllHasteSpells = 0
 	EndIf
-	If GUICtrlRead($chkDonateAllCustom) = $GUI_CHECKED Then
-		$ichkDonateAllCustom = 1
+	If GUICtrlRead($chkDonateAllSkeletonSpells) = $GUI_CHECKED Then
+		$ichkDonateAllSkeletonSpells = 1
 	Else
-		$ichkDonateAllCustom = 0
+		$ichkDonateAllSkeletonSpells = 0
+	EndIf
+
+	If GUICtrlRead($chkDonateAllCustomA) = $GUI_CHECKED Then
+		$ichkDonateAllCustomA = 1
+	Else
+		$ichkDonateAllCustomA = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllCustomB) = $GUI_CHECKED Then
+		$ichkDonateAllCustomB = 1
+	Else
+		$ichkDonateAllCustomB = 0
 	EndIf
 
 	; Extra Alphabets , Cyrillic.
@@ -277,99 +348,6 @@ Func saveConfig() ;Saves the controls settings to the config
 
 
 	; save notify GUI -> variables -----------------------------------------------
-	;Telegram[Surbiks]
-	If GUICtrlRead($chkTEnabled) = $GUI_CHECKED Then
-		$TelegramEnabled = 1
-	Else
-		$TelegramEnabled = 0
-	EndIf
-
-	If GUICtrlRead($chkTRemote) = $GUI_CHECKED Then
-		$pRemoteTelegram = 1
-	Else
-		$pRemoteTelegram = 0
-	EndIf
-
-	If GUICtrlRead($chkDeleteAllTPushes) = $GUI_CHECKED Then
-		$iDeleteAllTPushes = 1
-	Else
-		$iDeleteAllTPushes = 0
-	EndIf
-
-	If GUICtrlRead($chkDeleteOldTPushes) = $GUI_CHECKED Then
-		$ichkDeleteOldTPushes = 1
-	Else
-		$ichkDeleteOldTPushes = 0
-	EndIf
-
-	$icmbHoursTelegram = _GUICtrlComboBox_GetCurSel($cmbHoursTelegram)
-
-	If GUICtrlRead($chkAlertTVMFound) = $GUI_CHECKED Then
-		$pMatchFoundTelegram = 1
-	Else
-		$pMatchFoundTelegram = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTLastRaid) = $GUI_CHECKED Then
-		$pLastRaidImgTelegram = 1
-	Else
-		$pLastRaidImgTelegram = 0
-	EndIf
-
-
-	If GUICtrlRead($chkAlertTWallUpgrade) = $GUI_CHECKED Then
-		$pWallUpgradeTelegram = 1
-	Else
-		$pWallUpgradeTelegram = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTOOS) = $GUI_CHECKED Then
-		$pOOSTelegram = 1
-	Else
-		$pOOSTelegram = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTOtherDevice) = $GUI_CHECKED Then
-		$pAnotherDeviceTelegram = 1
-	Else
-		$pAnotherDeviceTelegram = 0
-	EndIf
-
-	$TelegramToken = GUICtrlRead($TelegramTokenValue)
-	$iOrigTelegram = GUICtrlRead($OrigTelegram)
-
-
-	If GUICtrlRead($chkAlertTLastRaidTxt) = $GUI_CHECKED Then
-		$iAlertTLastRaidTxt = 1
-	Else
-		$iAlertTLastRaidTxt = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTLastAttack) = $GUI_CHECKED Then
-		$iLastAttackT = 1
-	Else
-		$iLastAttackT = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTCampFull) = $GUI_CHECKED Then
-		$ichkAlertTCampFull = 1
-	Else
-		$ichkAlertTCampFull = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTVillage) = $GUI_CHECKED Then
-		$iAlertTVillage = 1
-	Else
-		$iAlertTVillage = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertTVBreak) = $GUI_CHECKED Then
-		$pTakeAbreakTelegram = 1
-	Else
-		$pTakeAbreakTelegram = 0
-	EndIf
-	;Telegram
-
 	;PushBullet
 	If GUICtrlRead($chkPBenabled) = $GUI_CHECKED Then
 		$PushBulletEnabled = 1
@@ -698,6 +676,12 @@ Func saveConfig() ;Saves the controls settings to the config
 	$iValueSinglePBTimeForced = GUICtrlRead($txtSinglePBTimeForced)
 	$iValuePBTimeForcedExit = GUICtrlRead($txtPBTimeForcedExit)
 
+	If GUICtrlRead($chkUseRandomClick) = $GUI_CHECKED Then
+		$iUseRandomClick = 1
+	Else
+		$iUseRandomClick = 0
+	EndIf
+
 	If GUICtrlRead($chkScreenshotType) = $GUI_CHECKED Then
 		$iScreenshotType = 1
 	Else
@@ -770,12 +754,6 @@ Func saveConfig() ;Saves the controls settings to the config
 		$iChkTrophyAtkDead = 0
 	EndIf
 	$itxtDTArmyMin = GUICtrlRead($txtDTArmyMin)
-
-	; weak base gui -> variables ----------------------------------------------------
-	$iCmbWeakMortar[$DB] = _GUICtrlComboBox_GetCurSel($cmbDBWeakMortar)
-	$iCmbWeakWizTower[$DB] = _GUICtrlComboBox_GetCurSel($cmbDBWeakWizTower)
-	$iCmbWeakMortar[$LB] = _GUICtrlComboBox_GetCurSel($cmbABWeakMortar)
-	$iCmbWeakWizTower[$LB] = _GUICtrlComboBox_GetCurSel($cmbABWeakWizTower)
 
 	; end battle AB options gui -> variables ----------------------------------------
 	If GUICtrlRead($chkDESideEB) = $GUI_CHECKED Then
@@ -1048,13 +1026,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	; collectors gui -> variables --------------------------------------------------
 
 	For $collectorLevel = 6 To 12
-		If GUICtrlRead(Eval("chkLvl"&$collectorLevel)) = $GUI_CHECKED Then
-			Assign("chkLvl"&$collectorLevel&"Enabled", 1)
+		If GUICtrlRead(Eval("chkLvl" & $collectorLevel)) = $GUI_CHECKED Then
+			Assign("chkLvl" & $collectorLevel & "Enabled", 1)
 		Else
-			Assign("chkLvl"&$collectorLevel&"Enabled", 0)
+			Assign("chkLvl" & $collectorLevel & "Enabled", 0)
 		EndIf
 
-		Assign("cmbLvl"&$collectorLevel&"Fill", _GUICtrlComboBox_GetCurSel(Eval("cmbLvl"&$collectorLevel)))
+		Assign("cmbLvl" & $collectorLevel & "Fill", _GUICtrlComboBox_GetCurSel(Eval("cmbLvl" & $collectorLevel)))
 	Next
 	IniWriteS($config, "collectors", "tolerance", GUICtrlRead($sldCollectorTolerance))
 
@@ -1073,16 +1051,22 @@ Func saveConfig() ;Saves the controls settings to the config
 	Local $hFile = -1
 	If $ichkExtraAlphabets = 1 Then $hFile = FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
 
-	Local $frmBotPos = WinGetPos($sBotTitle)
-
+	IniWriteS($config, "general", "version", GetVersionNormalized($sBotVersion))
 	IniWriteS($config, "general", "cmbProfile", _GUICtrlComboBox_GetCurSel($cmbProfile))
-	IniWriteS($config, "general", "frmBotPosX", $frmBotPos[0])
-	IniWriteS($config, "general", "frmBotPosY", $frmBotPos[1])
+	IniWriteS($config, "general", "frmBotPosX", $frmBotPosX)
+	IniWriteS($config, "general", "frmBotPosY", $frmBotPosY)
+	; read now android position again, as it might have changed
+	If $HWnD <> 0 Then WinGetAndroidHandle()
+	IniWriteS($config, "general", "AndroidPosX", $AndroidPosX)
+	IniWriteS($config, "general", "AndroidPosY", $AndroidPosY)
+	IniWriteS($config, "general", "frmBotDockedPosX", $frmBotDockedPosX)
+	IniWriteS($config, "general", "frmBotDockedPosY", $frmBotDockedPosY)
+	IniWriteS($config, "general", "UpdatingWhenMinimized", $iUpdatingWhenMinimized)
+	IniWriteS($config, "general", "HideWhenMinimized", $iHideWhenMinimized)
 	IniWriteS($config, "general", "villageName", GUICtrlRead($txtVillageName))
 
 	IniWriteS($config, "general", "logstyle", _GUICtrlComboBox_GetCurSel($cmbLog))
-	$DPos = ControlGetPos($hGUI_LOG, "", $divider)
-	IniWriteS($config, "general", "LogDividerY", $DPos[1] - $_GUI_CHILD_TOP)
+	IniWriteS($config, "general", "LogDividerY", $iDividerY)
 
 	IniWriteS($config, "general", "AutoStart", $ichkAutoStart)
 	IniWriteS($config, "general", "AutoStartDelay", $ichkAutoStartDelay)
@@ -1107,7 +1091,7 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	IniWriteS($config, "general", "GUIStyle", $iGUIStyle)
 
-
+	IniWriteS($config, "general", "RedrawBotWindowMode", $RedrawBotWindowMode)
 
 	;Search Settings------------------------------------------------------------------------
 
@@ -1139,11 +1123,48 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "search", "DBMeetTHO", 0)
 	EndIf
 
-	If GUICtrlRead($chkDBWeakBase) = $GUI_CHECKED Then
-		IniWriteS($config, "search", "DBWeakBase", 1)
-	Else
-		IniWriteS($config, "search", "DBWeakBase", 0)
-	EndIf
+	; weak base gui -> variables ----------------------------------------------------
+	$iCmbWeakMortar[$DB] = _GUICtrlComboBox_GetCurSel($cmbWeakMortar[$DB])
+	$iCmbWeakWizTower[$DB] = _GUICtrlComboBox_GetCurSel($cmbWeakWizTower[$DB])
+	$iCmbWeakXBow[$DB] = _GUICtrlComboBox_GetCurSel($cmbWeakXBow[$DB])
+	$iCmbWeakInferno[$DB] = _GUICtrlComboBox_GetCurSel($cmbWeakInferno[$DB])
+	$iCmbWeakEagle[$DB] = _GUICtrlComboBox_GetCurSel($cmbWeakEagle[$DB])
+
+	$iCmbWeakMortar[$LB] = _GUICtrlComboBox_GetCurSel($cmbWeakMortar[$LB])
+	$iCmbWeakWizTower[$LB] = _GUICtrlComboBox_GetCurSel($cmbWeakWizTower[$LB])
+	$iCmbWeakXBow[$LB] = _GUICtrlComboBox_GetCurSel($cmbWeakXBow[$LB])
+	$iCmbWeakInferno[$LB] = _GUICtrlComboBox_GetCurSel($cmbWeakInferno[$LB])
+	$iCmbWeakEagle[$LB] = _GUICtrlComboBox_GetCurSel($cmbWeakEagle[$LB])
+
+	; Assign Weakbase enabled GUI defense types to variables
+	For $mode = $DB To $iModeCount - 1
+		If GUICtrlRead($chkMaxMortar[$mode]) = $GUI_CHECKED Then
+			$iChkMaxMortar[$mode] = 1
+		Else
+			$iChkMaxMortar[$mode] = 0
+		EndIf
+		If GUICtrlRead($chkMaxWizTower[$mode]) = $GUI_CHECKED Then
+			$iChkMaxWizTower[$mode] = 1
+		Else
+			$iChkMaxWizTower[$mode] = 0
+		EndIf
+		If GUICtrlRead($chkMaxXBow[$mode]) = $GUI_CHECKED Then
+			$iChkMaxXBow[$mode] = 1
+		Else
+			$iChkMaxXBow[$mode] = 0
+		EndIf
+		If GUICtrlRead($chkMaxInferno[$mode]) = $GUI_CHECKED Then
+			$iChkMaxInferno[$mode] = 1
+		Else
+			$iChkMaxInferno[$mode] = 0
+		EndIf
+		If GUICtrlRead($chkMaxEagle[$mode]) = $GUI_CHECKED Then
+			$iChkMaxEagle[$mode] = 1
+		Else
+			$iChkMaxEagle[$mode] = 0
+		EndIf
+	Next
+
 
 	If GUICtrlRead($chkDBMeetOne) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "DBMeetOne", 1)
@@ -1168,11 +1189,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "search", "DBWeakXBow", $iCmbWeakXBow[$DB])
 	IniWriteS($config, "search", "DBWeakInferno", $iCmbWeakInferno[$DB])
 	IniWriteS($config, "search", "DBWeakEagle", $iCmbWeakEagle[$DB])
-	IniWriteS($config, "search", "DBCheckMortar", $iChkChkMortar[$DB])
-	IniWriteS($config, "search", "DBCheckWizTower", $iChkChkWizTower[$DB])
-	IniWriteS($config, "search", "DBCheckXBow", $iChkChkXBow[$DB])
-	IniWriteS($config, "search", "DBCheckInferno", $iChkChkInferno[$DB])
-	IniWriteS($config, "search", "DBCheckEagle", $iChkChkEagle[$DB])
+	IniWriteS($config, "search", "DBCheckMortar", $iChkMaxMortar[$DB])
+	IniWriteS($config, "search", "DBCheckWizTower", $iChkMaxWizTower[$DB])
+	IniWriteS($config, "search", "DBCheckXBow", $iChkMaxXBow[$DB])
+	IniWriteS($config, "search", "DBCheckInferno", $iChkMaxInferno[$DB])
+	IniWriteS($config, "search", "DBCheckEagle", $iChkMaxEagle[$DB])
 
 	If GUICtrlRead($DBcheck) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "DBcheck", 1)
@@ -1272,12 +1293,6 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "search", "ABMeetTHO", 0)
 	EndIf
 
-	If GUICtrlRead($chkABWeakBase) = $GUI_CHECKED Then
-		IniWriteS($config, "search", "ABWeakBase", 1)
-	Else
-		IniWriteS($config, "search", "ABWeakBase", 0)
-	EndIf
-
 	If GUICtrlRead($chkABMeetOne) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "ABMeetOne", 1)
 	Else
@@ -1302,11 +1317,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "search", "ABWeakXBow", $iCmbWeakXBow[$LB])
 	IniWriteS($config, "search", "ABWeakInferno", $iCmbWeakInferno[$LB])
 	IniWriteS($config, "search", "ABWeakEagle", $iCmbWeakEagle[$LB])
-	IniWriteS($config, "search", "ABCheckMortar", $iChkChkMortar[$LB])
-	IniWriteS($config, "search", "ABCheckWizTower", $iChkChkWizTower[$LB])
-	IniWriteS($config, "search", "ABCheckXBow", $iChkChkXBow[$LB])
-	IniWriteS($config, "search", "ABCheckInferno", $iChkChkInferno[$LB])
-	IniWriteS($config, "search", "ABCheckEagle", $iChkChkEagle[$LB])
+	IniWriteS($config, "search", "ABCheckMortar", $iChkMaxMortar[$LB])
+	IniWriteS($config, "search", "ABCheckWizTower", $iChkMaxWizTower[$LB])
+	IniWriteS($config, "search", "ABCheckXBow", $iChkMaxXBow[$LB])
+	IniWriteS($config, "search", "ABCheckInferno", $iChkMaxInferno[$LB])
+	IniWriteS($config, "search", "ABCheckEagle", $iChkMaxEagle[$LB])
 
 	If GUICtrlRead($chkSearchReduction) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "reduction", 1)
@@ -1727,6 +1742,7 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "endBattle", "chkABEndNoResources", 0)
 	EndIf
 
+#CS
 	IniWriteS($config, "endBattle", "txtTSTimeStopAtk", GUICtrlRead($txtTSTimeStopAtk))
 	IniWriteS($config, "endBattle", "chkTSTimeStopAtk", GUICtrlRead($chkTSTimeStopAtk))
 	IniWriteS($config, "endBattle", "txtTSTimeStopAtk2", GUICtrlRead($txtTSTimeStopAtk2))
@@ -1741,6 +1757,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWriteS($config, "endBattle", "chkTSEndNoResources", 0)
 	EndIf
+#CE
 
 	; end battle de side
 	IniWriteS($config, "endbattle", "chkDESideEB", $DESideEB)
@@ -1850,6 +1867,14 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "donate", "chkDonateAllPekkas", $ichkDonateAllPekkas)
 	IniWriteS($config, "donate", "txtDonatePekkas", StringReplace($sTxtDonatePekkas, @CRLF, "|"))
 	IniWriteS($config, "donate", "txtBlacklistPekkas", StringReplace($sTxtBlacklistPekkas, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateBabyDragons", $ichkDonateBabyDragons)
+	IniWriteS($config, "donate", "chkDonateAllBabyDragons", $ichkDonateAllBabyDragons)
+	IniWriteS($config, "donate", "txtDonateBabyDragons", StringReplace($sTxtDonateBabyDragons, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistBabyDragons", StringReplace($sTxtBlacklistBabyDragons, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateMiners", $ichkDonateMiners)
+	IniWriteS($config, "donate", "chkDonateAllMiners", $ichkDonateAllMiners)
+	IniWriteS($config, "donate", "txtDonateMiners", StringReplace($sTxtDonateMiners, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistMiners", StringReplace($sTxtBlacklistMiners, @CRLF, "|"))
 	IniWriteS($config, "donate", "chkDonateMinions", $ichkDonateMinions)
 	IniWriteS($config, "donate", "chkDonateAllMinions", $ichkDonateAllMinions)
 	IniWriteS($config, "donate", "txtDonateMinions", StringReplace($sTxtDonateMinions, @CRLF, "|"))
@@ -1874,6 +1899,10 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "donate", "chkDonateAllLavaHounds", $ichkDonateAllLavaHounds)
 	IniWriteS($config, "donate", "txtDonateLavaHounds", StringReplace($sTxtDonateLavaHounds, @CRLF, "|"))
 	IniWriteS($config, "donate", "txtBlacklistLavaHounds", StringReplace($sTxtBlacklistLavaHounds, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateBowlers", $ichkDonateBowlers)
+	IniWriteS($config, "donate", "chkDonateAllBowlers", $ichkDonateAllBowlers)
+	IniWriteS($config, "donate", "txtDonateBowlers", StringReplace($sTxtDonateBowlers, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistBowlers", StringReplace($sTxtBlacklistBowlers, @CRLF, "|"))
 	IniWriteS($config, "donate", "chkDonatePoisonSpells", $ichkDonatePoisonSpells)
 	IniWriteS($config, "donate", "chkDonateAllPoisonSpells", $ichkDonateAllPoisonSpells)
 	IniWriteS($config, "donate", "txtDonatePoisonSpells", StringReplace($sTxtDonatePoisonSpells, @CRLF, "|"))
@@ -1886,17 +1915,33 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "donate", "chkDonateAllHasteSpells", $ichkDonateAllHasteSpells)
 	IniWriteS($config, "donate", "txtDonateHasteSpells", StringReplace($sTxtDonateHasteSpells, @CRLF, "|"))
 	IniWriteS($config, "donate", "txtBlacklistHasteSpells", StringReplace($sTxtBlacklistHasteSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateSkeletonSpells", $ichkDonateSkeletonSpells)
+	IniWriteS($config, "donate", "chkDonateAllSkeletonSpells", $ichkDonateAllSkeletonSpells)
+	IniWriteS($config, "donate", "txtDonateSkeletonSpells", StringReplace($sTxtDonateSkeletonSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistSkeletonSpells", StringReplace($sTxtBlacklistSkeletonSpells, @CRLF, "|"))
 	;;; Custom Combination Donate by ChiefM3
-	IniWriteS($config, "donate", "chkDonateCustom", $ichkDonateCustom)
-	IniWriteS($config, "donate", "chkDonateAllCustom", $ichkDonateAllCustom)
-	IniWriteS($config, "donate", "txtDonateCustom", StringReplace($sTxtDonateCustom, @CRLF, "|"))
-	IniWriteS($config, "donate", "txtBlacklistCustom", StringReplace($sTxtBlacklistCustom, @CRLF, "|"))
-	IniWriteS($config, "donate", "cmbDonateCustom1", $varDonateCustom[0][0])
-	IniWriteS($config, "donate", "txtDonateCustom1", $varDonateCustom[0][1])
-	IniWriteS($config, "donate", "cmbDonateCustom2", $varDonateCustom[1][0])
-	IniWriteS($config, "donate", "txtDonateCustom2", $varDonateCustom[1][1])
-	IniWriteS($config, "donate", "cmbDonateCustom3", $varDonateCustom[2][0])
-	IniWriteS($config, "donate", "txtDonateCustom3", $varDonateCustom[2][1])
+	IniWriteS($config, "donate", "chkDonateCustomA", $ichkDonateCustomA)
+	IniWriteS($config, "donate", "chkDonateAllCustomA", $ichkDonateAllCustomA)
+	IniWriteS($config, "donate", "txtDonateCustomA", StringReplace($sTxtDonateCustomA, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistCustomA", StringReplace($sTxtBlacklistCustomA, @CRLF, "|"))
+	IniWriteS($config, "donate", "cmbDonateCustomA1", $varDonateCustomA[0][0])
+	IniWriteS($config, "donate", "txtDonateCustomA1", $varDonateCustomA[0][1])
+	IniWriteS($config, "donate", "cmbDonateCustomA2", $varDonateCustomA[1][0])
+	IniWriteS($config, "donate", "txtDonateCustomA2", $varDonateCustomA[1][1])
+	IniWriteS($config, "donate", "cmbDonateCustomA3", $varDonateCustomA[2][0])
+	IniWriteS($config, "donate", "txtDonateCustomA3", $varDonateCustomA[2][1])
+
+	IniWriteS($config, "donate", "chkDonateCustomB", $ichkDonateCustomB)
+	IniWriteS($config, "donate", "chkDonateAllCustomB", $ichkDonateAllCustomB)
+	IniWriteS($config, "donate", "txtDonateCustomB", StringReplace($sTxtDonateCustomB, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistCustomB", StringReplace($sTxtBlacklistCustomB, @CRLF, "|"))
+	IniWriteS($config, "donate", "cmbDonateCustomB1", $varDonateCustomB[0][0])
+	IniWriteS($config, "donate", "txtDonateCustomB1", $varDonateCustomB[0][1])
+	IniWriteS($config, "donate", "cmbDonateCustomB2", $varDonateCustomB[1][0])
+	IniWriteS($config, "donate", "txtDonateCustomB2", $varDonateCustomB[1][1])
+	IniWriteS($config, "donate", "cmbDonateCustomB3", $varDonateCustomB[2][0])
+	IniWriteS($config, "donate", "txtDonateCustomB3", $varDonateCustomB[2][1])
+
 	IniWriteS($config, "donate", "txtBlacklist", StringReplace($sTxtBlacklist, @CRLF, "|"))
 
 	; Extra Alphabets , Cyrillic.
@@ -1926,6 +1971,24 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "troop", "fulltroop", GUICtrlRead($txtFullTroop))
 	IniWriteS($config, "other", "TrainITDelay", $isldTrainITDelay)
 
+	IniWriteS($config, "other", "chkCloseWaitEnable", $ichkCloseWaitEnable)
+	IniWriteS($config, "other", "chkCloseWaitTrain", $ichkCloseWaitTrain)
+	IniWriteS($config, "other", "btnCloseWaitStop", $ibtnCloseWaitStop)
+	IniWriteS($config, "other", "btnCloseWaitStopRandom", $ibtnCloseWaitStopRandom)
+	IniWriteS($config, "other", "btnCloseWaitExact", $ibtnCloseWaitExact)
+	IniWriteS($config, "other", "btnCloseWaitRandom", $ibtnCloseWaitRandom)
+	IniWriteS($config, "other", "CloseWaitRdmPercent", _GUICtrlComboBox_GetCurSel($cmbCloseWaitRdmPercent))
+
+	IniWriteS($config, "troop", "chkTroopOrder", $ichkTroopOrder)
+	For $z = 0 To UBound($DefaultTroopGroup) -1
+		IniWriteS($config, "troop", "cmbTroopOrder" & $z, _GUICtrlComboBox_GetCurSel($cmbTroopOrder[$z]))
+	Next
+
+	IniWriteS($config, "troop", "chkDarkTroopOrder", $ichkDarkTroopOrder)
+	For $z = 0 To UBound($DefaultTroopGroupDark) -1
+		IniWriteS($config, "troop", "cmbDarkTroopOrder" & $z, _GUICtrlComboBox_GetCurSel($cmbDarkTroopOrder[$z]))
+	Next
+
 	;barracks boost not saved (no use)
 
 	; Spells Creation  ---------------------------------------------------------------------
@@ -1934,9 +1997,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "Spells", "HealSpell", GUICtrlRead($txtNumHealSpell))
 	IniWriteS($config, "Spells", "JumpSpell", GUICtrlRead($txtNumJumpSpell))
 	IniWriteS($config, "Spells", "FreezeSpell", GUICtrlRead($txtNumFreezeSpell))
+	IniWriteS($config, "Spells", "CloneSpell", GUICtrlRead($txtNumCloneSpell))
 	IniWriteS($config, "Spells", "PoisonSpell", GUICtrlRead($txtNumPoisonSpell))
 	IniWriteS($config, "Spells", "EarthSpell", GUICtrlRead($txtNumEarthSpell))
 	IniWriteS($config, "Spells", "HasteSpell", GUICtrlRead($txtNumHasteSpell))
+	IniWriteS($config, "Spells", "SkeletonSpell", GUICtrlRead($txtNumSkeletonSpell))
 	IniWriteS($config, "Spells", "SpellFactory", GUICtrlRead($txtTotalCountSpell))
 
 	;Upgrades
@@ -2036,6 +2101,8 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	SetDebugLog("Save Building Config " & $building)
 
+	IniWriteS($building, "general", "version", GetVersionNormalized($sBotVersion))
+
 	IniWriteS($building, "other", "xTownHall", $TownHallPos[0])
 	IniWriteS($building, "other", "yTownHall", $TownHallPos[1])
 	IniWriteS($building, "other", "LevelTownHall", $iTownHallLevel)
@@ -2081,28 +2148,6 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($building, "other", "xWardenAltarPos", $WardenAltarPos[0])
 	IniWriteS($building, "other", "yWardenAltarPos", $WardenAltarPos[1])
 
-	;Telegram[Surbiks]
-	IniWriteS($config, "telegram", "AccountToken", $TelegramToken)
-	IniWriteS($config, "telegram", "OrigTelegram", $iOrigTelegram)
-	IniWriteS($config, "telegram", "TelegramEnabled", $TelegramEnabled)
-	IniWriteS($config, "telegram", "TelegramRemote", $pRemoteTelegram)
-	IniWriteS($config, "telegram", "DeleteAllTelegramPushes", $iDeleteAllTPushes)
-	IniWriteS($config, "telegram", "DeleteOldTelegramPushes", $ichkDeleteOldTPushes)
-	IniWriteS($config, "telegram", "HoursTelegram", $icmbHoursTelegram)
-	IniWriteS($config, "telegram", "AlertTelegramVMFound", $pMatchFoundTelegram)
-	IniWriteS($config, "telegram", "AlertTelegramLastRaid", $pLastRaidImgTelegram)
-	IniWriteS($config, "telegram", "AlertTelegramWallUpgrade", $pWallUpgradeTelegram)
-	IniWriteS($config, "telegram", "AlertTelegramOOS", $pOOSTelegram)
-	IniWriteS($config, "telegram", "AlertTelegramOtherDevice", $pAnotherDeviceTelegram)
-	IniWriteS($config, "telegram", "AlertTelegramLastRaidTxt", $iAlertTLastRaidTxt)
-	IniWriteS($config, "telegram", "AlertTelegramCampFull", $ichkAlertTCampFull)
-	IniWriteS($config, "telegram", "AlertTelegramVillage", $iAlertTVillage)
-	IniWriteS($config, "telegram", "AlertTelegramLastAttack", $iLastAttackT)
-	IniWriteS($config, "telegram", "AlertTelegramVBreak", $pTakeAbreakTelegram)
-
-	IniWriteS($config, "telegram", "TelegramChatIDs", _ArrayToString($TelegramChatIDs))
-	IniWriteS($config, "telegram", "TelegramLastRemoteID", $TelegramLastRemoteID)
-	;Telegram
 
 	;PushBullet Settings----------------------------------------
 	IniWriteS($config, "pushbullet", "AccountToken", $PushBulletToken)
@@ -2169,6 +2214,12 @@ Func saveConfig() ;Saves the controls settings to the config
 	Next
 	IniWriteS($config, "planned", "RequestHours", $string)
 
+	If GUICtrlRead($chkDropCCHoursEnable) = $GUI_CHECKED Then
+		IniWriteS($config, "planned", "DropCCEnable", 1)
+	Else
+		IniWriteS($config, "planned", "DropCCEnable", 0)
+	EndIf
+
 	Local $string = ""
 	For $i = 0 To 23
 		If GUICtrlRead(Eval("chkDropCCHours" & $i)) = $GUI_CHECKED Then
@@ -2209,6 +2260,17 @@ Func saveConfig() ;Saves the controls settings to the config
 	Next
 	IniWriteS($config, "planned", "attackDays", $string)
 
+	IniWriteS($config, "planned", "chkAttackPlannerEnable", $ichkAttackPlannerEnable)
+	IniWriteS($config, "planned", "chkAttackPlannerCloseCoC", $ichkAttackPlannerCloseCoC)
+	IniWriteS($config, "planned", "chkAttackPlannerCloseAll", $ichkAttackPlannerCloseAll)
+	IniWriteS($config, "planned", "chkAttackPlannerRandom", $ichkAttackPlannerRandom)
+	IniWriteS($config, "planned", "cmbAttackPlannerRandom", _GUICtrlComboBox_GetCurSel($cmbAttackPlannerRandom))
+	IniWriteS($config, "planned", "chkAttackPlannerDayLimit", $ichkAttackPlannerDayLimit)
+	$icmbAttackPlannerDayMin = GUICtrlRead($cmbAttackPlannerDayMin)
+	$icmbAttackPlannerDayMax = GUICtrlRead($cmbAttackPlannerDayMax)
+	IniWriteS($config, "planned", "cmbAttackPlannerDayMin", $icmbAttackPlannerDayMin)
+	IniWriteS($config, "planned", "cmbAttackPlannerDayMax", $icmbAttackPlannerDayMax)
+
 	;Share Attack Settings----------------------------------------
 	IniWriteS($config, "shareattack", "minGold", $iShareminGold)
 	IniWriteS($config, "shareattack", "minElixir", $iShareminElixir)
@@ -2219,6 +2281,9 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWriteS($config, "shareattack", "ShareAttack", 0)
 	EndIf
+
+	;Use random click
+	IniWriteS($config, "other", "UseRandomClick", $iUseRandomClick)
 
 	;screenshot
 	IniWriteS($config, "other", "ScreenshotType", $iScreenshotType)
@@ -2277,10 +2342,6 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "attack", "ScriptDB", $scmbDBScriptName)
 
 	IniWriteS($config, "attack", "ScriptAB", $scmbABScriptName)
-
-	; CSV Deployment Speed Mod
-	IniWriteS($config, "attack", "CSVSpeedDB", $isldSelectedCSVSpeed[$DB])
-	IniWriteS($config, "attack", "CSVSpeedAB", $isldSelectedCSVSpeed[$LB])
 
 	;MilkingAttack Options
 	IniWriteS($config, "MilkingAttack", "LocateMine", $MilkFarmLocateMine)
@@ -2368,9 +2429,35 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "android", "adb.clicks.enabled", ($AndroidAdbClicksEnabled ? "1" : "0"))
 	IniWriteS($config, "android", "adb.clicks.troop.deploy.size", $AndroidAdbClicksTroopDeploySize)
 	IniWriteS($config, "android", "no.focus.tampering", ($NoFocusTampering ? "1" : "0"))
+	IniWriteS($config, "android", "shield.color", Hex($AndroidShieldColor, 6))
+	IniWriteS($config, "android", "shield.transparency", $AndroidShieldTransparency)
+	IniWriteS($config, "android", "active.color", Hex($AndroidActiveColor, 6))
+	IniWriteS($config, "android", "active.transparency", $AndroidActiveTransparency)
+	IniWriteS($config, "android", "inactive.color", Hex($AndroidInactiveColor, 6))
+	IniWriteS($config, "android", "inactive.transparency", $AndroidInactiveTransparency)
 
+	;Apply to switch Attack Standard after THSnipe End ==>
+	If GUICtrlRead($chkTSActivateCamps2) = $GUI_CHECKED Then
+		IniWriteS($config, "search", "ChkTSSearchCamps2", 1)
+	Else
+		IniWriteS($config, "search", "ChkTSSearchCamps2", 0)
+	EndIf
+	IniWriteS($config, "search", "TSEnableAfterArmyCamps2", GUICtrlRead($txtTSArmyCamps2))
+	;==> Apply to switch Attack Standard after THSnipe End
 
-	If $hFile <> -1 Then FileClose($hFile)
+	; Wait For Spells
+	If GUICtrlRead($chkDBSpellsWait) = $GUI_CHECKED Then
+		IniWriteS($config, "search", "ChkDBSpellsWait", 1)
+	Else
+		IniWriteS($config, "search", "ChkDBSpellsWait", 0)
+	EndIf
+
+	If GUICtrlRead($chkABSpellsWait) = $GUI_CHECKED Then
+		IniWriteS($config, "search", "ChkABSpellsWait", 1)
+	Else
+		IniWriteS($config, "search", "ChkABSpellsWait", 0)
+	EndIf
+	IniWriteS($config, "search", "TotalTrainSpaceSpell", 0)
 
 	; by AwesomeGamer
 	If GUICtrlRead($chkDontRemove) = $GUI_CHECKED Then
@@ -2397,45 +2484,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWrite($config, "SmartZap", "MinDE", GUICtrlRead($txtMinDark))
 
-	; Close When Training Settings
-	If GUICtrlRead($chkUseTrainingClose) = $GUI_CHECKED Then
-		IniWrite($config, "Close When Training", "Enabled", 1)
-	Else
-		IniWrite($config, "Close When Training", "Enabled", 0)
-	EndIf
-	IniWrite($config, "Close When Training", "AdditionMin", GUICtrlRead($sldExtraTimeMin))
-	IniWrite($config, "Close When Training", "AdditionMax", GUICtrlRead($sldExtraTimeMax))
+	; CSV Deployment Speed Mod
+	IniWriteS($config, "attack", "CSVSpeedDB", $isldSelectedCSVSpeed[$DB])
+	IniWriteS($config, "attack", "CSVSpeedAB", $isldSelectedCSVSpeed[$LB])
 
-	If GUICtrlRead($radLeaveCoCOpen) = $GUI_CHECKED Then
-		IniWrite($config, "Leave CoC Open", "Enabled", 1)
-	Else
-		IniWrite($config, "Leave CoC Open", "Enabled", 0)
-	EndIf
-
-	If GUICtrlRead($radCloseCoCGame) = $GUI_CHECKED Then
-		IniWrite($config, "Close CoC Game", "Enabled", 1)
-	Else
-		IniWrite($config, "Close CoC Game", "Enabled", 0)
-	EndIf
-
-	If GUICtrlRead($radRandomCoCOpen) = $GUI_CHECKED Then
-		IniWrite($config, "Random Leave-Close", "Enabled", 1)
-	Else
-		IniWrite($config, "Random Leave-Close", "Enabled", 0)
-	EndIf
-
-	If GUICtrlRead($chkRandomStayORClose) = $GUI_CHECKED Then
-		IniWrite($config, "Random Stay-Close Game", "Enabled", 1)
-	Else
-		IniWrite($config, "Random Stay-Close Game", "Enabled", 0)
-	EndIf
-
-	If GUICtrlRead($chkTrainLogoutMaxTime) = $GUI_CHECKED Then
-		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 1)
-	Else
-		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 0)
-	EndIf
-	IniWrite($config, "TrainLogout", "TrainLogoutMaxTimeTXT", GUICtrlRead($txtTrainLogoutMaxTime))
+	If $hFile <> -1 Then FileClose($hFile)
 
 EndFunc   ;==>saveConfig
 

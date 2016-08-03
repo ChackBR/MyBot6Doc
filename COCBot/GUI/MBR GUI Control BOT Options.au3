@@ -57,6 +57,23 @@ Func cmbLanguage()
 	MsgBox("", "", GetTranslated(636, 71, "Restart Bot to load program with new language:") & " " & $aLanguageFile[$sLanguageIndex][1] & " (" & $sLanguage & ")")
 EndFunc   ;==>cmbLanguage
 
+Func chkUseRandomClick()
+	If GUICtrlRead($chkUseRandomClick) = $GUI_CHECKED Then
+		$iUseRandomClick = 1
+	Else
+		$iUseRandomClick = 0
+	EndIf
+EndFunc   ;==>chkUseRandomClick
+
+Func chkUpdatingWhenMinimized()
+	$iUpdatingWhenMinimized = (GUICtrlRead($chkUpdatingWhenMinimized) = $GUI_CHECKED ? 1 : 0)
+EndFunc   ;==>chkUpdatingWhenMinimized
+
+Func chkHideWhenMinimized()
+	$iHideWhenMinimized = (GUICtrlRead($chkHideWhenMinimized) = $GUI_CHECKED ? 1 : 0)
+	TrayItemSetState($tiHide, ($iHideWhenMinimized = 1 ? $TRAY_CHECKED : $TRAY_UNCHECKED))
+EndFunc   ;==>chkHideWhenMinimized
+
 Func chkScreenshotType()
 	If GUICtrlRead($chkScreenshotType) = $GUI_CHECKED Then
 		$iScreenshotType = 1
@@ -219,65 +236,12 @@ Func chkdebugOCRDonate()
 	SetDebugLog("chkdebugOCRDonate " & ($debugOCRdonate = 1 ? "enabled" : "disabled"))
 EndFunc   ;==>chkdebugOCRDonate
 
-Func sldMaxVSDelay()
-	$iMaxVSDelay = GUICtrlRead($sldMaxVSDelay)
-	GUICtrlSetData($lblMaxVSDelay, $iMaxVSDelay)
-	If $iMaxVSDelay < $iVSDelay Then
-		GUICtrlSetData($lblVSDelay, $iMaxVSDelay)
-		GUICtrlSetData($sldVSDelay, $iMaxVSDelay)
-		$iVSDelay = $iMaxVSDelay
-	EndIf
-	If $iVSDelay = 1 Then
-		GUICtrlSetData($lbltxtVSDelay, GetTranslated(603,7, "second"))
-	Else
-		GUICtrlSetData($lbltxtVSDelay, GetTranslated(603,8, "seconds"))
-	EndIf
-	If $iMaxVSDelay = 1 Then
-		GUICtrlSetData($lbltxtMaxVSDelay, GetTranslated(603,7, "second"))
-	Else
-		GUICtrlSetData($lbltxtMaxVSDelay, GetTranslated(603,8, "seconds"))
-	EndIf
-EndFunc   ;==>sldMaxVSDelay
-
-Func sldVSDelay()
-	$iVSDelay = GUICtrlRead($sldVSDelay)
-	GUICtrlSetData($lblVSDelay, $iVSDelay)
-	If $iVSDelay > $iMaxVSDelay Then
-		GUICtrlSetData($lblMaxVSDelay, $iVSDelay)
-		GUICtrlSetData($sldMaxVSDelay, $iVSDelay)
-		$iMaxVSDelay = $iVSDelay
-	EndIf
-	If $iVSDelay = 1 Then
-		GUICtrlSetData($lbltxtVSDelay, GetTranslated(603,7, "second"))
-	Else
-		GUICtrlSetData($lbltxtVSDelay, GetTranslated(603,8, "seconds"))
-	EndIf
-	If $iMaxVSDelay = 1 Then
-		GUICtrlSetData($lbltxtMaxVSDelay, GetTranslated(603,7, "second"))
-	Else
-		GUICtrlSetData($lbltxtMaxVSDelay, GetTranslated(603,8, "seconds"))
-	EndIf
-EndFunc   ;==>sldVSDelay
-
-
-Func sldTrainITDelay()
-	$isldTrainITDelay = GUICtrlRead($sldTrainITDelay)
-	GUICtrlSetData($lbltxtTrainITDelay, GetTranslated(636, 32, "delay") & " " & $isldTrainITDelay & " ms.")
-EndFunc   ;==>sldTrainITDelay
-
-#cs
-	Func cmbGUIstyle()
-	MsgBox("", "", GetTranslated(636, 71, "Restart Bot to load new GUI style"))
-	EndFunc   ;==>cmbGUIstyle
-#ce
-
-
 Func btnTestTrain()
 		Local $currentOCR = $debugOcr
 		Local $currentRunState = $RunState
 		_GUICtrlTab_ClickTab($tabMain, 0)
 		$debugOcr = 1
-		$RunState = 1
+		$RunState = True
  		ForceCaptureRegion()
 		DebugImageSave("train_")
 		SetLog(_PadStringCenter(" Test Train begin (" & $sBotVersion &  ")", 54, "="), $COLOR_BLUE)
@@ -293,15 +257,13 @@ Func btnTestTrain()
 		$RunState = $currentRunState
 EndFunc
 
-
-
 Func btnTestDonateCC()
 		Local $currentOCR = $debugOcr
 		Local $currentRunState = $RunState
 		Local $currentSetlog = $debugsetlog
 		_GUICtrlTab_ClickTab($tabMain, 0)
 		$debugOcr = 1
-		$RunState = 1
+		$RunState = True
 		$debugsetlog = 1
  		ForceCaptureRegion()
 		;DebugImageSave("donateCC_")
@@ -320,9 +282,9 @@ Func btnTestDonateCC()
 			Return False
 		EndIf
 		Setlog("Detecting Troops...")
-		DetectSlotTroop($eLava)
+		DetectSlotTroop($eBowl)
 		Setlog("Detecting Spells...")
-		DetectSlotTroop($eHaSpell)
+		DetectSlotTroop($eSkSpell)
 		SetLog(_PadStringCenter(" Test DonateCC end ", 54, "="), $COLOR_BLUE)
 		Run("Explorer.exe " & $LibDir & "\debug\ocr\" )
 
@@ -338,7 +300,7 @@ Func btnTestAttackBar()
 		_GUICtrlTab_ClickTab($tabMain, 0)
 
 		$debugOcr = 1
-		$RunState = 1
+		$RunState = True
  		ForceCaptureRegion()
 		SetLog(_PadStringCenter(" Test Attack Bar begin (" & $sBotVersion &  ")", 54, "="), $COLOR_BLUE)
 
@@ -379,130 +341,4 @@ Func btnTestAttackBar()
 		$RunState = $currentRunState
 EndFunc
 
-Func calculateSleepTime($startHour, $endHour)
-	Local $hours = $endHour - $startHour
 
-	If $hours < 0 Then $hours += 24
-
-	GUICtrlSetData($lblTotalSleep, "Estimated Sleep Time: " & String($hours - 1) & " - " & String($hours + 1) & " Hours")
-EndFunc   ;==>calculateSleepTime
-
-Func chkUseSleep()
-	If GUICtrlRead($chkUseSleep) = $GUI_CHECKED Then
-		For $i = $lblStartSleep To $lblTotalSleep
-			GUICtrlSetState($i, $GUI_SHOW)
-		Next
-		$ichkCloseNight = 1
-	Else
-		For $i = $lblStartSleep To $lblTotalSleep
-			GUICtrlSetState($i, $GUI_HIDE)
-		Next
-		$ichkCloseNight = 0
-	EndIf
-EndFunc   ;==>chkUseSleep
-
-Func cmbStartSleep()
-	$sleepStart = _GUICtrlComboBox_GetCurSel($cmbStartSleep)
-	$nextSleepStart = calculateSleepStart()
-
-	calculateSleepTime($sleepStart, $sleepEnd)
-EndFunc   ;==>cmbStartSleep
-
-Func cmbEndSleep()
-	$sleepEnd = _GUICtrlComboBox_GetCurSel($cmbEndSleep)
-	$nextSleepEnd = calculateSleepEnd()
-
-	calculateSleepTime($sleepStart, $sleepEnd)
-EndFunc   ;==>cmbEndSleep
-
-Func chkUseTrainingClose()
-	If GUICtrlRead($chkUseTrainingClose) = $GUI_CHECKED Then
-		For $i = $lblExtraTimeMin To $chkRandomStayORClose
-			GUICtrlSetState($i, $GUI_SHOW)
-		Next
-		$ichkCloseTraining = 1
-	Else
-		For $i = $lblExtraTimeMin To $chkRandomStayORClose
-			GUICtrlSetState($i, $GUI_HIDE)
-		Next
-		$ichkCloseTraining = 0
-	EndIf
-EndFunc   ;==>chkUseTrainingClose
-
-Func sldExtraTimeMin()
-	$minTrainAddition = GUICtrlRead($sldExtraTimeMin)
-	GUICtrlSetData($lblExtraTimeMinNumber, $minTrainAddition)
-
-	; Move the maximum slider if needed
-	If $minTrainAddition > $maxTrainAddition Then
-		$maxTrainAddition = $minTrainAddition
-
-		GUICtrlSetData($lblExtraTimeMaxNumber, $minTrainAddition)
-		GUICtrlSetData($sldExtraTimeMax, $minTrainAddition)
-	EndIf
-
-	GUICtrlSetData($lblExtraTimeMinUnit, ($minTrainAddition = 1) ? "minute" : "minutes")
-	GUICtrlSetData($lblExtraTimeMaxUnit, ($maxTrainAddition = 1) ? "minute" : "minutes")
-EndFunc   ;==>sldExtraTimeMin
-
-Func sldExtraTimeMax()
-	$maxTrainAddition = GUICtrlRead($sldExtraTimeMax)
-	GUICtrlSetData($lblExtraTimeMaxNumber, $maxTrainAddition)
-
-	; Move the minimum slider if needed
-	If $maxTrainAddition < $minTrainAddition Then
-		$minTrainAddition = $maxTrainAddition
-
-		GUICtrlSetData($lblExtraTimeMinNumber, $maxTrainAddition)
-		GUICtrlSetData($sldExtraTimeMin, $maxTrainAddition)
-	EndIf
-
-	GUICtrlSetData($lblExtraTimeMinUnit, ($minTrainAddition = 1) ? "minute" : "minutes")
-	GUICtrlSetData($lblExtraTimeMaxUnit, ($maxTrainAddition = 1) ? "minute" : "minutes")
-EndFunc   ;==>sldExtraTimeMax
-
-Func chkUseAttackLimit()
-	If GUICtrlRead($chkUseAttackLimit) = $GUI_CHECKED Then
-		For $i = $lblAttacksMin To $sldAttacksMax
-			GUICtrlSetState($i, $GUI_SHOW)
-		Next
-		$ichkLimitAttacks = 1
-	Else
-		For $i = $lblAttacksMin To $sldAttacksMax
-			GUICtrlSetState($i, $GUI_HIDE)
-		Next
-		$ichkLimitAttacks = 0
-	EndIf
-EndFunc   ;==>chkUseAttackLimit
-
-Func sldAttacksMin()
-	$rangeAttacksStart = GUICtrlRead($sldAttacksMin)
-	GUICtrlSetData($lblAttacksMinNumber, $rangeAttacksStart)
-
-	; Move the maximum slider if needed
-	If $rangeAttacksStart > $rangeAttacksEnd Then
-		$rangeAttacksEnd = $rangeAttacksStart
-
-		GUICtrlSetData($lblAttacksMaxNumber, $rangeAttacksStart)
-		GUICtrlSetData($sldAttacksMax, $rangeAttacksStart)
-	EndIf
-
-	GUICtrlSetData($lblAttacksMinUnit, ($rangeAttacksStart = 1) ? "attack" : "attacks")
-	GUICtrlSetData($lblAttacksMaxUnit, ($rangeAttacksEnd = 1) ? "attack" : "attacks")
-EndFunc   ;==>sldAttacksMin
-
-Func sldAttacksMax()
-	$rangeAttacksEnd = GUICtrlRead($sldAttacksMax)
-	GUICtrlSetData($lblAttacksMaxNumber, $rangeAttacksEnd)
-
-	; Move the minimum slider if needed
-	If $rangeAttacksEnd < $rangeAttacksStart Then
-		$rangeAttacksStart = $rangeAttacksEnd
-
-		GUICtrlSetData($lblAttacksMinNumber, $rangeAttacksEnd)
-		GUICtrlSetData($sldAttacksMin, $rangeAttacksEnd)
-	EndIf
-
-	GUICtrlSetData($lblAttacksMinUnit, ($rangeAttacksStart = 1) ? "attack" : "attacks")
-	GUICtrlSetData($lblAttacksMaxUnit, ($rangeAttacksEnd = 1) ? "attack" : "attacks")
-EndFunc   ;==>sldAttacksMax

@@ -5,7 +5,7 @@
 ; Parameters ....: $debug               - [optional]
 ; Return values .: None
 ; Author ........: Sardo (2016)
-; Modified ......: mikemikemikecoc (2016)
+; Modified ......:
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:

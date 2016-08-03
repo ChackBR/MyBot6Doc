@@ -37,7 +37,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
 	; Verify troop current and full capacity
 	$iTried = 0 ; reset loop safety exit counter
-	$sArmyInfo = getArmyCampCap(192, 144 + $midOffsetY) ; OCR read army trained and total
+	$sArmyInfo = getArmyCampCap($aArmyCampSize[0], $aArmyCampSize[1]) ; OCR read army trained and total
 	If $debugsetlogTrain = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_PURPLE)
 
 	While $iTried < 100 ; 30 - 40 sec
@@ -45,7 +45,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		$iTried += 1
 		If _Sleep($iDelaycheckArmyCamp5) Then Return ; Wait 250ms before reading again
 	    ForceCaptureRegion()
-		$sArmyInfo = getArmyCampCap(192, 144 + $midOffsetY) ; OCR read army trained and total
+		$sArmyInfo = getArmyCampCap($aArmyCampSize[0], $aArmyCampSize[1]) ; OCR read army trained and total
 		If $debugsetlogTrain = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_PURPLE)
 		If StringInStr($sArmyInfo, "#", 0, 1) < 2 Then ContinueLoop ; In case the CC donations recieved msg are blocking, need to keep checking numbers till valid
 
@@ -115,11 +115,9 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	If $TotalCamp > 0 Then
 		SetLog("Total Army Camp capacity: " & $CurCamp & "/" & $TotalCamp & " (" & Int($CurCamp / $TotalCamp * 100) & "%)")
 		$ArmyCapacity = Int($CurCamp / $TotalCamp * 100)
-		$CampStatus &= "Total Army Camp capacity: " & $CurCamp & "/" & $TotalCamp & " (" & Int($CurCamp / $TotalCamp * 100) & "%)\n" ;Telegram[Surbiks]
 	Else
 		SetLog("Total Army Camp capacity: " & $CurCamp & "/" & $TotalCamp)
 		$ArmyCapacity = 0
-		$CampStatus &= "Total Army Camp capacity: " & $CurCamp & "/" & $TotalCamp & "\n" ;Telegram[Surbiks]
 	EndIf
 
 	If ($CurCamp >= ($TotalCamp * $fulltroop / 100)) And $CommandStop = -1 Then

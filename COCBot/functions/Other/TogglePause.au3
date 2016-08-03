@@ -14,7 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-If $OnlyInstance Then HotKeySet("{PAUSE}", "TogglePause")
+;If $OnlyInstance Then HotKeySet("{PAUSE}", "TogglePause")
 
 Func TogglePause()
 	TogglePauseImpl("Button")
@@ -26,6 +26,7 @@ Func TogglePauseImpl($Source)
 	Local $BlockInputPausePrev
 	$TPaused = Not $TPaused
 	If $TPaused And $Runstate = True Then
+		AndroidShield("TogglePauseImpl paused", False)
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Paused!", 1, $TIP_ICONEXCLAMATION)
 		Setlog("Bot was Paused!", $COLOR_RED)
@@ -40,6 +41,7 @@ Func TogglePauseImpl($Source)
 		GUICtrlSetState($btnResume, $GUI_SHOW)
 		;GUICtrlSetState($btnMakeScreenshot, $GUI_ENABLE)
 	ElseIf $TPaused = False And $Runstate = True Then
+		AndroidShield("TogglePauseImpl resumed")
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Resumed.", 1, $TIP_ICONASTERISK)
 		Setlog("Bot was Resumed.", $COLOR_GREEN)
@@ -59,7 +61,7 @@ Func TogglePauseImpl($Source)
 	While $TPaused ; Actual Pause loop
 		If _Sleep($iDelayTogglePause1) Then ExitLoop
 		$counter = $counter + 1
-		If $counter = 200 Then ;Telegram[Surbiks]
+		If $PushBulletEnabled = 1 And $pRemote = 1 And $counter = 200 Then
 			_RemoteControl()
 			$counter = 0
 		EndIf

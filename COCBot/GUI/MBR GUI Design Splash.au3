@@ -14,8 +14,16 @@
 ; ===============================================================================================================================
 
 
+; Splash Variables
+Global $hSplash = 0, $hSplashProgress, $lSplashStatus, $lSplashTitle
+Global $iTotalSteps = 10, $iCurrentStep = 0
+
+#Region Splash
+
 Local $sSplashImg = @ScriptDir & "\Images\logo.jpg"
 Local $hImage, $iX, $iY
+Local $iT = 20 ; Top of logo (additional space)
+Local $iB = 10 ; Bottom of logo (additional space)
 
 If $ichkDisableSplash = 0 Then
     _GDIPlus_Startup()
@@ -30,13 +38,16 @@ If $ichkDisableSplash = 0 Then
     _GDIPlus_Shutdown()
 
     ; Create Splash container
-    $hSplash = GUICreate("", $iX, $iY + 60, -1, -1, BitOR($WS_POPUP, $WS_BORDER), BitOR($WS_EX_TOPMOST, $WS_EX_WINDOWEDGE, $WS_EX_TOOLWINDOW))
+    $hSplash = GUICreate("", $iX, $iY + $iT + $iB + 60, -1, -1, BitOR($WS_POPUP, $WS_BORDER), BitOR($WS_EX_TOPMOST, $WS_EX_WINDOWEDGE, $WS_EX_TOOLWINDOW))
+	GUISetBkColor($COLOR_WHITE, $hSplash)
 
-    GUICtrlCreatePic($sSplashImg, 0, 0, $iX, $iY) ; Splash Image
-    $lSplashTitle = GUICtrlCreateLabel($sBotTitle, 15, $iY + 3, $iX - 30, 15, $SS_CENTER) ; Splash Title
-    $hSplashProgress = GUICtrlCreateProgress(15, $iY + 20, $iX - 30, 10, $PBS_SMOOTH, BitOR($WS_EX_TOPMOST, $WS_EX_WINDOWEDGE, $WS_EX_TOOLWINDOW)) ; Splash Progress
-    $lSplashStatus = GUICtrlCreateLabel("", 15, $iY + 38, $iX - 30, 15, $SS_CENTER) ; Splash Title
+    GUICtrlCreatePic($sSplashImg, 0, $iT, $iX, $iY) ; Splash Image
+    $lSplashTitle = GUICtrlCreateLabel($sBotTitle, 15, $iY + $iT + $iB + 3, $iX - 30, 15, $SS_CENTER) ; Splash Title
+    $hSplashProgress = GUICtrlCreateProgress(15, $iY + $iT + $iB + 20, $iX - 30, 10, $PBS_SMOOTH, BitOR($WS_EX_TOPMOST, $WS_EX_WINDOWEDGE, $WS_EX_TOOLWINDOW)) ; Splash Progress
+    $lSplashStatus = GUICtrlCreateLabel("", 15, $iY + $iT + $iB + 38, $iX - 30, 15, $SS_CENTER) ; Splash Title
 
     ; Show Splash
-    GUISetState(@SW_SHOW, $hSplash)
+    GUISetState(@SW_SHOWNOACTIVATE, $hSplash)
 EndIf
+
+#EndRegion

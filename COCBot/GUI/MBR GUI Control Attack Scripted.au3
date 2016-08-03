@@ -295,20 +295,3 @@ Func sldSelectedSpeedAB()
 	IF $isldSelectedCSVSpeed[$LB] = 4 Then $speedText = "Normal"
 	GUICtrlSetData($lbltxtSelectedSpeedAB, $speedText & " speed")
 EndFunc   ;==>sldSelectedSpeedAB
-
-;~ Attack Now Button
-Func AttackNow()
-	; Select Live Base As Attack Type
-	$iMatchMode = $LB
-	; Select Scripted Attack
-	$iAtkAlgorithm[$LB] = 1
-	; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
-	$scmbABScriptName = GuiCtrlRead($cmbScriptNameAB)
-	; Select Live Base As Attack Type
-	$iMatchMode = 1
-	$RunState = True
-	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
-	PrepareAttack($iMatchMode)
-	; Fire xD
-	Attack()
-EndFunc   ;==>AttackNow

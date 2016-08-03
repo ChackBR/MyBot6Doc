@@ -90,7 +90,7 @@ EndFunc   ;==>OpenCoC
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func WaitnOpenCoC($iWaitTime, $bFullRestart = False, $CloseCoC = True )
+Func WaitnOpenCoC($iWaitTime, $bFullRestart = False)
 	ResumeAndroid()
 	If Not $RunState Then Return
 
@@ -98,7 +98,7 @@ Func WaitnOpenCoC($iWaitTime, $bFullRestart = False, $CloseCoC = True )
 	Local $sWaitTime = ""
 	Local $iMin, $iSec, $iHour, $iWaitSec
 	WinGetAndroidHandle()
-	If $CloseCoC then AndroidHomeButton()
+	AndroidHomeButton()
 	$iWaitSec = Round($iWaitTime / 1000)
 	$iHour = Floor(Floor($iWaitSec / 60) / 60)
 	$iMin = Floor(Mod(Floor($iWaitSec / 60), 60))
@@ -122,3 +122,34 @@ Func WaitnOpenCoC($iWaitTime, $bFullRestart = False, $CloseCoC = True )
 	EndIf
 
 EndFunc   ;==>WaitnOpenCoC
+
+; #FUNCTION# ====================================================================================================================
+; Name ..........: PoliteCloseCoC
+; Description ...: Tries to close CoC with back button & confirm OKAY, before forcefully closing CoC
+; Syntax ........: PoliteCloseCoC([$sSource = "Unknown_"])
+; Parameters ....: $sSource             - [optional] a string value. Default is "Unknown_".
+; Return values .: None
+; Author ........: MonkeyHunter (05-2016)
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
+Func PoliteCloseCoC($sSource = "Unknown_")
+	Local $i = 0 ; Reset Loop counter
+	While 1
+		checkObstacles()
+		AndroidBackButton()
+		If _Sleep($iDelayAttackDisable1000) Then Return ; wait for window to open
+		If ClickOkay("ExitOkay_" & $sSource, True) = True Then ExitLoop ; Confirm okay to exit
+		If $i > 10 Then
+			Setlog("Can not find Okay button to exit CoC, Forcefully Closing CoC", $COLOR_RED)
+			If $debugImageSave = 1 Then DebugImageSave($sSource)
+			CloseCoC()
+			ExitLoop
+		EndIf
+		$i += 1
+	WEnd
+EndFunc
