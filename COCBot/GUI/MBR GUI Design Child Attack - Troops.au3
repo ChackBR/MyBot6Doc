@@ -427,7 +427,7 @@ Local $x = $xStart + 25, $y = $yStart +  80 + 25 - 60
 			GUICtrlSetState(-1, $GUI_CHECKED)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$lblSmartZap = GUICtrlCreateLabel("Min. amount of Dark Elixir:", $x - 10, $y + 48, 160, -1, $SS_RIGHT)
-		$txtMinDark = GUICtrlCreateInput("478", $x + 155, $y + 45, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtMinDark = GUICtrlCreateInput("300", $x + 155, $y + 45, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 		$txtTip =	"The value here depends a lot on what level your Town Hall is, " & @CRLF & _
 				"and what level drills you most often see."
 			GUICtrlSetTip(-1, $txtTip)

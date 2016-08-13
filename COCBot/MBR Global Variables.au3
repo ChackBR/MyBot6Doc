@@ -1480,14 +1480,14 @@ Global $ichkTSActivateCamps2, $iEnableAfterArmyCamps2
 
 Global $iShouldRearm = True
 
+;
+; Global Variables - AwesomeGamer, LunaEclipse, ...
+;
+#include "functions\MOD\Global_Variables.au3"
+
 ;=== No variables below ! ================================================
 
 ; early load of config
 If FileExists($config) Or FileExists($building) Then
 	readConfig()
 EndIf
-
-;
-; Global Variables - AwesomeGamer, LunaEclipse, ...
-;
-#include "functions\MOD\Global_Variables.au3"

@@ -83,6 +83,10 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 		EndIf
     Next
 
+    ;AwesomeGamer CSV mod
+	$remainingTroops = $atkTroops
+	$TroopDropNumber = 0
+
     ;ResumeAndroid()
 
 	If $debugSetLog=1 Then Setlog("troopsnumber  = " & $troopsnumber)

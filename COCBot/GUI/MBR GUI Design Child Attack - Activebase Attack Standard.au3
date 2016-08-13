@@ -30,6 +30,7 @@ $y += 15
 		$cmbDeployAB = GUICtrlCreateCombo("", $x + 55, $y, 120, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			_GUICtrlSetTip(-1, GetTranslated(608,4, -1) & @CRLF & GetTranslated(608,5, -1) & @CRLF & GetTranslated(608,6, -1) & @CRLF & GetTranslated(608,29, "Attack on the single side closest to the Dark Elixir Storage") & @CRLF & GetTranslated(608,30, "Attack on Classic Four Fingers"), GetTranslated(608,7, -1))
 			GUICtrlSetData(-1, GetTranslated(608,8, -1) & "|" & GetTranslated(608,9, -1) & "|" & GetTranslated(608,10, -1) & "|" & GetTranslated(608,11, -1) & "|" & "Classic Four Fingers", GetTranslated(608,11, -1))
+			GUICtrlSetOnEvent(-1,"cmbDeployAB") ; Uncheck SmartAttack Red Area when enable FourFinger to avoid conflict
 			;GUICtrlSetOnEvent(-1, "chkDESideEB")
 
 		$y += 25

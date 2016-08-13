@@ -5,7 +5,7 @@
 ; Parameters ....:
 ; Return values .: None
 ; Author ........: Sardo (2016)
-; Modified ......:
+; Modified ......: mikemikemikecoc (6/2016)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
@@ -66,7 +66,9 @@ Func ParseAttackCSV_Read_SIDE_variables()
 						If Int($value7) > 0 Then $attackcsv_locate_townhall = 1
 
 					EndIf
-
+					
+					;AwesomeGamer CSV mod
+					If StringUpper($value9) = "NO" Then $attackcsv_use_red_line = 0
 				EndIf
 			EndIf
 		WEnd

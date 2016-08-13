@@ -20,12 +20,19 @@ Func GetResources($bLog = True, $pMatchMode = -1) ;Reads resources
 	$searchTrophy = ""
 	Local $iResult = 0
 	Local $i = 0
+	Local $iWaitClouds
+	
+	If ( $iTrophyCurrent > 4200 ) Then
+	  $iWaitClouds = 1080 ; Titan Leagle and over
+	Else
+	  $iWaitClouds = 720
+	Endif
 
 	ForceCaptureRegion() ; ensure screenshots are not cached
 	While _CheckPixel($aNoCloudsAttack, $bCapturePixel) = False ; wait for clouds to be gone
 		If _Sleep($iDelayGetResources1) Then Return
 		$i += 1
-		If $i >= 720 Or isProblemAffect(True) Then ; Wait 3 min then restart bot and CoC
+		If $i >= $iWaitClouds Or isProblemAffect(True) Then ; Wait then restart bot and CoC [720 = 3min] [1080 = 0:04:30]
 			$Is_ClientSyncError = True
 			checkMainScreen()
 			If $Restart Then
