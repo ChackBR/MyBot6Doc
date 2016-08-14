@@ -147,7 +147,7 @@ Local $x = 220, $y = 45
  		$picABMinGPEGold = GUICtrlCreateIcon($pIconLib, $eIcnGoldElixir, $x + 137, $y + 1, 16, 16)
  			_GUICtrlSetTip(-1, $txtTip)
  			GUICtrlSetState (-1, $GUI_HIDE)
-		$y += 34
+		$y += 32
 		$chkABMeetDE = GUICtrlCreateCheckbox(GetTranslated(625,26, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,27, -1)
 			GUICtrlSetOnEvent(-1, "chkABMeetDE")
@@ -159,7 +159,7 @@ Local $x = 220, $y = 45
 			_GUICtrlEdit_SetReadOnly(-1, True)
 		$picABMinDarkElixir = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 137, $y, 16, 16)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkABMeetTrophy = GUICtrlCreateCheckbox(GetTranslated(625,4, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,29, -1)
 			GUICtrlSetOnEvent(-1, "chkABMeetTrophy")
@@ -171,7 +171,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetLimit(-1, 2)
 		$picABMinTrophies = GUICtrlCreateIcon($pIconLib, $eIcnTrophy, $x + 137, $y, 16, 16)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkABMeetTH = GUICtrlCreateCheckbox(GetTranslated(625,31, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,32, -1)
 			GUICtrlSetOnEvent(-1, "chkABMeetTH")
@@ -183,11 +183,11 @@ Local $x = 220, $y = 45
 			GUICtrlSetData(-1, "4-6|7|8|9|10|11", "4-6")
 		$picABMaxTH10 = GUICtrlCreateIcon($pIconLib, $eIcnTH10, $x + 137, $y - 3, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkABMeetTHO = GUICtrlCreateCheckbox(GetTranslated(625,34, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,35, -1)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkMaxMortar[$LB] = GUICtrlCreateCheckbox(GetTranslated(625,54, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,59, -1)
 			_GUICtrlSetTip(-1, $txtTip)
@@ -199,7 +199,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picABWeakMortar = GUICtrlCreateIcon($pIconLib, $eIcnMortar, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y +=21
 		$chkMaxWizTower[$LB] = GUICtrlCreateCheckbox(GetTranslated(625,55, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,60, -1)
 			_GUICtrlSetTip(-1, $txtTip)
@@ -211,7 +211,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picABWeakWizTower = GUICtrlCreateIcon($pIconLib, $eIcnWizTower, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y +=21
 		$chkMaxXBow[$LB] = GUICtrlCreateCheckbox(GetTranslated(625,56, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,61, -1)
 			_GUICtrlSetTip(-1, $txtTip)
@@ -223,7 +223,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picABWeakXBow = GUICtrlCreateIcon($pIconLib, $eIcnXBow3, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y +=21
 		$chkMaxInferno[$LB] = GUICtrlCreateCheckbox(GetTranslated(625,57, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,62, -1)
 			_GUICtrlSetTip(-1, $txtTip)
@@ -235,7 +235,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picABWeakInferno = GUICtrlCreateIcon($pIconLib, $eIcnInferno4, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y +=21
 		$chkMaxEagle[$LB] = GUICtrlCreateCheckbox(GetTranslated(625,58, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,63, -1)
 			_GUICtrlSetTip(-1, $txtTip)
@@ -247,8 +247,13 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picABWeakEagle = GUICtrlCreateIcon($pIconLib, $eIcnEagleArt, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkABMeetOne = GUICtrlCreateCheckbox(GetTranslated(625,40, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,41, -1)
 			_GUICtrlSetTip(-1, $txtTip)
+		; No League Search
+		$y += 21
+		$chkABNoLeague = GUICtrlCreateCheckbox("No League", $x, $y, -1, -1)
+			$txtTip ="Search for a base that has no league."
+			GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

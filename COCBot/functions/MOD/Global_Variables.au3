@@ -64,3 +64,10 @@ $iCSVSpeeds[9] = 2.25
 $iCSVSpeeds[10] = 2.5
 $iCSVSpeeds[11] = 2.75
 $iCSVSpeeds[12] = 3
+
+;
+; Unknow
+;
+
+; No League Search
+Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$iModeCount]

@@ -2484,11 +2484,25 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWrite($config, "SmartZap", "MinDE", GUICtrlRead($txtMinDark))
 
-	If $hFile <> -1 Then FileClose($hFile)
+	; No League Search
+	If GUICtrlRead($chkDBNoLeague) = $GUI_CHECKED Then
+		IniWrite($config, "search", "DBNoLeague", 1)
+	Else
+		IniWrite($config, "search", "DBNoLeague", 0)
+	EndIf
+
+	If GUICtrlRead($chkABNoLeague) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABNoLeague", 1)
+	Else
+		IniWrite($config, "search", "ABNoLeague", 0)
+	EndIf
+
 
    ; CSV Deployment Speed Mod
 	IniWriteS($config, "attack", "CSVSpeedDB", $isldSelectedCSVSpeed[$DB])
 	IniWriteS($config, "attack", "CSVSpeedAB", $isldSelectedCSVSpeed[$LB])
+
+	If $hFile <> -1 Then FileClose($hFile)
 
 EndFunc   ;==>saveConfig
 

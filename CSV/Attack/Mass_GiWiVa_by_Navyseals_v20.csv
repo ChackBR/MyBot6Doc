@@ -1,8 +1,13 @@
 NOTE  |Author: NavySeals  Attack: TH-11 GiWiVa_Ver2.0,Column 2,Column 3,Column 4,Column 5,Column 6
+NOTE  |Mass GiWiVa Attack
 NOTE  |Make these Troops and spells : 8 Giants, 4 wall breaker, 8 Wizards,20 Valk, 3 Rage, 4 quake
-      |EXTR. GOLD |EXTR.ELIXIR|EXTR. DARK |DEPO. GOLD |DEPO.ELIXIR|DEPO. DARK |TOWNHALL   |FORCED SIDE|                   ,,,,,
-SIDE  |0          |0          |0          |0          |0          |0          |10         |           |,,,,,
-      |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|,,,,,
+
+      |----------------------------------- Script: Mass GiWiVa Start ---------------------------------|
+
+      |EXTR. GOLD |EXTR.ELIXIR|EXTR. DARK |DEPO. GOLD |DEPO.ELIXIR|DEPO. DARK |TOWNHALL   |FORCED SIDE|
+SIDE  |0          |0          |0          |0          |0          |0          |10         |           |TH Side
+
+      |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|MAKE SIDE VECTORS
 MAKE  |A          |RIGHT-BACK |10         |1          |INT-EXT    |0          |0          |           |vector for Giants and wall breaker right back ,,,,,
       |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|,,,,,
 MAKE  |B          |RIGHT-FRONT|10         |1          |INT-EXT    |0          |0          |           |vector for Giants and wall breaker left back ,,,,,
@@ -24,7 +29,8 @@ MAKE  |H          |RIGHT-FRONT|10         |-11        |INT-EXT    |0          |0
 MAKE  |I          |RIGHT-BACK |10         |-16        |INT-EXT    |0          |0          |           |vector for 3rd Rage,,,,,
       |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|,,,,,
 MAKE  |Q          |RIGHT-BACK |10         |-12        |INT-EXT    |0          |0          |           |vector for quakes     ,,,,,
-      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|   ,,,,,
+
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|DROP TROOPS
 DROP  |Q          |1          |5          |Espell     |20-50      |0          |200-400    |           | Droping quakes ,,,,,
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|,,,,,
 DROP  |A-B        |5-9        |3          |Giant      |10-50      |0          |5-10       |           | Droping giants ,,,,,
@@ -61,3 +67,8 @@ DROP  |E          |2          |1          |Queen      |1          |100        |9
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________| ,,,,,
 DROP  |A          |1          |6          |Arch       |1          |100        |300        |           | ,,,,,
 WAIT  |200-250    |           |           |           |           |           |           |           |,,,,,
+
+      |----------------------------------- Script: Mass GiWiVa End -----------------------------------|
+      |Change log
+      |2016-08-05 ver. 2.0 Initial Script with CSV Fast Deploy
+      |2016-  -   ver. ...

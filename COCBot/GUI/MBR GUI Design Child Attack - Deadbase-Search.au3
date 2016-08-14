@@ -152,7 +152,7 @@ Local $x = 220, $y = 45
  		$picDBMinGPEGold = GUICtrlCreateIcon($pIconLib, $eIcnGoldElixir, $x + 140, $y + 1, 16, 16)
  			_GUICtrlSetTip(-1, $txtTip)
  			GUICtrlSetState (-1, $GUI_HIDE)
-		$y += 34
+		$y += 32
 		$chkDBMeetDE = GUICtrlCreateCheckbox(GetTranslated(625,26, "Dark Elixir"), $x , $y, -1, -1)
 			$txtTip = GetTranslated(625,27, "Search for a base that meets the value set for Min. Dark Elixir.")
 			GUICtrlSetOnEvent(-1, "chkDBMeetDE")
@@ -164,7 +164,7 @@ Local $x = 220, $y = 45
 			_GUICtrlEdit_SetReadOnly(-1, True)
 		$picDBMinDarkElixir = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 140, $y, 16, 16)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkDBMeetTrophy = GUICtrlCreateCheckbox(GetTranslated(625,4, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,29, "Search for a base that meets the value set for Min. Trophies.")
 			GUICtrlSetOnEvent(-1, "chkDBMeetTrophy")
@@ -176,7 +176,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetLimit(-1, 2)
 		$picDBMinTrophies = GUICtrlCreateIcon($pIconLib, $eIcnTrophy, $x + 140, $y, 16, 16)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkDBMeetTH = GUICtrlCreateCheckbox(GetTranslated(625,31, "Townhall"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,32, "Search for a base that meets the value set for Max. Townhall Level.")
 			GUICtrlSetOnEvent(-1, "chkDBMeetTH")
@@ -188,11 +188,11 @@ Local $x = 220, $y = 45
 			GUICtrlSetData(-1, "4-6|7|8|9|10|11", "4-6")
 		$picDBMaxTH10 = GUICtrlCreateIcon($pIconLib, $eIcnTH10, $x + 140, $y - 3, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkDBMeetTHO = GUICtrlCreateCheckbox(GetTranslated(625,34, "Townhall Outside"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,35, "Search for a base that has an exposed Townhall. (Outside of Walls)")
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkMaxMortar[$DB] = GUICtrlCreateCheckbox(GetTranslated(625,54, "Max Mortar"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,59, "Search for a base that has Mortar below this level.")
 			_GUICtrlSetTip(-1, $txtTip)
@@ -204,7 +204,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picDBWeakMortar = GUICtrlCreateIcon($pIconLib, $eIcnMortar, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y += 21
 		$chkMaxWizTower[$DB] = GUICtrlCreateCheckbox(GetTranslated(625,55, "Max Wizard"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,60, "Search for a base that has Wizard Tower below this level")
 			_GUICtrlSetTip(-1, $txtTip)
@@ -216,7 +216,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picDBWeakWizTower = GUICtrlCreateIcon($pIconLib, $eIcnWizTower, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y += 21
 		$chkMaxXBow[$DB] = GUICtrlCreateCheckbox(GetTranslated(625,56, "Max X-Bow"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,61, "Search for a base that has X-Bow below this level")
 			_GUICtrlSetTip(-1, $txtTip)
@@ -228,7 +228,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picDBWeakXBow = GUICtrlCreateIcon($pIconLib, $eIcnXBow3, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y += 21
 		$chkMaxInferno[$DB] = GUICtrlCreateCheckbox(GetTranslated(625,57, "Max Inferno"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,62, "Search for a base that has Inferno below this level")
 			_GUICtrlSetTip(-1, $txtTip)
@@ -240,7 +240,7 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picDBWeakInferno = GUICtrlCreateIcon($pIconLib, $eIcnInferno4, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y +=24
+		$y += 21
 		$chkMaxEagle[$DB] = GUICtrlCreateCheckbox(GetTranslated(625,58, "Max Eagle"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,63, "Search for a base that has Eagle Artillery below this level")
 			_GUICtrlSetTip(-1, $txtTip)
@@ -252,8 +252,13 @@ Local $x = 220, $y = 45
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$picDBWeakEagle = GUICtrlCreateIcon($pIconLib, $eIcnEagleArt, $x + 140, $y - 2, 24, 24)
 			_GUICtrlSetTip(-1, $txtTip)
-		$y += 24
+		$y += 21
 		$chkDBMeetOne = GUICtrlCreateCheckbox(GetTranslated(625,40, "Meet One Then Attack"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,41, "Just meet only ONE of the above conditions, then Attack.")
 			_GUICtrlSetTip(-1, $txtTip)
+		; No League Search
+		$y += 21
+		$chkDBNoLeague = GUICtrlCreateCheckbox("No League", $x, $y, -1, -1)
+			$txtTip ="Search for a base that has no league."
+			GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

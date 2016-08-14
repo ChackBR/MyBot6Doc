@@ -2606,6 +2606,19 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	EndIf
 	GUICtrlSetData($txtMinDark, $itxtMinDE)
 
+	; No League Search
+	If $iChkNoLeague[$DB] = 1 Then
+		GUICtrlSetState($chkDBNoLeague, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDBNoLeague, $GUI_UNCHECKED)
+	EndIf
+
+	If $iChkNoLeague[$LB] = 1 Then
+		GUICtrlSetState($chkABNoLeague, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNoLeague, $GUI_UNCHECKED)
+	EndIf
+
 	; CSV Deployment Speed Mod
 	GUICtrlSetData($sldSelectedSpeedDB, $isldSelectedCSVSpeed[$DB])
 	GUICtrlSetData($sldSelectedSpeedAB, $isldSelectedCSVSpeed[$LB])

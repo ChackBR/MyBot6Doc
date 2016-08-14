@@ -1,5 +1,5 @@
 NOTE  |Author: NavySeals - Ver. 1.2,Column 2
-NOTE  |Immortal Bowler Attack ,
+NOTE  |Immortal Bowler Attack
 NOTE  |Make Troops: 24-28Bowlers," 5-6healers 6-10WBs, 3Rage, 1Poison & 4EQ"
 
       |----------------------------------- Script: Mass Bowller Start --------------------------------|
@@ -19,7 +19,7 @@ MAKE  |J          |FRONT-RIGHT|10         |-8         |INT-EXT    |0          |0
 MAKE  |K          |FRONT-LEFT |10         |-12        |INT-EXT    |0          |0          |           |FRONT-LEFT 
 MAKE  |L          |FRONT-LEFT |10         |-15        |INT-EXT    |0          |0          |           |FRONT-LEFT 
 
-      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |DROP Troops
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |DROP TROOPS
 DROP  |K          |1          |5          |Espell     |0          |0          |500-600    |           |Launch EQ: EarthQuake
 DROP  |N          |1          |1          |castle     |0          |0          |100-300    |           |Launch CC: Castle Clan
 DROP  |N          |7-9        |3          |Bowl       |0          |0          |500-1000   |           |Launch Bowllers
