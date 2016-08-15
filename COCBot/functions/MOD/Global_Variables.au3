@@ -32,16 +32,17 @@ Global Const $drillLevelSteal[6] = [59, _
 ; AwesomeGamer
 ;
 
-; AwesomeGamer DEB / Spells Continue
+; DEB
 Global $iChkDontRemove = 1
 Global $chkDontRemove = True
-Global $iChkBarrackSpell = 1
-Global $chkBarrackSpell = True
 
-; AwesomeGamer CSV Mod
+; CSV Mod
 Global $attackcsv_use_red_line = 1
 Global $TroopDropNumber = 0
 Global $remainingTroops[12][2]
+
+; No League Search
+Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$iModeCount]
 
 ;
 ; MikeCoC
@@ -66,8 +67,8 @@ $iCSVSpeeds[11] = 2.75
 $iCSVSpeeds[12] = 3
 
 ;
-; Unknow
+; CDudz
 ;
 
-; No League Search
-Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$iModeCount]
+; Telegram extension
+Global $TelegramEnabled

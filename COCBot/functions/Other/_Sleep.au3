@@ -17,7 +17,7 @@
 Func _Sleep($iDelay, $iSleep = True, $CheckRunState = True)
 	Local $iBegin = TimerInit()
 	If $iDelay > 0 Then
-		If $iDeleteAllPBPushesNow = True Then PushMsg("DeleteAllPBMessages") ; only when button is pushed, and only when on a sleep cyle
+		If $iDeleteAllPBPushesNow = True Then PushMsgToPushBullet("DeleteAllPBMessages") ; only when button is pushed, and only when on a sleep cyle
 		If $iMakeScreenshotNow = True Then
 			If $iScreenshotType = 0 Then
 				MakeScreenshot($dirTemp, "jpg")

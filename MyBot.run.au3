@@ -76,7 +76,8 @@ Local $sModversion
 ; "2101" ; Upgrade to MyBot v6.2.1
 ; "2102" ; Removed CSV Spiral Attacks
 ; "2103" ; CSV Fast Deployment and Speed + CSV from NavySeals + CSV Spiral Attacks
-$sModversion = "2104" ; No League Search
+; "2104" ; No League Search
+$sModversion = "2105" ; Add Telegram
 $sBotVersion = "v6.2.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
@@ -207,6 +208,13 @@ SetLog(GetTranslated(500, 8, "Android Emulator Configuration: %s", $sAndroidInfo
 AdlibRegister("PushBulletRemoteControl", $PBRemoteControlInterval)
 AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
 
+; Add Telegram extension by CDudz
+$lastmessage = GetLastMsg()
+If $FirstRun = 1 Then
+	$lastremote = $lastuid
+	Getchatid(GetTranslated(620, 92, "select your remote")) ; receive Telegram chat id and send keyboard
+EndIf
+
 CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
 
 LoadTHImage() ; Load TH images
@@ -274,8 +282,10 @@ Func runBot() ;Bot that runs everything in order
 				If _Sleep($iDelayRunBot2) Then Return
 			checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
-			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
-				If _Sleep($iDelayRunBot3) Then Return
+			If $RequestScreenshot = 1 Then PushMsgToPushBullet("RequestScreenshot")
+				If $RequestBuilderInfo = 1 Then PushMsgToPushBullet("BuilderInfo")
+			If $RequestShieldInfo = 1 Then PushMsgToPushBullet("ShieldInfo")
+			If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
 			If $OutOfGold = 1 And (Number($iGoldCurrent) >= Number($itxtRestartGold)) Then ; check if enough gold to begin searching again
 				$OutOfGold = 0 ; reset out of gold flag
@@ -359,6 +369,7 @@ Func runBot() ;Bot that runs everything in order
 				UpgradeWall()
 					If _Sleep($iDelayRunBot3) Then Return
 					If $Restart = True Then ContinueLoop
+				PushMsgToPushBullet("CheckBuilderIdle")
 				Idle()
 					;$fullArmy1 = $fullArmy
 					If _Sleep($iDelayRunBot3) Then Return
@@ -418,7 +429,9 @@ Func Idle() ;Sequence that runs until Full Army
 	While $fullArmy = False Or $bFullArmyHero = False Or $bFullArmySpells = False
 		checkAndroidTimeLag()
 
-		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
+		If $RequestScreenshot = 1 Then PushMsgToPushBullet("RequestScreenshot")
+		If $RequestBuilderInfo = 1 Then PushMsgToPushBullet("BuilderInfo")
+		If $RequestShieldInfo = 1 Then PushMsgToPushBullet("ShieldInfo")
 		If _Sleep($iDelayIdle1) Then Return
 		If $CommandStop = -1 Then SetLog("====== Waiting for full army ======", $COLOR_GREEN)
 		Local $hTimer = TimerInit()

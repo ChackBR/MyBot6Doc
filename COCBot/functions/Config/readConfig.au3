@@ -993,6 +993,11 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($iEnableAfterArmyCamps2, $config, "search", "TSEnableAfterArmyCamps2", "100")
 		;==>Apply to switch Attack Standard after THSnipe End
 
+		; Telegram Notify - Added by CDudz
+		IniReadS($TelegramEnabled, $config, "pushbullet", "PBEnabled2", "0")
+		IniReadS($TelegramToken, $config, "pushbullet", "AccountToken2", "")
+		IniReadS($ichkAlertBuilderIdle, $config, "pushbullet", "AlertBuilderIdle", "0")
+
 		;Wait For Spells
 		IniReadS($iEnableSpellsWait[$DB], $config, "search", "ChkDBSpellsWait", "0")
 		IniReadS($iEnableSpellsWait[$LB], $config, "search", "ChkABSpellsWait", "0")

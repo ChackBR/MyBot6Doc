@@ -92,7 +92,7 @@ Func UpgradeWallGold()
 			Click(440, 480 + $midOffsetY, 1, 0, "#0317")
 			If _Sleep($iDelayUpgradeWallGold3) Then Return
 			SetLog("Upgrade complete", $COLOR_GREEN)
-			PushMsg("UpgradeWithGold")
+			PushMsgToPushBullet("UpgradeWithGold")
 			$iNbrOfWallsUppedGold += 1
 			$iNbrOfWallsUpped += 1
 			$iCostGoldWall += $WallCost
@@ -101,7 +101,7 @@ Func UpgradeWallGold()
 		EndIf
 	Else
 		Setlog("No Upgrade Gold Button", $COLOR_RED)
-		Pushmsg("NowUpgradeGoldButton")
+		PushMsgToPushBullet("NowUpgradeGoldButton")
 		Return False
 	EndIf
 
@@ -126,7 +126,7 @@ Func UpgradeWallElixir()
 			Click(440, 480 + $midOffsetY, 1, 0, "#0318")
 			If _Sleep($iDelayUpgradeWallElixir3) Then Return
 			SetLog("Upgrade complete", $COLOR_GREEN)
-			PushMsg("UpgradeWithElixir")
+			PushMsgToPushBullet("UpgradeWithElixir")
 			$iNbrOfWallsUppedElixir += 1
 			$iNbrOfWallsUpped += 1
 			$iCostElixirWall += $WallCost
@@ -135,7 +135,7 @@ Func UpgradeWallElixir()
 		EndIf
 	Else
 		Setlog("No Upgrade Elixir Button", $COLOR_RED)
-		Pushmsg("NowUpgradeElixirButton")
+		PushMsgToPushBullet("NowUpgradeElixirButton")
 		Return False
 	EndIf
 

@@ -14,12 +14,10 @@
 ; ===============================================================================================================================
 
 Func _RemoteControl()
-	If $PushBulletEnabled = 0 Then Return
 	If $pRemote = 1 Then _RemoteControlPushBullet()
 EndFunc   ;==>_RemoteControl
 
 Func ReportNotify()
-	If $PushBulletEnabled = 0 Then Return
 	If $iAlertPBVillage = 1 Then
 		_PushBullet($iOrigPushBullet & " | My Village:" & "\n" & " [" & GetTranslated(620,35, "G") & "]: " & _NumberFormat($iGoldCurrent) & " [" & GetTranslated(620,36, "E") & "]: " & _NumberFormat($iElixirCurrent) & " [" & GetTranslated(620,37, "D") & "]: " & _NumberFormat($iDarkCurrent) & "  [" & GetTranslated(620,38, "T") & "]: " & _NumberFormat($iTrophyCurrent) & " [" & GetTranslated(620,42, "No. of Free Builders") & "]: " & _NumberFormat($iFreeBuilderCount))
 	EndIf
@@ -31,24 +29,19 @@ Func ReportNotify()
 EndFunc   ;==>Report
 
 Func _DeletePush()
-	If $PushBulletEnabled = 0 Then Return
 		_DeletePushOfPushBullet()
 		SetLog("Delete all previous PushBullet messages...", $COLOR_BLUE)
 EndFunc   ;==>_DeletePush
 
 Func PushMsg($Message, $Source = "")
-	If $PushBulletEnabled = 0 Then Return
 		PushMsgToPushBullet($Message, $Source)
 EndFunc   ;==>PushMsg
 
 Func _DeleteOldPushes()
-	If $PushBulletEnabled = 0 Then Return
-	If $PushBulletToken = "" Or $ichkDeleteOldPBPushes = 0 Then Return
 		_DeleteOldPushesOfPushBullet()
 EndFunc   ;==>_DeleteOldPushes
 
 Func _GetDateFromUnix($nPosix)
-	If $PushBulletEnabled = 0 Then Return
 	Local $nYear = 1970, $nMon = 1, $nDay = 1, $nHour = 00, $nMin = 00, $nSec = 00, $aNumDays = StringSplit("31,28,31,30,31,30,31,31,30,31,30,31", ",")
 	While 1
 		If (Mod($nYear + 1, 400) = 0) Or (Mod($nYear + 1, 4) = 0 And Mod($nYear + 1, 100) <> 0) Then; is leap year

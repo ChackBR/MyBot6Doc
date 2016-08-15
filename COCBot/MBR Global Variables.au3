@@ -437,6 +437,8 @@ $sModeText[$MA] = "Milking Attack"
 Global $iAtkAlgorithm[$iModeCount]
 
 ;PushBullet---------------------------------------------------------------
+Global $TroopSpellStats[0][2] = [[]]
+Global $iLastAtkTime ; loot hour:mins last raid Added by CDudz Modified by CDudz
 Global $PBRemoteControlInterval = 60000 ; 60 secs
 Global $PBDeleteOldPushesInterval = 1800000 ; 30 mins
 Global $iOrigPushBullet
@@ -458,6 +460,24 @@ Global $icmbHoursPushBullet
 Global $chkDeleteAllPBPushes
 Global $ichkAlertPBCampFull
 Global $ichkAlertPBCampFullTest = 0
+
+;Info Notify - Added By TheRevenor
+Global $pAlertTopGain
+Global $ichkAlertBuilderIdle
+Global $RequestScreenshotHD = 0
+Global $RequestBuilderInfo = 0
+Global $iReportIdleBuilder = 0
+Global $RequestShieldInfo = 0
+
+;Pushbullet Stuff
+Global $StartTime = @HOUR & ":" & @MIN &", " & @MON & "/" & @MDAY
+Global $Attackcount = 0
+Global $VillageStatIncrement
+Global $VillageStatIncrementTXT
+Global $SearchNotifyCount
+Global $SearchNotifyCountTXT
+Global $SearchNotifyCountMsgIden
+Global $PersonalBreakNotified = False
 
 Global $sLogFName
 Global $sAttackLogFName
@@ -1140,6 +1160,7 @@ Global $iValueTotalCampForced = 200
 Global $ichkSinglePBTForced = 0
 Global $iValueSinglePBTimeForced = 18
 Global $iValuePBTimeForcedExit = 15
+Global $ClosedDueToPB = False
 Global $bWaitShield = False
 Global $bGForcePBTUpdate = False
 

@@ -133,7 +133,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 
 	;push images if requested..
 	If $GoldChangeCheck = True Then
-		PushMsg("LastRaid")
+		PushMsgToPushBullet("LastRaid")
 	EndIf
 
 	$i = 0 ; Reset Loop counter

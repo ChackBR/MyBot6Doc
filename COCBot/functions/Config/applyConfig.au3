@@ -2574,6 +2574,22 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	chkTSActivateCamps2()
 	GUICtrlSetData($txtTSArmyCamps2, $iEnableAfterArmyCamps2)
 
+	; Telegram Notify
+	GUICtrlSetData($TelegramTokenValue, $TelegramToken)
+
+	If $TelegramEnabled = 1 Then
+		GUICtrlSetState($chkPBenabled2, $GUI_CHECKED)
+		chkPBenabled2()
+	ElseIf $TelegramEnabled = 0 Then
+		GUICtrlSetState($chkPBenabled2, $GUI_UNCHECKED)
+		chkPBenabled2()
+	EndIf
+
+	If $ichkAlertBuilderIdle = 1 Then
+		GUICtrlSetState($chkAlertBuilderIdle, $GUI_CHECKED)
+	ElseIf $ichkAlertBuilderIdle = 0 Then
+		GUICtrlSetState($chkAlertBuilderIdle, $GUI_UNCHECKED)
+	EndIf
 
 	; by AwesomeGamer
 	If $iChkDontRemove = 1 Then

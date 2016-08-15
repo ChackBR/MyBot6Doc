@@ -43,6 +43,7 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 	Local $FullTemp = ""
 	Local $TroopQ = 0
 	Local $TroopTypeT = ""
+	ReDim $TroopSpellStats[0][2]
 
 	_CaptureRegion2(120, 165 + $midOffsetY, 740, 220 + $midOffsetY)
 	If $debugSetlog = 1 Then SetLog("$hHBitmap2 made", $COLOR_PURPLE)
@@ -235,8 +236,10 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 					EndIf
 
 				EndIf
-				If $TroopQ <> 0 Then SetLog(" - No. of " & NameOfTroop($Troops[0]) & ": " & $TroopQ)
-
+				If $TroopQ <> 0 Then
+					SetLog(" - No. of " & NameOfTroop($Troops[0]) & ": " & $TroopQ)
+					_ArrayAdd($TroopSpellStats, $TroopName & "|" & $TroopQ)
+				EndIf
 			EndIf
 		Next
 

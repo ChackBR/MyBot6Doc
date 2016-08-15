@@ -2445,6 +2445,23 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "search", "TSEnableAfterArmyCamps2", GUICtrlRead($txtTSArmyCamps2))
 	;==> Apply to switch Attack Standard after THSnipe End
 
+	; Telegram Notify
+	$TelegramToken = GUICtrlRead($TelegramTokenValue)
+	IniWriteS($config, "pushbullet", "AccountToken2", $TelegramToken)
+	IniWriteS($config, "pushbullet", "PBEnabled2", $TelegramEnabled)
+
+	If GUICtrlRead($chkPBenabled2) = $GUI_CHECKED Then
+		$TelegramEnabled = 1
+	Else
+		$TelegramEnabled = 0
+	EndIf
+
+	If GUICtrlRead($chkAlertBuilderIdle) = $GUI_CHECKED Then
+		IniWriteS($config, "pushbullet", "AlertBuilderIdle", "1")
+	Else
+		IniWriteS($config, "pushbullet", "AlertBuilderIdle", "0")
+	EndIf
+
 	; Wait For Spells
 	If GUICtrlRead($chkDBSpellsWait) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "ChkDBSpellsWait", 1)

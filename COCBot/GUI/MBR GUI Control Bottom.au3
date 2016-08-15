@@ -49,7 +49,7 @@ Func Initiate()
 			If $restarted = 1 Then
 				$restarted = 0
 				IniWrite($config, "general", "Restarted", 0)
-				PushMsg("Restarted")
+				PushMsgToPushBullet("Restarted")
 			EndIf
 		EndIf
 		If Not $RunState Then Return
@@ -603,7 +603,8 @@ Func ToggleGuiControls($Enable, $OptimizedRedraw = True)
 	$GUIControl_Disabled = True
 	For $i = $FirstControlToHide To $LastControlToHide
 		If IsTab($i) Or IsAlwaysEnabledControl($i) Then ContinueLoop
-		If $PushBulletEnabled And $i = $btnDeletePBmessages Then ContinueLoop ; exclude the DeleteAllMesages button when PushBullet is enabled
+		; Add Telegram
+		If $PushBulletEnabled Or $TelegramEnabled And $i = $btnDeletePBmessages Then ContinueLoop ; exclude the DeleteAllMesages button when PushBullet is enabled
 		If $i = $btnMakeScreenshot Then ContinueLoop ; exclude
 		If $i = $divider Then ContinueLoop ; exclude divider
 		If $Enable = False Then

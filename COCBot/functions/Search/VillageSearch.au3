@@ -349,7 +349,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					$iNbrOfOoS += 1
 					UpdateStats()
 					SetLog("Couldn't locate Next button", $COLOR_RED)
-					PushMsg("OoSResources")
+					PushMsgToPushBullet("OoSResources")
 				Else
 					SetLog("Have strange problem Couldn't locate Next button, Restarting CoC and Bot...", $COLOR_RED)
 					$Is_ClientSyncError = False ; disable fast OOS restart if not simple error and try restarting CoC
@@ -409,7 +409,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	EndIf
 
 	SetLog(_PadStringCenter(" Search Complete ", 50, "="), $COLOR_BLUE)
-	PushMsg("MatchFound")
+	PushMsgToPushBullet("MatchFound")
 
 
 ;~ 	; --- TH Detection Check Once Conditions ---

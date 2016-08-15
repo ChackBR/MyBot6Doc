@@ -34,7 +34,7 @@ Func TogglePauseImpl($Source)
 			$iTimePassed += Int(TimerDiff($sTimer))
 			AdlibUnRegister("SetTime")
 		EndIf
-		PushMsg("Pause", $Source)
+		PushMsgToPushBullet("Pause", $Source)
 		;If $BlockInputPause > 0 Then $BlockInputPausePrev = $BlockInputPause
 		;If $BlockInputPause > 0 Then _BlockInputEx(0, "", "", $HWnD)
 		GUICtrlSetState($btnPause, $GUI_HIDE)
@@ -49,7 +49,7 @@ Func TogglePauseImpl($Source)
 			$sTimer = TimerInit()
 			AdlibRegister("SetTime", 1000)
 		EndIf
-		PushMsg("Resume", $Source)
+		PushMsgToPushBullet("Resume", $Source)
 		;If $BlockInputPausePrev > 0 Then _BlockInputEx($BlockInputPausePrev, "", "", $HWnD)
 		;If $BlockInputPausePrev > 0 Then $BlockInputPausePrev = 0
 		GUICtrlSetState($btnPause, $GUI_SHOW)
@@ -61,7 +61,8 @@ Func TogglePauseImpl($Source)
 	While $TPaused ; Actual Pause loop
 		If _Sleep($iDelayTogglePause1) Then ExitLoop
 		$counter = $counter + 1
-		If $PushBulletEnabled = 1 And $pRemote = 1 And $counter = 200 Then
+		;Modified by CDudz
+		If ($PushBulletEnabled = 1 Or $TelegramEnabled = 1) And $pRemote = 1 And $counter = 200 Then
 			_RemoteControl()
 			$counter = 0
 		EndIf

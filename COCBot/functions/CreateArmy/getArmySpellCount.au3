@@ -50,6 +50,7 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 			If $debugsetlogTrain = 1 Then Setlog(" Slot : " & $i + 1, $COLOR_PURPLE)
 			$FullTemp = getOcrSpellDetection(125 + (62 * $i), 450 + $midOffsetY)
 			If $debugsetlogTrain = 1 Then Setlog(" getOcrSpellDetection: " & $FullTemp, $COLOR_PURPLE)
+			;Modified by CDudz - Troops & Spells Stats Mod
 			If _Sleep($iDelayRespond) Then Return
 			$Result = getOcrSpellQuantity(146 + (62 * $i), 414 + $midOffsetY)
 			If $Result <> "" Then
@@ -63,42 +64,52 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 				Case $FullTemp = "Lightning"
 					$CurLightningSpell = $SpellQ
 					Setlog(" - No. of Lightning Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += (2 * $SpellQ)
 				Case $FullTemp = "Heal"
 					$CurHealSpell = $SpellQ
 					Setlog(" - No. of Heal Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += (2 * $SpellQ)
 				Case $FullTemp = "Rage"
 					$CurRageSpell = $SpellQ
 					Setlog(" - No. of Rage Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += (2 * $SpellQ)
 				Case $FullTemp = "Jump"
 					$CurJumpSpell = $SpellQ
 					Setlog(" - No. of Jump Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += (2 * $SpellQ)
 				Case $FullTemp = "Freeze"
 					$CurFreezeSpell = $SpellQ
 					Setlog(" - No. of Freeze Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += (2 * $SpellQ)
 				Case $FullTemp = "Clone"
 					$CurCloneSpell = $SpellQ
 					Setlog(" - No. of Clone Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += (4 * $SpellQ)
 				Case $FullTemp = "Poison"
 					$CurPoisonSpell = $SpellQ
 					Setlog(" - No. of Poison Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += $SpellQ
 				Case $FullTemp = "Haste"
 					$CurHasteSpell = $SpellQ
 					Setlog(" - No. of Haste Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += $SpellQ
 				Case $FullTemp = "Earth"
 					$CurEarthSpell = $SpellQ
 					Setlog(" - No. of Earthquake Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += $SpellQ
 				Case $FullTemp = "Skeleton"
 					$CurSkeletonSpell = $SpellQ
 					Setlog(" - No. of Skeleton Spells: " & $SpellQ)
+					_ArrayAdd($TroopSpellStats, $FullTemp & " Spells|" & $SpellQ)
 					$iTotalSpellSpace += $SpellQ
 				Case $FullTemp = "" And $SpellQ > 0 ; prevent no search condition due problem with spell type detection
 					Setlog(" warning: detected spell count but not type of spell " & $i + 1, $COLOR_MAROON)
