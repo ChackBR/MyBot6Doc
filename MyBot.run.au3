@@ -77,7 +77,8 @@ Local $sModversion
 ; "2102" ; Removed CSV Spiral Attacks
 ; "2103" ; CSV Fast Deployment and Speed + CSV from NavySeals + CSV Spiral Attacks
 ; "2104" ; No League Search
-$sModversion = "2105" ; Add Telegram
+; "2105" ; Add Telegram
+$sModversion = "2106" ; Fix Heroes Ability While in Attack Screen
 $sBotVersion = "v6.2.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
