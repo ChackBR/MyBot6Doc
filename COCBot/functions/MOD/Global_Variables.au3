@@ -72,3 +72,10 @@ $iCSVSpeeds[12] = 3
 
 ; Telegram extension
 Global $TelegramEnabled
+
+;
+; TheRevenor
+;
+
+; ChatBot
+Global $FoundChatMessage = 0

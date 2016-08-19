@@ -78,7 +78,8 @@ Local $sModversion
 ; "2103" ; CSV Fast Deployment and Speed + CSV from NavySeals + CSV Spiral Attacks
 ; "2104" ; No League Search
 ; "2105" ; Add Telegram
-$sModversion = "2106" ; Fix Heroes Ability While in Attack Screen
+; "2106" ; Fix Heroes Ability While in Attack Screen
+$sModversion = "2107" ; Fix Telegram + ChatBot
 $sBotVersion = "v6.2.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
@@ -87,6 +88,7 @@ $sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use a
 #include "COCBot\GUI\MBR GUI Design Splash.au3"
 #include "COCBot\functions\Config\ScreenCoordinates.au3"
 #include "COCBot\functions\Other\ExtMsgBox.au3"
+#include "COCBot\functions\Mod\Chatbot\Chatbot.au3"
 
 Opt("GUIResizeMode", $GUI_DOCKALL) ; Default resize mode for dock android support
 Opt("GUIEventOptions", 1) ; Handle minimize and restore for dock android support
@@ -441,6 +443,10 @@ Func Idle() ;Sequence that runs until Full Army
 		While $iReHere < 7
 			$iReHere += 1
 			DonateCC(True)
+			If $iReHere = 6 Then
+			   ChatbotMessage()
+			   CheckNewChat()
+			EndIf
 			If _Sleep($iDelayIdle2) Then ExitLoop
 			If $Restart = True Then ExitLoop
 		WEnd

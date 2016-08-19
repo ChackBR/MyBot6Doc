@@ -1750,6 +1750,20 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($PushBulletTokenValue, $PushBulletToken)
 	GUICtrlSetData($OrigPushBullet, $iOrigPushBullet)
 
+	; Pushbullet Stuff
+	If $VillageStatIncrement = 1 Then
+		GUICtrlSetState($chkVillageStatIncrement, $GUI_CHECKED)
+	ElseIf $VillageStatIncrement = 0 Then
+		GUICtrlSetState($chkVillageStatIncrement, $GUI_UNCHECKED)
+	EndIf
+	GUICtrlSetData($txtVillageStatIncrement, $VillageStatIncrementTXT)
+	If $SearchNotifyCount = 1 Then
+		GUICtrlSetState($chkSearchNotifyCount, $GUI_CHECKED)
+	ElseIf $SearchNotifyCount = 0 Then
+		GUICtrlSetState($chkSearchNotifyCount, $GUI_UNCHECKED)
+	EndIf
+	GUICtrlSetData($txtSearchNotifyCount, $SearchNotifyCountTXT)
+
 	; apply upgrade buildings -------------------------------------------------------------------
 	;Lab
 	If $ichkLab = 1 Then
@@ -2590,6 +2604,9 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	ElseIf $ichkAlertBuilderIdle = 0 Then
 		GUICtrlSetState($chkAlertBuilderIdle, $GUI_UNCHECKED)
 	EndIf
+
+	; ChatBot
+	GUICtrlSetData($chkchatdelay, $ichkchatdelay)
 
 	; by AwesomeGamer
 	If $iChkDontRemove = 1 Then

@@ -667,6 +667,12 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ichkDeleteLoots, $config, "deletefiles", "DeleteLoots", "1")
 		IniReadS($iDeleteLootsDays, $config, "deletefiles", "DeleteLootsDays", "2")
 
+		; Pushbullet Stuff
+		$VillageStatIncrement = IniRead($config, "pushbullet", "VillageStatIncrement", "0")
+		$VillageStatIncrementTXT = IniRead($config, "pushbullet", "VillageStatIncrementTXT", "5")
+		$SearchNotifyCount = IniRead($config, "pushbullet", "SearchNotifyCount", "0")
+		$SearchNotifyCountTXT = IniRead($config, "pushbullet", "SearchNotifyCountTXT", "25")
+
 		$DebugClick = BitOR($DebugClick, IniRead($config, "debug", "debugsetclick", "0"))
 		If $DevMode = 1 Then
 			$DebugSetlog = BitOR($DebugSetlog, IniRead($config, "debug", "debugsetlog", "0"))
@@ -997,6 +1003,9 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($TelegramEnabled, $config, "pushbullet", "PBEnabled2", "0")
 		IniReadS($TelegramToken, $config, "pushbullet", "AccountToken2", "")
 		IniReadS($ichkAlertBuilderIdle, $config, "pushbullet", "AlertBuilderIdle", "0")
+
+		; ChatBot
+		$ichkchatdelay = IniRead($config, "global", "chdelay", "0")
 
 		;Wait For Spells
 		IniReadS($iEnableSpellsWait[$DB], $config, "search", "ChkDBSpellsWait", "0")

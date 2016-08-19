@@ -2462,6 +2462,9 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "pushbullet", "AlertBuilderIdle", "0")
 	EndIf
 
+	; ChatBot
+	IniWrite($config, "global", "chdelay",  GUICtrlRead($chkchatdelay))
+
 	; Wait For Spells
 	If GUICtrlRead($chkDBSpellsWait) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "ChkDBSpellsWait", 1)
