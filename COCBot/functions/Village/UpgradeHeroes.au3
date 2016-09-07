@@ -50,7 +50,7 @@ Func UpgradeHeroes()
 	;##### Verify Builders available #####;
 	If getBuilderCount() = False Then Return  ; update builder data, return if problem
 	If _Sleep($iDelayRespond) Then Return
-	If $iFreeBuilderCount < 1 + $iSaveWallBldr Then
+	If $iFreeBuilderCount < ( 1 + $iSaveWallBldr ) Then
 		SetLog("Not Enough Builders for Queen", $COLOR_RED)
 		Return
 	EndIf
@@ -61,7 +61,7 @@ Func UpgradeHeroes()
 	;##### Verify Builders available #####;
 	If getBuilderCount() = False Then Return  ; update builder data, return if problem
 	If _Sleep($iDelayRespond) Then Return
-	If $iFreeBuilderCount < 1 + $iSaveWallBldr Then
+	If $iFreeBuilderCount < ( 1 + $iSaveWallBldr ) Then
 		SetLog("Not Enough Builders for King", $COLOR_RED)
 		Return
 	EndIf
@@ -72,7 +72,7 @@ Func UpgradeHeroes()
 	;##### Verify Builders available
 	If getBuilderCount() = False Then Return  ; update builder data, return if problem
 	If _Sleep($iDelayRespond) Then Return
-	If $iFreeBuilderCount < 1 + $iSaveWallBldr Then
+	If $iFreeBuilderCount < ( 1 + $iSaveWallBldr ) Then
 		SetLog("Not Enough Builder for Warden", $COLOR_RED)
 		Return
 	EndIf

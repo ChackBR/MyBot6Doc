@@ -373,7 +373,7 @@ Func LabUpgrade()
 					Return False
 				EndIf
 				SetLog("Upgrade " & $aLabTroops[$icmbLaboratory][3] & " in your laboratory is complete...", $COLOR_GREEN)
-				PushMsgToPushBullet("LabSuccess")
+				PushMsg("LabSuccess")
 				If _Sleep($iDelayLabUpgrade2) Then Return
 				$ichkLab = 0 ;reset enable lab upgrade flag
 				GUICtrlSetState($chkLab, $GUI_UNCHECKED) ; reset enable lab upgrade check box

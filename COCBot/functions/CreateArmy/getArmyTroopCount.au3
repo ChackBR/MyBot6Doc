@@ -22,7 +22,7 @@ Global $SlotInArmyPekk = -1, $SlotInArmyBabyD = -1, $SlotInArmyMine = -1
 
 Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $test = false)
 
-	If $debugsetlogTrain = 1 Then SETLOG("Begin getArmyTroopCount:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTroopCount:", $COLOR_PURPLE)
 
 	If $test = false  Then
 		If $bOpenArmyWindow = False And IsTrainPage() = False Then ; check for train page
@@ -43,7 +43,6 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 	Local $FullTemp = ""
 	Local $TroopQ = 0
 	Local $TroopTypeT = ""
-	ReDim $TroopSpellStats[0][2]
 
 	_CaptureRegion2(120, 165 + $midOffsetY, 740, 220 + $midOffsetY)
 	If $debugSetlog = 1 Then SetLog("$hHBitmap2 made", $COLOR_PURPLE)
@@ -236,10 +235,8 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 					EndIf
 
 				EndIf
-				If $TroopQ <> 0 Then
-					SetLog(" - No. of " & NameOfTroop($Troops[0]) & ": " & $TroopQ)
-					_ArrayAdd($TroopSpellStats, $TroopName & "|" & $TroopQ)
-				EndIf
+				If $TroopQ <> 0 Then SetLog(" - No. of " & NameOfTroop($Troops[0]) & ": " & $TroopQ)
+
 			EndIf
 		Next
 

@@ -39,7 +39,7 @@ Func GetResources($bLog = True, $pMatchMode = -1) ;Reads resources
 				$iNbrOfOoS += 1
 				UpdateStats()
 				SetLog("Disconnected At Search Clouds", $COLOR_RED)
-				PushMsgToPushBullet("OoSResources")
+				PushMsg("OoSResources")
 			Else
 				SetLog("Stuck At Search Clouds, Restarting CoC and Bot...", $COLOR_RED)
 				$Is_ClientSyncError = False ; disable fast OOS restart if not simple error and restarting CoC
@@ -47,7 +47,7 @@ Func GetResources($bLog = True, $pMatchMode = -1) ;Reads resources
 			EndIf
 			Return
 		EndIf
-		If $debugSetlog = 1 Then SetLog("Loop to clean screen without Clouds , nº :" & $i, $COLOR_PURPLE)
+		If $debugSetlog = 1 Then SetLog("Loop to clean screen without Clouds, # " & $i, $COLOR_PURPLE)
 		ForceCaptureRegion() ; ensure screenshots are not cached
 	WEnd
 
@@ -87,7 +87,7 @@ Func GetResources($bLog = True, $pMatchMode = -1) ;Reads resources
 			$iNbrOfOoS += 1
 			UpdateStats()
 			SetLog("Connection Lost While Searching", $COLOR_RED)
-			PushMsgToPushBullet("OoSResources")
+			PushMsg("OoSResources")
 		Else
 			SetLog("Attack Is Disabled Or Slow connection issues, Restarting CoC and Bot...", $COLOR_RED)
 			$Is_ClientSyncError = False ; disable fast OOS restart if not simple error and restarting CoC

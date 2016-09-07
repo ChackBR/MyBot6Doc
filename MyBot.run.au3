@@ -14,11 +14,13 @@
 #AutoIt3Wrapper_UseX64=7n
 #AutoIt3Wrapper_Run_Au3Stripper=y
 #Au3Stripper_Parameters=/mo /rsln
+;#AutoIt3Wrapper_Change2CUI=y
+;#pragma compile(Console, true)
 #pragma compile(Icon, "Images\MyBot.ico")
 #pragma compile(FileDescription, Clash of Clans Bot - A Free Clash of Clans bot - https://mybot.run)
 #pragma compile(ProductName, My Bot)
-#pragma compile(ProductVersion, 6.2.1)
-#pragma compile(FileVersion, 6.2.1)
+#pragma compile(ProductVersion, 6.2.2)
+#pragma compile(FileVersion, 6.2.2)
 #pragma compile(LegalCopyright, © https://mybot.run)
 #pragma compile(Out, MyBot.run.exe)  ; Required
 
@@ -34,61 +36,30 @@ Global $iBotLaunchTime = 0
 Local $hBotLaunchTime = TimerInit()
 
 Local $sModversion
-; "0000" ; MyBot.run v6.0.0
-; "1000" ; MyBot.run v6.1.0
-; "1100" ; MyBot.run v6.1.1
-; "1101" ; Fix for Donations
-; "1102" ; Add Close While Training
-; "1103" ; Start SmartZap Fix
-; "1104" ; SmartZap ok
-; "1105" ; Fix for CCWT
-; "1106" ; CCWT will exec only if Train Troops < 80%
-; "1107" ; Revert Fix for Donations ( Chk_1101 )
-; "1200" ; MyBot.run v6.1.2
-; "1201" ; SmartZap, FastClicks, CCWT, DEB
-; "1202" ; CCWT user set max sleep time
-; "1203" ; CCWT try request troops before
-; "1204" ; Valks Train HotFix
-; "1205" ; CSV Fast Deployment Fusion - @MikeCoC
-; "1206" ; CSV Deploy Speed Mod - @MikeCoC
-; "1207" ; Allow BOT cpu priority only for single process
-; "1208" ; Attack Now Button ( Attack Plan, Search & Attack, Active Base, Attack )
-; "1209" ; Add 8F CSV Attack Files From AsesomeGamer 
-; "1210" ; Updates for "CSV Fast Deployment Fusion" ( Speed Up FF )
-; "1211" ; Updates for CSV Attack Files ( Force All Troops Deploy )
-; "1212" ; Fix for King activated on deploy
-; "1213" ; CSV Fusion support for BlueStacks ( AwesomeGamer .csv )
-; "1214" ; Updates for "CSV Fast Deployment" ( 2016.14.06 )
-; "1215" ; Updates for "CSV Fast Deployment" ( 2016.15.06 )
-; "1216" ; CSV Fast Deployment ( Revert Back to r1213 )
-; "1217" ; Pre-Train spells when army camps and spell factory are full - @MikeCoC
-; "1218" ; Disable FastClicks when Attack using "CSV Fast Deployment"
-; "1219" ; Add SplashScreen while loading MyBot - @MikeCoC
-; "1220" ; Enable FastClicks while using "CSV Fast Deployment"
-; "1221" ; SplashScreen: Add Option to Disable It
-; "1301" ; Upgrade to MyBot v6.1.3
-; "1401" ; Upgrade to MyBot v6.1.4
-; "1402" ; Update Logo, Train Big First
-; "1403" ; Update for Pre-Train spells
-; "1404" ; Remove Pre-Train spells
-; "1405" ; Classic Four Fingers
-; "2001" ; Upgrade to MyBot v6.2.0
-; "2101" ; Upgrade to MyBot v6.2.1
+; "0000" ; MyBot v6.0.0
+; "1000" ; MyBot v6.1.0
+; "1100" ; MyBot v6.1.1
+; "1200" ; MyBot v6.1.2
+; "1301" ; MyBot v6.1.3
+; "1401" ; MyBot v6.1.4
+; "2001" ; MyBot v6.2.0
+; "2101" ; MyBot v6.2.1
 ; "2102" ; Removed CSV Spiral Attacks
 ; "2103" ; CSV Fast Deployment and Speed + CSV from NavySeals + CSV Spiral Attacks
 ; "2104" ; No League Search
 ; "2105" ; Add Telegram
 ; "2106" ; Fix Heroes Ability While in Attack Screen
-$sModversion = "2107" ; Fix Telegram + ChatBot
-$sBotVersion = "v6.2.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
-$sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+; "2107" ; Fix Telegram + ChatBot
+$sModversion = "2200" ; MyBot v6.2.2 ( Remove: Telegram + ChatBot )
+$sBotVersion = "v6.2.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
+$sBotTitle = "My Bot " & $sBotVersion & ".s" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
 #include "COCBot\MBR Global Variables.au3"
+_GDIPlus_Startup()
 #include "COCBot\GUI\MBR GUI Design Splash.au3"
 #include "COCBot\functions\Config\ScreenCoordinates.au3"
 #include "COCBot\functions\Other\ExtMsgBox.au3"
-#include "COCBot\functions\Mod\Chatbot\Chatbot.au3"
 
 Opt("GUIResizeMode", $GUI_DOCKALL) ; Default resize mode for dock android support
 Opt("GUIEventOptions", 1) ; Handle minimize and restore for dock android support
@@ -107,10 +78,17 @@ Local $sMsg
 $sMsg = GetTranslated(500, 1, "Don't Run/Compile the Script as (x64)! Try to Run/Compile the Script as (x86) to get the bot to work.\r\n" & _
 							  "If this message still appears, try to re-install AutoIt.")
 If @AutoItX64 = 1 Then
+	If IsHWnd($hSplash) Then GUIDelete($hSplash) ; Delete the splash screen since we don't need it anymore
 	MsgBox(0, "", $sMsg)
+	_GDIPlus_Shutdown()
 	Exit
 EndIf
 
+#include "COCBot\functions\Other\MBRFunc.au3"
+; check for VC2010, .NET software and MyBot Files and Folders
+If CheckPrerequisites() Then
+	MBRFunc(True) ; start MBRFunctions dll
+EndIf
 
 #include "COCBot\functions\Android\Android.au3"
 
@@ -120,10 +98,13 @@ $sBotTitle = $sBotTitle & "(" & ($AndroidInstance <> "" ? $AndroidInstance : $An
 UpdateSplashTitle($sBotTitle & GetTranslated(500, 20, ", Profile: %s", $sCurrProfile))
 
 If $bBotLaunchOption_Restart = True Then
+   If WinGetHandle($sBotTitle) Then SplashStep(GetTranslated(500, 36, "Closing previous bot..."))
    If CloseRunningBot($sBotTitle) = True Then
 	  ; wait for Mutexes to get disposed
 	  Sleep(3000)
    EndIf
+Else
+	SplashStep("")
 EndIF
 
 Local $cmdLineHelp = GetTranslated(500, 2, "By using the commandline (or a shortcut) you can start multiple Bots:\r\n" & _
@@ -145,7 +126,9 @@ EndIf
 
 $sMsg = GetTranslated(500, 5, "My Bot for %s is already running.\r\n\r\n", $sAndroidInfo)
 If $hMutex_BotTitle = 0 Then
+	If IsHWnd($hSplash) Then GUIDelete($hSplash) ; Delete the splash screen since we don't need it anymore
 	MsgBox(BitOR($MB_OK, $MB_ICONINFORMATION, $MB_TOPMOST), $sBotTitle, $sMsg & $cmdLineHelp)
+	_GDIPlus_Shutdown()
 	Exit
 EndIf
 
@@ -153,7 +136,9 @@ $hMutex_Profile = _Singleton(StringReplace($sProfilePath & "\" & $sCurrProfile, 
 $sMsg = GetTranslated(500, 6, "My Bot with Profile %s is already running in %s.\r\n\r\n", $sCurrProfile, $sProfilePath & "\" & $sCurrProfile)
 If $hMutex_Profile = 0 Then
 	_WinAPI_CloseHandle($hMutex_BotTitle)
+	If IsHWnd($hSplash) Then GUIDelete($hSplash) ; Delete the splash screen since we don't need it anymore
 	MsgBox(BitOR($MB_OK, $MB_ICONINFORMATION, $MB_TOPMOST), $sBotTitle, $sMsg & $cmdLineHelp)
+	_GDIPlus_Shutdown()
 	Exit
 EndIf
 
@@ -191,13 +176,6 @@ If $ichkDeleteLogs = 1 Then DeleteFiles($dirLogs, "*.*", $iDeleteLogsDays, 0)
 If $ichkDeleteLoots = 1 Then DeleteFiles($dirLoots, "*.*", $iDeleteLootsDays, 0)
 If $ichkDeleteTemp = 1 Then DeleteFiles($dirTemp, "*.*", $iDeleteTempDays, 0)
 If $ichkDeleteTemp = 1 Then DeleteFiles($dirTempDebug, "*.*", $iDeleteTempDays, 0)
-FileChangeDir($LibDir)
-
-; check for VC2010, .NET software and MyBot Files and Folders
-If CheckPrerequisites() Then
-	MBRFunc(True) ; start MBRFunctions dll
-	debugMBRFunctions($debugSearchArea, $debugRedArea, $debugOcr) ; set debug levels
-EndIf
 
 $sMsg = GetTranslated(500, 7, "Found running %s %s" , $Android, $AndroidVersion)
 If $FoundRunningAndroid Then
@@ -208,15 +186,8 @@ If $FoundInstalledAndroid Then
 EndIf
 SetLog(GetTranslated(500, 8, "Android Emulator Configuration: %s", $sAndroidInfo), $COLOR_GREEN)
 
-AdlibRegister("PushBulletRemoteControl", $PBRemoteControlInterval)
-AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
-
-; Add Telegram extension by CDudz
-$lastmessage = GetLastMsg()
-If $FirstRun = 1 Then
-	$lastremote = $lastuid
-	Getchatid(GetTranslated(620, 92, "select your remote")) ; receive Telegram chat id and send keyboard
-EndIf
+;AdlibRegister("PushBulletRemoteControl", $PBRemoteControlInterval)
+;AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
 
 CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
 
@@ -256,6 +227,8 @@ While 1
 		Case $eBotSearchMode
 			BotSearchMode()
 			If $BotAction = $eBotSearchMode Then $BotAction = $eBotNoAction
+		Case $eBotClose
+			BotClose()
 	EndSwitch
 WEnd
 
@@ -285,10 +258,8 @@ Func runBot() ;Bot that runs everything in order
 				If _Sleep($iDelayRunBot2) Then Return
 			checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
-			If $RequestScreenshot = 1 Then PushMsgToPushBullet("RequestScreenshot")
-				If $RequestBuilderInfo = 1 Then PushMsgToPushBullet("BuilderInfo")
-			If $RequestShieldInfo = 1 Then PushMsgToPushBullet("ShieldInfo")
-			If _Sleep($iDelayRunBot3) Then Return
+			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
+				If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
 			If $OutOfGold = 1 And (Number($iGoldCurrent) >= Number($itxtRestartGold)) Then ; check if enough gold to begin searching again
 				$OutOfGold = 0 ; reset out of gold flag
@@ -372,7 +343,6 @@ Func runBot() ;Bot that runs everything in order
 				UpgradeWall()
 					If _Sleep($iDelayRunBot3) Then Return
 					If $Restart = True Then ContinueLoop
-				PushMsgToPushBullet("CheckBuilderIdle")
 				Idle()
 					;$fullArmy1 = $fullArmy
 					If _Sleep($iDelayRunBot3) Then Return
@@ -408,7 +378,7 @@ Func runBot() ;Bot that runs everything in order
 			EndIf
 			If _Sleep($iDelayRunBot3) Then Return
 			;  OCR read current Village Trophies when OOS restart maybe due PB or else DropTrophy skips one attack cycle after OOS
-			$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
+			$iTrophyCurrent = Number(getTrophyMainScreen($aTrophies[0], $aTrophies[1]))
 			If $debugsetlog = 1 Then SetLog("Runbot Trophy Count: " & $iTrophyCurrent, $COLOR_PURPLE)
 			AttackMain()
 			If $OutOfGold = 1 Then
@@ -432,9 +402,7 @@ Func Idle() ;Sequence that runs until Full Army
 	While $fullArmy = False Or $bFullArmyHero = False Or $bFullArmySpells = False
 		checkAndroidTimeLag()
 
-		If $RequestScreenshot = 1 Then PushMsgToPushBullet("RequestScreenshot")
-		If $RequestBuilderInfo = 1 Then PushMsgToPushBullet("BuilderInfo")
-		If $RequestShieldInfo = 1 Then PushMsgToPushBullet("ShieldInfo")
+		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 		If _Sleep($iDelayIdle1) Then Return
 		If $CommandStop = -1 Then SetLog("====== Waiting for full army ======", $COLOR_GREEN)
 		Local $hTimer = TimerInit()
@@ -443,20 +411,16 @@ Func Idle() ;Sequence that runs until Full Army
 		While $iReHere < 7
 			$iReHere += 1
 			DonateCC(True)
-			If $iReHere = 6 Then
-			   ChatbotMessage()
-			   CheckNewChat()
-			EndIf
 			If _Sleep($iDelayIdle2) Then ExitLoop
 			If $Restart = True Then ExitLoop
 		WEnd
 		If _Sleep($iDelayIdle1) Then ExitLoop
 		checkMainScreen(False) ; required here due to many possible exits
 		If ($CommandStop = 3 Or $CommandStop = 0) Then
-			CheckOverviewFullArmy(True)
+			CheckOverviewFullArmy(True, False)  ; use true parameter to open train overview window
+			getArmyHeroCount(False, False)
+			getArmySpellCount(False, True) ; use true parameter to close train overview window
 			If _Sleep($iDelayIdle1) Then Return
-			getArmyHeroCount(True, True)
-			getArmySpellCount(True, True)
 			If Not ($fullArmy) And $bTrainEnabled = True Then
 				SetLog("Army Camp and Barracks are not full, Training Continues...", $COLOR_ORANGE)
 				$CommandStop = 0
@@ -527,9 +491,15 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 
 		If $OutOfGold = 1 Or $OutOfElixir = 1 Then Return  ; Halt mode due low resources, only 1 idle loop
+		If ($CommandStop = 3 Or $CommandStop = 0) And $bTrainEnabled = False Then ExitLoop ; If training is not enabled, run only 1 idle loop
+
 		If $iChkSnipeWhileTrain = 1 Then SnipeWhileTrain()  ;snipe while train
 
-		If $CommandStop = -1 Then SmartWait4Train()  ; Check if closing bot/emulator while training and not in halt mode
+		If $CommandStop = -1 Then ; Check if closing bot/emulator while training and not in halt mode
+			SmartWait4Train()
+			If $Restart = True Then ExitLoop ; if smart wait activated, exit to runbot in case user adjusted GUI or left emulator/bot in bad state
+		EndIf
+
 	WEnd
 EndFunc   ;==>Idle
 

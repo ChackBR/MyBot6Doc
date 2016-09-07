@@ -6,13 +6,14 @@
 ;                  $xOffsetFor11Slot    - an unknown value.
 ; Return values .: None
 ; Author ........:
-; Modified ......:
+; Modified ......: Promac 08-2016
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func GetXPosOfArmySlot($slotNumber, $xOffsetFor11Slot)
 
 	Local $SlotPixelColor, $SlotPixelColorTemp, $SlotPixelColor1
@@ -46,22 +47,3 @@ Func GetXPosOfArmySlot($slotNumber, $xOffsetFor11Slot)
 	EndIf
 
 EndFunc   ;==>GetXPosOfArmySlot
-
-Func Old_GetXPosOfArmySlot($slotNumber, $xOffsetFor11Slot)
-	Local $iAmount
-
-	Switch $slotNumber
-		Case 0 To 1
-			$SlotComp = 0
-		Case 2 To 5
-			$SlotComp = 1
-		Case Else
-			$SlotComp = 2
-	EndSwitch
-
-	If $atkTroops[11][0] = -1 Then ;And _ColorCheck(_GetPixelColor(10, 575, True), Hex(0x040A06, 6), 20) Then ; check color to verify if exists > 12 slots
-		Return $xOffsetFor11Slot + $SlotComp + ($slotNumber * 72)
-	Else
-		Return $xOffsetFor11Slot + $SlotComp + ($slotNumber * 72) - 30
-	EndIf
-EndFunc   ;==>Old_GetXPosOfArmySlot

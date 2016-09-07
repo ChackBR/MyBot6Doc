@@ -567,7 +567,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	$icmbBotCond = _GUICtrlComboBox_GetCurSel($cmbBotCond)
 	$icmbHoursStop = _GUICtrlComboBox_GetCurSel($cmbHoursStop)
 
-	$sTimeWakeUp = GUICtrlRead($txtTimeWakeUp)
+	$sTimeWakeUp = Int(GUICtrlRead($txtTimeWakeUp)) * 60 ; Minutes are entered
 
 	$itxtRestartGold = GUICtrlRead($txtRestartGold)
 	$itxtRestartElixir = GUICtrlRead($txtRestartElixir)
@@ -2445,26 +2445,6 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "search", "TSEnableAfterArmyCamps2", GUICtrlRead($txtTSArmyCamps2))
 	;==> Apply to switch Attack Standard after THSnipe End
 
-	; Telegram Notify
-	$TelegramToken = GUICtrlRead($TelegramTokenValue)
-	IniWriteS($config, "pushbullet", "AccountToken2", $TelegramToken)
-	IniWriteS($config, "pushbullet", "PBEnabled2", $TelegramEnabled)
-
-	If GUICtrlRead($chkPBenabled2) = $GUI_CHECKED Then
-		$TelegramEnabled = 1
-	Else
-		$TelegramEnabled = 0
-	EndIf
-
-	If GUICtrlRead($chkAlertBuilderIdle) = $GUI_CHECKED Then
-		IniWriteS($config, "pushbullet", "AlertBuilderIdle", "1")
-	Else
-		IniWriteS($config, "pushbullet", "AlertBuilderIdle", "0")
-	EndIf
-
-	; ChatBot
-	IniWrite($config, "global", "chdelay",  GUICtrlRead($chkchatdelay))
-
 	; Wait For Spells
 	If GUICtrlRead($chkDBSpellsWait) = $GUI_CHECKED Then
 		IniWriteS($config, "search", "ChkDBSpellsWait", 1)
@@ -2479,48 +2459,10 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWriteS($config, "search", "TotalTrainSpaceSpell", 0)
 
-	; by AwesomeGamer
-	If GUICtrlRead($chkDontRemove) = $GUI_CHECKED Then
-		IniWriteS($config, "troop", "DontRemove", 1)
-	Else
-		IniWriteS($config, "troop", "DontRemove", 0)
-	EndIf
-
-	; SmartZap Settings - Added by LunaEclipse
-	If GUICtrlRead($chkSmartLightSpell) = $GUI_CHECKED Then
-		IniWrite($config, "SmartZap", "UseSmartZap", 1)
-	Else
-		IniWrite($config, "SmartZap", "UseSmartZap", 0)
-	EndIf
-	If GUICtrlRead($chkSmartZapDB) = $GUI_CHECKED Then
-		IniWrite($config, "SmartZap", "ZapDBOnly", 1)
-	Else
-		IniWrite($config, "SmartZap", "ZapDBOnly", 0)
-	EndIf
-	If GUICtrlRead($chkSmartZapSaveHeroes) = $GUI_CHECKED Then
-		IniWrite($config, "SmartZap", "THSnipeSaveHeroes", 1)
-	Else
-		IniWrite($config, "SmartZap", "THSnipeSaveHeroes", 0)
-	EndIf
-	IniWrite($config, "SmartZap", "MinDE", GUICtrlRead($txtMinDark))
-
-	; No League Search
-	If GUICtrlRead($chkDBNoLeague) = $GUI_CHECKED Then
-		IniWrite($config, "search", "DBNoLeague", 1)
-	Else
-		IniWrite($config, "search", "DBNoLeague", 0)
-	EndIf
-
-	If GUICtrlRead($chkABNoLeague) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABNoLeague", 1)
-	Else
-		IniWrite($config, "search", "ABNoLeague", 0)
-	EndIf
-
-
-   ; CSV Deployment Speed Mod
-	IniWriteS($config, "attack", "CSVSpeedDB", $isldSelectedCSVSpeed[$DB])
-	IniWriteS($config, "attack", "CSVSpeedAB", $isldSelectedCSVSpeed[$LB])
+;
+; MOD
+;
+#include "..\MOD\Config_Save.au3"
 
 	If $hFile <> -1 Then FileClose($hFile)
 

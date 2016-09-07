@@ -383,7 +383,7 @@ Func btnCloseWaitStopRandom()
 		GUICtrlSetState($btnCloseWaitStop, BitOR($GUI_DISABLE, $GUI_UNCHECKED))
 	Else
 		$ibtnCloseWaitStopRandom = 0
-		GUICtrlSetState($btnCloseWaitStop, $GUI_ENABLE)
+		If GUICtrlRead($chkCloseWaitEnable) = $GUI_CHECKED Then GUICtrlSetState($btnCloseWaitStop, $GUI_ENABLE)
 	EndIf
 EndFunc   ;==>btnCloseWaitStopRandom
 
@@ -433,6 +433,7 @@ Func chkTroopOrder($bNoiseMode = True)
 			For $i = 0 To UBound($DefaultTroopGroup) - 1
 				$sNewTrainList &= $TroopName[$i] & ", "
 			Next
+			$sNewTrainList = StringLeft($sNewTrainList, StringLen($sNewTrainList)-2)
 			Setlog("Current train order= " & $sNewTrainList, $COLOR_BLUE)
 		EndIf
 	EndIf
@@ -464,6 +465,7 @@ Func chkDarkTroopOrder($bNoiseMode = True)
 			For $i = 0 To UBound($DefaultTroopGroupDark) - 1
 				$sNewTrainList &= $TroopDarkName[$i] & ", "
 			Next
+			$sNewTrainList = StringLeft($sNewTrainList, StringLen($sNewTrainList)-2)
 			Setlog("Current train order= " & $sNewTrainList, $COLOR_BLUE)
 		EndIf
 	EndIf
@@ -822,3 +824,22 @@ EndFunc   ;==>chkSmartZapSaveHeroes
 Func txtMinDark()
 	$itxtMinDE = GUICtrlRead($txtMinDark)
 EndFunc   ;==>txtMinDark
+
+; Classic FourFingers
+Func cmbDeployAB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
+   If _GUICtrlCombobox_GetCurSel($cmbDeployAB) = 4 Then
+	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_UNCHECKED)
+	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_DISABLE)
+   Else
+	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_ENABLE)
+   EndIf
+EndFunc
+
+Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
+   If _GUICtrlCombobox_GetCurSel($cmbDeployDB) = 4 Then
+	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_UNCHECKED)
+	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_DISABLE)
+   Else
+	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_ENABLE)
+   EndIf
+EndFunc

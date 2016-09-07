@@ -730,9 +730,11 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 
 	If $ibtnCloseWaitExact = 1 Then
 		GUICtrlSetState($btnCloseWaitExact, $GUI_CHECKED)
+		GUICtrlSetState($btnCloseWaitRandom, $GUI_UNCHECKED)
 	EndIf
 	If $ibtnCloseWaitRandom = 1 Then
 		GUICtrlSetState($btnCloseWaitRandom, $GUI_CHECKED)
+		GUICtrlSetState($btnCloseWaitExact, $GUI_UNCHECKED)
 	EndIf
 
 	_GUICtrlComboBox_SetCurSel($cmbCloseWaitRdmPercent, $icmbCloseWaitRdmPercent)
@@ -1750,20 +1752,6 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($PushBulletTokenValue, $PushBulletToken)
 	GUICtrlSetData($OrigPushBullet, $iOrigPushBullet)
 
-	; Pushbullet Stuff
-	If $VillageStatIncrement = 1 Then
-		GUICtrlSetState($chkVillageStatIncrement, $GUI_CHECKED)
-	ElseIf $VillageStatIncrement = 0 Then
-		GUICtrlSetState($chkVillageStatIncrement, $GUI_UNCHECKED)
-	EndIf
-	GUICtrlSetData($txtVillageStatIncrement, $VillageStatIncrementTXT)
-	If $SearchNotifyCount = 1 Then
-		GUICtrlSetState($chkSearchNotifyCount, $GUI_CHECKED)
-	ElseIf $SearchNotifyCount = 0 Then
-		GUICtrlSetState($chkSearchNotifyCount, $GUI_UNCHECKED)
-	EndIf
-	GUICtrlSetData($txtSearchNotifyCount, $SearchNotifyCountTXT)
-
 	; apply upgrade buildings -------------------------------------------------------------------
 	;Lab
 	If $ichkLab = 1 Then
@@ -1914,7 +1902,7 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	_GUICtrlComboBox_SetCurSel($cmbHoursStop, $icmbHoursStop)
 	cmbBotCond()
 
-	GUICtrlSetData($txtTimeWakeUp, $sTimeWakeUp)
+	GUICtrlSetData($txtTimeWakeUp, Int(Int($sTimeWakeUp) / 60))
 
 	GUICtrlSetData($txtRestartGold, $itxtRestartGold)
 	GUICtrlSetData($txtRestartElixir, $itxtRestartElixir)
@@ -2588,75 +2576,10 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	chkTSActivateCamps2()
 	GUICtrlSetData($txtTSArmyCamps2, $iEnableAfterArmyCamps2)
 
-	; Telegram Notify
-	GUICtrlSetData($TelegramTokenValue, $TelegramToken)
-
-	If $TelegramEnabled = 1 Then
-		GUICtrlSetState($chkPBenabled2, $GUI_CHECKED)
-		chkPBenabled2()
-	ElseIf $TelegramEnabled = 0 Then
-		GUICtrlSetState($chkPBenabled2, $GUI_UNCHECKED)
-		chkPBenabled2()
-	EndIf
-
-	If $ichkAlertBuilderIdle = 1 Then
-		GUICtrlSetState($chkAlertBuilderIdle, $GUI_CHECKED)
-	ElseIf $ichkAlertBuilderIdle = 0 Then
-		GUICtrlSetState($chkAlertBuilderIdle, $GUI_UNCHECKED)
-	EndIf
-
-	; ChatBot
-	GUICtrlSetData($chkchatdelay, $ichkchatdelay)
-
-	; by AwesomeGamer
-	If $iChkDontRemove = 1 Then
-		GUICtrlSetState($chkDontRemove, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkDontRemove, $GUI_UNCHECKED)
-	EndIf
-
-	; SmartZap Settings - Added by LunaEclipse
-	If $ichkSmartZap = 1 Then
-		GUICtrlSetState($chkSmartLightSpell, $GUI_CHECKED)
-		GUICtrlSetState($chkSmartZapDB, $GUI_ENABLE)
-		GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_ENABLE)
-		GUICtrlSetState($txtMinDark, $GUI_ENABLE)
-	Else
-		GUICtrlSetState($chkSmartZapDB, $GUI_DISABLE)
-		GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_DISABLE)
-		GUICtrlSetState($txtMinDark, $GUI_DISABLE)
-		GUICtrlSetState($chkSmartLightSpell, $GUI_UNCHECKED)
-	EndIf
-	If $ichkSmartZapDB = 1 Then
-		GUICtrlSetState($chkSmartZapDB, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkSmartZapDB, $GUI_UNCHECKED)
-	EndIf
-	If $ichkSmartZapSaveHeroes = 1 Then
-		GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_UNCHECKED)
-	EndIf
-	GUICtrlSetData($txtMinDark, $itxtMinDE)
-
-	; No League Search
-	If $iChkNoLeague[$DB] = 1 Then
-		GUICtrlSetState($chkDBNoLeague, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkDBNoLeague, $GUI_UNCHECKED)
-	EndIf
-
-	If $iChkNoLeague[$LB] = 1 Then
-		GUICtrlSetState($chkABNoLeague, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkABNoLeague, $GUI_UNCHECKED)
-	EndIf
-
-	; CSV Deployment Speed Mod
-	GUICtrlSetData($sldSelectedSpeedDB, $isldSelectedCSVSpeed[$DB])
-	GUICtrlSetData($sldSelectedSpeedAB, $isldSelectedCSVSpeed[$LB])
-	sldSelectedSpeedDB()
-	sldSelectedSpeedAB()
+;
+; MOD
+;
+#include "..\MOD\Config_Apply.au3"
 
 	; Reenabling window redraw - Keep this last....
 	If $bRedrawAtExit Then SetRedrawBotWindow(True)

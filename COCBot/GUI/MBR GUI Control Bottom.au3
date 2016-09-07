@@ -16,7 +16,6 @@
 Func Initiate()
 	WinGetAndroidHandle()
     If $HWnD <> 0 And ($AndroidBackgroundLaunched = True Or AndroidControlAvailable()) Then
-		;WinActivate($HWnD)
 		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_PURPLE)
 		SetLog($Compiled & " running on " & @OSVersion & " " & @OSServicePack & " " & @OSArch)
 		If Not $bSearchMode Then
@@ -45,11 +44,11 @@ Func Initiate()
 		;		$RunState = True
 
 		If Not $bSearchMode Then
-			AdlibRegister("SetTime", 1000)
+			;AdlibRegister("SetTime", 1000)
 			If $restarted = 1 Then
 				$restarted = 0
 				IniWrite($config, "general", "Restarted", 0)
-				PushMsgToPushBullet("Restarted")
+				PushMsg("Restarted")
 			EndIf
 		EndIf
 		If Not $RunState Then Return
@@ -148,10 +147,12 @@ Func btnStart()
 EndFunc   ;==>btnStart
 
 Func btnStop()
-	; always invoked in MyBot.run.au3!
-	EnableControls($frmBotBottom, False, $frmBotBottomCtrlState)
-	$RunState = False ; Exit BotStart()
-	$BotAction = $eBotStop
+	If $RunState Then
+		; always invoked in MyBot.run.au3!
+		EnableControls($frmBotBottom, False, $frmBotBottomCtrlState)
+		$RunState = False ; Exit BotStart()
+		$BotAction = $eBotStop
+	EndIf
 EndFunc   ;==>btnStop
 
 Func btnSearchMode()
@@ -603,8 +604,7 @@ Func ToggleGuiControls($Enable, $OptimizedRedraw = True)
 	$GUIControl_Disabled = True
 	For $i = $FirstControlToHide To $LastControlToHide
 		If IsTab($i) Or IsAlwaysEnabledControl($i) Then ContinueLoop
-		; Add Telegram
-		If $PushBulletEnabled Or $TelegramEnabled And $i = $btnDeletePBmessages Then ContinueLoop ; exclude the DeleteAllMesages button when PushBullet is enabled
+		If $PushBulletEnabled And $i = $btnDeletePBmessages Then ContinueLoop ; exclude the DeleteAllMesages button when PushBullet is enabled
 		If $i = $btnMakeScreenshot Then ContinueLoop ; exclude
 		If $i = $divider Then ContinueLoop ; exclude divider
 		If $Enable = False Then

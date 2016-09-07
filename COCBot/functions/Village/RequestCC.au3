@@ -115,7 +115,7 @@ Func _makerequest()
 			CheckMainScreen(False) ;emergency exit
 		EndIf
 		If $ichkBackground = 0 And $NoFocusTampering = False Then ControlFocus($HWnD, "", "")  ; make sure Android has window focus
-		PureClick($aSendRequestCCBtn[0], $aSendRequestCCBtn[1], 1, 100, "#0256") ; click send button	-	change to PureClick - DEMEN
+		Click($aSendRequestCCBtn[0], $aSendRequestCCBtn[1], 1, 100, "#0256") ; click send button
 		$canRequestCC = False
 	EndIf
 

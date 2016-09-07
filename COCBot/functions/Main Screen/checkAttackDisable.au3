@@ -124,7 +124,7 @@ Func checkAttackDisable($iSource, $Result = "")
 	PoliteCloseCoC("AttackDisable_")
 
 	If _Sleep(1000) Then Return ; short wait for CoC to exit
-	PushMsgToPushBullet("TakeBreak")
+	PushMsg("TakeBreak")
 
 	; CoC is closed >>
 	If $iModSource = $iTaBChkTime And $aShieldStatus[0] <> "guard" Then

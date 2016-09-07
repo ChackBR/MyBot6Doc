@@ -34,9 +34,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		Next
 	EndIf
 
-	_WinAPI_EmptyWorkingSet(GetAndroidPid()) ; Reduce Working Set of Android Process
-	_WinAPI_EmptyWorkingSet(@AutoItPID) ; Reduce Working Set of Bot
-
 	If _Sleep($iDelayVillageSearch1) Then Return
 	$Result = getAttackDisable(346, 182) ; Grab Ocr for TakeABreak check
 	checkAttackDisable($iTaBChkAttack, $Result) ;last check to see If TakeABreak msg on screen for fast PC from PrepareSearch click
@@ -103,7 +100,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $Restart = True Then Return ; exit func
 
 		If Mod(($iSkipped + 1), 100) = 0 Then
-			_WinAPI_EmptyWorkingSet(WinGetProcess($HWnD)) ; reduce Android memory
 			If _Sleep($iDelayRespond) Then Return
 			If CheckZoomOut() = False Then Return
 		EndIf
@@ -349,7 +345,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					$iNbrOfOoS += 1
 					UpdateStats()
 					SetLog("Couldn't locate Next button", $COLOR_RED)
-					PushMsgToPushBullet("OoSResources")
+					PushMsg("OoSResources")
 				Else
 					SetLog("Have strange problem Couldn't locate Next button, Restarting CoC and Bot...", $COLOR_RED)
 					$Is_ClientSyncError = False ; disable fast OOS restart if not simple error and try restarting CoC
@@ -409,7 +405,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	EndIf
 
 	SetLog(_PadStringCenter(" Search Complete ", 50, "="), $COLOR_BLUE)
-	PushMsgToPushBullet("MatchFound")
+	PushMsg("MatchFound")
 
 
 ;~ 	; --- TH Detection Check Once Conditions ---
