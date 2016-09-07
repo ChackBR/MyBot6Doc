@@ -15,7 +15,7 @@
 
 Func Initiate()
 	WinGetAndroidHandle()
-    If $HWnD <> 0 And ($AndroidBackgroundLaunched = True Or AndroidControlAvailable()) Then
+	If $HWnD <> 0 And IsArray(ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)) Then
 		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_PURPLE)
 		SetLog($Compiled & " running on " & @OSVersion & " " & @OSServicePack & " " & @OSArch)
 		If Not $bSearchMode Then

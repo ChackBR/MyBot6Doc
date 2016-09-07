@@ -50,9 +50,10 @@ Local $sModversion
 ; "2105" ; Add Telegram
 ; "2106" ; Fix Heroes Ability While in Attack Screen
 ; "2107" ; Fix Telegram + ChatBot
-$sModversion = "2200" ; MyBot v6.2.2 ( Remove: Telegram + ChatBot )
+; "2200" ; MyBot v6.2.2 ( Remove: Telegram + ChatBot )
+$sModversion = "2201" ; MyBot v6.2.2
 $sBotVersion = "v6.2.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
-$sBotTitle = "My Bot " & $sBotVersion & ".s" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+$sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
 #include "COCBot\MBR Global Variables.au3"
