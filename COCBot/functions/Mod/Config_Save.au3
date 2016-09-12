@@ -43,3 +43,11 @@
    ; CSV Deployment Speed Mod
 	IniWriteS($config, "attack", "CSVSpeedDB", $isldSelectedCSVSpeed[$DB])
 	IniWriteS($config, "attack", "CSVSpeedAB", $isldSelectedCSVSpeed[$LB])
+
+	; Max logout time
+	If GUICtrlRead($chkTrainLogoutMaxTime) = $GUI_CHECKED Then
+		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 1)
+	Else
+		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 0)
+	EndIf
+	IniWrite($config, "TrainLogout", "TrainLogoutMaxTimeTXT", GUICtrlRead($txtTrainLogoutMaxTime))

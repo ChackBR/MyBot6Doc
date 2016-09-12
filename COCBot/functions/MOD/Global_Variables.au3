@@ -79,3 +79,10 @@ Global $TelegramEnabled
 
 ; ChatBot
 Global $FoundChatMessage = 0
+
+;
+; mandryd
+;
+
+; Max logout time
+Global $TrainLogoutMaxTime, $TrainLogoutMaxTimeTXT

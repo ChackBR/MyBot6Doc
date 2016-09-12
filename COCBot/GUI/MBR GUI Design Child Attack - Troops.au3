@@ -613,7 +613,7 @@ GUICtrlCreateTabItem("")
 $hGUI_ARMY_TAB_ITEM4 = GUICtrlCreateTabItem(GetTranslated(641,1,"Options"))
 	$x = $xStart + 25
 	$y = $yStart + 45
-	$grpCloseWaitTrain = GUICtrlCreateGroup(GetTranslated(641, 2, "Training Idle Time"), $x - 20, $y - 20, 151, 215)
+	$grpCloseWaitTrain = GUICtrlCreateGroup(GetTranslated(641, 2, "Training Idle Time"), $x - 20, $y - 20, 151, 243)	
 		;
 		$chkCloseWaitEnable = GUICtrlCreateCheckbox(GetTranslated(641, 3, "Close While Training"),$x - 12, $y, 140, -1)
 			$txtTip = GetTranslated(641, 4, "Option will exit CoC game for time required to complete TROOP training when SHIELD IS ACTIVE")& @CRLF & _
@@ -671,7 +671,17 @@ $hGUI_ARMY_TAB_ITEM4 = GUICtrlCreateTabItem(GetTranslated(641,1,"Options"))
 			_GUICtrlSetTip(-1, $txtTip)
 		$lblCloseWaitRdmPercent = GUICtrlCreateLabel("%",$x + 84, $y+3, -1, 18)
 		_GUICtrlSetTip(-1, $txtTip)
-	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	;max logout time
+	$y += 28
+		$chkTrainLogoutMaxTime = GUICtrlCreateCheckbox("Max Logout: ", $x-12, $y, -1, -1)
+			$txtTip = "Only allow logout for a maximum amount of time: "
+			GUICtrlSetTip(-1, $txtTip)
+		$txtTrainLogoutMaxTime = GUICtrlCreateInput("4", $x + 75, $y + 1, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 2)
+		$lblTrainLogoutMaxTime= GUICtrlCreateLabel("min", $x + 110, $y + 3, -1, -1)
+		GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$y += 53
 	$grpTiming = GUICtrlCreateGroup(GetTranslated(636,30, "Train Click Timing"), $x - 20, $y - 20, 151, 60)

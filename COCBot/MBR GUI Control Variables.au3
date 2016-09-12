@@ -74,7 +74,7 @@ Global $groupTroops2=$grpOtherTroops&"#"&$lblGiants&"#"&$lblWallBreakers&"#"&$lb
 
 ;Spell Army Training
 Global $groupTxtSpeels=$txtNumLightningSpell&"#"&$txtNumHealSpell&"#"&$txtNumRageSpell&"#"&$txtNumJumpSpell&"#"&$txtNumFreezeSpell&"#"&$txtNumPoisonSpell&"#"&$txtNumEarthSpell&"#"&$txtNumHasteSpell
-Global $groupCloseWaitTrain=$chkCloseWaitTrain&"#"&$btnCloseWaitStop&"#"&$picCloseWaitTrain&"#"&$btnCloseWaitStopRandom&"#"&$picCloseWaitStop&"#"&$btnCloseWaitExact&"#"&$picCloseWaitExact&"#"&$btnCloseWaitRandom&"#"&$cmbCloseWaitRdmPercent&"#"&$lblCloseWaitRdmPercent
+Global $groupCloseWaitTrain=$chkCloseWaitTrain&"#"&$btnCloseWaitStop&"#"&$picCloseWaitTrain&"#"&$btnCloseWaitStopRandom&"#"&$picCloseWaitStop&"#"&$btnCloseWaitExact&"#"&$picCloseWaitExact&"#"&$btnCloseWaitRandom&"#"&$cmbCloseWaitRdmPercent&"#"&$lblCloseWaitRdmPercent&"#"&$chkTrainLogoutMaxTime&"#"&$txtTrainLogoutMaxTime
 
 ;Spell
 Global $groupLightning =$lblLightningIcon&"#"&$lblLightningSpell&"#"&$txtNumLightningSpell&"#"&$lblTimesLightS

@@ -207,6 +207,12 @@ Func SmartWait4Train()
 			Return ; stop trying to close while training this time
 	EndSwitch
 
+	;max logout time
+	IF $TrainLogoutMaxTime = 1 THEN	
+		SetLog("Train time= " & StringFormat("%.2f", $iTrainWaitTime) & " minutes, MaxLogoutTime Enabled = "& number($TrainLogoutMaxTimeTXT) &" mins", $COLOR_BLUE) 
+		$iTrainWaitTime = _min($iTrainWaitTime, number($TrainLogoutMaxTimeTXT)-0.4)
+	ENDIF
+
 	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then
 		Setlog("Training time values: " & StringFormat("%.2f", $aTimeTrain[0]) & " : " & StringFormat("%.2f", $aTimeTrain[1]) & " : " & StringFormat("%.2f", $aTimeTrain[2]), $COLOR_PURPLE)
 		SetLog("$iTrainWaitTime= " & StringFormat("%.2f", $iTrainWaitTime) & " minutes", $COLOR_PURPLE)
