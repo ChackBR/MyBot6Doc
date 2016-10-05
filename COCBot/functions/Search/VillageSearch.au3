@@ -397,8 +397,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	;--- write in log match found ----
 	If $AlertSearch = 1 Then
 		TrayTip($sModeText[$iMatchMode] & " Match Found!", "Gold: " & $searchGold & "; Elixir: " & $searchElixir & "; Dark: " & $searchDark & "; Trophy: " & $searchTrophy, "", 0)
-		If FileExists(@WindowsDir & "\media\Festival\Windows Exclamation.wav") Then
-			SoundPlay(@WindowsDir & "\media\Festival\Windows Exclamation.wav", 1)
+		If FileExists(@WindowsDir & "\media\Calligraphy\Windows Notify.wav") Then
+			SoundPlay(@WindowsDir & "\media\Calligraphy\Windows Notify.wav", 1)
 		ElseIf FileExists(@WindowsDir & "\media\Windows Exclamation.wav") Then
 			SoundPlay(@WindowsDir & "\media\Windows Exclamation.wav", 1)
 		EndIf

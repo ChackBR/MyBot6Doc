@@ -36,6 +36,8 @@ Global $GlobalMessages1 = ""
 Global $GlobalMessages2 = ""
 Global $GlobalMessages3 = ""
 Global $GlobalMessages4 = ""
+Global $ChatbotStartTime
+
 ; END SETTINGS =============================================
 
 ; GUI ======================================================
@@ -54,7 +56,7 @@ Global $chkUseCleverbot;
 Global $chkUseSimsimi;
 Global $chkUseGeneric;
 Global $chkChatPushbullet;
-;Global $chkPbSendNewChats;
+Global $chkPbSendNewChats;
 
 Global $editGlobalMessages1;
 Global $editGlobalMessages2;
@@ -158,6 +160,7 @@ EndFunc
 
 Func ChatGuiCheckboxUpdateAT()
 	If GUICtrlRead($chkGlobalChat) = $GUI_CHECKED Then
+		GUICtrlSetState($chkClanChat, $GUI_DISABLE)
 		GUICtrlSetState($chkGlobalScramble, $GUI_ENABLE)
 		GUICtrlSetState($chkSwitchLang, $GUI_ENABLE)
 		GUICtrlSetState($ChatbotChatDelayLabel, $GUI_ENABLE)
@@ -168,6 +171,7 @@ Func ChatGuiCheckboxUpdateAT()
 		GUICtrlSetState($editGlobalMessages4, $GUI_ENABLE)
 	Else
 		$FoundChatMessage = 0
+		GUICtrlSetState($chkClanChat, $GUI_ENABLE)
 		GUICtrlSetState($chkGlobalScramble, $GUI_DISABLE)
 		GUICtrlSetState($chkSwitchLang, $GUI_DISABLE)
 		GUICtrlSetState($ChatbotChatDelayLabel, $GUI_DISABLE)
@@ -178,6 +182,7 @@ Func ChatGuiCheckboxUpdateAT()
 		GUICtrlSetState($editGlobalMessages4, $GUI_DISABLE)
 	EndIf
 	If GUICtrlRead($chkClanChat) = $GUI_CHECKED Then
+		GUICtrlSetState($chkGlobalChat, $GUI_DISABLE)
 		GUICtrlSetState($chkChatPushbullet, $GUI_CHECKED)
 		GUICtrlSetState($chkUseResponses, $GUI_ENABLE)
 		GUICtrlSetState($chkUseCleverbot, $GUI_ENABLE)
@@ -191,6 +196,7 @@ Func ChatGuiCheckboxUpdateAT()
 		GUICtrlSetState($chkchatdelay, $GUI_ENABLE)
 	Else
 		$FoundChatMessage = 0
+		GUICtrlSetState($chkGlobalChat, $GUI_ENABLE)
 		GUICtrlSetState($chkChatPushbullet, $GUI_UNCHECKED)
 		GUICtrlSetState($chkUseResponses, $GUI_UNCHECKED)
 		GUICtrlSetState($chkUseGeneric, $GUI_UNCHECKED)
@@ -322,7 +328,7 @@ Func ChatbotIsInterval()
 	  Return False
    EndIf
 EndFunc
-
+#Cs
 ; Returns the response from cleverbot or simsimi, if any
 Func runHelper($msg, $isCleverbot) ; run a script to get a response from cleverbot.com or simsimi.com
    Dim $DOS, $Message = ''
@@ -355,7 +361,7 @@ Func runHelper($msg, $isCleverbot) ; run a script to get a response from cleverb
    WEnd
    Return StringStripWS($Message, 7)
 EndFunc
-
+#Ce
 Func ChatbotIsLastChatNew() ; returns true if the last chat was not by you, false otherwise
    _CaptureRegion()  
 	If _ColorCheck(_GetPixelColor(26, 312 + $midOffsetY, True), Hex(0xf00810, 6), 20) Then Return True ; detect the new chat
@@ -515,13 +521,13 @@ If $FoundChatMessage = 1 Or $ChatbotChatGlobal Then
 			$FoundChatMessage = 0
 		Return
 		
-		If Not $SentMessage Then
-			If $ChatbotClanAlwaysMsg Then
-			   If Not ChatbotChatClanInput() Then Return
-			   If Not ChatbotChatInput($ClanMessages[Random(0, UBound($ClanMessages) - 1, 1)]) Then Return
-			   If Not ChatbotChatSendClan() Then Return
-			EndIf
-		EndIf
+		;If Not $SentMessage Then
+		;	If $ChatbotClanAlwaysMsg Then
+		;	   If Not ChatbotChatClanInput() Then Return
+		;	   If Not ChatbotChatInput($ClanMessages[Random(0, UBound($ClanMessages) - 1, 1)]) Then Return
+		;	   If Not ChatbotChatSendClan() Then Return
+		;	EndIf
+		;EndIf
 		
 		; send it via pushbullet/telegram
 		If $ChatbotUsePushbullet Then

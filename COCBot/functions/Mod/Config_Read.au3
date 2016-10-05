@@ -5,6 +5,7 @@
 
 	; by AwesomeGamer
 	$iChkDontRemove = IniRead($config, "troop", "DontRemove", "0")
+	$iChkBarrackSpell = IniRead($config, "Spells", "BarrackSpell", "0")
 
 	; SmartZap Settings - Added by LunaEclipse
 	$ichkSmartZap = IniRead($config, "SmartZap", "UseSmartZap", "1")

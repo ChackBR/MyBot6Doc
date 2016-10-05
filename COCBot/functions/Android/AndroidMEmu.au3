@@ -97,6 +97,7 @@ Func GetMEmuPath()
 		 EndIf
 	  EndIf
    EndIf
+   $MEmu_Path = StringReplace($MEmu_Path, "\\", "\")
    Return $MEmu_Path
 EndFunc
 

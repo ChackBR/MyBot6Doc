@@ -2,14 +2,20 @@
 ; MOD Config - Save Data
 ;
 
-	; by AwesomeGamer
+	; DEB - by AwesomeGamer
 	If GUICtrlRead($chkDontRemove) = $GUI_CHECKED Then
 		IniWriteS($config, "troop", "DontRemove", 1)
 	Else
 		IniWriteS($config, "troop", "DontRemove", 0)
 	EndIf
 
-	; SmartZap Settings - Added by LunaEclipse
+	If GUICtrlRead($chkBarrackSpell) = $GUI_CHECKED Then
+		IniWrite($config, "Spells", "BarrackSpell", 1)
+	Else
+		IniWrite($config, "Spells", "BarrackSpell", 0)
+	EndIf
+
+	; SmartZap - by LunaEclipse
 	If GUICtrlRead($chkSmartLightSpell) = $GUI_CHECKED Then
 		IniWrite($config, "SmartZap", "UseSmartZap", 1)
 	Else

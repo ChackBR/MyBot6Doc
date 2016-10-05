@@ -44,6 +44,9 @@ Global $remainingTroops[12][2]
 ; No League Search
 Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$iModeCount]
 
+; BarrackSpell
+Global $iChkBarrackSpell, $chkBarrackSpell
+
 ;
 ; MikeCoC
 ;
@@ -65,20 +68,6 @@ $iCSVSpeeds[9] = 2.25
 $iCSVSpeeds[10] = 2.5
 $iCSVSpeeds[11] = 2.75
 $iCSVSpeeds[12] = 3
-
-;
-; CDudz
-;
-
-; Telegram extension
-Global $TelegramEnabled
-
-;
-; TheRevenor
-;
-
-; ChatBot
-Global $FoundChatMessage = 0
 
 ;
 ; mandryd
