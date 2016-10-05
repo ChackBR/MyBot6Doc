@@ -36,6 +36,9 @@ Global Const $drillLevelSteal[6] = [59, _
 Global $iChkDontRemove = 1
 Global $chkDontRemove = True
 
+; BarrackSpell
+Global $iChkBarrackSpell, $chkBarrackSpell
+
 ; CSV Mod
 Global $attackcsv_use_red_line = 1
 Global $TroopDropNumber = 0
@@ -43,9 +46,6 @@ Global $remainingTroops[12][2]
 
 ; No League Search
 Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$iModeCount]
-
-; BarrackSpell
-Global $iChkBarrackSpell, $chkBarrackSpell
 
 ;
 ; MikeCoC

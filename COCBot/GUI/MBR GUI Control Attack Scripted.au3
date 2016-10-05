@@ -300,7 +300,7 @@ EndFunc   ;==>sldSelectedSpeedAB
 		;;;; Attack Now Button (Useful for CSV Testing) By MR.ViPeR ;;;;
 Func AttackNowDB()
 	If $RunState Then Return
-	LockGUI()
+	Sleep(2000)
 	$iMatchMode = $DB			; Select Dead Base As Attack Type
 	$iAtkAlgorithm[$DB] = 1		; Select Scripted Attack
 	$scmbDBScriptName = GuiCtrlRead($cmbScriptNameDB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
@@ -309,12 +309,11 @@ Func AttackNowDB()
 	PrepareAttack($iMatchMode)	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
 	Attack()					; Fire xD
 	$RunState = False
-	UnLockGUI()
 EndFunc   ;==>AttackNow Dead Base
 
 Func AttackNowAB()
 	If $RunState Then Return
-	LockGUI()
+	Sleep(2000)
 	$iMatchMode = $LB			; Select Live Base As Attack Type
 	$iAtkAlgorithm[$LB] = 1		; Select Scripted Attack
 	$scmbABScriptName = GuiCtrlRead($cmbScriptNameAB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
@@ -323,8 +322,4 @@ Func AttackNowAB()
 	PrepareAttack($iMatchMode)	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
 	Attack()					; Fire xD
 	$RunState = False
-	UnLockGUI()
 EndFunc   ;==>AttackNow Live Base
-
-
-

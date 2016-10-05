@@ -68,7 +68,7 @@ Local $x = $xStart +  25, $y = $yStart +  75 + 25
 		$x -= 5
 		$icnBarb = GUICtrlCreateIcon ($pIconLib, $eIcnBarbarian, $x - 10, $y - 5, 24, 24)
 		$lblBarbarians = GUICtrlCreateLabel($sTxtBarbarians, $x + 20, $y, -1, -1)
-		$txtNumBarb = GUICtrlCreateInput("30", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtNumBarb = GUICtrlCreateInput("50", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtBarbarians & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetOnEvent(-1, "lblTotalCount")
@@ -76,7 +76,7 @@ Local $x = $xStart +  25, $y = $yStart +  75 + 25
 		$y += 25
 		$icnArch = GUICtrlCreateIcon ($pIconLib, $eIcnArcher, $x - 10, $y - 5, 24, 24)
 		$lblArchers = GUICtrlCreateLabel($sTxtArchers, $x + 20, $y, -1, -1)
-		$txtNumArch = GUICtrlCreateInput("60", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtNumArch = GUICtrlCreateInput("50", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtArchers & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetOnEvent(-1, "lblTotalCount")
@@ -84,7 +84,7 @@ Local $x = $xStart +  25, $y = $yStart +  75 + 25
 		$y += 25
 		$icnGobl = GUICtrlCreateIcon ($pIconLib, $eIcnGoblin, $x - 10, $y - 5, 24, 24)
 		$lblGoblins = GUICtrlCreateLabel($sTxtGoblins, $x + 20, $y, -1, -1)
-		$txtNumGobl = GUICtrlCreateInput("10", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtNumGobl = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtGoblins & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetOnEvent(-1, "lblTotalCount")
@@ -150,14 +150,14 @@ Local $x = $xStart +  160 + 5, $y = $yStart +  75 + 25
 	$grpOtherTroops = GUICtrlCreateGroup(GetTranslated(621,22, "Add. Troops"), $x - 15, $y - 20, 139, 250)
 		$icnGiant = GUICtrlCreateIcon ($pIconLib, $eIcnGiant, $x - 10, $y - 5, 24, 24)
 		$lblGiants = GUICtrlCreateLabel($sTxtGiants, $x + 16, $y, -1, -1)
-		$txtNumGiant = GUICtrlCreateInput("4", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$txtNumGiant = GUICtrlCreateInput("12", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtGiants & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesGiants = GUICtrlCreateLabel("x", $x + 115, $y, -1, -1)
 		$y +=25
 		$icnWall = GUICtrlCreateIcon ($pIconLib, $eIcnWallBreaker, $x - 10, $y - 5, 24, 24)
 		$lblWallBreakers = GUICtrlCreateLabel($sTxtWallBreakers, $x + 16, $y, -1, -1)
-		$txtNumWall = GUICtrlCreateInput("4", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$txtNumWall = GUICtrlCreateInput("0", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtWallBreakers & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesWallBreakers = GUICtrlCreateLabel("x", $x + 115, $y, -1, -1)
@@ -456,6 +456,15 @@ Local $x = $xStart + 25, $y = $yStart +  80 + 25 - 60
 			$txtTip = "Amount of used spells."
 			GUICtrlSetTip(-1, $txtTip)
 	; SmartZap Settings - End
+	
+	;====================== Spell Barrack Mode ======================
+	$x = 265
+	$y = 313
+	$grpMods = GUICtrlCreateGroup("Spells Training Options", $x - 20, $y + 2, 182, 40)
+		$y +=18
+		$chkBarrackSpell = GUICtrlCreateCheckbox("Spell Barrack Mode", $x - 10, $y, -1, -1)
+			$txtTip ="Train spells continuously in barrack mode (Lightning, Heal, and Rage only)."
+			_GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
 
