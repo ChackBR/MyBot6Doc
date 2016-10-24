@@ -15,7 +15,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func TrainIt($troopKind, $howMuch = 1, $iSleep = 400)
-	If $debugsetlogTrain = 1 Then SetLog("Func TrainIt " & $troopKind & " " & $howMuch & " " & $iSleep, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Func TrainIt " & $troopKind & " " & $howMuch & " " & $iSleep, $COLOR_DEBUG)
 	Local $bDark = False
 	_CaptureRegion()
 	Local $pos = GetTrainPos($troopKind)
@@ -33,12 +33,12 @@ Func TrainIt($troopKind, $howMuch = 1, $iSleep = 400)
 							For $i = 0 To UBound($TroopDarkName) - 1
 								If Eval("e" & $TroopDarkName[$i]) = $troopKind Then
 									$bDark = True
-									Setlog("Not enough Dark Elixir to train position " & $troopKind & " troops!", $COLOR_RED)
+									Setlog("Not enough Dark Elixir to train position " & $troopKind & " troops!", $COLOR_ERROR)
 									ExitLoop
 								EndIf
 							Next
-							If Not $bDark Then Setlog("Not enough Elixir to train position " & $troopKind & " troops!", $COLOR_RED)
-							Setlog("Switching to Halt Attack, Stay Online Mode...", $COLOR_RED)
+							If Not $bDark Then Setlog("Not enough Elixir to train position " & $troopKind & " troops!", $COLOR_ERROR)
+							Setlog("Switching to Halt Attack, Stay Online Mode...", $COLOR_ERROR)
 							$ichkBotStop = 1 ; set halt attack variable
 							$icmbBotCond = 18; set stay online
 							If Not ($fullarmy = True) Then $Restart = True ;If the army camp is full, If yes then use it to refill storages
@@ -46,26 +46,26 @@ Func TrainIt($troopKind, $howMuch = 1, $iSleep = 400)
 						EndIf
 						Return True
 					Else
-						Setlog("TrainIt position " & $troopKind & " - RNDName did not return array?", $COLOR_RED)
+						Setlog("TrainIt position " & $troopKind & " - RNDName did not return array?", $COLOR_ERROR)
 					EndIf
 				Else
-					Setlog("TrainIt " & NameOfTroop($troopKind) & " - FullName did not return array?", $COLOR_RED)
+					Setlog("TrainIt " & NameOfTroop($troopKind) & " - FullName did not return array?", $COLOR_ERROR)
 				EndIf
 			Else
-				Setlog("TrainIt " & NameOfTroop($troopKind) & " - GemName did not return array?", $COLOR_RED)
+				Setlog("TrainIt " & NameOfTroop($troopKind) & " - GemName did not return array?", $COLOR_ERROR)
 			EndIf
 		Else
 			Local $badPixelColor = _GetPixelColor($pos[0], $pos[1], $bNoCapturePixel)
 			If StringMid($badPixelColor, 1, 2) = StringMid($badPixelColor, 3, 2) And StringMid($badPixelColor, 1, 2) = StringMid($badPixelColor, 5, 2) Then
 				; Pixel is gray, so queue is full -> nothing to inform the user about
-				If $debugsetlogTrain = 1 Then Setlog("Troop " & NameOfTroop($troopKind) & " is not available due to full queue", $COLOR_PURPLE)
+				If $debugsetlogTrain = 1 Then Setlog("Troop " & NameOfTroop($troopKind) & " is not available due to full queue", $COLOR_DEBUG)
 			Else
-				Setlog("Bad pixel check on troop position " & NameOfTroop($troopKind), $COLOR_RED)
-				If $debugsetlogTrain = 1 Then Setlog("Train Pixel Color: " & $badPixelColor, $COLOR_PURPLE)
+				Setlog("Bad pixel check on troop position " & NameOfTroop($troopKind), $COLOR_ERROR)
+				If $debugsetlogTrain = 1 Then Setlog("Train Pixel Color: " & $badPixelColor, $COLOR_DEBUG)
 			EndIf
 		EndIf
 	Else
-		Setlog("Impossible happened? TrainIt troop position " & NameOfTroop($troopKind) & " did not return array", $COLOR_RED)
+		Setlog("Impossible happened? TrainIt troop position " & NameOfTroop($troopKind) & " did not return array", $COLOR_ERROR)
 	EndIf
 EndFunc   ;==>TrainIt
 
@@ -74,7 +74,7 @@ EndFunc   ;==>TrainIt
 ;
 
 Func GetTrainPos($troopKind)
-	If $debugsetlogTrain = 1 Then SetLog("Func GetTrainPos " & $troopKind, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Func GetTrainPos " & $troopKind, $COLOR_DEBUG)
 	For $i = 0 To UBound($TroopName) - 1
 		If Eval("e" & $TroopName[$i]) = $troopKind Then
 			Return Eval("Train" & $TroopName[$i])
@@ -90,7 +90,7 @@ Func GetTrainPos($troopKind)
 EndFunc   ;==>GetTrainPos
 
 Func GetFullName($troopKind)
-	If $debugsetlogTrain = 1 Then SetLog("Func GetFullName " & $troopKind, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Func GetFullName " & $troopKind, $COLOR_DEBUG)
 	For $i = 0 To UBound($TroopName) - 1
 		If Eval("e" & $TroopName[$i]) = $troopKind Then
 			Return Eval("Full" & $TroopName[$i])
@@ -106,7 +106,7 @@ Func GetFullName($troopKind)
 EndFunc   ;==>GetFullName
 
 Func GetGemName($troopKind)
-	If $debugsetlogTrain = 1 Then SetLog("Func GetGemName " & $troopKind, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Func GetGemName " & $troopKind, $COLOR_DEBUG)
 	For $i = 0 To UBound($TroopName) - 1
 		If Eval("e" & $TroopName[$i]) = $troopKind Then
 			Return Eval("Gem" & $TroopName[$i])
@@ -122,7 +122,7 @@ Func GetGemName($troopKind)
 EndFunc   ;==>GetGemName
 
 Func GetRNDName($troopKind)
-	If $debugsetlogTrain = 1 Then SetLog("Func GetRNDName " & $troopKind, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Func GetRNDName " & $troopKind, $COLOR_DEBUG)
 	For $i = 0 To UBound($TroopName) - 1
 		If Eval("e" & $TroopName[$i]) = $troopKind Then
 			Return Eval("Train" & $TroopName[$i] & "RND")

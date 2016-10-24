@@ -38,9 +38,9 @@ Func MilkingAttackStructureDestroyed($type, $level, $coordinate)
 		;----------
 		Local $found = 0
 		Local $posx, $posy
-		If $debugsetlog = 1 Then Setlog("##start search in vector Destroyed" & $name & "IMG" & $level & ": numbers of files=" & UBound(Eval("Destroyed" & $name & "IMG" & $level)), $color_green)
+		If $debugsetlog = 1 Then Setlog("##start search in vector Destroyed" & $name & "IMG" & $level & ": numbers of files=" & UBound(Eval("Destroyed" & $name & "IMG" & $level)), $COLOR_SUCCESS)
 ;~ 		 For $t = 1 To ubound(Eval("Destroyed" & $name & "IMG" & $level)) - 1
-;~ 			   If $debugsetlog=1 Then Setlog("-" &  Execute("$Destroyed" & $name & "IMG"& $level & "[" & $t & "]"),$color_aqua)
+;~ 			   If $debugsetlog=1 Then Setlog("-" &  Execute("$Destroyed" & $name & "IMG"& $level & "[" & $t & "]"),$COLOR_DEBUG1)
 ;~ 		 Next
 		For $t = UBound(Eval("Destroyed" & $name & "IMG" & $level)) - 1 To 1 Step -1 ;
 			$filename = Execute("$Destroyed" & $name & "IMG" & $level & "[" & $t & "]")
@@ -51,8 +51,8 @@ Func MilkingAttackStructureDestroyed($type, $level, $coordinate)
 			;If $debugsetlog=1 Then Setlog(">>tol " & $tolerance)
 			$found = _ImageSearch(@ScriptDir & "\images\CapacityStructure\" & Execute("$Destroyed" & $name & "IMG" & $level & "[" & $t & "]"), 1, $posx, $posy, $tolerance)
 			If $found = 1 Then
-				If $debugsetlog = 1 Then Setlog("IMAGECKECK OK " & $filename, $COLOR_purple)
-				If $debugsetlog = 1 Then SetLog(">>Structure Destroyed! (" & $name & "," & $level & "," & $tolerance & ")", $color_RED)
+				If $debugsetlog = 1 Then Setlog("IMAGECKECK OK " & $filename, $COLOR_DEBUG)
+				If $debugsetlog = 1 Then SetLog(">>Structure Destroyed! (" & $name & "," & $level & "," & $tolerance & ")", $COLOR_ERROR)
 				;Msgbox("","","destroyed")
 				Return True
 				ExitLoop

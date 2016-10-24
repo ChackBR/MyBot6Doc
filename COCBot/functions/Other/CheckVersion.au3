@@ -17,19 +17,19 @@ Func CheckVersion()
 	If $ichkVersion = 1 Then
 		CheckVersionHTML()
 		If $lastversion = "" Then
-			SetLog("WE CANNOT OBTAIN PRODUCT VERSION AT THIS TIME", $COLOR_ORANGE)
+			SetLog("WE CANNOT OBTAIN PRODUCT VERSION AT THIS TIME", $COLOR_ACTION)
 		ElseIf VersionNumFromVersionTXT($sBotVersion) < VersionNumFromVersionTXT($lastversion) Then
-			SetLog("WARNING, YOUR BOT VERSION (" & $sBotVersion & ") IS OUT OF DATE.", $COLOR_RED)
-			SetLog("PLEASE DOWNLOAD THE LATEST(" & $lastversion & ") FROM https://MyBot.run               ", $COLOR_RED)
+			SetLog("WARNING, YOUR BOT VERSION (" & $sBotVersion & ") IS OUT OF DATE.", $COLOR_ERROR)
+			SetLog("PLEASE DOWNLOAD THE LATEST(" & $lastversion & ") FROM https://MyBot.run               ", $COLOR_ERROR)
 			SetLog(" ")
 			_PrintLogVersion($oldversmessage)
 		ElseIf VersionNumFromVersionTXT($sBotVersion) > VersionNumFromVersionTXT($lastversion) Then
-			SetLog("YOU ARE USING A FUTURE VERSION OF MYBOT CHIEF!", $COLOR_GREEN)
-			SetLog("YOUR VERSION: " & $sBotVersion, $COLOR_GREEN)
-			SetLog("OFFICIAL VERSION: " & $lastversion, $COLOR_GREEN)
+			SetLog("YOU ARE USING A FUTURE VERSION OF MYBOT CHIEF!", $COLOR_SUCCESS)
+			SetLog("YOUR VERSION: " & $sBotVersion, $COLOR_SUCCESS)
+			SetLog("OFFICIAL VERSION: " & $lastversion, $COLOR_SUCCESS)
 			SetLog(" ")
 		Else
-			SetLog("WELCOME CHIEF, YOU HAVE THE LATEST VERSION OF THE BOT", $COLOR_GREEN)
+			SetLog("WELCOME CHIEF, YOU HAVE THE LATEST VERSION OF THE BOT", $COLOR_SUCCESS)
 			SetLog(" ")
 			_PrintLogVersion($lastmessage)
 		EndIf
@@ -82,10 +82,9 @@ Func CheckVersionHTML()
 	EndIf
 
 	;search version into downloaded page
-	Local $f, $f2, $line, $line2, $Casesense = 0, $chkvers = False, $chkmsg = False, $chkmsg2 = False, $i = 0
+	Local $line, $line2, $Casesense = 0, $chkvers = False, $chkmsg = False, $chkmsg2 = False, $i = 0
 	$lastversion = ""
 	If FileExists($versionfile) Then
-		$f = FileOpen($versionfile, 0)
 		$lastversion = IniRead($versionfile, "general", "version", "")
 		;look for localized messages for the new and old versions
 		Local $versionfilelocalized = @ScriptDir & "\LastVersion_" & $sLanguage & ".txt";
@@ -105,16 +104,13 @@ Func CheckVersionHTML()
 			InetClose($hDownload)
 		EndIf
 		If FileExists($versionfilelocalized) Then
-			$f2 = FileOpen($versionfilelocalized, 0)
 			$lastmessage = IniRead($versionfilelocalized, "general", "messagenew", "")
 			$oldversmessage = IniRead($versionfilelocalized, "general", "messageold", "")
-			FileClose($f2)
 			FileDelete($versionfilelocalized)
 		Else
 			$lastmessage = IniRead($versionfile, "general", "messagenew", "")
 			$oldversmessage = IniRead($versionfile, "general", "messageold", "")
 		EndIf
-		FileClose($f)
 		FileDelete($versionfile)
 	EndIf
 EndFunc   ;==>CheckVersionHTML

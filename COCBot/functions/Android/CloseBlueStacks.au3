@@ -14,10 +14,6 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func CloseBS() ; @deprecated, use CloseAndroid()
-	CloseAndroid()
-EndFunc   ;==>CloseBS
-
 Func CloseBlueStacks()
 	Local $iIndex, $bOops = False
 	Local $aServiceList[4] = ["BstHdAndroidSv", "BstHdLogRotatorSvc", "BstHdUpdaterSvc", "bthserv"]
@@ -26,7 +22,7 @@ Func CloseBlueStacks()
 
 	RunWait($__BlueStacks_Path & "HD-Quit.exe")
 	If @error <> 0 Then
-		SetLog($Android & " failed to quit", $COLOR_RED)
+		SetLog($Android & " failed to quit", $COLOR_ERROR)
 		;SetError(1, @extended, -1)
 		;Return False
 	EndIf
@@ -38,21 +34,21 @@ Func CloseBlueStacks()
 
 	If $bOops Then
 		$bOops = False
-		SetDebugLog("Failed to terminate HD-Frontend.exe with HD-Quit.exe, fallback to taskkill", $COLOR_RED)
+		SetDebugLog("Failed to terminate HD-Frontend.exe with HD-Quit.exe, fallback to taskkill", $COLOR_ERROR)
 		KillBSProcess()
 		If _Sleep(1000) Then Return ; wait a bit
 
-		SetLog("Please wait for full BS shutdown....", $COLOR_GREEN)
+		SetLog("Please wait for full BS shutdown....", $COLOR_SUCCESS)
 
 		For $iIndex = 0 To UBound($aServiceList) - 1
 			ServiceStop($aServiceList[$iIndex])
 			If @error Then
 				$bOops = True
-				If $debugsetlog = 1 Then Setlog($aServiceList[$iIndex] & "errored trying to stop", $COLOR_MAROON)
+				If $debugsetlog = 1 Then Setlog($aServiceList[$iIndex] & "errored trying to stop", $COLOR_WARNING)
 			EndIf
 		Next
 		If $bOops Then
-			If $debugsetlog = 1 Then Setlog("Service Stop issues, Stopping BS 2nd time", $COLOR_MAROON)
+			If $debugsetlog = 1 Then Setlog("Service Stop issues, Stopping BS 2nd time", $COLOR_WARNING)
 			KillBSProcess()
 			If _SleepStatus(5000) Then Return
 		EndIf
@@ -60,7 +56,7 @@ Func CloseBlueStacks()
 
 
 	If $debugsetlog = 1 And $bOops Then
-		SetLog("BS Kill Failed to stop service", $COLOR_RED)
+		SetLog("BS Kill Failed to stop service", $COLOR_ERROR)
 	EndIf
 
 	If $bOops Then
@@ -77,7 +73,7 @@ Func CloseBlueStacks2()
 
 	RunWait($__BlueStacks_Path & "HD-Quit.exe")
 	If @error <> 0 Then
-		SetLog($Android & " failed to quit", $COLOR_RED)
+		SetLog($Android & " failed to quit", $COLOR_ERROR)
 		;SetError(1, @extended, -1)
 		;Return False
 	EndIf
@@ -98,13 +94,13 @@ Func KillBSProcess()
 
 	For $iIndex = 0 To UBound($aBS_FileNames) - 1
 		$aBS_FileNames[$iIndex][1] = ProcessExists($aBS_FileNames[$iIndex][0]) ; Find the PID for each BS file name that is running
-		If $debugsetlog = 1 Then Setlog($aBS_FileNames[$iIndex][0] & " PID = " & $aBS_FileNames[$iIndex][1], $COLOR_PURPLE)
+		If $debugsetlog = 1 Then Setlog($aBS_FileNames[$iIndex][0] & " PID = " & $aBS_FileNames[$iIndex][1], $COLOR_DEBUG)
 		If $aBS_FileNames[$iIndex][1] > 0 Then ; If it is running, then kill it
 			ShellExecute(@WindowsDir & "\System32\taskkill.exe", " -t -pid " & $aBS_FileNames[$iIndex][1], "", Default, @SW_HIDE)
 			If _Sleep(1000) Then Return ; Give OS time to work
 		EndIf
 		If ProcessExists($aBS_FileNames[$iIndex][1]) Then ; If it is still running, then force kill it
-			If $debugsetlog = 1 Then Setlog($aBS_FileNames[$iIndex][0] & " 1st Kill failed, trying again", $COLOR_PURPLE)
+			If $debugsetlog = 1 Then Setlog($aBS_FileNames[$iIndex][0] & " 1st Kill failed, trying again", $COLOR_DEBUG)
 			ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -pid " & $aBS_FileNames[$iIndex][1], "", Default, @SW_HIDE)
 			If _Sleep(500) Then Return ; Give OS time to work
 		EndIf
@@ -121,7 +117,7 @@ Func ServiceStop($sServiceName)
 
 	$Result = RunWait(@ComSpec & " /c " & 'net stop ' & $sServiceName, "", @SW_HIDE)
 	If @error Then
-		Setlog("net stop service failed on " & $sServiceName & ", Result= " & $Result, $COLOR_RED)
+		Setlog("net stop service failed on " & $sServiceName & ", Result= " & $Result, $COLOR_ERROR)
 		SetError(1, @extended, -1)
 		Return
 	EndIf
@@ -139,8 +135,8 @@ Func ServiceStop($sServiceName)
 		$Result = StringInStr($data, "stopped")
 		$bFailed = StringInStr($data, "failed")
 		;		If $debugsetlog = 1 Then
-		;			SetLog($sServiceName & " stop status= " & $Result, $COLOR_PURPLE)
-		;			SetLog("StdOutRead= " & $data, $COLOR_PURPLE)
+		;			SetLog($sServiceName & " stop status= " & $Result, $COLOR_DEBUG)
+		;			SetLog("StdOutRead= " & $data, $COLOR_DEBUG)
 		;		EndIf
 		If $Result Then
 			$ServiceRunning = False
@@ -153,9 +149,9 @@ Func ServiceStop($sServiceName)
 		If _Sleep(1000) Then Return ; Loop delay check for close every 1 second
 	WEnd
 	If $debugsetlog = 1 And $svcWaitIterations > 15 Then
-		SetLog("Failed to stop service " & $sServiceName, $COLOR_RED)
+		SetLog("Failed to stop service " & $sServiceName, $COLOR_ERROR)
 	Else
-		If $debugsetlog = 1 Then SetLog($sServiceName & "Service stopped successfully", $COLOR_GREEN)
+		If $debugsetlog = 1 Then SetLog($sServiceName & "Service stopped successfully", $COLOR_SUCCESS)
 	EndIf
 EndFunc   ;==>ServiceStop
 
@@ -164,8 +160,8 @@ Func CloseUnsupportedBlueStacks2()
 	If IsArray(ControlGetPos("Bluestacks App Player", "", "")) Then ; $AndroidAppConfig[1][4]
 		Opt("WinTitleMatchMode", $WinTitleMatchMode)
 		; Offical "Bluestacks App Player" v2.0 not supported because it changes the Android Screen!!!
-		SetLog("MyBot doesn't work with " & $Android & " App Player", $COLOR_RED)
-		SetLog("Please let MyBot start " & $Android & " automatically", $COLOR_BLUE)
+		SetLog("MyBot doesn't work with " & $Android & " App Player", $COLOR_ERROR)
+		SetLog("Please let MyBot start " & $Android & " automatically", $COLOR_INFO)
 		RebootBlueStacks2SetScreen(False)
 		Return True
 	EndIf

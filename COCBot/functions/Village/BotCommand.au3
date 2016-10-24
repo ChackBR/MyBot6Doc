@@ -92,47 +92,47 @@ Func BotCommand()
 
 		If $MeetCondStop Then
 			If $icmbBotCond <> 4 And $icmbBotCond <> 5 And $icmbBotCond <> 10 And $icmbBotCond <> 11 Then
-				If $Trophy <> "" Then SetLog($Trophy, $COLOR_GREEN)
+				If $Trophy <> "" Then SetLog($Trophy, $COLOR_SUCCESS)
 				If _Sleep($iDelayBotCommand1) Then Return
 			EndIf
 			Switch $icmbBotCommand
 				Case 0
 					If $bDonationEnabled = False Then
-						SetLog("Halt Attack, Stay Online/Collect...", $COLOR_BLUE)
+						SetLog("Halt Attack, Stay Online/Collect...", $COLOR_INFO)
 					ElseIf $bTrainEnabled = False Then
-						SetLog("Halt Attack, Stay Online/Collect/Donate...", $COLOR_BLUE)
+						SetLog("Halt Attack, Stay Online/Collect/Donate...", $COLOR_INFO)
 					Else
-						SetLog("Halt Attack, Stay Online/Train/Collect/Donate...", $COLOR_BLUE)
+						SetLog("Halt Attack, Stay Online/Train/Collect/Donate...", $COLOR_INFO)
 					EndIf
 					$CommandStop = 0 ; Halt Attack
 					If _Sleep($iDelayBotCommand1) Then Return
 				Case 1
-					SetLog("MyBot.run Bot Stop as requested!!", $COLOR_BLUE)
+					SetLog("MyBot.run Bot Stop as requested!!", $COLOR_INFO)
 					If _Sleep($iDelayBotCommand1) Then Return
 					Return True
 				Case 2
-					SetLog("MyBot.run Close Bot as requested!!", $COLOR_BLUE)
+					SetLog("MyBot.run Close Bot as requested!!", $COLOR_INFO)
 					If _Sleep($iDelayBotCommand1) Then Return
 					BotClose()
 					Return True ; HaHa - No Return possible!
 				Case 3
-					SetLog("Close Android and Bot as requested!!", $COLOR_BLUE)
+					SetLog("Close Android and Bot as requested!!", $COLOR_INFO)
 					If _Sleep($iDelayBotCommand1) Then Return
-					CloseAndroid()
+					CloseAndroid("BotCommand")
 					BotClose()
 					Return True ; HaHa - No Return possible!
 				Case 4
-					SetLog("Force Shutdown of PC...", $COLOR_BLUE)
+					SetLog("Force Shutdown of PC...", $COLOR_INFO)
 					If _Sleep($iDelayBotCommand1) Then Return
 					Shutdown(BitOR($SD_SHUTDOWN, $SD_FORCE)) ; Force Shutdown
 					Return True ; HaHa - No Return possible!
 				Case 5
-					SetLog("PC Sleep Mode Start now ...", $COLOR_BLUE)
+					SetLog("PC Sleep Mode Start now ...", $COLOR_INFO)
 					If _Sleep($iDelayBotCommand1) Then Return
 					Shutdown($SD_STANDBY) ; Sleep / Stand by
 					Return True ; HaHa - No Return possible!
 				Case 6
-					SetLog("Rebooting PC...", $COLOR_BLUE)
+					SetLog("Rebooting PC...", $COLOR_INFO)
 					If _Sleep($iDelayBotCommand1) Then Return
 					Shutdown(BitOR($SD_REBOOT, $SD_FORCE)) ; Reboot
 					Return True ; HaHa - No Return possible!

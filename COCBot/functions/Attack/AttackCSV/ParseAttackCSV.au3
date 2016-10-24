@@ -19,6 +19,9 @@ Func ParseAttackCSV($debug = False)
 	Global $ATTACKVECTOR_S, $ATTACKVECTOR_T, $ATTACKVECTOR_U, $ATTACKVECTOR_V, $ATTACKVECTOR_W, $ATTACKVECTOR_X
 	Global $ATTACKVECTOR_Y, $ATTACKVECTOR_Z
 	
+	Local $heightTopLeft = 0, $heightTopRight = 0, $heightBottomLeft = 0, $heightBottomRight = 0
+	Local $i
+
 	;AwesomeGamer CSV Mod
 	For $i = 0 to Ubound($atkTroops) - 1
 		$remainingTroops[$i][0] = $atkTroops[$i][0]
@@ -27,6 +30,7 @@ Func ParseAttackCSV($debug = False)
 	$TroopDropNumber = 0
 
 	Local $rownum = 0
+	Local $bForceSideExist = False
 
 	;Local $filename = "attack1"
 	If $iMatchMode = $DB Then
@@ -56,16 +60,16 @@ Func ParseAttackCSV($debug = False)
 			debugAttackCSV("line content: " & $line)
 			$acommand = StringSplit($line, "|")
 			If $acommand[0] >= 8 Then
-				$command = StringStripWS(StringUpper($acommand[1]), 2)
-				$value1 = StringStripWS(StringUpper($acommand[2]), 2)
-				$value2 = StringStripWS(StringUpper($acommand[3]), 2)
-				$value3 = StringStripWS(StringUpper($acommand[4]), 2)
-				$value4 = StringStripWS(StringUpper($acommand[5]), 2)
-				$value5 = StringStripWS(StringUpper($acommand[6]), 2)
-				$value6 = StringStripWS(StringUpper($acommand[7]), 2)
-				$value7 = StringStripWS(StringUpper($acommand[8]), 2)
-				$value8 = StringStripWS(StringUpper($acommand[9]), 2)
-				$value9 = StringStripWS(StringUpper($acommand[10]), 2)
+				$command = StringStripWS(StringUpper($acommand[1]), $STR_STRIPTRAILING)
+				$value1 = StringStripWS(StringUpper($acommand[2]), $STR_STRIPTRAILING)
+				$value2 = StringStripWS(StringUpper($acommand[3]), $STR_STRIPTRAILING)
+				$value3 = StringStripWS(StringUpper($acommand[4]), $STR_STRIPTRAILING)
+				$value4 = StringStripWS(StringUpper($acommand[5]), $STR_STRIPTRAILING)
+				$value5 = StringStripWS(StringUpper($acommand[6]), $STR_STRIPTRAILING)
+				$value6 = StringStripWS(StringUpper($acommand[7]), $STR_STRIPTRAILING)
+				$value7 = StringStripWS(StringUpper($acommand[8]), $STR_STRIPTRAILING)
+				$value8 = StringStripWS(StringUpper($acommand[9]), $STR_STRIPTRAILING)
+				$value9 = StringStripWS(StringUpper($acommand[10]), $STR_STRIPTRAILING)
 
 				Switch $command
 					Case ""
@@ -365,22 +369,22 @@ Func ParseAttackCSV($debug = False)
 								$DarkElixir = ""
 								$Trophies = getTrophyVillageSearch(48, 69 + 69)
 							EndIf
-							If $DebugSetLog = 1 Then SetLog("detected [G]: " & $Gold & " [E]: " & $Elixir & " [DE]: " & $DarkElixir, $COLOR_BLUE)
+							If $DebugSetLog = 1 Then SetLog("detected [G]: " & $Gold & " [E]: " & $Elixir & " [DE]: " & $DarkElixir, $COLOR_INFO)
 							;EXIT IF RESOURCES = 0
 							If $ichkEndNoResources[$iMatchMode] = 1 And Number($Gold) = 0 And Number($Elixir) = 0 And Number($DarkElixir) = 0 Then
-								If $DebugSetLog = 1 Then Setlog("From Attackcsv: Gold & Elixir & DE = 0, end battle ", $COLOR_PURPLE)
+								If $DebugSetLog = 1 Then Setlog("From Attackcsv: Gold & Elixir & DE = 0, end battle ", $COLOR_DEBUG)
 								$exitNoResources = 1
 								ExitLoop
 							EndIf
 							;CALCULATE TWO STARS REACH
 							If $ichkEndTwoStars[$iMatchMode] = 1 And _CheckPixel($aWonTwoStar, True) Then
-								If $DebugSetLog = 1 Then Setlog("From Attackcsv: Two Star Reach, exit", $COLOR_GREEN)
+								If $DebugSetLog = 1 Then Setlog("From Attackcsv: Two Star Reach, exit", $COLOR_SUCCESS)
 								$exitTwoStars = 1
 								ExitLoop
 							EndIf
 							;CALCULATE ONE STARS REACH
 							If $ichkEndOneStar[$iMatchMode] = 1 And _CheckPixel($aWonOneStar, True) Then
-								If $DebugSetLog = 1 Then Setlog("From Attackcsv: One Star Reach, exit", $COLOR_GREEN)
+								If $DebugSetLog = 1 Then Setlog("From Attackcsv: One Star Reach, exit", $COLOR_SUCCESS)
 								$exitOneStar = 1
 								ExitLoop
 							EndIf
@@ -396,14 +400,17 @@ Func ParseAttackCSV($debug = False)
 						ReleaseClicks()
 						PrepareAttack($iMatchMode, True)
 					Case "SIDE"
+                  		$heightTopLeft = 0
+                  		$heightTopRight = 0
+                  		$heightBottomLeft = 0
+                  		$heightBottomRight = 0
 						ReleaseClicks()
 						Setlog("Calculate main side... ")
 						If StringUpper($value8) = "TOP-LEFT" Or StringUpper($value8) = "TOP-RIGHT" Or StringUpper($value8) = "BOTTOM-LEFT" Or StringUpper($value8) = "BOTTOM-RIGHT" Then
 							$MAINSIDE = StringUpper($value8)
-							$MAINSIDEMAINSIDE = StringUpper($value8)
-							Setlog("Forced side: " & StringUpper($value8))
+							Setlog("Forced side: " & StringUpper($value8), $COLOR_INFO)
+							$bForceSideExist = True
 						Else
-							Local $heightTopLeft = 0, $heightTopRight = 0, $heightBottomLeft = 0, $heightBottomRight = 0
 
 							For $i = 0 To UBound($PixelMine) - 1
 								Local $str = ""
@@ -514,6 +521,83 @@ Func ParseAttackCSV($debug = False)
 								Case 7, 8
 									$heightBottomLeft += Int($value7)
 							EndSwitch
+						EndIf
+
+						Local $maxValue = $heightBottomRight
+						Local $sidename = "BOTTOM-RIGHT"
+
+						If $heightTopLeft > $maxValue Then
+							$maxValue = $heightTopLeft
+							$sidename = "TOP-LEFT"
+						EndIf
+
+						If $heightTopRight > $maxValue Then
+							$maxValue = $heightTopRight
+							$sidename = "TOP-RIGHT"
+						EndIf
+
+						If $heightBottomLeft > $maxValue Then
+							$maxValue = $heightBottomLeft
+							$sidename = "BOTTOM-LEFT"
+						EndIf
+
+						Setlog("Mainside: " & $sidename & " (top-left:" & $heightTopLeft & " top-right:" & $heightTopRight & " bottom-left:" & $heightBottomLeft & " bottom-right:" & $heightBottomRight)
+						$MAINSIDE = $sidename
+
+						Switch $MAINSIDE
+							Case "BOTTOM-RIGHT"
+								$FRONT_LEFT = "BOTTOM-RIGHT-DOWN"
+								$FRONT_RIGHT = "BOTTOM-RIGHT-UP"
+								$RIGHT_FRONT = "TOP-RIGHT-DOWN"
+								$RIGHT_BACK = "TOP-RIGHT-UP"
+								$LEFT_FRONT = "BOTTOM-LEFT-DOWN"
+								$LEFT_BACK = "BOTTOM-LEFT-UP"
+								$BACK_LEFT = "TOP-LEFT-DOWN"
+								$BACK_RIGHT = "TOP-LEFT-UP"
+							Case "BOTTOM-LEFT"
+								$FRONT_LEFT = "BOTTOM-LEFT-UP"
+								$FRONT_RIGHT = "BOTTOM-LEFT-DOWN"
+								$RIGHT_FRONT = "BOTTOM-RIGHT-DOWN"
+								$RIGHT_BACK = "BOTTOM-RIGHT-UP"
+								$LEFT_FRONT = "TOP-LEFT-DOWN"
+								$LEFT_BACK = "TOP-LEFT-UP"
+								$BACK_LEFT = "TOP-RIGHT-UP"
+								$BACK_RIGHT = "TOP-RIGHT-DOWN"
+							Case "TOP-LEFT"
+								$FRONT_LEFT = "TOP-LEFT-UP"
+								$FRONT_RIGHT = "TOP-LEFT-DOWN"
+								$RIGHT_FRONT = "BOTTOM-LEFT-UP"
+								$RIGHT_BACK = "BOTTOM-LEFT-DOWN"
+								$LEFT_FRONT = "TOP-RIGHT-UP"
+								$LEFT_BACK = "TOP-RIGHT-DOWN"
+								$BACK_LEFT = "BOTTOM-RIGHT-UP"
+								$BACK_RIGHT = "BOTTOM-RIGHT-DOWN"
+							Case "TOP-RIGHT"
+								$FRONT_LEFT = "TOP-RIGHT-DOWN"
+								$FRONT_RIGHT = "TOP-RIGHT-UP"
+								$RIGHT_FRONT = "TOP-LEFT-UP"
+								$RIGHT_BACK = "TOP-LEFT-DOWN"
+								$LEFT_FRONT = "BOTTOM-RIGHT-UP"
+								$LEFT_BACK = "BOTTOM-RIGHT-DOWN"
+								$BACK_LEFT = "BOTTOM-LEFT-DOWN"
+								$BACK_RIGHT = "BOTTOM-LEFT-UP"
+						EndSwitch
+
+					Case "SIDEB"
+						ReleaseClicks()
+						If $bForceSideExist = False Then
+							Setlog("Recalculate main side for additional defense buildings... ", $COLOR_INFO)
+
+							Switch StringLeft(Slice8($EagleArtilleryPos), 1)
+								Case 1, 2
+									$heightBottomRight += Int($value1)
+								Case 3, 4
+									$heightTopRight += Int($value1)
+								Case 5, 6
+									$heightTopLeft += Int($value1)
+								Case 7, 8
+									$heightBottomLeft += Int($value1)
+							EndSwitch
 
 							Local $maxValue = $heightBottomRight
 							Local $sidename = "BOTTOM-RIGHT"
@@ -533,7 +617,7 @@ Func ParseAttackCSV($debug = False)
 								$sidename = "BOTTOM-LEFT"
 							EndIf
 
-							Setlog("Mainside: " & $sidename & " (top-left:" & $heightTopLeft & " top-right:" & $heightTopRight & " bottom-left:" & $heightBottomLeft & " bottom-right:" & $heightBottomRight)
+							Setlog("New Mainside: " & $sidename & " (top-left:" & $heightTopLeft & " top-right:" & $heightTopRight & " bottom-left:" & $heightBottomLeft & " bottom-right:" & $heightBottomRight, $COLOR_INFO)
 							$MAINSIDE = $sidename
 						EndIf
 						Switch $MAINSIDE
@@ -576,10 +660,10 @@ Func ParseAttackCSV($debug = False)
 						EndSwitch
 
 					Case Else
-						Setlog("attack row bad, discard :row " & $rownum, $COLOR_RED)
+						Setlog("attack row bad, discard :row " & $rownum, $COLOR_ERROR)
 				EndSwitch
 			Else
-				If StringLeft($line, 7) <> "NOTE  |" And StringLeft($line, 7) <> "      |" And StringStripWS(StringUpper($line), 2) <> "" Then Setlog("attack row error, discard.: " & $line, $COLOR_RED)
+				If StringLeft($line, 7) <> "NOTE  |" And StringLeft($line, 7) <> "      |" And StringStripWS(StringUpper($line), 2) <> "" Then Setlog("attack row error, discard.: " & $line, $COLOR_ERROR)
 			EndIf
 			CheckHeroesHealth()
 			If _Sleep($iDelayRespond) Then ; check for pause/stop after each line of CSV, close file before return
@@ -602,6 +686,6 @@ Func ParseAttackCSV($debug = False)
 		ReleaseClicks()
 		FileClose($f)
 	Else
-		SetLog("Cannot find attack file " & $dirAttacksCSV & "\" & $filename & ".csv", $color_red)
+		SetLog("Cannot find attack file " & $dirAttacksCSV & "\" & $filename & ".csv", $COLOR_ERROR)
 	EndIf
 EndFunc   ;==>ParseAttackCSV

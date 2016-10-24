@@ -18,7 +18,7 @@
 ; ===============================================================================================================================
 Func UniversalCloseWaitOpenCoC($iWaitTime = 0, $sSource = "RudeUnknownProgrammer_", $StopEmulator = False, $bFullRestart = False)
 
-	If $debugsetlog = 1 Then Setlog("Begin UniversalCloseWaitOpenCoC:", $COLOR_PURPLE)
+	If $debugsetlog = 1 Then Setlog("Begin UniversalCloseWaitOpenCoC:", $COLOR_DEBUG1)
 
 	Local $sWaitTime = ""
 	Local $iMin, $iSec, $iHour, $iWaitSec, $StopAndroidFlag
@@ -47,24 +47,24 @@ Func UniversalCloseWaitOpenCoC($iWaitTime = 0, $sSource = "RudeUnknownProgrammer
 				Case Else
 					$msg = "One Bad Monkey Error!"
 			EndSwitch
-			Setlog("Random close option= " & $StopAndroidFlag & $msg, $COLOR_GREEN)
+			Setlog("Random close option= " & $StopAndroidFlag & $msg, $COLOR_SUCCESS)
 		Case StringInStr($StopEmulator, "idle", $STR_NOCASESENSEBASIC)
 			$StopAndroidFlag = 0
-		Case $StopEmulator = 0 Or $StopEmulator = "0" Or $StopEmulator = False
+		Case $StopEmulator = False
 			$StopAndroidFlag = 1
-		Case $StopEmulator = 1 Or $StopEmulator = "1" Or $StopEmulator = True
+		Case $StopEmulator = True
 			$StopAndroidFlag = 2
 		Case Else
 			$StopAndroidFlag = 1
-			SetLog("Code Monkey provided bad stop emulator flag value", $COLOR_RED)
+			SetLog("Code Monkey provided bad stop emulator flag value", $COLOR_ERROR)
 	EndSelect
-	If $debugsetlog = 1 Then Setlog("Stop Android flag : Input flag " & $StopAndroidFlag & " : " & $StopEmulator, $COLOR_PURPLE)
+	If $debugsetlog = 1 Then Setlog("Stop Android flag : Input flag " & $StopAndroidFlag & " : " & $StopEmulator, $COLOR_DEBUG)
 	If _Sleep($iDelayRespond) Then Return False
 
 	Switch $StopAndroidFlag
 		Case 0 ; Do nothing while waiting, Let app time out
 			If $iWaitTime > 0 Then
-				SetLog("Going idle for " & $sWaitTime & "before starting CoC", $COLOR_GREEN)
+				SetLog("Going idle for " & $sWaitTime & "before starting CoC", $COLOR_SUCCESS)
 				If _SleepStatus($iWaitTime) Then Return False
 			Else
 				If _SleepStatus($iDelayWaitnOpenCoC10000) Then Return False ; if waittime = 0 then only wait 10 seconds before restart
@@ -78,7 +78,7 @@ Func UniversalCloseWaitOpenCoC($iWaitTime = 0, $sSource = "RudeUnknownProgrammer
 				If $iWaitTime > 30000 Then
 					AndroidShieldForceDown(True)
 					EnableGuiControls() ; enable bot controls is more than 30 seconds wait time
-					SetLog("Enabled bot controls due to long wait time", $COLOR_GREEN)
+					SetLog("Enabled bot controls due to long wait time", $COLOR_SUCCESS)
 				EndIf
 				WaitnOpenCoC($iWaitTime, $bFullRestart)
 				AndroidShieldForceDown(False)
@@ -97,12 +97,12 @@ Func UniversalCloseWaitOpenCoC($iWaitTime = 0, $sSource = "RudeUnknownProgrammer
 		Case 2 ; Close emulator
 			PoliteCloseCoC($sSource)
 			If _Sleep(3000) Then Return False ; Wait 3 sec.
-			CloseAndroid()
+			CloseAndroid("UniversalCloseWaitOpenCoC")
 			If $iWaitTime > 0 Then
-				SetLog("Waiting " & $sWaitTime & "before starting CoC", $COLOR_GREEN)
+				SetLog("Waiting " & $sWaitTime & "before starting CoC", $COLOR_SUCCESS)
 				If $iWaitTime > 30000 Then
 					EnableGuiControls() ; enable bot controls is more than 30 seconds wait time
-					SetLog("Enabled bot controls due to long wait time", $COLOR_GREEN)
+					SetLog("Enabled bot controls due to long wait time", $COLOR_SUCCESS)
 				EndIf
 				If _SleepStatus($iWaitTime) Then Return False ; Wait for set requested
 				If $iWaitTime > 30000 Then
@@ -117,7 +117,7 @@ Func UniversalCloseWaitOpenCoC($iWaitTime = 0, $sSource = "RudeUnknownProgrammer
 			EndIf
 			StartAndroidCoC()
 		Case Else
-			SetLog("Code Monkey is drinking banana liqueur again!", $COLOR_RED)
+			SetLog("Code Monkey is drinking banana liqueur again!", $COLOR_ERROR)
 	EndSwitch
 
 EndFunc   ;==>UniversalCloseWaitOpenCoC

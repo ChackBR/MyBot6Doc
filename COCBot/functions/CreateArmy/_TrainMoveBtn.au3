@@ -27,17 +27,17 @@ Func _TrainMoveBtn($direction)
 	If $debugsetlogTrain = 1 Then
 		Switch $i
 			Case 0
-				Setlog("Move from Army Overview", $COLOR_PURPLE)
+				Setlog("Move from Army Overview", $COLOR_DEBUG)
 			Case 1 To 4
-				Setlog("Move from Barrack " & $i & " direction " & $direction, $COLOR_PURPLE)
+				Setlog("Move from Barrack " & $i & " direction " & $direction, $COLOR_DEBUG)
 			Case 5 To 6
-				Setlog("Move from Dark Barrack " & $i - 4 & " direction " & $direction, $COLOR_PURPLE)
+				Setlog("Move from Dark Barrack " & $i - 4 & " direction " & $direction, $COLOR_DEBUG)
 			Case 7
-				Setlog("Move from Spell Factory" & " direction " & $direction, $COLOR_PURPLE)
+				Setlog("Move from Spell Factory" & " direction " & $direction, $COLOR_DEBUG)
 			Case 8
-				Setlog("Move from Dark Spell Factory" & " direction " & $direction, $COLOR_PURPLE)
+				Setlog("Move from Dark Spell Factory" & " direction " & $direction, $COLOR_DEBUG)
 			Case 9
-				Setlog("Move from UNKNOWN position " & $i & " to direction " & $direction, $COLOR_RED)
+				Setlog("Move from UNKNOWN position " & $i & " to direction " & $direction, $COLOR_ERROR)
 		EndSwitch
 	EndIf
 
@@ -46,12 +46,12 @@ Func _TrainMoveBtn($direction)
 		If $direction = -1 And IsArray($PrevPos) Then
 			Click($PrevPos[0], $PrevPos[1], 1, $iDelayTrainMoveBtn1, "#0337")
 		Else
-			If $debugsetlogTrain = 1 And Not (IsArray($PrevPos)) Then Setlog("CANNOT FIND PREV BUTTON", $COLOR_RED)
+			If $debugsetlogTrain = 1 And Not (IsArray($PrevPos)) Then Setlog("CANNOT FIND PREV BUTTON", $COLOR_ERROR)
 		EndIf
 		If $direction = +1 And IsArray($NextPos) Then
 			Click($NextPos[0], $NextPos[1], 1, $iDelayTrainMoveBtn1, "#0338")
 		Else
-			If $debugsetlogTrain = 1 And Not (IsArray($NextPos)) Then Setlog("CANNOT FIND PREV BUTTON", $COLOR_RED)
+			If $debugsetlogTrain = 1 And Not (IsArray($NextPos)) Then Setlog("CANNOT FIND PREV BUTTON", $COLOR_ERROR)
 
 		EndIf
 	Else

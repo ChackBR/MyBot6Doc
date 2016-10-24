@@ -56,20 +56,49 @@ Global Const $DEFAULT_HEIGHT = 780
 Global Const $DEFAULT_WIDTH = 860
 Global Const $midOffsetY = Int(($DEFAULT_HEIGHT - 720) / 2)
 Global Const $bottomOffsetY = $DEFAULT_HEIGHT - 720
+
+; Since October 12th 2016 Update, Village cannot be entirely zoomed out, offset updated in func SearchZoomOut
+Global $VILLAGE_OFFSET[3] = [0, 0, 1]
+
 Global $bMonitorHeight800orBelow = False
 Global $ichkDisableSplash = 0 ; Splash screen disabled = 1
 
 ;debugging
-Global $debugSearchArea = 0, $debugOcr = 0, $debugRedArea = 0, $debugSetlog = 0, $debugDeadBaseImage = 0, $debugImageSave = 0, $debugWalls = 0, $debugBuildingPos = 0, $debugVillageSearchImages = 0
+Global $debugDisableZoomout = 0
+Global $debugDisableVillageCentering = 0
+Global $debugDeadBaseImage = 1 ; Enable collection of zombies (capture screenshot of detect DeadBase routine)
+; Enabled saving of enemy villages when deadbase is active
+Global $aZombie = ["" _ ; 0=Filename
+	, 0 _  ; 1=Raided Elixir
+	, 0 _  ; 2=Available Elixir
+	, 0 _  ; 3=# of matched collectod
+	, 0 _  ; 4=Search #
+	, "" _ ; 5=timestamp
+	, 30 _ ; 6=Delete screenshot when Elixir capture percentage was >= value (-1 for disable)
+	, 300 _; 7=Save screenshot when skipped DeadBase and available Exlixir in k is >= value and no filled Elixir Storage found (-1 for disable)
+]
+Global $debugSearchArea = 0, $debugOcr = 0, $debugRedArea = 0, $debugSetlog = 0, $debugImageSave = 0, $debugWalls = 0, $debugBuildingPos = 0, $debugVillageSearchImages = 0
 Global $debugAttackCSV = 0, $makeIMGCSV = 0 ;attackcsv debug
 Global $debugMultilanguage = 0
 Global $debugsetlogTrain = 0
 Global $debugGetLocation = 0 ;make a image of each structure detected with getlocation
 Global $debugOCRdonate = 0 ; when 1 make OCR and simulate but do not donate
-Global $debugAndroidEmbedded = 1
+Global $debugAndroidEmbedded = 0
 Global $debugWindowMessages = 0 ; 0=off, 1=most Window Messages, 2=all Window Messages
 
-Global Const $COLOR_ORANGE = 0xFF7700
+Global Const $COLOR_ORANGE = 0xFF7700  ; Used for donate GUI buttons
+Global Const $COLOR_ERROR = $COLOR_RED   ; Error messages
+Global Const $COLOR_WARNING = $COLOR_MAROON ; Warning messages
+Global Const $COLOR_INFO = $COLOR_BLUE ; Information or Status updates for user
+Global Const $COLOR_SUCCESS = 0x006600   ; Dark Green, Action, method, or process completed successfully
+Global Const $COLOR_SUCCESS1 = 0x009900  ; Med green, optional success message for users
+Global Const $COLOR_DEBUG = $COLOR_PURPLE ; Purple, basic debug color
+Global Const $COLOR_DEBUG1 = 0x7a00cc  ; Dark Purple, Debug for successful status checks
+Global Const $COLOR_DEBUG2 = 0xaa80ff  ; lt Purple, secondary debug color
+Global Const $COLOR_DEBUGS = $COLOR_MEDGRAY  ; Med Grey, debug color for less important but needed supporting data points in multiple messages
+Global Const $COLOR_ACTION = 0xFF8000 ; Med Orange, debug color for individual actions, clicks, etc
+Global Const $COLOR_ACTION1 = 0xcc80ff ; Light Purple, debug color for pixel/window checks
+
 Global Const $bCapturePixel = True, $bNoCapturePixel = False
 
 Global $Compiled
@@ -91,8 +120,9 @@ Global Const $64Bit = StringInStr(@OSArch, "64") > 0
 Global Const $HKLM = "HKLM" & ($64Bit ? "64" : "")
 Global Const $Wow6432Node = ($64Bit ? "\Wow6432Node" : "")
 
-Global $AndroidGamePackage = "com.supercell.clashofclans"
-Global $AndroidGameClass = ".GameApp"
+GLobal $AndroidAutoAdjustConfig = True ; If enabled, best Android options are configured (e.g. new BS2 version enable ADB Mouse Click)
+Global $AndroidGamePackage = "com.supercell.clashofclans" ; Default CoC Game Package, loaded from config.ini
+Global $AndroidGameClass = ".GameApp" ; Default CoC Game Class, loaded from config.ini
 Global $AndroidEmbedEnabled = True
 Global $AndroidEmbedded = False
 Global $AndroidEmbeddedCtrlTarget[10] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -128,11 +158,13 @@ Global $NoFocusTampering = False ; If enabled, no ControlFocus or WinActivate is
 Global $__MEmu_Idx = 0 ; MEmu 2.2.1, 2.3.0, 2.3.1, 2.5.0, 2.6.1, 2.6.2, 2.6.5, 2.6.6, 2.7.0, 2.7.2, 2.8.0, default config with open Tool Bar at right and System Bar at bottom, adjusted in config
 Global $__BS2_Idx = 1 ; BlueStacks 2.x
 Global $__BS_Idx = 2 ; BlueStacks 0.9.x, 0.10.x, 0.11.x
-Global $__Droid4X_Idx = 3 ; Droid4X 0.8.6 Beta, 0.8.7 Beta, 0.9.0 Beta, 0.10.0 Beta, 0.10.1 Beta, 0.10.2 Beta, 0.10.3 Beta
-GLobal $__LeapDroid_IDx = 4 ; LeapDroid 1.2, LeapDroid 1.3, LeapDroid 1.3.1
-Global $__Nox_Idx = 5 ; Nox 3.1.0.0, 3.3.0.0, 3.5.1.0, 3.6.0, 3.7.0
+Global $__KOPLAYER_Idx = 3 ; KOPLAYER 1.3.1049
+Global $__Droid4X_Idx = 4 ; Droid4X 0.8.6 Beta, 0.8.7 Beta, 0.9.0 Beta, 0.10.0 Beta, 0.10.1 Beta, 0.10.2 Beta, 0.10.3 Beta
+GLobal $__LeapDroid_IDx = 5 ; LeapDroid 1.2, LeapDroid 1.3, LeapDroid 1.3.1
+Global $__Nox_Idx = 6 ; Nox 3.1.0.0, 3.3.0.0, 3.5.1.0, 3.6.0, 3.7.0
 ; "BlueStacks2" $AndroidAppConfig is also updated based on Registry settings in Func InitBlueStacks2() with these special variables
 Global $__BlueStacks_SystemBar = 48
+Global $__BlueStacks2Version_2_5_or_later = False ;Starting with this version bot is enabling ADB click and uses different zoomout
 ; "MEmu" $AndroidAppConfig is also updated based on runtime config in Func UpdateMEmuWindowState() with these special variables
 Global $__MEmu_Adjust_Width = 6
 Global $__MEmu_ToolBar_Width = 45
@@ -156,12 +188,13 @@ Global $__Droid4X_Window[3][3] = _ ; Alternative window sizes (array must be ord
 ;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |4 = ADB mouse click   |                   |                                    | 1 = Simulated docking
 ;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |8 = ADB input text    |                   |                                    |
 ;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |16 = ADB shell is steady                  |                                    |
-Global $AndroidAppConfig[6][15] = [ _ ;                    |                                  |             |                   |                    |                   |                    |              |                 |32 = ADB click drag   |                   |                                    |
+Global $AndroidAppConfig[7][15] = [ _ ;                    |                                  |             |                   |                    |                   |                    |              |                 |32 = ADB click drag   |                   |                                    |
    ["MEmu",       "MEmu",          "MEmu ",                "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 12,$DEFAULT_WIDTH + 51,$DEFAULT_HEIGHT + 24,0,             "127.0.0.1:21503",0+2+4+8+16+32         ,'# ',               'Microvirt Virtual Input',           0], _
-   ["BlueStacks2","",              "BlueStacks ",          "[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1    +8+16            ,'$ ',               'BlueStacks Virtual Touch',          0], _
-   ["BlueStacks", "",              "BlueStacks App Player","[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1    +8+16            ,'$ ',               'BlueStacks Virtual Touch',          0], _
+   ["BlueStacks2","",              "BlueStacks ",          "[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "127.0.0.1:5555", 1    +8+16+32         ,'$ ',               'BlueStacks Virtual Touch',          0], _
+   ["BlueStacks", "",              "BlueStacks App Player","[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "127.0.0.1:5555", 1    +8+16+32         ,'$ ',               'BlueStacks Virtual Touch',          0], _
+   ["KOPLAYER",   "KOPLAYER",      "KOPLAYER",             "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH + 64,$DEFAULT_HEIGHT -  8,0,             "127.0.0.1:6555" ,0+2+4+8+16+32         ,'# ',               'ttVM Virtual Input',                0], _
    ["Droid4X",    "droid4x",       "Droid4X ",             "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH + 10,$DEFAULT_HEIGHT + 50,0,             "127.0.0.1:26944",0+2+4+8+16+32         ,'# ',               'droid4x Virtual Input',             0], _
-   ["LeapDroid",  "vm1",           "Leapd",                "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH     ,$DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1+  4+8+16+32         ,'# ',               'qwerty2',                           1], _
+   ["LeapDroid",  "vm1",           "Leapd",                "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH     ,$DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1+    8+16+32         ,'# ',               'qwerty2',                           1], _
    ["Nox",        "nox",           "No",                   "[CLASS:Qt5QWindowIcon;INSTANCE:4]","",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH +  4,$DEFAULT_HEIGHT - 10,0,             "127.0.0.1:62001",0+2+4+8+16+32         ,'# ',               '(nox Virtual Input|Android Input)',-1] _
 ]
 Global $OnlyInstance = True
@@ -229,7 +262,7 @@ Func InitAndroidConfig($bRestart = False)
 	$AndroidAdbInstance = $AndroidAdbInstanceEnabled = True And BitAND($AndroidSupportFeature, 16) = 16 ; Enable Android steady ADB shell instance when available
 	$AndroidAdbClickDrag = $AndroidAdbClickDragEnabled = True And BitAND($AndroidSupportFeature, 32) = 32 ; Enable Android ADB Click Drag script
 	$AndroidEmbed = $AndroidEmbedEnabled = True And $AndroidEmbedMode > -1 ; Enable Android Docking
-	$AndroidBackgroundLaunch = $AndroidBackgroundLaunchEnabled = True And True ; Enabled Android Background launch using Windows Scheduled Task
+	$AndroidBackgroundLaunch = $AndroidBackgroundLaunchEnabled = True ; Enabled Android Background launch using Windows Scheduled Task
 	$AndroidBackgroundLaunched = False ; True when Android was launched in headless mode without a window
 	$UpdateAndroidWindowTitle = False ; If Android has always same title (like LeapDroid) instance name will be added
 	; screencap might have disabled backgroundmode
@@ -287,6 +320,19 @@ Func InitAndroidTimeLag()
 EndFunc
 InitAndroidTimeLag()
 Global $AndroidTimeLagThreshold = 5 ; Time lag Seconds per Minute when CoC gets restarted
+
+Global $AndroidPageError[2] ; Variables for page error count and TimerHandle
+Func InitAndroidPageError()
+	$AndroidPageError[0] = 0 ; Page Error Counter
+	$AndroidPageError[1] = 0 ; TimerHandle
+EndFunc
+InitAndroidPageError()
+Global $iAndroidRebootPageErrorCount = 5 ; Reboots Android automatically after so many IsPage errors (uses $AndroidPageError[0] and $iAndroidRebootPageErrorPerMinutes)
+Global $iAndroidRebootPageErrorPerMinutes = 10 ; Reboot Android if $AndroidPageError[0] errors occurred in $iAndroidRebootPageErrorPerMinutes Minutes
+
+Global $SkipFirstZoomout = False ; Zoomout sets to True, CoC start/Start/Resume/Return from battle to False
+Global $SearchZoomOutCounter[2] = [0, 1] ; 0: Counter of SearchZoomOut calls, 1: # of post zoomouts after image found
+
 Global $ForceCapture = False ; Force android ADB screencap to run and not provide last screenshot if available
 Global $ScreenshotTime = 0; Last duration in Milliseconds it took to get screenshot
 
@@ -328,6 +374,7 @@ Global $__Droid4X_Path
 Global $__MEmu_Path
 Global $__LeapDroid_Path
 Global $__Nox_Path
+Global $__KOPLAYER_Path
 
 Global $__VBoxManage_Path ; Full path to executable VBoxManage.exe
 Global $__VBoxVMinfo ; Virtualbox vminfo config details of android instance
@@ -359,6 +406,10 @@ If $CmdLine[0] > 0 Then
 EndIf
 
 Global $sCurrProfile
+
+Global $donateimagefoldercapture = $sProfilePath & "\" & $sCurrProfile & '\Donate\'
+Global $donateimagefoldercaptureWhiteList = $sProfilePath & "\" & $sCurrProfile & '\Donate\White List\'
+Global $donateimagefoldercaptureBlackList = $sProfilePath & "\" & $sCurrProfile & '\Donate\Black List\'
 
 ; Handle Command Line Parameters
 If $aCmdLine[0] > 0 Then
@@ -393,7 +444,7 @@ Global $LibDir = @ScriptDir & "\lib" ;lib directory contains dll's
 Global $pCurl = $LibDir & "\curl\curl.exe" ; Curl used on PushBullet
 Global $AdbScriptsDir = $LibDir & "\adb.scripts" ; ADD script and event files folder
 Global $pImageLib = $LibDir & "\ImageSearchDLL.dll" ; ImageSearch library
-Global $pImgLib = $LibDir & "\ImgLoc.dll" ; Last Image Library from @trlopes with all Legal Information need on LGPL
+Global $pImgLib = $LibDir & "\MyBotRunImgLoc.dll" ; Last Image Library from @trlopes with all Legal Information need on LGPL
 Global $pFuncLib = $LibDir & "\MBRFunctions.dll" ; functions library
 Global $hFuncLib = -1 ; handle to functions library
 Global $hImgLib ; handle to imgloc library
@@ -766,19 +817,21 @@ Global $icmbBoostArcherQueen = 0
 Global $icmbBoostWarden = 0
 
 ; TownHall Settings
-Global $TownHallPos[2] = [-1, -1] ;Position of TownHall
 Global $iTownHallLevel = 0 ; Level of user townhall
 Global $Y[4] = [46, 116, 120, 116]
 
-;Mics Setting
+; Buildings
+Global $TownHallPos[2] = [-1, -1] ;Position of TownHall
 Global $SFPos[2] = [-1, -1] ;Position of Spell Factory
 Global $DSFPos[2] = [-1, -1] ;Position of Dark Spell Factory
 Global $KingAltarPos[2] = [-1, -1] ; position Kings Altar
 Global $QueenAltarPos[2] = [-1, -1] ; position Queens Altar
 Global $WardenAltarPos[2] = [-1, -1] ; position Grand Warden Altar
+Global $aLabPos[2] = [-1, -1] ; Position of laboratory
+Global $aCCPos[2] = [-1, -1] ; Position of clan castle
+Global $ArmyPos[2] = [-1, -1] ; probably not required anymore?
 
 ;Donate Settings
-Global $aCCPos[2] = [-1, -1] ;Position of clan castle
 Global $LastDonateBtn1 = -1, $LastDonateBtn2 = -1
 Global $DonatePixel
 Global $iClanLevel
@@ -822,6 +875,8 @@ Global $ichkExtraAlphabets = 0 ; extra alphabets
 Global $DonBarb = 0, $DonArch = 0, $DonGiant = 0, $DonGobl = 0, $DonWall = 0, $DonBall = 0, $DonWiza = 0, $DonHeal = 0
 Global $DonMini = 0, $DonHogs = 0, $DonValk = 0, $DonGole = 0, $DonWitc = 0, $DonLava = 0, $DonBowl = 0, $DonDrag = 0, $DonPekk = 0, $DonBabyD = 0, $DonMine = 0
 
+Global $icmbFilterDonationsCC = 0 ; 0 no filter, 1 capture only images, 2 white list, 3 black list
+
 ;Troop Settings
 Global $icmbTroopComp ;Troop Composition
 Global $icmbDarkTroopComp = 1
@@ -852,7 +907,6 @@ Global $barrackPos[4][2] ;Positions of each barracks
 
 Global $barrackTroop[5] ;Barrack troop set
 Global $darkBarrackTroop[2]
-Global $ArmyPos[2] = [-1, -1]
 
 ;Other Settings
 Global $ichkWalls
@@ -911,7 +965,11 @@ Global $C[6] = [98, 117, 103, 115, 51, 46]
 Global $CommandStop = -1
 Global $MeetCondStop = False
 Global $bTrainEnabled = True
+
 Global $bDonationEnabled = True
+Global $sSkipDonateNearFulLTroopsPercentual = 90
+Global $iSkipDonateNearFulLTroopsEnable = 1
+
 Global $UseTimeStop = -1
 Global $TimeToStop = -1
 
@@ -927,9 +985,9 @@ Global $ichkBackground ; Background mode enabled disabled
 Global $collectorPos[17][2] ;Positions of each collectors
 Global $D[4] = [99, 111, 109, 47]
 
-Global $break = @ScriptDir & "\images\break.bmp"
-Global $device = @ScriptDir & "\images\device.bmp"
-Global $CocStopped = @ScriptDir & "\images\CocStopped.bmp"
+Global $break = @ScriptDir & "\imgxml\other\break_0_0_95.xml"
+Global $device = @ScriptDir & "\imgxml\other\device_0_0_95.xml"
+Global $CocStopped = @ScriptDir & "\imgxml\other\CocStopped_0_0_95.xml"
 Global $imgDivider = @ScriptDir & "\images\divider.bmp"
 Global $iDividerY = 385
 Global $G[3] = [104, 116, 116]
@@ -959,6 +1017,10 @@ Global $TroopName[UBound($TroopGroup, 1)]
 Global $TroopNamePosition[UBound($TroopGroup, 1)]
 Global $TroopHeight[UBound($TroopGroup, 1)]
 SetDefaultTroopGroup(False)
+Global $iTrainArchersToFitCamps = 1
+Global $iChkUseQuickTrain = 1
+Global $iCmbCurrentArmy = 0
+
 
 ; Create custom train order GUI variables
 Global $chkTroopOrder, $ichkTroopOrder, $btnTroopOrderSet
@@ -1082,7 +1144,6 @@ Global $chkSaveWallBldr, $iSaveWallBldr
 Global $pushLastModified = 0
 
 ;UpgradeTroops
-Global $aLabPos[2] = [-1, -1]
 Global $iChkLab, $iCmbLaboratory, $iFirstTimeLab
 Global $sLabUpgradeTime = ""
 
@@ -1220,7 +1281,7 @@ Global $DESideEB, $DELowEndMin = 25, $DisableOtherEBO
 Global $DEEndAq, $DEEndBk, $DEEndOneStar
 Global $SpellDP[2] = [0, 0]; Spell drop point for DE attack
 
-;Attack SCV
+;Attack CSV
 Global $PixelMine[0]
 Global $PixelElixir[0]
 Global $PixelDarkElixir[0]
@@ -1231,6 +1292,20 @@ Global $PixelNearCollectorBottomRight[0]
 Global $GoldStoragePos
 Global $ElixirStoragePos
 Global $darkelixirStoragePos
+Global $EagleArtilleryPos[2]
+
+Global $scmbDBScriptName = "Barch four fingers"
+Global $scmbABScriptName = "Barch four fingers"
+Global $ichkUseAttackDBCSV = 0
+Global $ichkUseAttackABCSV = 0
+Global $attackcsv_locate_mine = 0
+Global $attackcsv_locate_elixir = 0
+Global $attackcsv_locate_drill = 0
+Global $attackcsv_locate_gold_storage = 0
+Global $attackcsv_locate_elixir_storage = 0
+Global $attackcsv_locate_dark_storage = 0
+Global $attackcsv_locate_townhall = 0
+Global $attackcsv_locate_Eagle = 0
 
 
 ;Snipe While Train
@@ -1275,19 +1350,6 @@ Global $iDetectedImageType = 0
 
 Global $iDeadBase75percent = 1
 Global $iDeadBase75percentStartLevel = 4
-
-;attackCSV
-Global $scmbDBScriptName = "Barch four fingers"
-Global $scmbABScriptName = "Barch four fingers"
-Global $ichkUseAttackDBCSV = 0
-Global $ichkUseAttackABCSV = 0
-Global $attackcsv_locate_mine = 0
-Global $attackcsv_locate_elixir = 0
-Global $attackcsv_locate_drill = 0
-Global $attackcsv_locate_gold_storage = 0
-Global $attackcsv_locate_elixir_storage = 0
-Global $attackcsv_locate_dark_storage = 0
-Global $attackcsv_locate_townhall = 0
 
 ;Milking Attack
 Global $debugresourcesoffset = 0 ;make images with offset to check correct adjust values
@@ -1459,10 +1521,6 @@ Global $SecondaryOutputFile = ""
 Global $quicklyfirststart = true
 Global $configLoaded = false
 
-
-Global $chkMakeIMGCSV
-
-
 ;TH Snipe Before Attack
 Global $THSnipeBeforeDBEnable = 0 , $THSnipeBeforeLBEnable = 0
 Global $THSnipeBeforeDBTiles = 0 , $THSnipeBeforeLBTiles = 0
@@ -1493,13 +1551,36 @@ Global $cmbLvl10Fill
 Global $cmbLvl11Fill
 Global $cmbLvl12Fill
 Global $toleranceOffset
-
+Global $iMinCollectorMatches
 
 ;Apply to switch Attack Standard after THSnipe End ==>
 Global $ichkTSActivateCamps2, $iEnableAfterArmyCamps2
 ;==> Apply to switch Attack Standard after THSnipe End
 
 Global $iShouldRearm = True
+
+
+Global $troops_maked_after_fullarmy = False
+Global $max_train_skip = 40
+Global $actual_train_skip = 0
+
+; Add Idle Time in Idle Phase
+Global $iAddIdleTimeEnable = 1    	; enable/disable feaure
+Global $iAddIdleTimeMin = 5		  	; minimum time to wait in seconds
+Global $iAddIdleTimeMax = 60			; maximum time to wait in seconds
+
+Global $ichkFixClanCastle = 0
+
+$iDeadBaseDisableCollectorsFilter = 0 ; 0 default, set 1 to transform deadbase search like a livebase search
+
+
+;imgloc globals for THSearch and also deadbase
+Global $IMGLOCREDLINE ; hold redline data obtained from multisearch
+Global $IMGLOCTHLEVEL
+Global $IMGLOCTHLOCATION
+Global $IMGLOCTHNEAR
+Global $IMGLOCTHFAR
+Global $IMGLOCTHRDISTANCE
 
 ;
 ; Global Variables - AwesomeGamer, LunaEclipse, ...

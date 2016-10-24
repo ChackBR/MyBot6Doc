@@ -23,21 +23,21 @@ Func AmountOfResourcesInStructure($type, $coordinate, $level)
 						;detect amount of resource in structure and check with settings
 						Local $capacity = DetectAmountOfResourceInStructure($type, $coordinate, $level, $temp)
 						If $capacity >= $temp Then
-							If $debugsetlog=1 Then Setlog("elixir " & $type & " " & $coordinate & " " & $level & " " & $capacity ,$color_purple)
+							If $debugsetlog=1 Then Setlog("elixir " & $type & " " & $coordinate & " " & $level & " " & $capacity ,$COLOR_DEBUG)
 							Return True
 						Else
-							If $debugsetlog = 1 Then Setlog("Discard, capacity of structure under settings:  liv " & $level & " cap " & $temp  & " detected "& $capacity, $color_purple)
+							If $debugsetlog = 1 Then Setlog("Discard, capacity of structure under settings:  liv " & $level & " cap " & $temp  & " detected "& $capacity, $COLOR_DEBUG)
 						EndIf
 					Else
 						;do not run check of amount of elixir in structure but accept (low cpu)
-						If $debugsetlog=1 Then Setlog("elixir " & $type & " " & $coordinate & " " & $level & " PASSED LOW CPU SETTINGS" ,$color_purple)
+						If $debugsetlog=1 Then Setlog("elixir " & $type & " " & $coordinate & " " & $level & " PASSED LOW CPU SETTINGS" ,$COLOR_DEBUG)
 						Return True
 					EndIf
 				Else
-					If $debugsetlog = 1 Then Setlog("Discard, level settings discard this structure (requested min. " & Int($MilkFarmElixirParam[$level]) & ")", $color_purple)
+					If $debugsetlog = 1 Then Setlog("Discard, level settings discard this structure (requested min. " & Int($MilkFarmElixirParam[$level]) & ")", $COLOR_DEBUG)
 				EndIf
 			Else
-				If $debugsetlog = 1 Then Setlog("Discard, out of bounds", $color_purple)
+				If $debugsetlog = 1 Then Setlog("Discard, out of bounds", $COLOR_DEBUG)
 			EndIf
 			Return False
 		Case "mine"
@@ -45,10 +45,10 @@ Func AmountOfResourcesInStructure($type, $coordinate, $level)
 				If $level >= $MilkFarmMineParam Then
 					Return True
 				Else
-					If $debugsetlog = 1 Then Setlog("Discard, level settings discard this structure (level=" & $level & ",filter=" & $MilkFarmMineParam & ")", $color_purple)
+					If $debugsetlog = 1 Then Setlog("Discard, level settings discard this structure (level=" & $level & ",filter=" & $MilkFarmMineParam & ")", $COLOR_DEBUG)
 				EndIf
 			Else
-				If $debugsetlog = 1 Then Setlog("Discard, out of bounds", $color_purple)
+				If $debugsetlog = 1 Then Setlog("Discard, out of bounds", $COLOR_DEBUG)
 			EndIf
 			Return False
 		Case "drill"
@@ -56,10 +56,10 @@ Func AmountOfResourcesInStructure($type, $coordinate, $level)
 				If $level >= $MilkFarmDrillParam Then
 					Return True
 				Else
-					If $debugsetlog = 1 Then Setlog("Discard, level settings discard this structure (level=" & $level & ",filter=" & $MilkFarmDrillParam & ")", $color_purple)
+					If $debugsetlog = 1 Then Setlog("Discard, level settings discard this structure (level=" & $level & ",filter=" & $MilkFarmDrillParam & ")", $COLOR_DEBUG)
 				EndIf
 			Else
-				If $debugsetlog = 1 Then Setlog("Discard, out of bounds", $color_purple)
+				If $debugsetlog = 1 Then Setlog("Discard, out of bounds", $COLOR_DEBUG)
 			EndIf
 			Return False
 		Case Else

@@ -1012,13 +1012,13 @@ Func DetectLanguage()
 				SetLog("Your computer's language was not recognized.")
 				$langName = "NONE"
 		EndSwitch
-		SetLog("Detected System Locale: " & $langName, $COLOR_BLUE)
+		SetLog("Detected System Locale: " & $langName, $COLOR_INFO)
 		If FileExists($dirLanguages & "/" & $langName & ".ini") Then;if language file found
 			SetLog("Language file " & $langName & ".ini found in " & $dirLanguages)
 			$sLanguage = $langName
 			IniWrite($config, "other", "language", $sLanguage)
 		Else;otherwise, use english if the language isn't available yet
-			SetLog("Language file for " & $langName & " not found! Defaulting to English", $COLOR_RED)
+			SetLog("Language file for " & $langName & " not found! Defaulting to English", $COLOR_ERROR)
 			$sLanguage = $sDefaultLanguage
 		EndIf
 	Else

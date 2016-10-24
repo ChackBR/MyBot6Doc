@@ -26,11 +26,11 @@ Func LaunchConsole($cmd, $param, ByRef $process_killed, $timeout = 10000, $bUseS
 	$hTimer = TimerInit()
 	$process_killed = False
 
-	If $debugSetlog = 1 Then Setlog("Func LaunchConsole: " & $cmd, $COLOR_PURPLE) ; Debug Run
+	If $debugSetlog = 1 Then Setlog("Func LaunchConsole: " & $cmd, $COLOR_DEBUG) ; Debug Run
 	$pid = Run($cmd, "", @SW_HIDE, $STDERR_MERGED)
-	If $debugSetlog = 1 Then Setlog("Func LaunchConsole: command launched", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Func LaunchConsole: command launched", $COLOR_DEBUG)
 	If $pid = 0 Then
-		SetLog("Launch faild: " & $cmd, $COLOR_RED)
+		SetLog("Launch faild: " & $cmd, $COLOR_ERROR)
 		Return
 	EndIf
 
@@ -51,12 +51,12 @@ Func LaunchConsole($cmd, $param, ByRef $process_killed, $timeout = 10000, $bUseS
 			Sleep($iDelaySleep)
 		EndIf
 		;_StatusUpdateTime($hTimer)
-		;If $debugSetlog = 1 Then Setlog("Func LaunchConsole: StdoutRead...", $COLOR_PURPLE)
+		;If $debugSetlog = 1 Then Setlog("Func LaunchConsole: StdoutRead...", $COLOR_DEBUG)
 		$data &= StdoutRead($pid)
 		If @error Then ExitLoop
 		;$data &= StderrRead($pid)
 		If ($timeout > 0 And TimerDiff($hTimer) > $timeout) Then ExitLoop
-		;If $debugSetlog = 1 Then Setlog("Func LaunchConsole: StdoutRead loop", $COLOR_PURPLE)
+		;If $debugSetlog = 1 Then Setlog("Func LaunchConsole: StdoutRead loop", $COLOR_DEBUG)
 	WEnd
 
 	If $hProcess Then
@@ -68,12 +68,12 @@ Func LaunchConsole($cmd, $param, ByRef $process_killed, $timeout = 10000, $bUseS
 
 	If ProcessExists($pid) Then
 		If ProcessClose($pid) = 1 Then
-			If $debugSetlog = 1 Then SetLog("Process killed: " & $cmd, $COLOR_RED)
+			If $debugSetlog = 1 Then SetLog("Process killed: " & $cmd, $COLOR_ERROR)
 			$process_killed = True
 		EndIf
 	EndIf
 	StdioClose($pid)
-	If $debugSetlog = 1 Then Setlog("Func LaunchConsole Output: " & $data, $COLOR_PURPLE) ; Debug Run Output
+	If $debugSetlog = 1 Then Setlog("Func LaunchConsole Output: " & $data, $COLOR_DEBUG) ; Debug Run Output
 	Return $data
 EndFunc   ;==>LaunchConsole
 

@@ -17,7 +17,7 @@ Func OpenDroid4X($bRestart = False)
 
    Local $PID, $hTimer, $iCount = 0, $process_killed, $cmdOutput, $connected_to, $launchAndroid, $cmdPar
 
-   SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_GREEN)
+   SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_SUCCESS)
 
    $launchAndroid = WinGetAndroidHandle() = 0
    If $launchAndroid Then
@@ -30,8 +30,8 @@ Func OpenDroid4X($bRestart = False)
 	  If $PID <> 0 Then $PID = ProcessExists($PID)
 	  SetDebugLog("$PID= "&$PID)
 	  If $PID = 0 Then  ; IF ShellExecute failed
-		SetLog("Unable to load " & $Android & ($AndroidInstance = "" ? "" : "(" & $AndroidInstance & ")") & ", please check emulator/installation.", $COLOR_RED)
-		SetLog("Unable to continue........", $COLOR_MAROON)
+		SetLog("Unable to load " & $Android & ($AndroidInstance = "" ? "" : "(" & $AndroidInstance & ")") & ", please check emulator/installation.", $COLOR_ERROR)
+		SetLog("Unable to continue........", $COLOR_WARNING)
 		btnStop()
 		SetError(1, 1, -1)
 		Return False
@@ -42,7 +42,7 @@ Func OpenDroid4X($bRestart = False)
    $connected_to = ConnectAndroidAdb(False, 60 * 1000)
    If Not $RunState Then Return False
 
-   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
+   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_SUCCESS)
    $hTimer = TimerInit()
    ; Wait for device
    ;$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " wait-for-device", $process_killed, 60 * 1000)
@@ -58,13 +58,13 @@ Func OpenDroid4X($bRestart = False)
 
     If Not $RunState Then Return False
 	If TimerDiff($hTimer) >= $AndroidLaunchWaitSec * 1000 Then ; if it took 4 minutes, Android/PC has major issue so exit
-	  SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-	  SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for window", $COLOR_RED)
+	  SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+	  SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for window", $COLOR_ERROR)
 	  SetError(1, @extended, False)
 	  Return False
 	EndIf
 
-    SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_GREEN)
+    SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_SUCCESS)
 	Return True
 
 EndFunc   ;==>OpenDroid4X
@@ -114,8 +114,8 @@ Func InitDroid4X($bCheckOnly = False)
 
    If FileExists($__Droid4X_Path & "Droid4X.exe") = False Then
 	  If Not $bCheckOnly Then
-		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-		 SetLog($__Droid4X_Path & "Droid4X.exe", $COLOR_RED)
+		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+		 SetLog($__Droid4X_Path & "Droid4X.exe", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -123,8 +123,8 @@ Func InitDroid4X($bCheckOnly = False)
 
    If FileExists($__Droid4X_Path & "adb.exe") = False Then
 	  If Not $bCheckOnly Then
-		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-		 SetLog($__Droid4X_Path & "adb.exe", $COLOR_RED)
+		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+		 SetLog($__Droid4X_Path & "adb.exe", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -132,8 +132,8 @@ Func InitDroid4X($bCheckOnly = False)
 
    If FileExists($VirtualBox_Path & "VBoxManage.exe") = False Then
 	  If Not $bCheckOnly Then
-		 SetLog("Serious error has occurred: Cannot find VirtualBox:", $COLOR_RED)
-		 SetLog($VirtualBox_Path & "VBoxManage.exe", $COLOR_RED)
+		 SetLog("Serious error has occurred: Cannot find VirtualBox:", $COLOR_ERROR)
+		 SetLog($VirtualBox_Path & "VBoxManage.exe", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -148,31 +148,31 @@ Func InitDroid4X($bCheckOnly = False)
 	  ; check if instance is known
 	  If StringInStr($__VBoxVMinfo, "Could not find a registered machine named") > 0 Then
 		 ; Unknown vm
-		 SetLog("Cannot find " & $Android & " instance " & $AndroidInstance, $COLOR_RED)
+		 SetLog("Cannot find " & $Android & " instance " & $AndroidInstance, $COLOR_ERROR)
 		 Return False
 	  EndIf
 	  $aRegExResult = StringRegExp($__VBoxVMinfo, "ADB_PORT.*host ip = ([^,]+),", $STR_REGEXPARRAYMATCH)
 	  If Not @error Then
 		 $AndroidAdbDeviceHost = $aRegExResult[0]
-		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDeviceHost = " & $AndroidAdbDeviceHost, $COLOR_PURPLE)
+		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDeviceHost = " & $AndroidAdbDeviceHost, $COLOR_DEBUG)
 	  Else
 		 $oops = 1
-		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Host", $COLOR_RED)
+		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Host", $COLOR_ERROR)
 	  EndIF
 
 	  $aRegExResult = StringRegExp($__VBoxVMinfo, "ADB_PORT.*host port = (\d{3,5}),", $STR_REGEXPARRAYMATCH)
 	  If Not @error Then
 		 $AndroidAdbDevicePort = $aRegExResult[0]
-		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_PURPLE)
+		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_DEBUG)
 	  Else
 		 $oops = 1
-		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Port", $COLOR_RED)
+		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Port", $COLOR_ERROR)
 	  EndIF
 
 	  If $oops = 0 Then
 		 $AndroidAdbDevice = $AndroidAdbDeviceHost & ":" & $AndroidAdbDevicePort
 	  Else ; use defaults
-		 SetLog("Using ADB default device " & $AndroidAdbDevice & " for " & $Android, $COLOR_RED)
+		 SetLog("Using ADB default device " & $AndroidAdbDevice & " for " & $Android, $COLOR_ERROR)
 	  EndIf
 	  ; update global variables
 	  $AndroidProgramPath = $__Droid4X_Path & "Droid4X.exe"
@@ -196,7 +196,7 @@ Func InitDroid4X($bCheckOnly = False)
 	  If Not @error Then
 		 $AndroidPicturesHostPath = $aRegExResult[0] & "\"
 	  Else
-		 SetLog($Android & " Background Mode is not available", $COLOR_RED)
+		 SetLog($Android & " Background Mode is not available", $COLOR_ERROR)
 		 $AndroidPicturesHostPath = ""
 		 $AndroidAdbScreencap = False
 	  EndIf
@@ -255,15 +255,15 @@ Func CheckScreenDroid4X($bSetLog = True)
 	  If $Value <> $aValues[$i][1] Then
 		 If $iErrCnt = 0 Then
 			If $bSetLog Then
-			   SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+			   SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 			Else
-			   SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+			   SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 			EndIf
 		 EndIf
 		 If $bSetLog Then
-			SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+			SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 		 Else
-			SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+			SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 		 EndIf
 		 $iErrCnt += 1
 	  EndIf
@@ -276,18 +276,18 @@ Func CheckScreenDroid4X($bSetLog = True)
 	  If @error = 0 And FileExists($myPictures) = 1 Then
 		 $AndroidPicturesHostPath = $myPictures & "\" & $Android & " Photo"
 		 If DirCreate($AndroidPicturesHostPath) = 1 Then
-			SetLog("Configure " & $Android & " to support Background Mode", $COLOR_GREEN)
-			SetLog("Folder created: " & $AndroidPicturesHostPath, $COLOR_GREEN)
-			SetLog("This shared folder will be added to " & $Android, $COLOR_GREEN)
+			SetLog("Configure " & $Android & " to support Background Mode", $COLOR_SUCCESS)
+			SetLog("Folder created: " & $AndroidPicturesHostPath, $COLOR_SUCCESS)
+			SetLog("This shared folder will be added to " & $Android, $COLOR_SUCCESS)
 			Return False
 		 Else
-			SetLog("Cannot configure " & $Android & " Background Mode", $COLOR_GREEN)
-			SetLog("Cannot create folder: " & $AndroidPicturesHostPath, $COLOR_RED)
+			SetLog("Cannot configure " & $Android & " Background Mode", $COLOR_SUCCESS)
+			SetLog("Cannot create folder: " & $AndroidPicturesHostPath, $COLOR_ERROR)
 			$AndroidPicturesPathAutoConfig = False
 		 EndIf
 	  Else
-		 SetLog("Cannot configure " & $Android & " Background Mode", $COLOR_GREEN)
-		 SetLog("Cannot find current user 'My Pictures' folder", $COLOR_RED)
+		 SetLog("Cannot configure " & $Android & " Background Mode", $COLOR_SUCCESS)
+		 SetLog("Cannot find current user 'My Pictures' folder", $COLOR_ERROR)
 		 $AndroidPicturesPathAutoConfig = False
 	  EndIf
    EndIf

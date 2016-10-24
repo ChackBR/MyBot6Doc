@@ -19,7 +19,7 @@ Func MBRFunc($Start = True)
 			$hFuncLib = DllOpen($pFuncLib)
 			$hImgLib = DllOpen($pImgLib)
 			If $hFuncLib = -1 Then
-				Setlog("MBRfunctions.dll not found.", $COLOR_RED)
+				Setlog("MBRfunctions.dll not found.", $COLOR_ERROR)
 				Return False
 			EndIf
 			SetDebugLog("MBRfunctions.dll opened.")
@@ -40,9 +40,9 @@ Func debugMBRFunctions($debugSearchArea = 0, $debugRedArea = 0, $debugOcr = 0)
 	EndIf
 	;dll return 0 on success, -1 on error
 	If IsArray($result) Then
-		If $debugSetlog = 1 And $result[0] = -1 Then SetLog("MBRfunctions.dll error setting Global vars.", $COLOR_PURPLE)
+		If $debugSetlog = 1 And $result[0] = -1 Then SetLog("MBRfunctions.dll error setting Global vars.", $COLOR_DEBUG)
 	Else
-		SetDebugLog("MBRfunctions.dll not found.", $COLOR_RED)
+		SetDebugLog("MBRfunctions.dll not found.", $COLOR_ERROR)
 	EndIf
 	WinActivate($activeHWnD) ; restore current active window
 EndFunc   ;==>debugMBRFunctions
@@ -63,6 +63,38 @@ Func setAndroidPID($pid)
 			debugMBRFunctions($debugSearchArea, $debugRedArea, $debugOcr) ; set debug levels
 		EndIf
 	Else
-		SetDebugLog("MBRfunctions.dll not found.", $COLOR_RED)
+		SetDebugLog("MBRfunctions.dll not found.", $COLOR_ERROR)
 	EndIf
 EndFunc   ;==>setAndroidPID
+
+Func setVillageOffset($x, $y, $z)
+	DllCall($hFuncLib, "str", "setVillageOffset", "int", $x, "int", $y, "float", $z)
+	DllCall($pImgLib , "str", "setVillageOffset", "int", $x, "int", $y, "float", $z) ;set values in imgloc also
+	$VILLAGE_OFFSET[0] = $x
+	$VILLAGE_OFFSET[1] = $y
+	$VILLAGE_OFFSET[2] = $z
+EndFunc   ;==>setVillageOffset
+
+Func ConvertVillagePos(ByRef $x, ByRef $y, $zoomfactor = 0)
+	Local $result = DllCall($hFuncLib, "str", "ConvertVillagePos", "int", $x, "int", $y, "float", $zoomfactor)
+	Local $a = StringSplit($result[0], "|")
+	If UBound($a) < 3 Then Return
+	$x = Int($a[1])
+	$y = Int($a[2])
+EndFunc   ;==>ConvertVillagePos
+
+Func ConvertToVillagePos(ByRef $x, ByRef $y, $zoomfactor = 0)
+	Local $result = DllCall($hFuncLib, "str", "ConvertToVillagePos", "int", $x, "int", $y, "float", $zoomfactor)
+	Local $a = StringSplit($result[0], "|")
+	If UBound($a) < 3 Then Return
+	$x = Int($a[1])
+	$y = Int($a[2])
+EndFunc   ;==>ConvertToVillagePos
+
+Func ConvertFromVillagePos(ByRef $x, ByRef $y)
+	Local $result = DllCall($hFuncLib, "str", "ConvertFromVillagePos", "int", $x, "int", $y)
+	Local $a = StringSplit($result[0], "|")
+	If UBound($a) < 3 Then Return
+	$x = Int($a[1])
+	$y = Int($a[2])
+EndFunc   ;==>ConvertFromVillagePos

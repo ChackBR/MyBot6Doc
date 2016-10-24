@@ -22,16 +22,17 @@ Func FindTownHall($check = True)
 		($isModeActive[$DB] And (  Number($iChkMeetTH[$DB])>0 Or Number($ichkMeetTHO[$DB])>0)) Or _
 		($isModeActive[$LB] And (  Number($iChkMeetTH[$LB])>0 Or Number($ichkMeetTHO[$LB])>0)) Then
 
-		$searchTH = checkTownHallADV2()
+		;$searchTH = checkTownHallADV2()
+		$searchTH = imgloccheckTownHallADV2()
 
-		;2nd attempt
-		If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
-			If _Sleep($iDelayGetResources5) Then Return
-			If $debugsetlog=1 Then SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-			$searchTH = THSearch()
-		EndIf
+		;2nd attempt - NOT NEEDED AHS IMGLOC TRIES 2 TIMES
+		;If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
+		;	If _Sleep($iDelayGetResources5) Then Return
+		;	If $debugsetlog=1 Then SetLog("2nd attempt to detect the TownHall!", $COLOR_ERROR)
+		;	$searchTH = THSearch()
+		;EndIf
 
-		If SearchTownHallLoc() = False And $searchTH <> "-" Then
+		If $searchTH <> "-"  And SearchTownHallLoc() = False Then
 			$THLoc = "In"
 		ElseIf $searchTH <> "-" Then
 			$THLoc = "Out"

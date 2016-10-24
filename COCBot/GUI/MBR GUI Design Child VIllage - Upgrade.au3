@@ -66,7 +66,7 @@ $sTxtShowEndTime = GetTranslated(616, 36, "This box is updated with estimate end
 			GUICtrlSetOnEvent(-1, "cmbLab")
 ; Red button, will show on upgrade in progress. Temp unhide here and in Func ChkLab() if GUI needs editing.
 		$btnResetLabUpgradeTime = GUICtrlCreateButton("", $x + 120 + 172, $y + 36, 18, 18, BitOR($BS_PUSHLIKE,$BS_DEFPUSHBUTTON))
-			GUICtrlSetBkColor(-1, $COLOR_RED)
+			GUICtrlSetBkColor(-1, $COLOR_ERROR)
 			;GUICtrlSetImage(-1, $pIconLib, $eIcnRedLight)
 			$txtTip = GetTranslated(614,8, "Visible Red button means that laboratory upgrade in process") & @CRLF & _
 			GetTranslated(614,9, "This will automatically disappear when near time for upgrade to be completed.") & @CRLF & _
@@ -114,7 +114,7 @@ $hGUI_UPGRADE_TAB_ITEM2 = GUICtrlCreateTabItem(GetTranslated(600,15,"Heroes"))
 			GetTranslated(615,5, -1) & @CRLF & GetTranslated(615,13, "Enabled with TownHall 11")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkUpgradeWarden")
-			GUICtrlSetColor ( -1, $COLOR_RED )
+			GUICtrlSetColor ( -1, $COLOR_ERROR )
 			GUICtrlCreateIcon($pIconLib, $eIcnWardenUpgr, $x + 18, $y, 64, 64)
 			_GUICtrlSetTip(-1, $txtTip)
 		$IMGchkWardenSleepWait=GUICtrlCreateIcon($pIconLib, $eIcnSleepingWarden, $x + 18, $y, 64, 64)

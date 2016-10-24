@@ -23,7 +23,7 @@ Func MoveMouseOutBS()
 			$txtTitleW = WinGetTitle($hWindow)
 			If $hWindow = $HWnD And $txtTitleW == $Title Then
 				MouseMove(@DesktopWidth + 100, Round(@DesktopHeight / 2), 0)
-				SetLog("Keep Your Mouse Out of BlueStacks Window while bot is running", $COLOR_RED)
+				SetLog("Keep Your Mouse Out of BlueStacks Window while bot is running", $COLOR_ERROR)
 			EndIf
 		EndIf
 	EndIf

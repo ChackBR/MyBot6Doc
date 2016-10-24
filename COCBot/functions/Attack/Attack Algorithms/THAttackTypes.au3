@@ -20,7 +20,7 @@ Func SwitchAttackTHType()
 EndFunc   ;==>SwitchAttackTHType
 
 Func AttackTHParseCSV($test = False)
-	If $debugsetlog = 1 Then Setlog("AttackTHParseCSV start", $COLOR_PURPLE)
+	If $debugsetlog = 1 Then Setlog("AttackTHParseCSV start", $COLOR_DEBUG)
 	Local $f, $line, $acommand, $command
 
 	Local $attackCSVtoUse = ""
@@ -41,7 +41,7 @@ Func AttackTHParseCSV($test = False)
 
 	If FileExists($dirTHSnipesAttacks & "\" & $attackCSVtoUse & ".csv") Then
 		$f = FileOpen($dirTHSnipesAttacks & "\" & $attackCSVtoUse & ".csv", 0)
-		If $debugsetlog=1 Then Setlog("Use algorithm " & $attackCSVtoUse &".csv",$COLOR_PURPLE)
+		If $debugsetlog=1 Then Setlog("Use algorithm " & $attackCSVtoUse &".csv",$COLOR_DEBUG)
 		; Read in lines of text until the EOF is reached
 		While 1
 			$line = FileReadLine($f)
@@ -57,7 +57,7 @@ Func AttackTHParseCSV($test = False)
 					Case $command = "TEXT"
 						If $debugsetlog = 1 Then Setlog(">> SETLOG(""" & $acommand[8] & """)")
 
-						SetLog($acommand[8], $COLOR_BLUE)
+						SetLog($acommand[8], $COLOR_INFO)
 
 					Case StringInStr(StringUpper("-Barb-Arch-Giant-Gobl-Wall-Ball-Wiza-Heal-Drag-Pekk-BabyD-Mine-Mini-Hogs-Valk-Gole-Witc-Lava-Bowl"), "-" & $command & "-") > 0
 						If $debugsetlog = 1 Then Setlog(">> AttackTHGrid($e" & $command & ", Random (" & Int($acommand[2]) & "," & Int($acommand[3]) & ",1), Random(" & Int($acommand[4]) & "," & Int($acommand[5]) & ",1), Random(" & Int($acommand[6]) & "," & Int($acommand[7]) & ",1) )")
@@ -107,21 +107,21 @@ Func AttackTHParseCSV($test = False)
 						CastSpell(Eval("e" & $command), $THx, $THy)
 
 					Case Else
-						Setlog("attack row bad, discard: " & $line, $COLOR_RED)
+						Setlog("attack row bad, discard: " & $line, $COLOR_ERROR)
 				EndSelect
 				If $acommand[8] <> "" And $command <> "TEXT" And $command <> "TROOP" Then
 					If $debugsetlog = 1 Then Setlog(">> SETLOG(""" & $acommand[8] & """)")
-					SETLOG($acommand[8], $COLOR_BLUE)
+					SETLOG($acommand[8], $COLOR_INFO)
 				EndIf
 			Else
-				If StringStripWS($acommand[1], 2) <> "" Then Setlog("attack row error, discard: " & $line, $COLOR_RED)
+				If StringStripWS($acommand[1], 2) <> "" Then Setlog("attack row error, discard: " & $line, $COLOR_ERROR)
 			EndIf
 			If $debugsetlog = 1 Then Setlog(">> CheckOneStar()")
 			If CheckOneStar() Then ExitLoop
 		WEnd
 		FileClose($f)
 	Else
-		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" & $attackCSVtoUse & ".csv", $color_red)
+		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" & $attackCSVtoUse & ".csv", $COLOR_ERROR)
 	EndIf
 
 EndFunc   ;==>AttackTHParseCSV

@@ -70,7 +70,7 @@ Func _ImageSearchArea($findImage, $resultPosition, $x1, $y1, $right, $bottom, By
 	If IsArray($result) Then
 		If $result[0] = "0" Then Return 0
 	Else
-		SetLog("Error: Image Search not working...", $COLOR_RED)
+		SetLog("Error: Image Search not working...", $COLOR_ERROR)
 		Return 1
 	EndIf
 
@@ -93,20 +93,19 @@ Func _ImageSearchArea($findImage, $resultPosition, $x1, $y1, $right, $bottom, By
 	EndIf
 EndFunc   ;==>_ImageSearchArea
 
-Func _ImageSearchAreaImgLoc($findImage, $resultPosition, $x1, $y1, $right, $bottom, ByRef $x, ByRef $y, $Tolerance)
+Func _ImageSearchAreaImgLoc($findImage, $resultPosition, $x1, $y1, $right, $bottom, ByRef $x, ByRef $y)
 
-	Local $ToleranceImgLoc = Number($Tolerance) / 100
 	Local $sArea = Int($x1) & "," & Int($y1) & "|" & Int($right) & "," & Int($y1) & "|" & Int($right) & "," & Int($bottom) & "|" & Int($x1) & "," & Int($bottom)
 	Local $MaxReturnPoints = 1
 
-	Local $res = DllCall($hImgLib, "str", "SearchTile", "handle", $hHBitmap, "str", $findImage, "float", $ToleranceImgLoc, "str", $sArea, "Int", $MaxReturnPoints)
+	Local $res = DllCall($hImgLib, "str", "FindTile", "handle", $hHBitmap, "str", $findImage,  "str", $sArea, "Int", $MaxReturnPoints)
 	If @error Then _logErrorDLLCall($pImgLib, @error)
 	If IsArray($res) Then
-		;If $DebugSetlog = 1 Then SetLog("_ImageSearchAreaImgLoc " & $findImage & " succeeded " & $res[0] & ",$sArea=" & $sArea & ",$ToleranceImgLoc=" & $ToleranceImgLoc , $COLOR_RED)
+		;If $DebugSetlog = 1 Then SetLog("_ImageSearchAreaImgLoc " & $findImage & " succeeded " & $res[0] & ",$sArea=" & $sArea & ",$ToleranceImgLoc=" & $ToleranceImgLoc , $COLOR_ERROR)
 		If $res[0] = "0" Or $res[0] = "" Then
 			;SetLog($findImage & " not found", $COLOR_GREEN)
 		ElseIf StringLeft($res[0], 2) = "-1" Then
-			SetLog("DLL Error: " & $res[0] & ", " & $findImage, $COLOR_RED)
+			SetLog("DLL Error: " & $res[0] & ", " & $findImage, $COLOR_ERROR)
 		Else
 			Local $expRet = StringSplit($res[0], "|", $STR_NOCOUNT)
 			;$expret contains 2 positions; 0 is the total objects; 1 is the point in X,Y format
@@ -114,12 +113,12 @@ Func _ImageSearchAreaImgLoc($findImage, $resultPosition, $x1, $y1, $right, $bott
 			If UBound($posPoint) >= 2 Then
 				$x = Int($posPoint[0])
 				$y = Int($posPoint[1])
-				If $resultPosition = 1 Then
+				If $resultPosition <> 1 Then ; ImgLoc is always centered, convert to upper-left
 					Local $sImgInfo = _ImageGetInfo($findImage)
 					Local $iTileWidth = _ImageGetParam($sImgInfo, "Width")
 					Local $iTileHeight = _ImageGetParam($sImgInfo, "Height")
-					$x = $x + Int(Number($iTileWidth) / 2)
-					$y = $y + Int(Number($iTileHeight) / 2)
+					$x -= Int(Number($iTileWidth) / 2)
+					$y -= Int(Number($iTileHeight) / 2)
 				EndIf
 				$x -= $x1
 				$y -= $y1

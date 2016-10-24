@@ -15,7 +15,7 @@
 
 Func isGoldFull()
 	If _CheckPixel($aIsGoldFull, $bCapturePixel) Then ;Hex if color of gold (orange)
-		SetLog("Gold Storages are full!", $COLOR_GREEN)
+		SetLog("Gold Storages are full!", $COLOR_SUCCESS)
 		Return True
 	EndIf
 	Return False

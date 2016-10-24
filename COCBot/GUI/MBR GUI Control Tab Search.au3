@@ -610,7 +610,7 @@ Func chkDBSpellsWait()
 			If @error Then
 				GUICtrlSetState($chkDBSpellsWait, $GUI_UNCHECKED)
 				$iEnableSpellsWait[$DB] = 0
-				Setlog("Wait for Spells disabled due training count error", $COLOR_RED)
+				Setlog("Wait for Spells disabled due training count error", $COLOR_ERROR)
 			EndIf
 		Else
 			$iEnableSpellsWait[$DB] = 0
@@ -634,7 +634,7 @@ Func chkABSpellsWait()
 			If @error Then
 				GUICtrlSetState($chkABSpellsWait, $GUI_UNCHECKED)
 				$iEnableSpellsWait[$LB] = 0
-				Setlog("Wait for Spells disabled due training count error", $COLOR_RED)
+				Setlog("Wait for Spells disabled due training count error", $COLOR_ERROR)
 			EndIf
 		Else
 			$iEnableSpellsWait[$LB] = 0
@@ -695,7 +695,7 @@ Func chkSpellWaitError()
 			_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 480)
 			While 1
 				$MsgBox3 = _ExtMsgBox(128, "1|2|3|4|5|6|7", GetTranslated(625,123,"You are a WINNER!!"), $sFunnyText, 900, $frmBot)
-				If @error Then Setlog("_ExtMsgBox error: " & @error, $COLOR_RED)
+				If @error Then Setlog("_ExtMsgBox error: " & @error, $COLOR_ERROR)
 				If $iCount > 7 And Int($MsgBox3) = Random(1,8,1) Then
 					ExitLoop
 				Else
@@ -710,7 +710,7 @@ Func chkSpellWaitError()
 							$sFunnyText = $sText & GetTranslated(625,124,"Sorry not that button!") & @CRLF
 						Case 2
 							_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0xDC00FF, 0x011E00, 12, "Comic Sans MS", 480)
-							$sFunnyText = $sText & GetTranslated(625,125,"Donate £5000 to MyBot.run while you wait 15 minutes for this to time out?") & @CRLF
+							$sFunnyText = $sText & GetTranslated(625,125,"Donate ??5000 to MyBot.run while you wait 15 minutes for this to time out?") & @CRLF
 						Case 3
 							_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x000000, 0xFFFFFF, 12, "Tahoma", 480)
 							$sFunnyText = $sText & GetTranslated(625,126,"Having trouble finding the exit button?") & @CRLF

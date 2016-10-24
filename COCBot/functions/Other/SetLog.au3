@@ -32,7 +32,7 @@ Func SetLog($String, $Color = $COLOR_BLACK, $Font = "Verdana", $FontSize = 7.5, 
 		Local $activeBot = _WinAPI_GetActiveWindow() = $frmBot ; different scroll to bottom when bot not active to fix strange bot activation flickering
 		Local $hCtrl = _WinAPI_GetFocus() ; RichEdit tampers with focus so remember and restore
 		_SendMessage($txtLog, $WM_SETREDRAW, False, 0) ; disable redraw so disabling has no visiual effect
-		_WINAPI_EnableWindow($txtLog, False) ; disable RichEdit
+		_WinAPI_EnableWindow($txtLog, False) ; disable RichEdit
 		;If $activeBot Then _GUICtrlRichEdit_SetSel($txtLog, -1, -1) ; select end
 		_GUICtrlRichEdit_SetSel($txtLog, -1, -1) ; select end
 		_GUICtrlRichEdit_SetFont($txtLog, 6, "Lucida Console")
@@ -40,7 +40,7 @@ Func SetLog($String, $Color = $COLOR_BLACK, $Font = "Verdana", $FontSize = 7.5, 
 		_GUICtrlRichEdit_SetFont($txtLog, $FontSize, $Font)
 		_GUICtrlRichEdit_AppendTextColor($txtLog, $String & @CRLF, _ColorConvert($Color), False)
 		If $statusbar = 1 And IsDeclared("statLog") Then _GUICtrlStatusBar_SetText($statLog, "Status : " & $String)
-		_WINAPI_EnableWindow($txtLog, True) ; enabled RichEdit again
+		_WinAPI_EnableWindow($txtLog, True) ; enabled RichEdit again
 		;If $activeBot  Then _GUICtrlRichEdit_SetSel($txtLog, -1, -1) ; select end (scroll to end)
 		_GUICtrlRichEdit_SetSel($txtLog, -1, -1) ; select end (scroll to end)
 		_SendMessage($txtLog, $WM_SETREDRAW, True, 0) ; enabled RechEdit redraw again
@@ -61,8 +61,13 @@ Func SetLog($String, $Color = $COLOR_BLACK, $Font = "Verdana", $FontSize = 7.5, 
 	EndIf
 EndFunc   ;==>SetLog
 
-Func SetDebugLog($String, $Color = Default, $bSilentSetLog = False, $Font = "Verdana", $FontSize = 7.5, $statusbar = 0)
-	If $Color = Default Then $Color = $COLOR_PURPLE
+Func SetDebugLog($String, $Color = Default, $bSilentSetLog = Default, $Font = Default, $FontSize = Default, $statusbar = Default)
+	If $Color = Default Then $Color = $COLOR_DEBUG
+	If $bSilentSetLog = Default Then $bSilentSetLog = False
+	If $Font = Default Then $Font = "Verdana"
+	If $FontSize = Default Then $FontSize = 7.5
+	If $statusbar = Default Then $statusbar = 0
+
 	Local $LogPrefix = "D "
 	Local $log = $LogPrefix & TimeDebug() & $String
 	If $String <> "" Then ConsoleWrite($log & @CRLF) ; Always write any log to console
@@ -98,7 +103,7 @@ EndFunc   ;==>SetAtkLog
 Func AtkLogHead()
 	SetAtkLog(_PadStringCenter(" " & GetTranslated(601, 15, "ATTACK LOG") & " ", 71, "="), "", $COLOR_BLACK, "MS Shell Dlg", 8.5)
 	SetAtkLog(GetTranslated(601, 16, "                   --------  LOOT --------       ----- BONUS ------"), "")
-	SetAtkLog(GetTranslated(601, 17, " TIME|TROP.|SEARCH|   GOLD| ELIXIR|DARK EL|TR.|S|  GOLD|ELIXIR|  DE|L."), "")
+	SetAtkLog(GetTranslated(601, 17, "Ac| TIME|TROP.|SEARCH|   GOLD| ELIXIR|DARK EL|TR.|S|  GOLD|ELIXIR|  DE|L."), "")		; SwitchAcc - DEMEN
 EndFunc   ;==>AtkLogHead
 
 Func __FileWriteLog($handle, $text)

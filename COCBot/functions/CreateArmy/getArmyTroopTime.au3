@@ -16,7 +16,7 @@
 ;
 Func getArmyTroopTime($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTroopTime:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTroopTime:", $COLOR_DEBUG1)
 
 	$aTimeTrain[0] = 0  ; reset time
 
@@ -33,7 +33,7 @@ Func getArmyTroopTime($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
 	Local $iRemainTrainTroopTimer = 0, $sResultTroopMinutes = "", $aResult
 
-	Local $sResultTroops = getRemainTrainTimer(680, 176) ;Get Troop training time via OCR.
+	Local $sResultTroops = getRemainTrainTimer(751, 169) ;Get Troop training time via OCR.
 
 	If $sResultTroops <> "" Then
 		If StringInStr($sResultTroops, "h") > 1 Then
@@ -46,11 +46,11 @@ Func getArmyTroopTime($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		ElseIf StringInStr($sResultTroops, "s") > 1 Then
 			$iRemainTrainTroopTimer = Number(StringTrimRight($sResultTroops, 1)) / 60  ; removing the "s" and convert to minutes
 		Else
-			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("getArmyTroopTime: Bad OCR string", $COLOR_RED)
+			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("getArmyTroopTime: Bad OCR string", $COLOR_ERROR)
 		EndIf
-		SetLog("Troop train time: " & StringFormat("%.2f", $iRemainTrainTroopTimer), $COLOR_BLUE)
+		SetLog("Troop train time: " & StringFormat("%.2f", $iRemainTrainTroopTimer), $COLOR_INFO)
 	Else
-		If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("Can not read remaining Troop train time!", $COLOR_RED)
+		If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("Can not read remaining Troop train time!", $COLOR_ERROR)
 	EndIf
 
 	If $bCloseArmyWindow = True Then

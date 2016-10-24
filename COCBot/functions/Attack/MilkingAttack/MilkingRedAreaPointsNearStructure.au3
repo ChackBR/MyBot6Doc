@@ -53,7 +53,7 @@ Func MilkingRedAreaPointsNearStructure($type, $level, $coordinate)
 					$ResourceToInsertQty += 1
 				EndIf
 			Else
-				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $color_red)
+				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $COLOR_ERROR)
 			EndIf
 		Next
 
@@ -66,7 +66,7 @@ Func MilkingRedAreaPointsNearStructure($type, $level, $coordinate)
 					$ResourceToInsertQty += 1
 				EndIf
 			Else
-				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $color_red)
+				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $COLOR_ERROR)
 			EndIf
 		Next
 
@@ -79,7 +79,7 @@ Func MilkingRedAreaPointsNearStructure($type, $level, $coordinate)
 					$ResourceToInsertQty += 1
 				EndIf
 			Else
-				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $color_red)
+				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $COLOR_ERROR)
 			EndIf
 		Next
 
@@ -92,7 +92,7 @@ Func MilkingRedAreaPointsNearStructure($type, $level, $coordinate)
 					$ResourceToInsertQty += 1
 				EndIf
 			Else
-				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $color_red)
+				If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #3", $COLOR_ERROR)
 			EndIf
 		Next
 
@@ -100,10 +100,10 @@ Func MilkingRedAreaPointsNearStructure($type, $level, $coordinate)
 ;~ 			If StringLen($MilkFarmObjectivesSTR) > 0 Then $MilkFarmObjectivesSTR &= "|"
 ;~ 			$MilkFarmObjectivesSTR &= $ResourceToInsert
 ;~ 		EndIf
-		 If $debugsetlog=1 Then Setlog("$ResourceToInsertQty = " & $ResourceToInsertQty & " value " & $ResourceToInsert,$color_purple)
+		 If $debugsetlog=1 Then Setlog("$ResourceToInsertQty = " & $ResourceToInsertQty & " value " & $ResourceToInsert,$COLOR_DEBUG)
 		 Return $ResourceToInsert
  	Else
- 		If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #1 " & $pixelCoord & " " & UBound($pixelCoord), $color_red)
+ 		If $DebugSetLog = 1 Then Setlog("MilkingRedAreaPointsNearStructure Discard error #1 " & $pixelCoord & " " & UBound($pixelCoord), $COLOR_ERROR)
  	EndIf
 
 ;~ 	Return $ResourceToInsertQty

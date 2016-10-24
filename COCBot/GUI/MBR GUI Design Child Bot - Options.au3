@@ -161,7 +161,7 @@ $grpTimeWakeUp = GUICtrlCreateGroup(GetTranslated(636,85, "Remote Device"), $x -
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 $y+= 51
-$grpOtherExpert = GUICtrlCreateGroup(GetTranslated(636,45, "Other Options"), $x - 20, $y - 20, 225, 90)
+$grpOtherExpert = GUICtrlCreateGroup(GetTranslated(636,45, "Other Options"), $x - 20, $y - 20, 225, 130)
 $chkSinglePBTForced = GUICtrlCreateCheckbox(GetTranslated(636,61, "Force Single PB logoff"), $x-5, $y, -1, -1)
 	GUICtrlSetOnEvent(-1, "chkSinglePBTForced")
 	_GUICtrlSetTip(-1, GetTranslated(636,62, "This forces bot to exit CoC only one time prior to normal start of PB"))
@@ -189,4 +189,9 @@ $chkTotalCampForced = GUICtrlCreateCheckbox(GetTranslated(636,46, "Force Total A
 $txtTotalCampForced = GUICtrlCreateInput("200", $x + 130, $y - 5, 30, 16, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 	GUICtrlSetLimit(-1, 3)
 	GUICtrlSetState(-1, $GUI_DISABLE)
+
+$y +=30
+$chkFixClanCastle = GUICtrlCreateCheckbox(GetTranslated(636,104, "Force Clan Castle Detection"), $x-5, $y-5, -1, -1)
+	_GUICtrlSetTip(-1, GetTranslated(636,105, "If clan Castle it is undetected and it is NOT placed in the last slot, force bot to consider the undetected slot as Clan Castle"))
+	GUICtrlSetState(-1, $GUI_UNCHECKED)
 GUICtrlCreateGroup("", -99, -99, 1, 1)

@@ -15,7 +15,7 @@ Func DebugSaveDesktopImage($sName = "Unknown_")
 	Local $iDesktopLeft = 0, $iDesktopTop = 0
 	Local $iDesktopWidth = @DesktopWidth, $iDesktopHeight = @DesktopHeight
 	Local $hDesktopBitmap = _ScreenCapture_Capture("", $iDesktopLeft, $iDesktopTop, $iDesktopWidth, $iDesktopHeight, False)
-	SetLog("Saving desktop snapshot in TEMP folder for developer review", $COLOR_BLUE)
+	SetLog("Saving desktop snapshot in TEMP folder for developer review", $COLOR_INFO)
 	$Date = @MDAY & "." & @MON & "." & @YEAR
 	$Time = @HOUR & "." & @MIN & "." & @SEC
 	$SaveFileName = $sName & $Date & "_at_" & $Time & ".png"

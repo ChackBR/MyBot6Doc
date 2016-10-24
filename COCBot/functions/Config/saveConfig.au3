@@ -347,6 +347,9 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 
 
+	$icmbFilterDonationsCC = _GUICtrlComboBox_GetCurSel($cmbFilterDonationsCC)
+	IniWriteS($config, "donate", "cmbFilterDonationsCC", $icmbFilterDonationsCC)
+
 	; save notify GUI -> variables -----------------------------------------------
 	;PushBullet
 	If GUICtrlRead($chkPBenabled) = $GUI_CHECKED Then
@@ -634,6 +637,16 @@ Func saveConfig() ;Saves the controls settings to the config
 		Else
 			$DebugSetlog = 0
 		EndIf
+		If GUICtrlRead($chkDebugDisableZoomout) = $GUI_CHECKED Then
+			$debugDisableZoomout = 1
+		Else
+			$debugDisableZoomout = 0
+		EndIf
+		If GUICtrlRead($chkDebugDisableVillageCentering) = $GUI_CHECKED Then
+			$debugDisableVillageCentering = 1
+		Else
+			$debugDisableVillageCentering = 0
+		EndIf
 		If GUICtrlRead($chkDebugOcr) = $GUI_CHECKED Then
 			$debugOcr = 1
 		Else
@@ -658,6 +671,16 @@ Func saveConfig() ;Saves the controls settings to the config
 			$debugOCRdonate = 1
 		Else
 			$debugOCRdonate = 0
+		EndIf
+		If GUICtrlRead($chkdebugAttackCSV) = $GUI_CHECKED Then
+			$debugAttackCSV = 1
+		Else
+			$debugAttackCSV = 0
+		EndIf
+		If GUICtrlRead($chkmakeIMGCSV ) = $GUI_CHECKED Then
+			$makeIMGCSV  = 1
+		Else
+			$makeIMGCSV  = 0
 		EndIf
 	EndIf
 
@@ -1013,13 +1036,6 @@ Func saveConfig() ;Saves the controls settings to the config
 	_GUICtrlComboBox_GetLBText($cmbScriptNameAB, $indexofscript, $scriptname)
 	$scmbABScriptName = $scriptname
 
-	If $devmode = 1 Then
-		If GUICtrlRead($chkmakeIMGCSV) = $GUI_CHECKED Then
-			$makeIMGCSV = 1
-		Else
-			$makeIMGCSV = 0
-		EndIf
-	EndIf
 
 	SetDebugLog("Save Config " & $config)
 
@@ -1343,6 +1359,12 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "search", "ChkRestartSearchLimit", 0)
 	EndIf
 	IniWriteS($config, "search", "RestartSearchLimit", GUICtrlRead($TxtRestartSearchlimit))
+
+	If GUICtrlRead($chkDeadBaseDisableCollectorsFilter) = $GUI_CHECKED Then
+		IniWriteS($config, "search", "chkDisableCollectorsFilter", 1)
+	Else
+		IniWriteS($config, "search", "chkDisableCollectorsFilter", 0)
+	EndIf
 
 
 	;Attack Basic Settings-------------------------------------------------------------------------
@@ -1827,6 +1849,12 @@ Func saveConfig() ;Saves the controls settings to the config
 
 ;~ 	IniWriteS($config, "donate", "chkRequest", $iChkRequest)
 	IniWriteS($config, "donate", "txtRequest", GUICtrlRead($txtRequestCC))
+	If GUICtrlRead($chkskipDonateNearFulLTroopsEnable) = $GUI_CHECKED Then
+		IniWriteS($config, "donate", "SkipDonateNearFulLTroopsEnable", 1)
+	Else
+		IniWriteS($config, "donate", "SkipDonateNearFulLTroopsEnable", 0)
+	EndIf
+	IniWriteS($config, "donate", "SkipDonateNearFulLTroopsPercentual", number(GUICtrlRead($txtSkipDonateNearFulLTroopsPercentual)))
 	IniWriteS($config, "donate", "chkDonateBarbarians", $ichkDonateBarbarians)
 	IniWriteS($config, "donate", "chkDonateAllBarbarians", $ichkDonateAllBarbarians)
 	IniWriteS($config, "donate", "txtDonateBarbarians", StringReplace($sTxtDonateBarbarians, @CRLF, "|"))
@@ -1988,6 +2016,20 @@ Func saveConfig() ;Saves the controls settings to the config
 	For $z = 0 To UBound($DefaultTroopGroupDark) -1
 		IniWriteS($config, "troop", "cmbDarkTroopOrder" & $z, _GUICtrlComboBox_GetCurSel($cmbDarkTroopOrder[$z]))
 	Next
+
+ 	If GUICtrlRead($ChkTrainArchersToFitCamps) = $GUI_CHECKED Then
+		IniWriteS($config, "troop", "TrainArchersToFitCamps", 1)
+	Else
+		IniWriteS($config, "troop", "TrainArchersToFitCamps", 0)
+	EndIf
+
+	If GUICtrlRead($ChkUseQuickTrain) = $GUI_CHECKED Then
+		IniWriteS($config, "troop", "UseQuickTrain", 1)
+	Else
+		IniWriteS($config, "troop", "UseQuickTrain", 0)
+	EndIf
+
+	IniWriteS($config, "troop", "CurrentArmy", _GUICtrlComboBox_GetCurSel($cmbCurrentArmy))
 
 	;barracks boost not saved (no use)
 
@@ -2294,15 +2336,18 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "debug", "debugsetclick", $debugClick)
 	If $devmode = 1 Then
 		IniWriteS($config, "debug", "debugsetlog", $DebugSetlog)
+		IniWriteS($config, "debug", "disablezoomout", $debugDisableZoomout)
+		IniWriteS($config, "debug", "disablevillagecentering", $debugDisableVillageCentering)
 		IniWriteS($config, "debug", "debugocr", $debugOcr)
 		IniWriteS($config, "debug", "debugimagesave", $DebugImageSave)
 		IniWriteS($config, "debug", "debugbuildingpos", $debugBuildingPos)
 		IniWriteS($config, "debug", "debugtrain", $debugsetlogTrain)
-		IniWriteS($config, "debug", "debugmakeimgcsv", $makeIMGCSV)
 		IniWriteS($config, "debug", "debugresourcesoffset", $debugresourcesoffset)
 		IniWriteS($config, "debug", "continuesearchelixirdebug", $continuesearchelixirdebug)
 		IniWriteS($config, "debug", "debugMilkingIMGmake", $debugMilkingIMGmake)
 		IniWriteS($config, "debug", "debugOCRDonate", $debugOCRdonate)
+		IniWriteS($config, "debug", "debugAttackCSV", $debugAttackCSV)
+		IniWriteS($config, "debug", "debugmakeimgcsv", $makeIMGCSV)
 	Else
 		IniDelete($config, "debug", "debugocr")
 		IniDelete($config, "debug", "debugsetlog")
@@ -2311,7 +2356,10 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniDelete($config, "debug", "debugtrain")
 		IniDelete($config, "debug", "debugresourcesoffset")
 		IniDelete($config, "debug", "continuesearchelixirdebug")
+		IniDelete($config, "debug", "debugMilkingIMGmake")
 		IniDelete($config, "debug", "debugOCRDonate")
+		IniDelete($config, "debug", "debugAttackCSV")
+		IniDelete($config, "debug", "debugmakeimgcsv")
 	EndIf
 
 	;forced Total Camp values
@@ -2327,7 +2375,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "General", "ChkDisableSplash", $ichkDisableSplash)
 	IniWriteS($config, "General", "ChkVersion", $ichkVersion)
 
-
+	If GUICtrlRead($chkFixClanCastle) = $GUI_CHECKED Then
+		IniWriteS($config, "other", "ChkFixClanCastle", 1)
+	Else
+		IniWriteS($config, "other", "ChkFixClanCastle", 0)
+	EndIf
 
 	IniWriteS($config, "search", "SWTtiles", GUICtrlRead($txtSWTTiles))
 
@@ -2414,9 +2466,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "collectors", "lvl10fill", $cmbLvl10Fill)
 	IniWriteS($config, "collectors", "lvl11fill", $cmbLvl11Fill)
 	IniWriteS($config, "collectors", "lvl12fill", $cmbLvl12Fill)
+	IniWriteS($config, "collectors", "minmatches", $iMinCollectorMatches)
 	IniWriteS($config, "collectors", "tolerance", $toleranceOffset)
 
 	; Android Configuration
+	IniWriteS($config, "android", "auto.adjust.config", ($AndroidAutoAdjustConfig ? "1" : "0"))
 	IniWriteS($config, "android", "game.package", $AndroidGamePackage)
 	IniWriteS($config, "android", "game.class", $AndroidGameClass)
 	IniWriteS($config, "android", "check.time.lag.enabled", ($AndroidCheckTimeLagEnabled ? "1" : "0"))
@@ -2459,6 +2513,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWriteS($config, "search", "TotalTrainSpaceSpell", 0)
 
+	If GUICtrlRead($chkAddDelayIdlePhaseEnable) = $GUI_CHECKED Then
+		IniWriteS($config, "other", "chkAddDelayIdlePhaseEnable", "1")
+	Else
+		IniWriteS($config, "other", "chkAddDelayIdlePhaseEnable", "0")
+	EndIf
+	IniWriteS($config, "other", "txtAddDelayIdlePhaseTimeMin", GUICtrlRead($txtAddDelayIdlePhaseTimeMin))
+	IniWriteS($config, "other", "txtAddDelayIdlePhaseTimeMax", GUICtrlRead($txtAddDelayIdlePhaseTimeMax))
 ;
 ; MOD
 ;

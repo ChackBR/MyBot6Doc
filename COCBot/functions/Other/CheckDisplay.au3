@@ -27,7 +27,7 @@ Func CheckDisplay()
 	If $iDPIRatio <> 1 Then
 		ShowDPIHelp($iDPIRatio * 100)
 	Else
-		If $Debugsetlog = 1 Then SetLog(_PadStringCenter("  Display DPI setting = " & $iDPIRatio & "  ", 53, "+"), $COLOR_BLUE)
+		If $Debugsetlog = 1 Then SetLog(_PadStringCenter("  Display DPI setting = " & $iDPIRatio & "  ", 53, "+"), $COLOR_INFO)
 		ConsoleWrite('DPI= ' & $iDPIRatio & @CRLF)
 		$bDisplayDPI = True ; DPI OK
 	EndIf
@@ -55,24 +55,24 @@ Func CheckDisplay()
 				$sBSDisplaySize = $aMonitorData[$i][3] & "x" & $aMonitorData[$i][4]
 				ConsoleWrite("DisplaySizeFound: " & $sBSDisplaySize & @CRLF)
 				If ($aMonitorData[$i][3] < $iDisplaySizeMin) Or ($aMonitorData[$i][4] < $iDisplaySizeMin) Then
-					SetLog(_PadStringCenter(" Warning!! Display size smaller than recommended = " & $sBSDisplaySize & " ", 53, "+"), $COLOR_RED)
-					SetLog(_PadStringCenter(" MBR will attempt to auto adjust Emulator size ", 53, "+"), $COLOR_RED)
-					SetLog(_PadStringCenter(" Make sure task bar isn't covering Emulator ", 53, "+"), $COLOR_RED)
-					SetLog(_PadStringCenter(" Search MyBot.run forums if any problems ", 53, "+"), $COLOR_RED)
-					SetLog(_PadStringCenter(" Click ""Start Bot"" to proceed ", 53, "+"), $COLOR_RED)
+					SetLog(_PadStringCenter(" Warning!! Display size smaller than recommended = " & $sBSDisplaySize & " ", 53, "+"), $COLOR_ERROR)
+					SetLog(_PadStringCenter(" MBR will attempt to auto adjust Emulator size ", 53, "+"), $COLOR_ERROR)
+					SetLog(_PadStringCenter(" Make sure task bar isn't covering Emulator ", 53, "+"), $COLOR_ERROR)
+					SetLog(_PadStringCenter(" Search MyBot.run forums if any problems ", 53, "+"), $COLOR_ERROR)
+					SetLog(_PadStringCenter(" Click ""Start Bot"" to proceed ", 53, "+"), $COLOR_ERROR)
 					Setlog(" ")
 				Else
 					ConsoleWrite("Display Check Pass!" & @CRLF)
-					If $Debugsetlog = 1 Then SetLog(_PadStringCenter(" Display size= " & $sBSDisplaySize & " ", 50, "+"), $COLOR_Blue)
+					If $Debugsetlog = 1 Then SetLog(_PadStringCenter(" Display size= " & $sBSDisplaySize & " ", 50, "+"), $COLOR_INFO)
 					ExitLoop
 				EndIf
 			EndIf
 		Next
 		If $bDisplayFound = False Then
-			SetLog(" Error finding Android Emulator display device size, proceed with caution!", $COLOR_RED)
+			SetLog(" Error finding Android Emulator display device size, proceed with caution!", $COLOR_ERROR)
 		EndIf
 	Else
-		SetLog(" Error finding Android Emulator display device, proceed with caution!", $COLOR_RED)
+		SetLog(" Error finding Android Emulator display device, proceed with caution!", $COLOR_ERROR)
 	EndIf
 
 	Return $bDisplayDPI And $bDisplayFound

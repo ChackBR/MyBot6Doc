@@ -35,9 +35,9 @@ Func GetXPosOfArmySlot($slotNumber, $xOffsetFor11Slot)
 	$SlotPixelColor = _ColorCheck(_GetPixelColor(834, 588 + $bottomOffsetY, True), Hex(0x040c0a, 6), 15)
 
 	If $debugSetlog = 1 Then
-		Setlog(" Slot 0  _ColorCheck 0x040c0a at (834," & 588 + $bottomOffsetY & "): " & $SlotPixelColor, $COLOR_PURPLE)
+		Setlog(" Slot 0  _ColorCheck 0x040c0a at (834," & 588 + $bottomOffsetY & "): " & $SlotPixelColor, $COLOR_DEBUG)
 		$SlotPixelColorTemp = _GetPixelColor(834, 588 + $bottomOffsetY, $bCapturePixel)
-		Setlog(" Slot 0  _GetPixelColo(834," & 588 + $bottomOffsetY & "): " & $SlotPixelColorTemp, $COLOR_PURPLE)
+		Setlog(" Slot 0  _GetPixelColo(834," & 588 + $bottomOffsetY & "): " & $SlotPixelColorTemp, $COLOR_DEBUG)
 	EndIf
 
 	If $SlotPixelColor = True Then

@@ -28,7 +28,7 @@ Local $x = 20, $y = 130 - 105
 			$txtTip = GetTranslated(629,4, "TH Bully: No. of searches to wait before activating.")
 			GUICtrlSetLimit(-1, 3)
 			_GUICtrlSetTip(-1, $txtTip)
-		$lblATBullyMode = GUICtrlCreateLabel(GetTranslated(603,5, "search(es)."), $x + 135, $y + 5, -1, -1)
+		$lblATBullyMode = GUICtrlCreateLabel(GetTranslated(603,5, -1), $x + 135, $y + 5, -1, -1)
 		$y +=25
 		$lblATBullyMode = GUICtrlCreateLabel(GetTranslated(629,6, "Max TH level") & ":", $x - 5, $y + 3, 90, -1, $SS_RIGHT)
 		$cmbYourTH = GUICtrlCreateCombo("", $x + 95, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))

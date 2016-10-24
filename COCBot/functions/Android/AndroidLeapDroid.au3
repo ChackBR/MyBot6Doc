@@ -17,7 +17,7 @@ Func OpenLeapDroid($bRestart = False)
 
 	Local $PID, $hTimer, $iCount = 0, $process_killed, $cmdOutput, $connected_to, $cmdPar
 
-	SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_GREEN)
+	SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_SUCCESS)
 
 	$launchAndroid = WinGetAndroidHandle() = 0
 	If $launchAndroid Then
@@ -29,15 +29,15 @@ Func OpenLeapDroid($bRestart = False)
 		If $PID <> 0 Then $PID = ProcessExists($PID)
 		SetDebugLog("$PID= " & $PID)
 		If $PID = 0 Then ; IF ShellExecute failed
-			SetLog("Unable to load " & $Android & ($AndroidInstance = "" ? "" : "(" & $AndroidInstance & ")") & ", please check emulator/installation.", $COLOR_RED)
-			SetLog("Unable to continue........", $COLOR_MAROON)
+			SetLog("Unable to load " & $Android & ($AndroidInstance = "" ? "" : "(" & $AndroidInstance & ")") & ", please check emulator/installation.", $COLOR_ERROR)
+			SetLog("Unable to continue........", $COLOR_WARNING)
 			btnStop()
 			SetError(1, 1, -1)
 			Return False
 		EndIf
 	EndIf
 
-	SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
+	SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_SUCCESS)
 	$hTimer = TimerInit()
 
 	; Test ADB is connected
@@ -48,17 +48,25 @@ Func OpenLeapDroid($bRestart = False)
 	If WaitForAndroidBootCompleted($AndroidLaunchWaitSec - TimerDiff($hTimer) / 1000, $hTimer) Then Return False
 
 	If TimerDiff($hTimer) >= $AndroidLaunchWaitSec * 1000 Then ; if it took 4 minutes, Android/PC has major issue so exit
-		SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-		SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for window", $COLOR_RED)
+		SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+		SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for window", $COLOR_ERROR)
 		SetError(1, @extended, False)
 		Return False
 	EndIf
 
-	SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_GREEN)
+	SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_SUCCESS)
 
 	Return True
 
 EndFunc   ;==>OpenLeapDroid
+
+Func IsLeapDroidCommandLine($CommandLine)
+	SetDebugLog("Check LeapDroid command line instance: " & $CommandLine)
+	Local $sInstance = ($AndroidInstance = "" ? $AndroidAppConfig[$AndroidConfig][1] : $AndroidInstance)
+	$CommandLine = StringReplace($CommandLine, GetLeapDroidPath(), "")
+	If StringRegExp($CommandLine, "-s " & $sInstance & "\b") = 1 Then Return True
+	Return False
+EndFunc   ;==>IsLeapDroidCommandLine
 
 Func GetLeapDroidProgramParameter($bAlternative = False)
 	Local $sInstance = ($AndroidInstance = "" ? $AndroidAppConfig[$AndroidConfig][1] : $AndroidInstance)
@@ -110,8 +118,8 @@ Func InitLeapDroid($bCheckOnly = False)
 
 	If FileExists($LeapDroid_Path) = 0 Then
 		If Not $bCheckOnly Then
-			SetLog("Serious error has occurred: Cannot find " & $Android, $COLOR_RED)
-			SetLog("installation directory", $COLOR_RED)
+			SetLog("Serious error has occurred: Cannot find " & $Android, $COLOR_ERROR)
+			SetLog("installation directory", $COLOR_ERROR)
 			SetError(1, @extended, False)
 		Else
 			SetDebugLog($Android & ": Cannot find installation directory")
@@ -121,8 +129,8 @@ Func InitLeapDroid($bCheckOnly = False)
 
 	If FileExists($LeapDroid_Path & "LeapdroidVM.exe") = 0 Then
 		If Not $bCheckOnly Then
-			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-			SetLog($LeapDroid_Path & "LeapdroidVM.exe", $COLOR_RED)
+			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+			SetLog($LeapDroid_Path & "LeapdroidVM.exe", $COLOR_ERROR)
 		Else
 			SetDebugLog($Android & ": Cannot find " & $LeapDroid_Path & "LeapdroidVM.exe")
 			SetError(1, @extended, False)
@@ -132,8 +140,8 @@ Func InitLeapDroid($bCheckOnly = False)
 
 	If FileExists($LeapDroid_Path & "adb.exe") = 0 Then
 		If Not $bCheckOnly Then
-			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-			SetLog($LeapDroid_Path & "adb.exe", $COLOR_RED)
+			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+			SetLog($LeapDroid_Path & "adb.exe", $COLOR_ERROR)
 			SetError(1, @extended, False)
 		Else
 			SetDebugLog($Android & ": Cannot find " & $LeapDroid_Path & "adb.exe")
@@ -143,8 +151,8 @@ Func InitLeapDroid($bCheckOnly = False)
 
 	If FileExists($LeapDroid_Manage_Path) = 0 Then
 		If Not $bCheckOnly Then
-			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-			SetLog($LeapDroid_Manage_Path, $COLOR_RED)
+			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+			SetLog($LeapDroid_Manage_Path, $COLOR_ERROR)
 			SetError(1, @extended, False)
 		Else
 			SetDebugLog($Android & ": Cannot find " & $LeapDroid_Manage_Path)
@@ -161,7 +169,7 @@ Func InitLeapDroid($bCheckOnly = False)
 		; check if instance is known
 		If StringInStr($__VBoxVMinfo, "Could not find a registered machine named") > 0 Then
 			; Unknown vm
-			SetLog("Cannot find " & $Android & " instance " & $AndroidInstance, $COLOR_RED)
+			SetLog("Cannot find " & $Android & " instance " & $AndroidInstance, $COLOR_ERROR)
 			Return False
 		EndIf
 		$__VBoxGuestProperties = LaunchConsole($LeapDroid_Manage_Path, "guestproperty enumerate " & $AndroidInstance, $process_killed)
@@ -178,10 +186,10 @@ Func InitLeapDroid($bCheckOnly = False)
 		If Not @error Then
 			$AndroidAdbDeviceHost = "127.0.0.1"
 			$AndroidAdbDevicePort = $aRegExResult[0]
-			If $debugSetlog = 1 Then Setlog("InitLeapDroid: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("InitLeapDroid: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_DEBUG)
 		Else
 			$oops = 1
-			SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Port", $COLOR_RED)
+			SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Port", $COLOR_ERROR)
 		EndIf
 
 		If $oops = 0 Then
@@ -189,7 +197,7 @@ Func InitLeapDroid($bCheckOnly = False)
 			;$AndroidAdbDevice = $AndroidAdbDeviceHost & ":" & $AndroidAdbDevicePort
 			$AndroidAdbDevice = "emulator-" & ($AndroidAdbDevicePort - 1)
 		Else ; use defaults
-			SetLog("Using ADB default device " & $AndroidAdbDevice & " for " & $Android, $COLOR_RED)
+			SetLog("Using ADB default device " & $AndroidAdbDevice & " for " & $Android, $COLOR_ERROR)
 		EndIf
 
 		; get screencap paths: Name: 'picture', Host path: 'C:\Users\Administrator\Pictures\LeapDroid Photo' (machine mapping), writable
@@ -198,10 +206,18 @@ Func InitLeapDroid($bCheckOnly = False)
 		If Not @error Then
 			$AndroidPicturesHostPath = $aRegExResult[0] & "\"
 		Else
-			$oops = 1
-			$AndroidAdbScreencap = False
-			$AndroidPicturesHostPath = ""
-			SetLog($Android & " Background Mode is not available", $COLOR_RED)
+			; new since 1.7.0
+			; Name: 'LeapDroidShared', Host path: 'C:\Users\Administrator\AppData\Roaming\Leapdroid\shared' (machine mapping), writable
+			$AndroidPicturesPath = "/mnt/shared/LeapDroidShared/"
+			$aRegExResult = StringRegExp($__VBoxVMinfo, "Name: 'LeapDroidShared', Host path: '(.*)'.*", $STR_REGEXPARRAYMATCH)
+			If Not @error Then
+				$AndroidPicturesHostPath = $aRegExResult[0] & "\"
+			Else
+				$oops = 1
+				$AndroidAdbScreencap = False
+				$AndroidPicturesHostPath = ""
+				SetLog($Android & " Background Mode is not available", $COLOR_ERROR)
+			EndIf
 		EndIf
 
 		; Android Window Title is always "Leapdroid" so add instance name
@@ -213,13 +229,64 @@ Func InitLeapDroid($bCheckOnly = False)
 
 EndFunc   ;==>InitLeapDroid
 
+Func UpdateLeapdroidSettings(ByRef $fileContent, $param, $value)
+
+	$fileContent = StringRegExpReplace($fileContent, "^(" & $param & "=.*)", $param & "=" & $value)
+	Return @extended
+
+EndFunc   ;==>UpdateLeapdroidSettings
+
 Func SetScreenLeapDroid()
 
 	If Not InitAndroid() Then Return False
 
 	Local $cmdOutput, $process_killed
 
+	; 1.3.0 - 1.5.0 uses command line parameters -w and -Hex
+	; 1.6.1 uses leapdroid.settings file in @MyDocumentsDir & "\Leapdroid\Leapdroid Emulator"
+	; 1.7.0 uses leapdroid.settings file in GetLeapDroidPath() & "Leapdroid Emulator"
+
+	Local $files[2] = [@MyDocumentsDir & "\Leapdroid\Leapdroid Emulator\leapdroid.settings", GetLeapDroidPath() & "Leapdroid Emulator\leapdroid.settings"]
+	Local $f, $p, $h
+
 	; Set width and height
+	For $f in $files
+		$p = StringMid($f, 1, StringInStr($f, "\", 0, -1))
+		If FileExists($p) Then
+			If FileExists($f) = 0 Then
+				; create file
+				$h = FileOpen($f, $FO_OVERWRITE)
+				If $h = -1 Then
+					SetLog("Cannot write " & $Android & " config file:" & @CRLF & $f, $COLOR_ERROR)
+					ContinueLoop
+				EndIf
+				FileWrite($h, "RESOLUTION=" & $GAME_WIDTH & "x" & $GAME_HEIGHT & @CRLF & "DPI=160")
+				FileClose($h)
+			Else
+				; update file
+				Local $i
+				$h = FileOpen($f, $FO_READ)
+				If $h = -1 Then
+					SetLog("Cannot read " & $Android & " config file:" & @CRLF & $f, $COLOR_ERROR)
+					ContinueLoop
+				EndIf
+				Local $s = FileRead($h)
+				FileClose($h)
+				$i = UpdateLeapdroidSettings($s, "RESOLUTION", $GAME_WIDTH & "x" & $GAME_HEIGHT)
+				If $i < 1 Then SetDebugLog("Cannot update " & $Android & " screen resolution in file:" & @CRLF & $f, $COLOR_ERROR)
+				$i = UpdateLeapdroidSettings($s, "DPI", "160")
+				If $i < 1 Then SetDebugLog("Cannot update " & $Android & " screen DPI in file:" & @CRLF & $f, $COLOR_ERROR)
+				$h = FileOpen($f, $FO_OVERWRITE)
+				If $h = -1 Then
+					SetLog("Cannot write " & $Android & " config file:" & @CRLF & $f, $COLOR_ERROR)
+					ContinueLoop
+				EndIf
+				FileWrite($h, $s)
+				FileClose($h)
+			EndIf
+		EndIf
+	Next
+
 	#cs
 	$cmdOutput = LaunchConsole($__VBoxManage_Path, "guestproperty set " & $AndroidInstance & " resolution_width " & $AndroidClientWidth, $process_killed)
 	$cmdOutput = LaunchConsole($__VBoxManage_Path, "guestproperty set " & $AndroidInstance & " resolution_height " & $AndroidClientHeight, $process_killed)
@@ -263,15 +330,15 @@ Func CheckScreenLeapDroid($bSetLog = True)
 		If $Value <> $aValues[$i][1] Then
 			If $iErrCnt = 0 Then
 				If $bSetLog Then
-					SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+					SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 				Else
-					SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+					SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 				EndIf
 			EndIf
 			If $bSetLog Then
-				SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+				SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 			Else
-				SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+				SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 			EndIf
 			$iErrCnt += 1
 		EndIf

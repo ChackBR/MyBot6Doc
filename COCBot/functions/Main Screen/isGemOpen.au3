@@ -16,13 +16,13 @@
 Func isGemOpen($bNeedCaptureRegion = False)
 	_Sleep($iDelayisGemOpen1)
 	If _CheckPixel($aIsGemWindow1, $bNeedCaptureRegion) Then ; Safety Check if the normal use Gem window opens
-		If $debugSetlog = 1 Then Setlog("Gemclick Red X detect", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("Gemclick Red X detect", $COLOR_DEBUG)
 		PureClickP($aAway, 1, 0, "#0140") ; click away to close gem window
 		Return True
 	ElseIf _CheckPixel($aIsGemWindow2, $bNeedCaptureRegion) And _  ; check for the red line under the redX square of gem window
 			_CheckPixel($aIsGemWindow3, $bNeedCaptureRegion) And _
 			_CheckPixel($aIsGemWindow4, $bNeedCaptureRegion) Then
-		If $debugSetlog = 1 Then Setlog("Gemclick Red Line detect", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("Gemclick Red Line detect", $COLOR_DEBUG)
 		PureClickP($aAway, 1, 0, "#0141")
 		Return True
 	EndIf

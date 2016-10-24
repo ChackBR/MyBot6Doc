@@ -16,7 +16,7 @@
 Local $x = 25, $y = 45
 	$grpDBActivate = GUICtrlCreateGroup(GetTranslated(625,0, "Start Search IF"), $x - 20, $y - 20, 190, 305)
 		$x -= 15
-		$chkDBActivateSearches = GUICtrlCreateCheckbox(GetTranslated(625,1,"Search"), $x, $y, 68, 18)
+		$chkDBActivateSearches = GUICtrlCreateCheckbox(GetTranslated(603,5,"Search"), $x, $y, 68, 18)
 			$txtTip = GetTranslated(625,68, "Note - enables SEARCH range for this attack type ONLY.") & @CRLF & _
 				GetTranslated(625,69, "Setting will not set search limit to restart search process!")
 			_GUICtrlSetTip(-1, $txtTip)
@@ -115,9 +115,9 @@ Local $x = 25, $y = 45
       $IMGchkDBHasteSpellWait = GUICtrlCreateIcon($pIconLib, $eIcnHasteSpell, $x+161, $y, 22, 22)
 	$y += 22
 	$x = 10
-		$chkDBSpellsWait = GUICtrlCreateCheckbox("Wait for Spells to be Ready", $x, $y, -1, -1)
-			$txtTip = GetTranslated(625,100, "Stop searching for this attack type when Spells are not ready") & @CRLF & _
-			GetTranslated(625,101, "Warning: Do not enable unless you have spell factory or bot will not attack!")
+		$chkDBSpellsWait = GUICtrlCreateCheckbox(GetTranslated(625,71,"Wait for Spells to be Ready"), $x, $y, -1, -1)
+			$txtTip = GetTranslated(625,72, "Stop searching for this attack type when Spells are not ready") & @CRLF & _
+			GetTranslated(625,73, "Warning: Do not enable unless you have spell factory or bot will not attack!")
  			_GUICtrlSetTip(-1, $txtTip)
  			GUICtrlSetOnEvent(-1, "chkDBSpellsWait")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

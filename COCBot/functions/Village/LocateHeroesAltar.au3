@@ -39,7 +39,7 @@ Func _LocateQueenAltar()
 		$bDisableBreakCheck = False ; restore flag
 	EndIf
 
-	SetLog("Locating Queen Altar...", $COLOR_BLUE)
+	SetLog("Locating Queen Altar...", $COLOR_INFO)
 	While 1
 		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
 		$stext = $sErrorText & @CRLF & GetTranslated(640,34,"Click OK then click on your Queen Altar") & @CRLF & @CRLF & _
@@ -56,7 +56,7 @@ Func _LocateQueenAltar()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "Queen Altar Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -68,20 +68,20 @@ Func _LocateQueenAltar()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Queen Altar Location: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Queen Altar Location: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_ERROR)
 						ClickP($aTopLeftClient)
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad Queen Altar Location: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Queen Altar Location: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_ERROR)
 						$QueenAltarPos[0] = -1
 						$QueenAltarPos[1] = -1
 						ClickP($aTopLeftClient)
 						Return False
 				EndSelect
 			EndIf
-			SetLog("Queen Altar: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_GREEN)
+			SetLog("Queen Altar: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate Queen Altar Cancelled", $COLOR_BLUE)
+			SetLog("Locate Queen Altar Cancelled", $COLOR_INFO)
 			ClickP($aTopLeftClient)
 			Return
 		EndIf
@@ -124,7 +124,7 @@ Func _LocateQueenAltar()
 						$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iSilly > 4
-						SetLog("Quit joking, Click the Queen Altar, or restart bot and try again", $COLOR_RED)
+						SetLog("Quit joking, Click the Queen Altar, or restart bot and try again", $COLOR_ERROR)
 						$QueenAltarPos[0] = -1
 						$QueenAltarPos[1] = -1
 						ClickP($aTopLeftClient)
@@ -132,7 +132,7 @@ Func _LocateQueenAltar()
 				EndSelect
 			EndIf
 		Else
-			SetLog(" Operator Error - Bad Queen Altar Location: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_RED)
+			SetLog(" Operator Error - Bad Queen Altar Location: " & "(" & $QueenAltarPos[0] & "," & $QueenAltarPos[1] & ")", $COLOR_ERROR)
 			$QueenAltarPos[0] = -1
 			$QueenAltarPos[1] = -1
 			ClickP($aTopLeftClient)
@@ -176,7 +176,7 @@ Func _LocateKingAltar()
 		$bDisableBreakCheck = False ; restore flag
 	EndIf
 
-	SetLog("Locating King Altar...", $COLOR_BLUE)
+	SetLog("Locating King Altar...", $COLOR_INFO)
 	While 1
 		ClickP($aTopLeftClient)
 		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
@@ -193,7 +193,7 @@ Func _LocateKingAltar()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "King Altar Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -205,20 +205,20 @@ Func _LocateKingAltar()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad King Altar Location: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad King Altar Location: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_ERROR)
 						ClickP($aTopLeftClient)
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad King Altar Location: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad King Altar Location: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_ERROR)
 						$KingAltarPos[0] = -1
 						$KingAltarPos[1] = -1
 						ClickP($aTopLeftClient)
 						Return False
 				EndSelect
 			EndIf
-			SetLog("King Altar: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_GREEN)
+			SetLog("King Altar: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate King Altar Cancelled", $COLOR_BLUE)
+			SetLog("Locate King Altar Cancelled", $COLOR_INFO)
 			ClickP($aTopLeftClient)
 			Return
 		EndIf
@@ -260,7 +260,7 @@ Func _LocateKingAltar()
 						$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iSilly > 4
-						SetLog("Quit joking, Click the King Altar, or restart bot and try again", $COLOR_RED)
+						SetLog("Quit joking, Click the King Altar, or restart bot and try again", $COLOR_ERROR)
 						$KingAltarPos[0] = -1
 						$KingAltarPos[1] = -1
 						ClickP($aTopLeftClient)
@@ -268,7 +268,7 @@ Func _LocateKingAltar()
 				EndSelect
 			EndIf
 		Else
-			SetLog(" Operator Error - Bad King Altar Location: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_RED)
+			SetLog(" Operator Error - Bad King Altar Location: " & "(" & $KingAltarPos[0] & "," & $KingAltarPos[1] & ")", $COLOR_ERROR)
 			$KingAltarPos[0] = -1
 			$KingAltarPos[1] = -1
 			ClickP($aTopLeftClient)
@@ -304,7 +304,7 @@ Func _LocateWardenAltar()
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 
 	If Number($iTownHallLevel) < 11 Then
-		SetLog("Grand Warden requires TH11, Cancel locate Altar!", $COLOR_RED)
+		SetLog("Grand Warden requires TH11, Cancel locate Altar!", $COLOR_ERROR)
 		Return
 	EndIf
 
@@ -318,7 +318,7 @@ Func _LocateWardenAltar()
 		$bDisableBreakCheck = False ; restore flag
 	EndIf
 
-	SetLog("Locating Grand Warden Altar... work in progress!", $COLOR_BLUE)
+	SetLog("Locating Grand Warden Altar... work in progress!", $COLOR_INFO)
 	While 1
 		ClickP($aTopLeftClient)
 		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
@@ -335,7 +335,7 @@ Func _LocateWardenAltar()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "Grand Warden Altar Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -347,20 +347,20 @@ Func _LocateWardenAltar()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Grand Warden Altar Location: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Grand Warden Altar Location: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_ERROR)
 						ClickP($aTopLeftClient)
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad Grand Warden Altar Location: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Grand Warden Altar Location: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_ERROR)
 						$WardenAltarPos[0] = -1
 						$WardenAltarPos[1] = -1
 						ClickP($aTopLeftClient)
 						Return False
 				EndSelect
 			EndIf
-			SetLog("Grand Warden Altar: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_GREEN)
+			SetLog("Grand Warden Altar: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate Grand Warden Altar Cancelled", $COLOR_BLUE)
+			SetLog("Locate Grand Warden Altar Cancelled", $COLOR_INFO)
 			ClickP($aTopLeftClient)
 			Return
 		EndIf
@@ -403,7 +403,7 @@ Func _LocateWardenAltar()
 						$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iSilly > 4
-						SetLog("Quit joking, Click the Grand Warden Altar, or restart bot and try again", $COLOR_RED)
+						SetLog("Quit joking, Click the Grand Warden Altar, or restart bot and try again", $COLOR_ERROR)
 						$WardenAltarPos[0] = -1
 						$WardenAltarPos[1] = -1
 						ClickP($aTopLeftClient)
@@ -411,7 +411,7 @@ Func _LocateWardenAltar()
 				EndSelect
 			EndIf
 		Else
-			SetLog(" Operator Error - Bad Grand Warden Altar Location: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_RED)
+			SetLog(" Operator Error - Bad Grand Warden Altar Location: " & "(" & $WardenAltarPos[0] & "," & $WardenAltarPos[1] & ")", $COLOR_ERROR)
 			$WardenAltarPos[0] = -1
 			$WardenAltarPos[1] = -1
 			ClickP($aTopLeftClient)

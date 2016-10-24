@@ -17,7 +17,7 @@
 Func DebugImageSave($TxtName = "Unknown", $capturenew = True, $extensionpng = "png", $makesubfolder = True)
 
 	; Debug Code to save images before zapping for later review, time stamped to align with logfile!
-	;SetLog("Taking snapshot for later review", $COLOR_GREEN) ;Debug purposes only :)
+	;SetLog("Taking snapshot for later review", $COLOR_SUCCESS) ;Debug purposes only :)
 	$Date = @MDAY & "." & @MON & "." & @YEAR
 	$Time = @HOUR & "." & @MIN & "." & @SEC
 	Local $savefolder = $dirTempDebug
@@ -59,7 +59,7 @@ Func DebugImageSave($TxtName = "Unknown", $capturenew = True, $extensionpng = "p
 
 	If $capturenew Then _CaptureRegion()
 	_GDIPlus_ImageSaveToFile($hBitmap,$filename)
-	If $debugsetlog = 1 Then Setlog($filename, $COLOR_purple)
+	If $debugsetlog = 1 Then Setlog($filename, $COLOR_DEBUG)
 
 	If _Sleep($iDelayDebugImageSave1) Then Return
 

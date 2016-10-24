@@ -18,7 +18,7 @@ Global $hToolTip = 0
 Func _GUICtrlSetTip($controlID, $tiptext, $title = Default, $icon = Default, $options = Default)
 	;Return GUICtrlSetTip($controlID, $tiptext, $title, $icon, $options)
 	If $hToolTip = 0 Then
-		SetDebugLog("_GUICtrlSetTip: Missing $hToolTip!", $COLOR_RED)
+		SetDebugLog("_GUICtrlSetTip: Missing $hToolTip!", $COLOR_ERROR)
 		Return False
 	EndIf
 	Local $hCtrl = GUICtrlGetHandle($controlID)

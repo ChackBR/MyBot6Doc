@@ -22,7 +22,7 @@ Global $SlotInArmyPekk = -1, $SlotInArmyBabyD = -1, $SlotInArmyMine = -1
 
 Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $test = false)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTroopCount:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTroopCount:", $COLOR_DEBUG1)
 
 	If $test = false  Then
 		If $bOpenArmyWindow = False And IsTrainPage() = False Then ; check for train page
@@ -45,17 +45,17 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 	Local $TroopTypeT = ""
 
 	_CaptureRegion2(120, 165 + $midOffsetY, 740, 220 + $midOffsetY)
-	If $debugSetlog = 1 Then SetLog("$hHBitmap2 made", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("$hHBitmap2 made", $COLOR_DEBUG)
 	If _Sleep($iDelaycheckArmyCamp5) Then Return
-	If $debugsetlogTrain = 1 Then SetLog("Calling MBRfunctions.dll/searchIdentifyTroopTrained ", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Calling MBRfunctions.dll/searchIdentifyTroopTrained ", $COLOR_DEBUG)
 
 	$FullTemp = DllCall($hFuncLib, "str", "searchIdentifyTroopTrained", "ptr", $hHBitmap2)
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 	If $debugsetlogTrain = 1 Then
 		If IsArray($FullTemp) Then
-			SetLog("Dll return $FullTemp :" & $FullTemp[0], $COLOR_PURPLE)
+			SetLog("Dll return $FullTemp :" & $FullTemp[0], $COLOR_DEBUG)
 		Else
-			SetLog("Dll return $FullTemp : ERROR" & $FullTemp, $COLOR_PURPLE)
+			SetLog("Dll return $FullTemp : ERROR" & $FullTemp, $COLOR_DEBUG)
 		EndIf
 	EndIf
 
@@ -65,12 +65,12 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 
 	If $debugsetlogTrain = 1 Then
 		If IsArray($TroopTypeT) Then
-			SetLog("$Trooptype split # : " & $TroopTypeT[0], $COLOR_PURPLE)
+			SetLog("$Trooptype split # : " & $TroopTypeT[0], $COLOR_DEBUG)
 		Else
-			SetLog("$Trooptype split # : ERROR " & $TroopTypeT, $COLOR_PURPLE)
+			SetLog("$Trooptype split # : ERROR " & $TroopTypeT, $COLOR_DEBUG)
 		EndIf
 	EndIf
-	If $debugsetlogTrain = 1 Then SetLog("Start the Loop", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SetLog("Start the Loop", $COLOR_DEBUG)
 
 	For $i = 0 To UBound($TroopName) - 1 ; Reset the variables
 		Assign(("SlotInArmy" & $TroopName[$i]), -1)
@@ -91,7 +91,7 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 			$TroopQ = "0"
 			If _sleep($iDelaycheckArmyCamp1) Then Return
 			Local $Troops = StringSplit($TroopTypeT[$i], "#", $STR_NOCOUNT)
-			If $debugsetlogTrain = 1 Then SetLog("$TroopTypeT[$i] split : " & $i, $COLOR_PURPLE)
+			If $debugsetlogTrain = 1 Then SetLog("$TroopTypeT[$i] split : " & $i, $COLOR_DEBUG)
 
 			If IsArray($Troops) And $Troops[0] <> "" Then
 
@@ -173,14 +173,14 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 				ElseIf $Troops[0] = $eBabyD Then
 					$TroopQ = $Troops[2]
 					If $FirstStart Or $fullArmy Or IsTroopToDonateOnly($eBabyD) Then
-						$CurPekk = -($TroopQ)
+						$CurBabyD = -($TroopQ)
 						$SlotInArmyBabyD = $i - 1
 					EndIf
 
 				ElseIf $Troops[0] = $eMine Then
 					$TroopQ = $Troops[2]
 					If $FirstStart Or $fullArmy Or IsTroopToDonateOnly($eMine) Then
-						$CurPekk = -($TroopQ)
+						$CurMine = -($TroopQ)
 						$SlotInArmyMine = $i - 1
 					EndIf
 
@@ -235,7 +235,9 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False, $tes
 					EndIf
 
 				EndIf
-				If $TroopQ <> 0 Then SetLog(" - No. of " & NameOfTroop($Troops[0]) & ": " & $TroopQ)
+				Local $Plural = 0
+				If $TroopQ > 1 then $Plural = 1
+				If $TroopQ <> 0 Then SetLog(" - No. of " & NameOfTroop($Troops[0], $Plural) & ": " & $TroopQ)
 
 			EndIf
 		Next

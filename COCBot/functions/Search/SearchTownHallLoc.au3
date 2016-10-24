@@ -35,30 +35,32 @@ Func SearchTownHallLoc()
 	EndSwitch
 
 
+	; New Tile px on 44x44 map size : X = 16px and Y = 12px
+
 	;setlog("th add tiles = " & $addtiles)
 	If $searchTH <> "-" Then
 		If isInsideDiamondXY($THx, $THy) = False Then Return False
 
-		For $i = 0 To 20
+		For $i = 0 To 22
 
-			If $Thx < 114 + $i * 19 + Ceiling(($addtiles - 2) / 2 * 19) And $THy < 359 - $i * 14 + Ceiling(($addtiles - 2) / 2 * 14) Then
+			If $Thx < 114 + $i * 16 + Ceiling(($addtiles - 2) / 2 * 16) And $THy < 359 - $i * 12 + Ceiling(($addtiles - 2) / 2 * 12) Then
 				$THi = $i
-				$THside = 0
+				$THside = 0  	; TopLeft
 				Return True
 			EndIf
-			If $Thx < 117 + $i * 19 + Ceiling(($addtiles - 2) / 2 * 19) And $THy > 268 + $i * 14 - Floor(($addtiles - 2) / 2 * 14) Then
+			If $Thx < 117 + $i * 16 + Ceiling(($addtiles - 2) / 2 * 16) And $THy > 268 + $i * 12 - Floor(($addtiles - 2) / 2 * 12) Then
 				$THi = $i
-				$THside = 1
+				$THside = 1 	; BottomLeft
 				Return True
 			EndIf
-			If $Thx > 743 - $i * 19 - Floor(($addtiles - 2) / 2 * 19) And $THy < 358 - $i * 14 + Ceiling(($addtiles - 2) / 2 * 14) Then
+			If $Thx > 743 - $i * 16 - Floor(($addtiles - 2) / 2 * 16) And $THy < 358 - $i * 12 + Ceiling(($addtiles - 2) / 2 * 12) Then
 				$THi = $i
-				$THside = 2
+				$THside = 2		; TopRight
 				Return True
 			EndIf
-			If $Thx > 742 - $i * 19 - Floor(($addtiles - 2) / 2 * 19) And $THy > 268 + $i * 14 - Floor(($addtiles - 2) / 2 * 14) Then
+			If $Thx > 742 - $i * 16 - Floor(($addtiles - 2) / 2 * 16) And $THy > 268 + $i * 12 - Floor(($addtiles - 2) / 2 * 12) Then
 				$THi = $i
-				$THside = 3
+				$THside = 3		; BottomRight
 				Return True
 			EndIf
 		Next

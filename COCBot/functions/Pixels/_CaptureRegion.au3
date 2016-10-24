@@ -22,15 +22,14 @@
 Func _CaptureRegion($iLeft = 0, $iTop = 0, $iRight = $GAME_WIDTH, $iBottom = $GAME_HEIGHT, $ReturnBMP = False, $ReturnLocal_hHBitmap = False)
 	Local $SuspendMode
 
-	If $ReturnLocal_hHBitmap = False And $hHBitmap <> $hHBitmapTest Then
+	If $ReturnLocal_hHBitmap = False Then
 		_GDIPlus_BitmapDispose($hBitmap)
-		_WinAPI_DeleteObject($hHBitmap)
+		If $hHBitmap <> $hHBitmapTest Then _WinAPI_DeleteObject($hHBitmap)
 	EndIf
-
-	If $RunState Then CheckAndroidRunning() ; Ensure Android is running
 
 	Local $_hHBitmap = $hHBitmapTest
 	If $hHBitmapTest = 0 Then
+		If $RunState Then CheckAndroidRunning() ; Ensure Android is running
 		If $ichkBackground = 1 Then
 			Local $iW = Number($iRight) - Number($iLeft), $iH = Number($iBottom) - Number($iTop)
 
@@ -38,7 +37,9 @@ Func _CaptureRegion($iLeft = 0, $iTop = 0, $iRight = $GAME_WIDTH, $iBottom = $GA
 				$_hHBitmap = AndroidScreencap($iLeft, $iTop, $iW, $iH)
 			Else
 				$SuspendMode = ResumeAndroid(False)
-				Local $hCtrl = ControlGetHandle($HWnD, $AppPaneName, $AppClassInstance)
+				;Local $hCtrl = ControlGetHandle($HWnD, $AppPaneName, $AppClassInstance)
+				Local $hCtrl = ControlGetHandle(GetCurrentAndroidHWnD(), $AppPaneName, $AppClassInstance)
+				If $hCtrl = 0 Then SetLog("AndroidHandle not found, contact support", $COLOR_ERROR)
 				Local $hDC_Capture = _WinAPI_GetDC($hCtrl)
 				Local $hMemDC = _WinAPI_CreateCompatibleDC($hDC_Capture)
 				$_hHBitmap = _WinAPI_CreateCompatibleBitmap($hDC_Capture, $iW, $iH)
@@ -46,7 +47,7 @@ Func _CaptureRegion($iLeft = 0, $iTop = 0, $iRight = $GAME_WIDTH, $iBottom = $GA
 
 				DllCall("user32.dll", "int", "PrintWindow", "hwnd", $hCtrl, "handle", $hMemDC, "int", 0)
 				_WinAPI_SelectObject($hMemDC, $_hHBitmap)
-				_WinAPI_BitBlt($hMemDC, 0, 0, $iW, $iH, $hDC_Capture, $iLeft, $iTop, 0x00CC0020)
+				_WinAPI_BitBlt($hMemDC, 0, 0, $iW, $iH, $hDC_Capture, $iLeft, $iTop, $SRCCOPY)
 
 				_WinAPI_DeleteDC($hMemDC)
 				_WinAPI_SelectObject($hMemDC, $hObjectOld)
@@ -59,6 +60,23 @@ Func _CaptureRegion($iLeft = 0, $iTop = 0, $iRight = $GAME_WIDTH, $iBottom = $GA
 			$_hHBitmap = _ScreenCapture_Capture("", $iLeft + $BSpos[0], $iTop + $BSpos[1], $iRight + $BSpos[0] - 1, $iBottom + $BSpos[1] - 1, False)
 			SuspendAndroid($SuspendMode, False)
 		EndIf
+	ElseIf $iLeft > 0 Or $iTop > 0 Or $iRight < $GAME_WIDTH Or $iBottom < $GAME_HEIGHT Then
+		; resize test image
+		Local $iW = Number($iRight) - Number($iLeft), $iH = Number($iBottom) - Number($iTop)
+		Local $hDC = _WinAPI_GetDC($frmBot)
+		Local $hMemDC_src = _WinAPI_CreateCompatibleDC($hDC)
+		Local $hMemDC_dst = _WinAPI_CreateCompatibleDC($hDC)
+		$_hHBitmap = _WinAPI_CreateCompatibleBitmap($hDC, $iW, $iH)
+		Local $hObjectOld_src = _WinAPI_SelectObject($hMemDC_src, $hHBitmapTest)
+		Local $hObjectOld_dst = _WinAPI_SelectObject($hMemDC_dst, $_hHBitmap)
+
+		_WinAPI_BitBlt($hMemDC_dst, 0, 0, $iW, $iH, $hMemDC_src, $iLeft, $iTop, $SRCCOPY)
+
+		_WinAPI_SelectObject($hMemDC_src, $hObjectOld_src)
+		_WinAPI_SelectObject($hMemDC_dst, $hObjectOld_dst)
+		_WinAPI_ReleaseDC($frmBot, $hDC)
+		_WinAPI_DeleteDC($hMemDC_src)
+		_WinAPI_DeleteDC($hMemDC_dst)
 	EndIf
 
     $ForceCapture = False
@@ -173,6 +191,7 @@ EndFunc   ;==>ForceCaptureRegion
 ; ===============================================================================================================================
 Func TestCapture($hHBitmap = Default)
 	If $hHBitmap = Default Then Return $hHBitmapTest <> 0
+	If $hHBitmapTest <> 0 Then _WinAPI_DeleteObject($hHBitmapTest)  ; delete previous DC object using global handle
 	$hHBitmapTest = $hHBitmap
 	Return $hHBitmap
 EndFunc   ;==>TestCapture

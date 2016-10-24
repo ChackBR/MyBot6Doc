@@ -41,16 +41,16 @@ Local $x = 25, $y = 45
 			$txtTip = GetTranslated(634,10, "Use the ability of the Grand Warden on a timer.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_UNCHECKED+$GUI_DISABLE+$GUI_HIDE)
-			GUICtrlSetColor (-1,$COLOR_RED)
+			GUICtrlSetColor (-1,$COLOR_ERROR)
 		$txtWardenAbility = GUICtrlCreateInput("25", $x + 260, $y, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			$txtTip = GetTranslated(634,11, "Set the time in seconds for Timed Activation of Grand Warden Ability.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
 			GUICtrlSetLimit(-1, 2)
-			GUICtrlSetColor (-1,$COLOR_RED)
+			GUICtrlSetColor (-1,$COLOR_ERROR)
 		$lblWardenAbilitiesSec = GUICtrlCreateLabel(GetTranslated(603,6, -1), $x + 293, $y, -1, -1)
 			GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
-			GUICtrlSetColor (-1,$COLOR_RED)
+			GUICtrlSetColor (-1,$COLOR_ERROR)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 25, $y = 110
@@ -119,7 +119,7 @@ Global $cmbAttackPlannerDayMin, $icmbAttackPlannerDayMin, $cmbAttackPlannerDayMa
 
 	$x += 198
 	$y -= 5
-		$lbAttackWeekdays0 = GUICtrlCreateLabel(GetTranslated(603,36, "Day:"), $x, $y, -1, 15)
+		$lbAttackWeekdays0 = GUICtrlCreateLabel(GetTranslated(603,36, "Day") & ":", $x, $y, -1, 15)
 			_GUICtrlSetTip(-1, GetTranslated(603,31, "Only during these day of week"))
 		$lbAttackWeekdays1 = GUICtrlCreateLabel(GetTranslated(603,16, "Su"), $x + 30, $y, -1, 15)
 			_GUICtrlSetTip(-1, GetTranslated(603,17, "Sunday"))
@@ -175,7 +175,7 @@ Global $cmbAttackPlannerDayMin, $icmbAttackPlannerDayMin, $cmbAttackPlannerDayMa
 			GUICtrlSetOnEvent(-1, "chkattackWeekDaysE")
 	$x -= 25
 	$y += 17
-		$lbattackHours0 = GUICtrlCreateLabel(GetTranslated(603,35,"Hour:"), $x , $y, -1, 15)
+		$lbattackHours0 = GUICtrlCreateLabel(GetTranslated(603,15,"Hour") & ":", $x , $y, -1, 15)
 			$txtTip = GetTranslated(603,30, "Only during these hours of each day")
 			_GUICtrlSetTip(-1, $txtTip)
 		$lbattackHours1 = GUICtrlCreateLabel(" 0", $x + 30, $y, 13, 15)

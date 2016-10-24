@@ -17,7 +17,7 @@
 
 Func SnipeWhileTrain()
 
-	If $DebugSetLog = 1 Then Setlog("SnipeWhileTrain function ", $COLOR_PURPLE)
+	If $DebugSetLog = 1 Then Setlog("SnipeWhileTrain function ", $COLOR_DEBUG)
 	If $iChkSnipeWhileTrain = 1 And $CommandStop <> 0 And $CommandStop <> 3 Then
 
 		; Attempt only when $iminArmyCapacityTHSnipe % army full to prevent failure of TH snipe
@@ -96,7 +96,7 @@ Func SWHTSearchLimit($iSkipped)
 		While Not (_CheckPixel($aSurrenderButton, $bCapturepixel))
 			;If _Sleep($iDelaySWHTSearchLimit1) Then Return
 			$Wcount += 1
-			If $DebugSetLog = 1 Then setlog("wait surrender button " & $Wcount, $COLOR_PURPLE)
+			If $DebugSetLog = 1 Then setlog("wait surrender button " & $Wcount, $COLOR_DEBUG)
 			If $Wcount >= 50 Then ExitLoop
 		WEnd
 
@@ -109,7 +109,7 @@ Func SWHTSearchLimit($iSkipped)
 		While Not (_CheckPixel($aIsMain, $bCapturepixel))
 			If _Sleep($iDelaySearchLimit2) Then Return
 			$mCcount += 1
-			If $DebugSetLog = 1 Then setlog("Wait main screen " & $mCcount, $COLOR_PURPLE)
+			If $DebugSetLog = 1 Then setlog("Wait main screen " & $mCcount, $COLOR_DEBUG)
 			If $mCount >= 50 Then ExitLoop
 		WEnd
 

@@ -16,7 +16,7 @@
 ;
 Func getArmyCCStatus($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("Begin getArmyCCStatus:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("Begin getArmyCCStatus:", $COLOR_DEBUG1)
 
 	$iCCRemainTime = 0 ; reset global time
 
@@ -33,14 +33,14 @@ Func getArmyCCStatus($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
 	;verify can make requestCC and update global flag
 	$canRequestCC = _ColorCheck(_GetPixelColor($aRequestTroopsAO[0], $aRequestTroopsAO[1], True), Hex($aRequestTroopsAO[2], 6), $aRequestTroopsAO[5])
-	If $debugsetlogTrain = 1 Then SETLOG("Can Request CC: " & $canRequestCC, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SETLOG("Can Request CC: " & $canRequestCC, $COLOR_DEBUG)
 
 	; check if waiting for request to expire to udpate time
 	If _ColorCheck(_GetPixelColor($aRequestTroopsAO[0], $aRequestTroopsAO[1], True), Hex($aRequestTroopsAO[3], 6), $aRequestTroopsAO[5]) Then
 		Local $iRemainTrainCCTimer = 0, $sResultCCMinutes = "", $aResult
 
 		Local $sResultCC = getArmyCampCap($aArmyCCRemainTime[0], $aArmyCCRemainTime[1]) ;Get CC time via OCR.
-		If $debugsetlogTrain = 1 Then Setlog("getArmyCampCap returned: " & $sResultCC, $COLOR_PURPLE)
+		If $debugsetlogTrain = 1 Then Setlog("getArmyCampCap returned: " & $sResultCC, $COLOR_DEBUG)
 
 		If $sResultCC <> "" Then
 			If StringInStr($sResultCC, "m") > 1 Then
@@ -52,12 +52,12 @@ Func getArmyCCStatus($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 			ElseIf StringInStr($sResultCC, "s") > 1 Then
 				$iRemainTrainCCTimer = Number(StringStripWS($sResultCC, $STR_STRIPALL)) / 60 ; removing the "s", " ", and convert to minutes
 			Else
-				If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("getArmyCCStatus: Bad OCR string: " & $sResultCC, $COLOR_RED)
+				If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("getArmyCCStatus: Bad OCR string: " & $sResultCC, $COLOR_ERROR)
 			EndIf
-			If $bDonationEnabled Or $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("CC request time: " & StringFormat("%.2f", $iRemainTrainCCTimer) & " minutes", $COLOR_BLUE)
+			If $bDonationEnabled Or $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("CC request time: " & StringFormat("%.2f", $iRemainTrainCCTimer) & " minutes", $COLOR_INFO)
 			$iCCRemainTime = $iRemainTrainCCTimer ; update global value
 		Else
-			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("Can not read remaining Spell train time!", $COLOR_RED)
+			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("Can not read remaining Spell train time!", $COLOR_ERROR)
 		EndIf
 	EndIf
 

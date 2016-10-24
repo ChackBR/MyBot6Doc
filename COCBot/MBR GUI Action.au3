@@ -18,6 +18,7 @@ Func BotStart()
 
 	$RunState = True
 	$TogglePauseAllowed = True
+	$SkipFirstZoomout = False
 
 	EnableControls($frmBotBottom, False, $frmBotBottomCtrlState)
 	;$FirstAttack = 0
@@ -45,7 +46,7 @@ Func BotStart()
 	If BitAND($AndroidSupportFeature, 1 + 2) = 0 And $ichkBackground = 1 Then
 		GUICtrlSetState($chkBackground, $GUI_UNCHECKED)
 		chkBackground() ; Invoke Event manually
-		SetLog("Background Mode not supported for " & $Android & " and has been disabled", $COLOR_RED)
+		SetLog("Background Mode not supported for " & $Android & " and has been disabled", $COLOR_ERROR)
 	EndIf
 
 	DisableGuiControls()
@@ -60,7 +61,6 @@ Func BotStart()
 
 	Local $Result = False
 	Local $hWin = $HWnD
-	SetDebugLog("btnStart: Current Android Window Handle: " & WinGetAndroidHandle())
 	If $HWnD = 0 Then
 		If $hWin = 0 Then
 			$Result = OpenAndroid(False)
@@ -68,6 +68,7 @@ Func BotStart()
 			$Result = RebootAndroid(False)
 		EndIf
 	EndIf
+	SetDebugLog("Android Window Handle: " & WinGetAndroidHandle())
 	If $HWnD <> 0 Then ;Is Android open?
 		If Not $RunState Then Return
 		If $AndroidBackgroundLaunched = True Or AndroidControlAvailable() Then ; Really?
@@ -76,7 +77,7 @@ Func BotStart()
 			EndIf
 		Else
 			; Not really
-			SetLog("Current " & $Android & " Window not supported by MyBot", $COLOR_RED)
+			SetLog("Current " & $Android & " Window not supported by MyBot", $COLOR_ERROR)
 			$Result = RebootAndroid(False)
 		EndIf
 		If Not $RunState Then Return
@@ -95,11 +96,11 @@ Func BotStart()
 		If $hWndActive = $HWnD And ($AndroidBackgroundLaunched = True Or AndroidControlAvailable())  Then ; Really?
 			Initiate() ; Initiate and run bot
 		Else
-			SetLog("Cannot use " & $Android & ", please check log", $COLOR_RED)
+			SetLog("Cannot use " & $Android & ", please check log", $COLOR_ERROR)
 			btnStop()
 		EndIf
 	Else
-		SetLog("Cannot start " & $Android & ", please check log", $COLOR_RED)
+		SetLog("Cannot start " & $Android & ", please check log", $COLOR_ERROR)
 		btnStop()
 	EndIf
 EndFunc   ;==>BotStart
@@ -140,7 +141,7 @@ Func BotStop()
 	GUICtrlSetState($lblVersion, $GUI_SHOW)
 
 	;_BlockInputEx(0, "", "", $HWnD)
-	SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ORANGE)
+	SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ACTION)
 	If Not $bSearchMode Then
 		If Not $TPaused Then $iTimePassed += Int(TimerDiff($sTimer))
 		;AdlibUnRegister("SetTime")

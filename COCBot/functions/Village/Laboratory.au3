@@ -25,27 +25,27 @@ Func Laboratory()
 	If $ichkLab = 0 Then Return ; Lab upgrade not enabled.
 
 	If $icmbLaboratory = 0 Then
-		SetLog("Laboratory enabled, but no troop upgrade selected", $COLOR_MAROON)
+		SetLog("Laboratory enabled, but no troop upgrade selected", $COLOR_WARNING)
 		Return False ; Nothing selected to upgrade
 	EndIf
 	If $aLabPos[0] = 0 Or $aLabPos[1] = 0 Then
-		SetLog("Laboratory Location not found!", $COLOR_RED)
+		SetLog("Laboratory Location not found!", $COLOR_ERROR)
 		LocateLab() ; Lab location unknown, so find it.
 		If $aLabPos[0] = 0 Or $aLabPos[1] = 0 Then
-			SetLog("Problem locating Laboratory, train laboratory position before proceeding", $COLOR_RED)
+			SetLog("Problem locating Laboratory, train laboratory position before proceeding", $COLOR_ERROR)
 			Return False
 		EndIf
 	EndIf
 
 	If $sLabUpgradeTime <> "" Then $TimeDiff = _DateDiff("n", _NowCalc(), $sLabUpgradeTime) ; what is difference between end time and now in minutes?
 	If @error Then _logErrorDateDiff(@error)
-	If $debugSetlog = 1 Then SetLog($aLabTroops[$icmbLaboratory][3] & " Lab end time: " & $sLabUpgradeTime & ", DIFF= " & $TimeDiff, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog($aLabTroops[$icmbLaboratory][3] & " Lab end time: " & $sLabUpgradeTime & ", DIFF= " & $TimeDiff, $COLOR_DEBUG)
 
 	If $RunState = False Then Return
 	If $TimeDiff <= 0 Then
-		SetLog("Checking Troop Upgrade in Laboratory ...", $COLOR_BLUE)
+		SetLog("Checking Troop Upgrade in Laboratory ...", $COLOR_INFO)
 	Else
-		SetLog("Laboratory Upgrade in progress, waiting for completion", $COLOR_BLUE)
+		SetLog("Laboratory Upgrade in progress, waiting for completion", $COLOR_INFO)
 		Return False
 	EndIf
 
@@ -53,15 +53,15 @@ Func Laboratory()
 	If _ColorCheck(_GetPixelColor(812, 141, True), Hex(0x000000, 6), 10) Then ; check if the village have a Dark Elixir Storage
 		$iElixirCount = getResourcesMainScreen(705, 74)
 		$iDarkCount = getResourcesMainScreen(728, 123)
-		SetLog("Updating village values [E]: " & $iElixirCount & " [D]: " & $iDarkCount, $COLOR_GREEN)
+		SetLog("Updating village values [E]: " & $iElixirCount & " [D]: " & $iDarkCount, $COLOR_SUCCESS)
 	Else
 		$iElixirCount = getResourcesMainScreen(710, 74)
-		SetLog("Updating village values [E]: " & $iElixirCount, $COLOR_GREEN)
+		SetLog("Updating village values [E]: " & $iElixirCount, $COLOR_SUCCESS)
 	EndIf
 	$iAvailElixir = Number($iElixirCount)
 	$iAvailDark = Number($iDarkCount)
 
-	Clickp($aLabPos, 1, 0, "#0197") ;Click Laboratory
+	BuildingClickP($aLabPos, "#0197") ;Click Laboratory
 
 	If _Sleep($iDelayLaboratory1) Then Return ; Wait for window to open
 	; Find Research Button
@@ -69,14 +69,14 @@ Func Laboratory()
 	Global $ButtonPixel = _MultiPixelSearch(433, 565 + $bottomOffsetY, 562, 619 + $bottomOffsetY, 1, 1, Hex(0x000000, 6), $offColors, 30) ; Black pixel of button edge
 	If IsArray($ButtonPixel) Then
 		If $debugSetlog = 1 Then
-			Setlog("ButtonPixel = " & $ButtonPixel[0] & ", " & $ButtonPixel[1], $COLOR_PURPLE) ;Debug
-			Setlog("#1: " & _GetPixelColor($ButtonPixel[0], $ButtonPixel[1], True) & ", #2: " & _GetPixelColor($ButtonPixel[0] + 37, $ButtonPixel[1] + 34, True) & ", #3: " & _GetPixelColor($ButtonPixel[0] + 50, $ButtonPixel[1] + 43, True) & ", #4: " & _GetPixelColor($ButtonPixel[0] + 61, $ButtonPixel[1] + 8, True), $COLOR_PURPLE)
+			Setlog("ButtonPixel = " & $ButtonPixel[0] & ", " & $ButtonPixel[1], $COLOR_DEBUG) ;Debug
+			Setlog("#1: " & _GetPixelColor($ButtonPixel[0], $ButtonPixel[1], True) & ", #2: " & _GetPixelColor($ButtonPixel[0] + 37, $ButtonPixel[1] + 34, True) & ", #3: " & _GetPixelColor($ButtonPixel[0] + 50, $ButtonPixel[1] + 43, True) & ", #4: " & _GetPixelColor($ButtonPixel[0] + 61, $ButtonPixel[1] + 8, True), $COLOR_DEBUG)
 		EndIf
 		If $debugImageSave = 1 Then DebugImageSave("LabUpgrade_") ; Debug Only
 		Click($ButtonPixel[0] + 40, $ButtonPixel[1] + 25, 1, 0, "#0198") ; Click Research Button
 		If _Sleep($iDelayLaboratory1) Then Return ; Wait for window to open
 	Else
-		Setlog("Trouble finding research button, try again...", $COLOR_MAROON)
+		Setlog("Trouble finding research button, try again...", $COLOR_WARNING)
 		ClickP($aAway, 2, $iDelayLaboratory4, "#0199")
 		Return False
 	EndIf
@@ -85,15 +85,15 @@ Func Laboratory()
 	If $iFirstTimeLab = 0 Then ; Need to get upgrade value for troops on page 1, only do this on 1st cycle of function
 		For $i = 1 To 12
 			$aUpgradeValue[$i] = getLabUpgrdResourceRed($aLabTroops[$i][0] + 13, $aLabTroops[$i][1] + 74)
-			If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Red text upgrade value = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Red text upgrade value = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 			If $aUpgradeValue[$i] = "" Or $aUpgradeValue[$i] < 49999 Then ; check if blank or below min value for any upgrade on page 1
 				$aUpgradeValue[$i] = getLabUpgrdResourceWht($aLabTroops[$i][0] + 13, $aLabTroops[$i][1] + 74)
-				If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " White text upgrade value = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+				If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " White text upgrade value = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 			EndIf
 			If $aUpgradeValue[$i] = "" Or $aUpgradeValue[$i] < 49999 Then ; check if blank or below min value for any upgrade on page 1
 				If _ColorCheck(_GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True), Hex(0xEFFFFF, 6), 20) And _ColorCheck(_GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True), Hex(0xFFFFFF, 6), 20) Then
 					$aUpgradeValue[$i] = -1
-					If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Is Maxed already, now = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+					If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Is Maxed already, now = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 				EndIf
 			EndIf
 			If $RunState = False Then Return
@@ -110,15 +110,15 @@ Func Laboratory()
 		If $iFirstTimeLab < 2 Then
 			For $i = 13 To 18
 				$aUpgradeValue[$i] = getLabUpgrdResourceRed($aLabTroops[$i][0] + 13, $aLabTroops[$i][1] + 74)
-				If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Red text upgrade value = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+				If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Red text upgrade value = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 				If $aUpgradeValue[$i] = "" Or $aUpgradeValue[$i] < 9999 Then ; check if blank or below min value for any upgrade on page 2
 					$aUpgradeValue[$i] = getLabUpgrdResourceWht($aLabTroops[$i][0] + 13, $aLabTroops[$i][1] + 74)
-					If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " White text upgrade value = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+					If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " White text upgrade value = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 				EndIf
 				If $aUpgradeValue[$i] = "" Or $aUpgradeValue[$i] < 9999 Then ; check if blank or below min value for any upgrade on page 2
 					If _ColorCheck(_GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True), Hex(0xEFFFFF, 6), 20) And _ColorCheck(_GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True), Hex(0xFFFFFF, 6), 20) Then
 						$aUpgradeValue[$i] = -1
-						If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Is Maxed already, $aUpgradeValue now = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+						If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Is Maxed already, $aUpgradeValue now = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 					EndIf
 				EndIf
 				If $RunState = False Then Return
@@ -136,15 +136,15 @@ Func Laboratory()
 		If $iFirstTimeLab < 4 Then
 			For $i = 19 To 29
 				$aUpgradeValue[$i] = getLabUpgrdResourceRed($aLabTroops[$i][0] + 13, $aLabTroops[$i][1] + 74)
-				If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Red text upgrade value = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+				If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Red text upgrade value = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 				If $aUpgradeValue[$i] = "" Or $aUpgradeValue[$i] < 9999 Then ; check if blank or below min value for any upgrade on page 2
 					$aUpgradeValue[$i] = getLabUpgrdResourceWht($aLabTroops[$i][0] + 13, $aLabTroops[$i][1] + 74)
-					If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " White text upgrade value = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+					If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " White text upgrade value = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 				EndIf
 				If $aUpgradeValue[$i] = "" Or $aUpgradeValue[$i] < 9999 Then ; check if blank or below min value for any upgrade on page 2
 					If _ColorCheck(_GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True), Hex(0xEFFFFF, 6), 20) And _ColorCheck(_GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True), Hex(0xFFFFFF, 6), 20) Then
 						$aUpgradeValue[$i] = -1
-						If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Is Maxed already, $aUpgradeValue now = " & $aUpgradeValue[$i], $COLOR_PURPLE)
+						If $debugSetlog = 1 Then Setlog($aLabTroops[$i][3] & " Is Maxed already, $aUpgradeValue now = " & $aUpgradeValue[$i], $COLOR_DEBUG)
 					EndIf
 				EndIf
 				If $RunState = False Then Return
@@ -161,12 +161,12 @@ Func Laboratory()
 
 	; check for upgrade in process - look for green in finish upgrade with gems button
 	If _ColorCheck(_GetPixelColor(625, 250 + $midOffsetY, True), Hex(0x60AC10, 6), 20) Or _ColorCheck(_GetPixelColor(660, 250 + $midOffsetY, True), Hex(0x60AC10, 6), 20) Then
-		SetLog("Upgrade in progress, waiting for completion of other troops", $COLOR_BLUE)
+		SetLog("Upgrade in progress, waiting for completion of other troops", $COLOR_INFO)
 		If _Sleep($iDelayLaboratory2) Then Return
 		; upgrade in process and time not recorded?  Then update completion time!
 		If $sLabUpgradeTime = ""  Or $TimeDiff <= 0 Then
 			$Result = getRemainTLaboratory(336, 260)      ; Try to read white text showing actual time left for upgrade
-			If $debugSetlog = 1 Then Setlog($aLabTroops[$icmbLaboratory][3] & " OCR Remaining Lab Time = " & $Result, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog($aLabTroops[$icmbLaboratory][3] & " OCR Remaining Lab Time = " & $Result, $COLOR_DEBUG)
 			$aArray = StringSplit($Result, ' ', BitOR($STR_CHRSPLIT, $STR_NOCOUNT))  ;separate days, hours, minutes, seconds
 			If IsArray($aArray) Then
 				$iRemainingTimeMin = 0
@@ -186,18 +186,18 @@ Func Laboratory()
 							$sTime = StringTrimRight($aArray[$i], 1) ; removing the "s"
 							$iRemainingTimeMin += Int($sTime) / 60  ; Add seconds
 						Case Else
-							Setlog("Remaining lab time OCR invalid:" & $aArray[$i], $COLOR_FUCHSIA)
+							Setlog("Remaining lab time OCR invalid:" & $aArray[$i], $COLOR_WARNING)
 							ClickP($aAway, 2, $iDelayLaboratory4, "#0328")
 							Return False
 					EndSelect
-					If $debugSetlog = 1 Then Setlog("Remain Lab Time: " & $aArray[$i] & ", Minutes= " & $iRemainingTimeMin, $COLOR_PURPLE)
+					If $debugSetlog = 1 Then Setlog("Remain Lab Time: " & $aArray[$i] & ", Minutes= " & $iRemainingTimeMin, $COLOR_DEBUG)
 				Next
 				$sLabUpgradeTime = _DateAdd('n', Ceiling($iRemainingTimeMin), _NowCalc()) ; add the time required to NOW to finish the upgrade
 				If @error Then _logErrorDateAdd(@error)
-				SetLog($aLabTroops[$icmbLaboratory][3] & "Updated Lab finishing time: " & $sLabUpgradeTime, $COLOR_GREEN)
+				SetLog($aLabTroops[$icmbLaboratory][3] & "Updated Lab finishing time: " & $sLabUpgradeTime, $COLOR_SUCCESS)
 				LabStatusGUIUpdate()  ; Update GUI flag
 			Else
-				If $debugSetlog = 1 Then Setlog("Invalid getRemainTLaboratory OCR", $COLOR_PURPLE)
+				If $debugSetlog = 1 Then Setlog("Invalid getRemainTLaboratory OCR", $COLOR_DEBUG)
 			EndIf
 		EndIf
 		;If $debugSetlog <> 1 Then
@@ -207,17 +207,17 @@ Func Laboratory()
 	EndIf
 
 	If $aUpgradeValue[$icmbLaboratory] = -1 Then
-		SetLog($aLabTroops[$icmbLaboratory][3] & " already max level, select another troop", $COLOR_RED)
+		SetLog($aLabTroops[$icmbLaboratory][3] & " already max level, select another troop", $COLOR_ERROR)
 		ClickP($aAway, 2, $iDelayLaboratory4, "#0353")
 		Return False
 	EndIf
 	If $aUpgradeValue[$icmbLaboratory] = 0 Then
 		If _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 3, $aLabTroops[$icmbLaboratory][1] + 19, True), Hex(0xC0C0C0, 6), 25) = True Then
 			; Look for Gray pixel inside left border if Lab upgrade required
-			SetLog("Lab upgrade not available for " & $aLabTroops[$icmbLaboratory][3] & ", Pick different troop!", $COLOR_RED)
+			SetLog("Lab upgrade not available for " & $aLabTroops[$icmbLaboratory][3] & ", Pick different troop!", $COLOR_ERROR)
 			If _Sleep($iDelayLabUpgrade2) Then Return
 		Else
-			SetLog($aLabTroops[$icmbLaboratory][3] & " value read error, close bot and try again!", $COLOR_RED)
+			SetLog($aLabTroops[$icmbLaboratory][3] & " value read error, close bot and try again!", $COLOR_ERROR)
 		EndIf
 		$iFirstTimeLab = 2 ; reset value read flag in case use does not restart bot.
 		ClickP($aAway, 2, $iDelayLaboratory4, "#0354")
@@ -226,30 +226,30 @@ Func Laboratory()
 	Switch $icmbLaboratory ;Change messaging based on troop number
 		Case 1 To 18; regular elixir
 			If $iAvailElixir < ($aUpgradeValue[$icmbLaboratory] + $itxtUpgrMinElixir) Then
-				SetLog("Insufficent Elixir for " & $aLabTroops[$icmbLaboratory][3] & ", Lab requires: " & $aUpgradeValue[$icmbLaboratory] & " + " & $itxtUpgrMinElixir & " user reserve", $COLOR_BLUE)
+				SetLog("Insufficent Elixir for " & $aLabTroops[$icmbLaboratory][3] & ", Lab requires: " & $aUpgradeValue[$icmbLaboratory] & " + " & $itxtUpgrMinElixir & " user reserve", $COLOR_INFO)
 				ClickP($aAway, 2, $iDelayLaboratory4, "#0355")
 				Return False
 			EndIf
 			If LabUpgrade() = True Then
-				Setlog("Elixir used = " & $aUpgradeValue[$icmbLaboratory], $COLOR_BLUE)
+				Setlog("Elixir used = " & $aUpgradeValue[$icmbLaboratory], $COLOR_INFO)
 				ClickP($aAway, 2, $iDelayLaboratory4, "#0356")
 				Return True
 			EndIf
 
 		Case 19 To 29 ; Dark Elixir
 			If $iAvailDark < $aUpgradeValue[$icmbLaboratory] + $itxtUpgrMinDark Then
-				SetLog("Insufficent Dark Elixir for " & $aLabTroops[$icmbLaboratory][3] & ", Lab requires: " & $aUpgradeValue[$icmbLaboratory] & " + " & $itxtUpgrMinDark & " user reserve", $COLOR_BLUE)
+				SetLog("Insufficent Dark Elixir for " & $aLabTroops[$icmbLaboratory][3] & ", Lab requires: " & $aUpgradeValue[$icmbLaboratory] & " + " & $itxtUpgrMinDark & " user reserve", $COLOR_INFO)
 				ClickP($aAway, 2, $iDelayLaboratory4, "#0357")
 				Return False
 			EndIf
 			If LabUpgrade() = True Then
-				Setlog("Dark Elixir used = " & $aUpgradeValue[$icmbLaboratory], $COLOR_BLUE)
+				Setlog("Dark Elixir used = " & $aUpgradeValue[$icmbLaboratory], $COLOR_INFO)
 				ClickP($aAway, 2, $iDelayLaboratory4, "#0358")
 				Return True
 			EndIf
 
 		Case Else
-			Setlog("Something went wrong with loot value on Lab upgrade on #" & $aLabTroops[$icmbLaboratory][3], $COLOR_RED)
+			Setlog("Something went wrong with loot value on Lab upgrade on #" & $aLabTroops[$icmbLaboratory][3], $COLOR_ERROR)
 			Return False
 	EndSwitch
 
@@ -263,23 +263,23 @@ Func LabUpgrade()
 	Select
 		Case _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 47, $aLabTroops[$icmbLaboratory][1] + 6, True), Hex(0xE8E8E0, 6), 20) = True
 			; check for beige pixel in center just below edge for troop not unlocked
-			SetLog($aLabTroops[$icmbLaboratory][3] & " not unlocked yet, select another troop", $COLOR_RED)
+			SetLog($aLabTroops[$icmbLaboratory][3] & " not unlocked yet, select another troop", $COLOR_ERROR)
 			If _Sleep($iDelayLabUpgrade2) Then Return
 
 		Case _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 68, $aLabTroops[$icmbLaboratory][1] + 79, True), Hex(0xE70A12, 6), 20) And _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 68, $aLabTroops[$icmbLaboratory][1] + 84, True), Hex(0xE70A12, 6), 20)
 			; Check for 2 red pixels in last zero of loot value to see if enough loot is available.
 			; this case should never be run if value check is working right!
-			SetLog("Value check error and Not enough Loot to upgrade " & $aLabTroops[$icmbLaboratory][3] & "...", $COLOR_RED)
+			SetLog("Value check error and Not enough Loot to upgrade " & $aLabTroops[$icmbLaboratory][3] & "...", $COLOR_ERROR)
 			If _Sleep($iDelayLabUpgrade2) Then Return
 
 		Case _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 23, $aLabTroops[$icmbLaboratory][1] + 60, True), Hex(0xFFC360, 6), 20) = True
 			; Look for Golden pixel inside level indicator for max troops
-			SetLog($aLabTroops[$icmbLaboratory][3] & " already max level, select another troop", $COLOR_RED)
+			SetLog($aLabTroops[$icmbLaboratory][3] & " already max level, select another troop", $COLOR_ERROR)
 			If _Sleep($iDelayLabUpgrade2) Then Return
 
 		Case _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 3, $aLabTroops[$icmbLaboratory][1] + 19, True), Hex(0xB7B7B7, 6), 20) = True
 			; Look for Gray pixel inside left border if Lab upgrade required or if we missed that upgrade is in process
-			SetLog("Laboratory upgrade not available now for " & $aLabTroops[$icmbLaboratory][3] & "...", $COLOR_RED)
+			SetLog("Laboratory upgrade not available now for " & $aLabTroops[$icmbLaboratory][3] & "...", $COLOR_ERROR)
 			If _Sleep($iDelayLabUpgrade2) Then Return
 
 		Case Else
@@ -290,7 +290,7 @@ Func LabUpgrade()
 
 			; double check if maxed?
 			If _ColorCheck(_GetPixelColor(258, 192, True), Hex(0xFF1919, 6), 20) And _ColorCheck(_GetPixelColor(272, 194, True), Hex(0xFF1919, 6), 20) Then
-				SetLog($aLabTroops[$icmbLaboratory][3] & " Previously maxxed, select another troop", $COLOR_RED) ; oops, we found the red warning message
+				SetLog($aLabTroops[$icmbLaboratory][3] & " Previously maxxed, select another troop", $COLOR_ERROR) ; oops, we found the red warning message
 				If _Sleep($iDelayLabUpgrade2) Then Return
 				ClickP($aAway, 2, $iDelayLabUpgrade3, "#0201")
 				Return False
@@ -298,7 +298,7 @@ Func LabUpgrade()
 
 			; double check enough elixir?
 			If _ColorCheck(_GetPixelColor(557, 487, True), Hex(0xE70A12, 6), 20) And _ColorCheck(_GetPixelColor(557, 494), Hex(0xE70A12, 6), 20) Then ; Check for Red Zero = means not enough loot!
-				SetLog("Missing Loot to upgrade " & $aLabTroops[$icmbLaboratory][3] & " (secondary check after Upgrade Value read failed)", $COLOR_RED)
+				SetLog("Missing Loot to upgrade " & $aLabTroops[$icmbLaboratory][3] & " (secondary check after Upgrade Value read failed)", $COLOR_ERROR)
 				If _Sleep($iDelayLabUpgrade2) Then Return
 				ClickP($aAway, 2, $iDelayLabUpgrade3, "#0333")
 				Return False
@@ -306,16 +306,16 @@ Func LabUpgrade()
 
 			; triple check for upgrade in process by gray upgrade button
 			If _ColorCheck(_GetPixelColor(625, 250 + $midOffsetY, True), Hex(0x848484, 6), 20) And _ColorCheck(_GetPixelColor(660, 250 + $midOffsetY, True), Hex(0x848484, 6), 20) Then
-				SetLog("Upgrade in progress, waiting for completion of other troops", $COLOR_MAROON)
+				SetLog("Upgrade in progress, waiting for completion of other troops", $COLOR_WARNING)
 				If _Sleep($iDelayLaboratory2) Then Return
 				ClickP($aAway, 2, $iDelayLaboratory4, "#0000")
 				Return False
 			Else
 				; get upgrade time from window
 				$Result = getLabUpgradeTime(482, 557) ; Try to read white text showing time for upgrade
-				Setlog($aLabTroops[$icmbLaboratory][3] & " Upgrade OCR Time = " & $Result, $COLOR_BLUE)
+				Setlog($aLabTroops[$icmbLaboratory][3] & " Upgrade OCR Time = " & $Result, $COLOR_INFO)
 				$StartTime = _NowCalc() ; what is date:time now
-				If $debugSetlog = 1 Then SetLog($aLabTroops[$icmbLaboratory][3] & "Upgrade Started @ " & $StartTime, $COLOR_GREEN)
+				If $debugSetlog = 1 Then SetLog($aLabTroops[$icmbLaboratory][3] & "Upgrade Started @ " & $StartTime, $COLOR_SUCCESS)
 				; Compute upgrade end time
 				$EndTime = ""
 				$EndPeriod = ""
@@ -341,15 +341,15 @@ Func LabUpgrade()
 							$TimeAdd = Int($EndTime) ; change to minutes
 							$sLabUpgradeTime = _DateAdd('n', $TimeAdd, $StartTime) ; add the time required to finish the  upgrade
 						Case Else
-							Setlog("Upgrade time period invalid, try again!", $COLOR_FUCHSIA)
+							Setlog("Upgrade time period invalid, try again!", $COLOR_WARNING)
 					EndSwitch
-					If $debugSetlog = 1 Then Setlog("$EndTime = " & $EndTime & " , $EndPeriod = " & $EndPeriod & ", $timeadd = " & $TimeAdd, $COLOR_PURPLE)
-					SetLog($aLabTroops[$icmbLaboratory][3] & "Upgrade Finishes @ " & $sLabUpgradeTime, $COLOR_GREEN)
+					If $debugSetlog = 1 Then Setlog("$EndTime = " & $EndTime & " , $EndPeriod = " & $EndPeriod & ", $timeadd = " & $TimeAdd, $COLOR_DEBUG)
+					SetLog($aLabTroops[$icmbLaboratory][3] & "Upgrade Finishes @ " & $sLabUpgradeTime, $COLOR_SUCCESS)
 				Else
-					Setlog("Error reading the upgrade time required, try again!", $COLOR_FUCHSIA)
+					Setlog("Error reading the upgrade time required, try again!", $COLOR_WARNING)
 				EndIf
 				If _DateIsValid($sLabUpgradeTime) = 0 Then ; verify success of StringRegExp to process upgrade date/time
-					Setlog("Error processing upgrade time required, try again!", $COLOR_FUCHSIA)
+					Setlog("Error processing upgrade time required, try again!", $COLOR_WARNING)
 					Return False
 				Else
 					$txtTip = GetTranslated(614, 8, "Visible Red button means that laboratory upgrade in process") & @CRLF & _
@@ -368,11 +368,11 @@ Func LabUpgrade()
 
 			If isGemOpen(True) = False Then ; check for gem window
 				If Not (_ColorCheck(_GetPixelColor(625, 250 + $midOffsetY, True), Hex(0x60AC10, 6), 20)) Or Not (_ColorCheck(_GetPixelColor(660, 250 + $midOffsetY, True), Hex(0x60AC10, 6), 20)) Then
-					SetLog("Something went wrong with " & $aLabTroops[$icmbLaboratory][3] & " Upgrade, try again.", $COLOR_RED)
+					SetLog("Something went wrong with " & $aLabTroops[$icmbLaboratory][3] & " Upgrade, try again.", $COLOR_ERROR)
 					ClickP($aAway, 2, $iDelayLabUpgrade3, "#0360")
 					Return False
 				EndIf
-				SetLog("Upgrade " & $aLabTroops[$icmbLaboratory][3] & " in your laboratory is complete...", $COLOR_GREEN)
+				SetLog("Upgrade " & $aLabTroops[$icmbLaboratory][3] & " in your laboratory is complete...", $COLOR_SUCCESS)
 				PushMsg("LabSuccess")
 				If _Sleep($iDelayLabUpgrade2) Then Return
 				$ichkLab = 0 ;reset enable lab upgrade flag
@@ -382,7 +382,7 @@ Func LabUpgrade()
 
 				Return True
 			Else
-				SetLog("Oops, Gems required for " & $aLabTroops[$icmbLaboratory][3] & " Upgrade, try again.", $COLOR_RED)
+				SetLog("Oops, Gems required for " & $aLabTroops[$icmbLaboratory][3] & " Upgrade, try again.", $COLOR_ERROR)
 			EndIf
 	EndSelect
 	ClickP($aAway, 2, $iDelayLabUpgrade3, "#0205")
@@ -393,7 +393,7 @@ EndFunc   ;==>LabUpgrade
 Func DebugRegionSave($sTxtName = "Unknown", $iLeft = 0, $iTop = 0, $iRight = $DEFAULT_WIDTH, $iBottom = $DEFAULT_HEIGHT)
 
 	; Debug Code to save images before zapping for later review, time stamped to align with logfile!
-	SetLog("Taking debug snapshot for later review", $COLOR_GREEN) ;Debug purposes only :)
+	SetLog("Taking debug snapshot for later review", $COLOR_SUCCESS) ;Debug purposes only :)
 	Local $Date = @MDAY & "." & @MON & "." & @YEAR
 	Local $Time = @HOUR & "." & @MIN & "." & @SEC
 	If $iLeft <> 0 And $iTop <> 0 And $iRight <> $DEFAULT_WIDTH And $iBottom <> $DEFAULT_HEIGHT Then
@@ -411,15 +411,15 @@ Func LabTroopImages1() ; Debug function to record pixel values for page 1 of lab
 	If $debugImageSave = 1 Then DebugImageSave("LabUpgrade_")
 	For $i = 1 To 12
 		DebugRegionSave($aLabTroops[$i][3], $aLabTroops[$i][0], $aLabTroops[$i][1], $aLabTroops[$i][0] + 98, $aLabTroops[$i][1] + 98)
-		SetLog($aLabTroops[$i][3], $COLOR_FUCHSIA)
-		SetLog("_GetPixelColor(+47, +6): " & _GetPixelColor($aLabTroops[$i][0] + 47, $aLabTroops[$i][1] + 6, True) & ":E0E4D0 =Not unlocked", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+68, +79): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 79, True) & ":E70A12 =No Loot1", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+68, +82): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 84, True) & ":E70A12 =No Loot2", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+81, +82): " & _GetPixelColor($aLabTroops[$i][0] + 81, $aLabTroops[$i][1] + 82, True) & ":XXXXXX =Loot type", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+78, +83): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True) & ":FFFFFF =Max L", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+78, +78): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True) & ":EFFFFF =Max L", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+3, +19): " & _GetPixelColor($aLabTroops[$i][0] + 3, $aLabTroops[$i][1] + 19, True) & ":C0C0C0 =Not possible", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 23, $aLabTroops[$i][1] + 60, True) & ":FFC360 =Max troop", $COLOR_PURPLE)
+		SetLog($aLabTroops[$i][3], $COLOR_WARNING)
+		SetLog("_GetPixelColor(+47, +6): " & _GetPixelColor($aLabTroops[$i][0] + 47, $aLabTroops[$i][1] + 6, True) & ":E0E4D0 =Not unlocked", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+68, +79): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 79, True) & ":E70A12 =No Loot1", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+68, +82): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 84, True) & ":E70A12 =No Loot2", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+81, +82): " & _GetPixelColor($aLabTroops[$i][0] + 81, $aLabTroops[$i][1] + 82, True) & ":XXXXXX =Loot type", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+78, +83): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True) & ":FFFFFF =Max L", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+78, +78): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True) & ":EFFFFF =Max L", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+3, +19): " & _GetPixelColor($aLabTroops[$i][0] + 3, $aLabTroops[$i][1] + 19, True) & ":C0C0C0 =Not possible", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 23, $aLabTroops[$i][1] + 60, True) & ":FFC360 =Max troop", $COLOR_DEBUG)
 	Next
 EndFunc   ;==>LabTroopImages1
 
@@ -427,15 +427,15 @@ Func LabTroopImages2() ; Debug function to record pixel values for page 2 of lab
 	If $debugImageSave = 1 Then DebugImageSave("LabUpgrade_")
 	For $i = 13 To 18
 		DebugRegionSave($aLabTroops[$i][3], $aLabTroops[$i][0], $aLabTroops[$i][1], $aLabTroops[$i][0] + 98, $aLabTroops[$i][1] + 98)
-		SetLog($aLabTroops[$i][3], $COLOR_FUCHSIA)
-		SetLog("_GetPixelColor(+47, +6): " & _GetPixelColor($aLabTroops[$i][0] + 47, $aLabTroops[$i][1] + 6, True) & ":E0E4D0 =Not unlocked", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+68, +79): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 79, True) & ":E70A12 =No Loot1", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+68, +82): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 84, True) & ":E70A12 =No Loot2", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+81, +82): " & _GetPixelColor($aLabTroops[$i][0] + 81, $aLabTroops[$i][1] + 82, True) & ":XXXXXX =Loot type", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+78, +83): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True) & ":FFFFFF =Max L", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+78, +78): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True) & ":EFFFFF =Max L", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+3, +19): " & _GetPixelColor($aLabTroops[$i][0] + 3, $aLabTroops[$i][1] + 19, True) & ":C0C0C0 =Not possible", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 23, $aLabTroops[$i][1] + 60, True) & ":FFC360 =Max troop", $COLOR_PURPLE)
+		SetLog($aLabTroops[$i][3], $COLOR_WARNING)
+		SetLog("_GetPixelColor(+47, +6): " & _GetPixelColor($aLabTroops[$i][0] + 47, $aLabTroops[$i][1] + 6, True) & ":E0E4D0 =Not unlocked", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+68, +79): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 79, True) & ":E70A12 =No Loot1", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+68, +82): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 84, True) & ":E70A12 =No Loot2", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+81, +82): " & _GetPixelColor($aLabTroops[$i][0] + 81, $aLabTroops[$i][1] + 82, True) & ":XXXXXX =Loot type", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+78, +83): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True) & ":FFFFFF =Max L", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+78, +78): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True) & ":EFFFFF =Max L", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+3, +19): " & _GetPixelColor($aLabTroops[$i][0] + 3, $aLabTroops[$i][1] + 19, True) & ":C0C0C0 =Not possible", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 23, $aLabTroops[$i][1] + 60, True) & ":FFC360 =Max troop", $COLOR_DEBUG)
 	Next
 EndFunc   ;==>LabTroopImages2
 
@@ -443,14 +443,14 @@ Func LabTroopImages3() ; Debug function to record pixel values for page 2 of lab
 	If $debugImageSave = 1 Then DebugImageSave("LabUpgrade_")
 	For $i = 19 To 29
 		DebugRegionSave($aLabTroops[$i][3], $aLabTroops[$i][0], $aLabTroops[$i][1], $aLabTroops[$i][0] + 98, $aLabTroops[$i][1] + 98)
-		SetLog($aLabTroops[$i][3], $COLOR_FUCHSIA)
-		SetLog("_GetPixelColor(+47, +6): " & _GetPixelColor($aLabTroops[$i][0] + 47, $aLabTroops[$i][1] + 6, True) & ":E0E4D0 =Not unlocked", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+68, +79): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 79, True) & ":E70A12 =No Loot1", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+68, +82): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 84, True) & ":E70A12 =No Loot2", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+81, +82): " & _GetPixelColor($aLabTroops[$i][0] + 81, $aLabTroops[$i][1] + 82, True) & ":XXXXXX =Loot type", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+78, +83): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True) & ":FFFFFF =Max L", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+78, +78): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True) & ":EFFFFF =Max L", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+3, +19): " & _GetPixelColor($aLabTroops[$i][0] + 3, $aLabTroops[$i][1] + 19, True) & ":C0C0C0 =Not possible", $COLOR_PURPLE)
-		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 23, $aLabTroops[$i][1] + 60, True) & ":FFC360 =Max troop", $COLOR_PURPLE)
+		SetLog($aLabTroops[$i][3], $COLOR_WARNING)
+		SetLog("_GetPixelColor(+47, +6): " & _GetPixelColor($aLabTroops[$i][0] + 47, $aLabTroops[$i][1] + 6, True) & ":E0E4D0 =Not unlocked", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+68, +79): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 79, True) & ":E70A12 =No Loot1", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+68, +82): " & _GetPixelColor($aLabTroops[$i][0] + 68, $aLabTroops[$i][1] + 84, True) & ":E70A12 =No Loot2", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+81, +82): " & _GetPixelColor($aLabTroops[$i][0] + 81, $aLabTroops[$i][1] + 82, True) & ":XXXXXX =Loot type", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+78, +83): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 83, True) & ":FFFFFF =Max L", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+78, +78): " & _GetPixelColor($aLabTroops[$i][0] + 78, $aLabTroops[$i][1] + 78, True) & ":EFFFFF =Max L", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+3, +19): " & _GetPixelColor($aLabTroops[$i][0] + 3, $aLabTroops[$i][1] + 19, True) & ":C0C0C0 =Not possible", $COLOR_DEBUG)
+		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 23, $aLabTroops[$i][1] + 60, True) & ":FFC360 =Max troop", $COLOR_DEBUG)
 	Next
 EndFunc   ;==>LabTroopImages3

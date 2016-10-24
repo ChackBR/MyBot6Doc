@@ -121,7 +121,7 @@ Local $x = 30, $y = 150 + $_GUI_MAIN_TOP
 			GUICtrlSetFont(-1, 9.5, $FW_BOLD)
 		$labelMyBotURL = GUICtrlCreateLabel("https://mybot.run/forums", $x + 198, $y, 150, 20)
 			GUICtrlSetFont(-1, 9.5, $FW_BOLD)
-			GUICtrlSetColor(-1, $COLOR_BLUE)
+			GUICtrlSetColor(-1, $COLOR_INFO)
 		$y += 22
 		$lblCredits3 = GUICtrlCreateLabel("Credits belong to following programmers for donating their time:", $x - 5, $y , 420, 20)
 			GUICtrlSetFont(-1,10, $FW_BOLD)
@@ -130,7 +130,7 @@ Local $x = 30, $y = 150 + $_GUI_MAIN_TOP
 		$lbltxtCreditsA1 = GUICtrlCreateLabel($txtCredits, $x+5, $y, 410, 20, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $SS_LEFT),0)
 			GUICtrlSetFont(-1, 9.5, $FW_BOLD)
 			GUICtrlSetColor(-1, $COLOR_NAVY)
-		$txtCredits = "Boju, Cosote, MonkeyHunter, Trlopes, Zengzeng"
+		$txtCredits = "Boju, Cosote, MonkeyHunter, Sardo, Trlopes, Zengzeng"
 		$lbltxtCreditsA2 = GUICtrlCreateLabel($txtCredits, $x+10, $y+15, 410, 20, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $SS_LEFT),0)
 			GUICtrlSetFont(-1,9, $FW_MEDIUM)
 		$y += 35
@@ -138,7 +138,7 @@ Local $x = 30, $y = 150 + $_GUI_MAIN_TOP
 		$lbltxtCreditsMIA1 = GUICtrlCreateLabel($txtCredits, $x+5, $y, 410, 20, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $SS_LEFT),0)
 			GUICtrlSetFont(-1, 9.5, $FW_BOLD)
 			GUICtrlSetColor(-1, $COLOR_NAVY)
-		$txtCredits = "Hervidero, Kaganus, Sardo"
+		$txtCredits = "Hervidero, Kaganus"
 		$lbltxtCreditsMIA2 = GUICtrlCreateLabel($txtCredits, $x+10, $y+15, 410, 20, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $SS_LEFT),0)
 			GUICtrlSetFont(-1,9, $FW_MEDIUM)
 		$y += 35
@@ -160,7 +160,7 @@ Local $x = 30, $y = 150 + $_GUI_MAIN_TOP
 		$y += 18
 		$labelForumURL = GUICtrlCreateLabel("https://mybot.run/forums/index.php?/forum/4-official-releases/", $x+25, $y, 450, 20)
 			GUICtrlSetFont(-1, 9.5, $FW_BOLD)
-			GUICtrlSetColor(-1, $COLOR_BLUE)
+			GUICtrlSetColor(-1, $COLOR_INFO)
 		$y = 450
 		$txtWarn =	"By running this program, the user accepts all responsibility that arises from the use of this software."  & @CRLF & _
 						"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even " & @CRLF & _

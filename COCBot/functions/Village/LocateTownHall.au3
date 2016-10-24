@@ -18,7 +18,7 @@ Func LocateTownHall($bLocationOnly = False)
 	Local $stext, $MsgBox, $Success, $sLocMsg
 	Local $iStupid = 0, $iSilly = 0, $sErrorText = ""
 
-	SetLog("Locating Town Hall ...", $COLOR_BLUE)
+	SetLog("Locating Town Hall ...", $COLOR_INFO)
 
     WinGetAndroidHandle()
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) Or _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
@@ -43,7 +43,7 @@ Func LocateTownHall($bLocationOnly = False)
 				Select
 					Case $iStupid = 1
 						$sErrorText = "TownHall Location not valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -55,16 +55,16 @@ Func LocateTownHall($bLocationOnly = False)
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Townhall Location: " & "(" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Townhall Location: " & "(" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_ERROR)
 						$TownHallPos[0] = -1
 						$TownHallPos[1] = -1
 						ClickP($aAway, 1, 0, "#0392")
 						Return False
 				EndSelect
 			EndIf
-			SetLog("Townhall: " & "(" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_GREEN)
+			SetLog("Townhall: " & "(" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate TownHall Cancelled", $COLOR_BLUE)
+			SetLog("Locate TownHall Cancelled", $COLOR_INFO)
 			ClickP($aAway, 1, 0, "#0393")
 			Return
 		EndIf
@@ -91,14 +91,14 @@ Func LocateTownHall($bLocationOnly = False)
 						$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iSilly > 4
-						SetLog("Quit joking, Click on the TH, or restart bot and try again", $COLOR_RED)
+						SetLog("Quit joking, Click on the TH, or restart bot and try again", $COLOR_ERROR)
 						$TownHallPos[0] = -1
 						$TownHallPos[1] = -1
 						ClickP($aAway, 1, 0, "#0394")
 						Return False
 				EndSelect
 			Else
-				SetLog("Locate TH Success!", $COLOR_RED)
+				SetLog("Locate TH Success!", $COLOR_ERROR)
 			EndIf
 		EndIf
 		ExitLoop

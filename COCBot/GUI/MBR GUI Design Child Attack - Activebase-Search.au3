@@ -16,7 +16,7 @@
 Local $x = 25, $y = 45
 	$grpABActivate = GUICtrlCreateGroup(GetTranslated(625,0, -1), $x - 20, $y - 20, 190, 305)
 		$x -= 15
-		$chkABActivateSearches = GUICtrlCreateCheckbox(GetTranslated(625,1, -1), $x, $y, 68, 18)
+		$chkABActivateSearches = GUICtrlCreateCheckbox(GetTranslated(603,5, -1), $x, $y, 68, 18)
 			$txtTip = GetTranslated(625,68, -1) & @CRLF & GetTranslated(625,69, -1)
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1,$GUI_UNCHECKED)
@@ -110,9 +110,9 @@ Local $x = 25, $y = 45
 	$y += 22
 	$x = 10
 	$x = 10
-	    $chkABSpellsWait = GUICtrlCreateCheckbox("Wait for Spells to be Ready", $x, $y, -1, -1)
-			$txtTip = GetTranslated(625,100, -1) & @CRLF & _
-			GetTranslated(625,101, -1)
+	    $chkABSpellsWait = GUICtrlCreateCheckbox(GetTranslated(625,71, -1), $x, $y, -1, -1)
+			$txtTip = GetTranslated(625,72, -1) & @CRLF & _
+			GetTranslated(625,73, -1)
  			_GUICtrlSetTip(-1, $txtTip)
  			GUICtrlSetOnEvent(-1, "chkABSpellsWait")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

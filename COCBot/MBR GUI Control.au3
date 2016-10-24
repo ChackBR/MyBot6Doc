@@ -57,9 +57,9 @@ Global $aTabControlsAttackOptions[5] = [$hGUI_AttackOption_TAB, $hGUI_AttackOpti
 Global $aTabControlsStrategies[3] = [$hGUI_STRATEGIES_TAB, $hGUI_STRATEGIES_TAB_ITEM1, $hGUI_STRATEGIES_TAB_ITEM2]
 
 Global $aTabControlsBot[5] = [$hGUI_BOT_TAB, $hGUI_BOT_TAB_ITEM1, $hGUI_BOT_TAB_ITEM2, $hGUI_BOT_TAB_ITEM3, $hGUI_BOT_TAB_ITEM4]
-Global $aTabControlsStats[4] = [$hGUI_STATS_TAB, $hGUI_STATS_TAB_ITEM1, $hGUI_STATS_TAB_ITEM2, $hGUI_STATS_TAB_ITEM3]
+Global $aTabControlsStats[5] = [$hGUI_STATS_TAB, $hGUI_STATS_TAB_ITEM1, $hGUI_STATS_TAB_ITEM2, $hGUI_STATS_TAB_ITEM3, $hGUI_STATS_TAB_ITEM4]	; - Adding Tab for separate gain stats of each profiles - SwitchAcc - DEMEN
 
-Global $aAlwaysEnabledControls[14] = [$chkUpdatingWhenMinimized, $chkHideWhenMinimized, $chkDebugClick, $chkDebugSetlog, $chkDebugOcr, $chkDebugImageSave, $chkdebugBuildingPos, $chkdebugTrain, $chkdebugOCRDonate,$btnTestTrain, $btnTestDonateCC, $btnTestAttackBar, $btnTestClickDrag, $btnTestImage]
+Global $aAlwaysEnabledControls = [$chkUpdatingWhenMinimized, $chkHideWhenMinimized, $chkDebugClick, $chkDebugSetlog, $chkDebugDisableZoomout, $chkDebugDisableVillageCentering, $chkDebugOcr, $chkDebugImageSave, $chkdebugBuildingPos, $chkdebugTrain, $chkdebugOCRDonate,$btnTestTrain, $btnTestDonateCC, $btnTestRequestCC, $btnTestAttackBar, $btnTestClickDrag, $btnTestImage, $btnTestVillageSize, $btnTestDeadBase, $btnTestDeadBaseFolder, $btnTestTHimgloc, $btnTestTrainsimgloc,$btnTestQuickTrainsimgloc, $chkdebugAttackCSV, $chkmakeIMGCSV]
 
 Global $frmBot_WNDPROC = 0
 
@@ -160,11 +160,12 @@ Func SetAccelerators($bDockedUnshieledFocus = False)
 	EndIf
 EndFunc   ;==>SetAccelerators
 
-Func BotToFront()
+Func AndroidToFront()
 	;SetDebugLog("BotToFront")
-	WinMove2(GetCurrentAndroidHWnD(), "", -1, -1, -1, -1, $HWND_TOPMOST, 0, False)
-	WinMove2(GetCurrentAndroidHWnD(), "", -1, -1, -1, -1, $HWND_NOTOPMOST, 0, False)
-EndFunc
+	WinMove2(GetAndroidDisplayHWnD(), "", -1, -1, -1, -1, $HWND_TOPMOST, 0, False)
+	WinMove2(GetAndroidDisplayHWnD(), "", -1, -1, -1, -1, $HWND_NOTOPMOST, 0, False)
+EndFunc   ;==>AndroidToFront
+
 
 Func GUIControl_WM_NCACTIVATE($hWin, $iMsg, $wParam, $lParam)
 	Local $wasAllowed = $TogglePauseAllowed
@@ -271,13 +272,14 @@ Func GUIControl_WM_MOUSE($hWin, $iMsg, $wParam, $lParam)
 		Return $GUI_RUNDEFMSG
 	EndIf
 	Local $hCtrlTarget = $AndroidEmbeddedCtrlTarget[0]
-	;Local $Result = _WinAPI_PostMessage($hCtrlTarget, $iMsg, $wParam, $lParam)
-	Local $Result = _SendMessage($hCtrlTarget, $iMsg, $wParam, $lParam)
+	Local $Result = _WinAPI_PostMessage($hCtrlTarget, $iMsg, $wParam, $lParam)
+	;Local $Result = _SendMessage($hCtrlTarget, $iMsg, $wParam, $lParam)
 	;#ce
 	$TogglePauseAllowed = $wasAllowed
 	Return $GUI_RUNDEFMSG
 EndFunc
 
+Global $GUIControl_AndroidEmbedded_Call = [0, 0, 0, 0]
 Func GUIControl_AndroidEmbedded($hWin, $iMsg, $wParam, $lParam)
 	If $AndroidEmbedded = False Or $AndroidShieldStatus[0] = True Then
 		Return $GUI_RUNDEFMSG
@@ -286,8 +288,6 @@ Func GUIControl_AndroidEmbedded($hWin, $iMsg, $wParam, $lParam)
 	$TogglePauseAllowed = False
 	Switch $iMsg
 		Case $WM_KEYDOWN, $WM_KEYUP, $WM_SYSKEYDOWN, $WM_SYSKEYUP, $WM_MOUSEWHEEL ; $WM_KEYFIRST To $WM_KEYLAST
-			If $debugAndroidEmbedded Then SetDebugLog("GUIControl_AndroidEmbedded: FORWARD $hWin=" & $hWin & ", $iMsg=" & Hex($iMsg) & ", $wParam=" & $wParam & ", $lParam=" & $lParam, Default, True)
-			Local $hCtrlTarget = $AndroidEmbeddedCtrlTarget[0]
 			If $iMsg = $WM_KEYUP And $wParam = 27 Then
 				; send ESC as ADB back
 				Local $wasSilentSetLog = $SilentSetLog
@@ -298,12 +298,18 @@ Func GUIControl_AndroidEmbedded($hWin, $iMsg, $wParam, $lParam)
 				If $debugAndroidEmbedded Then AndroidShield("GUIControl_AndroidEmbedded WM_SETFOCUS", Default, False, 0, True)
 				;AndroidShield(Default, False, 10, AndroidShieldHasFocus())
 			Else
-				_WinAPI_PostMessage($hCtrlTarget, $iMsg, $wParam, $lParam)
+				Local $hCtrlTarget = $AndroidEmbeddedCtrlTarget[0]
+				If $GUIControl_AndroidEmbedded_Call[0] <> $hCtrlTarget Or $GUIControl_AndroidEmbedded_Call[1] <> $iMsg Or $GUIControl_AndroidEmbedded_Call[2] <> $wParam Or $GUIControl_AndroidEmbedded_Call[3] <> $lParam Then
+					; protect against strange infinite loops with BS1/2 when using Ctrl-MouseWheel
+					If $debugAndroidEmbedded Then SetDebugLog("GUIControl_AndroidEmbedded: FORWARD $hWin=" & $hWin & ", $iMsg=" & Hex($iMsg) & ", $wParam=" & $wParam & ", $lParam=" & $lParam & ", $hCtrlTarget=" & $hCtrlTarget, Default, True)
+					_WinAPI_PostMessage($hCtrlTarget, $iMsg, $wParam, $lParam)
+					Global $GUIControl_AndroidEmbedded_Call  = [$hCtrlTarget, $iMsg, $wParam, $lParam]
+				EndIf
 			EndIf
 	EndSwitch
 	$TogglePauseAllowed = $wasAllowed
 	Return $GUI_RUNDEFMSG
-EndFunc   ;==>ShieldInputProc
+EndFunc   ;==>GUIControl_AndroidEmbedded
 
 Func GUIControl_WM_COMMAND($hWind, $iMsg, $wParam, $lParam)
 	If $GUIControl_Disabled = True Then Return $GUI_RUNDEFMSG
@@ -398,6 +404,10 @@ Func GUIControl_WM_COMMAND($hWind, $iMsg, $wParam, $lParam)
 			chkDebugClick()
 		Case $chkDebugSetlog
 			chkDebugSetlog()
+		Case $chkDebugDisableZoomout
+			chkDebugDisableZoomout()
+		Case $chkDebugDisableVillageCentering
+			chkDebugDisableVillageCentering()
 		Case $chkDebugOcr
 			chkDebugOcr()
 		Case $chkDebugImageSave
@@ -408,16 +418,34 @@ Func GUIControl_WM_COMMAND($hWind, $iMsg, $wParam, $lParam)
 			chkDebugTrain()
 		Case $chkdebugOCRDonate
 			chkdebugOCRDonate()
+		Case $chkdebugAttackCSV
+			chkdebugAttackCSV()
+		Case $chkmakeIMGCSV
+			chkmakeIMGCSV()
 		Case $btnTestTrain
 			btnTestTrain()
 		Case $btnTestDonateCC
 			btnTestDonateCC()
+		Case $btnTestRequestCC
+			btnTestRequestCC()
 		Case $btnTestAttackBar
 			btnTestAttackBar()
 		Case $btnTestClickDrag
 			btnTestClickDrag()
 		Case $btnTestImage
 			btnTestImage()
+		Case $btnTestVillageSize
+			btnTestVillageSize()
+		Case $btnTestDeadBase
+			btnTestDeadBase()
+		Case $btnTestDeadBaseFolder
+			btnTestDeadBaseFolder()
+		Case $btnTestTHimgloc
+			imglocTHSearch()
+		Case $btnTestTrainsimgloc
+			imglocTestTrain()
+		Case $btnTestQuickTrainsimgloc
+			imglocTestQuickTrain(1)
 	EndSwitch
 
 	$TogglePauseAllowed = $wasAllowed
@@ -592,7 +620,7 @@ Func OpenURL_Label($LabelCtrlID)
 		SetDebugLog("Open URL: " & $url)
 		ShellExecute($url) ;open web site when clicking label
 	Else
-		SetDebugLog("Cannot open URL for Control ID " & $LabelCtrlID, $COLOR_RED)
+		SetDebugLog("Cannot open URL for Control ID " & $LabelCtrlID, $COLOR_ERROR)
 	EndIf
 EndFunc   ;==>OpenURL_Label
 
@@ -631,6 +659,7 @@ Func BotClose($SaveConfig = Default, $bExit = True)
    _GDIPlus_ImageDispose($hBitmap)
    _WinAPI_DeleteObject($hHBitmap)
 	_WinAPI_DeleteObject($hHBitmap2)
+	_WinAPI_DeleteObject($hHBitmapTest)
    _GDIPlus_Shutdown()
    MBRFunc(False) ; close MBRFunctions dll
    _GUICtrlRichEdit_Destroy($txtLog)
@@ -1497,11 +1526,15 @@ If FileExists($config) Or FileExists($building) Then
 EndIf
 If $devmode = 1 Then
 	GUICtrlSetState($chkDebugSetlog, $GUI_SHOW + $GUI_ENABLE)
+	GUICtrlSetState($chkDebugDisableZoomout, $GUI_SHOW + $GUI_ENABLE)
+	GUICtrlSetState($chkDebugDisableVillageCentering, $GUI_SHOW + $GUI_ENABLE)
 	GUICtrlSetState($chkDebugOcr, $GUI_SHOW + $GUI_ENABLE)
 	GUICtrlSetState($chkDebugImageSave, $GUI_SHOW + $GUI_ENABLE)
 	GUICtrlSetState($chkdebugBuildingPos, $GUI_SHOW + $GUI_ENABLE)
 	GUICtrlSetState($chkdebugTrain, $GUI_SHOW + $GUI_ENABLE)
 	GUICtrlSetState($chkdebugOCRDonate, $GUI_SHOW + $GUI_ENABLE)
+	GUICtrlSetState($chkmakeIMGCSV, $GUI_SHOW + $GUI_ENABLE)
+	GUICtrlSetState($chkdebugAttackCSV, $GUI_SHOW + $GUI_ENABLE)
 EndIf
 
 GUISetOnEvent($GUI_EVENT_CLOSE, "GUIEvents", $frmBot)

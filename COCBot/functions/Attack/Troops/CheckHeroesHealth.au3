@@ -33,25 +33,25 @@ Func CheckHeroesHealth()
 		EndIf
 
 		If $checkKPower Then
-			If $debugSetlog = 1 Then Setlog(" King _GetPixelColor(" & $aKingHealthCopy[0] & "," & $aKingHealthCopy[1] & "): " & $KingPixelColor, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog(" King _GetPixelColor(" & $aKingHealthCopy[0] & "," & $aKingHealthCopy[1] & "): " & $KingPixelColor, $COLOR_DEBUG)
 			If _CheckPixel($aKingHealthCopy, $bCapturePixel, "Red") Then
-				SetLog("King is getting weak, Activating King's power", $COLOR_BLUE)
+				SetLog("King is getting weak, Activating King's power", $COLOR_INFO)
 				SelectDropTroop($King)
 				$checkKPower = False
 			EndIf
 		EndIf
 		If $checkQPower Then
-			If $debugSetlog = 1 Then Setlog(" Queen _GetPixelColor(" & $aQueenHealthCopy[0] & "," & $aQueenHealthCopy[1] & "): " & $QueenPixelColor, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog(" Queen _GetPixelColor(" & $aQueenHealthCopy[0] & "," & $aQueenHealthCopy[1] & "): " & $QueenPixelColor, $COLOR_DEBUG)
 			If _CheckPixel($aQueenHealthCopy, $bCapturePixel, "Red") Then
-				SetLog("Queen is getting weak, Activating Queen's power", $COLOR_BLUE)
+				SetLog("Queen is getting weak, Activating Queen's power", $COLOR_INFO)
 				SelectDropTroop($Queen)
 				$checkQPower = False
 			EndIf
 		EndIf
 		If $checkWPower Then
-			If $debugSetlog = 1 Then Setlog(" Grand Warden _GetPixelColor(" & $aWardenHealthCopy[0] & "," & $aWardenHealthCopy[1] & "): " & $WardenPixelColor, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog(" Grand Warden _GetPixelColor(" & $aWardenHealthCopy[0] & "," & $aWardenHealthCopy[1] & "): " & $WardenPixelColor, $COLOR_DEBUG)
 			If _CheckPixel($aWardenHealthCopy, $bCapturePixel, "Red") Then
-				SetLog("Grand Warden is getting weak, Activating Warden's power", $COLOR_BLUE)
+				SetLog("Grand Warden is getting weak, Activating Warden's power", $COLOR_INFO)
 				SelectDropTroop($Warden)
 				$checkWPower = False
 			EndIf

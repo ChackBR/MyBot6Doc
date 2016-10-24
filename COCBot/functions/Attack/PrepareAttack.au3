@@ -15,11 +15,11 @@
 ; ===============================================================================================================================
 Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 	Local $troopsnumber = 0
-	If $debugSetlog = 1 Then SetLog("PrepareAttack for " & $pMatchMode & " " & $sModeText[$pMatchMode], $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("PrepareAttack for " & $pMatchMode & " " & $sModeText[$pMatchMode], $COLOR_DEBUG)
 	If $Remaining Then
-		SetLog("Checking remaining unused troops for: " & $sModeText[$pMatchMode], $COLOR_BLUE)
+		SetLog("Checking remaining unused troops for: " & $sModeText[$pMatchMode], $COLOR_INFO)
 	Else
-		SetLog("Initiating attack for: " & $sModeText[$pMatchMode], $COLOR_RED)
+		SetLog("Initiating attack for: " & $sModeText[$pMatchMode], $COLOR_ERROR)
 	EndIf
 
 	_CaptureRegion2(0, 571 + $bottomOffsetY, 859, 671 + $bottomOffsetY)
@@ -28,7 +28,8 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
     ;SuspendAndroid()
 
 	Local $result = DllCall($hFuncLib, "str", "searchIdentifyTroop", "ptr", $hHBitmap2)
-	If $debugSetlog = 1 Then Setlog("DLL Troopsbar list: " & $result[0], $COLOR_PURPLE)
+	If $ichkFixClanCastle= 1 Then $result[0] = FixClanCastle( $result[0])
+	If $debugSetlog = 1 Then Setlog("DLL Troopsbar list: " & $result[0], $COLOR_DEBUG)
 	Local $aTroopDataList = StringSplit($result[0], "|")
 	Local $aTemp[12][3]
 	If $result[0] <> "" Then
@@ -44,17 +45,17 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 			$atkTroops[$i][1] = 0
 		Else
 			$troopKind = $aTemp[$i][0]
-			;If $debugsetlog=1 Then Setlog("examine troop " &  NameOfTroop($TroopKind) ,$color_aqua)
+			;If $debugsetlog=1 Then Setlog("examine troop " &  NameOfTroop($TroopKind) ,$COLOR_DEBUG1)
 			If $troopKind <$eKing Then
-				;If $debugsetlog=1 Then Setlog("examine troop " &  NameOfTroop($TroopKind) & " -> normal troop",$color_aqua)
+				;If $debugsetlog=1 Then Setlog("examine troop " &  NameOfTroop($TroopKind) & " -> normal troop",$COLOR_DEBUG1)
 				;normal troop
 				If Not IsTroopToBeUsed($pMatchMode, $troopKind) Then
-					If $debugSetlog = 1 Then Setlog("Discard use of troop " & $troopKind &  " " & NameOfTroop($troopKind), $COLOR_RED)
+					If $debugSetlog = 1 Then Setlog("Discard use of troop " & $troopKind &  " " & NameOfTroop($troopKind), $COLOR_ERROR)
 					$atkTroops[$i][0] = -1
 					$troopKind = -1
 				Else
 					;use troop
-					;If $debugSetlog=1 Then Setlog("for matchmode = " & $pMatchMode & " and troop " & $TroopKind & " " & NameOfTroop($TroopKind) & " USE",$COLOR_aqua)
+					;If $debugSetlog=1 Then Setlog("for matchmode = " & $pMatchMode & " and troop " & $TroopKind & " " & NameOfTroop($TroopKind) & " USE",$COLOR_DEBUG1)
 					;Setlog ("troopsnumber = " & $troopsnumber & "+ " &  Number( $aTemp[$i][1]))
 					$atkTroops[$i][0] = $aTemp[$i][0]
 					$atkTroops[$i][1] = $aTemp[$i][1]
@@ -63,29 +64,25 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 				EndIf
 
 			Else ;king, queen, warden and spells
-				;If $debugsetlog=1 Then Setlog("examine troop " &  NameOfTroop($TroopKind) & " -> special troop",$color_aqua)
+				;If $debugsetlog=1 Then Setlog("examine troop " &  NameOfTroop($TroopKind) & " -> special troop",$COLOR_DEBUG1)
 				$atkTroops[$i][0] = $troopKind
 				If IsSpecialTroopToBeUsed($pMatchMode, $TroopKind) then
 					$troopsnumber += 1
-					;If $debugSetlog=1 Then Setlog("for matchmode = " & $pMatchMode & " and troop " & $TroopKind & " " & NameOfTroop($TroopKind) & " USE",$COLOR_aqua)
+					;If $debugSetlog=1 Then Setlog("for matchmode = " & $pMatchMode & " and troop " & $TroopKind & " " & NameOfTroop($TroopKind) & " USE",$COLOR_DEBUG1)
 					;Setlog ("troopsnumber = " & $troopsnumber & "+1")
 					$atkTroops[$i][0] = $aTemp[$i][0]
 					$troopKind = $aTemp[$i][1]
 					$troopsnumber +=  1
 				Else
-					;If $debugSetlog=1 Then Setlog("for matchmode = " & $pMatchMode & " and troop " & $TroopKind & " " & NameOfTroop($TroopKind) & " DISCARD",$COLOR_aqua)
-					If $debugSetlog = 1 Then Setlog("Discard use hero/poison " & $troopKind &  " " & NameOfTroop($troopKind), $COLOR_RED)
+					;If $debugSetlog=1 Then Setlog("for matchmode = " & $pMatchMode & " and troop " & $TroopKind & " " & NameOfTroop($TroopKind) & " DISCARD",$COLOR_DEBUG1)
+					If $debugSetlog = 1 Then Setlog("Discard use hero/poison " & $troopKind &  " " & NameOfTroop($troopKind), $COLOR_ERROR)
 					$troopKind = -1
 				EndIf
 			EndIf
 
-			If $troopKind <> -1 Then SetLog("-*-" & $atkTroops[$i][0] & " " & NameOfTroop($atkTroops[$i][0]) & " " & $atkTroops[$i][1], $COLOR_GREEN)
+			If $troopKind <> -1 Then SetLog("-*-" & $atkTroops[$i][0] & " " & NameOfTroop($atkTroops[$i][0]) & " " & $atkTroops[$i][1], $COLOR_SUCCESS)
 		EndIf
     Next
-
-    ;AwesomeGamer CSV mod
-	$remainingTroops = $atkTroops
-	$TroopDropNumber = 0
 
     ;ResumeAndroid()
 

@@ -619,7 +619,7 @@ Func _DonateControls($TroopType)
 
 	For $i = 0 To UBound($aLblBtnControls) - 1
 		If $i = $TroopType Then
-			GUICtrlSetBkColor($aLblBtnControls[$i], $COLOR_GREEN)
+			GUICtrlSetBkColor($aLblBtnControls[$i], $COLOR_ORANGE)
 		Else
 			If GUICtrlGetBkColor($aLblBtnControls[$i]) = $COLOR_NAVY Then GUICtrlSetBkColor($aLblBtnControls[$i], $GUI_BKCOLOR_TRANSPARENT)
 		EndIf
@@ -642,7 +642,7 @@ EndFunc   ;==>_DonateControls
 Func _DonateControlsSpell($TroopType)
 	For $i = 0 To UBound($aLblBtnControlsSpell) - 1
 		If $i = $TroopType Then
-			GUICtrlSetBkColor($aLblBtnControlsSpell[$i], $COLOR_GREEN)
+			GUICtrlSetBkColor($aLblBtnControlsSpell[$i], $COLOR_ORANGE)
 		Else
 			If GUICtrlGetBkColor($aLblBtnControlsSpell[$i]) = $COLOR_NAVY Then GUICtrlSetBkColor($aLblBtnControlsSpell[$i], $GUI_BKCOLOR_TRANSPARENT)
 		EndIf
@@ -659,4 +659,22 @@ Func _DonateControlsSpell($TroopType)
 	For $i = 0 To UBound($aTxtBlacklistControlsSpell) - 1
 		If BitAND(GUICtrlGetState($aTxtBlacklistControlsSpell[$i]), $GUI_DISABLE) = $GUI_DISABLE Then GUICtrlSetState($aTxtBlacklistControlsSpell[$i], $GUI_ENABLE)
 	Next
-EndFunc   ;==>_DonateControlsSpell
+ EndFunc   ;==>_DonateControlsSpell
+
+ Func btnFilterDonationsCC()
+	 setlog ("open folder " & $donateimagefoldercapture,$color_aqua)
+	ShellExecute("explorer",$donateimagefoldercapture)
+EndFunc
+
+Func chkskipDonateNearFulLTroopsEnable()
+  	If GUICtrlRead($chkskipDonateNearFulLTroopsEnable) = $GUI_CHECKED Then
+		GUICtrlSetState($txtSkipDonateNearFulLTroopsPercentual, $GUI_ENABLE)
+		GUICtrlSetState($lblSkipDonateNearFulLTroopsText, $GUI_ENABLE)
+		GUICtrlSetState($lblSkipDonateNearFulLTroopsText1, $GUI_ENABLE)
+	 Else
+		GUICtrlSetState($txtSkipDonateNearFulLTroopsPercentual, $GUI_DISABLE)
+		GUICtrlSetState($lblSkipDonateNearFulLTroopsText, $GUI_DISABLE)
+		GUICtrlSetState($lblSkipDonateNearFulLTroopsText1, $GUI_DISABLE)
+	EndIf
+EndFunc
+

@@ -27,36 +27,36 @@ Func getShieldInfo()
 	$aPBReturnResult[1] = StringFormat("%02s", ($iDay * 24) + $iHour) & ":" & StringFormat("%02s", $iMin) & ":" & StringFormat("%02s", $iSec)
 
 	If IsMainPage() = False Then ; check for main page or do not try
-		Setlog("unable to read shield information", $COLOR_RED)
+		Setlog("unable to read shield information", $COLOR_ERROR)
 		Return
 	EndIf
 
 	Select ; Check for shield type
 		Case _CheckPixel($aNoShield, $bCapturePixel)
 			$aPBReturnResult[0] = "none"
-			If $debugSetlog = 1 Then Setlog("No shield active", $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("No shield active", $COLOR_DEBUG)
 			Return $aPBReturnResult ; return with zero value
 		Case _CheckPixel($aHaveShield, $bCapturePixel)
 			$aPBReturnResult[0] = "shield" ; check for shield
-			If $debugSetlog = 1 Then Setlog("Shield Active", $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Shield Active", $COLOR_DEBUG)
 		Case _CheckPixel($aHavePerGuard, $bCapturePixel)
 			$aPBReturnResult[0] = "guard" ; check for personal guard timer
-			If $debugSetlog = 1 Then Setlog("Guard Active", $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Guard Active", $COLOR_DEBUG)
 		Case Else
-			Setlog("Sorry, Monkey needs more bananas to read shield type", $COLOR_RED) ; Check for pixel colors errors!
+			Setlog("Sorry, Monkey needs more bananas to read shield type", $COLOR_ERROR) ; Check for pixel colors errors!
 			SetError(1, "Bad shield pixel read")
 			Return
 	EndSelect
 
 	$sTimeResult = getOcrGuardShield(484, 21) ; read Shield time
-	If $debugSetlog = 1 Then Setlog("OCR Shield Time= " & $sTimeResult, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("OCR Shield Time= " & $sTimeResult, $COLOR_DEBUG)
 	If $sTimeResult = "" Then ; try a 2nd time after a short delay if slow PC and null read
 		If _Sleep($iPersonalShield2) Then Return ; pause for slow PC
 		$sTimeResult = getOcrGuardShield(484, 21) ; read Shield time
-		If $debugSetlog = 1 Then Setlog("OCR2 Shield Time= " & $sTimeResult, $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("OCR2 Shield Time= " & $sTimeResult, $COLOR_DEBUG)
 		If $sTimeResult = "" Then ; error if no read value
 			$aPBReturnResult[1] = '00:00:00'
-			Setlog("strange error, no shield value found?", $COLOR_RED)
+			Setlog("strange error, no shield value found?", $COLOR_ERROR)
 			SetError(2, "Bad time value OCR")
 			Return $aPBReturnResult ; return zero value
 		EndIf
@@ -86,25 +86,25 @@ Func getShieldInfo()
 						$iSec = Number($aString[2])
 					EndIf
 				Case Else
-					Setlog("strange error, unexpected shield value?", $COLOR_RED)
+					Setlog("strange error, unexpected shield value?", $COLOR_ERROR)
 					SetError(3, "Error processing time string")
 					Return $aPBReturnResult ; return zero value
 			EndSelect
 		Case Else
-			Setlog("Error processing time string: " & $sTimeResult, $COLOR_RED)
+			Setlog("Error processing time string: " & $sTimeResult, $COLOR_ERROR)
 			SetError(4, "Error processing time string")
 			Return $aPBReturnResult ; return zero value
 	EndSwitch
 
 	$aPBReturnResult[1] = StringFormat("%02s", ($iDay * 24) + $iHour) & ":" & StringFormat("%02s", $iMin) & ":" & StringFormat("%02s", $iSec)
-	If $debugSetlog = 1 Then Setlog("Shield Time String = " & $aPBReturnResult[1], $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Shield Time String = " & $aPBReturnResult[1], $COLOR_DEBUG)
 
 	$iShieldSeconds = ($iDay * 86400) + ($iHour * 3600) + ($iMin * 60) + $iSec ; add time into total seconds
-	If $debugSetlog = 1 Then Setlog("Computed Shield Seconds = " & $iShieldSeconds, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Computed Shield Seconds = " & $iShieldSeconds, $COLOR_DEBUG)
 
 	$aPBReturnResult[2] = _DateAdd('s', $iShieldSeconds, _NowCalc()) ; Find actual expire time from NOW.
-	If @error Then Setlog("_DateAdd error= " & @error, $COLOR_RED)
-	If $debugSetlog = 1 Then Setlog("Shield expires at: " & $aPBReturnResult[2], $COLOR_BLUE)
+	If @error Then Setlog("_DateAdd error= " & @error, $COLOR_ERROR)
+	If $debugSetlog = 1 Then Setlog("Shield expires at: " & $aPBReturnResult[2], $COLOR_INFO)
 
 	Return $aPBReturnResult
 

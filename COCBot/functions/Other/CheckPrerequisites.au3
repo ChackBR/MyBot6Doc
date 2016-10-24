@@ -12,26 +12,26 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func CheckPrerequisites()
+Func CheckPrerequisites($bSilent = False)
 	Local $isAllOK = True
 	Local $isNetFramework4dot5Installed = isNetFramework4dot5Installed()
 	Local $isVC2010Installed = isVC2010Installed()
 	If ($isNetFramework4dot5Installed = False Or $isVC2010Installed = False) Then
-		If ($isNetFramework4dot5Installed = False) Then
-			SetLog("The .Net Framework 4.5 is not installed", $COLOR_RED)
-			SetLog("Please download here : https://www.microsoft.com/en-US/download/details.aspx?id=30653", $COLOR_RED)
+		If ($isNetFramework4dot5Installed = False And Not $bSilent) Then
+			SetLog("The .Net Framework 4.5 is not installed", $COLOR_ERROR)
+			SetLog("Please download here : https://www.microsoft.com/en-US/download/details.aspx?id=30653", $COLOR_ERROR)
 		EndIf
-		If ($isVC2010Installed = False) Then
-			SetLog("The VC 2010 x86 is not installed", $COLOR_RED)
-			SetLog("Please download here : https://www.microsoft.com/en-US/download/details.aspx?id=5555", $COLOR_RED)
+		If ($isVC2010Installed = False And Not $bSilent) Then
+			SetLog("The VC 2010 x86 is not installed", $COLOR_ERROR)
+			SetLog("Please download here : https://www.microsoft.com/en-US/download/details.aspx?id=5555", $COLOR_ERROR)
 		EndIf
 		$isAllOK = False
 	EndIf
-	If isEveryFileInstalled() = False Then $isAllOK = False
-	If Not checkAutoitVersion() Then $isAllOK = False
-	checkIsAdmin()
+	If isEveryFileInstalled($bSilent) = False Then $isAllOK = False
+	If Not checkAutoitVersion($bSilent) Then $isAllOK = False
+	checkIsAdmin($bSilent)
 
-	If $isAllOK = False Then
+	If $isAllOK = False And Not $bSilent Then
 		GUICtrlSetState($btnStart, $GUI_DISABLE)
 	EndIf
 	Return $isAllOK
@@ -76,7 +76,7 @@ Func isVC2010Installed()
 	Return $success
 EndFunc   ;==>isVC2010Installed
 
-Func isEveryFileInstalled()
+Func isEveryFileInstalled($bSilent = False)
 	Local $bResult = False, $iCount = 0
 
 	; folders and files needed checking
@@ -95,7 +95,7 @@ Func isEveryFileInstalled()
 	Next
 	If $iCount = UBound($aCheckFiles) Then
 		$bResult = True
-	Else
+	ElseIf Not $bSilent Then
 		GUICtrlSetState($btnStart, $GUI_DISABLE)
 
 		Local $sText1, $sText2, $MsgBox
@@ -103,9 +103,9 @@ Func isEveryFileInstalled()
 		$sText2 = GetTranslated(640,12,"Please extract all files and folders and start this program again!")
 		$sText3 = GetTranslated(640,13,"Sorry, Start button disabled until fixed!")
 
-		Setlog($sText1, $COLOR_RED)
-		Setlog($sText2, $COLOR_RED)
-		Setlog($sText3, $COLOR_RED)
+		Setlog($sText1, $COLOR_ERROR)
+		Setlog($sText2, $COLOR_ERROR)
+		Setlog($sText3, $COLOR_ERROR)
 
 		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
 		$MsgBox = _ExtMsgBox(48, GetTranslated(640,14,"Ok"), $sText1, $sText2, 0, $frmBot)
@@ -113,42 +113,46 @@ Func isEveryFileInstalled()
 	EndIf
 	If @Compiled Then;if .exe
 		If Not StringInStr(@ScriptFullPath, "MyBot.run.exe", 1) Then; if filename isn't MyBot.run.exe
-			Local $sText1, $sText2, $MsgBox
-			$sText1 = GetTranslated(640,15,"Hey Chief, file name incorrect!")
-			$sText2 = GetTranslated(640,16,'You have renamed the file "MyBot.run.exe"! Please change it back to MyBot.run.exe and restart the bot!')
-			$sText3 = GetTranslated(640,13,"Sorry, Start button disabled until fixed!")
+			If Not $bSilent Then
+				Local $sText1, $sText2, $MsgBox
+				$sText1 = GetTranslated(640,15,"Hey Chief, file name incorrect!")
+				$sText2 = GetTranslated(640,16,'You have renamed the file "MyBot.run.exe"! Please change it back to MyBot.run.exe and restart the bot!')
+				$sText3 = GetTranslated(640,13,"Sorry, Start button disabled until fixed!")
 
-			Setlog($sText1, $COLOR_RED)
-			Setlog($sText2, $COLOR_RED)
-			Setlog($sText3, $COLOR_RED)
+				Setlog($sText1, $COLOR_ERROR)
+				Setlog($sText2, $COLOR_ERROR)
+				Setlog($sText3, $COLOR_ERROR)
 
-			_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
-			$MsgBox = _ExtMsgBox(48, GetTranslated(640,14,"Ok"), $sText1, $sText2, 0, $frmBot)
-			GUICtrlSetState($btnStart, $GUI_DISABLE)
+				_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
+				$MsgBox = _ExtMsgBox(48, GetTranslated(640,14,"Ok"), $sText1, $sText2, 0, $frmBot)
+				GUICtrlSetState($btnStart, $GUI_DISABLE)
+			EndIf
 			$bResult = False
 		EndIf
 	EndIf
 	Return $bResult
 EndFunc   ;==>isEveryFileInstalled
 
-Func checkAutoitVersion()
+Func checkAutoitVersion($bSilent = False)
 	If @Compiled = True Then Return 1
 	Local $requiredAutoit = "3.3.14.2"
 	Local $result = _VersionCompare(@AutoItVersion, $requiredAutoit)
 	If $result = 0 Or $result = 1 Then Return 1
-	Local $sText1, $sText2, $MsgBox
-	$sText1 = "Hey Chief, your AutoIt version is out of date!"
-	$sText3 = "Click OK to download the latest version of AutoIt."
-	$sText2 = "The bot requires AutoIt version "&$requiredAutoit&" or above. Your version of AutoIt is "&@AutoItVersion&"." & @CRLF & $sText3 & @CRLF &"After installing the new version, open the bot again."
-	_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
-	$MsgBox = _ExtMsgBox(48, "OK|Cancel", $sText1, $sText2, 0, $frmBot)
-	If $MsgBox = 1 Then ShellExecute("https://www.autoitscript.com/site/autoit/downloads/")
+	If Not $bSilent Then
+		Local $sText1, $sText2, $MsgBox
+		$sText1 = "Hey Chief, your AutoIt version is out of date!"
+		$sText3 = "Click OK to download the latest version of AutoIt."
+		$sText2 = "The bot requires AutoIt version "&$requiredAutoit&" or above. Your version of AutoIt is "&@AutoItVersion&"." & @CRLF & $sText3 & @CRLF &"After installing the new version, open the bot again."
+		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
+		$MsgBox = _ExtMsgBox(48, "OK|Cancel", $sText1, $sText2, 0, $frmBot)
+		If $MsgBox = 1 Then ShellExecute("https://www.autoitscript.com/site/autoit/downloads/")
+	EndIf
 	Return 0
 EndFunc
 
-Func checkIsAdmin()
+Func checkIsAdmin($bSilent = False)
 	If IsAdmin() Then Return True
-	SetLog("My Bot running without admin privileges", $COLOR_RED)
+	If Not $bSilent Then SetLog("My Bot running without admin privileges", $COLOR_ERROR)
 	Return False
 EndFunc
 

@@ -4,7 +4,7 @@
 ; Description ...: Obtains count of heroes available from Training - Army Overview window
 ; Syntax ........: getArmyHeroCount()
 ; Parameters ....: $bOpenArmyWindow  = Bool value true if train overview window needs to be opened
-;				 : $bCloseArmyWindow = Bool value, true if train overview window needs to be closed
+;				 	  : $bCloseArmyWindow = Bool value, true if train overview window needs to be closed
 ; Return values .: None
 ; Author ........: Separated from checkArmyCamp()
 ; Modified ......: MonkeyHunter (06-2016)
@@ -17,7 +17,7 @@
 ;
 Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTHeroCount:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyTHeroCount:", $COLOR_DEBUG1)
 
 	If $bOpenArmyWindow = False And IsTrainPage() = False Then ; check for train page
 		SetError(1)
@@ -30,13 +30,15 @@ Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelaycheckArmyCamp5) Then Return
 	EndIf
 
+	If $iTownHallLevel < 7 then return
+
 	$iHeroAvailable = $HERO_NOHERO ; Reset hero available data
 	$bFullArmyHero = False
 	Local $debugArmyHeroCount = 0 ; local debug flag
 
 	; Detection by OCR
 	Local $sResult
-	Local Const $HeroSlots[3][2] = [[464, 446], [526, 446], [588, 446]] ; Location of hero status check tile
+	Local Const $HeroSlots[3][2] = [[655, 344], [729, 344], [803, 344]] ; Location of hero status check tile
 	Local $sMessage = ""
 
 	For $i = 0 To UBound($HeroSlots) - 1
@@ -64,7 +66,7 @@ Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 							Case Else
 								$sMessage = "-Very Bad Monkey Needs"
 						EndSwitch
-						SetLog("Hero slot#" & $i + 1 & $sMessage & " Healing", $COLOR_PURPLE)
+						SetLog("Hero slot#" & $i + 1 & $sMessage & " Healing", $COLOR_DEBUG)
 					EndIf
 				Case StringInStr($sResult, "upgrade", $STR_NOCASESENSEBASIC)
 					Switch $i
@@ -77,7 +79,7 @@ Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 								;GUICtrlSetState($chkDBKingWait, $GUI_UNCHECKED)  ; uncheck GUI box to show user wait for king not possible
 								;GUICtrlSetState($chkABKingWait, $GUI_UNCHECKED)
 								_GUI_Value_STATE("SHOW", $groupKingSleeping)  ; Show king sleeping icon
-								SetLog("Warning: King Upgrading & Wait enabled, Disable Wait for King or may never attack!", $COLOR_RED)
+								SetLog("Warning: King Upgrading & Wait enabled, Disable Wait for King or may never attack!", $COLOR_ERROR)
 							EndIf
 						Case 1
 							$sMessage = "-Archer Queen"
@@ -88,7 +90,7 @@ Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 								;GUICtrlSetState($chkDBQueenWait, $GUI_UNCHECKED)
 								;GUICtrlSetState($chkABQueenWait, $GUI_UNCHECKED)
 								_GUI_Value_STATE("SHOW", $groupQueenSleeping)
-								SetLog("Warning: Queen Upgrading & Wait enabled, Disable Wait for Queen or may never attack!", $COLOR_RED)
+								SetLog("Warning: Queen Upgrading & Wait enabled, Disable Wait for Queen or may never attack!", $COLOR_ERROR)
 							EndIf
 						Case 2
 							$sMessage = "-Grand Warden"
@@ -99,30 +101,30 @@ Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 								;GUICtrlSetState($chkDBWardenWait, $GUI_UNCHECKED)
 								;GUICtrlSetState($chkABWardenWait, $GUI_UNCHECKED)
 								_GUI_Value_STATE("SHOW", $groupWardenSleeping)
-								SetLog("Warning: Warden Upgrading & Wait enabled, Disable Wait for Warden or may never attack!", $COLOR_RED)
+								SetLog("Warning: Warden Upgrading & Wait enabled, Disable Wait for Warden or may never attack!", $COLOR_ERROR)
 							EndIf
 						Case Else
 							$sMessage = "-Need to Get Monkey"
 					EndSwitch
-					If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("Hero slot#" & $i + 1 & $sMessage & " Upgrade in Process", $COLOR_PURPLE)
+					If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("Hero slot#" & $i + 1 & $sMessage & " Upgrade in Process", $COLOR_DEBUG)
 				Case StringInStr($sResult, "none", $STR_NOCASESENSEBASIC)
-					If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("Hero slot#" & $i + 1 & " Empty, stop count", $COLOR_PURPLE)
+					If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("Hero slot#" & $i + 1 & " Empty, stop count", $COLOR_DEBUG)
 					ExitLoop ; when we find empty slots, done looking for heroes
 				Case Else
-					SetLog("Hero slot#" & $i + 1 & " bad OCR string returned!", $COLOR_RED)
+					SetLog("Hero slot#" & $i + 1 & " bad OCR string returned!", $COLOR_ERROR)
 			EndSelect
 		Else
-			SetLog("Hero slot#" & $i + 1 & " status read problem!", $COLOR_RED)
+			SetLog("Hero slot#" & $i + 1 & " status read problem!", $COLOR_ERROR)
 		EndIf
 	Next
 
 	If BitAND($iHeroWait[$DB], $iHeroAvailable) > 0 Or BitAND($iHeroWait[$LB], $iHeroAvailable) > 0 Or _
 			($iHeroWait[$DB] = $HERO_NOHERO And $iHeroWait[$LB] = $HERO_NOHERO) Then
 		$bFullArmyHero = True
-		If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("$bFullArmyHero= " & $bFullArmyHero, $COLOR_PURPLE)
+		If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("$bFullArmyHero= " & $bFullArmyHero, $COLOR_DEBUG)
 	EndIf
 
-	If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("Hero Status K|Q|W : " & BitAND($iHeroAvailable, $HERO_KING) & "|" & BitAND($iHeroAvailable, $HERO_QUEEN) & "|" & BitAND($iHeroAvailable, $HERO_WARDEN), $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugArmyHeroCount = 1 Then SetLog("Hero Status K|Q|W : " & BitAND($iHeroAvailable, $HERO_KING) & "|" & BitAND($iHeroAvailable, $HERO_QUEEN) & "|" & BitAND($iHeroAvailable, $HERO_WARDEN), $COLOR_DEBUG)
 
 	If $bCloseArmyWindow = True Then
 		ClickP($aAway, 1, 0, "#0000") ;Click Away

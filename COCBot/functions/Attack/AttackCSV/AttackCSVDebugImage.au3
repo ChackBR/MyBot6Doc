@@ -254,6 +254,11 @@ Func AttackCSVDEBUGIMAGE()
 	; - DRAW TOWNHALL -------------------------------------------------------------------
 	_GDIPlus_GraphicsDrawRect($hGraphic, $THX - 15, $THY - 15, 30, 30, $hPenRed)
 
+	; - DRAW Eagle -------------------------------------------------------------------
+	If $attackcsv_locate_Eagle = 1 And IsArray($EagleArtilleryPos) Then
+		_GDIPlus_GraphicsDrawRect($hGraphic, $EagleArtilleryPos[0] - 15, $EagleArtilleryPos[1] - 15, 30, 30, $hPenBlue)
+	EndIf
+
 	; 99 -  DRAW SLICE NUMBERS
 	_GDIPlus_GraphicsDrawString($hGraphic, "1", 580, 580, "Arial", 20)
 	_GDIPlus_GraphicsDrawString($hGraphic, "2", 750, 450, "Arial", 20)

@@ -90,13 +90,14 @@ Func captureDebugImage($aResult, $subDirectory)
 		_GDIPlus_ImageSaveToFile($editedImage, $dirTempDebug & $subDirectory & "\" & $fileName)
 		_GDIPlus_PenDispose($hPen)
 		_GDIPlus_GraphicsDispose($hGraphic)
+		_GDIPlus_BitmapDispose($editedImage)
 	EndIf
 EndFunc   ;==>captureDebugImage
 
 Func returnPropertyValue($key, $property)
 	; Get the property
 	Local $aValue = DllCall($hImgLib, "str", "GetProperty", "str", $key, "str", $property)
-
+	If @error Then _logErrorDLLCall($pImgLib, @error)
 	Return $aValue[0]
 EndFunc   ;==>getProperty
 
@@ -129,9 +130,11 @@ Func multiMatches($directory, $maxReturnPoints = 0, $fullCocAreas = "DCD", $redL
 
 	; Perform the search
 	$res = DllCall($hImgLib, "str", "SearchMultipleTilesBetweenLevels", "handle", $hHBitmap2, "str", $directory, "str", $fullCocAreas, "Int", $maxReturnPoints, "str", $redLines, "Int", $minLevel, "Int", $maxLevel)
+	If @error Then _logErrorDLLCall($pImgLib, @error)
 
 	; Get the redline data
 	$aValue = DllCall($hImgLib, "str", "GetProperty", "str", "redline", "str", "")
+	If @error Then _logErrorDLLCall($pImgLib, @error)
 	$redLines = $aValue[0]
 
 	If $res[0] <> "" Then

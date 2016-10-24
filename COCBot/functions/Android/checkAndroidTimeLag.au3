@@ -3,7 +3,7 @@
 ; Description ...: Function to check time inside Android matching host time
 ; Syntax ........: checkAndroidTimeLag()
 ; Parameters ....: $bRebootAndroid = True reboots Android if time lag > $AndroidTimeLagThreshold
-; Return values .: True if Android reboot initiated, False otherwise
+; Return values .: True if Android reboot should be initiated, False otherwise
 ;                  @extended = time lag in Seconds per Minutes
 ;                  @error = 1 : Time lag check not available
 ;                           2 : Time lag variables initialized
@@ -80,14 +80,10 @@ Func checkAndroidTimeLag($bRebootAndroid = True)
    If $lagPerMin > $AndroidTimeLagThreshold Then
 
 	  If $bRebootAndroid = True Then
-		 SetLog("Rebooting " & $Android & " due to time lag problem of " & $lagPerMin & " sec/min", $COLOR_RED)
-		 Local $_NoFocusTampering = $NoFocusTampering
-		 $NoFocusTampering = True
-		 RebootAndroid()
-		 $NoFocusTampering = $_NoFocusTampering
+		 SetLog("Rebooting " & $Android & " due to time lag problem of " & $lagPerMin & " sec/min", $COLOR_ERROR)
 		 $bRebooted = True
 	  ;Else
-		 ;SetLog($Android & " suffered time lag of " & $lagPerMin & " sec/min (reboot skipped)", $COLOR_RED)
+		 ;SetLog($Android & " suffered time lag of " & $lagPerMin & " sec/min (reboot skipped)", $COLOR_ERROR)
 	  EndIf
 
    EndIf

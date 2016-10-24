@@ -120,7 +120,7 @@ Func getArmyTroopKind($x_start, $y_start);  -> Gets kind of troop on army camp o
 EndFunc   ;==>getArmyTroopKind
 
 Func getArmyCampCap($x_start, $y_start);  -> Gets army camp capacity --> train.au3, and used to read CC request time remaining
-	Return getOcrAndCapture("coc-army", $x_start, $y_start, 66, 14, True)
+	Return getOcrAndCapture("coc-ms", $x_start, $y_start, 82, 16, True)
 EndFunc   ;==>getArmyCampCap
 
 Func getCastleDonateCap($x_start, $y_start);  -> Gets clan castle capacity,  --> donatecc.au3
@@ -189,8 +189,12 @@ EndFunc   ;==>getOcrPBTtime
 Func getOcrMaintenanceTime($x_start, $y_start, $sLogText = Default, $LogTextColor = Default, $bSilentSetLog = Default)
 	;  -> Get the Text with time till maintenance is over from reload msg(171, 375)
 	Local $result = getOcrAndCapture("coc-reloadmsg", $x_start, $y_start, 116, 19, True)
-	Local $String = $sLogText & " " & $result
-	If $debugSetlog = 1 And $sLogText <> Default And IsString($sLogText) Then ; if enabled generate debug log message
+	If $sLogText = Default Then
+		$String = "getOcrMaintenanceTime: " & $result
+	Else
+		$String = $sLogText & " " & $result
+	EndIf
+	If $debugSetlog = 1 Then ; if enabled generate debug log message
 		SetDebugLog($String, $LogTextColor, $bSilentSetLog)
 	ElseIf $result <> "" Then ;
 		SetDebugLog($String, $LogTextColor, True) ; if result found, add to log file
@@ -200,9 +204,13 @@ EndFunc   ;==>getOcrMaintenanceTime
 
 Func getOcrRateCoc($x_start, $y_start, $sLogText = Default, $LogTextColor = Default, $bSilentSetLog = Default)
 	;  -> Get the Text with time till maintenance is over from reload msg(228, 402)
-	Local $result = getOcrAndCapture("coc-ratecoc", $x_start, $y_start, 42, 18, True)
-	Local $String = $sLogText & " " & $result
-	If $debugSetlog = 1 And $sLogText <> Default And IsString($sLogText) Then ; if enabled generate debug log message
+	Local $result = getOcrAndCapture("coc-ratecoc", $x_start, $y_start, 42, 28, True)
+	If $sLogText = Default Then
+		$String = "getOcrRateCoc: " & $result
+	Else
+		$String = $sLogText & " " & $result
+	EndIf
+	If $debugSetlog = 1 Then ; if enabled generate debug log message
 		SetDebugLog($String, $LogTextColor, $bSilentSetLog)
 	ElseIf $result <> "" Then ;
 		SetDebugLog($String, $LogTextColor, True) ; if result found, add to log file
@@ -215,13 +223,34 @@ Func getRemainTLaboratory($x_start, $y_start) ; read actual time remaining in La
 EndFunc   ;==>getRemainTLaboratory
 
 Func getRemainTHero($x_start, $y_start) ; Get time remaining for hero to be ready for attack from train window, BK:443,504 AQ:504,504 GW:565:504
-	Return getOcrAndCapture("coc-remainhero", $x_start, $y_start, 28, 12, True)
+	Return getOcrAndCapture("coc-remainhero", $x_start, $y_start, 50, 12, True)
 EndFunc   ;==>getRemainTHero
 
 Func getHeroStatus($x_start, $y_start) ; Get status/type_of_Hero from Hero Slots in training overview window, Slot1:464,446 Slot2:526,446 Slot3:588:446
 	Return getOcrAndCapture("coc-herostatus", $x_start, $y_start, 20, 20)
 EndFunc   ;==>getHeroStatus
 
+Func getCloudTextShort($x_start, $y_start, $sLogText = Default, $LogTextColor = Default, $bSilentSetLog = Default)
+	; Get 3 characters of yellow text in center of attack search window during extended cloud waiting (388,378)
+	; Full text length is 316 pixels, some is covered by chat window when open
+	Local $result = getOcrAndCapture("coc-cloudsearch", $x_start, $y_start, 51, 27)
+	If $debugSetlog = 1 And $sLogText <> Default And IsString($sLogText) Then ; if enabled generate debug log message
+		Local $String = $sLogText & $result
+		SetDebugLog($String, $LogTextColor, $bSilentSetLog)
+	EndIf
+	Return $result
+EndFunc   ;==>getCloudTextShort
+
+Func getCloudFailShort($x_start, $y_start, $sLogText = Default, $LogTextColor = Default, $bSilentSetLog = Default)
+	; Get 6 characters of pink text in center of attack search window during failed attack search (271, 381)
+	; Full text length is 318 pixels, on checking for 1st 6 characters
+	Local $result = getOcrAndCapture("coc-cloudfail", $x_start, $y_start, 72, 24)
+	If $debugSetlog = 1 And $sLogText <> Default And IsString($sLogText) Then ; if enabled generate debug log message
+		Local $String = $sLogText & $result
+		SetDebugLog($String, $LogTextColor, $bSilentSetLog)
+	EndIf
+	Return $result
+EndFunc   ;==>getCloudFailShort
 
 Func getOcrAndCapture($language, $x_start, $y_start, $width, $height, $removeSpace = False)
 	_CaptureRegion2($x_start, $y_start, $x_start + $width, $y_start + $height)

@@ -30,8 +30,8 @@ Func _Sleep($iDelay, $iSleep = True, $CheckRunState = True, $SleepWhenPaused = T
 			PushBulletDeleteOldPushes()
 			$hTimer_PBDeleteOldPushesInterval = TimerInit()
 		EndIf
-		If $hTimer_EmptyWorkingSetAndroid = 0 Or TimerDiff($hTimer_EmptyWorkingSetAndroid) >= $iEmptyWorkingSetAndroid Then
-			_WinAPI_EmptyWorkingSet(GetAndroidPid()) ; Reduce Working Set of Android Process
+		If $RunState And TestCapture() = False And ($hTimer_EmptyWorkingSetAndroid = 0 Or TimerDiff($hTimer_EmptyWorkingSetAndroid) >= $iEmptyWorkingSetAndroid) Then
+			If IsArray(getAndroidPos(True)) = 1 Then _WinAPI_EmptyWorkingSet(GetAndroidPid()) ; Reduce Working Set of Android Process
 			$hTimer_EmptyWorkingSetAndroid = TimerInit()
 		EndIf
 		If $hTimer_EmptyWorkingSetBot = 0 Or TimerDiff($hTimer_EmptyWorkingSetBot) >= $iEmptyWorkingSetBot Then

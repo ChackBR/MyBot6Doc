@@ -23,7 +23,7 @@ Func GoldElixirChange()
 	Local $Gold1, $Gold2
 	Local $GoldChange, $ElixirChange
 	Local $Elixir1, $Elixir2
-	SetLog("Checking if the battle has finished", $COLOR_BLUE)
+	SetLog("Checking if the battle has finished", $COLOR_INFO)
 	While 1
 		$Gold1 = getGoldVillageSearch(48, 69)
 		$Elixir1 = getElixirVillageSearch(48, 69 + 29)
@@ -55,7 +55,7 @@ Func GoldElixirChange()
 				If _Sleep($iDelayGoldElixirChange1) Then Return
 
 				If getGoldVillageSearch(48, 69) = "" And getElixirVillageSearch(48, 69 + 29) = "" Then
-					SetLog("Battle has finished", $COLOR_GREEN)
+					SetLog("Battle has finished", $COLOR_SUCCESS)
 					ExitLoop
 				EndIf
 
@@ -68,7 +68,7 @@ Func GoldElixirChange()
 			GUICtrlSetData($lblResultAttackedHourNow, GUICtrlRead($lblResultAttackedHourNow) + 1)
 			Return False
 		Else
-			SetLog("Gold & Elixir change detected, waiting...", $COLOR_GREEN)
+			SetLog("Gold & Elixir change detected, waiting...", $COLOR_SUCCESS)
 			Return True
 		EndIf
 		ExitLoop
@@ -80,7 +80,7 @@ Func GoldElixirChangeThSnipes($x)
 	Local $GoldChange, $ElixirChange
 	Local $Elixir1, $Elixir2
 
-	SetLog("Checking if the Gold6Elixir are changing...", $COLOR_BLUE)
+	SetLog("Checking if the Gold6Elixir are changing...", $COLOR_INFO)
 
 	For $y = 0 To $x
 		$Gold1 = getGoldVillageSearch(48, 69)
@@ -114,7 +114,7 @@ Func GoldElixirChangeThSnipes($x)
 				If _Sleep($iDelayGoldElixirChange1) Then Return
 
 				If getGoldVillageSearch(48, 69) = "" And getElixirVillageSearch(48, 69 + 29) = "" Then
-					SetLog("Battle has finished", $COLOR_GREEN)
+					SetLog("Battle has finished", $COLOR_SUCCESS)
 					Return True
 					ExitLoop
 				EndIf
@@ -124,7 +124,7 @@ Func GoldElixirChangeThSnipes($x)
 		If ($Gold1 = $Gold2 And $Elixir1 = $Elixir2) Or ($Gold2 = "" And $Elixir2 = "") Then
 			ExitLoop
 		Else
-			SetLog("Gold & Elixir change detected, waiting...", $COLOR_GREEN)
+			SetLog("Gold & Elixir change detected, waiting...", $COLOR_SUCCESS)
 			ContinueLoop
 		EndIf
 		$x += 1

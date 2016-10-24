@@ -59,7 +59,7 @@ Func PresetLoadConf()
 	applyConfig(False) ; bot window redraw stays disabled!
 	_GUICtrlTab_ClickTab($tabMain, 0)
 	SetRedrawBotWindow(True) ; enable redraw again, applyConfig(False) keeps it disabled
-	Setlog("Config " & $filename & " LOADED!", $COLOR_GREEN)
+	Setlog("Config " & $filename & " LOADED!", $COLOR_SUCCESS)
 	$SecondaryInputFile = ""
 EndFunc   ;==>PresetLoadConf
 
@@ -99,7 +99,7 @@ Func PresetSaveConf()
 	readconfig()
 	applyConfig()
 	_GUICtrlTab_ClickTab($tabMain, 0)
-	Setlog("Config " & $filename & " SAVED!", $COLOR_GREEN)
+	Setlog("Config " & $filename & " SAVED!", $COLOR_SUCCESS)
 	$SecondaryOutputFile = ""
 
 EndFunc   ;==>PresetSaveConf

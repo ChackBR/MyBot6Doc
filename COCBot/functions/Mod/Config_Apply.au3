@@ -65,3 +65,42 @@
 		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_UNCHECKED)
 	EndIf
 	GUICtrlSetData($txtTrainLogoutMaxTime, $TrainLogoutMaxTimeTXT)	
+
+   ; SwitchAcc- DEMEN
+	Switch $ProfileType
+	Case 1
+	   GUICtrlSetState($radActiveProfile, $GUI_CHECKED)
+	Case 2
+	   GUICtrlSetState($radDonateProfile, $GUI_CHECKED)
+	Case 3
+	   GUICtrlSetState($radIdleProfile, $GUI_CHECKED)
+	EndSwitch
+
+	_GUICtrlCombobox_SetCurSel($cmbMatchProfileAcc, $MatchProfileAcc)
+
+ 	If $ichkSwitchAcc = 1 Then
+ 		GUICtrlSetState($chkSwitchAcc, $GUI_CHECKED)
+ 	Else
+ 		GUICtrlSetState($chkSwitchAcc, $GUI_UNCHECKED)
+ 	EndIf
+
+	If $ichkSmartSwitch = 1 Then
+	   GUICtrlSetState($radSmartSwitch, $GUI_CHECKED)
+ 	Else
+	   GUICtrlSetState($radNormalSwitch, $GUI_CHECKED)
+ 	EndIf
+
+	chkSwitchAcc()
+
+	_GUICtrlCombobox_SetCurSel($cmbTotalAccount, $icmbTotalCoCAcc)	; 0 = AutoDetect
+
+	If $ichkCloseTraining >= 1 Then
+		GUICtrlSetState($chkUseTrainingClose, $GUI_CHECKED)
+		If $ichkCloseTraining = 1 Then
+			GUICtrlSetState($radCloseCoC, $GUI_CHECKED)
+		Else
+			GUICtrlSetState($radCloseAndroid, $GUI_CHECKED)
+		EndIf
+	Else
+		GUICtrlSetState($chkUseTrainingClose, $GUI_UNCHECKED)
+	EndIf

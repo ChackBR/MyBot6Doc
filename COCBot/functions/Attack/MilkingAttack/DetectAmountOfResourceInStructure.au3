@@ -44,13 +44,13 @@ Func DetectAmountOfResourceInStructure($type, $coordinate, $level, $mincapacity)
 			;If $debugsetlog=1 Then Setlog("tol " & $tolerance)
 			If $capacityanalized < $mincapacity And $continuesearchelixirdebug = 0 Then
 				;stop search... do not search below minimum capacity
-				If $debugsetlog = 1 Then Setlog("IMAGECKECK STOP, capacity < mincapacity " & $filename, $COLOR_purple)
+				If $debugsetlog = 1 Then Setlog("IMAGECKECK STOP, capacity < mincapacity " & $filename, $COLOR_DEBUG)
 				Return -1
 				ExitLoop
 			Else
 				$found = _ImageSearch(@ScriptDir & "\images\CapacityStructure\" & Execute("$CapacityStructureElixir" & $level & "[" & $t & "]"), 1, $posx, $posy, $tolerance)
 				If $found = 1 Then
-					If $debugsetlog = 1 Then Setlog("IMAGECKECK OK (" & $tolerance & ") " & $filename, $COLOR_purple)
+					If $debugsetlog = 1 Then Setlog("IMAGECKECK OK (" & $tolerance & ") " & $filename, $COLOR_DEBUG)
 					If $debugImageSave = 1 Then DebugImageSave("IMAGECKECK OK (" & $tolerance & ") " & $filename, False)
 					Return $capacityanalized
 					ExitLoop
@@ -60,7 +60,7 @@ Func DetectAmountOfResourceInStructure($type, $coordinate, $level, $mincapacity)
 		If $found = 0 Then
 			;DebugImageSave("elixir_" & $level & "_X_70_A_(" & $coordinate[0] & "," & $coordinate[1] & ")_", False)
 			If $debugImageSave = 1 Then DebugImageSave("elixir_" & $level & "_", False)
-			If $debugsetlog = 1 Then SETLOG("FAIL STRUCTURE POSITION (" & $coordinate[0] & "," & $coordinate[1] & ") level " & $level & " (" & $level + 4 & ")", $color_purple)
+			If $debugsetlog = 1 Then SETLOG("FAIL STRUCTURE POSITION (" & $coordinate[0] & "," & $coordinate[1] & ") level " & $level & " (" & $level + 4 & ")", $COLOR_DEBUG)
 		EndIf
 		Return -1
 	Else

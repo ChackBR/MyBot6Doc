@@ -15,7 +15,7 @@
 Func LocateLab()
 	Local $stext, $MsgBox, $iStupid = 0, $iSilly = 0, $sErrorText = ""
 
-	SetLog("Locating Laboratory...", $COLOR_BLUE)
+	SetLog("Locating Laboratory...", $COLOR_INFO)
 
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) Or _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
 		Zoomout()
@@ -38,7 +38,7 @@ Func LocateLab()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "Laboratory Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -50,11 +50,11 @@ Func LocateLab()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Laboratory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Laboratory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_ERROR)
 						ClickP($aAway, 1, 0, "#0380")
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad Laboratory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Laboratory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_ERROR)
 						$aLabPos[0] = -1
 						$aLabPos[1] = -1
 						ClickP($aAway, 1, 0, "#0381")
@@ -62,7 +62,7 @@ Func LocateLab()
 				EndSelect
 			EndIf
 		Else
-			SetLog("Locate Laboratory Cancelled", $COLOR_BLUE)
+			SetLog("Locate Laboratory Cancelled", $COLOR_INFO)
 			ClickP($aAway, 1, 0, "#0382")
 			Return
 		EndIf
@@ -89,7 +89,7 @@ Func LocateLab()
 						$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iSilly > 4
-						SetLog("Quit joking, Click the Army Camp, or restart bot and try again", $COLOR_RED)
+						SetLog("Quit joking, Click the Army Camp, or restart bot and try again", $COLOR_ERROR)
 						$aLabPos[0] = -1
 						$aLabPos[1] = -1
 						ClickP($aAway, 1, 0, "#0383")
@@ -97,13 +97,13 @@ Func LocateLab()
 				EndSelect
 			EndIf
 		Else
-			SetLog(" Operator Error - Bad Laboratory Location: " & "(" & $aLabPos[0] & "," & $aLabPos[1] & ")", $COLOR_RED)
+			SetLog(" Operator Error - Bad Laboratory Location: " & "(" & $aLabPos[0] & "," & $aLabPos[1] & ")", $COLOR_ERROR)
 			$aLabPos[0] = -1
 			$aLabPos[1] = -1
 			ClickP($aAway, 1, 0, "#0384")
 			Return False
 		EndIf
-		SetLog("Locate Laboratory Success: " & "(" & $aLabPos[0] & "," & $aLabPos[1] & ")", $COLOR_GREEN)
+		SetLog("Locate Laboratory Success: " & "(" & $aLabPos[0] & "," & $aLabPos[1] & ")", $COLOR_SUCCESS)
 		ExitLoop
 	WEnd
 	Clickp($aAway, 2, 0, "#0207")

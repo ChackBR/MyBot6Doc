@@ -21,14 +21,14 @@ Func ReArm()
 	$iShouldRearm = False
 	;	Local $y = 562 + $bottomOffsetY ; Add 60 y pixel for 860x780 window
 
-	SetLog("Checking if Village needs Rearming..", $COLOR_BLUE)
+	SetLog("Checking if Village needs Rearming..", $COLOR_INFO)
 
 	;- Variables to use with ImgLoc -
 	; --- ReArm Buttons Detection ---
 	Local $ImagesToUse[3]
-	$ImagesToUse[0] = @ScriptDir & "\images\Button\Traps.png"
-	$ImagesToUse[1] = @ScriptDir & "\images\Button\Xbow.png"
-	$ImagesToUse[2] = @ScriptDir & "\images\Button\Inferno.png"
+	$ImagesToUse[0] = @ScriptDir & "\imgxml\rearm\Traps_0_90.xml"
+	$ImagesToUse[1] = @ScriptDir & "\imgxml\rearm\Xbow_0_90.xml"
+	$ImagesToUse[2] = @ScriptDir & "\imgxml\rearm\Inferno_0_90.xml"
 	$ToleranceImgLoc = 0.90
 	Local $locate = 0
 	Local $t = 0
@@ -44,7 +44,7 @@ Func ReArm()
 
 	ClickP($aAway, 1, 0, "#0224") ; Click away
 	If _Sleep($iDelayReArm4) Then Return
-	If IsMainPage() Then Click($TownHallPos[0], $TownHallPos[1] + 5, 1, 0, "#0225")
+	If IsMainPage() Then BuildingClickP($TownHallPos, "#0225")
 
 	If _Sleep($iDelayReArm2) Then Return
 
@@ -54,16 +54,15 @@ Func ReArm()
 	For $i = 0 To $t
 		If FileExists($ImagesToUse[$i]) Then
 			_CaptureRegion2(125, 610, 740, 715)
-			;$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
 			;Full Search in ALL Image (FV for cocDiamond) and return only fisrt match (maxObjects=1)
-			$res = DllCall($hImgLib, "str", "SearchTile", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc, "str", "FV", "int", 1)
+			$res = DllCall($hImgLib, "str", "FindTile", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "str", "FV", "int", 1)
 			If @error Then _logErrorDLLCall($pImgLib, @error)
 			If IsArray($res) Then
-				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_ERROR)
 				If $res[0] = "0" Or $res[0] = "" Then
 					If $DebugSetlog = 1 Then SetLog("No Button found")
 				ElseIf StringLeft($res[0], 2) = "-1" Then
-					SetLog("DLL Error: " & $res[0], $COLOR_RED)
+					SetLog("DLL Error: " & $res[0], $COLOR_ERROR)
 				Else
 					$expRet = StringSplit($res[0], "|", $STR_NOCOUNT)
 					$posPoint = StringSplit($expRet[1], ",", $STR_NOCOUNT)
@@ -74,13 +73,13 @@ Func ReArm()
 					Click(515, 400, 1, 0, "#0226")
 					If _Sleep($iDelayReArm4) Then Return
 					If isGemOpen(True) = True Then
-						Setlog("Not enough loot to rearm traps.....", $COLOR_RED)
+						Setlog("Not enough loot to rearm traps.....", $COLOR_ERROR)
 						Click(585, 252, 1, 0, "#0227") ; Click close gem window "X"
 						If _Sleep($iDelayReArm1) Then Return
 					Else
-						If $i = 0 Then SetLog("Rearmed Trap(s)", $COLOR_GREEN)
-						If $i = 1 Then SetLog("Reloaded XBow(s)", $COLOR_GREEN)
-						If $i = 2 Then SetLog("Reloaded Inferno(s)", $COLOR_GREEN)
+						If $i = 0 Then SetLog("Rearmed Trap(s)", $COLOR_SUCCESS)
+						If $i = 1 Then SetLog("Reloaded XBow(s)", $COLOR_SUCCESS)
+						If $i = 2 Then SetLog("Reloaded Inferno(s)", $COLOR_SUCCESS)
 						$locate = 1
 						If _Sleep($iDelayReArm1) Then Return
 					EndIf
@@ -89,7 +88,7 @@ Func ReArm()
 		EndIf
 	Next
 
-	If $locate = 0 Then SetLog("Rearm not needed!", $COLOR_GREEN)
+	If $locate = 0 Then SetLog("Rearm not needed!", $COLOR_SUCCESS)
 	ClickP($aAway, 1, 0, "#0234") ; Click away
 	If _Sleep($iDelayReArm2) Then Return
 	checkMainScreen(False) ; check for screen errors while running function

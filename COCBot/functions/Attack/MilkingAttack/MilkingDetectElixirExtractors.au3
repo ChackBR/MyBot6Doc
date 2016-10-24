@@ -17,10 +17,10 @@ Func MilkingDetectElixirExtractors()
 	;detect elixir extractors position according to settings: amount of resource and level.
 
 	If $MilkFarmAttackElixirExtractors = 1 and $iElixirCurrent >= $MilkFarmLimitElixir Then
-		If $debugsetlog=1 Then setlog("skip attack of elixir extractors, current elixir (" & $iElixirCurrent & ") >= limit (" & $MilkFarmLimitElixir & ")",$color_purple)
+		If $debugsetlog=1 Then setlog("skip attack of elixir extractors, current elixir (" & $iElixirCurrent & ") >= limit (" & $MilkFarmLimitElixir & ")",$COLOR_DEBUG)
 		return 0
 	Else
-		If $debugsetlog=1 Then setlog("current elixir (" & $iElixirCurrent & ") < limit (" & $MilkFarmLimitElixir & ")",$color_purple)
+		If $debugsetlog=1 Then setlog("current elixir (" & $iElixirCurrent & ") < limit (" & $MilkFarmLimitElixir & ")",$COLOR_DEBUG)
 	EndIf
 
 	$MilkFarmObjectivesSTR = ""
@@ -53,20 +53,20 @@ Func MilkingDetectElixirExtractors()
 ;~ 						   if $qtyofpointsdetectedaroundstructure >0 then
 ;~ 							  $elixirmatch += 1
 ;~ 						   Else
-;~   							  If $debugsetlog = 1 Then Setlog(" - discard #6 no redarea points matching conditions", $color_purple)
+;~   							  If $debugsetlog = 1 Then Setlog(" - discard #6 no redarea points matching conditions", $COLOR_DEBUG)
 ;~ 							  $elixirdiscard += 1
 ;~ 						   EndIf
 ;~ 						Else
-;~ 						   If $debugsetlog = 1 Then Setlog(" - discard #5 skip locate elixir", $color_purple)
+;~ 						   If $debugsetlog = 1 Then Setlog(" - discard #5 skip locate elixir", $COLOR_DEBUG)
 ;~ 						   $elixirdiscard += 1
 ;~ 						EndIf
 ;~ 					Else
-;~ 						If $debugsetlog = 1 Then Setlog(" - discard #4 no match conditions", $color_purple)
+;~ 						If $debugsetlog = 1 Then Setlog(" - discard #4 no match conditions", $COLOR_DEBUG)
 ;~ 						$elixirdiscard += 1
 ;~ 					EndIf
 					;B: check if structure it is near redline ...........(result in  $redareapointsnearstructure ) ...................
 					 $redareapointsnearstructure = MilkingRedAreaPointsNearStructure("elixir", $temp[0], $temp[1])
-					 ;if $debugsetlog = 1 Then Setlog("structure elixir (" & $pixel[0] &"," & $pixel[1] & ") redarea points match: >>>" & $redareapointsnearstructure & "<<<",$color_purple)
+					 ;if $debugsetlog = 1 Then Setlog("structure elixir (" & $pixel[0] &"," & $pixel[1] & ") redarea points match: >>>" & $redareapointsnearstructure & "<<<",$COLOR_DEBUG)
 					 if $redareapointsnearstructure <>"" Then
 						If AmountOfResourcesInStructure("elixir", $pixel, $temp[0]) Then
 						   If $MilkFarmLocateElixir = 1 Then
@@ -77,15 +77,15 @@ Func MilkingDetectElixirExtractors()
 							  $MilkFarmObjectivesSTR &= $redareapointsnearstructure
 							  $elixirmatch += 1
 						   Else
-							  If $debugsetlog = 1 Then Setlog(" - discard #6 skip locate elixir", $color_purple)
+							  If $debugsetlog = 1 Then Setlog(" - discard #6 skip locate elixir", $COLOR_DEBUG)
 							  $elixirdiscard += 1
 						   EndIf
 						Else
-						   If $debugsetlog = 1 Then Setlog(" - discard #5 no match condition % amount of elixir", $color_purple)
+						   If $debugsetlog = 1 Then Setlog(" - discard #5 no match condition % amount of elixir", $COLOR_DEBUG)
 						   $elixirdiscard += 1
 						EndIf
 					 Else
-						If $debugsetlog = 1 Then Setlog(" - discard #4 no redarea points matching conditions", $color_purple)
+						If $debugsetlog = 1 Then Setlog(" - discard #4 no redarea points matching conditions", $COLOR_DEBUG)
 						$elixirdiscard += 1
 					 EndIf
 
@@ -111,24 +111,24 @@ Func MilkingDetectElixirExtractors()
 
 
 				Else
-					If $debugsetlog = 1 Then Setlog(" - discard #3 out of insidediamond", $color_purple)
+					If $debugsetlog = 1 Then Setlog(" - discard #3 out of insidediamond", $COLOR_DEBUG)
 					$elixirdiscard += 1
 				EndIf
 			Else
-				If $debugsetlog = 1 Then Setlog(" - discard #2 no pixel coordinate", $color_purple)
+				If $debugsetlog = 1 Then Setlog(" - discard #2 no pixel coordinate", $COLOR_DEBUG)
 				$elixirdiscard += 1
 			EndIf
 		Else
-			If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $color_purple)
+			If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $COLOR_DEBUG)
 			$elixirdiscard += 1
 		EndIf
 	Next
 	If StringLen($MilkFarmAtkPixelListSTR) > 1 Then
 		$MilkFarmAtkPixelListSTR = StringLeft($MilkFarmAtkPixelListSTR, StringLen($MilkFarmAtkPixelListSTR) - 1)
 	EndIf
-	If $debugsetlog = 1 Then Setlog("> Elixir Extractors to attack list: " & $MilkFarmAtkPixelListSTR, $color_purple)
+	If $debugsetlog = 1 Then Setlog("> Elixir Extractors to attack list: " & $MilkFarmAtkPixelListSTR, $COLOR_DEBUG)
 	Local $htimerLocateElixir = Round(TimerDiff($hTimer) / 1000, 2)
-	If $debugsetlog = 1 Then Setlog("> Elixir Extractors found: " & $elixirfounds & " | match conditions: " & $elixirmatch & " | discard " & $elixirdiscard, $color_blue)
-	If $debugsetlog = 1 Then SetLog("> Elixir Extractors position and %full detectecd in " & $htimerLocateElixir & " seconds", $color_blue)
+	If $debugsetlog = 1 Then Setlog("> Elixir Extractors found: " & $elixirfounds & " | match conditions: " & $elixirmatch & " | discard " & $elixirdiscard, $COLOR_INFO)
+	If $debugsetlog = 1 Then SetLog("> Elixir Extractors position and %full detectecd in " & $htimerLocateElixir & " seconds", $COLOR_INFO)
 	Return $elixirmatch
 EndFunc   ;==>MilkingDetectElixirExtractors

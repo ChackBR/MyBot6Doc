@@ -27,7 +27,7 @@ Func CheckWall()
 
 	For $i = 0 To UBound($listLvlMask) - 1
 		_CaptureRegion2()
-		SetLog("Searching for Wall(s) level: " & $levelWall & ". Using Mask: " & $NameLvlMask[$i], $COLOR_GREEN)
+		SetLog("Searching for Wall(s) level: " & $levelWall & ". Using Mask: " & $NameLvlMask[$i], $COLOR_SUCCESS)
 		Local $result = DllCall($hFuncLib, "str", "findWall", "ptr", $hHBitmap2, "double", $listLvlMask[$i], "int", $levelWall, "double", $Walltolerance[$icmbWalls], "int", $iMaxNbWall, "int", $debugWalls)
 		ClickP($aAway, 1, 0, "#0505") ; to prevent bot 'Anyone there ?'
 		If Not $result[0] = "" And UBound($result) > 0 Then
@@ -42,10 +42,10 @@ Func CheckWall()
 	Next
 
 	If (UBound($listPixel) = 0) Then
-		SetLog("No wall(s) level: " & $levelWall & " found.", $COLOR_RED)
+		SetLog("No wall(s) level: " & $levelWall & " found.", $COLOR_ERROR)
 	Else
-		SetLog("Found: " & UBound($listPixel) & " possible Wall position(s).", $COLOR_GREEN)
-		SetLog("Checking if found positions are a Wall and of desired level.", $COLOR_GREEN)
+		SetLog("Found: " & UBound($listPixel) & " possible Wall position(s).", $COLOR_SUCCESS)
+		SetLog("Checking if found positions are a Wall and of desired level.", $COLOR_SUCCESS)
 		For $i = 0 To UBound($listPixel) - 1
 			;try click
 			Local $pixel = $listPixel[$i]
@@ -62,10 +62,10 @@ Func CheckWall()
 					Else
 						If $debugSetlog Then
 							ClickP($aAway, 1, 0, "#0931") ;Click Away
-							Setlog("Position No: " & $i + 1 & " is not a Wall Level: " & $icmbWalls + 4 & ". It was: " & $aResult[1] & ", " & $aResult[2] & " at: (" & $pixel[0] + $xCompensation & "," & $pixel[1] + $yCompensation & ").", $COLOR_PURPLE) ;debug
+							Setlog("Position No: " & $i + 1 & " is not a Wall Level: " & $icmbWalls + 4 & ". It was: " & $aResult[1] & ", " & $aResult[2] & " at: (" & $pixel[0] + $xCompensation & "," & $pixel[1] + $yCompensation & ").", $COLOR_DEBUG) ;debug
 						Else
 							ClickP($aAway, 1, 0, "#0932") ;Click Away
-							Setlog("Position No: " & $i + 1 & " is not a Wall Level: " & $icmbWalls + 4 & ".", $COLOR_RED)
+							Setlog("Position No: " & $i + 1 & " is not a Wall Level: " & $icmbWalls + 4 & ".", $COLOR_ERROR)
 						EndIf
 					EndIf
 				Else

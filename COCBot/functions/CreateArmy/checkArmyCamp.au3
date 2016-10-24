@@ -15,7 +15,7 @@
 
 Func checkArmyCamp()
 
-	If $debugsetlogTrain = 1 Then SETLOG("Begin checkArmyCamp:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SETLOG("Begin checkArmyCamp:", $COLOR_DEBUG1)
 
 	GetArmyCapacity()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
@@ -35,24 +35,26 @@ Func checkArmyCamp()
 	getArmySpellCount()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 
+	#cs disabled for 6.3.u as not available on Army page, only on Brew Spells page
 	getArmySpellTime()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
+	#ce
 
 	getArmyCCStatus()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 
 	;call BarracksStatus() to read barracks num
-	If $FirstStart Then
-		BarracksStatus(True)
-	Else
-		BarracksStatus(False)
-	EndIf
+;~ 	If $FirstStart Then
+;~ 		BarracksStatus(True)
+;~ 	Else
+;~ 		BarracksStatus(False)
+;~ 	EndIf
 
 	If Not $fullArmy Then DeleteExcessTroops()
 
 	$FirstCampView = True
 
-	If $debugsetlogTrain = 1 Then SETLOG("End checkArmyCamp: canRequestCC= " & $canRequestCC & ", fullArmy= " & $fullArmy, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then SETLOG("End checkArmyCamp: canRequestCC= " & $canRequestCC & ", fullArmy= " & $fullArmy, $COLOR_DEBUG)
 
 EndFunc   ;==>checkArmyCamp
 
@@ -143,7 +145,7 @@ Func DeleteExcessTroops()
 				If _Sleep(250) Then Return
 				If _ColorCheck(_GetPixelColor(170 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD40003, 6), 10) Then ; Verify if existe the RED [-] button
 					Click(170 + (62 * $SlotTemp), 235 + $midOffsetY, $Delete, 300)
-					SetLog("~Deleted " & $Delete & " " & NameOfTroop(Eval("e" & $TroopName[$i])), $COLOR_RED)
+					SetLog("~Deleted " & $Delete & " " & NameOfTroop(Eval("e" & $TroopName[$i])), $COLOR_ERROR)
 					Assign("Cur" & $TroopName[$i], Eval("Cur" & $TroopName[$i]) + $Delete) ; Remove From $CurTroop the deleted Troop quantity
 				EndIf
 			EndIf
@@ -164,7 +166,7 @@ Func DeleteExcessTroops()
 				If _Sleep(250) Then Return
 				If _ColorCheck(_GetPixelColor(170 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD40003, 6), 10) Then ; Verify if existe the RED [-] button
 					Click(170 + (62 * $SlotTemp), 235 + $midOffsetY, $Delete, 300)
-					SetLog("~Deleted " & $Delete & " " & NameOfTroop(Eval("e" & $TroopDarkName[$i])), $COLOR_RED)
+					SetLog("~Deleted " & $Delete & " " & NameOfTroop(Eval("e" & $TroopDarkName[$i])), $COLOR_ERROR)
 					Assign("Cur" & $TroopDarkName[$i], Eval("Cur" & $TroopDarkName[$i]) + $Delete) ; Remove From $CurTroop the deleted Troop quantity
 				EndIf
 			EndIf

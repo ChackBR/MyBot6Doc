@@ -33,13 +33,17 @@ Func TogglePauseImpl($Source)
 EndFunc   ;==>TogglePauseImpl
 
 Func TogglePauseUpdateState($Source)
+	$troops_maked_after_fullarmy= false ; reset variable due to pause button pressed
+	$actual_train_skip = 0
+	If $debugsetlogTrain = 1 Then SetLog("troops_maked_after_fullarmy= false",$color_purple)
+
 	$TogglePauseUpdateState = False
 	;Local $BlockInputPausePrev
 	If $TPaused Then
 		AndroidShield("TogglePauseImpl paused", False)
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Paused!", 1, $TIP_ICONEXCLAMATION)
-		Setlog("Bot was Paused!", $COLOR_RED)
+		Setlog("Bot was Paused!", $COLOR_ERROR)
 		If Not $bSearchMode Then
 			$iTimePassed += Int(TimerDiff($sTimer))
 			;AdlibUnRegister("SetTime")
@@ -54,7 +58,7 @@ Func TogglePauseUpdateState($Source)
 		AndroidShield("TogglePauseImpl resumed")
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Resumed.", 1, $TIP_ICONASTERISK)
-		Setlog("Bot was Resumed.", $COLOR_GREEN)
+		Setlog("Bot was Resumed.", $COLOR_SUCCESS)
 		If Not $bSearchMode Then
 			$sTimer = TimerInit()
 			;AdlibRegister("SetTime", 1000)
@@ -81,6 +85,7 @@ Func TogglePauseSleep()
 		EndIf
 	WEnd
 	; everything below this WEnd is executed when unpaused!
+	$SkipFirstZoomout = False
 	;ZoomOut() ; moved to resume
 	If _Sleep($iDelayTogglePause2, True, True, False) Then Return
 EndFUnc	  ;==>TogglePauseSleep

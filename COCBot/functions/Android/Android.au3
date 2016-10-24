@@ -86,7 +86,7 @@ Func WinGetAndroidHandle($bInitAndroid = Default, $bTestPid = False)
 				$aPos[1] = $AndroidPosY
 			EndIf
 			Local $instance = ($AndroidInstance = "" ? "" : " (" & $AndroidInstance & ")")
-			SetLog($Android & $instance & " running in window mode", $COLOR_ORANGE)
+			SetLog($Android & $instance & " running in window mode", $COLOR_ACTION)
 			If $currHWnD <> 0 And $currHWnD <> $HWnD Then
 				$InitAndroid = True
 				If $bInitAndroid = True Then InitAndroid(True)
@@ -147,17 +147,17 @@ Func WinGetAndroidHandle($bInitAndroid = Default, $bTestPid = False)
 					Return $pid
 				EndIf
 				If $AndroidAdbScreencap = True And $AndroidAdbClick = False And AndroidAdbClickSupported() = True Then
-					SetLog("Enabled ADB Click to support background mode", $COLOR_ORANGE)
+					SetLog("Enabled ADB Click to support background mode", $COLOR_ACTION)
 					$AndroidAdbClick = True
 				EndIf
 				If $AndroidAdbClick = False Or $AndroidAdbScreencap = False Then
 					If $AndroidQueueReboot = False Then
-						SetLog("Headless Android not supported because", $COLOR_RED)
+						SetLog("Headless Android not supported because", $COLOR_ERROR)
 						Local $reason = ""
 						If $AndroidAdbClick = False Then $reason &= "ADB Click " & ($AndroidAdbScreencap = False ? "and " : "")
 						If $AndroidAdbScreencap = False Then $reason &= "ADB Screencap "
 						$reason &= "not available!"
-						SetLog($reason, $COLOR_RED)
+						SetLog($reason, $COLOR_ERROR)
 						;$HWnD = 0
 						AndroidQueueReboot(True)
 					EndIf
@@ -167,7 +167,7 @@ Func WinGetAndroidHandle($bInitAndroid = Default, $bTestPid = False)
 						If $bInitAndroid = True Then InitAndroid(True)
 					EndIf
 				Else
-					SetLog($Android & $instance & " running in headless mode", $COLOR_ORANGE)
+					SetLog($Android & $instance & " running in headless mode", $COLOR_ACTION)
 					$HWnD = $pid
 					If $currHWnD <> 0 And $currHWnD <> $HWnD Then
 						$InitAndroid = True
@@ -349,13 +349,13 @@ Func _WinGetAndroidHandle($bFindByTitle = False)
 	Return 0
 EndFunc   ;==>_WinGetAndroidHandle
 
-Func UpdateAndroidWindowTitle($HWin, $t)
+Func UpdateAndroidWindowTitle($hWin, $t)
 	If $UpdateAndroidWindowTitle = True And $AndroidInstance <> "" And StringInStr($t, $AndroidInstance) = 0 Then
 		$t &= " (" & $AndroidInstance & ")"
-		_WinAPI_SetWindowText($HWin, $t)
+		_WinAPI_SetWindowText($hWin, $t)
 	EndIf
 	Return $t
-EndFunc
+EndFunc   ;==>UpdateAndroidWindowTitle
 
 Func AndroidControlAvailable()
 	If $AndroidBackgroundLaunched = True Then
@@ -376,7 +376,7 @@ Func GetAndroidSvcPid()
 	If $pid <> 0 Then
 		SetDebugLog("Found " & $Android & " Service PID = " & $pid)
 	Else
-		SetDebugLog("Cannot find " & $Android & " Service PID", $COLOR_RED)
+		SetDebugLog("Cannot find " & $Android & " Service PID", $COLOR_ERROR)
 	EndIf
 	$AndroidSvcPid = $pid
 	Return $pid
@@ -389,7 +389,7 @@ Func GetVBoxAndroidSvcPid()
 	Local $uuid = ""
 	If Not @error Then $uuid = $aRegExResult[0]
 	If StringLen($uuid) < 32 Then
-		SetDebugLog("Cannot find VBox UUID", $COLOR_RED)
+		SetDebugLog("Cannot find VBox UUID", $COLOR_ERROR)
 		Return 0
 	EndIf
 
@@ -528,7 +528,7 @@ Func InitAndroid($bCheckOnly = False)
 	Local $Result = Execute("Init" & $Android & "(" & $bCheckOnly & ")")
 	If $Result = "" And @error <> 0 Then
 		; Not implemented
-		SetLog("Android support for " & $Android & " is not available", $COLOR_RED)
+		SetLog("Android support for " & $Android & " is not available", $COLOR_ERROR)
 	EndIf
 	Local $successful = @error = 0
 	If Not $bCheckOnly And $Result Then
@@ -555,8 +555,8 @@ Func InitAndroid($bCheckOnly = False)
 		If FileExists($AndroidPicturesHostPath) Then
 			DirCreate($AndroidPicturesHostPath & $AndroidPicturesHostFolder)
 		ElseIf $AndroidPicturesHostPath <> "" Then
-			SetLog("Shared Folder doesn't exist, please fix:", $COLOR_RED)
-			SetLog($AndroidPicturesHostPath, $COLOR_RED)
+			SetLog("Shared Folder doesn't exist, please fix:", $COLOR_ERROR)
+			SetLog($AndroidPicturesHostPath, $COLOR_ERROR)
 		EndIf
 		SetDebugLog("Android ADB Shared Folder on Host: " & $AndroidPicturesHostPath)
 		SetDebugLog("Android ADB Shared SubFolder: " & $AndroidPicturesHostFolder)
@@ -570,6 +570,7 @@ Func InitAndroid($bCheckOnly = False)
 		;$HWnD = WinGetHandle($Title) ;Handle for Android window
 		WinGetAndroidHandle() ; Set $HWnD and $Title for Android window
 		InitAndroidTimeLag()
+		InitAndroidPageError()
 		$InitAndroid = Not $successful
 	Else
 		If $bCheckOnly = False Then $InitAndroid = True
@@ -602,7 +603,7 @@ EndFunc   ;==>AndroidBotStopEvent
 
 Func OpenAndroid($bRestart = False)
 	If $OpenAndroidActive >= $OpenAndroidActiveMaxTry Then
-		SetLog("Cannot open " & $Android & ", tried " & $OpenAndroidActive & " times...", $COLOR_RED)
+		SetLog("Cannot open " & $Android & ", tried " & $OpenAndroidActive & " times...", $COLOR_ERROR)
 		btnStop()
 		Return False
 	EndIf
@@ -611,6 +612,7 @@ Func OpenAndroid($bRestart = False)
 		SetDebugLog("Opening " & $Android & " recursively " & $OpenAndroidActive & ". time...")
 	EndIf
 	Local $Result = _OpenAndroid($bRestart)
+	WinGetAndroidHandle()
 	$OpenAndroidActive -= 1
 	Return $Result
 EndFunc   ;==>OpenAndroid
@@ -619,9 +621,9 @@ Func _OpenAndroid($bRestart = False)
 	ResumeAndroid()
 
 	If Not InitAndroid() Then
-		SetLog("Unable to open " & $Android & ($AndroidInstance = "" ? "" : " instance '" & $AndroidInstance & "'"), $COLOR_RED)
-		SetLog("Please check emulator/installation", $COLOR_RED)
-		SetLog("Unable to continue........", $COLOR_RED)
+		SetLog("Unable to open " & $Android & ($AndroidInstance = "" ? "" : " instance '" & $AndroidInstance & "'"), $COLOR_ERROR)
+		SetLog("Please check emulator/installation", $COLOR_ERROR)
+		SetLog("Unable to continue........", $COLOR_ERROR)
 		btnStop()
 		SetError(1, 1, -1)
 		Return False
@@ -635,7 +637,8 @@ Func _OpenAndroid($bRestart = False)
 
 	; Close crashed android when $AndroidBackgroundLaunch = False
 	If $AndroidBackgroundLaunch = False And WinGetAndroidHandle(Default, True) <> 0 Then
-		CloseAndroid()
+		CloseAndroid("_OpenAndroid")
+		If _Sleep(1000) Then Return False
 	EndIf
 
 	If Not Execute("Open" & $Android & "(" & $bRestart & ")") Then Return False
@@ -677,6 +680,7 @@ Func StartAndroidCoC()
 EndFunc   ;==>StartAndroidCoC
 
 Func RestartAndroidCoC($bInitAndroid = True, $bRestart = True)
+	$SkipFirstZoomout = False
 	ResumeAndroid()
 	If Not $RunState Then Return False
 
@@ -692,10 +696,10 @@ Func RestartAndroidCoC($bInitAndroid = True, $bRestart = True)
 
 	Local $sRestart = ""
 	If $bRestart = True Then
-		SetLog("Please wait for CoC restart......", $COLOR_BLUE) ; Let user know we need time...
+		SetLog("Please wait for CoC restart......", $COLOR_INFO) ; Let user know we need time...
 		$sRestart = "-S "
 	Else
-		SetLog("Launch Clash of Clans now...", $COLOR_GREEN)
+		SetLog("Launch Clash of Clans now...", $COLOR_SUCCESS)
 	EndIf
 	ConnectAndroidAdb()
 	If Not $RunState Then Return False
@@ -703,8 +707,8 @@ Func RestartAndroidCoC($bInitAndroid = True, $bRestart = True)
 	If Not $RunState Then Return False
 	$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start " & $sRestart & "-n " & $AndroidGamePackage & "/" & $AndroidGameClass, $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
 	If StringInStr($cmdOutput, "Error:") > 0 And StringInStr($cmdOutput, $AndroidGamePackage) > 0 Then
-		SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_RED)
-		SetLog("Unable to continue........", $COLOR_MAROON)
+		SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_ERROR)
+		SetLog("Unable to continue........", $COLOR_WARNING)
 		btnStop()
 		SetError(1, 1, -1)
 		Return False
@@ -720,16 +724,17 @@ Func RestartAndroidCoC($bInitAndroid = True, $bRestart = True)
 	Return True
 EndFunc   ;==>RestartAndroidCoC
 
-Func CloseAndroid()
+Func CloseAndroid($sSource)
 	ResumeAndroid()
 
-	SetLog("Stopping " & $Android & "....", $COLOR_BLUE)
+	SetLog("Stopping " & $Android & "....", $COLOR_INFO)
+	SetDebugLog("CloseAndroid, caller: " & $sSource)
 
 	AndroidAdbTerminateShellInstance()
 
 	If Not $RunState Then Return False
 
-	SetLog("Please wait for full " & $Android & " shutdown...", $COLOR_GREEN)
+	SetLog("Please wait for full " & $Android & " shutdown...", $COLOR_SUCCESS)
 	Local $pid = GetAndroidPid()
 	If ProcessExists2($pid) Then
 		KillProcess($pid, "CloseAndroid")
@@ -741,9 +746,9 @@ Func CloseAndroid()
 
 	If Not $RunState Then Return False
 	If ProcessExists2($pid) Then
-		SetLog("Failed to stop " & $Android, $COLOR_RED)
+		SetLog("Failed to stop " & $Android, $COLOR_ERROR)
 	Else
-		SetLog($Android & " stopped successfully", $COLOR_GREEN)
+		SetLog($Android & " stopped successfully", $COLOR_SUCCESS)
 	EndIf
 
 	If Not $RunState Then Return False
@@ -779,11 +784,11 @@ Func SetScreenAndroid()
 	ResumeAndroid()
 	If Not $RunState Then Return False
 	; Set Android screen size and dpi
-	SetLog("Set " & $Android & " screen resolution to " & $AndroidClientWidth & " x " & $AndroidClientHeight, $COLOR_BLUE)
+	SetLog("Set " & $Android & " screen resolution to " & $AndroidClientWidth & " x " & $AndroidClientHeight, $COLOR_INFO)
 	Local $Result = Execute("SetScreen" & $Android & "()")
 	If $Result Then
-		SetLog("A restart of your computer might be required", $COLOR_ORANGE)
-		SetLog("for the applied changes to take effect.", $COLOR_ORANGE)
+		SetLog("A restart of your computer might be required", $COLOR_ACTION)
+		SetLog("for the applied changes to take effect.", $COLOR_ACTION)
 	EndIf
 	Return $Result
 EndFunc   ;==>SetScreenAndroid
@@ -821,8 +826,8 @@ Func WaitForRunningVMS($WaitInSec = 120, $hTimer = 0)
 		If $hTimer <> 0 Then _StatusUpdateTime($hTimer)
 		_Sleep(3000) ; Sleep 3 Seconds
 		If TimerDiff($hMyTimer) > $WaitInSec * 1000 Then ; if no device available in 4 minutes, Android/PC has major issue so exit
-			SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-			SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for boot completed", $COLOR_RED)
+			SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+			SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for boot completed", $COLOR_ERROR)
 			SetError(1, @extended, False)
 			Return True
 		EndIf
@@ -850,8 +855,8 @@ Func WaitForAndroidBootCompleted($WaitInSec = 120, $hTimer = 0)
 		If $hTimer <> 0 Then _StatusUpdateTime($hTimer)
 		If _Sleep(3000) Then Return True ; Sleep 3 Seconds
 		If TimerDiff($hMyTimer) > $WaitInSec * 1000 Then ; if no device available in 4 minutes, Android/PC has major issue so exit
-			SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-			SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for boot completed", $COLOR_RED)
+			SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+			SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for boot completed", $COLOR_ERROR)
 			SetError(1, @extended, False)
 			Return True
 		EndIf
@@ -867,6 +872,11 @@ Func IsAdbConnected($cmdOutput = Default)
 		If IsAdbTCP() Then
 			$cmdOutput = LaunchConsole($AndroidAdbPath, "connect " & $AndroidAdbDevice, $process_killed)
 			$connected_to = StringInStr($cmdOutput, "connected to") > 0
+			If $connected_to Then
+				; also check whoami
+				$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell whoami", $process_killed)
+				$connected_to = StringInStr($cmdOutput, "device ") = 0
+			EndIf
 		Else
 			$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell whoami", $process_killed)
 			$connected_to = StringInStr($cmdOutput, " not ") = 0
@@ -897,7 +907,7 @@ EndFunc   ;==>ReleaseAdbDaemonMutex
 
 Func ConnectAndroidAdb($rebootAndroidIfNeccessary = $RunState, $timeout = 15000)
 	If $AndroidAdbPath = "" Or FileExists($AndroidAdbPath) = 0 Then
-		SetLog($Android & " ADB Path not valid: " & $AndroidAdbPath, $COLOR_RED)
+		SetLog($Android & " ADB Path not valid: " & $AndroidAdbPath, $COLOR_ERROR)
 		Return False
 	EndIf
 	ResumeAndroid()
@@ -924,7 +934,7 @@ Func ConnectAndroidAdb($rebootAndroidIfNeccessary = $RunState, $timeout = 15000)
 		If _Sleep($ms) Then Return ReleaseAdbDaemonMutex($hMutex, False) ; True ; interrupted and return True not to start any failback logic
 	WEnd
 	; not connected... strange, kill any Adb now
-	SetDebugLog("Stop ADB daemon!", $COLOR_RED)
+	SetDebugLog("Stop ADB daemon!", $COLOR_ERROR)
 	LaunchConsole($AndroidAdbPath, "kill-server", $process_killed)
 	Local $pids = ProcessesExist($AndroidAdbPath, "", 1)
 	For $i = 0 To UBound($pids) - 1
@@ -936,15 +946,15 @@ Func ConnectAndroidAdb($rebootAndroidIfNeccessary = $RunState, $timeout = 15000)
 
 	If Not $connected_to And $RunState = True And $rebootAndroidIfNeccessary = True Then
 		; not good, what to do now? Reboot Android...
-		SetLog("ADB cannot connect to " & $Android & ", restart emulator now...", $COLOR_RED)
+		SetLog("ADB cannot connect to " & $Android & ", restart emulator now...", $COLOR_ERROR)
 		If Not RebootAndroid() Then Return False
 		; ok, last try
 		$connected_to = ConnectAndroidAdb(False)
 		If Not $connected_to Then
 			; Let's give up...
 			If Not $RunState Then Return False ; True ; interrupted and return True not to start any failback logic
-			SetLog("ADB really cannot connect to " & $Android & "!", $COLOR_RED)
-			SetLog("Please restart bot, emulator and/or PC...", $COLOR_RED)
+			SetLog("ADB really cannot connect to " & $Android & "!", $COLOR_ERROR)
+			SetLog("Please restart bot, emulator and/or PC...", $COLOR_ERROR)
 			#cs
 				_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
 				Local $stxt = @CRLF & "MyBot has experienced a serious error" & @CRLF & @CRLF & _
@@ -971,7 +981,7 @@ Func RebootAndroid($bRestart = True)
 		; Unsupport Emulator now closed, screen config is now adjusted
 	Else
 		; Close Emulator
-		CloseAndroid()
+		CloseAndroid("RebootAndroid")
 	EndIf
 	If _Sleep(1000) Then Return False
 
@@ -988,7 +998,7 @@ Func RebootAndroidSetScreenDefault()
 	If Not $RunState Then Return False
 
 	; Close Android
-	CloseAndroid()
+	CloseAndroid("RebootAndroidSetScreenDefault")
 	If _Sleep(1000) Then Return False
 
 	SetScreenAndroid()
@@ -1011,7 +1021,7 @@ Func CheckScreenAndroid($ClientWidth, $ClientHeight, $bSetLog = True)
 		Local $WinWidth = $AndroidWinPos[2]
 		Local $WinHeight = $AndroidWinPos[3]
 		If $WinWidth <> $AndroidWindowWidth Or $WinHeight <> $AndroidWindowHeight Then
-			SetDebugLog("CheckScreenAndroid: Window size " & $WinWidth & " x " & $WinHeight & " <> " & $AndroidWindowWidth & " x " & $AndroidWindowHeight, $COLOR_RED)
+			SetDebugLog("CheckScreenAndroid: Window size " & $WinWidth & " x " & $WinHeight & " <> " & $AndroidWindowWidth & " x " & $AndroidWindowHeight, $COLOR_ERROR)
 		Else
 			SetDebugLog("CheckScreenAndroid: Window size " & $WinWidth & " x " & $WinHeight)
 		EndIf
@@ -1019,7 +1029,7 @@ Func CheckScreenAndroid($ClientWidth, $ClientHeight, $bSetLog = True)
 
 	Local $ok = ($ClientWidth = $AndroidClientWidth) And ($ClientHeight = $AndroidClientHeight)
 	If Not $ok Then
-		If $bSetLog Then SetLog("MyBot doesn't work with " & $Android & " screen resolution of " & $ClientWidth & " x " & $ClientHeight & "!", $COLOR_RED)
+		If $bSetLog Then SetLog("MyBot doesn't work with " & $Android & " screen resolution of " & $ClientWidth & " x " & $ClientHeight & "!", $COLOR_ERROR)
 		SetDebugLog("CheckScreenAndroid: " & $ClientWidth & " x " & $ClientHeight & " <> " & $AndroidClientWidth & " x " & $AndroidClientHeight)
 		Return False
 	EndIf
@@ -1031,14 +1041,14 @@ Func CheckScreenAndroid($ClientWidth, $ClientHeight, $bSetLog = True)
 	If $font_scale > 0 Then
 		SetDebugLog($Android & " font_scale = " & $font_scale)
 		If $font_scale <> 1 Then
-			SetLog("MyBot doesn't work with Display Font Scale of " & $font_scale, $COLOR_RED)
+			SetLog("MyBot doesn't work with Display Font Scale of " & $font_scale, $COLOR_ERROR)
 			Return False
 		EndIf
 	Else
 		Switch $Android
 			Case "BlueStacks", "BlueStacks2" ; BlueStacks doesn't support it
 			Case Else
-				SetDebugLog($Android & " Display Font Scale cannot be verified", $COLOR_RED)
+				SetDebugLog($Android & " Display Font Scale cannot be verified", $COLOR_ERROR)
 		EndSwitch
 	EndIf
 
@@ -1053,7 +1063,7 @@ EndFunc   ;==>CheckScreenAndroid
 Func AndroidSetFontSizeNormal()
 	ResumeAndroid()
 	AndroidAdbLaunchShellInstance($RunState, False)
-	SetLog("Set " & $Android & " Display Font Scale to normal", $COLOR_BLUE)
+	SetLog("Set " & $Android & " Display Font Scale to normal", $COLOR_INFO)
 	AndroidAdbSendShellCommand("settings put system font_scale 1.0")
 EndFunc   ;==>AndroidSetFontSizeNormal
 
@@ -1062,13 +1072,30 @@ Func AndroidAdbLaunchShellInstance($wasRunState = $RunState, $rebootAndroidIfNec
 		Local $SuspendMode = ResumeAndroid()
 		InitAndroid()
 		Local $s
+
+		; sync android tools to shared folder
+		Local $hostFolder = $AndroidPicturesHostPath & $AndroidPicturesHostFolder
+		If FileExists($hostFolder) = 1 Then
+			SetDebugLog($hostFolder & " exists")
+			Local $aTools[1] = ["sleep"]
+			Local $tool
+			For $tool in $aTools
+				Local $srcFile = $AdbScriptsDir & "\" & $tool
+				Local $dstFile = $hostFolder & $tool
+				SetDebugLog($srcFile & " -> " & $dstFile)
+				If FileGetTime($srcFile, $FT_MODIFIED, $FT_STRING) <> FileGetTime($dstFile, $FT_MODIFIED, $FT_STRING) Then
+					FileCopy($srcFile, $dstFile, $FC_OVERWRITE)
+				EndIf
+			Next
+		EndIf
+
 		If $AndroidAdbInstance = True Then
 			If ConnectAndroidAdb($rebootAndroidIfNeccessary) = False Then
 				Return SetError(3, 0)
 			EndIf
 			$AndroidAdbPid = Run($AndroidAdbPath & " -s " & $AndroidAdbDevice & " shell", "", @SW_HIDE, BitOR($STDIN_CHILD, $STDERR_MERGED))
 			If $AndroidAdbPid = 0 Or ProcessExists2($AndroidAdbPid) <> $AndroidAdbPid Then
-				SetLog($Android & " error launching ADB for background mode, zoom-out, mouse click and input", $COLOR_RED)
+				SetLog($Android & " error launching ADB for background mode, zoom-out, mouse click and input", $COLOR_ERROR)
 				$AndroidAdbScreencap = False
 				$AndroidAdbClick = False
 				$AndroidAdbInput = False
@@ -1096,7 +1123,6 @@ Func AndroidAdbLaunchShellInstance($wasRunState = $RunState, $rebootAndroidIfNec
 				SuspendAndroid($SuspendMode)
 				Return
 			EndIf
-
 		EndIf
 		; check mouse device
 		If StringLen($AndroidMouseDevice) > 0 And $AndroidMouseDevice = $AndroidAppConfig[$AndroidConfig][13] Then
@@ -1107,22 +1133,22 @@ Func AndroidAdbLaunchShellInstance($wasRunState = $RunState, $rebootAndroidIfNec
 				; use getevent to find mouse input device
 				$s = AndroidAdbSendShellCommand("getevent -p", Default, $wasRunState, False)
 				SetDebugLog($Android & " getevent -p: " & $s)
-				Local $aRegExResult = StringRegExp($s, "(\/dev\/input\/event\d+)[\r\n]+.+""" & $AndroidMouseDevice & """", $STR_REGEXPARRAYMATCH)
+				Local $aRegExResult = StringRegExp($s, "(\/dev\/input\/event\d+)[\r\n]+.+""" & $AndroidMouseDevice & """((?!\/dev\/input\/event)[\s\S])+ABS", $STR_REGEXPARRAYMATCH)
 				If @error = 0 Then
 					$AndroidMouseDevice = $aRegExResult[0]
 					SetDebugLog("Using " & $AndroidMouseDevice & " for mouse events")
 				Else
 					$AndroidAdbClick = False
-					SetLog($Android & " cannot use ADB for mouse events, """ & $AndroidMouseDevice & """ not found", $COLOR_RED)
+					SetLog($Android & " cannot use ADB for mouse events, """ & $AndroidMouseDevice & """ not found", $COLOR_ERROR)
 					SuspendAndroid($SuspendMode)
 					Return SetError(2, 1)
 				EndIf
-			Else
-				SetDebugLog($Android & " ADB use " & $AndroidMouseDevice & " for mouse events")
 			EndIf
+			SuspendAndroid($SuspendMode)
+			Return SetError(0, 1)
+		Else
+			SetDebugLog($Android & " ADB use " & $AndroidMouseDevice & " for mouse events")
 		EndIf
-		SuspendAndroid($SuspendMode)
-		Return SetError(0, 1)
 	EndIf
 	SetError(0, 0)
 EndFunc   ;==>AndroidAdbLaunchShellInstance
@@ -1133,7 +1159,7 @@ Func AndroidAdbTerminateShellInstance()
 		If ProcessClose($AndroidAdbPid) = 1 Then
 			SetDebugLog("ADB shell terminated, PID = " & $AndroidAdbPid)
 		Else
-			SetDebugLog("ADB shell not terminated, PID = " & $AndroidAdbPid, $COLOR_RED)
+			SetDebugLog("ADB shell not terminated, PID = " & $AndroidAdbPid, $COLOR_ERROR)
 		EndIf
 		$AndroidAdbPid = 0
 	EndIf
@@ -1225,6 +1251,32 @@ Func _AndroidAdbSendShellCommand($cmd = Default, $timeout = Default, $wasRunStat
 	Return SetError($error, Int(TimerDiff($hTimer)) & "ms,#" & $loopCount, $s)
 EndFunc   ;==>_AndroidAdbSendShellCommand
 
+Func GetBinaryEvent($type, $code, $value)
+	Local $h, $hType, $hCode, $hValue
+	If IsInt($type) Then
+		$hType = StringLeft(Hex(Binary($type)), 4)
+	ElseIf IsString($type) Then
+		$hType = $type
+	EndIf
+	If IsInt($code) Then
+		$hCode = StringLeft(Hex(Binary($code)), 4)
+	ElseIf IsString($code) Then
+		$hCode = $code
+	EndIf
+	If IsInt($value) Then
+		$hValue = StringLeft(Hex(Binary($value)), 8)
+	ElseIf IsString($value) Then
+		$hValue = $value
+	EndIf
+	#cs
+	$hType = "0100"
+	$hCode = "4a01"
+	$hValue = "01000000"
+	#ce
+	$h = "0x0000000000000000" & $hType & $hCode & $hValue
+	Return Binary($h)
+EndFunc   ;==>GetBinaryEvent
+
 Func AndroidAdbSendShellCommandScript($scriptFile, $variablesArray = Default, $combine = Default, $timeout = Default, $wasRunState = $RunState, $EnsureShellInstance = True)
 	If $combine = Default Then $combine = False
 	If $timeout = Default Then $timeout = 20000 ; default is 20 sec. for scripts
@@ -1238,7 +1290,7 @@ Func AndroidAdbSendShellCommandScript($scriptFile, $variablesArray = Default, $c
 	Local $hTimer = TimerInit()
 	Local $hFileOpen = FileOpen($AdbScriptsDir & "\" & $scriptFile)
 	If $hFileOpen = -1 Then
-		SetLog("ADB script file not found: " & $scriptFile, $COLOR_RED)
+		SetLog("ADB script file not found: " & $scriptFile, $COLOR_ERROR)
 		Return SetError(5, 0)
 	EndIf
 
@@ -1252,12 +1304,12 @@ Func AndroidAdbSendShellCommandScript($scriptFile, $variablesArray = Default, $c
 		$scriptFileSh &= $AndroidMouseDevice
 		If StringInStr($AndroidMouseDevice, "/dev/input/event") = 0 Then
 			$AndroidAdbClick = False
-			SetLog($Android & " mouse device not configured", $COLOR_RED)
+			SetLog($Android & " mouse device not configured", $COLOR_ERROR)
 			Return SetError(4, 0, 0)
 		EndIf
 	EndIf
 
-	Local $i
+	Local $i, $j, $k, $iAdditional
 	If UBound($variablesArray, 2) = 2 Then
 		For $i = 0 To UBound($variablesArray, 1) - 1
 			$script = StringReplace($script, $variablesArray[$i][0], $variablesArray[$i][1])
@@ -1275,31 +1327,10 @@ Func AndroidAdbSendShellCommandScript($scriptFile, $variablesArray = Default, $c
 	Local $hTimer = TimerInit()
 	Local $s = ""
 
-	SetError(0, 0)
-	Local $cmds = ""
-	For $i = 1 To $aCmds[0]
-		Local $cmd = $aCmds[$i]
-		If StringInStr($cmd, "/dev/input/") = 1 Then
-			; convert getevent into sendevent
-			Local $aElem = StringSplit($cmd, " ")
-			If $aElem[0] < 4 Then
-				SetDebugLog("ADB script " & $scriptFile & ": ignore line " & $i & ": " & $cmd, $COLOR_ORANGE)
-			Else
-				$cmd = "sendevent " & StringReplace($aElem[1], ":", "") & " " & Dec($aElem[2]) & " " & Dec($aElem[3]) & " " & Dec($aElem[4])
-			EndIf
-			$aCmds[$i] = $cmd
-		EndIf
-		$cmd = StringStripWS($aCmds[$i], 3)
-		If $combine = True And StringLen($cmd) > 0 Then
-			$cmds &= $cmd
-			If $i < $aCmds[0] Then $cmds &= ";"
-		EndIf
-	Next
-
 	; create sh file in shared folder
 	If FileExists($hostPath) = 0 Then
-		SetLog($Android & " ADB script file folder doesn't exist:", $COLOR_RED)
-		SetLog($hostPath, $COLOR_RED)
+		SetLog($Android & " ADB script file folder doesn't exist:", $COLOR_ERROR)
+		SetLog($hostPath, $COLOR_ERROR)
 		Return SetError(6, 0)
 	EndIf
 
@@ -1313,9 +1344,63 @@ Func AndroidAdbSendShellCommandScript($scriptFile, $variablesArray = Default, $c
 		EndIf
 		$i += 1
 	WEnd
+	$iAdditional = $i - 1
+
+	SetError(0, 0)
+	Local $sDev
+	Local $cmds = ""
+	Local $dd[1]
+	Local $ddCount = -1
+	Local $ddFile, $ddHandle
+	For $i = 1 To $aCmds[0]
+		Local $cmd = $aCmds[$i]
+		If StringInStr($cmd, "/dev/input/") = 1 Then
+			Local $aElem = StringSplit($cmd, " ")
+			$sDev = StringReplace($aElem[1], ":", "")
+			If $aElem[0] < 4 Then
+				SetDebugLog("ADB script " & $scriptFile & ": ignore line " & $i & ": " & $cmd, $COLOR_ACTION)
+			Else
+				If IsString($combine) = 1 And $combine = "dd" Then
+					; convert getevent into dd send binary data
+					$j = UBound($dd)
+					ReDim $dd[$j + 1]
+					$dd[0] = $sDev
+					$dd[$j] = GetBinaryEvent(Dec($aElem[2]), Dec($aElem[3]), Dec($aElem[4]))
+					$cmd = ""
+				Else
+					; convert getevent into sendevent
+					$cmd = "sendevent " & $sDev & " " & Dec($aElem[2]) & " " & Dec($aElem[3]) & " " & Dec($aElem[4])
+				EndIf
+			EndIf
+		EndIf
+
+		$cmd = StringStripWS($cmd, 3)
+
+		If $cmd = "#dd send" Then
+			$j = UBound($dd) - 1
+			If $j > 0 Then
+				$iAdditional += 1
+				$ddFile = $scriptFile & "." & $iAdditional
+				; create dd file
+				$ddHandle = FileOpen($hostPath & $ddFile, BitOR($FO_OVERWRITE, $FO_BINARY))
+				$cmd = "dd obs=" & 16 * ($j - 1) & " if=" & $androidPath & $ddFile & " of=" & $dd[0]
+				For $k = 1 To $j
+					FileWrite($ddHandle, $dd[$k])
+				Next
+				FileClose($ddHandle)
+			EndIf
+		EndIf
+
+		$aCmds[$i] = $cmd
+
+		If $combine = True And IsString($combine) = 0 And StringLen($cmd) > 0 Then
+			$cmds &= $cmd
+			If $i < $aCmds[0] Then $cmds &= ";"
+		EndIf
+	Next
 
 	Local $loopCount = 0
-	If $combine = True And StringLen($cmds) <= 1024 Then
+	If $combine = True And IsString($combine) = 0 And StringLen($cmds) <= 1024 Then
 		; invoke commands now
 		$s = AndroidAdbSendShellCommand($cmds, $timeout, $wasRunState, $EnsureShellInstance)
 		If @error <> 0 Then Return SetError(1, 0, $s)
@@ -1330,18 +1415,16 @@ Func AndroidAdbSendShellCommandScript($scriptFile, $variablesArray = Default, $c
 			; create script file
 			$script = "#!/bin/sh"
 			For $i = 1 To $aCmds[0]
-				If $i = 1 And $aCmds[$i] = $cmds Then
-					$script = ""
-				Else
-					$script &= @LF
+				If ($i = 1 And $aCmds[$i] = $script) Or $aCmds[$i] = "" Then
+					ContinueLoop
 				EndIf
-				$script &= $aCmds[$i]
+				$script &= (@LF & $aCmds[$i])
 			Next
 			; create sh file
 			If FileWrite($hostPath & $scriptFileSh, $script) = 1 Then
 				SetLog("ADB script file created: " & $hostPath & $scriptFileSh)
 			Else
-				SetLog("ADB cannot create script file: " & $hostPath & $scriptFileSh, $COLOR_RED)
+				SetLog("ADB cannot create script file: " & $hostPath & $scriptFileSh, $COLOR_ERROR)
 				Return SetError(7, 0)
 			EndIf
 			FileSetTime($hostPath & $scriptFileSh, $scriptModifiedTime, $FT_MODIFIED) ; set modification date of source
@@ -1405,11 +1488,11 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 
 	If $hostPath = "" Or $androidPath = "" Then
 		If $hostPath = "" Then
-			SetLog($Android & " shared folder not configured for host", $COLOR_RED)
+			SetLog($Android & " shared folder not configured for host", $COLOR_ERROR)
 		Else
-			SetLog($Android & " shared folder not configured for Android", $COLOR_RED)
+			SetLog($Android & " shared folder not configured for Android", $COLOR_ERROR)
 		EndIf
-		SetLog($Android & " ADB screen capture disabled", $COLOR_RED)
+		SetLog($Android & " ADB screen capture disabled", $COLOR_ERROR)
 		If BitAND($AndroidSupportFeature, 1) = 0 Then $ichkBackground = 0 ; disable also background mode the hard way
 		$AndroidAdbScreencap = False
 	EndIf
@@ -1510,7 +1593,7 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 					If _WinAPI_ReadFile($hFile, $tHeader, $iHeaderSize, $iReadHeader) = True And $iReadHeader = $iHeaderSize Then
 						ExitLoop
 					Else
-						SetDebugLog("Error " & _WinAPI_GetLastError() & ", read " & $iReadHeader & " header bytes, file: " & $hostPath & $filename, $COLOR_RED)
+						SetDebugLog("Error " & _WinAPI_GetLastError() & ", read " & $iReadHeader & " header bytes, file: " & $hostPath & $filename, $COLOR_ERROR)
 						If $iReadHeader > 0 Then _WinAPI_SetFilePointer($hFile, 0)
 						Sleep(10)
 					EndIf
@@ -1524,7 +1607,7 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 					If _WinAPI_ReadFile($hFile, $AndroidAdbScreencapBuffer, $iDataSize, $iReadData) = True And $iReadData = $iDataSize Then
 						ExitLoop
 					Else
-						SetDebugLog("Error " & _WinAPI_GetLastError() & ", read " & $iReadData & " data bytes, file: " & $hostPath & $filename, $COLOR_RED)
+						SetDebugLog("Error " & _WinAPI_GetLastError() & ", read " & $iReadData & " data bytes, file: " & $hostPath & $filename, $COLOR_ERROR)
 						If $iReadData > 0 Then _WinAPI_SetFilePointer($hFile, $iHeaderSize)
 						Sleep(10)
 					EndIf
@@ -1535,32 +1618,32 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 				DllCall($LibDir & "\helper_functions.dll", "none:cdecl", "RGBA2BGRA", "ptr", DllStructGetPtr($AndroidAdbScreencapBuffer), "ptr", $pBits, "int", $iLeft, "int", $iTop, "int", $iWidth, "int", $iHeight, "int", $AndroidAdbScreencapWidth, "int", $AndroidAdbScreencapHeight)
 			Else
 				_WinAPI_CloseHandle($hFile)
-				SetDebugLog("File too small (" & $iSize & " < " & $ExpectedFileSize & "): " & $hostPath & $filename, $COLOR_RED)
+				SetDebugLog("File too small (" & $iSize & " < " & $ExpectedFileSize & "): " & $hostPath & $filename, $COLOR_ERROR)
 			EndIf
 		EndIf
 		If $hFile = 0 Or $iSize < $ExpectedFileSize Or $iReadHeader < $iHeaderSize Or $iReadData < $iDataSize Then
 			If $hFile = 0 Then
-				SetLog("File not found: " & $hostPath & $filename, $COLOR_RED)
+				SetLog("File not found: " & $hostPath & $filename, $COLOR_ERROR)
 			Else
-				If $iSize <> $ExpectedFileSize Then SetDebugLog("File size " & $iSize & " is not " & $ExpectedFileSize & " for " & $hostPath & $filename, $COLOR_RED)
-				SetDebugLog("Captured screen size " & $AndroidAdbScreencapWidth & " x " & $AndroidAdbScreencapHeight, $COLOR_RED)
-				SetDebugLog("Captured screen bytes read (header/datata): " & $iReadHeader & " / " & $iReadData, $COLOR_RED)
+				If $iSize <> $ExpectedFileSize Then SetDebugLog("File size " & $iSize & " is not " & $ExpectedFileSize & " for " & $hostPath & $filename, $COLOR_ERROR)
+				SetDebugLog("Captured screen size " & $AndroidAdbScreencapWidth & " x " & $AndroidAdbScreencapHeight, $COLOR_ERROR)
+				SetDebugLog("Captured screen bytes read (header/datata): " & $iReadHeader & " / " & $iReadData, $COLOR_ERROR)
 			EndIf
 			If $iRetryCount < 10 Then
-				SetDebugLog("ADB retry screencap in 1000 ms. (restarting ADB session)", $COLOR_ORANGE)
+				SetDebugLog("ADB retry screencap in 1000 ms. (restarting ADB session)", $COLOR_ACTION)
 				_Sleep(1000)
 				AndroidAdbTerminateShellInstance()
 				AndroidAdbLaunchShellInstance($wasRunState)
 				Return AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount + 1)
 			EndIf
-			SetLog($Android & " screen not captured using ADB", $COLOR_RED)
+			SetLog($Android & " screen not captured using ADB", $COLOR_ERROR)
 			If $AndroidAdbStatsTotal[$AdbStatsType][0] < 50 And AndroidControlAvailable() Then
-				SetLog($Android & " ADB screen capture disabled", $COLOR_RED)
+				SetLog($Android & " ADB screen capture disabled", $COLOR_ERROR)
 				If BitAND($AndroidSupportFeature, 1) = 0 Then $ichkBackground = 0 ; disable also background mode the hard way
 				$AndroidAdbScreencap = False
 			Else
 				; reboot Android
-				SetLog("Rebooting " & $Android & " due to problems capturing screen", $COLOR_RED)
+				SetLog("Rebooting " & $Android & " due to problems capturing screen", $COLOR_ERROR)
 				Local $_NoFocusTampering = $NoFocusTampering
 				$NoFocusTampering = True
 				RebootAndroid()
@@ -1605,13 +1688,13 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 			If _WinAPI_ReadFile($hFile, $tData, $iSize, $iReadData) = True And $iReadData = $iSize Then
 				ExitLoop
 			Else
-				SetDebugLog("Error " & _WinAPI_GetLastError() & ", read " & $iReadData & " data bytes, file: " & $hostPath & $filename, $COLOR_RED)
+				SetDebugLog("Error " & _WinAPI_GetLastError() & ", read " & $iReadData & " data bytes, file: " & $hostPath & $filename, $COLOR_ERROR)
 				If $iReadData > 0 Then _WinAPI_SetFilePointer($hFile, 0)
 				Sleep(10)
 			EndIf
 		WEnd
 		_WinAPI_CloseHandle($hFile)
-		SetDebugLog($iSize, $COLOR_RED)
+		SetDebugLog($iSize, $COLOR_ERROR)
 
 		Local $testTimer = TimerInit()
 		Local $msg = ""
@@ -1631,15 +1714,15 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 		If $hBitmap = 0 Then
 			; problem creating Bitmap
 			If $iRetryCount < 10 Then
-				SetDebugLog("ADB retry screencap in 1000 ms. (restarting ADB session)", $COLOR_ORANGE)
+				SetDebugLog("ADB retry screencap in 1000 ms. (restarting ADB session)", $COLOR_ACTION)
 				_Sleep(1000)
 				AndroidAdbTerminateShellInstance()
 				AndroidAdbLaunchShellInstance($wasRunState)
 				Return AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount + 1)
 			EndIf
-			SetLog($Android & " screen not captured using ADB", $COLOR_RED)
-			If FileExists($hostPath & $filename) = 0 Then SetLog("File not found: " & $hostPath & $filename, $COLOR_RED)
-			SetLog($Android & " ADB screen capture disabled", $COLOR_RED)
+			SetLog($Android & " screen not captured using ADB", $COLOR_ERROR)
+			If FileExists($hostPath & $filename) = 0 Then SetLog("File not found: " & $hostPath & $filename, $COLOR_ERROR)
+			SetLog($Android & " ADB screen capture disabled", $COLOR_ERROR)
 			$AndroidAdbScreencap = False
 			Return SetError(5, 0)
 		Else
@@ -1652,9 +1735,9 @@ Func _AndroidScreencap($iLeft, $iTop, $iWidth, $iHeight, $iRetryCount = 0)
 			Local $hClone = _GDIPlus_BitmapCloneArea($hBitmap, $iLeft, $iTop, $iWidth, $iHeight, $GDIP_PXF32ARGB)
 			$msg &= ", " & Round(TimerDiff($testTimer), 2)
 			If $hClone = 0 Then
-				SetDebugLog($Android & " error using " & $AndroidAdbScreencapWidth & "x" & $AndroidAdbScreencapHeight & " on _GDIPlus_BitmapCloneArea(" & $hBitmap & "," & $iLeft & "," & $iTop & "," & $iWidth & "," & $iHeight, $COLOR_RED)
-				SetLog($Android & " screenshot not available", $COLOR_RED)
-				SetLog($Android & " ADB screen capture disabled", $COLOR_RED)
+				SetDebugLog($Android & " error using " & $AndroidAdbScreencapWidth & "x" & $AndroidAdbScreencapHeight & " on _GDIPlus_BitmapCloneArea(" & $hBitmap & "," & $iLeft & "," & $iTop & "," & $iWidth & "," & $iHeight, $COLOR_ERROR)
+				SetLog($Android & " screenshot not available", $COLOR_ERROR)
+				SetLog($Android & " ADB screen capture disabled", $COLOR_ERROR)
 				$AndroidAdbScreencap = False
 				Return SetError(6, 0)
 			EndIf
@@ -1786,7 +1869,7 @@ Func AndroidSlowClick($x, $y, $times = 1, $speed = 0)
 		If $wait > 0 Then _Sleep($wait, False)
 	Else
 		Local $error = @error
-		SetDebugLog("Disabled " & $Android & " ADB mouse click, error " & $error, $COLOR_RED)
+		SetDebugLog("Disabled " & $Android & " ADB mouse click, error " & $error, $COLOR_ERROR)
 		$AndroidAdbClick = False
 		Return SetError($error, 0)
 	EndIf
@@ -1862,7 +1945,7 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 		Next
 		If $debugSetlog = 1 Or $debugClick = 1 Then
 			$SilentSetLog = True
-			SetDebugLog("Hold back click (" & $x & "/" & $y & " * " & $times & "): queue size = " & $AndroidAdbClicks[0], $COLOR_RED)
+			SetDebugLog("Hold back click (" & $x & "/" & $y & " * " & $times & "): queue size = " & $AndroidAdbClicks[0], $COLOR_ERROR)
 			$SilentSetLog = $_SilentSetLog
 		EndIf
 		Return
@@ -1876,13 +1959,13 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 
 	If $hostPath = "" Or $androidPath = "" Then
 		If $hostPath = "" Then
-			SetLog($Android & " shared folder not configured for host", $COLOR_RED)
+			SetLog($Android & " shared folder not configured for host", $COLOR_ERROR)
 		Else
-			SetLog($Android & " shared folder not configured for Android", $COLOR_RED)
+			SetLog($Android & " shared folder not configured for Android", $COLOR_ERROR)
 		EndIf
-		SetLog($Android & " shared folder not configured for Android", $COLOR_RED)
+		SetLog($Android & " shared folder not configured for Android", $COLOR_ERROR)
 		$AndroidAdbClick = False
-		SetLog("Disabled " & $Android & " ADB fast mouse click", $COLOR_RED)
+		SetLog("Disabled " & $Android & " ADB fast mouse click", $COLOR_ERROR)
 		Return SetError(1, 0)
 	EndIf
 
@@ -1890,10 +1973,10 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 	#cs
 		If @error <> 0 Then
 		Local $error = @error
-		;SetDebugLog("Disabled " & $Android & " ADB fast mouse click, error " & $error & " (AndroidAdbLaunchShellInstance)" , $COLOR_RED)
+		;SetDebugLog("Disabled " & $Android & " ADB fast mouse click, error " & $error & " (AndroidAdbLaunchShellInstance)" , $COLOR_ERROR)
 		;$AndroidAdbClick = False
 		$SilentSetLog = True
-		SetDebugLog("Cannot use ADB fast mouse click, error " & $error & " (#Err0001)" , $COLOR_RED)
+		SetDebugLog("Cannot use ADB fast mouse click, error " & $error & " (#Err0001)" , $COLOR_ERROR)
 		$SilentSetLog = $_SilentSetLog
 		Return SetError($error, 0)
 		EndIf
@@ -1956,7 +2039,7 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 		If IsKeepClicksActive(False) = False Then
 			If $checkProblemAffect = True Then
 				If isProblemAffect(True) Then
-					SetDebugLog("VOIDED Click " & $x & "," & $y & "," & $times & "," & $speed, $COLOR_RED, "Verdana", "7.5", 0)
+					SetDebugLog("VOIDED Click " & $x & "," & $y & "," & $times & "," & $speed, $COLOR_ERROR, "Verdana", "7.5", 0)
 					checkMainScreen(False)
 					Return ; if need to clear screen do not click
 				EndIf
@@ -1977,16 +2060,16 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 			While $hFileOpen = 0 And TimerDiff($timer) < 3000
 				$hFileOpen = _WinAPI_CreateFile($hostPath & $filename, 1, 4)
 				If $hFileOpen <> 0 Then ExitLoop
-				SetDebugLog("Error " & _WinAPI_GetLastError() & " (" & Round(TimerDiff($timer)) & "ms) creating " & $hostPath & $filename, $COLOR_RED)
+				SetDebugLog("Error " & _WinAPI_GetLastError() & " (" & Round(TimerDiff($timer)) & "ms) creating " & $hostPath & $filename, $COLOR_ERROR)
 				Sleep(10)
 			WEnd
 			If $hFileOpen = 0 Then
 				Local $error = _WinAPI_GetLastError()
-				SetLog("Error creating " & $hostPath & $filename, $COLOR_RED)
+				SetLog("Error creating " & $hostPath & $filename, $COLOR_ERROR)
 				SetError($error)
 				ExitLoop
 				#cs
-					SetLog("Disabled " & $Android & " ADB fast mouse click due to error " & $error & " (#Err0002)", $COLOR_RED)
+					SetLog("Disabled " & $Android & " ADB fast mouse click due to error " & $error & " (#Err0002)", $COLOR_ERROR)
 					$AndroidAdbClick = False
 					_WinAPI_CloseHandle($hFileOpen)
 					Return SetError($error, 0)
@@ -2035,11 +2118,11 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 			_WinAPI_WriteFile($hFileOpen, DllStructGetPtr($data2), $iToWrite, $iWritten)
 			If $hFileOpen = 0 Then
 				Local $error = _WinAPI_GetLastError()
-				SetLog("Error writing " & $hostPath & $filename, $COLOR_RED)
+				SetLog("Error writing " & $hostPath & $filename, $COLOR_ERROR)
 				SetError($error)
 				ExitLoop
 				#cs
-					SetLog("Disabled " & $Android & " ADB fast mouse click due to error " & $error & " (#Err0003)", $COLOR_RED)
+					SetLog("Disabled " & $Android & " ADB fast mouse click due to error " & $error & " (#Err0003)", $COLOR_ERROR)
 					$AndroidAdbClick = False
 					Return SetError($error, 0)
 				#ce
@@ -2080,18 +2163,18 @@ Func _AndroidFastClick($x, $y, $times = 1, $speed = 0, $checkProblemAffect = Tru
 		Local $error = @error
 		If $iRetryCount < 10 Then
 			SetError(0, 0, 0)
-			SetDebugLog("ADB retry sending mouse click in 1000 ms. (restarting ADB session)", $COLOR_ORANGE)
+			SetDebugLog("ADB retry sending mouse click in 1000 ms. (restarting ADB session)", $COLOR_ACTION)
 			_Sleep(1000)
 			AndroidAdbTerminateShellInstance()
 			AndroidAdbLaunchShellInstance($wasRunState)
 			Return AndroidFastClick($x, $y, $times, $speed, $checkProblemAffect, $iRetryCount + 1)
 		EndIf
 		If $AndroidAdbStatsTotal[$AdbStatsType][0] < 10 Then
-			SetLog("Disabled " & $Android & " ADB fast mouse click due to error " & $error & " (#Err0004)", $COLOR_RED)
+			SetLog("Disabled " & $Android & " ADB fast mouse click due to error " & $error & " (#Err0004)", $COLOR_ERROR)
 			$AndroidAdbClick = False
 		Else
 			; reboot Android
-			SetLog("Rebooting " & $Android & " due to problems sending mouse click", $COLOR_RED)
+			SetLog("Rebooting " & $Android & " due to problems sending mouse click", $COLOR_ERROR)
 			Local $_NoFocusTampering = $NoFocusTampering
 			$NoFocusTampering = True
 			RebootAndroid()
@@ -2138,7 +2221,7 @@ Func AndroidSendText($sText, $SymbolFix = False, $wasRunState = $RunState)
 		Local $newText = StringReplace($sText, " ", "%s")
 		$newText = StringRegExpReplace($newText, "[^A-Za-z0-9\.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]", ".")
 		If @extended <> 0 Then
-			If $SymbolFix = False Then SetDebugLog("Cannot use ADB to send input text, use Windows method", $COLOR_RED)
+			If $SymbolFix = False Then SetDebugLog("Cannot use ADB to send input text, use Windows method", $COLOR_ERROR)
 			Return SetError(10, 0)
 		EndIf
 		If $SymbolFix = False Then
@@ -2165,7 +2248,7 @@ Func AndroidSendText($sText, $SymbolFix = False, $wasRunState = $RunState)
 		SetError(0, 0)
 	Else
 		If $SymbolFix = False Then
-			SetDebugLog("Disabled " & $Android & " ADB input due to error", $COLOR_RED)
+			SetDebugLog("Disabled " & $Android & " ADB input due to error", $COLOR_ERROR)
 			$AndroidAdbInput = False
 		EndIf
 		Return SetError($error, 0)
@@ -2198,7 +2281,7 @@ Func AndroidSwipeNotWorking($x1, $y1, $x2, $y2, $wasRunState = $RunState) ; This
 		Return SetError(@error, 0)
 	Else
 		Local $error = @error
-		;SetDebugLog("Disabled " & $Android & " ADB input due to error", $COLOR_RED)
+		;SetDebugLog("Disabled " & $Android & " ADB input due to error", $COLOR_ERROR)
 		;$AndroidAdbInput = False
 		Return SetError($error, 0)
 	EndIf
@@ -2211,7 +2294,7 @@ Func AndroidInputSwipe($x1, $y1, $x2, $y2, $wasRunState = $RunState) ; Not used 
 		SetError(0, 0)
 	Else
 		Local $error = @error
-		SetDebugLog("Disabled " & $Android & " ADB input due to error", $COLOR_RED)
+		SetDebugLog("Disabled " & $Android & " ADB input due to error", $COLOR_ERROR)
 		$AndroidAdbInput = False
 		Return SetError($error, 0)
 	EndIf
@@ -2249,7 +2332,7 @@ Func AndroidCloseSystemBar()
 	Local $wasRunState = $RunState
 	AndroidAdbLaunchShellInstance($wasRunState)
 	If @error <> 0 Then
-		SetLog("Cannot close " & $Android & " System Bar", $COLOR_RED)
+		SetLog("Cannot close " & $Android & " System Bar", $COLOR_ERROR)
 		Return False
 	EndIf
 	Local $cmdOutput = AndroidAdbSendShellCommand("service call activity 42 s16 com.android.systemui", Default, $wasRunState, False)
@@ -2263,7 +2346,7 @@ Func AndroidOpenSystemBar()
 	Local $wasRunState = $RunState
 	AndroidAdbLaunchShellInstance($wasRunState)
 	If @error <> 0 Then
-		SetLog("Cannot open " & $Android & " System Bar", $COLOR_RED)
+		SetLog("Cannot open " & $Android & " System Bar", $COLOR_ERROR)
 		Return False
 	EndIf
 	Local $cmdOutput = AndroidAdbSendShellCommand("am startservice -n com.android.systemui/.SystemUIService", Default, $wasRunState, False)
@@ -2284,21 +2367,39 @@ EndFunc   ;==>AndroidQueueReboot
 
 Func AndroidInvalidState()
 	If $HWnD = 0 Then
-		SetDebugLog("AndroidInvalidState: No Window Handle", $COLOR_RED)
+		SetDebugLog("AndroidInvalidState: No Window Handle", $COLOR_ERROR)
 		Return True
 	EndIf
 	If IsHWnd($HWnD) And WinGetHandle($HWnD, "") = 0 Then
-		SetDebugLog("AndroidInvalidState: Window Handle " & $HWnD & " doesn't exist", $COLOR_RED)
+		SetDebugLog("AndroidInvalidState: Window Handle " & $HWnD & " doesn't exist", $COLOR_ERROR)
 		Return True
 	EndIf
 	If IsHWnd($HWnD) = False And IsNumber($HWnD) And $AndroidBackgroundLaunched = False Then
-		SetDebugLog("AndroidInvalidState: PID " & $HWnD & " not supported for Headless Mode", $COLOR_RED)
+		SetDebugLog("AndroidInvalidState: PID " & $HWnD & " not supported for Headless Mode", $COLOR_ERROR)
 		Return True
 	EndIf
 	If $AndroidBackgroundLaunched = True And ProcessExists2($HWnD) = 0 Then
-		SetDebugLog("AndroidInvalidState: PID " & $HWnD & " doesn't exist", $COLOR_RED)
+		SetDebugLog("AndroidInvalidState: PID " & $HWnD & " doesn't exist", $COLOR_ERROR)
 		Return True
 	EndIf
 	; all seems ok
 	Return False
 EndFunc   ;==>AndroidInvalidState
+
+Func checkAndroidReboot($bRebootAndroid = True)
+
+	If checkAndroidTimeLag($bRebootAndroid) = True _
+		Or checkAndroidPageError($bRebootAndroid) = True Then
+
+		; Reboot Android
+		Local $_NoFocusTampering = $NoFocusTampering
+		$NoFocusTampering = True
+		RebootAndroid()
+		$NoFocusTampering = $_NoFocusTampering
+		Return True
+
+	EndIF
+
+	Return False
+
+EndFunc   ;==>checkAndroidReboot

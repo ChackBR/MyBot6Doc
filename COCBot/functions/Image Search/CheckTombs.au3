@@ -20,7 +20,7 @@ Func CheckTombs()
 	Local $hTimer = TimerInit()
 
 	; tombs function to Parallel Search
-	Local $directory = @ScriptDir & "\images\Resources\Tombs"
+	Local $directory = @ScriptDir & "\imgxml\Resources\Tombs"
 
 	; Setup arrays, including default return values for $return
 	Local $return[7] = ["None", "None", 0, 0, 0, "", ""]
@@ -54,9 +54,9 @@ Func CheckTombs()
 				If IsMainPage() Then Click($TombsXY[$j][0], $TombsXY[$j][1], 1, 0, "#0430")
 			Next
 		EndIf
-		Setlog("Tombs removed!", $COLOR_TEAL)
+		Setlog("Tombs removed!", $COLOR_DEBUG1)
 	Else
-		Setlog("No Tombs Found!", $COLOR_GREEN)
+		Setlog("No Tombs Found!", $COLOR_SUCCESS)
 	EndIf
 
 	checkMainScreen(False) ; check for screen errors while function was running
@@ -78,7 +78,7 @@ Func CleanYard()
 	If _Sleep($iDelayRespond) Then Return
 
 	; Obstacles function to Parallel Search , will run all pictures inside the directory
-	Local $directory = @ScriptDir & "\images\Resources\Obstacles"
+	Local $directory = @ScriptDir & "\imgxml\Resources\Obstacles"
 
 	; Setup arrays, including default return values for $return
 	Local $Filename = ""
@@ -95,7 +95,7 @@ Func CleanYard()
 				If IsArray($CleanYardXY) Then
 					For $t = 0 To UBound($CleanYardXY) - 1 ; each filename can have several positions
 						If isInsideDiamondXY($CleanYardXY[$t][0], $CleanYardXY[$t][1]) Then ; secure x because of clan chat tab
-							If $DebugSetLog = 1 Then SetLog($Filename & " found (" & $CleanYardXY[$t][0] & "," & $CleanYardXY[$t][1] & ")", $COLOR_GREEN)
+							If $DebugSetLog = 1 Then SetLog($Filename & " found (" & $CleanYardXY[$t][0] & "," & $CleanYardXY[$t][1] & ")", $COLOR_SUCCESS)
 							If IsMainPage() Then Click($CleanYardXY[$t][0], $CleanYardXY[$t][1], 1, 0, "#0430")
 							$Locate = 1
 							If _Sleep($iDelayCollect3) Then Return
@@ -118,7 +118,7 @@ Func CleanYard()
 	EndIf
 
 	; GemBox function to Parallel Search , will run all pictures inside the directory
-	Local $directoryGemBox = @ScriptDir & "\images\Resources\GemBox"
+	Local $directoryGemBox = @ScriptDir & "\imgxml\Resources\GemBox"
 
 	; Setup arrays, including default return values for $return
 	Local $return[7] = ["None", "None", 0, 0, 0, "", ""]
@@ -168,14 +168,14 @@ Func CleanYard()
 					EndIf
 				Next
 			EndIf
-			Setlog("GemBox removed!", $COLOR_TEAL)
+			Setlog("GemBox removed!", $COLOR_DEBUG1)
 		Else
-			Setlog("No GemBox Found!", $COLOR_GREEN)
+			Setlog("No GemBox Found!", $COLOR_SUCCESS)
 		EndIf
 	EndIf
 
-	If $Locate = 0 Then SetLog("No Obstacles found, Yard is clean!", $COLOR_GREEN)
-	If $DebugSetLog = 1 Then SetLog("Time: " & Round(TimerDiff($hObstaclesTimer) / 1000, 2) & "'s", $COLOR_GREEN)
+	If $Locate = 0 Then SetLog("No Obstacles found, Yard is clean!", $COLOR_SUCCESS)
+	If $DebugSetLog = 1 Then SetLog("Time: " & Round(TimerDiff($hObstaclesTimer) / 1000, 2) & "'s", $COLOR_SUCCESS)
 	UpdateStats()
 	ClickP($aAway, 1, 300, "#0329") ;Click Away
 

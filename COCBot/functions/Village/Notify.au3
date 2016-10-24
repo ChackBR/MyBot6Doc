@@ -33,7 +33,7 @@ EndFunc   ;==>Report
 Func _DeletePush()
 	If $PushBulletEnabled = 0 Then Return
 		_DeletePushOfPushBullet()
-		SetLog("Delete all previous PushBullet messages...", $COLOR_BLUE)
+		SetLog("Delete all previous PushBullet messages...", $COLOR_INFO)
 EndFunc   ;==>_DeletePush
 
 Func PushMsg($Message, $Source = "")

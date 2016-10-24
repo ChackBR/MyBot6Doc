@@ -22,45 +22,62 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 	$configLoaded = True
 	If FileExists($building) Then
 		SetDebugLog("Read Building Config " & $building)
+		Local $locationsInvalid = False
+		Local $buildingVersion = "0.0.0"
+		IniReadS($buildingVersion, $building, "general", "version", $buildingVersion)
+		Local $_ver630 = GetVersionNormalized("6.3.0")
+		Local $_ver63u = GetVersionNormalized("6.3.u")
+		Local $_ver63u3 = GetVersionNormalized("6.3.u3")
+		If $buildingVersion < $_ver630 _
+		Or ($buildingVersion >= $_ver63u And $buildingVersion <= $_ver63u3) Then
+			SetLog("New MyBot.run version! Re-locate all buildings!", $COLOR_WARNING)
+			$locationsInvalid = True
+		EndIf
 
-		IniReadS($TownHallPos[0], $building, "other", "xTownHall", "-1")
-		IniReadS($TownHallPos[1], $building, "other", "yTownHall", "-1")
 		IniReadS($iTownHallLevel, $building, "other", "LevelTownHall", "0")
 
-		IniReadS($aCCPos[0], $building, "other", "xCCPos", "0")
-		IniReadS($aCCPos[1], $building, "other", "yCCPos", "0")
+		If $locationsInvalid = False Then
+			IniReadS($TownHallPos[0], $building, "other", "xTownHall", "-1")
+			IniReadS($TownHallPos[1], $building, "other", "yTownHall", "-1")
 
-		IniReadS($barrackPos[0][0], $building, "other", "xBarrack1", "0")
-		IniReadS($barrackPos[0][1], $building, "other", "yBarrack1", "0")
+			IniReadS($aCCPos[0], $building, "other", "xCCPos", "-1")
+			IniReadS($aCCPos[1], $building, "other", "yCCPos", "-1")
 
-		IniReadS($barrackPos[1][0], $building, "other", "xBarrack2", "0")
-		IniReadS($barrackPos[1][1], $building, "other", "yBarrack2", "0")
+			IniReadS($barrackPos[0][0], $building, "other", "xBarrack1", "-1")
+			IniReadS($barrackPos[0][1], $building, "other", "yBarrack1", "-1")
 
-		IniReadS($barrackPos[2][0], $building, "other", "xBarrack3", "0")
-		IniReadS($barrackPos[2][1], $building, "other", "yBarrack3", "0")
+			IniReadS($barrackPos[1][0], $building, "other", "xBarrack2", "-1")
+			IniReadS($barrackPos[1][1], $building, "other", "yBarrack2", "-1")
 
-		IniReadS($barrackPos[3][0], $building, "other", "xBarrack4", "0")
-		IniReadS($barrackPos[3][1], $building, "other", "yBarrack4", "0")
+			IniReadS($barrackPos[2][0], $building, "other", "xBarrack3", "-1")
+			IniReadS($barrackPos[2][1], $building, "other", "yBarrack3", "-1")
 
-		IniReadS($ArmyPos[0], $building, "other", "xArmy", "0")
-		IniReadS($ArmyPos[0], $building, "other", "yArmy", "0")
+			IniReadS($barrackPos[3][0], $building, "other", "xBarrack4", "-1")
+			IniReadS($barrackPos[3][1], $building, "other", "yBarrack4", "-1")
+
+			IniReadS($SFPos[0], $building, "other", "xspellfactory", "-1")
+			IniReadS($SFPos[1], $building, "other", "yspellfactory", "-1")
+
+			IniReadS($DSFPos[0], $building, "other", "xDspellfactory", "-1")
+			IniReadS($DSFPos[1], $building, "other", "yDspellfactory", "-1")
+
+			IniReadS($KingAltarPos[0], $building, "other", "xKingAltarPos", "-1")
+			IniReadS($KingAltarPos[1], $building, "other", "yKingAltarPos", "-1")
+
+			IniReadS($QueenAltarPos[0], $building, "other", "xQueenAltarPos", "-1")
+			IniReadS($QueenAltarPos[1], $building, "other", "yQueenAltarPos", "-1")
+
+			IniReadS($WardenAltarPos[0], $building, "other", "xWardenAltarPos", "-1")
+			IniReadS($WardenAltarPos[1], $building, "other", "yWardenAltarPos", "-1")
+
+			InireadS($aLabPos[0], $building, "upgrade", "LabPosX", "-1")
+			InireadS($aLabPos[1], $building, "upgrade", "LabPosY", "-1")
+		EndIf
+
+		IniReadS($ArmyPos[0], $building, "other", "xArmy", "-1")
+		IniReadS($ArmyPos[0], $building, "other", "yArmy", "-1")
+
 		IniReadS($TotalCamp, $building, "other", "totalcamp", "0")
-
-		IniReadS($SFPos[0], $building, "other", "xspellfactory", "-1")
-		IniReadS($SFPos[1], $building, "other", "yspellfactory", "-1")
-
-		IniReadS($DSFPos[0], $building, "other", "xDspellfactory", "-1")
-		IniReadS($DSFPos[1], $building, "other", "yDspellfactory", "-1")
-
-		IniReadS($KingAltarPos[0], $building, "other", "xKingAltarPos", "-1")
-		IniReadS($KingAltarPos[1], $building, "other", "yKingAltarPos", "-1")
-
-		IniReadS($QueenAltarPos[0], $building, "other", "xQueenAltarPos", "-1")
-		IniReadS($QueenAltarPos[1], $building, "other", "yQueenAltarPos", "-1")
-
-		IniReadS($WardenAltarPos[0], $building, "other", "xWardenAltarPos", "-1")
-		IniReadS($WardenAltarPos[1], $building, "other", "yWardenAltarPos", "-1")
-
 		IniReadS($listResourceLocation, $building, "other", "listResource", "")
 
 		For $iz = 0 To UBound($aUpgrades, 1) - 1 ; Reads Upgrade building data
@@ -75,13 +92,18 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 			$ichkbxUpgrade[$iz] = IniRead($building, "upgrade", "upgradechk" & $iz, "0")
 			$ichkUpgrdeRepeat[$iz] = IniRead($building, "upgrade", "upgraderepeat" & $iz, "0")
 			$ipicUpgradeStatus[$iz] = IniRead($building, "upgrade", "upgradestatusicon" & $iz, $eIcnTroops)
+
+			If $locationsInvalid = True Then
+				$aUpgrades[$iz][0] = -1
+				$aUpgrades[$iz][1] = -1
+				$ichkbxUpgrade[$iz] = 0
+				$ichkUpgrdeRepeat[$iz] = 0
+			EndIf
 		Next
 
 		InireadS($ichkLab, $building, "upgrade", "upgradetroops", "0")
 		InireadS($icmbLaboratory, $building, "upgrade", "upgradetroopname", "0")
 		$sLabUpgradeTime = IniRead($building, "upgrade", "upgradelabtime", "")
-		InireadS($aLabPos[0], $building, "upgrade", "LabPosX", "0")
-		InireadS($aLabPos[1], $building, "upgrade", "LabPosY", "0")
 
 	EndIf
 
@@ -177,6 +199,10 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		; Army training - Troop Settings-------------------------------------------------------
 		IniReadS($iCmbTroopComp, $config, "troop", "TroopComposition", "9")
 		IniReadS($icmbDarkTroopComp, $config, "troop", "DarkTroopComposition", "2")
+		IniReadS($iTrainArchersToFitCamps, $config, "troop", "TrainArchersToFitCamps", "1")
+
+		IniReadS($iChkUseQuickTrain, $config, "troop", "UseQuickTrain", "1")
+		IniReadS($iCmbCurrentArmy, $config, "troop", "CurrentArmy", "1")
 
 		Local $tempTroop
 		For $i = 0 To UBound($TroopName) - 1
@@ -209,6 +235,11 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ibtnCloseWaitRandom, $config, "other", "btnCloseWaitRandom", "1")
 		IniReadS($icmbCloseWaitRdmPercent, $config, "other", "CloseWaitRdmPercent", "10")
 
+		IniReadS($iAddIdleTimeEnable, $config, "other", "chkAddDelayIdlePhaseEnable", "1")
+		IniReadS($iAddIdleTimeMin, $config, "other", "txtAddDelayIdlePhaseTimeMin", $iAddIdleTimeMin)
+		IniReadS($iAddIdleTimeMax, $config, "other", "txtAddDelayIdlePhaseTimeMax", $iAddIdleTimeMax)
+
+
 		IniReadS($ichkTroopOrder, $config, "troop", "chkTroopOrder", "0")
 		For $z = 0 To UBound($DefaultTroopGroup) -1
 			IniReadS($icmbTroopOrder[$z], $config, "troop", "cmbTroopOrder" & $z, "-1")
@@ -218,6 +249,7 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		For $z = 0 To UBound($DefaultTroopGroupDark) -1
 			IniReadS($icmbDarkTroopOrder[$z], $config, "troop", "cmbDarkTroopOrder" & $z, "-1")
 		Next
+
 
 
 		;Army training - Spells Creation  -----------------------------------------------------
@@ -361,6 +393,7 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 
 		IniReadS($itxtSWTtiles, $config, "search", "SWTtiles", "1")
 
+		IniReadS($iDeadBaseDisableCollectorsFilter,$config, "search", "chkDisableCollectorsFilter", "0")
 		;======================================================================================================================
 		;Attack Basics Settings-------------------------------------------------------------------------
 		IniReadS($iAtkAlgorithm[$DB], $config, "attack", "DBAtkAlgorithm", "0")
@@ -631,8 +664,8 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ichkGemsBox, $config, "other", "chkGemsBox", "0")
 		;Only clear GemBox
 		IniReadS($sTimeWakeUp, $config, "other", "txtTimeWakeUp", "0")
-		IniReadS($iVSDelay, $config, "other", "VSDelay", "0")
-		IniReadS($iMaxVSDelay, $config, "other", "MaxVSDelay", "4")
+		IniReadS($iVSDelay, $config, "other", "VSDelay", "0", "Int")
+		IniReadS($iMaxVSDelay, $config, "other", "MaxVSDelay", "4", "Int")
 
 		IniReadS($iWAOffsetX, $config, "other", "WAOffsetX", "0")
 		IniReadS($iWAOffsetY, $config, "other", "WAOffsetY", "0")
@@ -667,18 +700,21 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ichkDeleteLoots, $config, "deletefiles", "DeleteLoots", "1")
 		IniReadS($iDeleteLootsDays, $config, "deletefiles", "DeleteLootsDays", "2")
 
-		$DebugClick = BitOR($DebugClick, IniRead($config, "debug", "debugsetclick", "0"))
+		$DebugClick = BitOR($DebugClick, Int(IniRead($config, "debug", "debugsetclick", "0")))
 		If $DevMode = 1 Then
-			$DebugSetlog = BitOR($DebugSetlog, IniRead($config, "debug", "debugsetlog", "0"))
-			$DebugOcr = BitOR($DebugOcr, IniRead($config, "debug", "debugocr", "0"))
-			$DebugImageSave = BitOR($DebugImageSave, IniRead($config, "debug", "debugimagesave", "0"))
-			$debugBuildingPos = BitOR($debugBuildingPos, IniRead($config, "debug", "debugbuildingpos", "0"))
-			$debugsetlogTrain = BitOR($debugsetlogTrain, IniRead($config, "debug", "debugtrain", "0"))
-			$makeIMGCSV = BitOR($debugBuildingPos, IniRead($config, "debug", "debugmakeimgcsv", "0"))
-			$debugresourcesoffset = BitOR($debugresourcesoffset, IniRead($config, "debug", "debugresourcesoffset", "0"))
-			$continuesearchelixirdebug = BitOR($continuesearchelixirdebug, IniRead($config, "debug", "continuesearchelixirdebug", "0"))
-			$debugMilkingIMGmake = BitOR($debugMilkingIMGmake, IniRead($config, "debug", "debugMilkingIMGmake", "0"))
-			$debugOCRdonate = BitOR($debugOCRdonate, IniRead($config, "debug", "debugOCRDonate", "0"))
+			$DebugSetlog = BitOR($DebugSetlog, Int(IniRead($config, "debug", "debugsetlog", "0")))
+			$DebugDisableZoomout = BitOR($DebugDisableZoomout, Int(IniRead($config, "debug", "disablezoomout", "0")))
+			$DebugDisableVillageCentering = BitOR($DebugDisableVillageCentering, Int(IniRead($config, "debug", "disablevillagecentering", "0")))
+			$DebugOcr = BitOR($DebugOcr, Int(IniRead($config, "debug", "debugocr", "0")))
+			$DebugImageSave = BitOR($DebugImageSave, Int(IniRead($config, "debug", "debugimagesave", "0")))
+			$debugBuildingPos = BitOR($debugBuildingPos, Int(IniRead($config, "debug", "debugbuildingpos", "0")))
+			$debugsetlogTrain = BitOR($debugsetlogTrain, Int(IniRead($config, "debug", "debugtrain", "0")))
+			$debugresourcesoffset = BitOR($debugresourcesoffset, Int(IniRead($config, "debug", "debugresourcesoffset", "0")))
+			$continuesearchelixirdebug = BitOR($continuesearchelixirdebug, Int(IniRead($config, "debug", "continuesearchelixirdebug", "0")))
+			$debugMilkingIMGmake = BitOR($debugMilkingIMGmake, Int(IniRead($config, "debug", "debugMilkingIMGmake", "0")))
+			$debugOCRdonate = BitOR($debugOCRdonate, Int(IniRead($config, "debug", "debugOCRDonate", "0")))
+			$debugAttackCSV = BitOR($debugAttackCSV, Int(IniRead($config, "debug", "debugAttackCSV", "0")))
+			$makeIMGCSV = BitOR($makeIMGCSV, Int(IniRead($config, "debug", "debugmakeimgcsv", "0")))
 			;InireadS(xxxx,$config, "attack", "xxxx", "0")
 			;InireadS(xxxx,$config, "attack", "xxxx", "0")
 			;InireadS(xxxx,$config, "attack", "xxxx", "0")
@@ -751,9 +787,12 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		;InireadS(xxxx,$config, "attack", "xxxx", "0")
 		;InireadS(xxxx,$config, "attack", "xxxx", "0")
 
+		$ichkFixClanCastle = IniRead($config, "other", "ChkFixClanCastle", "0")
 
 		;Donate Settings-------------------------------------------------------------------------
 		$sTxtRequest = IniRead($config, "donate", "txtRequest", "")
+		$sSkipDonateNearFulLTroopsPercentual = IniRead($config, "donate", "SkipDonateNearFulLTroopsPercentual", 90)
+		$iSkipDonateNearFulLTroopsEnable = IniRead($config, "donate", "SkipDonateNearFulLTroopsEnable", 1)
 		;InireadS(xxxx,$config, "attack", "xxxx", "0")
 
 		$ichkDonateBarbarians = IniRead($config, "donate", "chkDonateBarbarians", "0")
@@ -947,28 +986,40 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		$sTxtBlacklist = StringReplace(IniRead($config, "donate", "txtBlacklist", "clan war|war|cw"), "|", @CRLF)
 		$aBlackList = StringSplit($sTxtBlacklist, @CRLF, $STR_ENTIRESPLIT)
 
+
+		$icmbFilterDonationsCC = IniRead($config, "donate", "cmbFilterDonationsCC", "0")
+
+
 		; Extra Alphabets , Cyrillic.
 		$ichkExtraAlphabets = IniRead($config, "donate", "chkExtraAlphabets", "0")
 
-		;InireadS(xxxx,$config, "attack", "xxxx", "0")
-
-		InireadS($chkLvl6Enabled, $config, "collectors", "lvl6Enabled", "1", "Int")
+		;InireadS($chkLvl6Enabled, $config, "collectors", "lvl6Enabled", "0", "Int")
+		$chkLvl6Enabled = 0
 		InireadS($chkLvl7Enabled, $config, "collectors", "lvl7Enabled", "1", "Int")
 		InireadS($chkLvl8Enabled, $config, "collectors", "lvl8Enabled", "1", "Int")
 		InireadS($chkLvl9Enabled, $config, "collectors", "lvl9Enabled", "1", "Int")
 		InireadS($chkLvl10Enabled, $config, "collectors", "lvl10Enabled", "1", "Int")
 		InireadS($chkLvl11Enabled, $config, "collectors", "lvl11Enabled", "1", "Int")
 		InireadS($chkLvl12Enabled, $config, "collectors", "lvl12Enabled", "1", "Int")
-		InireadS($cmbLvl6Fill, $config, "collectors", "lvl6fill", "2")
-		InireadS($cmbLvl7Fill, $config, "collectors", "lvl7fill", "2")
-		InireadS($cmbLvl8Fill, $config, "collectors", "lvl8fill", "2")
-		InireadS($cmbLvl9Fill, $config, "collectors", "lvl9fill", "1")
+		InireadS($cmbLvl6Fill, $config, "collectors", "lvl6fill", "0")
+		If $cmbLvl6Fill > 1 Then $cmbLvl6Fill = 1
+		InireadS($cmbLvl7Fill, $config, "collectors", "lvl7fill", "0")
+		If $cmbLvl7Fill > 1 Then $cmbLvl7Fill = 1
+		InireadS($cmbLvl8Fill, $config, "collectors", "lvl8fill", "0")
+		If $cmbLvl8Fill > 1 Then $cmbLvl8Fill = 1
+		InireadS($cmbLvl9Fill, $config, "collectors", "lvl9fill", "0")
+		If $cmbLvl9Fill > 1 Then $cmbLvl9Fill = 1
 		InireadS($cmbLvl10Fill, $config, "collectors", "lvl10fill", "0")
+		If $cmbLvl10Fill > 1 Then $cmbLvl10Fill = 1
 		InireadS($cmbLvl11Fill, $config, "collectors", "lvl11fill", "0")
+		If $cmbLvl11Fill > 1 Then $cmbLvl11Fill = 1
 		InireadS($cmbLvl12Fill, $config, "collectors", "lvl12fill", "0")
+		If $cmbLvl12Fill > 1 Then $cmbLvl12Fill = 1
 		InireadS($toleranceOffset, $config, "collectors", "tolerance", "0")
+		InireadS($iMinCollectorMatches, $config, "collectors", "minmatches", "3") ; 1-6 collectors
 
 		; Android Configuration
+		$AndroidAutoAdjustConfig = IniRead($config, "android", "auto.adjust.config", ($AndroidAutoAdjustConfig ? "1" : "0")) = "1" ; if enabled, best android options are configured
 		$AndroidGamePackage = IniRead($config, "android", "game.package", $AndroidGamePackage)
 		$AndroidGameClass = IniRead($config, "android", "game.class", $AndroidGameClass)
 		$AndroidCheckTimeLagEnabled = IniRead($config, "android", "check.time.lag.enabled", ($AndroidCheckTimeLagEnabled ? "1" : "0")) = "1"

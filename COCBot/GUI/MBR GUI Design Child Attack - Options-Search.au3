@@ -30,7 +30,7 @@ Local $x = 25, $y = 45
  			$txtTip = GetTranslated(630,5, "Enter the No. of searches to wait before each reduction occurs.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 3)
-	  $lblSearchReduceCount2 = GUICtrlCreateLabel(GetTranslated(603,5, "search(es)."), $x + 160 , $y + 3, -1, -1)
+	  $lblSearchReduceCount2 = GUICtrlCreateLabel(GetTranslated(603,11, "search(es)."), $x + 160 , $y + 3, -1, -1)
 		$y += 21
 		$lblSearchReduceGold = GUICtrlCreateLabel(GetTranslated(630,6,"- Reduce Gold"), $x, $y + 3, -1, 17)
 			$txtTip = GetTranslated(630,7, "Lower value for Gold by this amount on each step.")
@@ -145,7 +145,7 @@ Local $x = 25, $y = 45
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 3)
 ;			GUICtrlSetState(-1, $GUI_DISABLE)  ; Only needed when unchecked at bot start
-		$lblRestartSearchLimit = GUICtrlCreateLabel( GetTranslated(603,5, -1), $x + 47, $y + 17, -1, -1)
+		$lblRestartSearchLimit = GUICtrlCreateLabel( GetTranslated(603,11, -1), $x + 47, $y + 17, -1, -1)
 	$y += 45
 		$chkAlertSearch = GUICtrlCreateCheckbox(GetTranslated(630,23, "Alert me when Village found"), $x-5, $y , -1, -1)
 			_GUICtrlSetTip(-1, GetTranslated(630,24, "Check this if you want an Audio alarm & a Balloon Tip when a Base to attack is found."))

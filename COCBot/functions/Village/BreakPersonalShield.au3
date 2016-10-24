@@ -18,14 +18,14 @@
 Func BreakPersonalShield()
 
 	If _CheckPixel($aRemoveShldButton, $bCapturePixel) Then ; check for old version CoC app, warn and return if not udpated.
-		Setlog("Oops, Need to have latest CoC installed!", $COLOR_RED)
-		Setlog("New Personal Guard info window not avialable!", $COLOR_RED)
+		Setlog("Oops, Need to have latest CoC installed!", $COLOR_ERROR)
+		Setlog("New Personal Guard info window not avialable!", $COLOR_ERROR)
 		SetError(1)
 		Return
 	EndIf
 
-	If $debugSetlog = 1 Then Setlog("Checking if Shield available", $COLOR_BLUE)
-	If $debugSetlog = 1 Then Setlog("Have shield pixel color: " & _GetPixelColor($aHaveShield, $bCapturePixel) & " :" & _CheckPixel($aHaveShield, $bCapturePixel), $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Checking if Shield available", $COLOR_INFO)
+	If $debugSetlog = 1 Then Setlog("Have shield pixel color: " & _GetPixelColor($aHaveShield, $bCapturePixel) & " :" & _CheckPixel($aHaveShield, $bCapturePixel), $COLOR_DEBUG)
 	If _CheckPixel($aHaveShield, $bCapturePixel) Then ; check for shield
 		If IsMainPage() Then ; check for main page
 			PureClickP($aShieldInfoButton)
@@ -43,10 +43,10 @@ Func BreakPersonalShield()
 				SetError(4, "shield Okay button not found", "")
 				Return
 			EndIf
-			Setlog("Shield removed", $COLOR_GREEN)
+			Setlog("Shield removed", $COLOR_SUCCESS)
 		EndIf
 	Else
-		If $debugSetlog = 1 Then Setlog("No shield available", $COLOR_GREEN)
+		If $debugSetlog = 1 Then Setlog("No shield available", $COLOR_SUCCESS)
 	EndIf
 
 	If _Sleep($iPersonalShield1) Then ; wait for break shield window
@@ -54,8 +54,8 @@ Func BreakPersonalShield()
 		Return
 	EndIf
 
-	If $debugSetlog = 1 Then Setlog("Checking if Personal Guard available", $COLOR_BLUE)
-	If $debugSetlog = 1 Then Setlog("Have guard pixel color: " & _GetPixelColor($aHavePerGuard, $bCapturePixel) & " :" & _CheckPixel($aHavePerGuard, $bCapturePixel), $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Checking if Personal Guard available", $COLOR_INFO)
+	If $debugSetlog = 1 Then Setlog("Have guard pixel color: " & _GetPixelColor($aHavePerGuard, $bCapturePixel) & " :" & _CheckPixel($aHavePerGuard, $bCapturePixel), $COLOR_DEBUG)
 	If _CheckPixel($aHavePerGuard, $bCapturePixel) Then ; check for personal guard timer
 		If IsMainPage() Then
 			PureClickP($aShieldInfoButton)
@@ -73,10 +73,10 @@ Func BreakPersonalShield()
 				SetError(6, "guard Okay button not found")
 				Return
 			EndIf
-			Setlog("Guard removed", $COLOR_GREEN)
+			Setlog("Guard removed", $COLOR_SUCCESS)
 		EndIf
 	Else
-		If $debugSetlog = 1 Then Setlog("No guard available", $COLOR_GREEN)
+		If $debugSetlog = 1 Then Setlog("No guard available", $COLOR_SUCCESS)
 	EndIf
 
 EndFunc   ;==>BreakPersonalShield

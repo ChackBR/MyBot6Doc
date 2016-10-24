@@ -34,7 +34,7 @@ Func MilkingDebug()
 	$MilkingExtractorsMatch += MilkingDetectMineExtractors()
 	Setlog("  2.4 Detect Dark Elixir Extractors")
 	Local $TimeCheckMilkingAttackSeconds = Round(TimerDiff($TimeCheckMilkingAttack) / 1000, 2)
-	Setlog("Computing Time Milking Attack : " & $TimeCheckMilkingAttackSeconds & " seconds", $color_blue)
+	Setlog("Computing Time Milking Attack : " & $TimeCheckMilkingAttackSeconds & " seconds", $COLOR_INFO)
 	$debugsetlog = $debugselogLocal
 	Setlog("Make DebugImage")
 	MilkFarmObjectivesDebugImage($MilkFarmObjectivesSTR, 0)
@@ -88,7 +88,7 @@ Func CheckMilkingBaseTest()
 			Local $temp = StringSplit($ElixirVect[$i], "#", 2) ;TEMP ["2", "404-325"]
 			If UBound($temp) = 2 Then
 
-				Setlog("examine elixir vector #" & $i & " placed in " & $ElixirVect[$i],$COLOR_RED)
+				Setlog("examine elixir vector #" & $i & " placed in " & $ElixirVect[$i],$COLOR_ERROR)
 				Local $pixelTemp = StringSplit($ElixirVect[$i],"-",2)
 				$pixelTemp[0] += 0
 				$pixelTemp[1] += 10
@@ -102,7 +102,7 @@ Func CheckMilkingBaseTest()
 
 					If UBound($arrPixelsCloser) > 1 Then
 ;~ 						For $m = 1 To UBound($arrPixelsCloser) - 1 Step 2
-;~ 							Setlog( $arrPixelsCloser[$m],$color_aqua)
+;~ 							Setlog( $arrPixelsCloser[$m],$COLOR_DEBUG1)
 ;~ 							If $m+1 < Ubound($arrPixelsCloser) Then
 ;~ 								Local $arrTemp3x = $arrPixelsCloser[$m]
 ;~ 								Local $arrTemp3y = $arrPixelsCloser[$m + 1]
@@ -116,7 +116,7 @@ Func CheckMilkingBaseTest()
 					EndIf
 
 ;~ 					$DistancePixeltoPixCLoser = Sqrt(($tmpPixelCloser2x-$pixelTemp[0])^2 + ($tmpPixelCloser2y - $pixelTemp[1])^2)
-;~ 					SetLog("Distance = " & Int($DistancePixeltoPixCLoser) & "; Collector (" & $pixelTemp[0] & "," & $pixelTemp[1] & "); RedLine Pixel Closer (" & $tmpPixelCloser2x & "," & $tmpPixelCloser2y & ")", $COLOR_BLUE)
+;~ 					SetLog("Distance = " & Int($DistancePixeltoPixCLoser) & "; Collector (" & $pixelTemp[0] & "," & $pixelTemp[1] & "); RedLine Pixel Closer (" & $tmpPixelCloser2x & "," & $tmpPixelCloser2y & ")", $COLOR_INFO)
 
 
 ;~ 				If ($tmpPixelCloser2x-$pixelTemp[0]) > 0 Then
@@ -163,7 +163,7 @@ Func CheckMilkingBaseTest()
 ;~ 				EndIf
 
 			Else
-				If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $color_purple)
+				If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $COLOR_DEBUG)
 				$elixirdiscard += 1
 			EndIf
 		Setlog("............ next ..........")
@@ -188,16 +188,16 @@ Func CheckMilkingBaseTest()
 ;~ 			For $t = 1 To $newElixADV[0]
 ;~ 				If FileExists(@ScriptDir & "\images\Milking\Elixir\" & $newElixADV[$t]) Then
 ;~ 					$res = ""
-;~ 					$res = DllCall($LibDir & "\imgloc.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", @ScriptDir & "\images\Milking\Elixir\" & $newElixADV[$t], "float", $SimilarityMilk , "str", $CocSearchArea, "str", $CocDiamond)
+;~ 					$res = DllCall($LibDir & "\MyBotRunImgLoc.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", @ScriptDir & "\images\Milking\Elixir\" & $newElixADV[$t], "float", $SimilarityMilk , "str", $CocSearchArea, "str", $CocDiamond)
 ;~ 	;				setlog("$res = " & $res)
 ;~ 					If IsArray($res) Then
 ;~ 	;					setlog("$res[0] = " & $res[0])
 ;~ 						If $res[0] = "0" Then
 ;~ 							$res = ""
 ;~ 						ElseIf $res[0] = "-1" Then
-;~ 							SetLog("DLL Error", $COLOR_RED)
+;~ 							SetLog("DLL Error", $COLOR_ERROR)
 ;~ 						ElseIf $res[0] = "-2" Then
-;~ 							SetLog("Invalid Resolution", $COLOR_RED)
+;~ 							SetLog("Invalid Resolution", $COLOR_ERROR)
 ;~ 						Else
 ;~ 							$expRet = StringSplit($res[0], "|", 2)
 ;~ 							For $j = 1 To UBound($expRet) - 1 Step 2
@@ -224,7 +224,7 @@ Func CheckMilkingBaseTest()
 ;~ 							Next
 ;~ 						EndIf
 ;~ 					Else
-;~ 						SetLog("$res is not array", $COLOR_RED)
+;~ 						SetLog("$res is not array", $COLOR_ERROR)
 ;~ 					EndIf
 ;~ 				EndIf
 ;~ 			Next

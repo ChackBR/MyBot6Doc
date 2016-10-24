@@ -32,13 +32,13 @@ Func CheckOverviewFullArmy($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelayCheckFullArmy2) Then Return
 		Local $j = 0
 		While Not _ColorCheck(_GetPixelColor($btnpos[0][0], $btnpos[0][1], True), Hex(0xE8E8E0, 6), 20)
-			If $debugsetlogTrain = 1 Then Setlog("OverView TabColor=" & _GetPixelColor($btnpos[0][0], $btnpos[0][1], True), $COLOR_PURPLE)
+			If $debugsetlogTrain = 1 Then Setlog("OverView TabColor=" & _GetPixelColor($btnpos[0][0], $btnpos[0][1], True), $COLOR_DEBUG)
 			If _Sleep($iDelayCheckFullArmy1) Then Return ; wait for Train Window to be ready.
 			$j += 1
 			If $j > 15 Then ExitLoop
 		WEnd
 		If $j > 15 Then
-			SetLog("Training Overview Window didn't open", $COLOR_RED)
+			SetLog("Training Overview Window didn't open", $COLOR_ERROR)
 			Return
 		EndIf
 	EndIf
@@ -50,13 +50,13 @@ Func CheckOverviewFullArmy($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		$Pixel = _CheckPixel($aIsCampFull, True) And _ColorCheck(_GetPixelColor(128, 176, True), Hex(0x90C030, 6), 20)
 	EndIf
 
-	If $debugsetlogTrain = 1 Then Setlog("Checking Overview for full army [!] " & $Pixel & ", " & _GetPixelColor(128, 176, True), $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then Setlog("Checking Overview for full army [!] " & $Pixel & ", " & _GetPixelColor(128, 176, True), $COLOR_DEBUG)
 	If $Pixel Then
 		$fullArmy = True
 	EndIf
 
 	$canRequestCC = _ColorCheck(_GetPixelColor($aRequestTroopsAO[0], $aRequestTroopsAO[1], True), Hex($aRequestTroopsAO[2], 6), $aRequestTroopsAO[5])
-	If $debugSetlog = 1 Then Setlog("Can Request CC: " & $canRequestCC, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Can Request CC: " & $canRequestCC, $COLOR_DEBUG)
 
 	If $bCloseArmyWindow = True Then
 		ClickP($aAway, 1, 0, "#0348") ;Click Away
@@ -90,8 +90,8 @@ Func CheckFullBarrack()
 
 	If _sleep(200) Then Return
 	Local $Pixel = _CheckPixel($aBarrackFull, True)
-	If $debugsetlogTrain = 1 Then Setlog("Check Barrack Full color : " & _GetPixelColor($aBarrackFull[0], $aBarrackFull[1], True) & " Expected if Full : " & Hex($aBarrackFull[2], 6), $COLOR_PURPLE)
-	If $debugsetlogTrain = 1 Then Setlog("Checking for Full Normal or Dark Barrack [!]" & $Pixel, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then Setlog("Check Barrack Full color : " & _GetPixelColor($aBarrackFull[0], $aBarrackFull[1], True) & " Expected if Full : " & Hex($aBarrackFull[2], 6), $COLOR_DEBUG)
+	If $debugsetlogTrain = 1 Then Setlog("Checking for Full Normal or Dark Barrack [!]" & $Pixel, $COLOR_DEBUG)
 
 	If $Pixel Then
 		Return True ; The Barrack Has Stopped

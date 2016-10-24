@@ -16,10 +16,10 @@
 Func MilkingDetectMineExtractors()
 
 	If $MilkFarmAttackGoldMines = 1 and $iGoldCurrent >= $MilkFarmLimitGold Then
-		If $debugsetlog=1 Then setlog("skip attack of gold mines, current gold (" & $iGoldCurrent & ") >= limit (" & $MilkFarmLimitGold & ")",$color_purple)
+		If $debugsetlog=1 Then setlog("skip attack of gold mines, current gold (" & $iGoldCurrent & ") >= limit (" & $MilkFarmLimitGold & ")",$COLOR_DEBUG)
 		return 0
 	Else
-		If $debugsetlog=1 Then setlog("current gold (" & $iGoldCurrent & ") < limit (" & $MilkFarmLimitGold & ")",$color_purple)
+		If $debugsetlog=1 Then setlog("current gold (" & $iGoldCurrent & ") < limit (" & $MilkFarmLimitGold & ")",$COLOR_DEBUG)
 	EndIf
 
 
@@ -76,25 +76,25 @@ Func MilkingDetectMineExtractors()
 								$Minediscard += 1
 							EndIf
 						Else
-							If $debugsetlog = 1 Then Setlog(" - discard #4 no match conditions", $color_purple)
+							If $debugsetlog = 1 Then Setlog(" - discard #4 no match conditions", $COLOR_DEBUG)
 							$Minediscard += 1
 						EndIf
 					Else
-						If $debugsetlog = 1 Then Setlog(" - discard #3 out of insidediamond", $color_purple)
+						If $debugsetlog = 1 Then Setlog(" - discard #3 out of insidediamond", $COLOR_DEBUG)
 					EndIf
 				Else
-					If $debugsetlog = 1 Then Setlog(" - discard #2 no pixel coordinate", $color_purple)
+					If $debugsetlog = 1 Then Setlog(" - discard #2 no pixel coordinate", $COLOR_DEBUG)
 				EndIf
 			Else
-				If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $color_purple)
+				If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $COLOR_DEBUG)
 				$Minediscard += 1
 			EndIf
 		Next
 		If StringLen($MilkFarmAtkPixelListMINESTR) > 1 Then $MilkFarmAtkPixelListMINESTR = StringLeft($MilkFarmAtkPixelListMINESTR, StringLen($MilkFarmAtkPixelListMINESTR) - 1)
-		If $debugsetlog = 1 Then Setlog("> Mine Extractors to attack list: " & $MilkFarmAtkPixelListMINESTR, $color_purple)
+		If $debugsetlog = 1 Then Setlog("> Mine Extractors to attack list: " & $MilkFarmAtkPixelListMINESTR, $COLOR_DEBUG)
 		Local $htimerLocateMine = Round(TimerDiff($hTimer) / 1000, 2)
-		If $debugsetlog = 1 Then Setlog("> Mine Extractors found: " & $Minefounds & " | match conditions: " & $Minematch & " | discard " & $Minediscard, $color_blue)
-		If $debugsetlog = 1 Then SetLog("> Mine Extractors position detectecd in " & $htimerLocateMine & " seconds", $color_blue)
+		If $debugsetlog = 1 Then Setlog("> Mine Extractors found: " & $Minefounds & " | match conditions: " & $Minematch & " | discard " & $Minediscard, $COLOR_INFO)
+		If $debugsetlog = 1 Then SetLog("> Mine Extractors position detectecd in " & $htimerLocateMine & " seconds", $COLOR_INFO)
 		Return $Minematch
 	Else
 		Return 0

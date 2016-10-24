@@ -16,7 +16,7 @@
 Func LocateClanCastle()
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 
-	SetLog("Locating Clan Castle...", $COLOR_BLUE)
+	SetLog("Locating Clan Castle...", $COLOR_INFO)
 
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) Or _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
 		Zoomout()
@@ -39,7 +39,7 @@ Func LocateClanCastle()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "Clan Castle Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -51,20 +51,20 @@ Func LocateClanCastle()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Clan Castle Location: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Clan Castle Location: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_ERROR)
 						ClickP($aAway, 1, 0, "#0374")
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad Clan Castle Location: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Clan Castle Location: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_ERROR)
 						$aCCPos[0] = -1
 						$aCCPos[1] = -1
 						ClickP($aAway, 1, 0, "#0375")
 						Return False
 				EndSelect
 			EndIf
-			SetLog("Clan Castle: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_GREEN)
+			SetLog("Clan Castle: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate Clan Castle Cancelled", $COLOR_BLUE)
+			SetLog("Locate Clan Castle Cancelled", $COLOR_INFO)
 			ClickP($aAway, 1, 0, "#0376")
 			Return
 		EndIf
@@ -91,7 +91,7 @@ Func LocateClanCastle()
 						$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iSilly > 4
-						SetLog("Quit joking, Click the Clan Castle, or restart bot and try again", $COLOR_RED)
+						SetLog("Quit joking, Click the Clan Castle, or restart bot and try again", $COLOR_ERROR)
 						$aCCPos[0] = -1
 						$aCCPos[1] = -1
 						ClickP($aAway, 1, 0, "#0377")
@@ -99,12 +99,12 @@ Func LocateClanCastle()
 				EndSelect
 			EndIf
 			If $sInfo[2] = "Broken" Then
-				SetLog("You did not rebuild your Clan Castle yet.", $COLOR_ORANGE)
+				SetLog("You did not rebuild your Clan Castle yet.", $COLOR_ACTION)
 			Else
-				SetLog("Your Clan Castle is at level: " & $sInfo[2], $COLOR_GREEN)
+				SetLog("Your Clan Castle is at level: " & $sInfo[2], $COLOR_SUCCESS)
 			EndIf
 		Else
-			SetLog(" Operator Error - Bad Clan Castle Location: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_RED)
+			SetLog(" Operator Error - Bad Clan Castle Location: " & "(" & $aCCPos[0] & "," & $aCCPos[1] & ")", $COLOR_ERROR)
 			$aCCPos[0] = -1
 			$aCCPos[1] = -1
 			ClickP($aAway, 1, 0, "#0378")

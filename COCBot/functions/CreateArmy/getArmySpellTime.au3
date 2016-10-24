@@ -16,7 +16,7 @@
 ;
 Func getArmySpellTime($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("Begin getArmySpellTime:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("Begin getArmySpellTime:", $COLOR_DEBUG1)
 
 	$aTimeTrain[1] = 0  ; reset time
 
@@ -33,7 +33,7 @@ Func getArmySpellTime($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
 	Local $iRemainTrainSpellsTimer = 0, $sResultSpellsMinutes = "", $aResult
 
-	Local $sResultSpells = getRemainTrainTimer(360, 422)  ;Get spell training time via OCR.
+	Local $sResultSpells = getRemainTrainTimer(751, 161)  ;Get spell training time via OCR.
 
 	If $sResultSpells <> "" Then
 		If StringInStr($sResultSpells, "h") > 1 Then
@@ -46,12 +46,12 @@ Func getArmySpellTime($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		ElseIf StringInStr($sResultSpells, "s") > 1 Then
 			$iRemainTrainSpellsTimer = Number(StringTrimRight($sResultSpells, 1)) / 60  ; removing the "s" and convert to minutes
 		Else
-			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("getArmySpellTime: Bad OCR string", $COLOR_RED)
+			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("getArmySpellTime: Bad OCR string", $COLOR_ERROR)
 		EndIf
-		SetLog("Spells cook time: " & StringFormat("%.2f", $iRemainTrainSpellsTimer), $COLOR_BLUE)
+		SetLog("Spells cook time: " & StringFormat("%.2f", $iRemainTrainSpellsTimer), $COLOR_INFO)
 	Else
 		If Not $bFullArmySpells Then
-			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("Can not read remaining Spell train time!", $COLOR_RED)
+			If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SetLog("Can not read remaining Spell train time!", $COLOR_ERROR)
 		EndIf
 	EndIf
 

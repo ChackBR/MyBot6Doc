@@ -14,19 +14,19 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
-	If $DebugSetLog = 1 Then Setlog("ReturnHome function... (from matchmode=" & $iMatchMode & " - " & $sModeText[$iMatchMode] & ")", $COLOR_PURPLE)
+	If $DebugSetLog = 1 Then Setlog("ReturnHome function... (from matchmode=" & $iMatchMode & " - " & $sModeText[$iMatchMode] & ")", $COLOR_DEBUG)
 	Local $counter = 0
 	Local $hBitmap_Scaled
 	Local $i, $j
 
 	If $DisableOtherEBO And $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 And $DESideEB And ($dropQueen Or $dropKing) Then
 		SaveandDisableEBO()
-		SetLog("Disabling Normal End Battle Options", $COLOR_GREEN)
+		SetLog("Disabling Normal End Battle Options", $COLOR_SUCCESS)
 	EndIf
 
 	If $GoldChangeCheck = True Then
 		If Not (IsReturnHomeBattlePage(True, False)) Then ; if already in return home battle page do not wait and try to activate Hero Ability and close battle
-			SetLog("Checking if the battle has finished", $COLOR_BLUE)
+			SetLog("Checking if the battle has finished", $COLOR_INFO)
 			While GoldElixirChangeEBO()
 				If _Sleep($iDelayReturnHome1) Then Return
 			WEnd
@@ -39,17 +39,17 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 				;_CaptureRegion()
 				If _ColorCheck(_GetPixelColor($aRtnHomeCheck1[0], $aRtnHomeCheck1[1], True), Hex($aRtnHomeCheck1[2], 6), $aRtnHomeCheck1[3]) = False And _ColorCheck(_GetPixelColor($aRtnHomeCheck2[0], $aRtnHomeCheck2[1], True), Hex($aRtnHomeCheck2[2], 6), $aRtnHomeCheck2[3]) = False Then ; If not already at Return Homescreen
 					If $checkKPower = True Then
-						SetLog("Activating King's power to restore some health before EndBattle", $COLOR_BLUE)
+						SetLog("Activating King's power to restore some health before EndBattle", $COLOR_INFO)
 						If IsAttackPage() Then SelectDropTroop($King) ;If King was not activated: Boost King before EndBattle to restore some health
 					EndIf
 					If $checkQPower = True Then
-						SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_BLUE)
+						SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_INFO)
 						If IsAttackPage() Then SelectDropTroop($Queen) ;If Queen was not activated: Boost Queen before EndBattle to restore some health
 					EndIf
 				EndIf
 			EndIf
 		Else
-			If $DebugSetLog = 1 Then Setlog("Battle already over", $COLOR_PURPLE)
+			If $DebugSetLog = 1 Then Setlog("Battle already over", $COLOR_DEBUG)
 		EndIf
 	EndIf
 
@@ -61,9 +61,9 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 	$checkQPower = False
 	$checkWPower = False
 
-	If $iMatchMode = $TS And $icmbTroopComp <> 8 Then $FirstStart = True ;reset barracks upon return when TH sniping w/custom army
+	If $iTScheck = 1 and $iMatchMode = $TS And $icmbTroopComp <> 8 Then $FirstStart = True ;reset barracks upon return when TH sniping w/custom army
 
-	SetLog("Returning Home", $COLOR_BLUE)
+	SetLog("Returning Home", $COLOR_INFO)
 	If $RunState = False Then Return
 
 	; ---- CLICK SURRENDER BUTTON ----
@@ -94,13 +94,13 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 			If _Sleep($iDelayReturnHome5) Then Return
 		WEnd
 	Else
-		If $DebugSetLog = 1 Then Setlog("Battle already over.", $COLOR_PURPLE)
+		If $DebugSetLog = 1 Then Setlog("Battle already over.", $COLOR_DEBUG)
 	EndIf
 	If _Sleep($iDelayReturnHome2) Then Return ; short wait for return to main
 
 	TrayTip($sBotTitle, "", BitOR($TIP_ICONASTERISK, $TIP_NOSOUND)) ; clear village search match found message
 
-	checkAndroidTimeLag(False)
+	checkAndroidReboot(False)
 
 	If $GoldChangeCheck = True Then
 		If IsAttackPage() Then
@@ -116,7 +116,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 		AttackReport()
 	EndIf
 	If $TakeSS = 1 And $GoldChangeCheck = True Then
-		SetLog("Taking snapshot of your loot", $COLOR_GREEN)
+		SetLog("Taking snapshot of your loot", $COLOR_SUCCESS)
 		Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
 		Local $Time = @HOUR & "." & @MIN
 		_CaptureRegion()
@@ -152,7 +152,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 	$counter = 0
 	While 1
 		If _Sleep($iDelayReturnHome4) Then Return
-		If StarBonus() = True Then Setlog("Star Bonus window closed chief!", $COLOR_BLUE) ; Check for Star Bonus window to fill treasury (2016-01) update
+		If StarBonus() = True Then Setlog("Star Bonus window closed chief!", $COLOR_INFO) ; Check for Star Bonus window to fill treasury (2016-01) update
 		If IsMainPage() Then
 			_GUICtrlEdit_SetText($txtLog, _PadStringCenter(" BOT LOG ", 71, "="))
 			_GUICtrlRichEdit_SetFont($txtLog, 6, "Lucida Console")
@@ -161,7 +161,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 		EndIf
 		$counter += 1
 		If $counter >= 50 Or isProblemAffect(True) Then
-			SetLog("Cannot return home.", $COLOR_RED)
+			SetLog("Cannot return home.", $COLOR_ERROR)
 			checkMainScreen()
 			Return
 		EndIf

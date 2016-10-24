@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmySpellCapacity:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmySpellCapacity:", $COLOR_DEBUG1)
 
 	If $bOpenArmyWindow = False And IsTrainPage() = False Then ; check for train page
 		SetError(1)
@@ -45,7 +45,7 @@ Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 			If _Sleep($iDelaycheckArmyCamp5) Then Return ; Wait 250ms
 		WEnd
 
-		If $debugsetlogTrain = 1 Then Setlog("$sSpellsInfo = " & $sSpellsInfo, $COLOR_PURPLE)
+		If $debugsetlogTrain = 1 Then Setlog("$sSpellsInfo = " & $sSpellsInfo, $COLOR_DEBUG)
 		$aGetSFactorySize = StringSplit($sSpellsInfo, "#") ; split the existen Spells from the total Spell factory capacity
 
 		If IsArray($aGetSFactorySize) Then
@@ -53,12 +53,12 @@ Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 				$TotalSFactory = Number($aGetSFactorySize[2])
 				$CurSFactory = Number($aGetSFactorySize[1])
 			Else
-				Setlog("Spell Factory size read error.", $COLOR_RED) ; log if there is read error
+				Setlog("Spell Factory size read error.", $COLOR_ERROR) ; log if there is read error
 				$CurSFactory = 0
 				$TotalSFactory = $iTotalCountSpell
 			EndIf
 		Else
-			Setlog("Spell Factory size read error.", $COLOR_RED) ; log if there is read error
+			Setlog("Spell Factory size read error.", $COLOR_ERROR) ; log if there is read error
 			$CurSFactory = 0
 			$TotalSFactory = $iTotalCountSpell
 		EndIf
@@ -73,7 +73,7 @@ Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	EndIf
 
 	If $TotalSFactory <> $iTotalCountSpell Then
-		Setlog("Note: Spell Factory Size read not same User Input Value.", $COLOR_MAROON) ; log if there difference between user input and OCR
+		Setlog("Note: Spell Factory Size read not same User Input Value.", $COLOR_WARNING) ; log if there difference between user input and OCR
 	EndIf
 
 	If $bCloseArmyWindow = True Then

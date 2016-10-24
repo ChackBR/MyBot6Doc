@@ -96,7 +96,7 @@ Func _Restart_()
 	FileWrite(@TempDir & "restart.bat", $sCmdFile)
 	IniWrite($config, "general", "Restarted", 1)
 	Run(@TempDir & "restart.bat", @TempDir, @SW_HIDE)
-	CloseAndroid()
+	CloseAndroid("_Restart_")
 	BotClose()
 EndFunc   ;==>_Restart_
 
@@ -105,7 +105,7 @@ Func _Restart()
 	SetDebugLog("Restart " & $sBotTitle)
 	Local $sCmdLine = ProcessGetCommandLine(@AutoItPID)
 	If @error <> 0 Then
-		SetLog("Cannot prepare to restart " & $sBotTitle & ", error code " & @error, $COLOR_RED)
+		SetLog("Cannot prepare to restart " & $sBotTitle & ", error code " & @error, $COLOR_ERROR)
 		Return SetError(1, 0, 0)
 	EndIf
 	IniWrite($config, "general", "Restarted", 1)
@@ -118,12 +118,12 @@ Func _Restart()
 	; Restart My Bot
 	Local $pid = Run("cmd.exe /c start """" " & $sCmdLine, $WorkingDir, @SW_HIDE) ; cmd.exe only used to support launched like "..\AutoIt3\autoit3.exe" from console
 	If @error = 0 Then
-		CloseAndroid()
+		CloseAndroid("_Restart")
 		SetLog("Restarting " & $sBotTitle)
 		; Wait 1 Minute to get closed
 		_SleepStatus(60 * 1000)
 	Else
-		SetLog("Cannot restart " & $sBotTitle, $COLOR_RED)
+		SetLog("Cannot restart " & $sBotTitle, $COLOR_ERROR)
 	EndIf
 
 	Return SetError(2, 0, 0)

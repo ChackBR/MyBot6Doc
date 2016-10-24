@@ -5,7 +5,7 @@
 ; Parameters ....:
 ; Return values .: None
 ; Author ........: ProMac (2015), HungLe (2015)
-; Modified ......: Sardo 2015-08, KnowJack (Aug 2105), MonkeyHunter(06-2016)
+; Modified ......: Sardo 2015-08, KnowJack (Aug 2105), MonkeyHunter(06-2016) , trlopes ( 2016 )
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: checkwall.au3
@@ -16,7 +16,7 @@
 Func UpgradeWall()
 
 	If $ichkWalls = 1 Then
-		SetLog("Checking Upgrade Walls", $COLOR_BLUE)
+		SetLog("Checking Upgrade Walls", $COLOR_INFO)
 		If SkipWallUpgrade() Then Return
 		If $iFreeBuilderCount > 0 Then
 			ClickP($aAway, 1, 0, "#0313") ; click away
@@ -26,31 +26,31 @@ Func UpgradeWall()
 			Switch $iUseStorage
 				Case 0
 					If $MinWallGold Then
-						SetLog("Upgrading Wall using Gold", $COLOR_GREEN)
-						If CheckWall() Then UpgradeWallGold()
+						SetLog("Upgrading Wall using Gold", $COLOR_SUCCESS)
+						If imglocCheckWall() Then UpgradeWallGold()
 					Else
-						SetLog("Gold is below minimum, Skipping Upgrade", $COLOR_RED)
+						SetLog("Gold is below minimum, Skipping Upgrade", $COLOR_ERROR)
 					EndIf
 				Case 1
 					If $MinWallElixir Then
-						Setlog("Upgrading Wall using Elixir", $COLOR_GREEN)
-						If CheckWall() Then UpgradeWallElixir()
+						Setlog("Upgrading Wall using Elixir", $COLOR_SUCCESS)
+						If imglocCheckWall() Then UpgradeWallElixir()
 					Else
-						Setlog("Elixir is below minimum, Skipping Upgrade", $COLOR_RED)
+						Setlog("Elixir is below minimum, Skipping Upgrade", $COLOR_ERROR)
 					EndIf
 				Case 2
 					If $MinWallElixir Then
-						SetLog("Upgrading Wall using Elixir", $COLOR_GREEN)
-						If CheckWall() And Not UpgradeWallElixir() Then
-							SetLog("Upgrade with Elixir failed, attempt to upgrade using Gold", $COLOR_RED)
+						SetLog("Upgrading Wall using Elixir", $COLOR_SUCCESS)
+						If imglocCheckWall() And Not UpgradeWallElixir() Then
+							SetLog("Upgrade with Elixir failed, attempt to upgrade using Gold", $COLOR_ERROR)
 							UpgradeWallGold()
 						EndIf
 					Else
-						SetLog("Elixir is below minimum, attempt to upgrade using Gold", $COLOR_RED)
+						SetLog("Elixir is below minimum, attempt to upgrade using Gold", $COLOR_ERROR)
 						If $MinWallGold Then
-							If CheckWall() Then UpgradeWallGold()
+							If imglocCheckWall() Then UpgradeWallGold()
 						Else
-							Setlog("Gold is below minimum, Skipping Upgrade", $COLOR_RED)
+							Setlog("Gold is below minimum, Skipping Upgrade", $COLOR_ERROR)
 						EndIf
 					EndIf
 			EndSwitch
@@ -60,7 +60,7 @@ Func UpgradeWall()
 
 			Click(820, 40, 1, 0, "#0315") ; Close Builder/Shop if open by accident
 		Else
-			SetLog("No free builder, Upgrade Walls skipped..", $COLOR_RED)
+			SetLog("No free builder, Upgrade Walls skipped..", $COLOR_ERROR)
 		EndIf
 	EndIf
 	If _Sleep($iDelayUpgradeWall1) Then Return
@@ -78,20 +78,20 @@ Func UpgradeWallGold()
 	Global $ButtonPixel = _MultiPixelSearch(240, 563 + $bottomOffsetY, 670, 650 + $bottomOffsetY, 1, 1, Hex(0xF3F3F1, 6), $offColors, 30) ; first gray/white pixel of button
 	If IsArray($ButtonPixel) Then
 		If $debugSetlog = 1 Then
-			Setlog("ButtonPixel = " & $ButtonPixel[0] & ", " & $ButtonPixel[1], $COLOR_PURPLE) ;Debug
-			Setlog("Color #1: " & _GetPixelColor($ButtonPixel[0], $ButtonPixel[1], True) & ", #2: " & _GetPixelColor($ButtonPixel[0] + 47, $ButtonPixel[1] + 37, True) & ", #3: " & _GetPixelColor($ButtonPixel[0] + 70, $ButtonPixel[1], True) & ", #4: " & _GetPixelColor($ButtonPixel[0] + 79, $ButtonPixel[1], True), $COLOR_PURPLE)
+			Setlog("ButtonPixel = " & $ButtonPixel[0] & ", " & $ButtonPixel[1], $COLOR_DEBUG) ;Debug
+			Setlog("Color #1: " & _GetPixelColor($ButtonPixel[0], $ButtonPixel[1], True) & ", #2: " & _GetPixelColor($ButtonPixel[0] + 47, $ButtonPixel[1] + 37, True) & ", #3: " & _GetPixelColor($ButtonPixel[0] + 70, $ButtonPixel[1], True) & ", #4: " & _GetPixelColor($ButtonPixel[0] + 79, $ButtonPixel[1], True), $COLOR_DEBUG)
 		EndIf
 		Click($ButtonPixel[0] + 20, $ButtonPixel[1] + 20, 1, 0, "#0316") ; Click Upgrade Gold Button
 		If _Sleep($iDelayUpgradeWallGold2) Then Return
 
 		If _ColorCheck(_GetPixelColor(677, 150 + $midOffsetY, True), Hex(0xE1090E, 6), 20) Then ; wall upgrade window red x
 			If isNoUpgradeLoot(False) = True Then
-				SetLog("Upgrade stopped due no loot", $COLOR_RED)
+				SetLog("Upgrade stopped due no loot", $COLOR_ERROR)
 				Return False
 			EndIf
 			Click(440, 480 + $midOffsetY, 1, 0, "#0317")
 			If _Sleep($iDelayUpgradeWallGold3) Then Return
-			SetLog("Upgrade complete", $COLOR_GREEN)
+			SetLog("Upgrade complete", $COLOR_SUCCESS)
 			PushMsg("UpgradeWithGold")
 			$iNbrOfWallsUppedGold += 1
 			$iNbrOfWallsUpped += 1
@@ -100,7 +100,7 @@ Func UpgradeWallGold()
 			Return True
 		EndIf
 	Else
-		Setlog("No Upgrade Gold Button", $COLOR_RED)
+		Setlog("No Upgrade Gold Button", $COLOR_ERROR)
 		Pushmsg("NowUpgradeGoldButton")
 		Return False
 	EndIf
@@ -120,12 +120,12 @@ Func UpgradeWallElixir()
 		If _Sleep($iDelayUpgradeWallElixir2) Then Return
 		If _ColorCheck(_GetPixelColor(677, 150 + $midOffsetY, True), Hex(0xE1090E, 6), 20) Then
 			If isNoUpgradeLoot(False) = True Then
-				SetLog("Upgrade stopped due to insufficient loot", $COLOR_RED)
+				SetLog("Upgrade stopped due to insufficient loot", $COLOR_ERROR)
 				Return False
 			EndIf
 			Click(440, 480 + $midOffsetY, 1, 0, "#0318")
 			If _Sleep($iDelayUpgradeWallElixir3) Then Return
-			SetLog("Upgrade complete", $COLOR_GREEN)
+			SetLog("Upgrade complete", $COLOR_SUCCESS)
 			PushMsg("UpgradeWithElixir")
 			$iNbrOfWallsUppedElixir += 1
 			$iNbrOfWallsUpped += 1
@@ -134,7 +134,7 @@ Func UpgradeWallElixir()
 			Return True
 		EndIf
 	Else
-		Setlog("No Upgrade Elixir Button", $COLOR_RED)
+		Setlog("No Upgrade Elixir Button", $COLOR_ERROR)
 		Pushmsg("NowUpgradeElixirButton")
 		Return False
 	EndIf
@@ -172,7 +172,7 @@ Func SkipWallUpgrade() ; Dynamic Upgrades
 			EndSwitch
 		Next
 		If $BuildingsNeedGold > 0 And $BuildingsNeedElixir > 0 Then
-			SetLog("A Builder is available for Building Upgrade Skipping Wall upgrade", $COLOR_RED)
+			SetLog("A Builder is available for Building Upgrade Skipping Wall upgrade", $COLOR_ERROR)
 			Return True
 		ElseIf $BuildingsNeedGold = 0 And $BuildingsNeedElixir = 0 Then
 			; Do nothing
@@ -180,23 +180,23 @@ Func SkipWallUpgrade() ; Dynamic Upgrades
 			Switch $iUseStorage
 				Case 0 ; Using gold
 					If $BuildingsNeedGold > 0 Then
-						SetLog("A Builder is available for Building Upgrade Skipping Wall upgrade", $COLOR_RED)
+						SetLog("A Builder is available for Building Upgrade Skipping Wall upgrade", $COLOR_ERROR)
 						Return True
 					EndIf
 				Case 1 ; Using elixir
 					If $BuildingsNeedElixir > 0 Then
-						SetLog("A Builder is available for Building Upgrade Skipping Wall upgrade", $COLOR_RED)
+						SetLog("A Builder is available for Building Upgrade Skipping Wall upgrade", $COLOR_ERROR)
 						Return True
 					EndIf
 				Case 2 ; Using gold and elixir
 					If $BuildingsNeedGold > 0 Then
-						Setlog("A Building needs Gold to Upgrade", $COLOR_GREEN)
-						Setlog("Using Elixir only for wall Upgrade", $COLOR_GREEN)
+						Setlog("A Building needs Gold to Upgrade", $COLOR_SUCCESS)
+						Setlog("Using Elixir only for wall Upgrade", $COLOR_SUCCESS)
 						$iUseStorage = 1
 					EndIf
 					If $BuildingsNeedElixir > 0 Then
-						Setlog("A Building needs Elixir to Upgrade", $COLOR_GREEN)
-						Setlog("Using Gold only for wall Upgrade", $COLOR_GREEN)
+						Setlog("A Building needs Elixir to Upgrade", $COLOR_SUCCESS)
+						Setlog("Using Gold only for wall Upgrade", $COLOR_SUCCESS)
 						$iUseStorage = 0
 					EndIf
 			EndSwitch
@@ -217,12 +217,12 @@ Func SkipWallUpgrade() ; Dynamic Upgrades
 			Case 0 ; Using gold
 				; do nothing
 			Case 1 ; Using elixir
-				Setlog("Laboratory needs Elixir to Upgrade :  " & $name, $COLOR_GREEN)
-				Setlog("Skipping Wall Upgrade", $COLOR_GREEN)
+				Setlog("Laboratory needs Elixir to Upgrade :  " & $name, $COLOR_SUCCESS)
+				Setlog("Skipping Wall Upgrade", $COLOR_SUCCESS)
 				Return True
 			Case 2 ; Using gold and elixir
-				Setlog("Laboratory needs Elixir to Upgrade :  " & $name, $COLOR_GREEN)
-				Setlog("Using Gold only for wall Upgrade  " & $name, $COLOR_GREEN)
+				Setlog("Laboratory needs Elixir to Upgrade :  " & $name, $COLOR_SUCCESS)
+				Setlog("Using Gold only for wall Upgrade  " & $name, $COLOR_SUCCESS)
 				$iUseStorage = 0
 		EndSwitch
 	EndIf

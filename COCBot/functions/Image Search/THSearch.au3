@@ -17,7 +17,7 @@ Global $aTownHall[4] = [-1, -1, -1, -1] ; [LocX, LocY, BldgLvl, Quantity]
 
 Func THSearch($bReTest = False)
 
-	If $debugsetlog = 1 Then SetLog("TH search Start", $COLOR_PURPLE)
+	If $debugsetlog = 1 Then SetLog("TH search Start", $COLOR_DEBUG)
 	Local $hTimer = TimerInit()
 
 	Local $result, $listPixelByLevel, $pixelWithLevel, $level, $pixelStr
@@ -34,16 +34,16 @@ Func THSearch($bReTest = False)
 	$result = DllCall($hFuncLib, "str", "getLocationTownHallWithLevel", "ptr", $hHBitmap2)
 	;$result = DllCall($hFuncLib, "str", "getLocationTownHallWithLevelDebug", "ptr", $hHBitmap2, "int", 1)
 	If $debugsetlog = 1 Then SetLog("Calculated  (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
-	If $debugsetlog = 1 Then Setlog("TownHall search $result[0] = " & $result[0], $COLOR_PURPLE) ;Debug
+	If $debugsetlog = 1 Then Setlog("TownHall search $result[0] = " & $result[0], $COLOR_DEBUG) ;Debug
 
 
 	$listPixelByLevel = StringSplit($result[0], "~") ; split each building into array
 	If $listPixelByLevel[0] > 1 Then ; check for more than 1 bldg and proper split a part
 		$NumTownHall = UBound($listPixelByLevel) - 1
-		SetLog("Total No. of TownHalls = " & $NumTownHall, $COLOR_FUCHSIA)
+		SetLog("Total No. of TownHalls = " & $NumTownHall, $COLOR_WARNING)
 		If $debugsetlog = 1 Then
 			For $ii = 0 To $listPixelByLevel[0]
-				Setlog("TownHall search $listPixelByLevel[" & $ii & "] = " & $listPixelByLevel[$ii], $COLOR_PURPLE) ;Debug
+				Setlog("TownHall search $listPixelByLevel[" & $ii & "] = " & $listPixelByLevel[$ii], $COLOR_DEBUG) ;Debug
 			Next
 		EndIf
 	EndIf
@@ -58,17 +58,17 @@ Func THSearch($bReTest = False)
 			If @error Then ContinueLoop
 		EndIf
 		If $debugsetlog = 1 Then
-			Setlog("TownHall search UBound($pixelWithLevel) = " & UBound($pixelWithLevel), $COLOR_PURPLE) ;Debug
+			Setlog("TownHall search UBound($pixelWithLevel) = " & UBound($pixelWithLevel), $COLOR_DEBUG) ;Debug
 			For $ii = 0 To UBound($pixelWithLevel) - 1
-				Setlog("TownHall search $pixelWithLevel[" & $ii & "] = " & $pixelWithLevel[$ii], $COLOR_PURPLE) ;Debug
+				Setlog("TownHall search $pixelWithLevel[" & $ii & "] = " & $pixelWithLevel[$ii], $COLOR_DEBUG) ;Debug
 			Next
 		EndIf
 		$level = $pixelWithLevel[1]
 		$pixelStr = StringSplit($pixelWithLevel[2], "-")
 		If $debugsetlog = 1 Then
-			Setlog("TownHall search $level = " & $level, $COLOR_PURPLE) ;Debug
+			Setlog("TownHall search $level = " & $level, $COLOR_DEBUG) ;Debug
 			For $ii = 0 To UBound($pixelStr) - 1
-				Setlog("TownHall search $pixelStr[" & $ii & "] = " & $pixelStr[$ii], $COLOR_PURPLE) ;Debug
+				Setlog("TownHall search $pixelStr[" & $ii & "] = " & $pixelStr[$ii], $COLOR_DEBUG) ;Debug
 			Next
 		EndIf
 		Local $pixel[2] = [$pixelStr[1], $pixelStr[2]]
@@ -80,11 +80,11 @@ Func THSearch($bReTest = False)
 			$THy = $aTownHallLocal[1]
 			$ImageInfo = String("C# DLL_" & $aTownHallLocal[2])
 			If $debugImageSave = 1 Then CaptureTHwithInfo($THx, $THy, $ImageInfo)
-			If $debugsetlog = 1 Then SetLog("TownHall: [" & $aTownHallLocal[0] & "," & $aTownHallLocal[1] & "], Level: " & $aTownHallLocal[2], $COLOR_BLUE)
+			If $debugsetlog = 1 Then SetLog("TownHall: [" & $aTownHallLocal[0] & "," & $aTownHallLocal[1] & "], Level: " & $aTownHallLocal[2], $COLOR_INFO)
 			Return $THText[($aTownHallLocal[2] < 6 ? 0 : $aTownHallLocal[2] - 6)]
 		Else
-			If $debugsetlog = 1 Then SetLog("TownHall: [" & $pixel[0] & "," & $pixel[1] & "], Level: " & $level, $COLOR_PURPLE)
-			If $debugsetlog = 1 Then SetLog("Found TownHall with Invalid Location?", $COLOR_RED)
+			If $debugsetlog = 1 Then SetLog("TownHall: [" & $pixel[0] & "," & $pixel[1] & "], Level: " & $level, $COLOR_DEBUG)
+			If $debugsetlog = 1 Then SetLog("Found TownHall with Invalid Location?", $COLOR_ERROR)
 			If $debugImageSave = 1 Then DebugImageSave("checkTownhallADV2_NoTHFound_CSH_", True)
 			Return "-"
 		EndIf
@@ -92,7 +92,7 @@ Func THSearch($bReTest = False)
 
 	If $aTownHallLocal[0] = -1 Or $aTownHallLocal[1] = -1 Then
 		If $debugImageSave = 1 Then DebugImageSave("checkTownhallADV2_NoTHFound_CSH_", True)
-		If $debugsetlog = 1 Then SetLog(" == TownHall Not Found ==", $COLOR_RED)
+		If $debugsetlog = 1 Then SetLog(" == TownHall Not Found ==", $COLOR_ERROR)
 		Return "-"
 	EndIf
 

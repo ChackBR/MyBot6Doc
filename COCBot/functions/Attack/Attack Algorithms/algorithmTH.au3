@@ -55,7 +55,7 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 			If $duringMilkingAttack = 0 and $KingAttack[$TS] = 0 Then Return
 			If $duringMilkingAttack = 1 and $KingAttack[$DB] = 0 Then Return
 			$checkKPower = True
-			SetLog("Dropping King", $COLOR_GREEN)
+			SetLog("Dropping King", $COLOR_SUCCESS)
 			$THusedKing = 1
 		EndIf
 
@@ -64,7 +64,7 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 			If $duringMilkingAttack = 0 and $QueenAttack[$TS] = 0 Then Return
 			If $duringMilkingAttack = 1 and $QueenAttack[$DB] = 0 Then Return
 			$checkQPower = True
-			SetLog("Dropping Queen", $COLOR_GREEN)
+			SetLog("Dropping Queen", $COLOR_SUCCESS)
 			$THusedQueen = 1
 		EndIf
 
@@ -73,7 +73,7 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 			If  $duringMilkingAttack = 0 and $WardenAttack[$TS] = 0 Then Return
 			If $duringMilkingAttack = 1 and $WardenAttack[$DB] = 0 Then Return
 			$checkWPower = True
-			SetLog("Dropping Grand Warden", $COLOR_GREEN)
+			SetLog("Dropping Grand Warden", $COLOR_SUCCESS)
 			$THusedWarden = 1
 		EndIf
 
@@ -85,7 +85,7 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 			If $iPlannedDropCCHoursEnable = 1 Then
 				Local $hour = StringSplit(_NowTime(4), ":", $STR_NOCOUNT)
 				If $iPlannedDropCCHours[$hour[0]] = 0 Then
-					SetLog("Drop Clan Castle not Planned, Skipped..", $COLOR_GREEN)
+					SetLog("Drop Clan Castle not Planned, Skipped..", $COLOR_SUCCESS)
 					Return ; exit func if no planned donate checkmarks
 				EndIf
 			EndIf
@@ -93,16 +93,16 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 			If $iChkUseCCBalanced = 1 Then
 				If Number($TroopsReceived) <> 0 Then
 					If Number(Number($TroopsDonated) / Number($TroopsReceived)) >= (Number($iCmbCCDonated) / Number($iCmbCCReceived)) Then
-						SetLog("Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") >= " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
+						SetLog("Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") >= " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_INFO)
 					Else
-						SetLog("Not Dropping Clan Castle, donated  (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
+						SetLog("Not Dropping Clan Castle, donated  (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_INFO)
 						Return
 					EndIf
 				Else
 					If Number(Number($TroopsDonated) / 1) >= (Number($iCmbCCDonated) / Number($iCmbCCReceived)) Then
-						SetLog("Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") >= " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
+						SetLog("Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") >= " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_INFO)
 					Else
-						SetLog("Not Dropping Clan Castle, donated  (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
+						SetLog("Not Dropping Clan Castle, donated  (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_INFO)
 						Return
 					EndIf
 				EndIf
@@ -127,7 +127,7 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 		If $waveNb = 2 Then $waveName = "Second"
 		If $waveNb = 3 Then $waveName = "Third"
 		If $waveNb = 4 Then $waveName = "Last"
-		SetLog("Dropping " & $waveName & " wave of " & $troopNb & " " & $name, $COLOR_GREEN)
+		SetLog("Dropping " & $waveName & " wave of " & $troopNb & " " & $name, $COLOR_SUCCESS)
 	EndIf
 	;End All Barracks Troops
 
@@ -166,13 +166,13 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 0 ;UL
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi - 1 To $THi - 1 + Ceiling(($iNbOfSpots - 1) / 2)
-					$aThx = 25 - $i * 19
-					$aThy = 314 + $i * 14
+					$aThx = 25 - $i * 16
+					$aThy = 314 + $i * 12
 				Next
 
 				For $ii = $THi - 1 To $THi - 1 + ($iNbOfSpots - 1)
-					$aThx = 25 + $ii * 19
-					$aThy = 314 - $ii * 14
+					$aThx = 25 + $ii * 16
+					$aThy = 314 - $ii * 12
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0019")
 					If _Sleep(Random(20, 40, 1)) Then Return
@@ -181,13 +181,13 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 1 ;LL
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + Ceiling(($iNbOfSpots - 1) / 2)
-					$aThx = 25 - $i * 19
-					$aThy = 314 - $i * 14
+					$aThx = 25 - $i * 16
+					$aThy = 314 - $i * 12
 				Next
 
 				For $ii = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 25 + $ii * 19
-					$aThy = 314 + $ii * 14
+					$aThx = 25 + $ii * 16
+					$aThy = 314 + $ii * 12
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0020")
 					If _Sleep(Random(20, 40, 1)) Then Return
@@ -196,13 +196,13 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 2 ;UR
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + Ceiling(($iNbOfSpots - 1) / 2)
-					$aThx = 830 + $i * 19
-					$aThy = 314 + $i * 14
+					$aThx = 830 + $i * 16
+					$aThy = 314 + $i * 12
 				Next
 
 				For $ii = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 830 - $ii * 19
-					$aThy = 314 - $ii * 14
+					$aThx = 830 - $ii * 16
+					$aThy = 314 - $ii * 12
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0021")
 					If _Sleep(Random(20, 40, 1)) Then Return
@@ -211,13 +211,13 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 3 ;LR
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi + 1 To $THi + 1 + Ceiling(($iNbOfSpots - 1) / 2)
-					$aThx = 830 + $i * 19
-					$aThy = 314 - $i * 14
+					$aThx = 830 + $i * 16
+					$aThy = 314 - $i * 12
 				Next
 
 				For $ii = $THi + 1 To $THi + 1 + ($iNbOfSpots - 1)
-					$aThx = 830 - $ii * 19
-					$aThy = 314 + $ii * 14
+					$aThx = 830 - $ii * 16
+					$aThy = 314 + $ii * 12
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0022")
 					If _Sleep(Random(20, 40, 1)) Then Return
@@ -241,13 +241,13 @@ Func SpellTHGrid($S)
 		If $THi <= 15 Or $THside = 0 Or $THside = 2 Then
 			Switch $THside
 				Case 0
-					CastSpell($S, 114 + $THi * 19 + Ceiling(-2 * 19), 359 - $THi * 14 + Ceiling(-2 * 14))
+					CastSpell($S, 114 + $THi * 16 + Ceiling(-2 * 16), 359 - $THi * 12 + Ceiling(-2 * 12))
 				Case 1
-					CastSpell($S, 117 + $THi * 19 + Ceiling(-2 * 19), 268 + $THi * 14 - Floor(-2 * 14))
+					CastSpell($S, 117 + $THi * 16 + Ceiling(-2 * 16), 268 + $THi * 12 - Floor(-2 * 12))
 				Case 2
-					CastSpell($S, 743 - $THi * 19 - Floor(-2 * 19), 358 - $THi * 14 + Ceiling(-2 * 14))
+					CastSpell($S, 743 - $THi * 16 - Floor(-2 * 16), 358 - $THi * 12 + Ceiling(-2 * 12))
 				Case 3
-					CastSpell($S, 742 - $THi * 19 - Floor(-2 * 19), 268 + $THi * 14 - Floor(-2 * 14))
+					CastSpell($S, 742 - $THi * 16 - Floor(-2 * 16), 268 + $THi * 12 - Floor(-2 * 12))
 			EndSwitch
 		EndIf
 
@@ -300,13 +300,13 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 		If $CheckHeroes = True And ($checkQPower = True Or $checkKPower = True) Then CheckHeroesHealth() ;Check Heroes Health and activate their abilities if health is not green
 		;check for one star
 		If _ColorCheck(_GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True), Hex($aWonOneStar[2], 6), $aWonOneStar[3]) Then ;exit if 1 star
-			If $Log = True Then SetLog("Townhall has been destroyed!", $COLOR_ORANGE)
+			If $Log = True Then SetLog("Townhall has been destroyed!", $COLOR_ACTION)
 			If $Restart = True Then Return True
 
 			;Activate King and Queen powers to restore health before exit if they are deployed
 
 			If $checkQPower = True Then
-				SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_BLUE)
+				SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_INFO)
 				SelectDropTroop($Queen)
 				$checkQPower = False
 			EndIf
@@ -315,7 +315,7 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 			If $Restart = True Then Return True
 
 			If $checkKPower = True Then
-				SetLog("Activating King's power to restore some health before EndBattle", $COLOR_BLUE)
+				SetLog("Activating King's power to restore some health before EndBattle", $COLOR_INFO)
 				SelectDropTroop($King)
 				$checkKPower = False
 			EndIf

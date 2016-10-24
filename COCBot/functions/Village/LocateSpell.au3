@@ -16,7 +16,7 @@
 Func LocateSpellFactory()
 	Local $stext, $MsgBox, $iStupid = 0, $iSilly = 0, $sErrorText = ""
 
-	SetLog("Locating Spell Factory...", $COLOR_BLUE)
+	SetLog("Locating Spell Factory...", $COLOR_INFO)
 
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) Or _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
 		Zoomout()
@@ -39,7 +39,7 @@ Func LocateSpellFactory()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "Spell Factory Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -51,11 +51,11 @@ Func LocateSpellFactory()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_ERROR)
 						ClickP($aAway, 1, 0, "#0386")
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_ERROR)
 						$SFPos[0] = -1
 						$SFPos[1] = -1
 						ClickP($aAway, 1, 0, "#0387")
@@ -85,7 +85,7 @@ Func LocateSpellFactory()
 							$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 							ContinueLoop
 						Case $iSilly > 4
-							SetLog("Quit joking, Click the Army Camp, or restart bot and try again", $COLOR_RED)
+							SetLog("Quit joking, Click the Army Camp, or restart bot and try again", $COLOR_ERROR)
 							$SFPos[0] = -1
 							$SFPos[1] = -1
 							ClickP($aAway, 1, 0, "#0388")
@@ -93,15 +93,15 @@ Func LocateSpellFactory()
 					EndSelect
 				EndIf
 			Else
-				SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_RED)
+				SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_ERROR)
 				$SFPos[0] = -1
 				$SFPos[1] = -1
 				ClickP($aAway, 1, 0, "#0389")
 				Return False
 			EndIf
-			SetLog("Locate Spell Factory Success: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_GREEN)
+			SetLog("Locate Spell Factory Success: " & "(" & $SFPos[0] & "," & $SFPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate Spell Factory Cancelled", $COLOR_BLUE)
+			SetLog("Locate Spell Factory Cancelled", $COLOR_INFO)
 			ClickP($aAway, 1, 0, "#0390")
 			Return
 		EndIf
@@ -117,7 +117,7 @@ EndFunc   ;==>LocateSpellFactory
 Func LocateDarkSpellFactory()
 	Local $stext, $MsgBox, $iStupid = 0, $iSilly = 0, $sErrorText = ""
 
-	SetLog("Locating Dark Spell Factory...", $COLOR_BLUE)
+	SetLog("Locating Dark Spell Factory...", $COLOR_INFO)
 
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) And _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
 		Zoomout()
@@ -140,7 +140,7 @@ Func LocateDarkSpellFactory()
 				Select
 					Case $iStupid = 1
 						$sErrorText = "Dark Spell Factory Location Not Valid!" & @CRLF
-						SetLog("Location not valid, try again", $COLOR_RED)
+						SetLog("Location not valid, try again", $COLOR_ERROR)
 						ContinueLoop
 					Case $iStupid = 2
 						$sErrorText = "Please try to click inside the grass field!" & @CRLF
@@ -152,11 +152,11 @@ Func LocateDarkSpellFactory()
 						$sErrorText = "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 						ContinueLoop
 					Case $iStupid > 4
-						SetLog(" Operator Error - Bad Dark Spell Factory Location: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Dark Spell Factory Location: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_ERROR)
 						ClickP($aAway, 1, 0, "#0386")
 						Return False
 					Case Else
-						SetLog(" Operator Error - Bad Dark Spell Factory Location: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_RED)
+						SetLog(" Operator Error - Bad Dark Spell Factory Location: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_ERROR)
 						$DSFPos[0] = -1
 						$DSFPos[1] = -1
 						ClickP($aAway, 1, 0, "#0387")
@@ -186,7 +186,7 @@ Func LocateDarkSpellFactory()
 							$sErrorText = $sLocMsg & " ?!?!?!" & @CRLF & @CRLF & "Last Chance, DO NOT MAKE ME ANGRY, or" & @CRLF & "I will give ALL of your gold to Barbarian King," & @CRLF & "And ALL of your Gems to the Archer Queen!" & @CRLF
 							ContinueLoop
 						Case $iSilly > 4
-							SetLog("Quit joking, Click the Army Camp, or restart bot and try again", $COLOR_RED)
+							SetLog("Quit joking, Click the Army Camp, or restart bot and try again", $COLOR_ERROR)
 							$DSFPos[0] = -1
 							$DSFPos[1] = -1
 							ClickP($aAway, 1, 0, "#0388")
@@ -194,15 +194,15 @@ Func LocateDarkSpellFactory()
 					EndSelect
 				EndIf
 			Else
-				SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_RED)
+				SetLog(" Operator Error - Bad Spell Factory Location: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_ERROR)
 				$DSFPos[0] = -1
 				$DSFPos[1] = -1
 				ClickP($aAway, 1, 0, "#0389")
 				Return False
 			EndIf
-			SetLog("Locate Dark Spell Factory Success: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_GREEN)
+			SetLog("Locate Dark Spell Factory Success: " & "(" & $DSFPos[0] & "," & $DSFPos[1] & ")", $COLOR_SUCCESS)
 		Else
-			SetLog("Locate Dark Spell Factory Cancelled", $COLOR_BLUE)
+			SetLog("Locate Dark Spell Factory Cancelled", $COLOR_INFO)
 			ClickP($aAway, 1, 0, "#0390")
 			Return
 		EndIf

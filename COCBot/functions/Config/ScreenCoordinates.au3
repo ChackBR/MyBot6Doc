@@ -11,11 +11,17 @@
 ; Example .......: No
 ; ===============================================================================================================================
 ;                                 x    y     color  tolerance
+Global $aCenterEnemyVillageClickDrag = [65, 545] ; Scroll village using this location in the water
+Global $aCenterHomeVillageClickDrag = [160, 665] ; Scroll village using this location in the water
 Global $aIsReloadError[4] = [457, 301 + $midOffsetY, 0x33B5E5, 10] ; Pixel Search Check point For All Reload Button errors, except break ending
-Global $aIsMain[4] = [284, 28, 0x41B1CD, 20] ; Main Screen, Builder Left Eye
+;Global $aIsMain[4] = [284, 28, 0x41B1CD, 20] ; Main Screen, Builder Left Eye
+Global $aIsMain[4] = [283, 29, 0x4693BD, 20] ; Main Screen, Builder Left Eye :SC_okt
+
 Global $aIsDPI125[4] = [355, 35, 0x399CB8, 15] ; Main Screen, Builder Left Eye, DPI set to 125%
 Global $aIsDPI150[4] = [426, 42, 0x348FAA, 15] ; Main Screen, Builder Left Eye, DPI set to 150%
-Global $aIsMainGrayed[4] = [284, 28, 0x215B69, 15] ; Main Screen Grayed, Builder Left Eye
+;Global $aIsMainGrayed[4] = [284, 28, 0x215B69, 15] ; Main Screen Grayed, Builder Left Eye
+Global $aIsMainGrayed[4] = [284, 29, 0x120808, 15] ; Main Screen Grayed, Builder Left Eye :SC_okt
+
 Global $aTopLeftClient[4] = [1, 1, 0x000000, 0] ; TopLeftClient: Tolerance not needed
 Global $aTopMiddleClient[4] = [475, 1, 0x000000, 0] ; TopMiddleClient: Tolerance not needed
 Global $aTopRightClient[4] = [850, 1, 0x000000, 0] ; TopRightClient: Tolerance not needed
@@ -47,8 +53,8 @@ Global $aChatTab[4] = [331, 330 + $midOffsetY, 0xF0951D, 20] ; Chat Window Open,
 Global $aOpenChat[2] = [19, 349 + $midOffsetY] ; Open Chat Windows, Main Screen
 Global $aClanTab[2] = [189, 24] ; Clan Tab, Chat Window, Main Screen
 Global $aClanInfo[2] = [282, 55] ; Clan Info Icon
-Global $aArmyCampSize[2] = [192, 144 + $midOffsetY] ; Training Window, Overview screen, Current Size/Total Size
-Global $aArmySpellSize[2] = [184, 391 + $midOffsetY] ; Training Window Overviewscreen, current number/total capacity
+Global $aArmyCampSize[2] = [110, 136 + $midOffsetY] ; Training Window, Overview screen, Current Size/Total Size
+Global $aArmySpellSize[2] = [99, 284 + $midOffsetY] ; Training Window Overviewscreen, current number/total capacity
 Global $aArmyCCRemainTime[2] = [652, 266 + $midOffsetY] ; Training Window Overviewscreen, Minutes & Seconds remaining till can request again
 Global $aIsCampNotFull[4] = [149, 150 + $midOffsetY, 0x761714, 20] ; Training Window, Overview screen Red pixel in Exclamation mark with camp is not full
 Global $aIsCampFull[4] = [128, 151 + $midOffsetY, 0xFFFFFF, 10] ; Training Window, Overview screen White pixel in check mark with camp IS full (can not test for Green, as it has trees under it!)
@@ -59,15 +65,15 @@ Global $aLanguageCheck2[4] = [329, 9, 0x060706, 20] ; Main Screen Test Language 
 Global $aLanguageCheck3[4] = [348, 12, 0x040403, 20] ; Main Screen Test Language for word 'Builders'
 Global $aLanguageCheck4[4] = [354, 11, 0x090908, 20] ; Main Screen Test Language for word 'Builders'
 Global $aTrophies[2] = [65, 74] ; Main Screen, Trophies
-Global $aNoCloudsAttack[4] = [774, 1, 0x000000, 20] ; Attack Screen: No More Clouds
+Global $aNoCloudsAttack[4] = [25, 606, 0xC00000, 10] ; Attack Screen: No More Clouds
 Global $aMessageButton[2] = [38, 143] ; Main Screen, Message Button
 Global $aArmyTrainButton[2] = [40, 525 + $bottomOffsetY] ; Main Screen, Army Train Button
 Global $aWonOneStar[4] = [714, 538 + $bottomOffsetY, 0xC0C8C0, 20] ; Center of 1st Star for winning attack on enemy
 Global $aWonTwoStar[4] = [739, 538 + $bottomOffsetY, 0xC0C8C0, 20] ; Center of 2nd Star for winning attack on enemy
 Global $aWonThreeStar[4] = [763, 538 + $bottomOffsetY, 0xC0C8C0, 20] ; Center of 3rd Star for winning attack on enemy
 Global $aArmyOverviewTest[4] = [150, 554 + $midOffsetY, 0xBC2BD1, 20] ; Color purple of army overview  bottom left
-Global $aCancRequestCCBtn[4] = [340, 245, 0xCC4010, 20] ; Red button Cancel in window request CC
-Global $aSendRequestCCBtn[2] = [524, 245] ; Green button Send in window request CC
+Global $aCancRequestCCBtn[4] = [340, 250, 0xCC4010, 20] ; Red button Cancel in window request CC
+Global $aSendRequestCCBtn[2] = [524, 250] ; Green button Send in window request CC
 Global $atxtRequestCCBtn[2] = [430, 140] ; textbox in window request CC
 Global $aIsDarkElixirFull[4] = [709, 134, 0x1A0026, 10] ; Main Screen DE Resource bar is full
 Global $aIsGoldFull[4] = [660, 33, 0xD4B100, 6] ; Main Screen Gold Resource bar is Full
@@ -80,8 +86,10 @@ Global $aIsGemWindow3[4] = [586, 266 + $midOffsetY, 0xBC1218, 20] ; Main Screen,
 Global $aIsGemWindow4[4] = [595, 266 + $midOffsetY, 0xBC1218, 20] ; Main Screen, pixel below Red X to close gem window
 Global $aLootCartBtn[2] = [430, 640 + $bottomOffsetY] ; Main Screen Loot Cart button
 Global $aCleanYard[4] = [418, 587 + $bottomOffsetY, 0xE1debe, 20] ; Main Screen Clean Resources - Trees , Mushrooms etc
-Global $aIsTrainPgChk1[4]	  = [717, 120 + $midOffsetY, 0xE0070A, 10]  ; Main Screen, Train page open - Red below X
+Global $aIsTrainPgChk1[4]	  = [812, 97 + $midOffsetY, 0xE0070A, 10]  ; Main Screen, Train page open - Red below X
 Global $aIsTrainPgChk2[4]	  = [762, 328 + $midOffsetY, 0xF18439, 10]  ; Main Screen, Train page open - Dark Orange in left arrow
+Global $aRtnHomeCloud1[4]	  = [56, 592 + $bottomOffsetY, 0x0A223F, 15]  ; Cloud Screen, during search, blue pixel in left eye
+Global $aRtnHomeCloud2[4]	  = [72, 592 + $bottomOffsetY, 0x103F7E, 15]  ; Cloud Screen, during search, blue pixel in right eye
 Global $aNoLeague[4] 		  = [30, 30, 0x616568, 20] ; No League Shield
 
 ;Global $aKingHealth          = [ -1, 572 + $bottomOffsetY, 0x4FD404,110] ; Attack Screen, Check King's Health, X coordinate is dynamic, not used from array
@@ -141,7 +149,7 @@ Global $TrainBowl[4] = [311, 448 + $midOffsetY, 0x6060E8, 40] ; 6060E7, 6060E5 ,
 Global $NextBtn[4] = [780, 546 + $bottomOffsetY, 0xD34300, 20] ;  Next Button
 ; Someone asking troops : Color 0xD0E978 in x = 121
 
-Global $aRequestTroopsAO[6] = [679, 389, 0x80C21F, 0x000000, 0x9C9C9C, 20] ; Button Request Troops in Army Overview  (x,y,can request, request allready made, army full/no clan, toll)
+Global $aRequestTroopsAO[6] = [758, 572, 0x76C01E, 0xD8EE80, 0x989898, 20] ; Button Request Troops in Army Overview  (x,y,can request, request allready made, army full/no clan, toll)
 
 Global Const $FullBarb[4] = [198, 375 + $midOffsetY, 0x6D6D6D, 45] ; Location of Elixir check pixel with normal color and Barrack Full color
 Global Const $FullArch[4] = [308, 375 + $midOffsetY, 0x7F7F7F, 45]
@@ -190,7 +198,8 @@ Global Const $GemWitc[4] = [666, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemLava[4] = [239, 482 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemBowl[4] = [342, 479 + $midOffsetY, 0xE70A12, 30]
 
-Global Const $aCloseChat[4] = [331, 330 + $midOffsetY, 0xF0951D, 20]
+Global Const $aOpenChatTab[4] = [19, 335 + $midOffsetY, 0xE88D27, 20]
+Global Const $aCloseChat[4] = [331, 330 + $midOffsetY, 0xF0951D, 20]  ; duplicate with $aChatTab above, need to rename and fix all code to use one?
 Global Const $aChatDonateBtnColors[4][4] = [[0x050505, 0, -4, 30], [0x89CA31, 0, 13, 15], [0x89CA31, 0, 16, 15], [0xFFFFFF, 21, 7, 5]]
 
 ;attackreport
@@ -222,40 +231,61 @@ Global Const $aImageTypeS2[4] = [205, 180, 0xFEFEFE, 30]; Snow on Forest Edge 'L
 
 Global Const $ProfileRep01[4] = [600, 260, 0x71769F, 20]; If colorcheck then village have 0 attacks and 0 defenses
 
-Global $xBtnTrain = 94
-Global $yBtnTrain = 30
-Global $xTrainOffset = 103
-Global $yTrainOffset = 103
-Global $xTrain = 126
-Global $yTrain = 355
+Global $xBtnTrain = 89
+Global $yBtnTrain = 50
+Global $xTrainOffset = 97
+Global $yTrainOffset = 101
+Global $xTrain = 28
+Global $yTrain = 371
 Global $TrainBarbRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainArchRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainGiantRND[4]= [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainGoblRND[4] = [$xTrain + ($xTrainOffset * 3), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 3), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainWallRND[4] = [$xTrain + ($xTrainOffset * 4), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 4), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainBallRND[4] = [$xTrain + ($xTrainOffset * 5), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 5), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainGiantRND[4]= [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainWallRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainWizaRND[4] = [$xTrain + ($xTrainOffset * 3), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 3), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainDragRND[4] = [$xTrain + ($xTrainOffset * 4), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 4), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainBabyDRND[4] = [$xTrain + ($xTrainOffset * 5), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 5), $yTrain + $yBtnTrain + $midOffsetY]
 $yTrain = $yTrain + $yTrainOffset
-Global $TrainWizaRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainHealRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainDragRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainPekkRND[4] = [$xTrain + ($xTrainOffset * 3), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 3), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainBabyDRND[4] = [$xTrain + ($xTrainOffset * 4), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 4), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainArchRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainGoblRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainBallRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainHealRND[4] = [$xTrain + ($xTrainOffset * 3), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 3), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainPekkRND[4] = [$xTrain + ($xTrainOffset * 4), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 4), $yTrain + $yBtnTrain + $midOffsetY]
 Global $TrainMineRND[4] = [$xTrain + ($xTrainOffset * 5), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 5), $yTrain + $yBtnTrain + $midOffsetY]
 
-Global $xTrain = 180
-Global $yTrain = 355
-Global $xTrainOffset = 105
-Global $yTrainOffset = 105
+Global $xTrain = 445
+Global $yTrain = 371
 Global $TrainMiniRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainHogsRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainValkRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainGoleRND[4] = [$xTrain + ($xTrainOffset * 3), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 3), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainWitcRND[4] = [$xTrain + ($xTrainOffset * 4), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 4), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainValkRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainWitcRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainBowlRND[4] = [$xTrain + ($xTrainOffset * 3), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 3), $yTrain + $yBtnTrain + $midOffsetY]
 $yTrain = $yTrain + $yTrainOffset
-Global $TrainLavaRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
-Global $TrainBowlRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainHogsRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainGoleRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $TrainLavaRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
 
-Global $aArmyTrainButtonRND[4] = [20, 560 + $midOffsetY, 62, 595 + $midOffsetY] ; Main Screen, Army Train Button, RND
-Global $aAttackButtonRND[4] = [20, 623 + $midOffsetY, 110, 690 + $midOffsetY] ; Attack Button, Main Screen, RND
-Global $aFindMatchButtonRND[4] = [150, 520 + $midOffsetY, 345, 590 + $midOffsetY] ; Find Multiplayer Match Button, Attack Screen 860x780 without shield
-Global $NextBtnRND[4] = [720, 545 + $midOffsetY, 850, 584 + $midOffsetY] ;  Next Button
+Global $xBtnTrain = 89
+Global $yBtnTrain = 50
+Global $xTrainOffset = 97
+Global $yTrainOffset = 101
+Global $xTrain = 28
+Global $yTrain = 371
+Global $LightningSpellRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
+Global $RageSpellRND[4]= [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $FreezeSpellRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
+$yTrain = $yTrain + $yTrainOffset
+Global $HealSpellRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
+Global $JumpSpellRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+Global $CloneSpellRND[4] = [$xTrain + ($xTrainOffset * 2), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 2), $yTrain + $yBtnTrain + $midOffsetY]
+
+Global $xTrain = 331
+Global $yTrain = 371
+Global $PoisonSpellRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
+Global $HasteSpellRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+$yTrain = $yTrain + $yTrainOffset
+Global $EarthSpellRND[4] = [$xTrain + ($xTrainOffset * 0), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 0), $yTrain + $yBtnTrain + $midOffsetY]
+Global $SkeletonSpellRND[4] = [$xTrain + ($xTrainOffset * 1), $yTrain + $midOffsetY, $xTrain + $xBtnTrain + ($xTrainOffset * 1), $yTrain + $yBtnTrain + $midOffsetY]
+
+
+Global $aArmyTrainButtonRND[4] = [20, 540 + $midOffsetY, 55, 570 + $midOffsetY] ; Main Screen, Army Train Button, RND  Screen 860x732
+Global $aAttackButtonRND[4] = [20, 610 + $midOffsetY, 100, 670 + $midOffsetY] ; Attack Button, Main Screen, RND  Screen 860x732
+Global $aFindMatchButtonRND[4] = [200, 510 + $midOffsetY, 300, 530 + $midOffsetY] ; Find Multiplayer Match Button, Both Shield or without shield Screen 860x732
+Global $NextBtnRND[4] = [710, 530 + $midOffsetY, 830, 570 + $midOffsetY] ;  Next Button

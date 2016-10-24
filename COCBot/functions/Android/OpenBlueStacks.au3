@@ -22,32 +22,32 @@ Func OpenBlueStacks($bRestart = False)
 	Local $hTimer, $iCount = 0
 	Local $PID, $ErrorResult, $connected_to
 
-	SetLog("Starting BlueStacks and Clash Of Clans", $COLOR_GREEN)
+	SetLog("Starting BlueStacks and Clash Of Clans", $COLOR_SUCCESS)
 
 	;$PID = ShellExecute($__BlueStacks_Path & "HD-RunApp.exe", "-p " & $AndroidGamePackage & " -a " & $AndroidGamePackage & $AndroidGameClass)  ;Start BS and CoC with command line
 	$PID = ShellExecute($__BlueStacks_Path & "HD-Frontend.exe", "Android")  ;Start BS and CoC with command line
 	If _Sleep(1000) Then Return False
 	$ErrorResult = ControlGetHandle("BlueStacks Error", "", "") ; Check for BS error window handle if it opens
-	If $debugsetlog = 1 Then Setlog("$PID= "&$PID & ", $ErrorResult = " &$ErrorResult, $COLOR_PURPLE)
+	If $debugsetlog = 1 Then Setlog("$PID= "&$PID & ", $ErrorResult = " &$ErrorResult, $COLOR_DEBUG)
 	If $PID = 0 Or $ErrorResult <> 0  Then  ; IF ShellExecute failed or BS opens error window = STOP
-		SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_RED)
-		SetLog("Unable to continue........", $COLOR_MAROON)
+		SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_ERROR)
+		SetLog("Unable to continue........", $COLOR_WARNING)
 		btnstop()
 		SetError(1, 1, -1)
 		Return False
 	EndIf
 
-	SetLog("Please wait while " & $Android & "/CoC start....", $COLOR_GREEN)
+	SetLog("Please wait while " & $Android & "/CoC start....", $COLOR_SUCCESS)
 	WinGetAndroidHandle()
 	$hTimer = TimerInit()  ; start a timer for tracking BS start up time
 	While IsArray(ControlGetPos($Title, $AppPaneName, $AppClassInstance)) = False
 		If _Sleep(3000) Then ExitLoop
 		_StatusUpdateTime($hTimer, $Android & "/CoC Start")
 		If TimerDiff($hTimer) > $AndroidLaunchWaitSec * 1000 Then ; if no BS position returned in 4 minutes, BS/PC has major issue so exit
-			SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-			SetLog("BlueStacks refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_RED)
+			SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+			SetLog("BlueStacks refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_ERROR)
 			DebugSaveDesktopImage("BSOpenError_") ; Save copy of user desktop for analysis
-			SetLog("Unable to continue........", $COLOR_MAROON)
+			SetLog("Unable to continue........", $COLOR_WARNING)
 			btnstop()
 			SetError(1, 1, -1)
 			Return False
@@ -58,7 +58,7 @@ Func OpenBlueStacks($bRestart = False)
 	If IsArray(ControlGetPos($Title, $AppPaneName, $AppClassInstance)) Then
 	    $connected_to = ConnectAndroidAdb(False, 3000) ; small time-out as ADB connection must be available now
 
-		SetLog("BlueStacks Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_GREEN)
+		SetLog("BlueStacks Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_SUCCESS)
 
 		Return True
 
@@ -71,11 +71,11 @@ EndFunc   ;==>OpenBlueStacks
 Func OpenBlueStacks2($bRestart = False)
 
    Local $hTimer, $iCount = 0, $cmdOutput, $process_killed, $i, $connected_to
-   SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_GREEN)
+   SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_SUCCESS)
 
    If Not InitAndroid() Then Return False
 
-   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
+   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_SUCCESS)
 
    CloseUnsupportedBlueStacks2()
 
@@ -97,8 +97,8 @@ Func OpenBlueStacks2($bRestart = False)
 
 	 _StatusUpdateTime($hTimer)
 	 If TimerDiff($hTimer) > $AndroidLaunchWaitSec * 1000 Then ; if no BS position returned in 4 minutes, BS/PC has major issue so exit
-		 SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-		 SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_RED)
+		 SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+		 SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 		 Return False
 	 EndIf
@@ -122,11 +122,11 @@ Func OpenBlueStacks2($bRestart = False)
      If WaitForAndroidBootCompleted($AndroidLaunchWaitSec - TimerDiff($hTimer) / 1000, $hTimer) Then Return
 	 If Not $RunState Then Return False
 
-	 SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_GREEN)
+	 SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_SUCCESS)
      AndroidAdbLaunchShellInstance()
 
 	 If Not $RunState Then Return False
-     ConfigeBlueStacks2WindowManager()
+     ConfigBlueStacks2WindowManager()
 
 	 Return True
 
@@ -165,13 +165,13 @@ Func InitBlueStacksX($bCheckOnly = False, $bAdjustResolution = False, $bLegacyMo
 	  If Not FileExists($File) Then
 		 If $plusMode And $aFiles[$i] = $frontend_exe Then
 			; try legacy mode
-			SetLog("Cannot find " & $Android & " file:" & $File, $COLOR_ORANGE)
-			SetLog("Try legacy mode", $COLOR_ORANGE)
+			SetDebugLog("Cannot find " & $Android & " file:" & $File, $COLOR_ACTION)
+			SetDebugLog("Try legacy mode", $COLOR_ACTION)
 			Return InitBlueStacksX($bCheckOnly, $bAdjustResolution, True)
 		 EndIf
 		 If Not $bCheckOnly Then
-			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-			SetLog($File, $COLOR_RED)
+			SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+			SetLog($File, $COLOR_ERROR)
 			SetError(1, @extended, False)
 		 EndIf
 		 Return False
@@ -180,6 +180,15 @@ Func InitBlueStacksX($bCheckOnly = False, $bAdjustResolution = False, $bLegacyMo
     Next
 
     If Not $bCheckOnly Then
+	  $__BlueStacks2Version_2_5_or_later = GetVersionNormalized($__BlueStacks_Version) >= GetVersionNormalized("2.5.00.0000")
+	  If $AndroidAutoAdjustConfig = True And $__BlueStacks2Version_2_5_or_later Then
+		 SetDebugLog($Android & " Version is 2.5 or later found, enable ADB Mouse Click")
+		 $AndroidAdbClickEnabled = True
+		 $AndroidAppConfig[$AndroidConfig][11] = BitOR($AndroidAppConfig[$AndroidConfig][11], 4) ; enable ADB Mouse Click as ControlClick not working since this version anymore
+		 ; update android config
+		 InitAndroidConfig(True)
+	  EndIF
+
 	  Local $BootParameter = RegRead($HKLM & "\SOFTWARE\BlueStacks\Guests\Android\", "BootParameters")
 	  Local $OEMFeatures
 	  Local $aRegExResult = StringRegExp($BootParameter, "OEMFEATURES=(\d+)", $STR_REGEXPARRAYGLOBALMATCH)
@@ -247,7 +256,7 @@ Func InitBlueStacks($bCheckOnly = False)
 				  And StringInStr($__BlueStacks_Version, "0.11.") <> 1 _ ; user reported that version exists - ha ;)
    Then
 	  If Not $bCheckOnly Then
-		 SetLog("BlueStacks supported version 0.8.x - 0.11.x not found", $COLOR_RED)
+		 SetLog("BlueStacks supported version 0.8.x - 0.11.x not found", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -265,7 +274,7 @@ Func InitBlueStacks2($bCheckOnly = False)
    Local $bInstalled = InitBlueStacksX($bCheckOnly, True)
    If $bInstalled And StringInStr($__BlueStacks_Version, "2.") <> 1 Then
 	  If Not $bCheckOnly Then
-		 SetLog("BlueStacks supported version 2 not found", $COLOR_RED)
+		 SetLog("BlueStacks supported version 2 not found", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -292,8 +301,8 @@ Func WaitForDeviceBlueStacks2($WaitInSec, $hTimer = 0)
 	  $am_ready = StringInStr($cmdOutput, "Performing idle maintenance")
 	  If $am_ready Then ExitLoop
 	  If TimerDiff($hMyTimer) > $WaitInSec * 1000 Then ; if no device available in 4 minutes, Android/PC has major issue so exit
-		 SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-		 SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hMyTimer) / 1000, 2) & " seconds for activity manager", $COLOR_RED)
+		 SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+		 SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hMyTimer) / 1000, 2) & " seconds for activity manager", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 		 Return True
 	  EndIf
@@ -310,7 +319,7 @@ Func RestartBlueStacksXCoC()
    If Not InitAndroid() Then Return False
    If WinGetAndroidHandle() = 0 Then Return False
    $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n " & $AndroidGamePackage & "/" & $AndroidGameClass, $process_killed)
-   SetLog("Please wait for CoC restart......", $COLOR_BLUE)   ; Let user know we need time...
+   SetLog("Please wait for CoC restart......", $COLOR_INFO)   ; Let user know we need time...
    Return True
 EndFunc
 
@@ -337,15 +346,15 @@ Func CheckScreenBlueStacksX($bSetLog = True)
 	  If $Value <> $aValues[$i][1] Then
 		 If $iErrCnt = 0 Then
 			If $bSetLog Then
-			   SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+			   SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 			Else
-			   SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+			   SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 			EndIf
 		 EndIf
 		 If $bSetLog Then
-			SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+			SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 		 Else
-			SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+			SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 		 EndIf
 		 $iErrCnt += 1
 	  EndIf
@@ -390,7 +399,7 @@ Func RebootBlueStacksSetScreen()
 
 EndFunc
 
-Func ConfigeBlueStacks2WindowManager()
+Func ConfigBlueStacks2WindowManager()
    If Not $RunState Then Return
    Local $cmdOutput, $process_killed
    ; shell wm density 160
@@ -413,7 +422,7 @@ Func RebootBlueStacks2SetScreen($bOpenAndroid = True)
 
    If Not InitAndroid() Then Return False
 
-   ConfigeBlueStacks2WindowManager()
+   ConfigBlueStacks2WindowManager()
 
    ; Close Android
    CloseAndroid()

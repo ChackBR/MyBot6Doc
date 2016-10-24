@@ -11,7 +11,7 @@
 ; ===============================================================================================================================
 
 Func CheckImageType()
-	Setlog("Detecting your Village Theme", $COLOR_BLUE)
+	Setlog("Detecting your Village Theme", $COLOR_INFO)
 
 	ClickP($aAway, 2, 20, "#0467") ;Click Away
 

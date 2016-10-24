@@ -27,7 +27,7 @@ Local $x = 25, $y = 20
 	$y += 25
 		$lblDeployDB = GUICtrlCreateLabel(GetTranslated(608,3, "Attack on")&":", $x, $y + 5, -1, -1)
 		$cmbDeployDB = GUICtrlCreateCombo("", $x + 55, $y, 120, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			_GUICtrlSetTip(-1, GetTranslated(608,4, "Attack on a single side, penetrates through base") & @CRLF & GetTranslated(608,5, "Attack on two sides, penetrates through base") & @CRLF & GetTranslated(608,6, "Attack on three sides, gets outer and some inside of base"), GetTranslated(608,7,"Select the No. of sides to attack on."))
+			_GUICtrlSetTip(-1, GetTranslated(608,4, "Attack on a single side, penetrates through base") & @CRLF & GetTranslated(608,5, "Attack on two sides, penetrates through base") & @CRLF & GetTranslated(608,6, "Attack on Classic Four Fingers"), GetTranslated(608,7,"Select the No. of sides to attack on."))
 			GUICtrlSetData(-1, GetTranslated(608,8, "one side") & "|" & GetTranslated(608,9, "two sides") & "|" & GetTranslated(608,10, "three sides") &"|" & GetTranslated(608,11,"all sides equally" ) &"|" & "Classic Four Fingers", GetTranslated(608,11, -1))
 			GUICtrlSetOnEvent(-1,"cmbDeployDB") ; Uncheck SmartAttack Red Area when enable FourFinger to avoid conflict - DEMEN
 
@@ -37,12 +37,12 @@ Local $x = 25, $y = 20
 			_GUICtrlSetTip(-1, $txtTip)
 		$cmbUnitDelayDB = GUICtrlCreateCombo("", $x + 55, $y, 36, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			_GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "0|1|2|3|4|5|6|7|8|9|10", "4")
+			GUICtrlSetData(-1, "1|2|3|4|5|6|7|8|9|10", "4")
 		$lblWaveDelayDB = GUICtrlCreateLabel(GetTranslated(608,15, "Wave") & ":", $x + 100, $y + 5, -1, -1)
 			_GUICtrlSetTip(-1, $txtTip)
 		$cmbWaveDelayDB = GUICtrlCreateCombo("", $x + 140, $y, 36, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			_GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "0|1|2|3|4|5|6|7|8|9|10", "4")
+			GUICtrlSetData(-1, "1|2|3|4|5|6|7|8|9|10", "4")
 		$y += 22
 		$chkRandomSpeedAtkDB = GUICtrlCreateCheckbox(GetTranslated(608,16, "Randomize delay for Units && Waves"), $x, $y, -1, -1)
 			_GUICtrlSetTip(-1, $txtTip)

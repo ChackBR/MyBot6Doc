@@ -113,7 +113,7 @@ $y = 200
 	$lblUnbreakableLink = GUICtrlCreateLabel(GetTranslated(618,27,"More Info"), $x - 10, $y + 100, 100,20)
 		_GUIToolTip_AddTool($hToolTip, 0, "https://mybot.run/forums/index.php?/topic/2964-guide-how-to-use-mybot-unbreakable-mode-updated/", GUICtrlGetHandle($lblUnbreakableLink))
 		GUICtrlSetFont(-1, 8.5, $FW_BOLD, $GUI_FONTUNDER)
-		GUICtrlSetColor(-1, $COLOR_BLUE)
+		GUICtrlSetColor(-1, $COLOR_INFO)
     GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
 

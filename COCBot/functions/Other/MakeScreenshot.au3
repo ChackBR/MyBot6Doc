@@ -32,10 +32,15 @@ Func MakeScreenshot($TargetDir, $type = "jpg")
 		$hBrush = _GDIPlus_BrushCreateSolid(0xFF000029) ;create a brush AARRGGBB (using 0x000029 = Dark Blue)
 		If $ichkScreenshotHideName = 1 Then
 			If $aCCPos[0] = -1 Or $aCCPos[1] = -1 Then
-				Setlog("Screenshot warning: Locate the Clan Castle to hide the clanname!", $COLOR_RED)
+				Setlog("Screenshot warning: Locate the Clan Castle to hide the clanname!", $COLOR_ERROR)
 			EndIf
 			_GDIPlus_GraphicsFillRect($hGraphic, 0, 0, 250, 50, $hBrush) ;draw filled rectangle on the image to hide the user IGN
-			If $aCCPos[0] <> -1 Then _GDIPlus_GraphicsFillRect($hGraphic, $aCCPos[0] - 33, $aCCPos[1] - 2, 66, 18, $hBrush) ;draw filled rectangle on the image to hide the user CC if position is known
+			If $aCCPos[0] <> -1 Then
+				Local $xCC = $aCCPos[0]
+				Local $yCC = $aCCPos[1]
+				ConvertToVillagePos($xCC, $yCC)
+				_GDIPlus_GraphicsFillRect($hGraphic, $xCC - 33, $yCC - 2, 66, 18, $hBrush) ;draw filled rectangle on the image to hide the user CC if position is known
+			EndIf
 		EndIf
 		Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
 		Local $Time = @HOUR & "." & @MIN & "." & @SEC
@@ -48,7 +53,7 @@ Func MakeScreenshot($TargetDir, $type = "jpg")
 				SetLog("Screenshot saved: " & $TargetDir & $filename)
 			EndIf
 		Else
-			SetLog("Screenshot file not created!", $COLOR_RED)
+			SetLog("Screenshot file not created!", $COLOR_ERROR)
 		EndIf
 		$iMakeScreenshotNow = False
 		;reduce mem
@@ -58,7 +63,7 @@ Func MakeScreenshot($TargetDir, $type = "jpg")
 		_WinAPI_DeleteObject($hHBitmapScreenshot)
 
 	Else
-		SetLog("Not in game", $COLOR_RED)
+		SetLog("Not in game", $COLOR_ERROR)
 	EndIf
 
 EndFunc   ;==>MakeScreenshot

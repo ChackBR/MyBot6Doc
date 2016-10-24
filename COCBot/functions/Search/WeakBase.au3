@@ -22,7 +22,7 @@ Global $weakDefenseMaxLevels[6] = [0, 2, 4, 4, 9, 9]
 
 Func createWeakBaseStats()
 	; Get the directory file contents as keys for the stats file
-	Local $aKeys = _FileListToArrayRec(@ScriptDir & "\images\WeakBase", "*.png", $FLTAR_FILES, $FLTAR_RECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+	Local $aKeys = _FileListToArrayRec(@ScriptDir & "\imgxml\WeakBase", "*.xml", $FLTAR_FILES, $FLTAR_RECUR, $FLTAR_SORT, $FLTAR_NOPATH)
 	; Create our return array
 	Local $return[UBound($aKeys) - 1][2]
 
@@ -44,7 +44,7 @@ EndFunc   ;==>createWeakBaseStats
 
 Func readWeakBaseStats()
 	; Get the directory file contents as keys for the stats file
-	Local $aKeys = _FileListToArrayRec(@ScriptDir & "\images\WeakBase", "*.png", $FLTAR_FILES, $FLTAR_RECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+	Local $aKeys = _FileListToArrayRec(@ScriptDir & "\imgxml\WeakBase", "*.xml", $FLTAR_FILES, $FLTAR_RECUR, $FLTAR_SORT, $FLTAR_NOPATH)
 	; Create our return array
 	Local $return[UBound($aKeys) - 1][2]
 
@@ -97,14 +97,14 @@ EndFunc   ;==>updateWeakBaseStats
 Func displayWeakBaseLog($aResult, $showLog = False)
 	; Display the various statistical displays
 	If $showLog And IsArray($aResult) Then
-		SetLog("================ Weak Base Detection Start ================", $COLOR_BLUE)
-		SetLog("Highest Eagle Artillery: " & $aResult[1][0] & " - Level: " & $aResult[1][2], $COLOR_BLUE)
-		SetLog("Highest Inferno Tower: " & $aResult[2][0] & " - Level: " & $aResult[2][2], $COLOR_BLUE)
-		SetLog("Highest X-Bow: " & $aResult[3][0] & " - Level: " & $aResult[3][2], $COLOR_BLUE)
-		SetLog("Highest Wizard Tower: " & $aResult[4][0] & " - Level: " & $aResult[4][2], $COLOR_BLUE)
-		SetLog("Highest Mortar: " & $aResult[5][0] & " - Level: " & $aResult[5][2], $COLOR_BLUE)
-		SetLog("Time taken: " & $aResult[0][2] & " " & $aResult[0][3], $COLOR_BLUE)
-		SetLog("================ Weak Base Detection Stop =================", $COLOR_BLUE)
+		SetLog("================ Weak Base Detection Start ================", $COLOR_INFO)
+		SetLog("Highest Eagle Artillery: " & $aResult[1][0] & " - Level: " & $aResult[1][2], $COLOR_INFO)
+		SetLog("Highest Inferno Tower: " & $aResult[2][0] & " - Level: " & $aResult[2][2], $COLOR_INFO)
+		SetLog("Highest X-Bow: " & $aResult[3][0] & " - Level: " & $aResult[3][2], $COLOR_INFO)
+		SetLog("Highest Wizard Tower: " & $aResult[4][0] & " - Level: " & $aResult[4][2], $COLOR_INFO)
+		SetLog("Highest Mortar: " & $aResult[5][0] & " - Level: " & $aResult[5][2], $COLOR_INFO)
+		SetLog("Time taken: " & $aResult[0][2] & " " & $aResult[0][3], $COLOR_INFO)
+		SetLog("================ Weak Base Detection Stop =================", $COLOR_INFO)
 	EndIf
 EndFunc   ;==>displayWeakBaseLog
 
@@ -157,7 +157,7 @@ Func getMaxUISetting($settingArray, $defenseType)
 		$result = _Max(Number($maxDB), Number($maxLB))
 	EndIf
 
-	If $debugSetLog = 1 Then SetLog("Max " & $weakDefenseNames[$defenseType] & " Level: " & $result, $COLOR_BLUE)
+	If $debugSetLog = 1 Then SetLog("Max " & $weakDefenseNames[$defenseType] & " Level: " & $result, $COLOR_INFO)
 	Return $result
 EndFunc   ;==>getMaxUISetting
 
@@ -175,7 +175,7 @@ Func getMinUISetting($settingArray, $defenseType)
 		$result = _Min(Number($minDB), Number($minLB))
 	EndIf
 
-	If $debugSetLog = 1 Then SetLog("Min " & $weakDefenseNames[$defenseType] & " Level: " & $result, $COLOR_BLUE)
+	If $debugSetLog = 1 Then SetLog("Min " & $weakDefenseNames[$defenseType] & " Level: " & $result, $COLOR_INFO)
 	Return $result
 EndFunc   ;==>getMinUISetting
 
@@ -212,6 +212,8 @@ Func defenseSearch(ByRef $aResult, $directory, $townHallLevel, $settingArray, $d
 
 		If $guiCheckDefense And $maxSearchLevel >= $minSearchLevel Then
 			; Check the defense.
+			Local $sDefenseName = StringSplit($directory ,"\",$STR_NOCOUNT)
+			If $DebugSetlog Then SetLog("checkDefense :" & $sDefenseName[ubound($sDefenseName)-1] & " > " & $minSearchLevel & " < "& $maxSearchLevel & " For TH:" & $townHallLevel, $COLOR_ORANGE)
 			$aDefenseResult = returnHighestLevelSingleMatch($directory, $aResult[0][0], $statChkWeakBase, $minSearchLevel, $maxSearchLevel)
 			; Store the redlines retrieved for use in the later searches, if you don't currently have redlines saved.
 			If $aResult[0][0] = "" Then $aResult[0][0] = $aDefenseResult[6]
@@ -244,11 +246,11 @@ Func weakBaseCheck($townHallLevel = 11, $redlines = "")
 	Local $hWeakTimer = TimerInit()
 
 	; Check Eagle Artillery first as there is less images to process, mortars may not be needed.
-	$aEagleResults = defenseSearch($aResult, @ScriptDir & "\images\WeakBase\Eagle", $townHallLevel, $iCmbWeakEagle, $eWeakEagle, $performSearch, $iChkMaxEagle)
-	$aInfernoResults = defenseSearch($aResult, @ScriptDir & "\images\WeakBase\Infernos", $townHallLevel, $iCmbWeakInferno, $eWeakInferno, $performSearch, $iChkMaxInferno)
-	$aXBowResults = defenseSearch($aResult, @ScriptDir & "\images\WeakBase\Xbow", $townHallLevel, $iCmbWeakXBow, $eWeakXBow, $performSearch, $iChkMaxXBow)
-	$aWizardTowerResults = defenseSearch($aResult, @ScriptDir & "\images\WeakBase\WTower", $townHallLevel, $iCmbWeakWizTower, $eWeakWizard, $performSearch, $iChkMaxWizTower)
-	$aMortarResults = defenseSearch($aResult, @ScriptDir & "\images\WeakBase\Mortars", $townHallLevel, $iCmbWeakMortar, $eWeakMortar, $performSearch, $iChkMaxMortar)
+	$aEagleResults = defenseSearch($aResult, @ScriptDir & "\imgxml\WeakBase\Eagle", $townHallLevel, $iCmbWeakEagle, $eWeakEagle, $performSearch, $iChkMaxEagle)
+	$aInfernoResults = defenseSearch($aResult, @ScriptDir & "\imgxml\WeakBase\Infernos", $townHallLevel, $iCmbWeakInferno, $eWeakInferno, $performSearch, $iChkMaxInferno)
+	$aXBowResults = defenseSearch($aResult, @ScriptDir & "\imgxml\WeakBase\Xbow", $townHallLevel, $iCmbWeakXBow, $eWeakXBow, $performSearch, $iChkMaxXBow)
+	$aWizardTowerResults = defenseSearch($aResult, @ScriptDir & "\imgxml\WeakBase\WTower", $townHallLevel, $iCmbWeakWizTower, $eWeakWizard, $performSearch, $iChkMaxWizTower)
+	$aMortarResults = defenseSearch($aResult, @ScriptDir & "\imgxml\WeakBase\Mortars", $townHallLevel, $iCmbWeakMortar, $eWeakMortar, $performSearch, $iChkMaxMortar)
 
 	; Fill the array that will be returned with the various results, only store the results if its a valid array
 	For $i = 1 To UBound($aResult) - 1

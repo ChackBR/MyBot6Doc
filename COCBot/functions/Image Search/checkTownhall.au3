@@ -91,13 +91,13 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion = True)
 				$THy += Int(StringMid(Execute("$THImages" & $t & "[" & $i & "]"), StringInStr(Execute("$THImages" & $t & "[" & $i & "]"), "Y") + 1, StringInStr(Execute("$THImages" & $t & "[" & $i & "]"), ".BMP") - StringInStr(Execute("$THImages" & $t & "[" & $i & "]"), "Y") - 1))
 				If $THLocation = 1 Then
 					If $debugBuildingPos = 1 Then
-						Setlog("#*# checkTownhallADV2: ", $COLOR_TEAL)
-						Setlog("  - Position (" & $THx & "," & $THy & ")", $COLOR_TEAL)
-						Setlog("  - TownHall detected level " & $THText[$t], $COLOR_TEAL)
-						Setlog("  - Image Match " & Execute("$THImages" & $t & "[" & $i & "]"), $COLOR_TEAL)
-						Setlog("  - IsInsidediamond: " & isInsideDiamondXY($THx, $THy), $COLOR_TEAL)
-						SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
-						SetLog("  - Images checked: " & $count, $COLOR_TEAL)
+						Setlog("#*# checkTownhallADV2: ", $COLOR_DEBUG1)
+						Setlog("  - Position (" & $THx & "," & $THy & ")", $COLOR_DEBUG1)
+						Setlog("  - TownHall detected level " & $THText[$t], $COLOR_DEBUG1)
+						Setlog("  - Image Match " & Execute("$THImages" & $t & "[" & $i & "]"), $COLOR_DEBUG1)
+						Setlog("  - IsInsidediamond: " & isInsideDiamondXY($THx, $THy), $COLOR_DEBUG1)
+						SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_DEBUG1)
+						SetLog("  - Images checked: " & $count, $COLOR_DEBUG1)
 					EndIf
 					If isInsideDiamondXY($THx, $THy) = True Then
 						;add in stats-----
@@ -123,11 +123,11 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion = True)
 	ConsoleWrite("THLOCATION = <" & $THLocation & ">")
 	If $THLocation = 0 Then
 		If $debugBuildingPos = 1 Then
-			Setlog("#*# checkTownhallADV2: NONE ", $COLOR_TEAL)
-			SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
-			SetLog("  - Images checked: " & $count, $COLOR_TEAL)
+			Setlog("#*# checkTownhallADV2: NONE ", $COLOR_DEBUG1)
+			SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_DEBUG1)
+			SetLog("  - Images checked: " & $count, $COLOR_DEBUG1)
 		EndIf
-		If $debugBuildingPos = 1 And ($limit <> 0 Or $tolerancefix <> 0) Then Setlog("#*# checkTownhallADV2: limit= " & $limit & ", tolerancefix=" & $tolerancefix, $COLOR_TEAL)
+		If $debugBuildingPos = 1 And ($limit <> 0 Or $tolerancefix <> 0) Then Setlog("#*# checkTownhallADV2: limit= " & $limit & ", tolerancefix=" & $tolerancefix, $COLOR_DEBUG1)
 		If $debugImageSave = 1 Then DebugImageSave("checkTownhallADV2_NoTHFound_", False)
 	EndIf
 
@@ -163,7 +163,7 @@ Func CaptureTHwithInfo($THx, $THy, $ImageInfo)
 	Local $Time = @HOUR & "." & @MIN & "." & @SEC
 	Local $filename = String("THDetected_" & $Date & "_" & $Time & "_" & $ImageInfo & ".png")
 
-	If $debugBuildingPos = 1 And $debugsetlog = 1 Then Setlog(" _GDIPlus_ImageSaveToFile", $COLOR_PURPLE)
+	If $debugBuildingPos = 1 And $debugsetlog = 1 Then Setlog(" _GDIPlus_ImageSaveToFile", $COLOR_DEBUG)
 	Local $savefolder = $dirTempDebug & "THDetected_" & "\"
 	DirCreate($savefolder)
 	_GDIPlus_ImageSaveToFile($EditedImage, $savefolder & $filename)

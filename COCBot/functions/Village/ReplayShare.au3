@@ -24,8 +24,8 @@ Func ReplayShare($last = 1)
 		;--  open page of attacks -------------------------------------------------------------
 		ClickP($aAway, 1, 0, "#0235") ;Click Away
 		If _Sleep($iDelayReplayShare2) Then Return ;
-		SetLog("Share Replay: Opening Messages Page...", $COLOR_BLUE)
-		If $DebugSetlog = 1 Then Setlog("$last= " & $last, $COLOR_PURPLE)
+		SetLog("Share Replay: Opening Messages Page...", $COLOR_INFO)
+		If $DebugSetlog = 1 Then Setlog("$last= " & $last, $COLOR_DEBUG)
 		ClickP($aMessageButton, 1, 0, "#0236") ;Click Messages Button
 		If _Sleep($iDelayReplayShare3) Then Return
 		Click(380, 94 + $midOffsetY, 1, 0, "#0237") ; Click Attack Log Tab, move down 30 pixels for 860x780
@@ -36,7 +36,7 @@ Func ReplayShare($last = 1)
 
 		; check if exist replay queue ----------------------------------------------------
 		Local $FileListQueueName = _FileListToArray($dirTemp, "Village*.png", 1); list files to an array.
-		If $DebugSetlog = 1 Then Setlog("Top share button pixel color 70D4E8 or BBBBBB: " & _GetPixelColor(500, 156 + $midOffsetY), $COLOR_PURPLE)
+		If $DebugSetlog = 1 Then Setlog("Top share button pixel color 70D4E8 or BBBBBB: " & _GetPixelColor(500, 156 + $midOffsetY), $COLOR_DEBUG)
 		If _ColorCheck(_GetPixelColor(500, 156 + $midOffsetY), Hex(0x70D4E8, 6), 10) = True And Not (IsArray($FileListQueueName)) Then
 			;button replay blue, moved down 30 for 860x780
 			Setlog("Ok, sharing!")
@@ -76,12 +76,12 @@ Func ReplayShare($last = 1)
 				Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
 				Local $Time = @HOUR & "." & @MIN
 				Local $iSaveFile = _GDIPlus_ImageSaveToFile($hBitmap, $dirTemp & "Village_" & $Date & "_" & $Time & "^" & StringFormat("%s", $SearchCount) & ".png")
-				If Not ($iSaveFile) Then SetLog("An error occurred putting screenshot in queue", $COLOR_RED)
+				If Not ($iSaveFile) Then SetLog("An error occurred putting screenshot in queue", $COLOR_ERROR)
 				Click(763, 86 + $midOffsetY, 1, 0, "#0241") ; Close  page
 				If _Sleep($iDelayReplayShare2) Then Return ;
 			Else
 				;button not found, abort
-				Setlog("Cannot Share Now... retry later.", $COLOR_RED)
+				Setlog("Cannot Share Now... retry later.", $COLOR_ERROR)
 			EndIf
 		EndIf
 		$iShareAttackNow = 0 ;reset variable
@@ -114,14 +114,14 @@ Func ReplayShare($last = 1)
 				;--  open page of attacks -------------------------------------------------------------
 				ClickP($aAway, 1, 0, "#0242") ;Click Away
 				If _Sleep($iDelayReplayShare2) Then Return ;
-				SetLog("Share Replay: Opening Messages Page...", $COLOR_BLUE)
-				If $DebugSetlog = 1 Then Setlog("$last= " & $last, $COLOR_PURPLE)
+				SetLog("Share Replay: Opening Messages Page...", $COLOR_INFO)
+				If $DebugSetlog = 1 Then Setlog("$last= " & $last, $COLOR_DEBUG)
 				ClickP($aMessageButton, 1, 0, "#0243") ; Click Messages Button
 				If _Sleep($iDelayReplayShare3) Then Return
 				Click(380, 94 + $midOffsetY, 1, 0, "#0244") ; Click Attack Log Tab, moved down 30 for 860x780
 				If _Sleep($iDelayReplayShare3) Then Return
 				_CaptureRegion()
-				If $DebugSetlog = 1 Then Setlog("Top share button pixel color 70D4E8 or BBBBBB: " & _GetPixelColor(500, 156 + $midOffsetY), $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Top share button pixel color 70D4E8 or BBBBBB: " & _GetPixelColor(500, 156 + $midOffsetY), $COLOR_DEBUG)
 				If _ColorCheck(_GetPixelColor(500, 156 + $midOffsetY), Hex(0x70D4E8, 6), 10) = True Then
 					;button replay blue,, moved down 30 for 860x780
 					Setlog("Ok, sharing!")
@@ -131,7 +131,7 @@ Func ReplayShare($last = 1)
 							$VilLoc = _ImageSearch($dirTemp & $FileListName[$FileListDate], 1, $VilX, $VilY, $VilTol) ;
 							;SetLog( "Debug: Searching " & $FileListName[$FileListDate] & " tollerance" & $VilTol   & " - Found=" & $VilLoc)
 							If $VilLoc = 1 And $VilX > 35 And $VilY < 610 Then
-								;SetLog("Debug: Found!, position: (" & $VilX & "," & $VilY &")", $COLOR_GREEN)
+								;SetLog("Debug: Found!, position: (" & $VilX & "," & $VilY &")", $COLOR_SUCCESS)
 								Click(500, $VilY, 1, 0, "#0245") ;Click Share Button
 								If _Sleep($iDelayReplayShare1) Then Return
 								Click(300, 120, 1, 0, "#0246") ;Select text for write comment
@@ -165,10 +165,10 @@ Func ReplayShare($last = 1)
 
 								;only for test copy..
 								Local $iCopy = FileCopy($dirTemp & $FileListName[$FileListDate], $dirTemp & "shared_" & $FileListName[$FileListDate])
-								If Not ($iCopy) Then Setlog("An error occurred copying a temporary file", $COLOR_RED)
+								If Not ($iCopy) Then Setlog("An error occurred copying a temporary file", $COLOR_ERROR)
 								;delete
 								Local $iDelete = FileDelete($dirTemp & $FileListName[$FileListDate])
-								If Not ($iDelete) Then Setlog("An error occurred deleting a temporary file", $COLOR_RED)
+								If Not ($iDelete) Then Setlog("An error occurred deleting a temporary file", $COLOR_ERROR)
 								If _Sleep($iDelayReplayShare4) Then Return
 								Return True
 							EndIf
@@ -178,10 +178,10 @@ Func ReplayShare($last = 1)
 						;delete file not found
 						;only for test copy..
 						Local $iCopy = FileCopy($dirTemp & $FileListName[$FileListDate], $dirTemp & "discard_" & $FileListName[$FileListDate])
-						If Not ($iCopy) Then Setlog("An error occurred copying a temporary file", $COLOR_RED)
+						If Not ($iCopy) Then Setlog("An error occurred copying a temporary file", $COLOR_ERROR)
 						;delete
 						Local $iDelete = FileDelete($dirTemp & $FileListName[$FileListDate])
-						If Not ($iDelete) Then Setlog("An error occurred deleting a temporary file", $COLOR_RED)
+						If Not ($iDelete) Then Setlog("An error occurred deleting a temporary file", $COLOR_ERROR)
 					EndIf
 
 				Else
@@ -194,7 +194,7 @@ Func ReplayShare($last = 1)
 						If _Sleep($iDelayReplayShare2) Then Return ;
 					Else
 						;button not found, abort
-						Setlog("Button Share not found, abort.", $COLOR_RED)
+						Setlog("Button Share not found, abort.", $COLOR_ERROR)
 						Click(763, 86 + $midOffsetY, 1, 0, "#0249") ; Close  page
 						If _Sleep($iDelayReplayShare2) Then Return ;
 					EndIf

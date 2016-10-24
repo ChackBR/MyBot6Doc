@@ -22,10 +22,12 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 			If $iAimTrophy[$pMode] - $ReduceTrophy >= 0 Then $iAimTrophy[$pMode] -= $ReduceTrophy
 			If $iAimGoldPlusElixir[$pMode] - $ReduceGoldPlusElixir >= 0 Then $iAimGoldPlusElixir[$pMode] -= $ReduceGoldPlusElixir
 
+			Local $txtTrophies = ""
+			if $iChkMeetTrophy[$pMode] = 1 Then $txtTrophies =  " [T]:" & StringFormat("%2s", $iAimTrophy[$pMode]) & $iAimTHtext[$pMode]
 			If $iCmbMeetGE[$pMode] = 2 Then
-				SetLog("Aim:           [G+E]:" & StringFormat("%7s", $iAimGoldPlusElixir[$pMode]) & " [D]:" & StringFormat("%5s", $iAimDark[$pMode]) & " [T]:" & StringFormat("%2s", $iAimTrophy[$pMode]) & $iAimTHtext[$pMode] & " for: " & $sModeText[$pMode], $COLOR_GREEN, "Lucida Console", 7.5)
+				SetLog("Aim:           [G+E]:" & StringFormat("%7s", $iAimGoldPlusElixir[$pMode]) & " [D]:" & StringFormat("%5s", $iAimDark[$pMode]) &  $txtTrophies & " for: " & $sModeText[$pMode], $COLOR_SUCCESS, "Lucida Console", 7.5)
 			Else
-				SetLog("Aim: [G]:" & StringFormat("%7s", $iAimGold[$pMode]) & " [E]:" & StringFormat("%7s", $iAimElixir[$pMode]) & " [D]:" & StringFormat("%5s", $iAimDark[$pMode]) & " [T]:" & StringFormat("%2s", $iAimTrophy[$pMode]) & $iAimTHtext[$pMode] & " for: " & $sModeText[$pMode], $COLOR_GREEN, "Lucida Console", 7.5)
+				SetLog("Aim: [G]:" & StringFormat("%7s", $iAimGold[$pMode]) & " [E]:" & StringFormat("%7s", $iAimElixir[$pMode]) & " [D]:" & StringFormat("%5s", $iAimDark[$pMode]) & $txtTrophies & " for: " & $sModeText[$pMode], $COLOR_SUCCESS, "Lucida Console", 7.5)
 			EndIf
 		EndIf
 	EndIf
@@ -91,7 +93,7 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 
 		If $iCmbMeetGE[$pMode] = 2 Then
 			If $GPE = False Then Return False
-			;SetLog("[G + E]:" & StringFormat("%7s", $searchGold + $searchElixir), $COLOR_GREEN, "Lucida Console", 7.5)
+			;SetLog("[G + E]:" & StringFormat("%7s", $searchGold + $searchElixir), $COLOR_SUCCESS, "Lucida Console", 7.5)
 		EndIf
 	EndIf
 

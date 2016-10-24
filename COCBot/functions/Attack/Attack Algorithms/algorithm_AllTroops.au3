@@ -14,12 +14,12 @@
 ; ===============================================================================================================================
 
 Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
-	If $debugSetlog = 1 Then Setlog("algorithm_AllTroops", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("algorithm_AllTroops", $COLOR_DEBUG)
 	SetSlotSpecialTroops()
 
 	If _Sleep($iDelayalgorithm_AllTroops1) Then Return
 
-	If $iChkDeploySettings[$iMatchMode] < 4 Then ; !( FourFinger )
+	If $iChkDeploySettings[$iMatchMode] <> 4 Then ; !( FourFinger )
 		SmartAttackStrategy($iMatchMode) ; detect redarea first to drop any troops
 	EndIf
 
@@ -65,26 +65,26 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	Local $nbSides = 0
 	Switch $iChkDeploySettings[$iMatchMode]
 		Case 0 ;Single sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking on a single side", $COLOR_BLUE)
+			SetLog("Attacking on a single side", $COLOR_INFO)
 			$nbSides = 1
 		Case 1 ;Two sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking on two sides", $COLOR_BLUE)
+			SetLog("Attacking on two sides", $COLOR_INFO)
 			$nbSides = 2
 		Case 2 ;Three sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking on three sides", $COLOR_BLUE)
+			SetLog("Attacking on three sides", $COLOR_INFO)
 			$nbSides = 3
 		Case 3 ;All sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking on all sides", $COLOR_BLUE)
+			SetLog("Attacking on all sides", $COLOR_INFO)
 			$nbSides = 4
 		Case 4 ;Classic Four Finger ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking four finger fight style", $COLOR_BLUE)
+			SetLog("Attacking four finger fight style", $COLOR_INFO)
 			$nbSides = 5
 		Case 5 ;DE Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking on Dark Elixir Side.", $COLOR_BLUE)
+			SetLog("Attacking on Dark Elixir Side.", $COLOR_INFO)
 			$nbSides = 1
 			If Not ($iChkRedArea[$iMatchMode]) Then GetBuildingEdge($eSideBuildingDES) ; Get DE Storage side when Redline is not used.
 		Case 6 ;TH Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking on Town Hall Side.", $COLOR_BLUE)
+			SetLog("Attacking on Town Hall Side.", $COLOR_INFO)
 			$nbSides = 1
 			If Not ($iChkRedArea[$iMatchMode]) Then GetBuildingEdge($eSideBuildingTH) ; Get Townhall side when Redline is not used.
 	EndSwitch
@@ -142,7 +142,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 						]
 		EndSwitch
 
-	; Classic Four Finger
+	; Classic Four Fingers
 	ElseIf $nbSides = 5 Then
 		Local $listInfoDeploy[21][5] = [[$eGiant, $nbSides, 1, 1, 2], _
 						[$eGole,  $nbSides, 1, 1, 2], _
@@ -166,7 +166,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 						["HEROES",       1, 2, 1, 1]]
 
 	Else
-		If $debugSetlog = 1 Then SetLog("listdeploy standard for attack", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then SetLog("listdeploy standard for attack", $COLOR_DEBUG)
 		Switch $icmbStandardAlgorithm[$iMatchMode]
 			Case 0
 				Local $listInfoDeploy[21][5] = [[$eGole, $nbSides, 1, 1, 2] _
@@ -215,7 +215,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 						, ["HEROES", 1, 2, 1, 1] _
 						]
 			Case Else
-				SetLog("Algorithm type unavailable, defaulting to regular", $COLOR_RED)
+				SetLog("Algorithm type unavailable, defaulting to regular", $COLOR_ERROR)
 				Local $listInfoDeploy[13][5] = [[$eGiant, $nbSides, 1, 1, 2] _
 						, [$eBarb, $nbSides, 1, 2, 0] _
 						, [$eWall, $nbSides, 1, 1, 1] _
@@ -243,10 +243,10 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 	If _Sleep($iDelayalgorithm_AllTroops4) Then Return
-	SetLog("Dropping left over troops", $COLOR_BLUE)
+	SetLog("Dropping left over troops", $COLOR_INFO)
 	For $x = 0 To 1
 		IF PrepareAttack($iMatchMode, True) = 0 Then
-			If $debugsetlog = 1 Then Setlog("No Wast time... exit, no troops usable left",$COLOR_PURPLE)
+			If $debugsetlog = 1 Then Setlog("No Wast time... exit, no troops usable left",$COLOR_DEBUG)
 			ExitLoop ;Check remaining quantities
 		EndIf
 		For $i = $eBarb To $eBowl ; lauch all remaining troops
@@ -254,7 +254,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 			LauchTroop($i, $nbSides, 0, 1)
 			CheckHeroesHealth()
 			;Else
-			;	LauchTroop($i, $nbSides, 0, 1, 2)
+			;	 LauchTroop($i, $nbSides, 0, 1, 2)
 			;EndIf
 			If _Sleep($iDelayalgorithm_AllTroops5) Then Return
 		Next
@@ -262,15 +262,15 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	;Activate KQ's power
 	If ($checkKPower Or $checkQPower) And $iActivateKQCondition = "Manual" Then
-		SetLog("Waiting " & $delayActivateKQ / 1000 & " seconds before activating Hero abilities", $COLOR_BLUE)
+		SetLog("Waiting " & $delayActivateKQ / 1000 & " seconds before activating Hero abilities", $COLOR_INFO)
 		If _Sleep($delayActivateKQ) Then Return
 		If $checkKPower Then
-			SetLog("Activating King's power", $COLOR_BLUE)
+			SetLog("Activating King's power", $COLOR_INFO)
 			SelectDropTroop($King)
 			$checkKPower = False
 		EndIf
 		If $checkQPower Then
-			SetLog("Activating Queen's power", $COLOR_BLUE)
+			SetLog("Activating Queen's power", $COLOR_INFO)
 			SelectDropTroop($Queen)
 			$checkQPower = False
 		EndIf
@@ -295,10 +295,10 @@ Func SetSlotSpecialTroops()
 			$Warden = $i
 		EndIf
 	Next
-	If $debugSetlog = 1 Then SetLog("Use king SLOT # " & $King, $COLOR_PURPLE)
-	If $debugSetlog = 1 Then SetLog("Use queen SLOT # " & $Queen, $COLOR_PURPLE)
-	If $debugSetlog = 1 Then SetLog("Use CC SLOT # " & $CC, $COLOR_PURPLE)
-	If $debugSetlog = 1 Then SetLog("Use Warden SLOT # " & $Warden, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("Use king SLOT # " & $King, $COLOR_DEBUG)
+	If $debugSetlog = 1 Then SetLog("Use queen SLOT # " & $Queen, $COLOR_DEBUG)
+	If $debugSetlog = 1 Then SetLog("Use CC SLOT # " & $CC, $COLOR_DEBUG)
+	If $debugSetlog = 1 Then SetLog("Use Warden SLOT # " & $Warden, $COLOR_DEBUG)
 EndFunc   ;==>SetSlotSpecialTroops
 
 Func CloseBattle()
@@ -324,7 +324,7 @@ Func SmartAttackStrategy($imode)
 	If $iMatchMode <> $MA then ; (milking attack use own strategy)
 
 		If ($iChkRedArea[$imode]) Then
-			SetLog("Calculating Smart Attack Strategy", $COLOR_BLUE)
+			SetLog("Calculating Smart Attack Strategy", $COLOR_INFO)
 			Local $hTimer = TimerInit()
 			_CaptureRegion2()
 			_GetRedArea()
@@ -336,7 +336,7 @@ Func SmartAttackStrategy($imode)
 			;SetLog("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
 
 			If ($iChkSmartAttack[$imode][0] = 1 Or $iChkSmartAttack[$imode][1] = 1 Or $iChkSmartAttack[$imode][2] = 1) Then
-				SetLog("Locating Mines, Collectors & Drills", $COLOR_BLUE)
+				SetLog("Locating Mines, Collectors & Drills", $COLOR_INFO)
 				$hTimer = TimerInit()
 				Global $PixelMine[0]
 				Global $PixelElixir[0]

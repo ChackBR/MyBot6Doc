@@ -304,6 +304,22 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	_GUICtrlComboBox_SetCurSel($cmbABSelectTroop, $iCmbSelectTroop[$LB])
 	_GUICtrlComboBox_SetCurSel($cmbTSSelectTroop, $iCmbSelectTroop[$TS])
 
+   If $iTrainArchersToFitCamps = 1 Then
+	  GUICtrlSetState($ChkTrainArchersToFitCamps, $GUI_CHECKED)
+   Else
+	  GUICtrlSetState($ChkTrainArchersToFitCamps, $GUI_UNCHECKED)
+   EndIf
+
+	IniReadS($iTrainArchersToFitCamps, $config, "troop", "TrainArchersToFitCamps", "1")
+
+	If $iChkUseQuickTrain = 1 Then
+		GUICtrlSetState($ChkUseQuickTrain, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($ChkUseQuickTrain, $GUI_UNCHECKED)
+	EndIf
+
+	_GUICtrlComboBox_SetCurSel($cmbCurrentArmy, $iCmbCurrentArmy)
+
 ;~ 	If $iChkRedArea[$DB] = 1 Then
 ;~ 		GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_CHECKED)
 ;~ 	Else
@@ -690,9 +706,9 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	For $i = 0 To UBound($TroopDarkName) - 1
 		GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), Eval($TroopDarkName[$i] & "Comp"))
 	Next
-	SetComboTroopComp()
-	SetComboDarkTroopComp()
-	lblTotalCount()
+	;SetComboTroopComp()
+	;SetComboDarkTroopComp()
+	;lblTotalCount()
 
 	_GUICtrlComboBox_SetCurSel($cmbBarrack1, $barrackTroop[0])
 	_GUICtrlComboBox_SetCurSel($cmbBarrack2, $barrackTroop[1])
@@ -745,46 +761,57 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	ElseIf $ichkTroopOrder = 0 Then
 		GUICtrlSetState($chkTroopOrder, $GUI_UNCHECKED)
 	EndIf
-	chkTroopOrder(False)
+	;chkTroopOrder(False)
 
 	For $z = 0 To UBound($DefaultTroopGroup) -1
 		_GUICtrlComboBox_SetCurSel($cmbTroopOrder[$z], $icmbTroopOrder[$z])
 		GUICtrlSetImage($ImgTroopOrder[$z], $pIconLib, $aTroopOrderIcon[$icmbTroopOrder[$z]+1])
 	Next
-	If $ichkTroopOrder = 1 Then  ; only update troop train order if enabled
-		If ChangeTroopTrainOrder() = False Then ; process error
-			SetDefaultTroopGroup()
-			GUICtrlSetState($chkTroopOrder, $GUI_UNCHECKED)
-			$ichkTroopOrder = 0
-			GUICtrlSetState($btnTroopOrderSet, $GUI_DISABLE) ; disable button
-			For $i = 0 To UBound($aTroopOrderList) - 2
-				GUICtrlSetState($cmbTroopOrder[$i], $GUI_DISABLE) ; disable combo boxes
-			Next
-		EndIf
-	EndIf
+;~ 	If $ichkTroopOrder = 1 Then  ; only update troop train order if enabled
+;~ 		If ChangeTroopTrainOrder() = False Then ; process error
+;~ 			SetDefaultTroopGroup()
+;~ 			GUICtrlSetState($chkTroopOrder, $GUI_UNCHECKED)
+;~ 			$ichkTroopOrder = 0
+;~ 			GUICtrlSetState($btnTroopOrderSet, $GUI_DISABLE) ; disable button
+;~ 			For $i = 0 To UBound($aTroopOrderList) - 2
+;~ 				GUICtrlSetState($cmbTroopOrder[$i], $GUI_DISABLE) ; disable combo boxes
+;~ 			Next
+;~ 		EndIf
+;~ 	EndIf
 
 	If $ichkDarkTroopOrder = 1 Then
 		GUICtrlSetState($chkDarkTroopOrder, $GUI_CHECKED)
 	ElseIf $ichkDarkTroopOrder = 0 Then
 		GUICtrlSetState($chkDarkTroopOrder, $GUI_UNCHECKED)
 	EndIf
-	chkDarkTroopOrder(False)
+	;chkDarkTroopOrder(False)
 
 	For $z = 0 To UBound($DefaultTroopGroupDark) -1
 		_GUICtrlComboBox_SetCurSel($cmbDarkTroopOrder[$z], $icmbDarkTroopOrder[$z])
 		GUICtrlSetImage($ImgDarkTroopOrder[$z], $pIconLib, $aDarkTroopOrderIcon[$icmbDarkTroopOrder[$z]+1])
 	Next
-	If $ichkDarkTroopOrder = 1 Then  ; only update troop train order if enabled
-		If ChangeDarkTroopTrainOrder() = False Then ; process error
-			SetDefaultTroopGroupDark()
-			GUICtrlSetState($chkDarkTroopOrder, $GUI_UNCHECKED)
-			$ichkDarkTroopOrder = 0
-			GUICtrlSetState($btnDarkTroopOrderSet, $GUI_DISABLE) ; disable button
-			For $i = 0 To UBound($aDarkTroopOrderList) - 2
-				GUICtrlSetState($cmbDarkTroopOrder[$i], $GUI_DISABLE) ; disable combo boxes
-			Next
-		EndIf
+;~ 	If $ichkDarkTroopOrder = 1 Then  ; only update troop train order if enabled
+;~ 		If ChangeDarkTroopTrainOrder() = False Then ; process error
+;~ 			SetDefaultTroopGroupDark()
+;~ 			GUICtrlSetState($chkDarkTroopOrder, $GUI_UNCHECKED)
+;~ 			$ichkDarkTroopOrder = 0
+;~ 			GUICtrlSetState($btnDarkTroopOrderSet, $GUI_DISABLE) ; disable button
+;~ 			For $i = 0 To UBound($aDarkTroopOrderList) - 2
+;~ 				GUICtrlSetState($cmbDarkTroopOrder[$i], $GUI_DISABLE) ; disable combo boxes
+;~ 			Next
+;~ 		EndIf
+;~ 	EndIf
+
+
+	If $iAddIdleTimeEnable = 1 Then
+		GUICtrlSetState($chkAddDelayIdlePhaseEnable, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkAddDelayIdlePhaseEnable, $GUI_UNCHECKED)
 	EndIf
+	chkAddDelayIdlePhaseEnable()
+	GUICtrlSetData($txtAddDelayIdlePhaseTimeMin, $iAddIdleTimeMin)
+	GUICtrlSetData($txtAddDelayIdlePhaseTimeMax, $iAddIdleTimeMax)
+
 
 
 	;barracks boost not saved (no use)
@@ -801,7 +828,7 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($txtNumHasteSpell, $iHasteSpellComp)
 	GUICtrlSetData($txtNumSkeletonSpell, $iSkeletonSpellComp)
 	GUICtrlSetData($txtTotalCountSpell, $iTotalCountSpell)
-	lblTotalCountSpell()
+	;lblTotalCountSpell()
 	;btnHideElixir()
 
 
@@ -865,21 +892,13 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkCleanYard, $GUI_UNCHECKED)
 	EndIf
 
-	;Boju Only clear GemBox
 	If $ichkGemsBox = 1 Then
 		GUICtrlSetState($chkGemsBox, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkGemsBox, $GUI_UNCHECKED)
 	EndIf
-	;Only clear GemBox
-
-	If $iVSDelay > $iMaxVSDelay Then $iMaxVSDelay = $iVSDelay ; check for illegal condition
-
 
 	;location of TH, CC, Army Camp, Barrack and Spell Fact. not Applied, only read
-
-
-
 
 	;planned
 	If $iPlannedRequestCCHoursEnable = 1 Then
@@ -1177,6 +1196,15 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 ;~ 	EndIf
 	GUICtrlSetData($txtRequestCC, $sTxtRequest)
 ;~ 	chkRequest()
+
+
+  If  $iSkipDonateNearFulLTroopsEnable = 1 Then
+	 GUICtrlSetState($chkskipDonateNearFulLTroopsEnable, $GUI_CHECKED)
+  Else
+	 GUICtrlSetState($chkskipDonateNearFulLTroopsEnable, $GUI_UNCHECKED)
+  EndIf
+GUICtrlSetData($txtSkipDonateNearFulLTroopsPercentual, $sSkipDonateNearFulLTroopsPercentual)
+chkskipDonateNearFulLTroopsEnable()
 
 
 
@@ -1639,7 +1667,10 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	ElseIf $ichkExtraAlphabets = 1 Then
 		GUICtrlSetState($chkExtraAlphabets, $GUI_CHECKED)
 	EndIf
-	;------------------------------------------------------------------------------------
+
+	_GUICtrlComboBox_SetCurSel($cmbFilterDonationsCC, $icmbFilterDonationsCC)
+
+   ;------------------------------------------------------------------------------------
 
 
 	; apply strategy
@@ -1982,6 +2013,16 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	Else
 		GUICtrlSetState($chkDebugSetlog, $GUI_UNCHECKED)
 	EndIf
+	If $debugDisableZoomout = 1 Then
+		GUICtrlSetState($chkDebugDisableZoomout, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDebugDisableZoomout, $GUI_UNCHECKED)
+	EndIf
+	If $debugDisableVillageCentering = 1 Then
+		GUICtrlSetState($chkDebugDisableVillageCentering, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDebugDisableVillageCentering, $GUI_UNCHECKED)
+	EndIf
 	If $debugOcr = 1 Then
 		GUICtrlSetState($chkDebugOcr, $GUI_CHECKED)
 	Else
@@ -2007,6 +2048,17 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	Else
 		GUICtrlSetState($chkdebugOCRDonate, $GUI_UNCHECKED)
 	EndIf
+	If $debugAttackCSV = 1 Then
+		GUICtrlSetState($chkdebugAttackCSV, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkdebugAttackCSV, $GUI_UNCHECKED)
+	EndIf
+	If $makeIMGCSV = 1 Then
+		GUICtrlSetState($chkmakeIMGCSV, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkmakeIMGCSV, $GUI_UNCHECKED)
+	EndIf
+
 
 	;forced Total Camp values
 	If $ichkTotalCampForced = 1 Then
@@ -2025,6 +2077,13 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($txtSinglePBTimeForced, $iValueSinglePBTimeForced)
 	GUICtrlSetData($txtPBTimeForcedExit, $iValuePBTimeForcedExit)
 	chkSinglePBTForced()
+
+
+	If $ichkFixClanCastle = 1 Then
+		GUICtrlSetState($chkFixClanCastle, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkFixClanCastle, $GUI_UNCHECKED)
+	EndIf
 
 	;multilanguage
 	LoadLanguagesComboBox() ; recreate combo box values
@@ -2050,6 +2109,9 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkScreenshotHideName, $GUI_UNCHECKED)
 	EndIf
 
+
+	If $iVSDelay > $iMaxVSDelay Then $iMaxVSDelay = $iVSDelay ; check for illegal condition
+
 	GUICtrlSetData($sldVSDelay, $iVSDelay)
 	GUICtrlSetData($lblVSDelay, $iVSDelay)
 	GUICtrlSetData($sldMaxVSDelay, $iMaxVSDelay)
@@ -2073,6 +2135,7 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkdebugBuildingPos, $GUI_ENABLE)
 		GUICtrlSetState($chkdebugTrain, $GUI_ENABLE)
 		GUICtrlSetState($chkmakeIMGCSV, $GUI_ENABLE)
+		GUICtrlSetState($chkdebugAttackCSV, $GUI_ENABLE)
 ;~ 		GUICtrlSetState($btnTestVillage, $GUI_SHOW)
 	EndIf
 
@@ -2352,8 +2415,8 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	Local $tempindex = _GUICtrlComboBox_FindStringExact($cmbMilkingCSVScriptName, $MilkAttackCSVscript)
 	If $tempindex = -1 Then
 		$tempindex = 0
-		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $color_red)
-		Setlog("Automatically setted a default script, please check your config", $color_red)
+		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $COLOR_ERROR)
+		Setlog("Automatically setted a default script, please check your config", $COLOR_ERROR)
 	EndIf
 	_GUICtrlComboBox_SetCurSel($cmbMilkingCSVScriptName, $tempindex)
 
@@ -2441,28 +2504,21 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	Local $tempindex = _GUICtrlComboBox_FindStringExact($cmbScriptNameDB, $scmbDBScriptName)
 	If $tempindex = -1 Then
 		$tempindex = 0
-		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $color_red)
-		Setlog("Automatically setted a default script, please check your config", $color_red)
+		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $COLOR_ERROR)
+		Setlog("Automatically setted a default script, please check your config", $COLOR_ERROR)
 	EndIf
 	_GUICtrlComboBox_SetCurSel($cmbScriptNameDB, $tempindex)
 
 	Local $tempindex = _GUICtrlComboBox_FindStringExact($cmbScriptNameAB, $scmbABScriptName)
 	If $tempindex = -1 Then
 		$tempindex = 0
-		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $color_red)
-		Setlog("Automatically setted a default script, please check your config", $color_red)
+		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $COLOR_ERROR)
+		Setlog("Automatically setted a default script, please check your config", $COLOR_ERROR)
 	EndIf
 	_GUICtrlComboBox_SetCurSel($cmbScriptNameAB, $tempindex)
 
-
 	cmbScriptNameDB()
 	cmbScriptNameAB()
-	If $devmode = 1 Then GUICtrlSetState($chkmakeIMGCSV, $GUI_SHOW)
-	If $makeIMGCSV = 1 Then
-		GUICtrlSetState($chkmakeIMGCSV, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkmakeIMGCSV, $GUI_UNCHECKED)
-	EndIf
 
 	; collectors ---------------------------------------------------------------------------
 	If $chkLvl6Enabled = 1 Then
@@ -2515,7 +2571,6 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($cmbLvl12, $GUI_DISABLE)
 	EndIf
 
-
 	_GUICtrlComboBox_SetCurSel($cmbLvl6, $cmbLvl6Fill)
 	_GUICtrlComboBox_SetCurSel($cmbLvl7, $cmbLvl7Fill)
 	_GUICtrlComboBox_SetCurSel($cmbLvl8, $cmbLvl8Fill)
@@ -2523,8 +2578,17 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	_GUICtrlComboBox_SetCurSel($cmbLvl10, $cmbLvl10Fill)
 	_GUICtrlComboBox_SetCurSel($cmbLvl11, $cmbLvl11Fill)
 	_GUICtrlComboBox_SetCurSel($cmbLvl12, $cmbLvl12Fill)
+	_GUICtrlComboBox_SetCurSel($cmbMinCollectorMatches, $iMinCollectorMatches - 1)
+
 	GUICtrlSetData($sldCollectorTolerance, $toleranceOffset)
 	checkCollectors()
+
+	If $iDeadBaseDisableCollectorsFilter = 0 Then
+		GUICtrlSetState($chkDeadBaseDisableCollectorsFilter , $GUI_UNCHECKED)
+	Else
+		GUICtrlSetState($chkDeadBaseDisableCollectorsFilter , $GUI_CHECKED)
+	EndIf
+
 
 	;Share Attack Settings----------------------------------------
 	GUICtrlSetData($txtShareMinGold, $iShareminGold)
@@ -2575,7 +2639,6 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	EndIf
 	chkTSActivateCamps2()
 	GUICtrlSetData($txtTSArmyCamps2, $iEnableAfterArmyCamps2)
-
 ;
 ; MOD
 ;

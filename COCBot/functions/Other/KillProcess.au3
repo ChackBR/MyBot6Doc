@@ -40,7 +40,7 @@ Func KillProcess($pid, $process_info = "", $attempts = 3)
 		$iCount += 1
 	WEnd
 	If ProcessExists($pid) Then
-		SetDebugLog("KillProcess(" & $iCount & "): PID = " & $pid & " failed to kill" & $process_info, $COLOR_RED)
+		SetDebugLog("KillProcess(" & $iCount & "): PID = " & $pid & " failed to kill" & $process_info, $COLOR_ERROR)
 		Return False
 	EndIf
 	Return True ; process ssuccessfuly killed

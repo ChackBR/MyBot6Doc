@@ -26,14 +26,14 @@ Func getBuilderCount($bSuppressLog = False)
 			$aGetBuilders = StringSplit($sBuilderInfo, "#", $STR_NOCOUNT)  ; Split into free and total builder strings
 			$iFreeBuilderCount = Int($aGetBuilders[0]) ; update global values
 			$iTotalBuilderCount = Int($aGetBuilders[1])
-			If $debugSetlog = 1 And $bSuppressLog = False Then Setlog("No. of Free/Total Builders: " & $iFreeBuilderCount & "/" & $iTotalBuilderCount, $COLOR_PURPLE)
+			If $debugSetlog = 1 And $bSuppressLog = False Then Setlog("No. of Free/Total Builders: " & $iFreeBuilderCount & "/" & $iTotalBuilderCount, $COLOR_DEBUG)
 			Return True  ; Happy Monkey returns!
 		Else
-			SetLog("Bad OCR read Free/Total Builders", $COLOR_RED) ; OCR returned unusable value?
+			SetLog("Bad OCR read Free/Total Builders", $COLOR_ERROR) ; OCR returned unusable value?
 			; drop down to error handling code
 		EndIf
 	Else
-		SetLog("Unable to read Builders info at this time", $COLOR_RED)
+		SetLog("Unable to read Builders info at this time", $COLOR_ERROR)
 		; drop down to error handling code
 	EndIf
 	If $debugSetlog = 1 Or $debugimagesave = 1 Then Debugimagesave("getBuilderCount_")

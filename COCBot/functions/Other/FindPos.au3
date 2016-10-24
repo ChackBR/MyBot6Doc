@@ -14,13 +14,16 @@
 ; ===============================================================================================================================
 Func FindPos()
 	getBSPos()
-	WinActivate(((AndroidEmbedded = False) ? $HWnD : $frmBot)) ; Activate Android Window
+	AndroidToFront() ; Activate Android Window
 	Local $wasDown = AndroidShieldForceDown(True, True)
 	While 1
 		If _IsPressed("01") Or _IsPressed("02") Then
 			Local $Pos = MouseGetPos()
+			; adjust Android Control Position
 			$Pos[0] -= $BSpos[0]
 			$Pos[1] -= $BSpos[1]
+			; adjust village offset
+			ConvertFromVillagePos($Pos[0], $Pos[1])
 			; wait till released
 			While _IsPressed("01") Or _IsPressed("02")
 				Sleep(10)

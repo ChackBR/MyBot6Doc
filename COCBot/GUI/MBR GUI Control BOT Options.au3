@@ -157,7 +157,7 @@ EndFunc   ;==>chkSinglePBTForced
 Func txtSinglePBTimeForced()
 	Switch Int(GUICtrlRead($txtSinglePBTimeForced))
 		Case 0 To 15
-			GUICtrlSetBkColor($txtSinglePBTimeForced, $COLOR_RED)
+			GUICtrlSetBkColor($txtSinglePBTimeForced, $COLOR_ERROR)
 		Case 16
 			GUICtrlSetBkColor($txtSinglePBTimeForced, $COLOR_YELLOW)
 		Case 17 To 999
@@ -165,7 +165,7 @@ Func txtSinglePBTimeForced()
 	EndSwitch
 	Switch Int(GUICtrlRead($txtPBTimeForcedExit))
 		Case 0 To 11
-			GUICtrlSetBkColor($txtPBTimeForcedExit, $COLOR_RED)
+			GUICtrlSetBkColor($txtPBTimeForcedExit, $COLOR_ERROR)
 		Case 12 To 14
 			GUICtrlSetBkColor($txtPBTimeForcedExit, $COLOR_YELLOW)
 		Case 15 To 999
@@ -190,6 +190,24 @@ Func chkDebugSetlog()
 	EndIf
 	SetDebugLog("DebugSetlog " & ($DebugSetlog = 1 ? "enabled" : "disabled"))
 EndFunc   ;==>chkDebugSetlog
+
+Func chkDebugDisableZoomout()
+	If GUICtrlRead($chkDebugDisableZoomout) = $GUI_CHECKED Then
+		$debugDisableZoomout = 1
+	Else
+		$debugDisableZoomout = 0
+	EndIf
+	SetDebugLog("DebugDisableZoomout " & ($debugDisableZoomout = 1 ? "enabled" : "disabled"))
+EndFunc   ;==>chkDebugDisableZoomout
+
+Func chkDebugDisableVillageCentering()
+	If GUICtrlRead($chkDebugDisableVillageCentering) = $GUI_CHECKED Then
+		$debugDisableVillageCentering = 1
+	Else
+		$debugDisableVillageCentering = 0
+	EndIf
+	SetDebugLog("DebugDisableVillageCentering " & ($debugDisableVillageCentering = 1 ? "enabled" : "disabled"))
+EndFunc   ;==>chkDebugDisableVillageCentering
 
 Func chkDebugOcr()
 	If GUICtrlRead($chkDebugOcr) = $GUI_CHECKED Then
@@ -216,7 +234,7 @@ Func chkDebugBuildingPos()
 		$debugBuildingPos = 0
 	EndIf
 	SetDebugLog("DebugBuildingPos " & ($debugBuildingPos = 1 ? "enabled" : "disabled"))
-EndFunc   ;==>chkdebugBuildingPos
+EndFunc   ;==>chkDebugBuildingPos
 
 Func chkDebugTrain()
 	If GUICtrlRead($chkdebugTrain) = $GUI_CHECKED Then
@@ -224,8 +242,8 @@ Func chkDebugTrain()
 	Else
 		$debugsetlogTrain = 0
 	EndIf
-	SetDebugLog("chkDebugTrain " & ($debugsetlogTrain = 1 ? "enabled" : "disabled"))
-EndFunc   ;==>chkdebugTrain
+	SetDebugLog("DebugTrain " & ($debugsetlogTrain = 1 ? "enabled" : "disabled"))
+EndFunc   ;==>chkDebugTrain
 
 Func chkdebugOCRDonate()
 	If GUICtrlRead($chkdebugOCRDonate) = $GUI_CHECKED Then
@@ -233,172 +251,353 @@ Func chkdebugOCRDonate()
 	Else
 		$debugOCRdonate = 0
 	EndIf
-	SetDebugLog("chkdebugOCRDonate " & ($debugOCRdonate = 1 ? "enabled" : "disabled"))
+	SetDebugLog("DebugOCRDonate " & ($debugOCRdonate = 1 ? "enabled" : "disabled"))
 EndFunc   ;==>chkdebugOCRDonate
 
+Func chkdebugAttackCSV()
+	If GUICtrlRead($chkdebugAttackCSV) = $GUI_CHECKED Then
+		$debugAttackCSV = 1
+	Else
+		$debugAttackCSV = 0
+	EndIf
+	SetDebugLog("DebugAttackCSV " & ($debugAttackCSV = 1 ? "enabled" : "disabled"))
+EndFunc   ;==>chkdebugAttackCSV
+
+Func chkmakeIMGCSV()
+	If GUICtrlRead($chkmakeIMGCSV) = $GUI_CHECKED Then
+		$makeIMGCSV = 1
+	Else
+		$makeIMGCSV = 0
+	EndIf
+	SetDebugLog("MakeIMGCSV " & ($makeIMGCSV = 1 ? "enabled" : "disabled"))
+EndFunc   ;==>chkmakeIMGCSV
+
 Func btnTestTrain()
-		Local $currentOCR = $debugOcr
-		Local $currentRunState = $RunState
-		_GUICtrlTab_ClickTab($tabMain, 0)
-		$debugOcr = 1
-		$RunState = True
- 		ForceCaptureRegion()
-		DebugImageSave("train_")
-		SetLog(_PadStringCenter(" Test Train begin (" & $sBotVersion &  ")", 54, "="), $COLOR_BLUE)
-		getArmyTroopCount(false,false,true)
-		getArmySpellCount(false,false,true)
-		getArmyHeroCount(false,false)
-		SetLog(_PadStringCenter(" Test Train end ", 54, "="), $COLOR_BLUE)
-		Run("Explorer.exe " & $LibDir & "\debug\ocr\" )
-		Run("Explorer.exe " & $dirTempDebug & "train_" )
+	Local $currentOCR = $debugOcr
+	Local $currentRunState = $RunState
+	_GUICtrlTab_ClickTab($tabMain, 0)
+	$debugOcr = 1
+	$RunState = True
+	ForceCaptureRegion()
+	DebugImageSave("train_")
+	SetLog(_PadStringCenter(" Test Train begin (" & $sBotVersion & ")", 54, "="), $COLOR_INFO)
+	getArmyTroopCount(False, False, True)
+	getArmySpellCount(False, False, True)
+	getArmyHeroCount(False, False)
+	SetLog(_PadStringCenter(" Test Train end ", 54, "="), $COLOR_INFO)
+	Run("Explorer.exe " & $LibDir & "\debug\ocr\")
+	Run("Explorer.exe " & $dirTempDebug & "train_")
 
 
-		$debugOcr = $currentOCR
-		$RunState = $currentRunState
-EndFunc
+	$debugOcr = $currentOCR
+	$RunState = $currentRunState
+EndFunc   ;==>btnTestTrain
 
 Func btnTestDonateCC()
-		Local $currentOCR = $debugOcr
-		Local $currentRunState = $RunState
-		Local $currentSetlog = $debugsetlog
-		_GUICtrlTab_ClickTab($tabMain, 0)
-		$debugOcr = 1
-		$RunState = True
-		$debugsetlog = 1
- 		ForceCaptureRegion()
-		;DebugImageSave("donateCC_")
+	Local $currentOCR = $debugOcr
+	Local $currentRunState = $RunState
+	Local $currentSetlog = $DebugSetlog
+	_GUICtrlTab_ClickTab($tabMain, 0)
+	$debugOcr = 1
+	$RunState = True
+	$DebugSetlog = 1
+	ForceCaptureRegion()
+	;DebugImageSave("donateCC_")
 
-		SetLog(_PadStringCenter(" Test DonateCC begin (" & $sBotVersion &  ")", 54, "="), $COLOR_BLUE)
-		$DonationWindowY = 0
-		Local $aDonWinOffColors[2][3] = [[0xFFFFFF, 0, 2], [0xc7c5bc, 0, 209]]
-		Local $aDonationWindow = _MultiPixelSearch(409, 0, 410, $DEFAULT_HEIGHT, 1, 1, Hex(0xFFFFFF, 6), $aDonWinOffColors, 10)
+	SetLog(_PadStringCenter(" Test DonateCC begin (" & $sBotVersion & ")", 54, "="), $COLOR_INFO)
+	$DonationWindowY = 0
+	Local $aDonWinOffColors[2][3] = [[0xFFFFFF, 0, 2], [0xc7c5bc, 0, 209]]
+	Local $aDonationWindow = _MultiPixelSearch(409, 0, 410, $DEFAULT_HEIGHT, 1, 1, Hex(0xFFFFFF, 6), $aDonWinOffColors, 10)
 
-		If IsArray($aDonationWindow) Then
-			$DonationWindowY = $aDonationWindow[1]
-			If _Sleep(250) Then Return
-			Setlog("$DonationWindowY: " & $DonationWindowY, $COLOR_PURPLE)
-		Else
-			SetLog("Could not find the Donate Window :(", $COLOR_RED)
-			Return False
-		EndIf
-		Setlog("Detecting Troops...")
-		DetectSlotTroop($eBowl)
-		Setlog("Detecting Spells...")
-		DetectSlotTroop($eSkSpell)
-		SetLog(_PadStringCenter(" Test DonateCC end ", 54, "="), $COLOR_BLUE)
-		Run("Explorer.exe " & $LibDir & "\debug\ocr\" )
+	If IsArray($aDonationWindow) Then
+		$DonationWindowY = $aDonationWindow[1]
+		_Sleep(250)
+		Setlog("$DonationWindowY: " & $DonationWindowY, $COLOR_DEBUG)
+	Else
+		SetLog("Could not find the Donate Window :(", $COLOR_ERROR)
+		Return False
+	EndIf
+	Setlog("Detecting Troops...")
+	DetectSlotTroop($eBowl)
+	Setlog("Detecting Spells...")
+	DetectSlotTroop($eSkSpell)
+	SetLog(_PadStringCenter(" Test DonateCC end ", 54, "="), $COLOR_INFO)
+	Run("Explorer.exe " & $LibDir & "\debug\ocr\")
 
+	$debugOcr = $currentOCR
+	$RunState = $currentRunState
+	$DebugSetlog = $currentSetlog
+EndFunc   ;==>btnTestDonateCC
 
-		$debugOcr = $currentOCR
-		$RunState = $currentRunState
-		$debugsetlog = $currentSetlog
-EndFunc
+Func btnTestRequestCC()
+	Local $currentRunState = $RunState
+	$RunState = True
+	$canRequestCC = True
+	SetLog(_PadStringCenter(" Test RequestCC begin (" & $sBotVersion & ")", 54, "="), $COLOR_INFO)
+	RequestCC()
+	SetLog(_PadStringCenter(" Test RequestCC end ", 54, "="), $COLOR_INFO)
+	$RunState = $currentRunState
+EndFunc   ;==>btnTestRequestCC
 
 Func btnTestAttackBar()
-		Local $currentOCR = $debugOcr
-		Local $currentRunState = $RunState
-		_GUICtrlTab_ClickTab($tabMain, 0)
+	Local $currentOCR = $debugOcr
+	Local $currentRunState = $RunState
+	_GUICtrlTab_ClickTab($tabMain, 0)
 
-		$debugOcr = 1
-		$RunState = True
- 		ForceCaptureRegion()
-		SetLog(_PadStringCenter(" Test Attack Bar begin (" & $sBotVersion &  ")", 54, "="), $COLOR_BLUE)
+	$debugOcr = 1
+	$RunState = True
+	ForceCaptureRegion()
+	SetLog(_PadStringCenter(" Test Attack Bar begin (" & $sBotVersion & ")", 54, "="), $COLOR_INFO)
 
-		$DonationWindowY = 0
+	$DonationWindowY = 0
 
-		_CaptureRegion2(0, 571 + $bottomOffsetY, 859, 671 + $bottomOffsetY)
-		Local $result = DllCall($hFuncLib, "str", "searchIdentifyTroop", "ptr", $hHBitmap2)
-		Setlog("DLL Troopsbar list: " & $result[0], $COLOR_PURPLE)
-		Local $aTroopDataList = StringSplit($result[0], "|")
- 		Local $aTemp[12][3]
- 		If $result[0] <> "" Then
- 			For $i = 1 To $aTroopDataList[0]
- 				Local $troopData = StringSplit($aTroopDataList[$i], "#", $STR_NOCOUNT)
+	_CaptureRegion2(0, 571 + $bottomOffsetY, 859, 671 + $bottomOffsetY)
+	Local $result = DllCall($hFuncLib, "str", "searchIdentifyTroop", "ptr", $hHBitmap2)
+	Setlog("DLL Troopsbar list: " & $result[0], $COLOR_DEBUG)
+	If $ichkFixClanCastle = 1 Then $result[0] = FixClanCastle($result[0])
+	Local $aTroopDataList = StringSplit($result[0], "|")
+	Local $aTemp[12][3]
+	If $result[0] <> "" Then
+		For $i = 1 To $aTroopDataList[0]
+			Local $troopData = StringSplit($aTroopDataList[$i], "#", $STR_NOCOUNT)
 ;~ 				$aTemp[Number($troopData[1])][0] = $troopData[0]
 ;~ 				$aTemp[Number($troopData[1])][1] = Number($troopData[2])
 ;~ 				Setlog("-" & NameOfTroop( $aTemp[$i][0]) & " pos  " & $aTemp[$i][0] & " qty " & $aTemp[$i][2])
-				If $troopData[0] = 17 or $troopData[0] = 18 or $troopData[0] = 19 or $troopData[0] = 20 then $troopData[2] = 1
-				Setlog("position: " & $troopData[1] & " | troop code: " & $troopData[0] & " troop name:" & NameOfTroop($troopData[0]) & " | qty: " & $troopData[2])
- 			Next
- 		EndIf
+			If $troopData[0] = 17 Or $troopData[0] = 18 Or $troopData[0] = 19 Or $troopData[0] = 20 Then $troopData[2] = 1
+			Setlog("position: " & $troopData[1] & " | troop code: " & $troopData[0] & " troop name:" & NameOfTroop($troopData[0]) & " | qty: " & $troopData[2])
+		Next
+	EndIf
 
-		;make snapshot start
-		_CaptureRegion(0,630,$DEFAULT_WIDTH)
-		Local $savefolder = $dirTempDebug
-		$savefolder = $dirTempDebug & "Test_Attack_Bar\"
-		DirCreate($savefolder)
-		Local $debugfile
-		$Date = @MDAY & "." & @MON & "." & @YEAR
-		$Time = @HOUR & "." & @MIN & "." & @SEC
-		$debugfile = "Test_Attack_Bar_" & $sBotVersion & "_" & $Date & "_" & $Time & ".png"
-		_GDIPlus_ImageSaveToFile($hBitmap,$savefolder & $debugfile)
-		;make snapshot end
+	;make snapshot start
+	_CaptureRegion(0, 630, $DEFAULT_WIDTH)
+	Local $savefolder = $dirTempDebug
+	$savefolder = $dirTempDebug & "Test_Attack_Bar\"
+	DirCreate($savefolder)
+	Local $debugfile
+	$Date = @MDAY & "." & @MON & "." & @YEAR
+	$Time = @HOUR & "." & @MIN & "." & @SEC
+	$debugfile = "Test_Attack_Bar_" & $sBotVersion & "_" & $Date & "_" & $Time & ".png"
+	_GDIPlus_ImageSaveToFile($hBitmap, $savefolder & $debugfile)
+	;make snapshot end
 
-		SetLog(_PadStringCenter(" Test Attack Bar end ", 54, "="), $COLOR_BLUE)
-		Run("Explorer.exe " & $savefolder )
+	SetLog(_PadStringCenter(" Test Attack Bar end ", 54, "="), $COLOR_INFO)
+	Run("Explorer.exe " & $savefolder)
 
-		$debugOcr = $currentOCR
-		$RunState = $currentRunState
-EndFunc
+	$debugOcr = $currentOCR
+	$RunState = $currentRunState
+EndFunc   ;==>btnTestAttackBar
 
 
 Func btnTestClickDrag()
 
 	Local $i
 
-	SetLog("Testing Click drag functionality...", $COLOR_BLUE)
+	SetLog("Testing Click drag functionality...", $COLOR_INFO)
 	For $i = 0 To 4
-		SetLog("Click x1/y1=100/600 and drag to x2/y2=150/600", $COLOR_BLUE)
+		SetLog("Click x1/y1=100/600 and drag to x2/y2=150/600", $COLOR_INFO)
 		ClickDrag(100, 600, 150, 600)
 	Next
 	SetDebugLog("Waiting 3 Seconds...")
 	_SleepStatus(3000, True, True, False)
 	For $i = 0 To 4
-		SetLog("Click x1/y1=150/600 and drag to x2/y2=100/600", $COLOR_BLUE)
+		SetLog("Click x1/y1=150/600 and drag to x2/y2=100/600", $COLOR_INFO)
 		ClickDrag(150, 600, 100, 600)
 	Next
 
-EndFunc
+EndFunc   ;==>btnTestClickDrag
 
 Func btnTestImage()
 
-	Local $sImageFile = FileOpenDialog("Select CoC screenshot to test", $dirTemp, "Image (*.png)", $FD_FILEMUSTEXIST, "", $frmBot)
+	Local $hBMP = 0, $hHBMP = 0
+	Local $sImageFile = FileOpenDialog("Select CoC screenshot to test, cancel to use live screenshot", $dirTemp, "Image (*.png)", $FD_FILEMUSTEXIST, "", $frmBot)
+	If @error <> 0 Then
+		SetLog("Testing image cancelled, taking screenshot from " & $Android, $COLOR_INFO)
+		_CaptureRegion()
+		$hHBMP = $hHBitmap
+		TestCapture($hHBMP)
+	Else
+		SetLog("Testing image " & $sImageFile, $COLOR_INFO)
+		; load test image
+		$hBMP = _GDIPlus_BitmapCreateFromFile($sImageFile)
+		$hHBMP = _GDIPlus_BitmapCreateDIBFromBitmap($hBMP)
+		_GDIPlus_BitmapDispose($hBMP)
+		TestCapture($hHBMP)
+		SetLog("Testing image hHBitmap = " & $hHBMP)
+	EndIf
 
-	SetLog("Testing image " & $sImageFile, $COLOR_BLUE)
+	Local $i
+	Local $result
+	Local $currentRunState = $RunState
+	$RunState = True
+	Local $Message
+
+	For $i = 0 To 0
+
+		SetLog("Testing image #" & $i & " " & $sImageFile, $COLOR_INFO)
+
+		_CaptureRegion()
+		_CaptureRegion()
+
+		SetLog("Testing checkObstacles...", $COLOR_SUCCESS)
+		$result = checkObstacles()
+		SetLog("Testing checkObstacles DONE, $Result=" & $result, $COLOR_SUCCESS)
+
+		SetLog("Testing waitMainScreen...", $COLOR_SUCCESS)
+		$result = waitMainScreen()
+		SetLog("Testing waitMainScreen DONE, $Result=" & $result, $COLOR_SUCCESS)
+
+		SetLog("Testing waitMainScreenMini...", $COLOR_SUCCESS)
+		$result = waitMainScreenMini()
+		SetLog("Testing waitMainScreenMini DONE, $Result=" & $result, $COLOR_SUCCESS)
+
+		SetLog("Testing WaitForClouds...", $COLOR_SUCCESS)
+		SetLog("$aNoCloudsAttack pixel check: " & _CheckPixel($aNoCloudsAttack, $bCapturePixel))
+		SetLog("Testing WaitForClouds DONE", $COLOR_SUCCESS)
+
+	Next
+
+	SetLog("Testing finished", $COLOR_INFO)
+
+	_WinAPI_DeleteObject($hHBMP)
+	TestCapture(0)
+
+	$RunState = $currentRunState
+
+EndFunc   ;==>btnTestImage
+
+Func btnTestVillageSize()
+	Local $hBMP = 0, $hHBMP = 0
+	Local $sImageFile = FileOpenDialog("Select CoC screenshot to test, cancel to use live screenshot", $dirTemp, "Image (*.png)", $FD_FILEMUSTEXIST, "", $frmBot)
+	If @error <> 0 Then
+		SetLog("Testing image cancelled, taking screenshot from " & $Android, $COLOR_INFO)
+		_CaptureRegion()
+		$hHBMP = $hHBitmap
+		TestCapture($hHBMP)
+	Else
+		SetLog("Testing image " & $sImageFile, $COLOR_INFO)
+		; load test image
+		$hBMP = _GDIPlus_BitmapCreateFromFile($sImageFile)
+		$hHBMP = _GDIPlus_BitmapCreateDIBFromBitmap($hBMP)
+		_GDIPlus_BitmapDispose($hBMP)
+		TestCapture($hHBMP)
+		SetLog("Testing image hHBitmap = " & $hHBMP)
+	EndIf
 
 	Local $currentRunState = $RunState
 	$RunState = True
 
-	; load test image
-	Local $hBMP = _GDIPlus_BitmapCreateFromFile($sImageFile)
-	Local $hHBMP = _GDIPlus_BitmapCreateDIBFromBitmap($hBMP)
-	TestCapture($hHBMP)
+	_CaptureRegion()
 
-	SetLog("Testing image hHBitmap = " & $hHBMP)
+	SetLog("Testing GetVillageSize()", $COLOR_INFO)
+	Local $hTimer = TimerInit()
+	Local $village = GetVillageSize()
+	Local $ms = TimerDiff($hTimer)
+	If $village = 0 Then
+		SetLog("Village not found (" & Round($ms, 0) & " ms.)", $COLOR_WARNING)
+	Else
+		SetLog("Village found (" & Round($ms, 0) & " ms.)", $COLOR_WARNING)
+		SetLog("Village size: " & $village[0])
+		SetLog("Village zoom level: " & $village[1])
+		SetLog("Village offset x: " & $village[2])
+		SetLog("Village offset y: " & $village[3])
+		SetLog("Village stone " & $village[6] & ": " & $village[4] & ", " & $village[5])
+		SetLog("Village tree " & $village[9] & ": " & $village[7] & ", " & $village[8])
+	EndIf
 
-	Local $Result
-
-	SetLog("Testing checkObstacles", $COLOR_GREEN)
-	$Result = checkObstacles()
-	SetLog("Testing checkObstacles DONE, $Result=" & $Result, $COLOR_GREEN)
-
-	SetLog("Testing waitMainScreen...", $COLOR_GREEN)
-	$Result = waitMainScreen()
-	SetLog("Testing waitMainScreen DONE, $Result=" & $Result, $COLOR_GREEN)
-
-	SetLog("Testing waitMainScreenMini", $COLOR_GREEN)
-	$Result = waitMainScreenMini()
-	SetLog("Testing waitMainScreenMini DONE, $Result=" & $Result, $COLOR_GREEN)
-
-	;checkObstacles()
-
-    _GDIPlus_BitmapDispose($hBMP)
-	_WinAPI_DeleteObject($hHBMP)
-
-	TestCapture(0)
-
-	SetLog("Testing finished", $COLOR_BLUE)
+	If $hHBMP <> 0 Then
+		_WinAPI_DeleteObject($hHBMP)
+		TestCapture(0)
+	EndIf
 
 	$RunState = $currentRunState
+EndFunc   ;==>btnTestVillageSize
 
-EndFunc
+#cs
+Func btnTestDeadBase()
+	Local $test = 0
+	LoadTHImage()
+	LoadElixirImage()
+	LoadElixirImage75Percent()
+	LoadElixirImage50Percent()
+	Zoomout()
+	If $debugBuildingPos = 0 Then
+		$test = 1
+		$debugBuildingPos = 1
+	EndIf
+	SETLOG("DEADBASE CHECK..................")
+	$dbBase = checkDeadBase()
+	SETLOG("TOWNHALL CHECK. imgloc.................")
+	$searchTH = imgloccheckTownhallADV2()
+	If $test = 1 Then $debugBuildingPos = 0
+EndFunc   ;==>btnTestDeadBase
+#ce
+
+Func btnTestDeadBase()
+	Local $hBMP = 0, $hHBMP = 0
+	Local $sImageFile = FileOpenDialog("Select CoC screenshot to test, cancel to use live screenshot", $dirTemp, "Image (*.png)", $FD_FILEMUSTEXIST, "", $frmBot)
+	If @error <> 0 Then
+		SetLog("Testing image cancelled, taking screenshot from " & $Android, $COLOR_INFO)
+		_CaptureRegion()
+		$hHBMP = $hHBitmap
+		TestCapture($hHBMP)
+	Else
+		SetLog("Testing image " & $sImageFile, $COLOR_INFO)
+		; load test image
+		$hBMP = _GDIPlus_BitmapCreateFromFile($sImageFile)
+		$hHBMP = _GDIPlus_BitmapCreateDIBFromBitmap($hBMP)
+		_GDIPlus_BitmapDispose($hBMP)
+		TestCapture($hHBMP)
+		SetLog("Testing image hHBitmap = " & $hHBMP)
+	EndIf
+
+	Local $currentRunState = $RunState
+	$RunState = True
+
+	SetLog("Testing checkDeadBase()", $COLOR_INFO)
+	SetLog("Result checkDeadBase() = " & checkDeadBase(), $COLOR_INFO)
+	SetLog("Testing checkDeadBase() DONE", $COLOR_INFO)
+
+	If $hHBMP <> 0 Then
+		_WinAPI_DeleteObject($hHBMP)
+		TestCapture(0)
+	EndIf
+
+	$RunState = $currentRunState
+EndFunc   ;==>btnTestDeadbase
+
+Func btnTestDeadBaseFolder()
+
+	;Local $directory = FileOpenDialog("Select folder of CoC village screenshot to test for dead base", $dirTemp, "Image (*.png)", $FD_PATHMUSTEXIST, "", $frmBot)
+	Local $directory = FileSelectFolder("Select folder of CoC village screenshot to test for dead base", "", $FSF_NEWDIALOG, @ScriptDir, $frmBot)
+	If @error <> 0 Then
+		SetLog("btnTestDeadBaseFolder cancelled", $COLOR_INFO)
+	EndIf
+
+	checkDeadBaseFolder($directory)
+
+EndFunc   ;==>btnTestDeadBase
+
+Func FixClanCastle($inputString)
+	; if found  a space in results of attack bar slot detection, force insert of clan castle
+	; work if the clan castle it is not placed in the last slot
+	Local $OutputFinal = ""
+	Local $aTroopDataList = StringSplit($inputString, "|")
+	Local $aTemp[12][3]
+	Local $counter = 0
+	If $inputString <> "" Then
+		For $i = 1 To $aTroopDataList[0]
+			If $counter > 0 Then $OutputFinal &= "|"
+			Local $troopData = StringSplit($aTroopDataList[$i], "#", $STR_NOCOUNT)
+			If $troopData[0] = 17 Or $troopData[0] = 18 Or $troopData[0] = 19 Or $troopData[0] = 20 Then $troopData[2] = 1
+			If $counter <> Number($troopData[1]) Then
+				$OutputFinal &= $eCastle & "#" & $counter & "#" & "1" & "|"
+				$counter = $troopData[1]
+				Setlog("Clan castle Forced in slot " & $counter, $COLOR_INFO)
+			EndIf
+			$counter += 1
+			$OutputFinal &= $troopData[0] & "#" & $troopData[1] & "#" & $troopData[2]
+		Next
+	EndIf
+	Return $OutputFinal
+
+EndFunc   ;==>FixClanCastle

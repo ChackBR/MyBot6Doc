@@ -73,7 +73,7 @@ Global $InternalArea[8][3] = [[73, 336, "LEFT"], _
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
+Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 
 	;00 read attack file SIDE row and valorize variables
 	ParseAttackCSV_Read_SIDE_variables()
@@ -90,7 +90,7 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 	Local $hTimer = TimerInit()
 
 	_CaptureRegion2()
-	if $captureredarea then _GetRedArea()
+	If $captureredarea Then _GetRedArea()
 	If _Sleep($iDelayRespond) Then Return
 
 	Local $htimerREDAREA = Round(TimerDiff($hTimer) / 1000, 2)
@@ -186,7 +186,7 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 	If StringLen($tempvectstr2) > 0 Then $tempvectstr2 = StringLeft($tempvectstr2, StringLen($tempvectstr2) - 1)
 	$PixelBottomRightDOWNDropLine = GetListPixel($tempvectstr1)
 	$PixelBottomRightUPDropLine = GetListPixel($tempvectstr2)
-	Setlog("> Drop Lines located in  " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+	Setlog("> Drop Lines located in  " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 	If _Sleep($iDelayRespond) Then Return
 
 	; 03 - TOWNHALL ------------------------------------------------------------------------
@@ -195,24 +195,27 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 		If $attackcsv_locate_townhall = 1 Then
 			SuspendAndroid()
 			$hTimer = TimerInit()
-			Local $searchTH = checkTownHallADV2(0, 0, False)
-			If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
-				If _Sleep($iDelayAttackCSV1) Then Return
-				If $debugsetlog = 1 Then SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-				$searchTH = checkTownhallADV2()
-			EndIf
-			If $searchTH = "-" Then ; retry with c# search, matching could not have been caused by heroes that partially hid the townhall
-				If _Sleep($iDelayAttackCSV2) Then Return
-				If $debugImageSave = 1 Then DebugImageSave("VillageSearch_NoTHFound2try_", False)
-				THSearch()
-			EndIf
-			Setlog("> Townhall located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+			Local $searchTH = imgloccheckTownHallADV2(0, 0, False)
+			;CODE NO LONGER NEEDED HAS imglcTHSearch retries 2 times
+			;If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
+			;	If _Sleep($iDelayAttackCSV1) Then Return
+			;	If $debugsetlog = 1 Then SetLog("2nd attempt to detect the TownHall!", $COLOR_ERROR)
+			;	$searchTH = checkTownhallADV2()
+			;EndIf
+			;If $searchTH = "-" Then ; retry with c# search, matching could not have been caused by heroes that partially hid the townhall
+			;	If _Sleep($iDelayAttackCSV2) Then Return
+			;	If $debugImageSave = 1 Then DebugImageSave("VillageSearch_NoTHFound2try_", False)
+			;	THSearch()
+			;EndIf
+			
+			
+			Setlog("> Townhall located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 			ResumeAndroid()
 		Else
 			Setlog("> Townhall search not needed, skip")
 		EndIf
 	Else
-		Setlog("> Townhall has already been located in while searching for an image", $COLOR_BLUE)
+		Setlog("> Townhall has already been located in while searching for an image", $COLOR_INFO)
 	EndIf
 	If _Sleep($iDelayRespond) Then Return
 
@@ -267,9 +270,9 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 				EndIf
 			Next
 		EndIf
-		Setlog("> Mines located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+		Setlog("> Mines located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 	Else
-		Setlog("> Mines detection not needed, skip", $COLOR_BLUE)
+		Setlog("> Mines detection not needed, skip", $COLOR_INFO)
 	EndIf
 	If _Sleep($iDelayRespond) Then Return
 
@@ -308,9 +311,9 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 				EndIf
 			Next
 		EndIf
-		Setlog("> Elixir collectors located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+		Setlog("> Elixir collectors located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 	Else
-		Setlog("> Elixir collectors detection not needed, skip", $COLOR_BLUE)
+		Setlog("> Elixir collectors detection not needed, skip", $COLOR_INFO)
 	EndIf
 	If _Sleep($iDelayRespond) Then Return
 
@@ -349,9 +352,9 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 				EndIf
 			Next
 		EndIf
-		Setlog("> Drills located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+		Setlog("> Drills located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 	Else
-		Setlog("> Drills detection not needed, skip", $COLOR_BLUE)
+		Setlog("> Drills detection not needed, skip", $COLOR_INFO)
 	EndIf
 	If _Sleep($iDelayRespond) Then Return
 
@@ -394,30 +397,67 @@ Func Algorithm_AttackCSV($testattack = False,$captureredarea=true)
 				$darkelixirStoragePos = $temp
 			EndIf
 		EndIf
-		Setlog("> Dark Elixir Storage located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+		Setlog("> Dark Elixir Storage located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 	Else
-		Setlog("> Dark Elixir Storage detection not need, skip", $COLOR_BLUE)
+		Setlog("> Dark Elixir Storage detection not need, skip", $COLOR_INFO)
 	EndIf
 
-	Setlog(">> Total time: " & Round(TimerDiff($hTimerTOTAL) / 1000, 2) & " seconds", $COLOR_BLUE)
+	; 06 - EAGLEARTILLERY ------------------------------------------------------------------------
+
+	$EagleArtilleryPos[0] = "" ; reset pixel position to null
+	$EagleArtilleryPos[1] = ""
+	If $searchTH = "-" Or Int($searchTH) > 10 Then
+		If $attackcsv_locate_Eagle = 1 Then
+			$hTimer = TimerInit()
+			SuspendAndroid()
+			Local $result = returnSingleMatch(@ScriptDir & "\imgxml\WeakBase\Eagle")
+			ResumeAndroid()
+			If UBound($result) > 1 Then
+				Local $tempeaglePos = $result[1][5] ;assign eagle x,y sub array to temp variable
+				If $debugsetlog = 1 Then
+					Setlog(": ImageName: " & $result[1][0], $COLOR_DEBUG)
+					Setlog(": ObjectName: " & $result[1][1], $COLOR_DEBUG)
+					Setlog(": ObjectLevel: " & $result[1][2], $COLOR_DEBUG)
+				EndIf
+				If $tempeaglePos[0][0] <> "" Then
+					$EagleArtilleryPos[0] = $tempeaglePos[0][0]
+					$EagleArtilleryPos[1] = $tempeaglePos[0][1]
+					Setlog("> Eagle located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
+					If $debugsetlog = 1 Then
+						Setlog(": $EagleArtilleryPosition X:Y= " & $EagleArtilleryPos[0] & ":" & $EagleArtilleryPos[1], $COLOR_DEBUG)
+					EndIf
+				Else
+					Setlog("> Eagle detection error", $COLOR_WARNING)
+				EndIf
+			Else
+				Setlog("> Eagle detection error", $COLOR_WARNING)
+			EndIf
+		Else
+			Setlog("> Eagle Artillery detection not need, skip", $COLOR_INFO)
+		EndIf
+	Else
+		Setlog("> TH Level to low for Eagle detection, skip", $COLOR_INFO)
+	EndIf
+
+	Setlog(">> Total time: " & Round(TimerDiff($hTimerTOTAL) / 1000, 2) & " seconds", $COLOR_INFO)
 
 	; 06 - DEBUGIMAGE ------------------------------------------------------------------------
 	If $makeIMGCSV = 1 Then AttackCSVDEBUGIMAGE() ;make IMG debug
 
 	; 07 - START TH SNIPE BEFORE ATTACK CSV IF NEED ------------------------------------------
-	If $THSnipeBeforeDBEnable = 1 and $searchTH = "-" Then  FindTownHall(True) ;search townhall if no previous detect
+	If $THSnipeBeforeDBEnable = 1 And $searchTH = "-" Then FindTownHall(True) ;search townhall if no previous detect
 	If $THSnipeBeforeDBEnable = 1 Then
 		If $searchTH <> "-" Then
-			If 	SearchTownHallLoc()  Then
-				Setlog(_PadStringCenter(" TH snipe Before Scripted Attack ", 54,"="),$color_blue)
+			If SearchTownHallLoc() Then
+				Setlog(_PadStringCenter(" TH snipe Before Scripted Attack ", 54, "="), $COLOR_INFO)
 				$THusedKing = 0
 				$THusedQueen = 0
 				AttackTHParseCSV()
 			Else
-				If $debugsetlog=1 Then Setlog("TH snipe before scripted attack skip, th internal village",$color_purple)
+				If $debugsetlog = 1 Then Setlog("TH snipe before scripted attack skip, th internal village", $COLOR_DEBUG)
 			EndIf
 		Else
-			If $debugsetlog=1 Then Setlog("TH snipe before scripted attack skip, no th found",$color_purple)
+			If $debugsetlog = 1 Then Setlog("TH snipe before scripted attack skip, no th found", $COLOR_DEBUG)
 		EndIf
 	EndIf
 

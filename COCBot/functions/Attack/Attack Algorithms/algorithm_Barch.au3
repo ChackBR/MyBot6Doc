@@ -42,7 +42,7 @@ Func Barch() ;Attack Algorithm for Barch
 				Local $numBarbPerSpot = Ceiling((($atkTroops[$Barb][1] / 2) / 5) / 2)
 				Local $numArchPerSpot = Ceiling((($atkTroops[$Arch][1] / 2) / 5) / 2)
 
-				SetLog("Dropping first wave of Barbarians", $COLOR_BLUE)
+				SetLog("Dropping first wave of Barbarians", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop first round of Barbarians
 					Click(GetXPosOfArmySlot($Barb, 68), 595 + $bottomOffsetY, 1, 0, "#0032") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -52,7 +52,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep($iDelayBarch3) Then ExitLoop
 
-				SetLog("Dropping first wave of Archers", $COLOR_BLUE)
+				SetLog("Dropping first wave of Archers", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop first round of Archers
 					Click(GetXPosOfArmySlot($Arch, 68), 595 + $bottomOffsetY, 1, 0, "#0035") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -62,7 +62,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep(2000) Then ExitLoop ;-------------------------------------------
 
-				SetLog("Dropping second wave of Barbarians", $COLOR_BLUE)
+				SetLog("Dropping second wave of Barbarians", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop second round of Barbarians
 					Click(GetXPosOfArmySlot($Barb, 68), 595 + $bottomOffsetY, 1, 0, "#0038") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -72,7 +72,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep($iDelayBarch3) Then ExitLoop
 
-				SetLog("Dropping second wave of Archers", $COLOR_BLUE)
+				SetLog("Dropping second wave of Archers", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop second round of Archers
 					Click(GetXPosOfArmySlot($Arch, 68), 595 + $bottomOffsetY, 1, 0, "#0041") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -89,7 +89,7 @@ Func Barch() ;Attack Algorithm for Barch
 				Local $numBarbPerSpot = Ceiling((($atkTroops[$Barb][1] / 3) / 5) / 2)
 				Local $numArchPerSpot = Ceiling((($atkTroops[$Arch][1] / 3) / 5) / 2)
 
-				SetLog("Dropping first wave of Barbarians", $COLOR_BLUE)
+				SetLog("Dropping first wave of Barbarians", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop first round of Barbarians
 					Click(GetXPosOfArmySlot($Barb, 68), 595 + $bottomOffsetY, 1, 0, "#0044") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -100,7 +100,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep($iDelayBarch3) Then ExitLoop
 
-				SetLog("Dropping first wave of Archers", $COLOR_BLUE)
+				SetLog("Dropping first wave of Archers", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop first round of Archers
 					Click(GetXPosOfArmySlot($Arch, 68), 595 + $bottomOffsetY, 1, 0, "#0048") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -111,7 +111,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep(2000) Then ExitLoop ;-------------------------------------------
 
-				SetLog("Dropping second wave of Barbarians", $COLOR_BLUE)
+				SetLog("Dropping second wave of Barbarians", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop second round of Barbarians
 					Click(GetXPosOfArmySlot($Barb, 68), 595 + $bottomOffsetY, 1, 0, "#0052") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -122,7 +122,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep($iDelayBarch3) Then ExitLoop
 
-				SetLog("Dropping second wave of Archers", $COLOR_BLUE)
+				SetLog("Dropping second wave of Archers", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop second round of Archers
 					Click(GetXPosOfArmySlot($Arch, 68), 595 + $bottomOffsetY, 1, 0, "#0085") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -140,7 +140,7 @@ Func Barch() ;Attack Algorithm for Barch
 				Local $numBarbPerSpot = Ceiling((($atkTroops[$Barb][1] / 4) / 5) / 2)
 				Local $numArchPerSpot = Ceiling((($atkTroops[$Arch][1] / 4) / 5) / 2)
 
-				SetLog("Dropping first wave of Barbarians", $COLOR_BLUE)
+				SetLog("Dropping first wave of Barbarians", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop first round of Barbarians
 					Click(GetXPosOfArmySlot($Barb, 68), 595 + $bottomOffsetY, 1, 0, "#0059") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -152,7 +152,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep($iDelayBarch3) Then ExitLoop
 
-				SetLog("Dropping first wave of Archers", $COLOR_BLUE)
+				SetLog("Dropping first wave of Archers", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop first round of Archers
 					Click(GetXPosOfArmySlot($Arch, 68), 595 + $bottomOffsetY, 1, 0, "#0064") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -164,7 +164,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep(2000) Then ExitLoop ;-------------------------------------------
 
-				SetLog("Dropping second wave of Barbarians", $COLOR_BLUE)
+				SetLog("Dropping second wave of Barbarians", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop second round of Barbarians
 					Click(GetXPosOfArmySlot($Barb, 68), 595 + $bottomOffsetY, 1, 0, "#0069") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -176,7 +176,7 @@ Func Barch() ;Attack Algorithm for Barch
 
 				If _Sleep($iDelayBarch3) Then ExitLoop
 
-				SetLog("Dropping second wave of Archers", $COLOR_BLUE)
+				SetLog("Dropping second wave of Archers", $COLOR_INFO)
 				For $i = 0 To 4 ;Drop second round of Archers
 					Click(GetXPosOfArmySlot($Arch, 68), 595 + $bottomOffsetY, 1, 0, "#0074") ;Select Troop
 					If _Sleep($iDelayBarch1) Then ExitLoop (2)
@@ -192,7 +192,7 @@ Func Barch() ;Attack Algorithm for Barch
 		EndSwitch
 
 		If _Sleep($iDelayBarch1) Then ExitLoop
-		SetLog("Dropping left over troops", $COLOR_BLUE)
+		SetLog("Dropping left over troops", $COLOR_INFO)
 		$atkTroops[$Barb][1] = Number(ReadTroopQuantity($Barb))
 		$atkTroops[$Arch][1] = Number(ReadTroopQuantity($Arch))
 
@@ -216,14 +216,14 @@ Func Barch() ;Attack Algorithm for Barch
 
 		;Activate KQ's power
 		If $checkKPower = True Or $checkQPower = True Then
-			SetLog("Waiting " & $delayActivateKQ / 1000 & " seconds before activating Hero abilities", $COLOR_GREEN)
+			SetLog("Waiting " & $delayActivateKQ / 1000 & " seconds before activating Hero abilities", $COLOR_SUCCESS)
 			If _Sleep($delayActivateKQ) Then Return
 			If $checkKPower = True Then
-				SetLog("Activate King's power", $COLOR_BLUE)
+				SetLog("Activate King's power", $COLOR_INFO)
 				Click(GetXPosOfArmySlot($King, 68), 595 + $bottomOffsetY, 1, 0, "#0083")
 			EndIf
 			If $checkQPower = True Then
-				SetLog("Activate Queen's power", $COLOR_BLUE)
+				SetLog("Activate Queen's power", $COLOR_INFO)
 				Click(GetXPosOfArmySlot($Queen, 68), 595 + $bottomOffsetY, 1, 0, "#0084")
 			EndIf
 		EndIf

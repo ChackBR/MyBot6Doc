@@ -16,7 +16,7 @@
 Local $x = 25, $y = 45
 	$grpTSActivate = GUICtrlCreateGroup(GetTranslated(625,0, -1), $x - 20, $y - 20, 190, 305)
 		$x -= 15
-		$chkTSActivateSearches = GUICtrlCreateCheckbox(GetTranslated(625,1, -1), $x, $y, 68, 18)
+		$chkTSActivateSearches = GUICtrlCreateCheckbox(GetTranslated(603,5, -1), $x, $y, 68, 18)
 			$txtTip = GetTranslated(625,68, -1) & @CRLF & GetTranslated(625,69, -1)
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1,$GUI_UNCHECKED)

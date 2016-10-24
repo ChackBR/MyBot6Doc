@@ -16,11 +16,11 @@
 Func MilkingDetectDarkExtractors()
 
 	If $MilkFarmAttackDarkDrills = 1 and Number($iDarkCurrent) >= number($MilkFarmLimitDark) Then
-		If $debugsetlog=1  and $MilkFarmAttackDarkDrills = 1 Then setlog("skip attack of dark drills, current dark (" & $iDarkCurrent & ") >= limit (" & $MilkFarmLimitDark & ")",$color_purple)
-		If $debugsetlog=1  and $MilkFarmAttackDarkDrills = 0 Then setlog("skip attack of dark drills",$color_purple)
+		If $debugsetlog=1  and $MilkFarmAttackDarkDrills = 1 Then setlog("skip attack of dark drills, current dark (" & $iDarkCurrent & ") >= limit (" & $MilkFarmLimitDark & ")",$COLOR_DEBUG)
+		If $debugsetlog=1  and $MilkFarmAttackDarkDrills = 0 Then setlog("skip attack of dark drills",$COLOR_DEBUG)
 		return 0
 	Else
-		If $debugsetlog=1 Then setlog("current dark (" & $iDarkCurrent & ") < limit (" & $MilkFarmLimitDark & ")",$color_purple)
+		If $debugsetlog=1 Then setlog("current dark (" & $iDarkCurrent & ") < limit (" & $MilkFarmLimitDark & ")",$COLOR_DEBUG)
 	EndIf
 
 
@@ -71,27 +71,27 @@ Func MilkingDetectDarkExtractors()
 								$Drilldiscard += 1
 							EndIf
 						Else
-							If $debugsetlog = 1 Then Setlog(" - discard #4 no match conditions", $color_purple)
+							If $debugsetlog = 1 Then Setlog(" - discard #4 no match conditions", $COLOR_DEBUG)
 							$Drilldiscard += 1
 						EndIf
 					Else
-						If $debugsetlog = 1 Then Setlog(" - discard #3 out of insidediamond", $color_purple)
+						If $debugsetlog = 1 Then Setlog(" - discard #3 out of insidediamond", $COLOR_DEBUG)
 						$Drilldiscard += 1
 					EndIf
 				Else
-					If $debugsetlog = 1 Then Setlog(" - discard #2 no pixel coordinate", $color_purple)
+					If $debugsetlog = 1 Then Setlog(" - discard #2 no pixel coordinate", $COLOR_DEBUG)
 					$Drilldiscard += 1
 				EndIf
 			Else
-				If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $color_purple)
+				If $debugsetlog = 1 Then Setlog(" - discard #1 no valid point", $COLOR_DEBUG)
 				$Drilldiscard += 1
 			EndIf
 		Next
 		If StringLen($MilkFarmAtkPixelListDRILLSTR) > 1 Then $MilkFarmAtkPixelListDRILLSTR = StringLeft($MilkFarmAtkPixelListDRILLSTR, StringLen($MilkFarmAtkPixelListDRILLSTR) - 1)
-		If $debugsetlog = 1 Then Setlog("> Drill Extractors to attack list: " & $MilkFarmAtkPixelListDRILLSTR, $color_purple)
+		If $debugsetlog = 1 Then Setlog("> Drill Extractors to attack list: " & $MilkFarmAtkPixelListDRILLSTR, $COLOR_DEBUG)
 		Local $htimerLocateDrill = Round(TimerDiff($hTimer) / 1000, 2)
-		If $debugsetlog = 1 Then Setlog("> Drill Extractors found: " & $Drillfounds & " | match conditions: " & $Drillmatch & " | discard " & $Drilldiscard, $color_blue)
-		If $debugsetlog = 1 Then SetLog("> Drill Extractors position detectecd in " & $htimerLocateDrill & " seconds", $color_blue)
+		If $debugsetlog = 1 Then Setlog("> Drill Extractors found: " & $Drillfounds & " | match conditions: " & $Drillmatch & " | discard " & $Drilldiscard, $COLOR_INFO)
+		If $debugsetlog = 1 Then SetLog("> Drill Extractors position detectecd in " & $htimerLocateDrill & " seconds", $COLOR_INFO)
 		Return $Drillmatch
 	Else
 		Return 0

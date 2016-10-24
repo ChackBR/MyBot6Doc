@@ -127,6 +127,13 @@
 #include "functions\Image Search\CheckTombs.au3"
 #include "functions\Image Search\THSearch.au3"
 
+
+#include "functions\Image Search\imglocAuxiliary.au3"
+#include "functions\Image Search\imglocScreens.au3"
+#include "functions\Image Search\imglocTrainHelper.au3"
+#include "functions\Image Search\imglocCheckWall.au3"
+#include "functions\Image Search\imglocTHSearch.au3"
+
 #include "functions\Main Screen\checkMainScreen.au3"
 #include "functions\Main Screen\checkObstacles.au3"
 #include "functions\Main Screen\GetDPI_Ratio.au3"
@@ -142,6 +149,7 @@
 #include "functions\Android\Close_OpenCoC.au3"
 #include "functions\Android\ZoomOut.au3"
 #include "functions\Android\checkAndroidTimeLag.au3"
+#include "functions\Android\checkAndroidPageError.au3"
 #include "functions\Android\OpenBlueStacks.au3"
 #include "functions\Android\CloseBlueStacks.au3"
 #include "functions\Android\OpenDroid4X.au3"
@@ -149,6 +157,7 @@
 #include "functions\Android\AndroidMEmu.au3"
 #include "functions\Android\AndroidLeapDroid.au3"
 #include "functions\Android\AndroidNox.au3"
+#include "functions\Android\AndroidKOPLAYER.au3"
 #include "functions\Android\getBSPos.au3"
 #include "functions\Android\UniversalCloseWaitOpenCoC.au3"
 #include "functions\Android\AndroidEmbed.au3"
@@ -224,6 +233,7 @@
 #include "functions\Search\FindTownHall.au3"
 #include "functions\Search\IsSearchModeActive.au3"
 #include "functions\Search\IsSearchAttackEnabled.au3"
+#include "functions\Search\WaitForClouds.au3"
 
 #include "functions\Village\BoostBarracks.au3"
 #include "functions\Village\BotDetectFirstTime.au3"
@@ -234,6 +244,7 @@
 #include "functions\Village\chkShieldStatus.au3"
 #include "functions\Village\Collect.au3"
 #include "functions\Village\DonateCC.au3"
+#include "functions\Village\DonateCCWBL.au3"
 #include "functions\Village\DropTrophy.au3"
 #include "functions\Village\GetTownHallLevel.au3"
 #include "functions\Village\isDarkElixirFull.au3"
@@ -260,8 +271,9 @@
 #include "functions\Village\UpgradeHeroes.au3"
 #include "functions\Village\ClanLevel.au3"
 #include "functions\Village\StarBonus.au3"
+#include "functions\Village\AddIdleTime.au3"
+#include "functions\Village\GetVillageSize.au3"
 #include "functions\Other\ClickZoneR.au3"
-
 ;
 ; MOD files - AwesomeGamer, LunaEclipse, MikeCoC, ...
 ;

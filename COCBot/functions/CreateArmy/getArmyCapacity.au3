@@ -16,7 +16,7 @@
 ; ===============================================================================================================================
 Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
-	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyCapacity:", $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then SETLOG("Begin getArmyCapacity:", $COLOR_DEBUG1)
 
 	If $bOpenArmyWindow = False And IsTrainPage() = False Then ; check for train page
 		SetError(1)
@@ -38,7 +38,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	; Verify troop current and full capacity
 	$iTried = 0 ; reset loop safety exit counter
 	$sArmyInfo = getArmyCampCap($aArmyCampSize[0], $aArmyCampSize[1]) ; OCR read army trained and total
-	If $debugsetlogTrain = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_PURPLE)
+	If $debugsetlogTrain = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_DEBUG)
 
 	While $iTried < 100 ; 30 - 40 sec
 
@@ -46,20 +46,20 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelaycheckArmyCamp5) Then Return ; Wait 250ms before reading again
 	    ForceCaptureRegion()
 		$sArmyInfo = getArmyCampCap($aArmyCampSize[0], $aArmyCampSize[1]) ; OCR read army trained and total
-		If $debugsetlogTrain = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_PURPLE)
+		If $debugsetlogTrain = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_DEBUG)
 		If StringInStr($sArmyInfo, "#", 0, 1) < 2 Then ContinueLoop ; In case the CC donations recieved msg are blocking, need to keep checking numbers till valid
 
 		$aGetArmySize = StringSplit($sArmyInfo, "#") ; split the trained troop number from the total troop number
 		If IsArray($aGetArmySize) Then
 			If $aGetArmySize[0] > 1 Then ; check if the OCR was valid and returned both values
 				If Number($aGetArmySize[2]) < 10 Or Mod(Number($aGetArmySize[2]), 5) <> 0 Then ; check to see if camp size is multiple of 5, or try to read again
-					If $debugsetlogTrain = 1 Then Setlog(" OCR value is not valid camp size", $COLOR_PURPLE)
+					If $debugsetlogTrain = 1 Then Setlog(" OCR value is not valid camp size", $COLOR_DEBUG)
 					ContinueLoop
 				EndIf
 				$tmpCurCamp = Number($aGetArmySize[1])
-				If $debugsetlogTrain = 1 Then Setlog("$tmpCurCamp = " & $tmpCurCamp, $COLOR_PURPLE)
+				If $debugsetlogTrain = 1 Then Setlog("$tmpCurCamp = " & $tmpCurCamp, $COLOR_DEBUG)
 				$tmpTotalCamp = Number($aGetArmySize[2])
-				If $debugSetlogTrain = 1 Then Setlog("$TotalCamp = " & $TotalCamp & ", Camp OCR = " & $tmpTotalCamp, $COLOR_PURPLE)
+				If $debugSetlogTrain = 1 Then Setlog("$TotalCamp = " & $TotalCamp & ", Camp OCR = " & $tmpTotalCamp, $COLOR_DEBUG)
 				If $iHoldCamp = $tmpTotalCamp Then ExitLoop ; check to make sure the OCR read value is same in 2 reads before exit
 				$iHoldCamp = $tmpTotalCamp ; Store last OCR read value
 			EndIf
@@ -70,9 +70,9 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	If $iTried <= 99 Then
 		$CurCamp = $tmpCurCamp
 		If $TotalCamp = 0 Then $TotalCamp = $tmpTotalCamp
-		If $debugsetlogTrain = 1 Then Setlog("$CurCamp = " & $CurCamp & ", $TotalCamp = " & $TotalCamp, $COLOR_PURPLE)
+		If $debugsetlogTrain = 1 Then Setlog("$CurCamp = " & $CurCamp & ", $TotalCamp = " & $TotalCamp, $COLOR_DEBUG)
 	Else
-		Setlog("Army size read error, Troop numbers may not train correctly", $COLOR_RED) ; log if there is read error
+		Setlog("Army size read error, Troop numbers may not train correctly", $COLOR_ERROR) ; log if there is read error
 		$CurCamp = 0
 		CheckOverviewFullArmy()
 	EndIf
@@ -89,7 +89,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 								  "(This window closes in 2 Minutes with value of " & $proposedTotalCamp & ")", $proposedTotalCamp, "", 330, 220, Default, Default, 120, $frmbot)
 			Local $error = @error
 			If $error = 1 Then
-			   Setlog("Army Camp User input cancelled, still using " & $TotalCamp, $COLOR_ORANGE)
+			   Setlog("Army Camp User input cancelled, still using " & $TotalCamp, $COLOR_ACTION)
 			Else
 			   If $error = 2 Then
 				  ; Cancelled, using proposed value
@@ -100,10 +100,10 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 			   If $error = 0 Then
 				  $iValueTotalCampForced = $TotalCamp
 				  $ichkTotalCampForced = 1
-				  Setlog("Army Camp User input = " & $TotalCamp, $COLOR_BLUE)
+				  Setlog("Army Camp User input = " & $TotalCamp, $COLOR_INFO)
 			   Else
 				  ; timeout
-				  Setlog("Army Camp proposed value = " & $TotalCamp, $COLOR_ORANGE)
+				  Setlog("Army Camp proposed value = " & $TotalCamp, $COLOR_ACTION)
 			   EndIf
 			EndIF
 		Else

@@ -24,9 +24,9 @@ Func checkCollectors($log = False, $showLabel = True)
 	If $anyCollectorsEnabled = 0 Then
 		If $showLabel Then GUICtrlSetState($lblCollectorWarning, $GUI_SHOW)
 		If $log Then
-			SetLog("Warning: Dead base is enabled, but no collectors are selected!", $COLOR_RED)
-			SetLog("Dead base will never be found!", $COLOR_RED)
-			SetLog("Select some in Attack Plan-Search&Attack-DeadBase-Collectors", $COLOR_RED)
+			SetLog("Warning: Dead base is enabled, but no collectors are selected!", $COLOR_ERROR)
+			SetLog("Dead base will never be found!", $COLOR_ERROR)
+			SetLog("Select some in Attack Plan-Search&Attack-DeadBase-Collectors", $COLOR_ERROR)
 			Return False
 		EndIf
 	ElseIf $anyCollectorsEnabled = 1 Then
@@ -36,6 +36,9 @@ Func checkCollectors($log = False, $showLabel = True)
 	Return False
 EndFunc
 Func chkLvl6()
+	$chkLvl6Enabled = 0
+	GUICtrlSetState($cmbLvl6, $GUI_DISABLE)
+	#cs
 	If GUICtrlRead($chkLvl6) = $GUI_CHECKED Then
 		$chkLvl6Enabled = 1
 		GUICtrlSetState($cmbLvl6, $GUI_ENABLE)
@@ -43,6 +46,7 @@ Func chkLvl6()
 		$chkLvl6Enabled = 0
 		GUICtrlSetState($cmbLvl6, $GUI_DISABLE)
 	EndIf
+	#ce
 	checkCollectors()
 EndFunc   ;==>chkLvl6
 Func chkLvl7()
@@ -129,3 +133,6 @@ EndFunc   ;==>cmbLvl12
 Func sldCollectorTolerance()
 	$toleranceOffset = GUICtrlRead($sldCollectorTolerance)
 EndFunc   ;==>sldCollectorTolerance
+Func cmbMinCollectorMatches()
+	$iMinCollectorMatches = _GUICtrlComboBox_GetCurSel($cmbMinCollectorMatches) + 1
+EndFunc   ;==>cmbLvl12

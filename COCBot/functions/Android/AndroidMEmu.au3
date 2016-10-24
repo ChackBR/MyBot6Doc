@@ -17,7 +17,7 @@ Func OpenMEmu($bRestart = False)
 
    Local $PID, $hTimer, $iCount = 0, $process_killed, $cmdOutput, $connected_to, $cmdPar
 
-   SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_GREEN)
+   SetLog("Starting " & $Android & " and Clash Of Clans", $COLOR_SUCCESS)
 
    $launchAndroid = WinGetAndroidHandle() = 0
    If $launchAndroid Then
@@ -29,15 +29,15 @@ Func OpenMEmu($bRestart = False)
 	  If $PID <> 0 Then $PID = ProcessExists($PID)
 	  SetDebugLog("$PID= "&$PID)
 	  If $PID = 0 Then  ; IF ShellExecute failed
-		SetLog("Unable to load " & $Android & ($AndroidInstance = "" ? "" : "(" & $AndroidInstance & ")") & ", please check emulator/installation.", $COLOR_RED)
-		SetLog("Unable to continue........", $COLOR_MAROON)
+		SetLog("Unable to load " & $Android & ($AndroidInstance = "" ? "" : "(" & $AndroidInstance & ")") & ", please check emulator/installation.", $COLOR_ERROR)
+		SetLog("Unable to continue........", $COLOR_WARNING)
 		btnStop()
 		SetError(1, 1, -1)
 		Return False
 	 EndIf
    EndIf
 
-   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
+   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_SUCCESS)
    $hTimer = TimerInit()
 
    ; Test ADB is connected
@@ -58,13 +58,13 @@ Func OpenMEmu($bRestart = False)
    ;WEnd
 
 	If TimerDiff($hTimer) >= $AndroidLaunchWaitSec * 1000 Then ; if it took 4 minutes, Android/PC has major issue so exit
-	  SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-	  SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for window", $COLOR_RED)
+	  SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+	  SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for window", $COLOR_ERROR)
 	  SetError(1, @extended, False)
 	  Return False
 	EndIf
 
-    SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_GREEN)
+    SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_SUCCESS)
 
 	Return True
 
@@ -120,8 +120,8 @@ Func InitMEmu($bCheckOnly = False)
 
    If FileExists($MEmu_Path & "MEmu.exe") = 0 Then
 	  If Not $bCheckOnly Then
-		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-		 SetLog($MEmu_Path & "MEmu.exe", $COLOR_RED)
+		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+		 SetLog($MEmu_Path & "MEmu.exe", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -129,8 +129,8 @@ Func InitMEmu($bCheckOnly = False)
 
    If FileExists($MEmu_Path & "adb.exe") = 0 Then
 	  If Not $bCheckOnly Then
-		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_RED)
-		 SetLog($MEmu_Path & "adb.exe", $COLOR_RED)
+		 SetLog("Serious error has occurred: Cannot find " & $Android & ":", $COLOR_ERROR)
+		 SetLog($MEmu_Path & "adb.exe", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -138,8 +138,8 @@ Func InitMEmu($bCheckOnly = False)
 
    If FileExists($MEmu_Manage_Path) = 0 Then
 	  If Not $bCheckOnly Then
-		 SetLog("Serious error has occurred: Cannot find MEmu-Hyperv:", $COLOR_RED)
-		 SetLog($MEmu_Manage_Path, $COLOR_RED)
+		 SetLog("Serious error has occurred: Cannot find MEmu-Hyperv:", $COLOR_ERROR)
+		 SetLog($MEmu_Manage_Path, $COLOR_ERROR)
 		 SetError(1, @extended, False)
 	  EndIf
 	  Return False
@@ -153,7 +153,7 @@ Func InitMEmu($bCheckOnly = False)
 	  ; check if instance is known
 	  If StringInStr($__VBoxVMinfo, "Could not find a registered machine named") > 0 Then
 		 ; Unknown vm
-		 SetLog("Cannot find " & $Android & " instance " & $AndroidInstance, $COLOR_RED)
+		 SetLog("Cannot find " & $Android & " instance " & $AndroidInstance, $COLOR_ERROR)
 		 Return False
 	  EndIf
 	  ; update global variables
@@ -166,25 +166,25 @@ Func InitMEmu($bCheckOnly = False)
 	  $aRegExResult = StringRegExp($__VBoxVMinfo, "name = ADB.*host ip = ([^,]+),", $STR_REGEXPARRAYMATCH)
 	  If Not @error Then
 		 $AndroidAdbDeviceHost = $aRegExResult[0]
-		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDeviceHost = " & $AndroidAdbDeviceHost, $COLOR_PURPLE)
+		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDeviceHost = " & $AndroidAdbDeviceHost, $COLOR_DEBUG)
 	  Else
 		 $oops = 1
-		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Host", $COLOR_RED)
+		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Host", $COLOR_ERROR)
 	  EndIF
 
 	  $aRegExResult = StringRegExp($__VBoxVMinfo, "name = ADB.*host port = (\d{3,5}),", $STR_REGEXPARRAYMATCH)
 	  If Not @error Then
 		 $AndroidAdbDevicePort = $aRegExResult[0]
-		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_PURPLE)
+		 If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_DEBUG)
 	  Else
 		 $oops = 1
-		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Port", $COLOR_RED)
+		 SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Port", $COLOR_ERROR)
 	  EndIF
 
 	  If $oops = 0 Then
 		 $AndroidAdbDevice = $AndroidAdbDeviceHost & ":" & $AndroidAdbDevicePort
 	  Else ; use defaults
-		 SetLog("Using ADB default device " & $AndroidAdbDevice & " for " & $Android, $COLOR_RED)
+		 SetLog("Using ADB default device " & $AndroidAdbDevice & " for " & $Android, $COLOR_ERROR)
 	  EndIf
 
 	  ; get screencap paths: Name: 'picture', Host path: 'C:\Users\Administrator\Pictures\MEmu Photo' (machine mapping), writable
@@ -196,7 +196,7 @@ Func InitMEmu($bCheckOnly = False)
 		 $oops = 1
 		 $AndroidAdbScreencap = False
 		 $AndroidPicturesHostPath = ""
-		 SetLog($Android & " Background Mode is not available", $COLOR_RED)
+		 SetLog($Android & " Background Mode is not available", $COLOR_ERROR)
 	  EndIf
 
 	  $__VBoxGuestProperties = LaunchConsole($__VBoxManage_Path, "guestproperty enumerate " & $AndroidInstance, $process_killed)
@@ -224,8 +224,8 @@ Func WaitForAmMEmu($WaitInSec, $hTimer = 0) ; doesn't work yet!!!
 	  $am_ready = StringLen($cmdOutput) < 4
 	  If $am_ready Then ExitLoop
 	  If TimerDiff($hMyTimer) > $WaitInSec * 1000 Then ; if no device available in 4 minutes, Android/PC has major issue so exit
-		 SetLog("Serious error has occurred, please restart PC and try again", $COLOR_RED)
-		 SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for activity manager", $COLOR_RED)
+		 SetLog("Serious error has occurred, please restart PC and try again", $COLOR_ERROR)
+		 SetLog($Android & " refuses to load, waited " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds for activity manager", $COLOR_ERROR)
 		 SetError(1, @extended, False)
 		 Return True
 	  EndIf
@@ -282,15 +282,15 @@ Func CheckScreenMEmu($bSetLog = True)
 	  If $Value <> $aValues[$i][1] Then
 		 If $iErrCnt = 0 Then
 			If $bSetLog Then
-			   SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+			   SetLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 			Else
-			   SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_RED)
+			   SetDebugLog("MyBot doesn't work with " & $Android & " screen configuration!", $COLOR_ERROR)
 			EndIf
 		 EndIf
 		 If $bSetLog Then
-			SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+			SetLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 		 Else
-			SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_RED)
+			SetDebugLog("Setting of " & $aValues[$i][0] & " is " & $Value & " and will be changed to " & $aValues[$i][1], $COLOR_ERROR)
 		 EndIf
 		 $iErrCnt += 1
 	  EndIf
@@ -311,9 +311,9 @@ Func UpdateMEmuConfig()
 
    If @error = 0 Then
 	  $__MEmu_PhoneLayout = $aRegExResult[0]
-	  SetDebugLog($Android & " phone_layout is " & $__MEmu_PhoneLayout, $COLOR_RED)
+	  SetDebugLog($Android & " phone_layout is " & $__MEmu_PhoneLayout, $COLOR_ERROR)
    Else
-	  SetDebugLog("Cannot read " & $Android & " guestproperty phone_layout!", $COLOR_RED)
+	  SetDebugLog("Cannot read " & $Android & " guestproperty phone_layout!", $COLOR_ERROR)
    EndIF
    SetError(0, 0, 0)
 
@@ -368,7 +368,7 @@ Func UpdateMEmuWindowState()
 	  EndIf
    EndIf
    If Not $ok Then
-	  SetDebugLog($Android & " Tool Bar state is undetermined as treated as " & ($bToolBarVisible ? "visible" : "hidden"), $COLOR_RED)
+	  SetDebugLog($Android & " Tool Bar state is undetermined as treated as " & ($bToolBarVisible ? "visible" : "hidden"), $COLOR_ERROR)
    EndIF
 
    Local $w = ($bToolBarVisible ? 0 : $tbw)
@@ -390,7 +390,7 @@ Func UpdateMEmuWindowState()
 		 $Values[2][2] = $aww - $w
 		 $Values[3][2] = $awh - $__MEmu_SystemBar
 	  Case Else ; Unexpected Value
-		 SetDebugLog("Unsupported " & $Android & " guestproperty phone_layout = " & $__MEmu_PhoneLayout, $COLOR_RED)
+		 SetDebugLog("Unsupported " & $Android & " guestproperty phone_layout = " & $__MEmu_PhoneLayout, $COLOR_ERROR)
    EndSwitch
 
    $AndroidClientWidth = $Values[0][2]

@@ -220,9 +220,9 @@ Func lblTotalCount()
 	If GUICtrlRead($lblTotalCount) = "100" Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_MONEYGREEN)
 	ElseIf GUICtrlRead($lblTotalCount) = "0" Then
-		GUICtrlSetBkColor($lblTotalCount, $COLOR_ORANGE)
+		GUICtrlSetBkColor($lblTotalCount, $COLOR_ACTION)
 	Else
-		GUICtrlSetBkColor($lblTotalCount, $COLOR_RED)
+		GUICtrlSetBkColor($lblTotalCount, $COLOR_ERROR)
 	EndIf
 EndFunc   ;==>lblTotalCount
 
@@ -360,6 +360,21 @@ Func chkCloseWaitEnable()
 	EndIf
 EndFunc   ;==>chkCloseWaitEnable
 
+Func chkAddDelayIdlePhaseEnable()
+	If GUICtrlRead($chkAddDelayIdlePhaseEnable) = $GUI_CHECKED Then
+		$iAddIdleTimeEnable = 1
+		For $i = $lbltxtAddDelayIdlePhaseBetween to $lbltxtAddDelayIdlePhaseSec
+			GUICtrlSetState($i, $GUI_ENABLE)
+		Next
+	Else
+		$iAddIdleTimeEnable = 0
+		For $i = $lbltxtAddDelayIdlePhaseBetween to $lbltxtAddDelayIdlePhaseSec
+			GUICtrlSetState($i, $GUI_DISABLE)
+		Next
+	EndIf
+EndFunc   ;==>chkAddDelayIdlePhaseEnable
+
+
 Func chkCloseWaitTrain()
 	If GUICtrlRead($chkCloseWaitTrain) = $GUI_CHECKED Then
 		$ichkCloseWaitTrain = 1
@@ -434,7 +449,7 @@ Func chkTroopOrder($bNoiseMode = True)
 				$sNewTrainList &= $TroopName[$i] & ", "
 			Next
 			$sNewTrainList = StringLeft($sNewTrainList, StringLen($sNewTrainList)-2)
-			Setlog("Current train order= " & $sNewTrainList, $COLOR_BLUE)
+			Setlog("Current train order= " & $sNewTrainList, $COLOR_INFO)
 		EndIf
 	EndIf
 EndFunc   ;==>chkTroopOrder
@@ -466,7 +481,7 @@ Func chkDarkTroopOrder($bNoiseMode = True)
 				$sNewTrainList &= $TroopDarkName[$i] & ", "
 			Next
 			$sNewTrainList = StringLeft($sNewTrainList, StringLen($sNewTrainList)-2)
-			Setlog("Current train order= " & $sNewTrainList, $COLOR_BLUE)
+			Setlog("Current train order= " & $sNewTrainList, $COLOR_INFO)
 		EndIf
 	EndIf
 EndFunc   ;==>chkDarkTroopOrder
@@ -547,24 +562,24 @@ Func BtnTroopOrderSet()
 		If @error Then
 			Switch @error
 				Case 1
-					Setlog("Code problem, can not continue till fixed!", $COLOR_RED)
+					Setlog("Code problem, can not continue till fixed!", $COLOR_ERROR)
 				Case 2
-					Setlog("Bad Combobox selections, please fix!", $COLOR_RED)
+					Setlog("Bad Combobox selections, please fix!", $COLOR_ERROR)
 				Case 3
-					Setlog("Unable to Change Troop Train Order due bad change count!", $COLOR_RED)
+					Setlog("Unable to Change Troop Train Order due bad change count!", $COLOR_ERROR)
 				Case Else
-					Setlog("Monkey ate bad banana, something wrong with ChangeTroopTrainOrder() code!", $COLOR_RED)
+					Setlog("Monkey ate bad banana, something wrong with ChangeTroopTrainOrder() code!", $COLOR_ERROR)
 			EndSwitch
 			GUICtrlSetImage($ImgTroopOrderSet, $pIconLib, $eIcnRedLight)
 		Else
-			Setlog("Troop training order changed successfully!", $COLOR_GREEN)
+			Setlog("Troop training order changed successfully!", $COLOR_SUCCESS)
 			For $i = 0 To UBound($DefaultTroopGroup) - 1
 				$sNewTrainList &= $TroopName[$i] & ", "
 			Next
-			Setlog("Troop train order= " & $sNewTrainList, $COLOR_BLUE)
+			Setlog("Troop train order= " & $sNewTrainList, $COLOR_INFO)
 		EndIf
 	Else
-		Setlog("Must use all troops and No duplicate troop names!", $COLOR_RED)
+		Setlog("Must use all troops and No duplicate troop names!", $COLOR_ERROR)
 		GUICtrlSetImage($ImgTroopOrderSet, $pIconLib, $eIcnRedLight)
 	EndIf
 	GUICtrlSetState(BtnTroopOrderSet, $GUI_DISABLE)
@@ -593,24 +608,24 @@ Func BtnDarkTroopOrderSet()
 		If @error Then
 			Switch @error
 				Case 1
-					Setlog("Code problem, can not continue till fixed!", $COLOR_RED)
+					Setlog("Code problem, can not continue till fixed!", $COLOR_ERROR)
 				Case 2
-					Setlog("Bad Combobox selections, please fix!", $COLOR_RED)
+					Setlog("Bad Combobox selections, please fix!", $COLOR_ERROR)
 				Case 3
-					Setlog("Unable to Change Dark Troop Train Order due bad change count!", $COLOR_RED)
+					Setlog("Unable to Change Dark Troop Train Order due bad change count!", $COLOR_ERROR)
 				Case Else
-					Setlog("Monkey ate bad banana, something wrong with ChangeDarkTroopTrainOrder() code!", $COLOR_RED)
+					Setlog("Monkey ate bad banana, something wrong with ChangeDarkTroopTrainOrder() code!", $COLOR_ERROR)
 			EndSwitch
 			GUICtrlSetImage($ImgDarkTroopOrderSet, $pIconLib, $eIcnRedLight)
 		Else
-			Setlog("Troop training order changed successfully!", $COLOR_GREEN)
+			Setlog("Troop training order changed successfully!", $COLOR_SUCCESS)
 			For $i = 0 To UBound($DefaultTroopGroupDark) - 1
 				$sNewTrainList &= $TroopDarkName[$i] & ", "
 			Next
-			Setlog("Troop train order= " & $sNewTrainList, $COLOR_BLUE)
+			Setlog("Troop train order= " & $sNewTrainList, $COLOR_INFO)
 		EndIf
 	Else
-		Setlog("Must use all dark troops and No duplicate troop names!", $COLOR_RED)
+		Setlog("Must use all dark troops and No duplicate troop names!", $COLOR_ERROR)
 		GUICtrlSetImage($ImgDarkTroopOrderSet, $pIconLib, $eIcnRedLight)
 	EndIf
 	GUICtrlSetState($BtnDarkTroopOrderSet, $GUI_DISABLE)
@@ -619,7 +634,7 @@ EndFunc   ;==>BtnDarkTroopOrderSet
 
 Func ChangeTroopTrainOrder()
 
-	If $debugsetlog = 1 Or $debugsetlogTrain = 1 Then Setlog("Begin Func ChangeTroopTrainOrder()", $COLOR_PURPLE) ; debug
+	If $debugsetlog = 1 Or $debugsetlogTrain = 1 Then Setlog("Begin Func ChangeTroopTrainOrder()", $COLOR_DEBUG1) ; debug
 
 	; reference for original troopgroup list
 	;$TroopGroup[10][3] = [["Arch", 1, 1], ["Giant", 2, 5], ["Wall", 4, 2], ["Barb", 0, 1], ["Gobl", 3, 1], ["Heal", 7, 14], ["Pekk", 9, 25], ["Ball", 5, 5], ["Wiza", 6, 4], ["Drag", 8, 20]]
@@ -629,8 +644,8 @@ Func ChangeTroopTrainOrder()
 	Local $iUpdateCount = 0
 
 	If UBound($aTroopOrderList) - 1 <> UBound($TroopGroup) Then ; safety check in case troops are added
-		If $debugsetlogTrain = 1 Then Setlog("UBound($aTroopOrderList) - 1: " & UBound($aTroopOrderList) - 1 & " = " & UBound($TroopGroup) & "UBound($TroopGroup)", $COLOR_PURPLE)
-		Setlog("Monkey ate bad banana, fix $aTroopOrderList & $TroopGroup arrays!", $COLOR_RED)
+		If $debugsetlogTrain = 1 Then Setlog("UBound($aTroopOrderList) - 1: " & UBound($aTroopOrderList) - 1 & " = " & UBound($TroopGroup) & "UBound($TroopGroup)", $COLOR_DEBUG)
+		Setlog("Monkey ate bad banana, fix $aTroopOrderList & $TroopGroup arrays!", $COLOR_ERROR)
 		SetError(1, 0, False)
 		Return
 	EndIf
@@ -643,10 +658,10 @@ Func ChangeTroopTrainOrder()
 	For $i = 0 To UBound($aTroopOrderList) - 2 ; Look for match of combobox text to troopgroup and create new train order
 		$sComboText = StringLeft(StringStripWS(GUICtrlRead($cmbTroopOrder[$i]), $STR_STRIPALL), 5)
 		For $j = 0 To UBound($DefaultTroopGroup) - 1
-			;Setlog("$i=" & $i & ", ComboSel=" & _GUICtrlComboBox_GetCurSel($cmbTroopOrder[$i]) & ", $DefaultTroopGroup[" & $j & "][0]: " & $DefaultTroopGroup[$j][0] & " = " & $sComboText& " :$sComboText" , $COLOR_PURPLE) ; debug
+			;Setlog("$i=" & $i & ", ComboSel=" & _GUICtrlComboBox_GetCurSel($cmbTroopOrder[$i]) & ", $DefaultTroopGroup[" & $j & "][0]: " & $DefaultTroopGroup[$j][0] & " = " & $sComboText& " :$sComboText" , $COLOR_DEBUG) ; debug
 			If StringInStr($sComboText, $DefaultTroopGroup[$j][0], $STR_NOCASESENSEBASIC) = 0 Then ContinueLoop
 			$iUpdateCount += 1 ; keep count of troops updated to ensure success
-			;Setlog("$iUpdateCount: " & $iUpdateCount , $COLOR_PURPLE)  ; debug
+			;Setlog("$iUpdateCount: " & $iUpdateCount , $COLOR_DEBUG)  ; debug
 			For $k = 0 To UBound($DefaultTroopGroup, 2) - 1 ; if true then assign next $i array element(s) in list to match in troopgroup
 				$NewTroopGroup[$i][$k] = $DefaultTroopGroup[$j][$k]
 			Next ; ; $NewTroopGroup[$i][$k] loop
@@ -659,7 +674,7 @@ Func ChangeTroopTrainOrder()
 			For $k = 0 To UBound($DefaultTroopGroup, 2) - 1
 				$TroopGroup[$j][$k] = $NewTroopGroup[$j][$k]
 			Next
-			If $debugsetlogTrain = 1 Then Setlog("$TroopGroup[" & $j & "]= " & $TroopGroup[$j][0] & ":" & $TroopGroup[$j][1] & ":" & $TroopGroup[$j][2], $COLOR_ORANGE)
+			If $debugsetlogTrain = 1 Then Setlog("$TroopGroup[" & $j & "]= " & $TroopGroup[$j][0] & ":" & $TroopGroup[$j][1] & ":" & $TroopGroup[$j][2], $COLOR_ACTION)
 		Next
 		For $i = 0 To UBound($TroopGroup, 1) - 1
 			$TroopName[$i] = $TroopGroup[$i][0]
@@ -668,7 +683,7 @@ Func ChangeTroopTrainOrder()
 		Next
 		GUICtrlSetImage($ImgTroopOrderSet, $pIconLib, $eIcnGreenLight)
 	Else
-		Setlog("Error - Bad troop assignment in ChangeTroopTrainOrder()", $COLOR_RED)
+		Setlog("Error - Bad troop assignment in ChangeTroopTrainOrder()", $COLOR_ERROR)
 		SetError(3, 0, False)
 		Return
 	EndIf
@@ -679,15 +694,15 @@ EndFunc   ;==>ChangeTroopTrainOrder
 
 Func ChangeDarkTroopTrainOrder()
 
-	If $debugsetlog = 1 Or $debugsetlogTrain = 1 Then Setlog("Begin Func ChangeDarkTroopTrainOrder()", $COLOR_PURPLE) ; debug
+	If $debugsetlog = 1 Or $debugsetlogTrain = 1 Then Setlog("Begin Func ChangeDarkTroopTrainOrder()", $COLOR_DEBUG1) ; debug
 
 	Local $sComboText = ""
 	Local $NewTroopGroup[7][3]
 	Local $iUpdateCount = 0
 
 	If UBound($aDarkTroopOrderList) - 1 <> UBound($TroopGroupDark) Then ; safety check in case troops are added
-		If $debugsetlogTrain = 1 Then Setlog("UBound($aDarkTroopOrderList) - 1: " & UBound($aDarkTroopOrderList) - 1 & " = " & UBound($TroopGroupDark) & "UBound($TroopGroupDark)", $COLOR_PURPLE)
-		Setlog("Monkey ate bad banana, fix $aDarkTroopOrderList & $TroopGroupDark arrays!", $COLOR_RED)
+		If $debugsetlogTrain = 1 Then Setlog("UBound($aDarkTroopOrderList) - 1: " & UBound($aDarkTroopOrderList) - 1 & " = " & UBound($TroopGroupDark) & "UBound($TroopGroupDark)", $COLOR_DEBUG)
+		Setlog("Monkey ate bad banana, fix $aDarkTroopOrderList & $TroopGroupDark arrays!", $COLOR_ERROR)
 		SetError(1, 0, False)
 		Return
 	EndIf
@@ -700,10 +715,10 @@ Func ChangeDarkTroopTrainOrder()
 	For $i = 0 To UBound($aDarkTroopOrderList) - 2 ; Look for match of combobox text to troopgroup and create new train order
 		$sComboText = StringLeft(StringStripWS(GUICtrlRead($cmbDarkTroopOrder[$i]), $STR_STRIPALL), 5)
 		For $j = 0 To UBound($DefaultTroopGroupDark) - 1
-			;Setlog("$i=" & $i & ", ComboSel=" & _GUICtrlComboBox_GetCurSel($cmbDarkTroopOrder[$i]) & ", $DefaultTroopGroupDark[" & $j & "][0]: " & StringLeft($DefaultTroopGroupDark[$j][0], 3) & " = " & $sComboText& " :$sComboText" , $COLOR_PURPLE) ; debug
+			;Setlog("$i=" & $i & ", ComboSel=" & _GUICtrlComboBox_GetCurSel($cmbDarkTroopOrder[$i]) & ", $DefaultTroopGroupDark[" & $j & "][0]: " & StringLeft($DefaultTroopGroupDark[$j][0], 3) & " = " & $sComboText& " :$sComboText" , $COLOR_DEBUG) ; debug
 			If StringInStr($sComboText, StringLeft($DefaultTroopGroupDark[$j][0],3), $STR_NOCASESENSEBASIC) = 0 Then ContinueLoop
 			$iUpdateCount += 1 ; keep count of troops updated to ensure success
-			;Setlog("$iUpdateCount: " & $iUpdateCount , $COLOR_PURPLE)  ; debug
+			;Setlog("$iUpdateCount: " & $iUpdateCount , $COLOR_DEBUG)  ; debug
 			For $k = 0 To UBound($DefaultTroopGroupDark, 2) - 1 ; if true then assign next $i array element(s) in list to match in troopgroup
 				$NewTroopGroup[$i][$k] = $DefaultTroopGroupDark[$j][$k]
 			Next ; ; $NewTroopGroupDark[$i][$k] loop
@@ -716,7 +731,7 @@ Func ChangeDarkTroopTrainOrder()
 			For $k = 0 To UBound($DefaultTroopGroupDark, 2) - 1
 				$TroopGroupDark[$j][$k] = $NewTroopGroup[$j][$k]
 			Next
-			If $debugsetlogTrain = 1 Then Setlog("$TroopGroupDark[" & $j & "]= " & $TroopGroupDark[$j][0] & ":" & $TroopGroupDark[$j][1] & ":" & $TroopGroupDark[$j][2], $COLOR_ORANGE)
+			If $debugsetlogTrain = 1 Then Setlog("$TroopGroupDark[" & $j & "]= " & $TroopGroupDark[$j][0] & ":" & $TroopGroupDark[$j][1] & ":" & $TroopGroupDark[$j][2], $COLOR_ACTION)
 		Next
 		For $i = 0 To UBound($TroopGroupDark, 1) - 1
 			$TroopDarkName[$i] = $TroopGroupDark[$i][0]
@@ -725,7 +740,7 @@ Func ChangeDarkTroopTrainOrder()
 		Next
 		GUICtrlSetImage($ImgDarkTroopOrderSet, $pIconLib, $eIcnGreenLight)
 	Else
-		Setlog("Error - Bad troop assignment in ChangeDarkTroopTrainOrder()", $COLOR_RED)
+		Setlog("Error - Bad troop assignment in ChangeDarkTroopTrainOrder()", $COLOR_ERROR)
 		SetError(3, 0, False)
 		Return
 	EndIf
@@ -748,7 +763,7 @@ Func SetDefaultTroopGroup($bNoiseMode = True)
 		$TroopNamePosition[$i] = $TroopGroup[$i][1]
 		$TroopHeight[$i] = $TroopGroup[$i][2]
 	Next
-	If $bNoiseMode Or $debugsetlogTrain = 1 Then Setlog("Default troop training order set", $COLOR_GREEN)
+	If $bNoiseMode Or $debugsetlogTrain = 1 Then Setlog("Default troop training order set", $COLOR_SUCCESS)
 EndFunc   ;==>SetDefaultTroopGroup
 
 Func SetDefaultTroopGroupDark($bNoiseMode = True)
@@ -765,28 +780,28 @@ Func SetDefaultTroopGroupDark($bNoiseMode = True)
 		$TroopDarkNamePosition[$i] = $TroopGroupDark[$i][1]
 		$TroopDarkHeight[$i] = $TroopGroupDark[$i][2]
 	Next
-	If $bNoiseMode Or $debugsetlogTrain = 1 Then Setlog("Default dark troop training order set", $COLOR_GREEN)
+	If $bNoiseMode Or $debugsetlogTrain = 1 Then Setlog("Default dark troop training order set", $COLOR_SUCCESS)
 EndFunc   ;==>SetDefaultTroopGroupDark
 
 Func IsUseCustomTroopOrder()
 	For $i = 0 To UBound($aTroopOrderList) - 2 ; Check if custom train order has been used to select log message
 		If $icmbTroopOrder[$i] = -1 Then
-			If $debugsetlogTrain = 1 Then Setlog("Custom train order not used...", $COLOR_PURPLE) ; debug
+			If $debugsetlogTrain = 1 Then Setlog("Custom train order not used...", $COLOR_DEBUG) ; debug
 			Return False
 		EndIf
 	Next
-	If $debugsetlogTrain = 1 Then Setlog("Custom train order used...", $COLOR_PURPLE) ; debug
+	If $debugsetlogTrain = 1 Then Setlog("Custom train order used...", $COLOR_DEBUG) ; debug
 	Return True
 EndFunc   ;==>IsUseCustomTroopOrder
 
 Func IsUseCustomDarkTroopOrder()
 	For $i = 0 To UBound($aDarkTroopOrderList) - 2 ; Check if custom train order has been used to select log message
 		If $icmbDarkTroopOrder[$i] = -1 Then
-			If $debugsetlogTrain = 1 Then Setlog("Custom dark train order not used...", $COLOR_PURPLE) ; debug
+			If $debugsetlogTrain = 1 Then Setlog("Custom dark train order not used...", $COLOR_DEBUG) ; debug
 			Return False
 		EndIf
 	Next
-	If $debugsetlogTrain = 1 Then Setlog("Custom dark train order used...", $COLOR_PURPLE) ; debug
+	If $debugsetlogTrain = 1 Then Setlog("Custom dark train order used...", $COLOR_DEBUG) ; debug
 	Return True
 EndFunc   ;==>IsUseCustomDarkTroopOrder
 
@@ -843,3 +858,46 @@ Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
 	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_ENABLE)
    EndIf
 EndFunc
+
+; CSV Deployment Speed Mod
+Func sldSelectedSpeedDB()
+	$isldSelectedCSVSpeed[$DB] = GUICtrlRead($sldSelectedSpeedDB)
+	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$DB]] & "x";
+	IF $isldSelectedCSVSpeed[$DB] = 4 Then $speedText = "Normal"
+	GUICtrlSetData($lbltxtSelectedSpeedDB, $speedText & " speed")
+EndFunc   ;==>sldSelectedSpeedDB
+
+Func sldSelectedSpeedAB()
+	$isldSelectedCSVSpeed[$LB] = GUICtrlRead($sldSelectedSpeedAB)
+	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$LB]] & "x";
+	IF $isldSelectedCSVSpeed[$LB] = 4 Then $speedText = "Normal"
+	GUICtrlSetData($lbltxtSelectedSpeedAB, $speedText & " speed")
+
+EndFunc   ;==>sldSelectedSpeedAB
+
+; Attack Now Button (Useful for CSV Testing) By MR.ViPeR ;;;;
+Func AttackNowDB()
+	If $RunState Then Return
+	Sleep(2000)
+	$iMatchMode = $DB			; Select Dead Base As Attack Type
+	$iAtkAlgorithm[$DB] = 1		; Select Scripted Attack
+	$scmbDBScriptName = GuiCtrlRead($cmbScriptNameDB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
+	$iMatchMode = $DB			; Select Dead Base As Attack Type
+	$RunState = True
+	PrepareAttack($iMatchMode)	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
+	Attack()					; Fire xD
+	$RunState = False
+EndFunc   ;==>AttackNow Dead Base
+
+Func AttackNowAB()
+	If $RunState Then Return
+	Sleep(2000)
+	$iMatchMode = $LB			; Select Live Base As Attack Type
+	$iAtkAlgorithm[$LB] = 1		; Select Scripted Attack
+	$scmbABScriptName = GuiCtrlRead($cmbScriptNameAB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
+	$iMatchMode = $LB			; Select Live Base As Attack Type
+	$RunState = True
+	PrepareAttack($iMatchMode)	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
+	Attack()					; Fire xD
+	$RunState = False
+EndFunc   ;==>AttackNow Live Base

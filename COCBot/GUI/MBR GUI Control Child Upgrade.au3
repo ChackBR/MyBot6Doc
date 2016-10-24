@@ -40,26 +40,33 @@ Func btnchkbxRepeat()
 EndFunc   ;==>btnchkbxRepeat
 
 Func picUpgradeTypeLocation()
+	Local $wasRunState = $RunState
 	$RunState = True
 	PureClick(1, 40, 1, 0, "#9999") ; Clear screen
 	Sleep(100)
 	Zoomout() ; Zoom out if needed
-	For $j = 0 To UBound($aUpgrades, 1) - 1
-		If @GUI_CtrlId = $picUpgradeType[$j] Then
-			If isInsideDiamondXY($aUpgrades[$j][0], $aUpgrades[$j][0]) Then ; check for valid location
-				Click($aUpgrades[$j][0], $aUpgrades[$j][1], 1, 0, "#9999")
+	Local $inum
+	For $inum = 0 To UBound($aUpgrades, 1) - 1
+		If @GUI_CtrlId = $picUpgradeType[$inum] Then
+			Local $x = $aUpgrades[$inum][0]
+			Local $y = $aUpgrades[$inum][1]
+			Local $n = $aUpgrades[$inum][4]
+			SetDebugLog("Selecting #" & $inum + 1 & ": " & $n & ", " & $x & "/" & $y)
+			If isInsideDiamondXY($x, $y) Then ; check for valid location
+				BuildingClick($aUpgrades[$inum][0], $aUpgrades[$inum][1], "#9999")
 				Sleep(100)
-				If StringInStr($aUpgrades[$j][4], "collect", $STR_NOCASESENSEBASIC) Or _
-						StringInStr($aUpgrades[$j][4], "mine", $STR_NOCASESENSEBASIC) Or _
-						StringInStr($aUpgrades[$j][4], "drill", $STR_NOCASESENSEBASIC) Then
+				If StringInStr($n, "collect", $STR_NOCASESENSEBASIC) Or _
+						StringInStr($n, "mine", $STR_NOCASESENSEBASIC) Or _
+						StringInStr($n, "drill", $STR_NOCASESENSEBASIC) Then
 					Click(1, 40, 1, 0, "#0999") ;Click away to deselect collector if was not full, and collected with previous click
 					Sleep(100)
-					Click($aUpgrades[$j][0], $aUpgrades[$j][1], 1, 0, "#9999") ;Select collector
+					BuildingClick($aUpgrades[$inum][0], $aUpgrades[$inum][1], "#9999") ;Select collector
 				EndIf
 			EndIf
+			ExitLoop
 		EndIf
 	Next
-	$RunState = False
+	$RunState = $wasRunState
 EndFunc   ;==>picUpgradeTypeLocation
 
 Func btnResetUpgrade()
@@ -134,7 +141,7 @@ Func ResetLabUpgradeTime()
 	Local $stext = @CRLF & GetTranslated(614, 13, "Are you 100% sure you want to reset lab upgrade timer?") & @CRLF & _
 			GetTranslated(614, 14, "Click OK to reset") & @CRLF & GetTranslated(614, 15, "Or Click Cancel to exit") & @CRLF
 	Local $MsgBox = _ExtMsgBox(0, GetTranslated(614, 16, "Reset timer") & "|" & GetTranslated(614, 17, "Cancel and Return"), GetTranslated(614, 18, "Reset laboratory upgrade timer?"), $stext, 120, $frmBot)
-	If $DebugSetlog = 1 Then Setlog("$MsgBox= " & $MsgBox, $COLOR_PURPLE)
+	If $DebugSetlog = 1 Then Setlog("$MsgBox= " & $MsgBox, $COLOR_DEBUG)
 	If $MsgBox = 1 Then
 		$sLabUpgradeTime = ""
 		$txtTip = GetTranslated(614, 8, "Visible Red button means that laboratory upgrade in process") & @CRLF & _
@@ -347,7 +354,7 @@ Func btnWalls()
 	Zoomout()
 	$icmbWalls = _GUICtrlComboBox_GetCurSel($cmbWalls)
 	;$debugWalls = 1
-	If CheckWall() Then Setlog("Hei Chef! We found the Wall!")
+	If imglocCheckWall() Then Setlog("Hei Chef! We found the Wall!")
 	;$debugWalls = 0
 	$RunState = $wasRunState
 	AndroidShield("btnWalls") ; Update shield status due to manual $RunState

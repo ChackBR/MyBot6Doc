@@ -30,7 +30,7 @@ Func _logErrorDLLCall($sDllName, $ErrorCode)
 			Case Else
 				$sEmsg = "Unknown Error Code?"
 		EndSwitch
-		SetLog($sDllName & " DLLCall Error, @error code: " & $sEmsg, $COLOR_RED)
+		SetLog($sDllName & " DLLCall Error, @error code: " & $sEmsg, $COLOR_ERROR)
 	EndIf
 EndFunc   ;==>_logErrorDLLCall
 
@@ -58,7 +58,7 @@ Func _logErrorDateDiff($ErrorCode)
 		Case 3
 			$sEmsg = "3| Invalid $sEndDate"
 	EndSwitch
-	Setlog("_DateDiff error code = " & $sEmsg, $COLOR_RED)
+	Setlog("_DateDiff error code = " & $sEmsg, $COLOR_ERROR)
 EndFunc   ;==>_logErrorDateDiff
 
 ; #FUNCTION# ====================================================================================================================
@@ -85,5 +85,5 @@ Func _logErrorDateAdd($ErrorCode)
 		Case 3
 			$sEmsg = "3| Invalid $sEndDate"
 	EndSwitch
-	Setlog("_DateAdd error code = " & $sEmsg, $COLOR_RED)
+	Setlog("_DateAdd error code = " & $sEmsg, $COLOR_ERROR)
 EndFunc   ;==>_logErrorDateAdd

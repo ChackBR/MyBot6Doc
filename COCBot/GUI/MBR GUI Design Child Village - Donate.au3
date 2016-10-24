@@ -1302,7 +1302,7 @@ GUICtrlCreateTabItem("")
 $hGUI_DONATE_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,13,"Schedule Donations"))
 
 	Local $x = 25, $y = 150 - 105
-	$grpDonateCC = GUICtrlCreateGroup(GetTranslated(613,1,"Donate Schedule"), $x - 20, $y - 20, 430, 334)
+	$grpDonateCC = GUICtrlCreateGroup(GetTranslated(613,1,"Donate Schedule"), $x - 20, $y - 20, 430, 120)
 	$y += 10
 	$x += 10
 	GUICtrlCreateIcon($pIconLib, $eIcnCCDonate, $x - 5, $y, 64, 60, $BS_ICON)
@@ -1310,7 +1310,7 @@ $hGUI_DONATE_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,13,"Schedule Don
 	$chkDonateHours = GUICtrlCreateCheckbox(GetTranslated(603,30, -1), $x +40+ 30, $y-6)
 	GUICtrlSetOnEvent(-1, "chkDonateHours")
 
-	$y += 85
+	$y += 20
 	$x += 29 + 30
 	$lbDonateHours1 = GUICtrlCreateLabel(" 0", $x + 30, $y, 13, 15)
 	GUICtrlSetState(-1, $GUI_DISABLE)
@@ -1405,7 +1405,43 @@ $hGUI_DONATE_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,13,"Schedule Don
 	$lbDonateHoursPM = GUICtrlCreateLabel(GetTranslated(603,4, -1), $x + 10, $y)
 	GUICtrlSetState(-1, $GUI_DISABLE)
 	$y += 16
+
+
+	Local $x = 25, $y = 170
+	$grpFilterDonationsCC = GUICtrlCreateGroup(GetTranslated(613,2,"Donation Clan Mates Filter"), $x - 20, $y - 20, 430, 155)
+		$y += 10
+				$lblFilterDonationsCC1 = GUICtrlCreateLabel(GetTranslated(613, 8,"Using this option you can choose to donate to all members of your team (No Filter), donate only to certain friends (White List) or give everyone except a few members of your team (Black List)"), $x , $y - 10, 380, 40, $BS_MULTILINE)
+		$y += 35
+
+		$cmbFilterDonationsCC = GUICtrlCreateCombo("", $x, $y, 300, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			_GUICtrlSetTip(-1, GetTranslated(613,3, ""))
+			GUICtrlSetData(-1, GetTranslated(613,4, "No Filter, donate at all Clan Mates") & "|" & GetTranslated(613,5, "No Filter but collect Clan Mates Images") & "|" & GetTranslated(613,6, "Donate only at Clan Mates in White List" ) & "|" & GetTranslated(613,7, "Donate at all Except at Clan Mates in Black List") , GetTranslated(613,4,-1))
+			GUICtrlSetOnEvent(-1, "cmbABAlgorithm")
+		$y += 35
+				$lblFilterDonationsCC1 = GUICtrlCreateLabel(GetTranslated(613, 10,"Images of Clan Mates are captured ad stored in main folder, move to appropriate folder (White or Black List)"), $x , $y - 10, 380, 30, $BS_MULTILINE)
+		$y += 20
+	    $btnFilterDonationsCC = GUICtrlCreateButton(GetTranslated(613, 9,"Open Clan Mates Image Folder"), $x + 2, $y, 300, 20,-1)
+			;GUICtrlSetImage(-1, $pIconLib, $eIcnDonBarbarian, 1)
+			GUICtrlSetOnEvent(-1, "btnFilterDonationsCC")
 GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+   $y += 60
+   	$grpskipDonateNearFulLTroops = GUICtrlCreateGroup(GetTranslated(613,15,"Skip donation near full troops"), $x - 20, $y - 20, 430, 45)
+
+	  $chkskipDonateNearFulLTroopsEnable = GUICtrlCreateCheckbox(GetTranslated(613,13,"Skip donation near full troops"), $x, $y-4)
+			GUICtrlSetState(-1, $GUI_CHECKED )
+			GUICtrlSetOnEvent(-1, "chkskipDonateNearFulLTroopsEnable")
+
+   $x += 190
+	  $lblSkipDonateNearFulLTroopsText =  GUICtrlCreateLabel(GetTranslated(613,14,"if troops army camps are greater than"), $x, $y)
+   $x += 110
+	  $txtSkipDonateNearFulLTroopsPercentual = GUICtrlCreateInput("90", $x +40+30 , $y -2 , 20, 20,  BitOR($SS_CENTER, $ES_AUTOHSCROLL))
+	  GUICtrlSetLimit(-1,2)
+   $x += 95
+	  $lblSkipDonateNearFulLTroopsText1 =  GUICtrlCreateLabel("%", $x, $y)
+
+GUICtrlCreateGroup("", -99, -99, 1, 1)
+
 GUICtrlCreateTabItem("")
 
 

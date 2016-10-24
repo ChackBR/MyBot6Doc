@@ -68,7 +68,7 @@ Local $x = $xStart +  25, $y = $yStart +  75 + 25
 		$x -= 5
 		$icnBarb = GUICtrlCreateIcon ($pIconLib, $eIcnBarbarian, $x - 10, $y - 5, 24, 24)
 		$lblBarbarians = GUICtrlCreateLabel($sTxtBarbarians, $x + 20, $y, -1, -1)
-		$txtNumBarb = GUICtrlCreateInput("50", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtNumBarb = GUICtrlCreateInput("30", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtBarbarians & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetOnEvent(-1, "lblTotalCount")
@@ -76,7 +76,7 @@ Local $x = $xStart +  25, $y = $yStart +  75 + 25
 		$y += 25
 		$icnArch = GUICtrlCreateIcon ($pIconLib, $eIcnArcher, $x - 10, $y - 5, 24, 24)
 		$lblArchers = GUICtrlCreateLabel($sTxtArchers, $x + 20, $y, -1, -1)
-		$txtNumArch = GUICtrlCreateInput("50", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtNumArch = GUICtrlCreateInput("60", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtArchers & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetOnEvent(-1, "lblTotalCount")
@@ -84,7 +84,7 @@ Local $x = $xStart +  25, $y = $yStart +  75 + 25
 		$y += 25
 		$icnGobl = GUICtrlCreateIcon ($pIconLib, $eIcnGoblin, $x - 10, $y - 5, 24, 24)
 		$lblGoblins = GUICtrlCreateLabel($sTxtGoblins, $x + 20, $y, -1, -1)
-		$txtNumGobl = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtNumGobl = GUICtrlCreateInput("10", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtGoblins & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetOnEvent(-1, "lblTotalCount")
@@ -134,6 +134,27 @@ Local $x = $xStart + 20, $y = $yStart +  75 + 25
 			GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
+
+Local $x = $xStart + 20, $y = $yStart +  230
+	$grpTrainArchersToFitCamps = GUICtrlCreateGroup(GetTranslated(621,30, "Complete empty spaces"), $x - 15, $y -20, 142, 40 )
+		 $ChkTrainArchersToFitCamps = GUICtrlCreateCheckbox(GetTranslated(621,31, "Complete with archers"), $x , $y, -1, 15)
+;~ 			_GUICtrlSetTip(-1, GetTranslated(621,32, "If xxxx xxx xxxxx (insert a good description) xxxx xxxx"))
+;~ 			GUICtrlSetState(-1, $GUI_CHECKED)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+For $i = $grpTroopComp To $ChkTrainArchersToFitCamps
+	GUICtrlSetState($i, $GUI_HIDE)
+Next
+
+Local $x = $xStart + 20, $y = $yStart + 300
+	$grpQuickTrain = GUICtrlCreateGroup(GetTranslated(621,33, "Quick Train"), $x - 15, $y -20, 142, 80 )
+		$chkUseQuickTrain = GUICtrlCreateCheckbox(GetTranslated(621,34, "Use Quick Train"), $x , $y, -1, 15)
+			_GUICtrlSetTip(-1, GetTranslated(621,35, "Use the Quick Train function to train the Previous Army or the predefined Army 1, 2 or 3"))
+			GUICtrlSetState(-1, $GUI_CHECKED)
+		$cmbCurrentArmy = GUICtrlCreateCombo("", $x + 10, $y + 21, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			GUICtrlSetData(-1, GetTranslated(621,36, "Previous") & "|" & GetTranslated(621,37, "Army 1") & "|" &  GetTranslated(621,38, "Army 2") & "|" & GetTranslated(621,39, "Army 3"), GetTranslated(621,36, -1))
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
 Local $x = $xStart +  160 + 5, $y = $yStart +  45
 	$grpRaidComp = GUICtrlCreateGroup(GetTranslated(621,19, "Army Strength"), $x - 15, $y - 20, 139, 50)
 		$y += 5
@@ -150,14 +171,14 @@ Local $x = $xStart +  160 + 5, $y = $yStart +  75 + 25
 	$grpOtherTroops = GUICtrlCreateGroup(GetTranslated(621,22, "Add. Troops"), $x - 15, $y - 20, 139, 250)
 		$icnGiant = GUICtrlCreateIcon ($pIconLib, $eIcnGiant, $x - 10, $y - 5, 24, 24)
 		$lblGiants = GUICtrlCreateLabel($sTxtGiants, $x + 16, $y, -1, -1)
-		$txtNumGiant = GUICtrlCreateInput("12", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$txtNumGiant = GUICtrlCreateInput("4", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtGiants & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesGiants = GUICtrlCreateLabel("x", $x + 115, $y, -1, -1)
 		$y +=25
 		$icnWall = GUICtrlCreateIcon ($pIconLib, $eIcnWallBreaker, $x - 10, $y - 5, 24, 24)
 		$lblWallBreakers = GUICtrlCreateLabel($sTxtWallBreakers, $x + 16, $y, -1, -1)
-		$txtNumWall = GUICtrlCreateInput("0", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$txtNumWall = GUICtrlCreateInput("4", $x + 83, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtWallBreakers & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesWallBreakers = GUICtrlCreateLabel("x", $x + 115, $y, -1, -1)
@@ -292,16 +313,6 @@ Local $x = $xStart +  160 + 148, $y = $yStart +  80 + 25 - 60
 			GUICtrlSetState(-1, $GUI_DISABLE)
 			GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
-
-	; by AwesomeGamer
-Local $x = $xStart +  25, $y = $yStart +  330
-	$grpMods = GUICtrlCreateGroup("Barrack Options", $x - 20, $y - 20, 142, 45)
-		$y += 0
-		$chkDontRemove = GUICtrlCreateCheckbox("Don't Empty Barracks", $x - 10, $y - 5, -1, -1)
-			$txtTip ="The bot will not remove existing troops in the barracks when training."
-			GUICtrlSetTip(-1, $txtTip)
-	GUICtrlCreateGroup("", -99, -99, 1, 1)
-	
 GUICtrlCreateTabItem("")
 
 $hGUI_ARMY_TAB_ITEM2 = GUICtrlCreateTabItem(GetTranslated(600,21,"Spells"))
@@ -456,17 +467,12 @@ Local $x = $xStart + 25, $y = $yStart +  80 + 25 - 60
 			$txtTip = "Amount of used spells."
 			GUICtrlSetTip(-1, $txtTip)
 	; SmartZap Settings - End
-	
-	;====================== Spell Barrack Mode ======================
-	$x = 265
-	$y = 313
-	$grpMods = GUICtrlCreateGroup("Spells Training Options", $x - 20, $y + 2, 182, 40)
-		$y +=18
-		$chkBarrackSpell = GUICtrlCreateCheckbox("Spell Barrack Mode", $x - 10, $y, -1, -1)
-			$txtTip ="Train spells continuously in barrack mode (Lightning, Heal, and Rage only)."
-			_GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
+
+For $i = $grpOtherTroops To $lblTimesSkeletonS
+	GUICtrlSetState($i, $GUI_HIDE)
+Next
 
 $hGUI_ARMY_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,22,"Boost"))
 
@@ -622,7 +628,7 @@ GUICtrlCreateTabItem("")
 $hGUI_ARMY_TAB_ITEM4 = GUICtrlCreateTabItem(GetTranslated(641,1,"Options"))
 	$x = $xStart + 25
 	$y = $yStart + 45
-	$grpCloseWaitTrain = GUICtrlCreateGroup(GetTranslated(641, 2, "Training Idle Time"), $x - 20, $y - 20, 151, 243)	
+	$grpCloseWaitTrain = GUICtrlCreateGroup(GetTranslated(641, 2, "Training Idle Time"), $x - 20, $y - 20, 151, 210)
 		;
 		$chkCloseWaitEnable = GUICtrlCreateCheckbox(GetTranslated(641, 3, "Close While Training"),$x - 12, $y, 140, -1)
 			$txtTip = GetTranslated(641, 4, "Option will exit CoC game for time required to complete TROOP training when SHIELD IS ACTIVE")& @CRLF & _
@@ -680,19 +686,20 @@ $hGUI_ARMY_TAB_ITEM4 = GUICtrlCreateTabItem(GetTranslated(641,1,"Options"))
 			_GUICtrlSetTip(-1, $txtTip)
 		$lblCloseWaitRdmPercent = GUICtrlCreateLabel("%",$x + 84, $y+3, -1, 18)
 		_GUICtrlSetTip(-1, $txtTip)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	;max logout time
 	$y += 28
-		$chkTrainLogoutMaxTime = GUICtrlCreateCheckbox("Max Logout: ", $x-12, $y, -1, -1)
+		$chkTrainLogoutMaxTime = GUICtrlCreateCheckbox("Max Logout: ", $x+140, $y-190, -1, -1)
 			$txtTip = "Only allow logout for a maximum amount of time: "
 			GUICtrlSetTip(-1, $txtTip)
-		$txtTrainLogoutMaxTime = GUICtrlCreateInput("4", $x + 75, $y + 1, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtTrainLogoutMaxTime = GUICtrlCreateInput("4", $x + 225, $y - 190, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
-		$lblTrainLogoutMaxTime= GUICtrlCreateLabel("min", $x + 110, $y + 3, -1, -1)
+		$lblTrainLogoutMaxTime= GUICtrlCreateLabel("min", $x + 260, $y - 188, -1, -1)
 		GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$y += 53
+	$y += 20
 	$grpTiming = GUICtrlCreateGroup(GetTranslated(636,30, "Train Click Timing"), $x - 20, $y - 20, 151, 60)
 		$lbltxtTrainITDelay = GUICtrlCreateLabel(GetTranslated(636,32, "delay"), $x-10, $y, 37, 30)
 			$txtTip = GetTranslated(636,33, "Increase the delay if your PC is slow or to create human like training click speed")
@@ -707,6 +714,33 @@ $hGUI_ARMY_TAB_ITEM4 = GUICtrlCreateTabItem(GetTranslated(641,1,"Options"))
 			GUICtrlSetData(-1, 40) ; default value
 			GUICtrlSetOnEvent(-1, "sldTrainITDelay")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	$y +=	63
+	$grpAddDelayIdlePhase = GUICtrlCreateGroup(GetTranslated(641,35, "Training Add Random Delay"), $x - 20, $y - 20, 151, 60)
+		$chkAddDelayIdlePhaseEnable = GUICtrlCreateCheckbox(GetTranslated(641, 36, "Add Random Delay"),$x - 12, $y -5, 140, -1)
+			$txtTip = GetTranslated(641, 37, "Add random delay between two calls of train army.")& @CRLF & _
+			GetTranslated(641, 38, "This option reduces the calls to the training window  humanizing the bot spacing calls each time with a causal interval chosen between the minimum and maximum values indicated below.")
+			GUICtrlSetState(-1, $GUI_CHECKED)
+			_GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetOnEvent(-1, "chkAddDelayIdlePhaseEnable")
+		$y += 20
+		$lbltxtAddDelayIdlePhaseBetween = GUICtrlCreateLabel(GetTranslated(641,39, "Between"), $x-12, $y, 50, 30)
+			;GUICtrlSetState(-1,$GUI_DISABLE)
+		$txtAddDelayIdlePhaseTimeMin = GUICtrlCreateInput($iAddIdleTimeMin, $x + 32, $y-2, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			;GUICtrlSetState(-1,$GUI_DISABLE)
+			GUICtrlSetLimit(-1, 999)
+		$lbltxtAddDelayIdlePhaseAnd = GUICtrlCreateLabel(GetTranslated(641,40, "And"), $x+61, $y, 20, 30)
+		$txtAddDelayIdlePhaseTimeMax = GUICtrlCreateInput($iAddIdleTimeMax, $x + 82, $y-2, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			;GUICtrlSetState(-1,$GUI_DISABLE)
+			GUICtrlSetLimit(-1, 999)
+		$lbltxtAddDelayIdlePhaseSec = GUICtrlCreateLabel(GetTranslated(603,6, "sec."), $x+110, $y, 20, 30)
+			;GUICtrlSetState(-1,$GUI_DISABLE)
+
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+
+
+
 
 $x = $xStart + 182
 $y = $yStart + 45
@@ -791,4 +825,7 @@ $y = $yStart + 45 + 184
 	$ImgDarkTroopOrderSet = GUICtrlCreateIcon ($pIconLib, $eIcnSilverStar, $x + 98, $y+1, 18, 18)
 
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
+For $i = $grpTrainOrder To $ImgDarkTroopOrderSet
+	GUICtrlSetState($i, $GUI_HIDE)
+Next
 GUICtrlCreateTabItem("")

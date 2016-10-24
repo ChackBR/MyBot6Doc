@@ -52,11 +52,11 @@ Func WerFaultClose($programFile, $tryCount = 0)
 							SetDebugLog("Killed " & $werfault & " Window " & $HWnD)
 							$closed += 1
 						Else
-							SetDebugLog("Cannot close " & $werfault & " Window " & $HWnD, $COLOR_RED)
+							SetDebugLog("Cannot close " & $werfault & " Window " & $HWnD, $COLOR_ERROR)
 						EndIf
 					EndIf
 				Else
-					SetDebugLog("Process " & $pid & " is not WerFault, " & $process.CommandLine, $COLOR_RED)
+					SetDebugLog("Process " & $pid & " is not WerFault, " & $process.CommandLine, $COLOR_ERROR)
 				EndIf
 			ELse
 				SetDebugLog("Wmi Object for process " & $pid & " not found")

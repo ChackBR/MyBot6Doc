@@ -70,12 +70,12 @@ Func _RemoteControlPushBullet()
 						$txtHelp &= '\n' & GetTranslated(620,1, -1) & " " & GetTranslated(620,15,"DELETE")
 						$txtHelp &= '\n' & GetTranslated(620,1, -1) & " " & $iOrigPushBullet & " " & GetTranslated(620,24,"SCREENSHOT")
 						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,26, "Request for Help") & "\n" & $txtHelp)
-						SetLog("Pushbullet: Your request has been received from ' " & $iOrigPushBullet & ". Help has been sent", $COLOR_GREEN)
+						SetLog("Pushbullet: Your request has been received from ' " & $iOrigPushBullet & ". Help has been sent", $COLOR_SUCCESS)
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,18, -1) ;"PAUSE"
 						If $TPaused = False And $Runstate = True Then
 							If ( _ColorCheck(_GetPixelColor($NextBtn[0], $NextBtn[1], True), Hex($NextBtn[2], 6), $NextBtn[3])) = False And IsAttackPage() Then
-								SetLog("PushBullet: Unable to pause during attack", $COLOR_RED)
+								SetLog("PushBullet: Unable to pause during attack", $COLOR_ERROR)
 								_PushBullet($iOrigPushBullet & " | " & GetTranslated(620,86, "Request to Pause") & "\n" & GetTranslated(620,87, "Unable to pause during attack, try again later."))
 							ElseIf ( _ColorCheck(_GetPixelColor($NextBtn[0], $NextBtn[1], True), Hex($NextBtn[2], 6), $NextBtn[3])) = True And IsAttackPage() Then
 								ReturnHome(False, False)
@@ -88,7 +88,7 @@ Func _RemoteControlPushBullet()
 								TogglePauseImpl("Push")
 							EndIf
 						Else
-							SetLog("Pushbullet: Your bot is currently paused, no action was taken", $COLOR_GREEN)
+							SetLog("Pushbullet: Your bot is currently paused, no action was taken", $COLOR_SUCCESS)
 							_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,86, "Request to Pause") & "\n" & GetTranslated(620,88, "Your bot is currently paused, no action was taken"))
 						EndIf
 						_DeleteMessageOfPushBullet($iden[$x])
@@ -96,15 +96,15 @@ Func _RemoteControlPushBullet()
 						If $TPaused = True And $Runstate = True Then
 							TogglePauseImpl("Push")
 						Else
-							SetLog("Pushbullet: Your bot is currently resumed, no action was taken", $COLOR_GREEN)
+							SetLog("Pushbullet: Your bot is currently resumed, no action was taken", $COLOR_SUCCESS)
 							_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,27, "Request to Resume") & "\n" & GetTranslated(620,28, "Your bot is currently resumed, no action was taken"))
 						EndIf
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & GetTranslated(620,15, -1) ;"DELETE"
 						_DeletePushOfPushBullet()
-						SetLog("Pushbullet: Your request has been received.", $COLOR_GREEN)
+						SetLog("Pushbullet: Your request has been received.", $COLOR_SUCCESS)
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,21, -1) ;"LOG"
-						SetLog("Pushbullet: Your request has been received from " & $iOrigPushBullet & ". Log is now sent", $COLOR_GREEN)
+						SetLog("Pushbullet: Your request has been received from " & $iOrigPushBullet & ". Log is now sent", $COLOR_SUCCESS)
 						_PushFileToPushBullet($sLogFName, GetTranslated(620,29, "logs"), "text/plain; charset=utf-8", $iOrigPushBullet & " | " & GetTranslated(620,30, "Current Log") & " \n")
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,22, -1) ;"LASTRAID"
@@ -113,29 +113,29 @@ Func _RemoteControlPushBullet()
 						Else
 							_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,33, "There is no last raid screenshot") & ".")
 						EndIf
-						SetLog("Pushbullet: Push Last Raid Snapshot...", $COLOR_GREEN)
+						SetLog("Pushbullet: Push Last Raid Snapshot...", $COLOR_SUCCESS)
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(20,23, -1) ;"LASTRAIDTXT"
-						SetLog("Pusbullet: Your request has been received. Last Raid txt sent", $COLOR_GREEN)
+						SetLog("Pusbullet: Your request has been received. Last Raid txt sent", $COLOR_SUCCESS)
 						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,34, "Last Raid txt") & "\n" & "[" & GetTranslated(620,35, "G") & "]: " & _NumberFormat($iGoldLast) & " [" & GetTranslated(620,36, "E") & "]: " & _NumberFormat($iElixirLast) & " [" & GetTranslated(620,37, "D") & "]: " & _NumberFormat($iDarkLast) & " [" & GetTranslated(620,38, "T") & "]: " & $iTrophyLast)
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,20, -1) ;"STATS"
-						SetLog("Pushbullet: Your request has been received. Statistics sent", $COLOR_GREEN)
+						SetLog("Pushbullet: Your request has been received. Statistics sent", $COLOR_SUCCESS)
 						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,39, "Stats Village Report") & "\n" & GetTranslated(620,91, "At Start") & "\n[" & GetTranslated(620,35, "G") & "]: " & _NumberFormat($iGoldStart) & " [" & GetTranslated(620,36, "E") & "]: " & _NumberFormat($iElixirStart) & " [" & GetTranslated(620,37, "D") & "]: " & _NumberFormat($iDarkStart) & " [" & GetTranslated(620,38, "T") & "]: " & $iTrophyStart & "\n\n" & GetTranslated(620,40, "Now (Current Resources)") &"\n[" & GetTranslated(620,35, "G") & "]: " & _NumberFormat($iGoldCurrent) & " [" & GetTranslated(620,36, "E") & "]: " & _NumberFormat($iElixirCurrent) & " [" & GetTranslated(620,37, "D") & "]: " & _NumberFormat($iDarkCurrent) & " [" & GetTranslated(620,38, "T") & "]: " & $iTrophyCurrent & " [" & GetTranslated(620,41, "GEM") & "]: " & $iGemAmount & "\n \n [" & GetTranslated(620,42, "No. of Free Builders") & "]: " & $iFreeBuilderCount & "\n " & GetTranslated(620,43, "[No. of Wall Up]") & ": " & GetTranslated(620,35, "G") & ": " & $iNbrOfWallsUppedGold & "/ " & GetTranslated(620,36, "E") & ": " & $iNbrOfWallsUppedElixir & "\n\n" & GetTranslated(620,44, "Attacked") & ": " & GUICtrlRead($lblresultvillagesattacked) & "\n" & GetTranslated(620,45, "Skipped") & ": " & $iSkippedVillageCount)
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,24, -1) ;"SCREENSHOT"
-						SetLog("Pushbullet: ScreenShot request received", $COLOR_GREEN)
+						SetLog("Pushbullet: ScreenShot request received", $COLOR_SUCCESS)
 						$RequestScreenshot = 1
 						_DeleteMessageOfPushBullet($iden[$x])
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,16, -1) ;"RESTART"
 						_DeleteMessageOfPushBullet($iden[$x])
-						SetLog("Your request has been received. Bot and Android Emulator restarting...", $COLOR_GREEN)
+						SetLog("Your request has been received. Bot and Android Emulator restarting...", $COLOR_SUCCESS)
 						_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,46, "Request to Restart") & "..." & "\n" & GetTranslated(620,47, "Your bot and Android Emulator are now restarting") & "...")
 						SaveConfig()
 						_Restart()
 					Case GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & GetTranslated(620,17, -1) ;"STOP"
 						_DeleteMessageOfPushBullet($iden[$x])
-						SetLog("Your request has been received. Bot is now stopped", $COLOR_GREEN)
+						SetLog("Your request has been received. Bot is now stopped", $COLOR_SUCCESS)
 						If $Runstate = True Then
 							_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,48, "Request to Stop") & "..." & "\n" & GetTranslated(620,49, "Your bot is now stopping") & "...")
 							btnStop()
@@ -146,7 +146,7 @@ Func _RemoteControlPushBullet()
 						Local $lenstr = StringLen(GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & "")
 						Local $teststr = StringLeft($body[$x], $lenstr)
 						If $teststr = (GetTranslated(620,1, -1) & " " & StringUpper($iOrigPushBullet) & " " & "") Then
-							SetLog("Pushbullet: received command syntax wrong, command ignored.", $COLOR_RED)
+							SetLog("Pushbullet: received command syntax wrong, command ignored.", $COLOR_ERROR)
 							_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,51, "Command not recognized") & "\n" & GetTranslated(620,52, "Please push BOT HELP to obtain a complete command list."))
 							_DeleteMessageOfPushBullet($iden[$x])
 						EndIf
@@ -218,11 +218,11 @@ Func _PushFileToPushBullet($File, $Folder, $FileType, $body)
 			Local $pPush = '{"type": "file", "file_name": "' & $File & '", "file_type": "' & $FileType & '", "file_url": "' & $file_url[0] & '", "body": "' & $body & '"}'
 			$oHTTP.Send($pPush)
 		Else
-			SetLog("Pusbullet: Unable to send file " & $File, $COLOR_RED)
+			SetLog("Pusbullet: Unable to send file " & $File, $COLOR_ERROR)
 			_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,53, "Unable to Upload File") & "\n" & GetTranslated(620,54, "Occured an error type") & " 1 " & GetTranslated(620,55, "uploading file to PushBullet server") & "...")
 		EndIf
 	Else
-		SetLog("Pushbullet: Unable to send file " & $File, $COLOR_RED)
+		SetLog("Pushbullet: Unable to send file " & $File, $COLOR_ERROR)
 		_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,53, "Unable to Upload File") & "\n" & GetTranslated(620,54, "Occured an error type") & " 2 " & GetTranslated(620,55, "uploading file to PushBullet server") & "...")
 	EndIf
 EndFunc   ;==>_PushFile
@@ -259,7 +259,7 @@ Func PushMsgToPushBullet($Message, $Source = "")
 			If $PushBulletEnabled = 1 And $iAlertPBLastRaidTxt = 1 Then
 				_PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,34, "Last Raid txt") & "\n" & "[" & GetTranslated(620,35, "G") & "]: " & _NumberFormat($iGoldLast) & " [" & GetTranslated(620,36, "E") & "]: " & _NumberFormat($iElixirLast) & " [" & GetTranslated(620,37, "D") & "]: " & _NumberFormat($iDarkLast) & " [" & GetTranslated(620,38, "T") & "]: " & $iTrophyLast)
 				If _Sleep($iDelayPushMsg1) Then Return
-				SetLog("Pushbullet: Last Raid Text has been sent!", $COLOR_GREEN)
+				SetLog("Pushbullet: Last Raid Text has been sent!", $COLOR_SUCCESS)
 			EndIf
 			If $PushBulletEnabled = 1 And $pLastRaidImg = 1 Then
 				_CaptureRegion()
@@ -275,12 +275,12 @@ Func PushMsgToPushBullet($Message, $Source = "")
 				_GDIPlus_ImageSaveToFile($hBitmap_Scaled, $dirLoots & $AttackFile)
 				_GDIPlus_ImageDispose($hBitmap_Scaled)
 				;push the file
-				SetLog("Pushbullet: Last Raid screenshot has been sent!", $COLOR_GREEN)
+				SetLog("Pushbullet: Last Raid screenshot has been sent!", $COLOR_SUCCESS)
 				_PushFileToPushBullet($AttackFile, GetTranslated(620,31, "Loots"), "image/jpeg", $iOrigPushBullet & " | " & GetTranslated(620,32, "Last Raid") & "\n" & $AttackFile)
 				;wait a second and then delete the file
 				If _Sleep($iDelayPushMsg1) Then Return
 				Local $iDelete = FileDelete($dirLoots & $AttackFile)
-				If Not ($iDelete) Then SetLog("Pushbullet: An error occurred deleting temporary screenshot file.", $COLOR_RED)
+				If Not ($iDelete) Then SetLog("Pushbullet: An error occurred deleting temporary screenshot file.", $COLOR_ERROR)
 			EndIf
 		Case "FoundWalls"
 			If $PushBulletEnabled = 1 And $pWallUpgrade = 1 Then _PushToPushBullet($iOrigPushBullet & " | " & GetTranslated(620,60, "Found Wall level") & " " & $icmbWalls + 4 & "\n" & " " & GetTranslated(620,61, "Wall segment has been located") & "...\n" & GetTranslated(620,62, "Upgrading") & "...")
@@ -321,15 +321,15 @@ Func PushMsgToPushBullet($Message, $Source = "")
 			_GDIPlus_ImageSaveToFile($hBitmap_Scaled, $dirTemp & $Screnshotfilename)
 			_GDIPlus_ImageDispose($hBitmap_Scaled)
 			_PushFileToPushBullet($Screnshotfilename, "Temp", "image/jpeg", $iOrigPushBullet & " | " & GetTranslated(620,84, "Screenshot of your village") & " " & "\n" & $Screnshotfilename)
-			SetLog("Pushbullet: Screenshot sent!", $COLOR_GREEN)
+			SetLog("Pushbullet: Screenshot sent!", $COLOR_SUCCESS)
 			$RequestScreenshot = 0
 			;wait a second and then delete the file
 			If _Sleep($iDelayPushMsg2) Then Return
 			Local $iDelete = FileDelete($dirTemp & $Screnshotfilename)
-			If Not ($iDelete) Then SetLog("Pushbullet: An error occurred deleting the temporary screenshot file.", $COLOR_RED)
+			If Not ($iDelete) Then SetLog("Pushbullet: An error occurred deleting the temporary screenshot file.", $COLOR_ERROR)
 		Case "DeleteAllPBMessages"
 			_DeletePushOfPushBullet()
-			SetLog("PushBullet: All messages deleted.", $COLOR_GREEN)
+			SetLog("PushBullet: All messages deleted.", $COLOR_SUCCESS)
 			$iDeleteAllPBPushesNow = False ; reset value
 		Case "CampFull"
 			If $PushBulletEnabled = 1 And $ichkAlertPBCampFull = 1 Then
@@ -379,7 +379,7 @@ Func _DeleteOldPushesOfPushBullet()
 		EndIf
 	EndIf
 	If $msgdeleted > 0 Then
-		setlog("Pushbullet: removed " & $msgdeleted & " messages older than " & $icmbHoursPushBullet & " h ", $COLOR_GREEN)
+		setlog("Pushbullet: removed " & $msgdeleted & " messages older than " & $icmbHoursPushBullet & " h ", $COLOR_SUCCESS)
 		;_PushToPushBullet($iOrigPushBullet & " | removed " & $msgdeleted & " messages older than " & $icmbHoursPushBullet & " h ")
 	EndIf
 EndFunc   ;==>_DeleteOldPushes

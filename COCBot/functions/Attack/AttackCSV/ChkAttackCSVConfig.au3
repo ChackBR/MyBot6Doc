@@ -15,14 +15,14 @@
 Func ChkAttackCSVConfig()
 	;check if exists attackscript Files
 	If Not (FileExists($dirAttacksCSV & "\" & $scmbDBScriptName & ".csv")) Then
-		Setlog("Dead base scripted attack file do not exists (renamed, deleted?)", $COLOR_RED)
-		SetLog("Please select a new scripted algorithm from 'scripted attack' tab", $COLOR_RED)
+		Setlog("Dead base scripted attack file do not exists (renamed, deleted?)", $COLOR_ERROR)
+		SetLog("Please select a new scripted algorithm from 'scripted attack' tab", $COLOR_ERROR)
 		PopulateComboScriptsFilesDB()
 		btnStop()
 	EndIf
 	If Not (FileExists($dirAttacksCSV & "\" & $scmbABScriptName & ".csv")) Then
-		Setlog("Dead base scripted attack file do not exists (renamed, deleted?)", $COLOR_RED)
-		SetLog("Please select a new scripted algorithm from 'scripted attack' tab", $COLOR_RED)
+		Setlog("Dead base scripted attack file do not exists (renamed, deleted?)", $COLOR_ERROR)
+		SetLog("Please select a new scripted algorithm from 'scripted attack' tab", $COLOR_ERROR)
 		PopulateComboScriptsFilesAB()
 		btnStop()
 	EndIf

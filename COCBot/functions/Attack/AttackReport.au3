@@ -27,19 +27,19 @@ Func AttackReport()
 	While _CheckPixel($aEndFightSceneAvl, True) = False ; check for light gold pixle in the Gold ribbon in End of Attack Scene before reading values
 		$iCount += 1
 		If _Sleep($iDelayAttackReport1) Then Return
-		If $debugSetlog = 1 Then Setlog("Waiting Attack Report Ready, " & ($iCount / 2) & " Seconds.", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("Waiting Attack Report Ready, " & ($iCount / 2) & " Seconds.", $COLOR_DEBUG)
 		If $iCount > 30 Then ExitLoop ; wait 30*500ms = 15 seconds max for the window to render
 	WEnd
-	If $iCount > 30 Then Setlog("End of Attack scene slow to appear, attack values my not be correct", $COLOR_BLUE)
+	If $iCount > 30 Then Setlog("End of Attack scene slow to appear, attack values my not be correct", $COLOR_INFO)
 
 	$iCount = 0 ; reset loop counter
 	While getResourcesLoot(333, 289 + $midOffsetY) = "" ; check for gold value to be non-zero before reading other values as a secondary timer to make sure all values are available
 		$iCount += 1
 		If _Sleep($iDelayAttackReport1) Then Return
-		If $debugSetlog = 1 Then Setlog("Waiting Attack Report Ready, " & ($iCount / 2) & " Seconds.", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("Waiting Attack Report Ready, " & ($iCount / 2) & " Seconds.", $COLOR_DEBUG)
 		If $iCount > 20 Then ExitLoop ; wait 20*500ms = 10 seconds max before we have call the OCR read an error
 	WEnd
-	If $iCount > 20 Then Setlog("End of Attack scene read gold error, attack values my not be correct", $COLOR_BLUE)
+	If $iCount > 20 Then Setlog("End of Attack scene read gold error, attack values my not be correct", $COLOR_INFO)
 
 	If _ColorCheck(_GetPixelColor($aAtkRprtDECheck[0], $aAtkRprtDECheck[1], True), Hex($aAtkRprtDECheck[2], 6), $aAtkRprtDECheck[3]) Then ; if the color of the DE drop detected
 		$iGoldLast = getResourcesLoot(333, 289 + $midOffsetY)
@@ -52,7 +52,7 @@ Func AttackReport()
 		If _ColorCheck(_GetPixelColor($aAtkRprtTrophyCheck[0], $aAtkRprtTrophyCheck[1], True), Hex($aAtkRprtTrophyCheck[2], 6), $aAtkRprtTrophyCheck[3]) Then
 			$iTrophyLast = -$iTrophyLast
 		EndIf
-		SetLog("Loot: [G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [DE]: " & _NumberFormat($iDarkLast) & " [T]: " & $iTrophyLast, $COLOR_GREEN)
+		SetLog("Loot: [G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [DE]: " & _NumberFormat($iDarkLast) & " [T]: " & $iTrophyLast, $COLOR_SUCCESS)
 	Else
 		$iGoldLast = getResourcesLoot(333, 289 + $midOffsetY)
 		If _Sleep($iDelayAttackReport2) Then Return
@@ -63,7 +63,7 @@ Func AttackReport()
 			$iTrophyLast = -$iTrophyLast
 		EndIf
 		$iDarkLast = ""
-		SetLog("Loot: [G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [T]: " & $iTrophyLast, $COLOR_GREEN)
+		SetLog("Loot: [G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [T]: " & $iTrophyLast, $COLOR_SUCCESS)
 	EndIf
 
 	If $iTrophyLast >= 0 Then
@@ -85,12 +85,12 @@ Func AttackReport()
 
 				If $iBonusLast = 100 Then
 					$iCalcMaxBonus = $iGoldLastBonus
-					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " [E]: " & _NumberFormat($iElixirLastBonus) & " [DE]: " & _NumberFormat($iDarkLastBonus), $COLOR_GREEN)
+					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " [E]: " & _NumberFormat($iElixirLastBonus) & " [DE]: " & _NumberFormat($iDarkLastBonus), $COLOR_SUCCESS)
 				Else
 					$iCalcMaxBonus = Number($iGoldLastBonus / ($iBonusLast / 100))
 					$iCalcMaxBonusDark = Number($iDarkLastBonus / ($iBonusLast / 100))
 
-					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus) & " [E]: " & _NumberFormat($iElixirLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus) & " [DE]: " & _NumberFormat($iDarkLastBonus) & " out of " & _NumberFormat($iCalcMaxBonusDark), $COLOR_GREEN)
+					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus) & " [E]: " & _NumberFormat($iElixirLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus) & " [DE]: " & _NumberFormat($iDarkLastBonus) & " out of " & _NumberFormat($iCalcMaxBonusDark), $COLOR_SUCCESS)
 				EndIf
 			Else
 				If _Sleep($iDelayAttackReport2) Then Return
@@ -103,10 +103,10 @@ Func AttackReport()
 
 				If $iBonusLast = 100 Then
 					$iCalcMaxBonus = $iGoldLastBonus
-					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " [E]: " & _NumberFormat($iElixirLastBonus), $COLOR_GREEN)
+					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " [E]: " & _NumberFormat($iElixirLastBonus), $COLOR_SUCCESS)
 				Else
 					$iCalcMaxBonus = Number($iGoldLastBonus / ($iBonusLast / 100))
-					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus) & " [E]: " & _NumberFormat($iElixirLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus), $COLOR_GREEN)
+					SetLog("Bonus [G]: " & _NumberFormat($iGoldLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus) & " [E]: " & _NumberFormat($iElixirLastBonus) & " out of " & _NumberFormat($iCalcMaxBonus), $COLOR_SUCCESS)
 				EndIf
 			EndIf
 
@@ -174,7 +174,7 @@ Func AttackReport()
 	SetLog("Stars earned: " & $starsearned)
 
 	Local $AtkLogTxt
-	$AtkLogTxt = "" & _NowTime(4) & "|"
+	$AtkLogTxt = String($nCurProfile) & " |" & _NowTime(4) & "|"  ; adding Acc No. in Attack Log - SwitchAcc - DEMEN
 	$AtkLogTxt &= StringFormat("%5d", $iTrophyCurrent) & "|"
 	$AtkLogTxt &= StringFormat("%6d", $SearchCount) & "|"
 	$AtkLogTxt &= StringFormat("%7d", $iGoldLast) & "|"
@@ -193,7 +193,12 @@ Func AttackReport()
 	If Int($iTrophyLast) >= 0 Then
 		SetAtkLog($AtkLogTxt, $AtkLogTxtExtend, $COLOR_BLACK)
 	Else
-		SetAtkLog($AtkLogTxt, $AtkLogTxtExtend, $COLOR_RED)
+		SetAtkLog($AtkLogTxt, $AtkLogTxtExtend, $COLOR_ERROR)
+	EndIf
+
+	; rename or delete zombie
+	If $debugDeadBaseImage = 1 Then
+		setZombie($iElixirLast)
 	EndIf
 
 	; Share Replay
@@ -209,12 +214,15 @@ Func AttackReport()
 
 	If $FirstAttack = 0 Then $FirstAttack = 1
 	$iGoldTotal += $iGoldLast + $iGoldLastBonus
+	If $ichkSwitchAcc = 1 Then $aGoldTotalAcc[$nCurProfile-1] += $iGoldLast + $iGoldLastBonus ; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
 	$iTotalGoldGain[$iMatchMode] += $iGoldLast + $iGoldLastBonus
 	$iElixirTotal += $iElixirLast + $iElixirLastBonus
 	$iTotalElixirGain[$iMatchMode] += $iElixirLast + $iElixirLastBonus
+	If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] += $iElixirLast + $iElixirLastBonus ; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
 	If $iDarkStart <> "" Then
 		$iDarkTotal += $iDarkLast + $iDarkLastBonus
 		$iTotalDarkGain[$iMatchMode] += $iDarkLast + $iDarkLastBonus
+		If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile-1] += $iDarkLast + $iDarkLastBonus ; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
 	EndIf
 	$iTrophyTotal += $iTrophyLast
 	$iTotalTrophyGain[$iMatchMode] += $iTrophyLast
@@ -226,6 +234,11 @@ Func AttackReport()
 		EndIf
 	EndIf
 	$iAttackedVillageCount[$iMatchMode] += 1
+	If $ichkSwitchAcc = 1 Then $aAttackedCountAcc[$nCurProfile-1] += 1 ; SwitchAcc Mod - DEMEN
+
 	UpdateStats()
+	$troops_maked_after_fullarmy = False ; reset variable due to used troops for attack
+	$actual_train_skip = 0 ;
+	If $debugsetlogTrain = 1 Then setlog("reset: troops_maked_after_fullarmy = False",$color_purple)
 
 EndFunc   ;==>AttackReport

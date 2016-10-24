@@ -20,7 +20,7 @@ Func CheckMilkingBase($matchDB, $dbBase)
 		If $matchDB And $iAtkAlgorithm[$DB] = 2 Then ;MilkingAttack
 			If ( ( $MilkAttackType=1 and $dbBase )  or ( $MilkAttackType= 0 ) )  then  ;if milking attack enabled high cpu(attacktype=0) or lowcpu and match $dbase Collectors...
 				  Local $TimeCheckMilkingAttack = TimerInit()
-				  If $debugsetlog = 1 Then Setlog("Check Milking...", $color_purple)
+				  If $debugsetlog = 1 Then Setlog("Check Milking...", $COLOR_DEBUG)
 				  MilkingDetectRedArea()
 				  $MilkingExtractorsMatch = MilkingDetectElixirExtractors()
 				  If $MilkingExtractorsMatch > 0 Then
@@ -29,21 +29,21 @@ Func CheckMilkingBase($matchDB, $dbBase)
 
 				  If StringLen($MilkFarmObjectivesSTR) > 0 Then
 					  If $MilkAttackType = 1 Then
-						  If $debugsetlog = 1 Then Setlog("Milking match LOW CPU SETTINGS", $color_purple)
-						  If $debugsetlog = 1 Then Setlog("objectives: " & $MilkFarmObjectivesSTR , $color_purple)
+						  If $debugsetlog = 1 Then Setlog("Milking match LOW CPU SETTINGS", $COLOR_DEBUG)
+						  If $debugsetlog = 1 Then Setlog("objectives: " & $MilkFarmObjectivesSTR , $COLOR_DEBUG)
 					  Else
-						  If $debugsetlog = 1 Then Setlog("Milking match HIGH CPU SETTINGS", $color_purple)
-						  If $debugsetlog = 1 Then Setlog("objectives: " & $MilkFarmObjectivesSTR , $color_purple)
+						  If $debugsetlog = 1 Then Setlog("Milking match HIGH CPU SETTINGS", $COLOR_DEBUG)
+						  If $debugsetlog = 1 Then Setlog("objectives: " & $MilkFarmObjectivesSTR , $COLOR_DEBUG)
 					  EndIf
 				  Else
-					  If $debugsetlog = 1 Then Setlog("Milking no match", $color_purple)
+					  If $debugsetlog = 1 Then Setlog("Milking no match", $COLOR_DEBUG)
 					  If $MilkAttackAfterTHSnipe = 1 and $chkSnipeIfNoElixir = 1 Then
-						  If $debugsetlog = 1 Then Setlog("Milking no match but Snipe even if no structures detected... check...",$COLOR_PURPLE)
+						  If $debugsetlog = 1 Then Setlog("Milking no match but Snipe even if no structures detected... check...",$COLOR_DEBUG)
 						  If $searchTH = "-" Then	FindTownHall(True)
 						  If $searchTH <>"-" Then
 							  $milkingAttackOutside = 1
 							  If SearchTownHallLoc() Then  ;check if townhall position it is outside
-								  If $debugsetlog = 1 Then Setlog("Milking Attack TH outside match!",$color_purple)
+								  If $debugsetlog = 1 Then Setlog("Milking Attack TH outside match!",$COLOR_DEBUG)
 								  $milkingAttackOutside = 1
 							  Else
 								  If $debugsetlog = 1 Then Setlog("TH it is not outside, skip attack")
@@ -57,11 +57,11 @@ Func CheckMilkingBase($matchDB, $dbBase)
 
 				  Local $TimeCheckMilkingAttackSeconds = Round(TimerDiff($TimeCheckMilkingAttack) / 1000, 2)
 				  If $TimeCheckMilkingAttackSeconds >= 23 Then
-					  Setlog("Computing Time Milking Attack too HIGH", $color_red)
-					  Setlog("Your computer it is too slow to use this algorithm :(", $color_red)
-					  Setlog("Please change algorithm", $color_red)
+					  Setlog("Computing Time Milking Attack too HIGH", $COLOR_ERROR)
+					  Setlog("Your computer it is too slow to use this algorithm :(", $COLOR_ERROR)
+					  Setlog("Please change algorithm", $COLOR_ERROR)
 				  Else
-					  Setlog("Computing Time Milking Attack : " & $TimeCheckMilkingAttackSeconds & " seconds", $color_blue)
+					  Setlog("Computing Time Milking Attack : " & $TimeCheckMilkingAttackSeconds & " seconds", $COLOR_INFO)
 				   EndIf
 			EndIf
 		EndIf

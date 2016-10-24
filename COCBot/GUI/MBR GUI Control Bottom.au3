@@ -15,17 +15,17 @@
 
 Func Initiate()
 	WinGetAndroidHandle()
-	If $HWnD <> 0 And IsArray(ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)) Then
-		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_PURPLE)
+    If $HWnD <> 0 And ($AndroidBackgroundLaunched = True Or AndroidControlAvailable()) Then
+		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_DEBUG)
 		SetLog($Compiled & " running on " & @OSVersion & " " & @OSServicePack & " " & @OSArch)
 		If Not $bSearchMode Then
-			SetLog(_PadStringCenter(" Bot Start ", 50, "="), $COLOR_GREEN)
+			SetLog(_PadStringCenter(" Bot Start ", 50, "="), $COLOR_SUCCESS)
 		Else
-			SetLog(_PadStringCenter(" Search Mode Start ", 50, "="), $COLOR_GREEN)
+			SetLog(_PadStringCenter(" Search Mode Start ", 50, "="), $COLOR_SUCCESS)
 		EndIf
-		SetLog(_PadStringCenter("  Current Profile: " & $sCurrProfile & " ", 73, "-"), $COLOR_BLUE)
-		If $DebugSetlog = 1 Or $DebugOcr = 1 Or $debugRedArea = 1 Or $DevMode = 1 Or $debugImageSave = 1 Or $debugBuildingPos = 1 Or $debugOCRdonate = 1 Then
-			SetLog(_PadStringCenter(" Warning Debug Mode Enabled! Setlog: " & $DebugSetlog & " OCR: " & $DebugOcr & " RedArea: " & $debugRedArea & " ImageSave: " & $debugImageSave & " BuildingPos: " & $debugBuildingPos & " OCRDonate: " & $debugOCRdonate, 55, "-"), $COLOR_RED)
+		SetLog(_PadStringCenter("  Current Profile: " & $sCurrProfile & " ", 73, "-"), $COLOR_INFO)
+		If $DebugSetlog = 1 Or $DebugOcr = 1 Or $debugRedArea = 1 Or $DevMode = 1 Or $debugImageSave = 1 Or $debugBuildingPos = 1 Or $debugOCRdonate = 1 Or $debugAttackCSV  = 1 Then
+			SetLog(_PadStringCenter(" Warning Debug Mode Enabled! Setlog: " & $DebugSetlog & " OCR: " & $DebugOcr & " RedArea: " & $debugRedArea & " ImageSave: " & $debugImageSave & " BuildingPos: " & $debugBuildingPos & " OCRDonate: " & $debugOCRdonate & " AttackCSV: " & $debugAttackCSV, 55, "-"), $COLOR_ERROR)
 		EndIf
 
 		$AttackNow = False
@@ -58,6 +58,11 @@ Func Initiate()
 		If Not $RunState Then Return
 
 		ZoomOut()
+
+		If $ichkSwitchAcc = 1 Then ; SwitchAcc - Demen
+		   InitiateSwitchAcc()
+		EndIf
+
 		If Not $RunState Then Return
 
 		If Not $bSearchMode Then
@@ -70,7 +75,7 @@ Func Initiate()
 			runBot()
 		EndIf
 	Else
-		SetLog("Not in Game!", $COLOR_RED)
+		SetLog("Not in Game!", $COLOR_ERROR)
 		;		$RunState = True
 		btnStop()
 	EndIf
@@ -87,7 +92,7 @@ Func InitiateLayout()
 		Local $BSx = $BSsize[2]
 		Local $BSy = $BSsize[3]
 
-		SetDebugLog("InitiateLayout: " & $title & " Android-ClientSize: " & $BSx & " x " & $BSy, $COLOR_BLUE)
+		SetDebugLog("InitiateLayout: " & $title & " Android-ClientSize: " & $BSx & " x " & $BSy, $COLOR_INFO)
 
 		If Not CheckScreenAndroid($BSx, $BSy) Then ; Is Client size now correct?
 			If $AdjustScreenIfNecessarry = True Then
@@ -103,8 +108,8 @@ Func InitiateLayout()
 					;Return "RebootAndroidSetScreen()"
 				EndIf
 			Else
-				SetLog("Cannot use " & $Android & ".", $COLOR_RED)
-				SetLog("Please set its screen size manually to " & $AndroidClientWidth & " x " & $AndroidClientHeight, $COLOR_RED)
+				SetLog("Cannot use " & $Android & ".", $COLOR_ERROR)
+				SetLog("Please set its screen size manually to " & $AndroidClientWidth & " x " & $AndroidClientHeight, $COLOR_ERROR)
 				btnStop()
 				Return False
 			EndIf
@@ -136,6 +141,9 @@ Func IsStopped()
 EndFunc   ;==>IsStopped
 
 Func btnStart()
+
+   btnUpdateProfile()					;  SwitchAcc - DEMEN
+
 	; decide when to run
 	EnableControls($frmBotBottom, False, $frmBotBottomCtrlState)
 	Local $RunNow = $BotAction <> $eBotNoAction
@@ -144,6 +152,10 @@ Func btnStart()
 	Else
 		$BotAction = $eBotStart
 	EndIf
+			$troops_maked_after_fullarmy= false ; reset due to start button pressed
+			$actual_train_skip = 0
+			If $debugsetlogTrain = 1 Then SetLog("troops_maked_after_fullarmy= false",$color_purple)
+
 EndFunc   ;==>btnStart
 
 Func btnStop()
@@ -274,7 +286,7 @@ Func GetFont()
 	For $i = 0 To UBound($DefaultFont) - 1
 		$sText &= " $DefaultFont[" & $i & "]= " & $DefaultFont[$i] & ", "
 	Next
-	Setlog($sText, $COLOR_PURPLE)
+	Setlog($sText, $COLOR_DEBUG)
 EndFunc   ;==>GetFont
 
 
@@ -284,10 +296,10 @@ Func btnAnalyzeVillage()
 	$debugDeadBaseImage = 1
 	SETLOG("DEADBASE CHECK..................")
 	$dbBase = checkDeadBase()
-	SETLOG("TOWNHALL CHECK..................")
-	$searchTH = checkTownhallADV2()
-	SETLOG("TOWNHALL C# CHECK...............")
-	THSearch()
+	SETLOG("TOWNHALL CHECK imgloc..................")
+	$searchTH = imgloccheckTownhallADV2()
+	SETLOG("TOWNHALL C# CHECK. IMGLOC..............")
+	imglocTHSearch()
 	SETLOG("MINE CHECK C#...................")
 	$PixelMine = GetLocationMine()
 	SetLog("[" & UBound($PixelMine) & "] Gold Mines")
@@ -302,23 +314,23 @@ Func btnAnalyzeVillage()
 	SetLog("[" & UBound($BuildingToLoc) & "] Dark Elixir Storage")
 	For $i = 0 To UBound($BuildingToLoc) - 1
 		$pixel = $BuildingToLoc[$i]
-		If $DebugSetlog = 1 Then SetLog("- Dark Elixir Storage " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
+		If $DebugSetlog = 1 Then SetLog("- Dark Elixir Storage " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_DEBUG)
 	Next
 	SETLOG("LOCATE BARRACKS C#..............")
 	Local $PixelBarrackHere = GetLocationItem("getLocationBarrack")
-	SetLog("Total No. of Barracks: " & UBound($PixelBarrackHere), $COLOR_PURPLE)
+	SetLog("Total No. of Barracks: " & UBound($PixelBarrackHere), $COLOR_DEBUG)
 	For $i = 0 To UBound($PixelBarrackHere) - 1
 		$pixel = $PixelBarrackHere[$i]
-		If $DebugSetlog = 1 Then SetLog("- Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
+		If $DebugSetlog = 1 Then SetLog("- Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_DEBUG)
 	Next
 	SETLOG("LOCATE BARRACKS C#..............")
 	Local $PixelDarkBarrackHere = GetLocationItem("getLocationDarkBarrack")
-	SetLog("Total No. of Dark Barracks: " & UBound($PixelBarrackHere), $COLOR_PURPLE)
+	SetLog("Total No. of Dark Barracks: " & UBound($PixelBarrackHere), $COLOR_DEBUG)
 	For $i = 0 To UBound($PixelDarkBarrackHere) - 1
 		$pixel = $PixelDarkBarrackHere[$i]
-		If $DebugSetlog = 1 Then SetLog("- Dark Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
+		If $DebugSetlog = 1 Then SetLog("- Dark Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_DEBUG)
 	Next
-	SetLog("WEAK BASE C#.....................", $COLOR_TEAL)
+	SetLog("WEAK BASE C#.....................", $COLOR_DEBUG1)
 	; Weak Base Detection modified by LunaEclipse
 	Local $weakBaseValues
 	If IsWeakBaseActive($DB) Or IsWeakBaseActive($LB) Then
@@ -327,15 +339,15 @@ Func btnAnalyzeVillage()
 	For $i = 0 To $iModeCount - 2
 		If IsWeakBaseActive($i) Then
 			If getIsWeak($weakBaseValues, $i) Then
-				SetLog(StringUpper($sModeText[$i]) & " IS A WEAK BASE: TRUE", $COLOR_PURPLE)
+				SetLog(StringUpper($sModeText[$i]) & " IS A WEAK BASE: TRUE", $COLOR_DEBUG)
 			Else
-				SetLog(StringUpper($sModeText[$i]) & " IS A WEAK BASE: FALSE", $COLOR_PURPLE)
+				SetLog(StringUpper($sModeText[$i]) & " IS A WEAK BASE: FALSE", $COLOR_DEBUG)
 			EndIf
 
-			SetLog("Time taken: " & $weakBaseValues[5][0] & " " & $weakBaseValues[5][1], $COLOR_PURPLE)
+			SetLog("Time taken: " & $weakBaseValues[5][0] & " " & $weakBaseValues[5][1], $COLOR_DEBUG)
 		EndIf
 	Next
-	Setlog("--------------------------------------------------------------", $COLOR_TEAL)
+	Setlog("--------------------------------------------------------------", $COLOR_DEBUG1)
 	$debugBuildingPos = 0
 	$debugDeadBaseImage = 0
 EndFunc   ;==>btnAnalyzeVillage
@@ -393,25 +405,8 @@ Func btnVillageStat()
 
 EndFunc   ;==>btnVillageStat
 
-Func btnTestDeadBase()
-	Local $test = 0
-	LoadTHImage()
-	LoadElixirImage()
-	LoadElixirImage75Percent()
-	LoadElixirImage50Percent()
-	Zoomout()
-	If $debugBuildingPos = 0 Then
-		$test = 1
-		$debugBuildingPos = 1
-	EndIf
-	SETLOG("DEADBASE CHECK..................")
-	$dbBase = checkDeadBase()
-	SETLOG("TOWNHALL CHECK..................")
-	$searchTH = checkTownhallADV2()
-	If $test = 1 Then $debugBuildingPos = 0
-EndFunc   ;==>btnTestDeadBase
-
 Func btnTestDonate()
+	Local $wasRunState = $RunState
 	$RunState = True
 	SETLOG("DONATE TEST..................START")
 	ZoomOut()
@@ -420,19 +415,20 @@ Func btnTestDonate()
 	applyconfig()
 	DonateCC()
 	SETLOG("DONATE TEST..................STOP")
-	$RunState = False
+	$RunState = $wasRunState
 EndFunc   ;==>btnTestDonate
 
 Func btnTestButtons()
 
+	Local $wasRunState = $RunState
 	$RunState = True
 	Local $ButtonX, $ButtonY
 	Local $hTimer = TimerInit()
 	Local $res
 	Local $ImagesToUse[3]
-	$ImagesToUse[0] = @ScriptDir & "\images\Button\Traps.png"
-	$ImagesToUse[1] = @ScriptDir & "\images\Button\Xbow.png"
-	$ImagesToUse[2] = @ScriptDir & "\images\Button\Inferno.png"
+	$ImagesToUse[0] = @ScriptDir & "\imgxml\rearm\Traps_0_90.xml"
+	$ImagesToUse[1] = @ScriptDir & "\imgxml\rearm\Xbow_0_90.xml"
+	$ImagesToUse[2] = @ScriptDir & "\imgxml\rearm\Inferno_0_90.xml"
 	Local $x = 1
 	Local $y = 1
 	Local $w = 615
@@ -448,43 +444,44 @@ Func btnTestButtons()
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	_CaptureRegion(125, 610, 740, 715)
+
 	For $i = 0 To 2
 		If FileExists($ImagesToUse[$i]) Then
-			$res = DllCall($pImgLib, "str", "SearchTile", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc, "str", $SearchArea, "str", $AreaInRectangle)
+			$res = DllCall($pImgLib, "str", "FindTile", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "str", $SearchArea, "str", $AreaInRectangle)
 			If @error Then _logErrorDLLCall($pImgLib, @error)
 			If IsArray($res) Then
-				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_ERROR)
 				If $res[0] = "0" Then
 					; failed to find a loot cart on the field
 					SetLog("No Button found")
 				ElseIf $res[0] = "-1" Then
-					SetLog("DLL Error", $COLOR_RED)
+					SetLog("DLL Error", $COLOR_ERROR)
 				ElseIf $res[0] = "-2" Then
-					SetLog("Invalid Resolution", $COLOR_RED)
+					SetLog("Invalid Resolution", $COLOR_ERROR)
 				Else
 					$expRet = StringSplit($res[0], "|", 2)
 					$ButtonX = 125 + Int($expRet[1])
 					$ButtonY = 610 + Int($expRet[2])
-					SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_GREEN)
+					SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_SUCCESS)
 					;If IsMainPage() Then Click($ButtonX, $ButtonY, 1, 0, "#0330")
-					If _Sleep(200) Then Return
+					_Sleep(200)
 					;Click(515, 400, 1, 0, "#0226")
-					If _Sleep(200) Then Return
+					_Sleep(200)
 					If isGemOpen(True) = True Then
-						Setlog("Not enough loot to rearm traps.....", $COLOR_RED)
+						Setlog("Not enough loot to rearm traps.....", $COLOR_ERROR)
 						Click(585, 252, 1, 0, "#0227") ; Click close gem window "X"
-						If _Sleep(200) Then Return
+						_Sleep(200)
 					Else
-						If $i = 0 Then SetLog("Rearmed Trap(s)", $COLOR_GREEN)
-						If $i = 1 Then SetLog("Reloaded XBow(s)", $COLOR_GREEN)
-						If $i = 2 Then SetLog("Reloaded Inferno(s)", $COLOR_GREEN)
-						If _Sleep(200) Then Return
+						If $i = 0 Then SetLog("Rearmed Trap(s)", $COLOR_SUCCESS)
+						If $i = 1 Then SetLog("Reloaded XBow(s)", $COLOR_SUCCESS)
+						If $i = 2 Then SetLog("Reloaded Inferno(s)", $COLOR_SUCCESS)
+						_Sleep(200)
 					EndIf
 				EndIf
 			EndIf
 		EndIf
 	Next
-	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_DEBUG1)
 	SETLOG("SearchTile TEST..................STOP")
 
 	Local $hTimer = TimerInit()
@@ -493,79 +490,81 @@ Func btnTestButtons()
 	For $i = 0 To 2
 		If FileExists($ImagesToUse[$i]) Then
 			_CaptureRegion2(125, 610, 740, 715)
-			$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
+			$res = DllCall($hImgLib, "str", "FindTile", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "str", "FV", "int", 1)
 			If @error Then _logErrorDLLCall($pImgLib, @error)
 			If IsArray($res) Then
-				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_ERROR)
 				If $res[0] = "0" Then
 					; failed to find a loot cart on the field
 					SetLog("No Button found")
 				ElseIf $res[0] = "-1" Then
-					SetLog("DLL Error", $COLOR_RED)
+					SetLog("DLL Error", $COLOR_ERROR)
 				ElseIf $res[0] = "-2" Then
-					SetLog("Invalid Resolution", $COLOR_RED)
+					SetLog("Invalid Resolution", $COLOR_ERROR)
 				Else
 					$expRet = StringSplit($res[0], "|", 2)
 					$ButtonX = 125 + Int($expRet[1])
 					$ButtonY = 610 + Int($expRet[2])
-					SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_GREEN)
+					SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_SUCCESS)
 					;If IsMainPage() Then Click($ButtonX, $ButtonY, 1, 0, "#0330")
-					If _Sleep(200) Then Return
+					_Sleep(200)
 					;Click(515, 400, 1, 0, "#0226")
-					If _Sleep(200) Then Return
+					_Sleep(200)
 					If isGemOpen(True) = True Then
-						Setlog("Not enough loot to rearm traps.....", $COLOR_RED)
+						Setlog("Not enough loot to rearm traps.....", $COLOR_ERROR)
 						Click(585, 252, 1, 0, "#0227") ; Click close gem window "X"
-						If _Sleep(200) Then Return
+						_Sleep(200)
 					Else
-						If $i = 0 Then SetLog("Rearmed Trap(s)", $COLOR_GREEN)
-						If $i = 1 Then SetLog("Reloaded XBow(s)", $COLOR_GREEN)
-						If $i = 2 Then SetLog("Reloaded Inferno(s)", $COLOR_GREEN)
-						If _Sleep(200) Then Return
+						If $i = 0 Then SetLog("Rearmed Trap(s)", $COLOR_SUCCESS)
+						If $i = 1 Then SetLog("Reloaded XBow(s)", $COLOR_SUCCESS)
+						If $i = 2 Then SetLog("Reloaded Inferno(s)", $COLOR_SUCCESS)
+						_Sleep(200)
 					EndIf
 				EndIf
 			EndIf
 		EndIf
 	Next
-	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_DEBUG1)
+
 	SETLOG("MBRSearchImage TEST..................STOP")
-	$RunState = False
+	$RunState = $wasRunState
 
 EndFunc   ;==>btnTestButtons
 
 Func ButtonBoost()
 
+	Local $wasRunState = $RunState
 	$RunState = True
 	Local $ButtonX, $ButtonY
 	Local $hTimer = TimerInit()
 	Local $res
 	Local $ImagesToUse[2]
-	$ImagesToUse[0] = @ScriptDir & "\images\Button\BoostBarrack.png"
-	$ImagesToUse[1] = @ScriptDir & "\images\Button\BarrackBoosted.png"
+	$ImagesToUse[0] = @ScriptDir & "\imgxml\boostbarracks\BoostBarrack_0_92.xml"
+	$ImagesToUse[1] = @ScriptDir & "\imgxml\boostbarracks\BarrackBoosted_0_92.xml"
 	$ToleranceImgLoc = 0.90
 	SETLOG("MBRSearchImage TEST..................STARTED")
 	_CaptureRegion2(125, 610, 740, 715)
 	For $i = 0 To 1
 		If FileExists($ImagesToUse[$i]) Then
-			$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
+			$res = DllCall($hImgLib, "str", "FindTile", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "str", "FV", "int", 1)
 			If @error Then _logErrorDLLCall($pImgLib, @error)
 			If IsArray($res) Then
-				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_ERROR)
 				If $res[0] = "0" Then
 					; failed to find a loot cart on the field
 					If $i = 1 Then SetLog("No Button found")
 				ElseIf $res[0] = "-1" Then
-					SetLog("DLL Error", $COLOR_RED)
+					SetLog("DLL Error", $COLOR_ERROR)
 				ElseIf $res[0] = "-2" Then
-					SetLog("Invalid Resolution", $COLOR_RED)
+					SetLog("Invalid Resolution", $COLOR_ERROR)
 				Else
-					If _Sleep(200) Then Return
+					_Sleep(200)
 					If $i = 0 Then
 						SetLog("Found the Button to Boost individual")
 						$expRet = StringSplit($res[0], "|", 2)
 						$ButtonX = 125 + Int($expRet[1])
 						$ButtonY = 610 + Int($expRet[2])
-						SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_GREEN)
+						SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_SUCCESS)
 						;If IsMainPage() Then Click($ButtonX, $ButtonY, 1, 0, "#0330")
 						ExitLoop
 					Else
@@ -575,9 +574,9 @@ Func ButtonBoost()
 			EndIf
 		EndIf
 	Next
-	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_DEBUG1)
 	SETLOG("MBRSearchImage TEST..................STOP")
-	$RunState = False
+	$RunState = $wasRunState
 
 EndFunc
 

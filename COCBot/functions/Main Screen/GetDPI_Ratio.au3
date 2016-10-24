@@ -66,11 +66,11 @@ Func SetDPI()
 		Local $aRet = DllCall("syssetup.dll", "int", "SetupChangeFontSize", "int_ptr", 0, "wstr", "96")
 		If @error Then Return SetError(2, @extended, 0)
 		If $aRet = 0 Then
-			Setlog("Your Display DPI has been changed!!  Must logoff or restart to complete the chamge!", $COLOR_MAROON)
+			Setlog("Your Display DPI has been changed!!  Must logoff or restart to complete the chamge!", $COLOR_WARNING)
 			_Sleep(5000) ; dont use if .. then here!
 			Shutdown($SD_REBOOT)
 		Else
-			Setlog("Your DPI has not been changed due some unknown error, Return= " & $aRet, $COLOR_MAROON)
+			Setlog("Your DPI has not been changed due some unknown error, Return= " & $aRet, $COLOR_WARNING)
 		EndIf
 	EndIf
 EndFunc   ;==>SetDPI

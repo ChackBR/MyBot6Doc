@@ -20,38 +20,44 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 	If $Check = True Then
 		SetLog("Trying to locate Main Screen")
 	Else
-		;If $debugsetlog = 1 Then SetLog("checkMainScreen start quiet mode", $COLOR_PURPLE)
+		;If $debugsetlog = 1 Then SetLog("checkMainScreen start quiet mode", $COLOR_DEBUG)
     EndIf
-	If CheckAndroidRunning(False) = False Then Return
-	getBSPos() ; Update $HWnd and Android Window Positions
-	#cs
-	If $ichkBackground = 0 And $NoFocusTampering = False And $AndroidEmbedded = False Then
-	    Local $hTimer = TimerInit(), $hWndActive = -1
-		Local $activeHWnD = WinGetHandle("")
-		While TimerDiff($hTimer) < 1000 And $hWndActive <> $HWnD And Not _Sleep(100)
-		   getBSPos() ; update $HWnD
-		   $hWndActive = WinActivate($HWnD) ; ensure bot has window focus
-		WEnd
-		If $hWndActive <> $HWnD Then
-		   ; something wrong with window, restart Android
-		   RebootAndroid()
-		   Return
-	    EndIf
-		WinActivate($activeHWnD) ; restore current active window
-    EndIf
-	#ce
-	WinGetAndroidHandle()
-	If $ichkBackground = 0 And $HWnD <> 0 Then
-		; ensure android is top
-		BotToFront()
+	If TestCapture() = False Then
+		If CheckAndroidRunning(False) = False Then Return
+		getBSPos() ; Update $HWnd and Android Window Positions
+		#cs
+		If $ichkBackground = 0 And $NoFocusTampering = False And $AndroidEmbedded = False Then
+			Local $hTimer = TimerInit(), $hWndActive = -1
+			Local $activeHWnD = WinGetHandle("")
+			While TimerDiff($hTimer) < 1000 And $hWndActive <> $HWnD And Not _Sleep(100)
+			   getBSPos() ; update $HWnD
+			   $hWndActive = WinActivate($HWnD) ; ensure bot has window focus
+			WEnd
+			If $hWndActive <> $HWnD Then
+			   ; something wrong with window, restart Android
+			   RebootAndroid()
+			   Return
+			EndIf
+			WinActivate($activeHWnD) ; restore current active window
+		EndIf
+		#ce
+		WinGetAndroidHandle()
+		If $ichkBackground = 0 And $HWnD <> 0 Then
+			; ensure android is top
+			AndroidToFront()
+		EndIf
+		If $AndroidAdbScreencap = False And _WinAPI_IsIconic($HWnD) Then WinSetState($HWnD, "", @SW_RESTORE)
 	EndIf
-	If $AndroidAdbScreencap = False And _WinAPI_IsIconic($HWnD) Then WinSetState($HWnD, "", @SW_RESTORE)
 	$iCount = 0
 	While _CheckPixel($aIsMain, $bCapturePixel) = False
+		If TestCapture() Then
+			SetLog("Main Screen not Located", $COLOR_ERROR)
+			ExitLoop
+		EndIf
 		WinGetAndroidHandle()
 		If _Sleep($iDelaycheckMainScreen1) Then Return
 		$Result = checkObstacles()
-		If $debugsetlog = 1 Then Setlog("CheckObstacles Result = "&$Result, $COLOR_PURPLE)
+		If $debugsetlog = 1 Then Setlog("CheckObstacles Result = "&$Result, $COLOR_DEBUG)
 
 		If ($Result = False And $MinorObstacle = True) Then
 			$MinorObstacle = False
@@ -65,7 +71,7 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 		If @extended Then Return SetError(1, 1, -1)
 		If @error Then $iCount += 1
 		If $iCount > 2 Then
-			SetLog("Unable to fix the window error", $COLOR_RED)
+			SetLog("Unable to fix the window error", $COLOR_ERROR)
 			CloseCoC(True)
 			ExitLoop
 		EndIf
@@ -74,9 +80,9 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 	If Not $RunState Then Return
 
 	If $Check = True Then
-		SetLog("Main Screen Located", $COLOR_GREEN)
+		SetLog("Main Screen Located", $COLOR_SUCCESS)
 	Else
-		;If $debugsetlog = 1 Then SetLog("checkMainScreen exit quiet mode", $COLOR_PURPLE)
+		;If $debugsetlog = 1 Then SetLog("checkMainScreen exit quiet mode", $COLOR_DEBUG)
 	EndIf
 
     ;After checkscreen dispose windows

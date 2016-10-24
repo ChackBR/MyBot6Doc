@@ -15,14 +15,15 @@
 ; ===============================================================================================================================
 
 Func CloseCoC($ReOpenCoC = False)
+	$SkipFirstZoomout = False
 	ResumeAndroid()
 	If Not $RunState Then Return
 
 	Local $Adb = ""
 	If $ReOpenCoC Then
-		SetLog("Please wait for CoC restart......", $COLOR_RED) ; Let user know we need time...
+		SetLog("Please wait for CoC restart......", $COLOR_ERROR) ; Let user know we need time...
 	Else
-		SetLog("Closing CoC......", $COLOR_RED) ; Let user know what we do...
+		SetLog("Closing CoC......", $COLOR_ERROR) ; Let user know what we do...
 	EndIf
 	WinGetAndroidHandle()
 	AndroidHomeButton()
@@ -106,13 +107,13 @@ Func WaitnOpenCoC($iWaitTime, $bFullRestart = False)
 	If $iHour > 0 Then $sWaitTime &= $iHour & " hours "
 	If $iMin > 0 Then $sWaitTime &= $iMin & " minutes "
 	If $iSec > 0 Then $sWaitTime &= $iSec & " seconds "
-	SetLog("Waiting " & $sWaitTime & "before starting CoC", $COLOR_GREEN)
+	SetLog("Waiting " & $sWaitTime & "before starting CoC", $COLOR_SUCCESS)
 	If _SleepStatus($iWaitTime) Then Return False ; Wait for server to see log off
 
 	SendAdbCommand("shell am start -n " & $AndroidGamePackage & "/" & $AndroidGameClass)
 	If Not $RunState Then Return
 
-	If $debugSetlog = 1 Then setlog("CoC Restarted, Waiting for completion", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then setlog("CoC Restarted, Waiting for completion", $COLOR_DEBUG)
 
 	If $bFullRestart = True Then
 		checkMainScreen() ; Use checkMainScreen to restart CoC, and waitMainScreen to handle Take A Break wait, or other errors.
@@ -138,6 +139,7 @@ EndFunc   ;==>WaitnOpenCoC
 ; Example .......: No
 ; ===============================================================================================================================
 Func PoliteCloseCoC($sSource = "Unknown_")
+	$SkipFirstZoomout = False
 	Local $i = 0 ; Reset Loop counter
 	While 1
 		checkObstacles()
@@ -145,7 +147,7 @@ Func PoliteCloseCoC($sSource = "Unknown_")
 		If _Sleep($iDelayAttackDisable1000) Then Return ; wait for window to open
 		If ClickOkay("ExitOkay_" & $sSource, True) = True Then ExitLoop ; Confirm okay to exit
 		If $i > 10 Then
-			Setlog("Can not find Okay button to exit CoC, Forcefully Closing CoC", $COLOR_RED)
+			Setlog("Can not find Okay button to exit CoC, Forcefully Closing CoC", $COLOR_ERROR)
 			If $debugImageSave = 1 Then DebugImageSave($sSource)
 			CloseCoC()
 			ExitLoop

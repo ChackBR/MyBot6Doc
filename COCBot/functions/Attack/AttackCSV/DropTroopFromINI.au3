@@ -85,6 +85,11 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 	EndIf
 	debugAttackCSV(">> qty to deploy: " & $qty)
 
+	;number of troop to drop in one point...
+	Local $qtyxpoint = Int($qty / ($indexEnd - $indexStart + 1))
+	Local $extraunit = Mod($qty, ($indexEnd - $indexStart + 1))
+	debugAttackCSV(">> qty x point: " & $qtyxpoint)
+	debugAttackCSV(">> qty extra: " & $extraunit)
 	;search slot where is the troop...
 	Local $troopPosition = -1
 	For $i = 0 To UBound($atkTroops) - 1
@@ -155,7 +160,7 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 			Setlog("No troop found in your attack troops list")
 			debugAttackCSV("No troop found in your attack troops list")
 		Else
-			If $DebugSetLog = 1 Then SetLog("discard use spell", $COLOR_PURPLE)
+			If $DebugSetLog = 1 Then SetLog("discard use spell", $COLOR_DEBUG)
 		EndIf
 	Else
 		SelectDropTroop($troopPosition) ; select the troop...
@@ -189,6 +194,10 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 			EndIf
 		EndIf
 
+		SelectDropTroop($troopPosition) ; select the troop...
+		Global $lastTroopPositionDropTroopFromINI
+		If $lastTroopPositionDropTroopFromINI <> $troopPosition Then ReleaseClicks()
+		$lastTroopPositionDropTroopFromINI = $troopPosition
 		;drop
 		$TroopDropNumber += 1
 
@@ -267,15 +276,14 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 					Switch Eval("e" & $troopName)
 						Case $eBarb To $eBowl ; drop normal troops
 							If $debug = True Then
-								Setlog("PureClick( " & $pixel[0] & ", " & $pixel[1] & " , " & $qty2 & ", " & $delayPoint & ")")
-								;PureClick($pixel[0], $pixel[1], $qty2, $delayPoint)
+								Setlog("AttackClick( " & $pixel[0] & ", " & $pixel[1] & " , " & $qty2 & ", " & $delayPoint & ",#0666)")
 							Else
 								If ( $Android = "BlueStacks" ) Or ( $Android = "BlueStacks2" ) Then
 									PureClick($pixel[0], $pixel[1], $qty2, $delayPoint)
 								Else
 									If $AndroidAdbClicksEnabled Then 
 										;AttackClick($pixel[0], $pixel[1], $qty2, SetSleep(0), 0, "#0667")
-										AttackClick($pixel[0], $pixel[1], $qty2, Int($delayPoint/4), 0, "#0666")
+										AttackClick($pixel[0], $pixel[1], $qty2, Int($delayPoint/2), 0, "#0666")
 									Else
 										;AttackClick($pixel[0], $pixel[1], $qty2, $delayPoint, $delayDropLast, "#0667")
 										AttackClick($pixel[0], $pixel[1], $qty2, $delayPoint, 0, "#0666")
