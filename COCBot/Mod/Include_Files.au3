@@ -12,3 +12,10 @@
 
 ; SwitchAcc
 #include "SwitchAcc.au3"
+
+;
+; Misc
+;
+
+; GUI
+#include "GUI_Functions.au3"
