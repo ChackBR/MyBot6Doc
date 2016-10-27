@@ -68,17 +68,24 @@ Func InitiateSwitchAcc() ; Checking profiles setup in Mybot, First matching CoC 
    $nTotalCoCAcc = $icmbTotalCoCAcc
    Setlog ("Total CoC Account(s): " & $nTotalCoCAcc)
 
-   If $aProfileType[$nCurProfile-1] <> 1 Then							; Not Active profile
-	  $i = _ArraySearch($aProfileType, 1)
-	  Setlog("First starting with an active Profile [" & $i+1 &"] - CoC Acc [" & $aMatchProfileAcc[$i] & "]")
-	  _GUICtrlComboBox_SetCurSel($cmbProfile, $i)						; Move to first active Profile
-	  cmbProfile()
-   Else
-	  Setlog("First starting with an active Profile [" & $nCurProfile &"] - CoC Acc [" & $aMatchProfileAcc[$nCurProfile - 1] & "].")
-	  If $nCurProfile <> _GuiCtrlComboBox_GetCurSel($cmbProfile) + 1 Then
-		 _GUICtrlComboBox_SetCurSel($cmbProfile, $nCurProfile - 1)			; Return to Current Profile
+   If _ArraySearch($aProfileType, 1) <> -1 Then								; There is at least one active profile
+	  If $aProfileType[$nCurProfile-1] <> 1 Then							; Not Active profile
+		 $i = _ArraySearch($aProfileType, 1)
+		 Setlog("First starting with an active Profile [" & $i+1 &"] - CoC Acc [" & $aMatchProfileAcc[$i] & "]")
+		 _GUICtrlComboBox_SetCurSel($cmbProfile, $i)						; Move to first active Profile
 		 cmbProfile()
+	  Else
+		 Setlog("First starting with an active Profile [" & $nCurProfile &"] - CoC Acc [" & $aMatchProfileAcc[$nCurProfile - 1] & "].")
+		 If $nCurProfile <> _GuiCtrlComboBox_GetCurSel($cmbProfile) + 1 Then
+			_GUICtrlComboBox_SetCurSel($cmbProfile, $nCurProfile - 1)		; Return to Current Profile
+			cmbProfile()
+		 EndIf
 	  EndIf
+   Else																		; There is no active profile
+	  $i = _ArraySearch($aProfileType, 2)
+	  Setlog("Try to avoid Idle Profile. Switching to Profile [" & $i+1 &"] - CoC Acc [" & $aMatchProfileAcc[$i] & "]")
+	  _GUICtrlComboBox_SetCurSel($cmbProfile, $i)							; Move to first Donate Profile
+	  cmbProfile()
    EndIf
 
    $nCurProfile = _GuiCtrlComboBox_GetCurSel($cmbProfile) + 1
@@ -251,7 +258,7 @@ Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 	  $aDonateProfile = _ArrayFindAll($aProfileType, 2)
 	  MinRemainTrainAcc()
 
-	  If $ichkSmartSwitch = 1 Then
+	  If $ichkSmartSwitch = 1 And _ArraySearch($aProfileType, 1) <> -1 Then		; Smart switch and there is at least 1 active profile
 		 If $nMinRemainTrain <= 3 Then
 			If $nCurProfile <> $nNexProfile Then
 			   $SwitchCase = 1
@@ -275,7 +282,7 @@ Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 	  EndIf
 
 	  If $SwitchCase <> 3 Then
-		 If $aProfileType[$nCurProfile-1] = 1 And $canRequestCC = True Then
+		 If $aProfileType[$nCurProfile-1] = 1 And $iPlannedRequestCCHoursEnable = 1 Then
 			Setlog("Try Request troops before switching account", $COLOR_BLUE)
 			RequestCC()
 		 EndIf
@@ -288,12 +295,14 @@ Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 
 	  If $ichkCloseTraining >= 1 And $nMinRemainTrain > 3 And $SwitchCase <> 2 Then
 		 VillageReport()
-		 If $canRequestCC = True Then
+		 ReArm()
+		 If $iPlannedRequestCCHoursEnable = 1 Then
 			Setlog("Try Request troops before going to sleep", $COLOR_BLUE)
 			RequestCC()
 		 EndIf
 		 PoliteCloseCoC()
-		 If $ichkCloseTraining = 2 Then CloseAndroid()
+		 $iShouldRearm = True
+		 If $ichkCloseTraining = 2 Then CloseAndroid("SwitchAcc")
 		 EnableGuiControls() ; enable emulator menu controls
 		 SetLog("Enable emulator menu controls due long wait time!")
 		 If $ichkCloseTraining = 1 Then
@@ -395,6 +404,7 @@ Func SwitchCOCAcc()
 		 ClickP($aAway, 1, 0, "#0167") ;Click Away
 		 If _Sleepstatus(15000) Then Return
 		 $bReMatchAcc = False
+		 $iShouldRearm = True
 	   Else
 		 Setlog("Error in typing CONFIRM or finding OKAY button, reloading CoC", $COLOR_RED)
 		 $bReMatchAcc = True
