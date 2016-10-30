@@ -319,10 +319,9 @@ Func runBot() ;Bot that runs everything in order
 				EndIf
 			    If $Restart = True Then ContinueLoop 2 ; must be level 2 due to loop-in-loop
 			WEnd
-
-			   If $ichkSwitchAcc = 1 And $aProfileType[$nCurProfile-1] = 2 Then checkSwitchAcc()  		;  Switching to active account after donation - SwitchAcc for  - DEMEN
-
-			AddIdleTime()
+			If Not $FirstStart Then
+				AddIdleTime()
+			EndIf
 				If $RunState = False Then Return
 				If $Restart = True Then ContinueLoop
 			If IsSearchAttackEnabled() Then  ; if attack is disabled skip reporting, requesting, donating, training, and boosting
@@ -369,6 +368,7 @@ Func runBot() ;Bot that runs everything in order
 				UpgradeWall()
 					If _Sleep($iDelayRunBot3) Then Return
 					If $Restart = True Then ContinueLoop
+					If $ichkSwitchAcc = 1 And $aProfileType[$nCurProfile-1] = 2 Then checkSwitchAcc()  		;  Switching to active account after donation - SwitchAcc for  - DEMEN
 				Idle()
 					;$fullArmy1 = $fullArmy
 					If _Sleep($iDelayRunBot3) Then Return
