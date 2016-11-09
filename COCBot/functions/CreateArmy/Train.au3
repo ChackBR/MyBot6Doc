@@ -212,6 +212,36 @@ Func Train()
 		QuickTrain($iCmbCurrentArmy, False)
 		ClickP($aAway, 2, $iDelayTrain5, "#0504"); Click away twice with 250ms delay
 		_Sleep(1000)
+
+; ============ Update stats after Quick Train	-	DEMEN
+		;;;;;; Protect Army cost stats from being missed up by DC and other errors ;;;;;;;
+		If _Sleep($iDelayTrain4) Then Return
+		VillageReport(True, True)
+
+		$tempCounter = 0
+		While ($iElixirCurrent = "" Or ($iDarkCurrent = "" And $iDarkStart <> "")) And $tempCounter < 30
+			$tempCounter += 1
+			If _Sleep(100) Then Return
+			VillageReport(True, True)
+		WEnd
+
+		If $tempElixir <> "" And $iElixirCurrent <> "" Then
+			$tempElixirSpent = ($tempElixir - $iElixirCurrent)
+			$iTrainCostElixir += $tempElixirSpent
+			$iElixirTotal -= $tempElixirSpent
+			If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] -= $tempElixirSpent 	; Separate stats per account - SwitchAcc - DEMEN
+		EndIf
+
+		If $tempDElixir <> "" And $iDarkCurrent <> "" Then
+			$tempDElixirSpent = ($tempDElixir - $iDarkCurrent)
+			$iTrainCostDElixir += $tempDElixirSpent
+			$iDarkTotal -= $tempDElixirSpent
+			If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile - 1] -= $tempDElixirSpent 	; Separate stats per account - SwitchAcc -  DEMEN
+		EndIf
+
+		UpdateStats()
+; ============= Update stats after Quick Train	-	DEMEN
+
 		Return
 	EndIf
 
@@ -1210,14 +1240,14 @@ Func Train()
 		$tempElixirSpent = ($tempElixir - $iElixirCurrent)
 		$iTrainCostElixir += $tempElixirSpent
 		$iElixirTotal -= $tempElixirSpent
-		If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] -= $tempElixirSpent ; Separate stats per account - SwitchAcc - DEMEN
+		If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] -= $tempElixirSpent 	; Separate stats per account - SwitchAcc - DEMEN
 	EndIf
 
 	If $tempDElixir <> "" And $iDarkCurrent <> "" Then
 		$tempDElixirSpent = ($tempDElixir - $iDarkCurrent)
 		$iTrainCostDElixir += $tempDElixirSpent
 		$iDarkTotal -= $tempDElixirSpent
-		If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile - 1] -= $tempDElixirSpent ; Separate stats per account - SwitchAcc -  DEMEN
+		If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile - 1] -= $tempDElixirSpent 	; Separate stats per account - SwitchAcc -  DEMEN
 	EndIf
 
 	UpdateStats()

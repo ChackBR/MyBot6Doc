@@ -119,3 +119,4 @@ Global $aRemainTrainTime[8]
 Global $aUpdateRemainTrainTime[8]
 Global $nNexProfile
 Global $nMinRemainTrain
+

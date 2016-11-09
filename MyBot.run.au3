@@ -51,7 +51,8 @@ Local $sModversion
 ; "2308" ; Minor Fixes + Multi Farming ( SwitchAcc )
 ; "2309" ; MyBot v6.3.0 Beta 6
 ; "2310" ; MyBot v6.3.0 Beta 6 + SmartZap
-$sModversion = "2311" ; MyBot v6.3.0 Beta 7 + Telegram
+; "2311" ; MyBot v6.3.0 Beta 7 + Telegram + SwitchAcc
+$sModversion = "2312" ; MyBot v6.3.0 Beta 7 With Some Fixes
 $sBotVersion = "v6.3.u7" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".m" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
@@ -213,7 +214,6 @@ LoadAmountOfResourcesImages()
 CheckVersion() ; check latest version on mybot.run site
 btnUpdateProfile() ; SwitchAcc - DEMEN
 
-
 ;~ Remember time in Milliseconds bot launched
 $iBotLaunchTime = TimerDiff($hBotLaunchTime)
 SetDebugLog("MyBot.run launch time " & Round($iBotLaunchTime) & " ms.")
@@ -368,7 +368,9 @@ Func runBot() ;Bot that runs everything in order
 				UpgradeWall()
 					If _Sleep($iDelayRunBot3) Then Return
 					If $Restart = True Then ContinueLoop
-					If $ichkSwitchAcc = 1 And $aProfileType[$nCurProfile-1] = 2 Then checkSwitchAcc()  		;  Switching to active account after donation - SwitchAcc for  - DEMEN
+
+				If $ichkSwitchAcc = 1 And $aProfileType[$nCurProfile-1] = 2 Then checkSwitchAcc()  		;  Switching to active account after donation - SwitchAcc for  - DEMEN
+
 				Idle()
 					;$fullArmy1 = $fullArmy
 					If _Sleep($iDelayRunBot3) Then Return
@@ -602,7 +604,9 @@ Func AttackMain() ;Main control for attack functions
 		Else
 			Setlog("No one of search condition match:", $COLOR_WARNING)
 			Setlog("Waiting on troops, heroes and/or spells according to search settings", $COLOR_WARNING)
+
 			If $ichkSwitchAcc = 1 Then CheckSwitchAcc() 		; SwitchAcc - DEMEN
+
 		EndIf
 	Else
 		SetLog("Attacking Not Planned, Skipped..", $COLOR_WARNING)

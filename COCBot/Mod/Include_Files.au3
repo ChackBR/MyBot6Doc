@@ -11,11 +11,12 @@
 ;
 
 ; SwitchAcc
-#include "SwitchAcc.au3"
+#include "SwitchAcc\SwitchAcc.au3"
+#include "SwitchAcc\UpdateStats.au3"
 
 ;
 ; Misc
 ;
 
-; GUI
-#include "GUI_Functions.au3"
+; GUI ( While Added to \MyBot\MBR GUI Control.au3 )
+; #include "MBR GUI Control.au3"
