@@ -37,7 +37,7 @@ Func InitiateSwitchAcc() ; Checking profiles setup in Mybot, First matching CoC 
    Next
 
    ; Counting CoC Accounts
-   If $icmbTotalCoCAcc = 0 Then
+#CS   If $icmbTotalCoCAcc = 0 Then
 	  Local Const $XConnect = 431
 	  Local Const $YConnect = 434
 	  Local Const $ColorConnect = 4284458031      ;Connected Button: green
@@ -53,7 +53,7 @@ Func InitiateSwitchAcc() ; Checking profiles setup in Mybot, First matching CoC 
 
 	  $i = 0
 	  While $i <= 5
-		 If _ColorCheck(_GetPixelColor(620, 247 - 37 * $i, True), "F5F5F5", 20) = False Then		; Grey
+		 If _ColorCheck(_GetPixelColor(620, 310 - 38 * $i, True), "FFFFFF", 15) = False Then		; Grey
 			$icmbTotalCoCAcc = $i+1
 			ExitLoop
 		 Else
@@ -64,9 +64,24 @@ Func InitiateSwitchAcc() ; Checking profiles setup in Mybot, First matching CoC 
 	  If _Sleepstatus(2000) Then Return
 	  Click(762, 117, 1, 0, "Click Close")      ;Click close
    EndIf   ; ====== Counting CoC Accounts
+#CE
 
-   $nTotalCoCAcc = $icmbTotalCoCAcc
-   Setlog ("Total CoC Account(s): " & $nTotalCoCAcc)
+   If $icmbTotalCoCAcc > 0 then
+	   $nTotalCoCAcc = $icmbTotalCoCAcc
+	   Setlog ("Total CoC Account(s)is declared: " & $nTotalCoCAcc)
+   Else
+	   Setlog ("Total CoC Account(s) has not declared, default: " & $nTotalCoCAcc)
+   EndIf
+
+
+   ; Locating CoC Accounts
+   If _ArrayMax($aAccPosY) <> -1 Then
+	   $MaxIdx = _ArrayMaxIndex($aAccPosY)
+	   For $i = 1 to $nTotalCoCAcc
+		   If $aAccPosY[$i-1] = -1 Then $aAccPosY[$i-1] = $aAccPosY[$MaxIdx] + 73*($i-1-$MaxIdx)
+		   Setlog("  >>> Y-coordinate Acc No. " & $i & " is located at: " & $aAccPosY[$i-1])
+	   Next
+   EndIf
 
    If _ArraySearch($aProfileType, 1) <> -1 Then								; There is at least one active profile
 	  If $aProfileType[$nCurProfile-1] <> 1 Then							; Not Active profile
@@ -111,43 +126,49 @@ Func CheckWaitHero()	; get hero regen time remaining if enabled
 
 	If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("CheckWaitHero", $COLOR_PURPLE)
 
-	  $aHeroResult = getArmyHeroTime("all")
+	$aHeroResult = getArmyHeroTime("all")
 
-	  If @error Then
+	If @error Then
 		Setlog("getArmyHeroTime return error, exit Check Hero's wait time!", $COLOR_RED)
 		Return ; if error, then quit Check Hero's wait time
-	  EndIf
+	EndIf
 
-	  Setlog("Getting Hero's recover time, King: " & $aHeroResult[0] & " m, Queen: " & $aHeroResult[1] & " m, GW: " & $aHeroResult[2] & " m.")
+	If $aHeroResult = "" Then
+		Setlog("You have no hero or bad TH level detection Pls manually locate TH", $COLOR_RED)
+		Return
+	EndIf
 
-	  If _Sleep($iDelayRespond) Then Return
-	  If $aHeroResult[0] > 0 Or $aHeroResult[1] > 0 Or $aHeroResult[2] > 0 Then ; check if hero is enabled to use/wait and set wait time
-		 For $pTroopType = $eKing To $eWarden ; check all 3 hero
-			 For $pMatchMode = $DB To $iModeCount - 1 ; check all attack modes
-				 If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then
-					 SetLog("$pTroopType: " & NameOfTroop($pTroopType) & ", $pMatchMode: " & $sModeText[$pMatchMode], $COLOR_PURPLE)
-					 Setlog("TroopToBeUsed: " & IsSpecialTroopToBeUsed($pMatchMode, $pTroopType) & ", Hero Wait Status: " & (BitOr($iHeroAttack[$pMatchMode], $iHeroWait[$pMatchMode]) = $iHeroAttack[$pMatchMode]), $COLOR_PURPLE)
-				 EndIf
-				 $iActiveHero = -1
-				 If IsSpecialTroopToBeUsed($pMatchMode, $pTroopType) And _
-						 BitOr($iHeroAttack[$pMatchMode], $iHeroWait[$pMatchMode]) = $iHeroAttack[$pMatchMode] Then ; check if Hero enabled to wait
-					 $iActiveHero = $pTroopType - $eKing ; compute array offset to active hero
-				 EndIf
-				 If $iActiveHero <> -1 And $aHeroResult[$iActiveHero] > 0 Then ; valid time?
-					 ; check exact time & existing time is less than new time
-					 If $aTimeTrain[2] < $aHeroResult[$iActiveHero] Then
+	Setlog("Getting Hero's recover time, King: " & $aHeroResult[0] & " m, Queen: " & $aHeroResult[1] & " m, GW: " & $aHeroResult[2] & " m.")
+
+	If _Sleep($iDelayRespond) Then Return
+	If $aHeroResult[0] > 0 Or $aHeroResult[1] > 0 Or $aHeroResult[2] > 0 Then ; check if hero is enabled to use/wait and set wait time
+		For $pTroopType = $eKing To $eWarden ; check all 3 hero
+			For $pMatchMode = $DB To $iModeCount - 1 ; check all attack modes
+				If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then
+					SetLog("$pTroopType: " & NameOfTroop($pTroopType) & ", $pMatchMode: " & $sModeText[$pMatchMode], $COLOR_PURPLE)
+					Setlog("TroopToBeUsed: " & IsSpecialTroopToBeUsed($pMatchMode, $pTroopType) & ", Hero Wait Status: " & (BitOr($iHeroAttack[$pMatchMode], $iHeroWait[$pMatchMode]) = $iHeroAttack[$pMatchMode]), $COLOR_PURPLE)
+				EndIf
+				$iActiveHero = -1
+				If IsSpecialTroopToBeUsed($pMatchMode, $pTroopType) And _
+					 BitOr($iHeroAttack[$pMatchMode], $iHeroWait[$pMatchMode]) = $iHeroAttack[$pMatchMode] Then ; check if Hero enabled to wait
+				$iActiveHero = $pTroopType - $eKing ; compute array offset to active hero
+				EndIf
+				If $iActiveHero <> -1 And $aHeroResult[$iActiveHero] > 0 Then ; valid time?
+					; check exact time & existing time is less than new time
+					If $aTimeTrain[2] < $aHeroResult[$iActiveHero] Then
 						$aTimeTrain[2] = $aHeroResult[$iActiveHero] ; use exact time
-					 EndIf
-					 If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then
-						 SetLog("Wait enabled: " & NameOfTroop($pTroopType) & ", Attack Mode:" & $sModeText[$pMatchMode] & ", Hero Time:" & $aHeroResult[$iActiveHero] & ", Wait Time: " & StringFormat("%.2f", $aTimeTrain[2]), $COLOR_PURPLE)
-					 EndIf
-				 EndIf
-			 Next
-			 If _Sleep($iDelayRespond) Then Return
-		 Next
-	  Else
-		 If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("getArmyHeroTime return all zero hero wait times", $COLOR_PURPLE)
-	  EndIf
+					EndIf
+
+					If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then
+						SetLog("Wait enabled: " & NameOfTroop($pTroopType) & ", Attack Mode:" & $sModeText[$pMatchMode] & ", Hero Time:" & $aHeroResult[$iActiveHero] & ", Wait Time: " & StringFormat("%.2f", $aTimeTrain[2]), $COLOR_PURPLE)
+					EndIf
+				EndIf
+			Next
+			If _Sleep($iDelayRespond) Then Return
+		Next
+	Else
+		If $debugsetlogTrain = 1 Or $debugSetlog = 1 Then Setlog("getArmyHeroTime return all zero hero wait times", $COLOR_PURPLE)
+	EndIf
 
 	Setlog("Hero recover wait time: " & $aTimeTrain[2] & " minute(s)", $COLOR_BLUE)
 
@@ -236,7 +257,11 @@ EndFunc
 
 Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 
-   If IsMainPage() = False Then checkMainScreen()	; Sometimes the bot cannot open Army Overview Window
+	SetLog("Start SwitchAcc Mode")
+
+
+   If IsMainPage() = False Then ClickP($aAway, 2, 250, "#0335")	; Sometimes the bot cannot open Army Overview Window, trying to click away first
+   If IsMainPage() = False Then checkMainScreen()				; checkmainscreen (may restart CoC) if still fail to locate main page.
    getArmyTroopTime(True, False)
 
    If IsWaitforSpellsActive() Then
@@ -350,9 +375,13 @@ Func SwitchCOCAcc()
    $nCurCoCAcc = $aMatchProfileAcc[$nCurProfile-1]
    Setlog ("Switching to Account [" & $nCurCoCAcc & "]")
 
-   Click(383, 373.5 - ($nTotalCoCAcc - 1)*36.5 + 73*($nCurCoCAcc - 1), 1, 0, "Click Account " & $nCurCoCAcc)      ;Click Account - DEMEN
+   If $aAccPosY[$nCurCoCAcc-1] <> -1 Then
+	   Click(383, $aAccPosY[$nCurCoCAcc-1], 1, 0, "Click Account " & $nCurCoCAcc)      ;Click Account - DEMEN
+   Else
+	   Click(383, 373.5 - ($nTotalCoCAcc - 1)*36.5 + 73*($nCurCoCAcc - 1), 1, 0, "Click Account " & $nCurCoCAcc)      ;Click Account - DEMEN
+   EndIf
 
-   If _Sleepstatus(8000) Then Return
+   If _Sleepstatus(10000) Then Return
 
    If _ColorCheck(_GetPixelColor($XConnect, $YConnect, True), Hex($ColorConnect, 6), 20) Then       ;Blue
 	  Setlog("Already in current account")
@@ -361,23 +390,31 @@ Func SwitchCOCAcc()
 	  $bReMatchAcc = False
    Else
 	  $idx = 0
-	  While $idx <= 10
+	  While $idx <= 15
 		 If _ColorCheck(_GetPixelColor(443, 430, True), Hex(4284390935, 6), 20) Then
 			Setlog("Load button appears")
+			If _Sleepstatus(1000) Then Return
+			Click(443, 430, 1, 0, "Click Load")      ;Click Load
 			ExitLoop
 		 Else
 			Setlog("Wait!")
 			If _Sleepstatus(1000) Then Return
-			$idx = $idx + 1
+			$idx += 1
+			If $idx = 15 Then
+				Setlog("Switching account fail, reloading CoC", $COLOR_RED)
+				$bReMatchAcc = True
+				WaitnOpenCoC(5000,true)
+				runBot()
+			EndIf
 		 EndIf
 	  WEnd
 
-	  $idx = 0
-	  While _ColorCheck(_GetPixelColor(443, 430, True), Hex(4284390935, 6), 20) And $idx <= 40
-		 If _Sleepstatus(1000) Then Return
-		 Click(443, 430, 1, 0, "Click Load")      ;Click Load
-		 $idx = $idx + 1
-	  WEnd
+;~ 	  $idx = 0
+;~ 	  While _ColorCheck(_GetPixelColor(443, 430, True), Hex(4284390935, 6), 20) And $idx <= 40
+;~ 		 If _Sleepstatus(1000) Then Return
+;~ 		 Click(443, 430, 1, 0, "Click Load")      ;Click Load
+;~ 		 $idx = $idx + 1
+;~ 	  WEnd
 
 	  If _Sleepstatus(5000) Then Return
 	  PureClick(353, 180, 1, 0, "Click Text box")      ;Click Text box

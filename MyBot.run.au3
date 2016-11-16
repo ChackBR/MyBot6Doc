@@ -605,7 +605,13 @@ Func AttackMain() ;Main control for attack functions
 			Setlog("No one of search condition match:", $COLOR_WARNING)
 			Setlog("Waiting on troops, heroes and/or spells according to search settings", $COLOR_WARNING)
 
-			If $ichkSwitchAcc = 1 Then CheckSwitchAcc() 		; SwitchAcc - DEMEN
+		; SwitchAcc - DEMEN
+			If $ichkSwitchAcc = 1 Then
+				checkSwitchAcc()
+			Else
+				SmartWait4Train()
+			EndIf
+		;============ SwitchAcc - DEMEN
 
 		EndIf
 	Else

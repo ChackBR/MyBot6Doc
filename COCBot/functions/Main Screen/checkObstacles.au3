@@ -96,8 +96,14 @@ Func checkObstacles() ;Checks if something is in the way for mainscreen
 					Return True
 				EndIf
 				SetLog("Connection lost, Reloading CoC...", $COLOR_ERROR)
+				PureClickP($aReloadButton, 1, 0, "#0131")			; Click for connection lost - DEMEN
+				Return True											; Click for connection lost - DEMEN
+
 			Case _CheckPixel($aIsCheckOOS, $bNoCapturePixel) ; Check OoS
 				SetLog("Out of Sync Error, Reloading CoC...", $COLOR_ERROR)
+				PureClickP($aReloadButton, 1, 0, "#0131")			; Click for OOS - DEMEN
+				Return True											; Click for OOS - DEMEN
+
 			Case _CheckPixel($aIsMaintenance, $bNoCapturePixel) ; Check Maintenance
 				$result = getOcrMaintenanceTime(171, 345 + $midOffsetY, "Check Obstacles OCR Maintenance Break=") ; OCR text to find wait time
 				Local $iMaintenanceWaitTime = 0

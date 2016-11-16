@@ -1,3 +1,18 @@
+; #FUNCTION# ====================================================================================================================
+; Name ..........: Global Variables - Mod.au3
+; Description ...: Extension of MBR Global Variables for Mod
+; Syntax ........: #include , Global
+; Parameters ....: None
+; Return values .: None
+; Author ........:
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
+
 ;
 ; Attack Variables, constants and enums - Added by LunaEclipse
 ;
@@ -93,8 +108,8 @@ Global $profile = $sProfilePath & "\Profile.ini"
 Global $aconfig[8]
 Global $ichkSwitchAcc = 0
 
-Global $icmbTotalCoCAcc		; 0 = Auto detect, 1 = 1 account, 2 = 2 accounts
-Global $nTotalCoCAcc
+Global $icmbTotalCoCAcc		; 1 = 1 account, 2 = 2 accounts
+Global $nTotalCoCAcc = 6
 Global $ichkSmartSwitch = 1
 
 Global $ichkCloseTraining = 0
@@ -119,4 +134,12 @@ Global $aRemainTrainTime[8]
 Global $aUpdateRemainTrainTime[8]
 Global $nNexProfile
 Global $nMinRemainTrain
+
+Global $aCCRemainTime[8]
+Global $aUpdateCCRemainTime[8]
+Global $nMinCCRemain
+Global $nNexProfileReqCC
+
+Global $aAccPosY[6]
+
 

@@ -56,7 +56,7 @@
 			GUICtrlSetState(-1, $GUI_DISABLE)
 
 		$cmbTotalAccount= GUICtrlCreateCombo("", $x + 100, $y + 25, -1, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			GUICtrlSetData(-1, "Auto detect" & "|" & "1 Account" & "|" & "2 Accounts" & "|" & "3 Accounts" & "|" & "4 Accounts" & "|" & "5 Accounts" & "|" & "6 Accounts", "Auto detect")
+			GUICtrlSetData(-1, "--------" & "|" & "1 Account" & "|" & "2 Accounts" & "|" & "3 Accounts" & "|" & "4 Accounts" & "|" & "5 Accounts" & "|" & "6 Accounts")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 
@@ -82,6 +82,20 @@
 			GUICtrlSetState(-1, $GUI_CHECKED)
 
 		$radCloseAndroid = GUICtrlCreateRadio("Close Android", $x + 100, $y + 30, -1, 16)
+
+		$lblLocateAcc = GUICtrlCreateLabel("Manually locate account coordinates", $x, $y + 60, -1, -1)
+
+		For $i = 1 to 6
+			If $i <= 3 Then	GUICtrlCreateButton("Acc. " & $i, $x + 15 + 48 * ($i-1), $y + 85, 40, 25)
+			If $i > 3 Then GUICtrlCreateButton("Acc. " & $i, $x + 15 + 48 * ($i-4), $y + 120, 40, 25)
+			GUICtrlSetTip(-1, "locate your CoC Account No. " & $i)
+			GUICtrlSetOnEvent(-1, "btnLocateAcc" & $i)
+		Next
+
+		GUICtrlCreateButton("Clear All", $x + 159, $y + 95, 30, 40, $BS_MULTILINE)
+			GUICtrlSetTip(-1, "clear location data of all accounts")
+			GUICtrlSetOnEvent(-1, "btnClearAccLocation")
+
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 ; Profiles & Account matching

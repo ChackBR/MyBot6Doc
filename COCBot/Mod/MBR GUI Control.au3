@@ -146,6 +146,85 @@ Func chkUseTrainingClose()
 	EndIf
 EndFunc   ;==>chkUseTrainingClose
 
+
+Func btnLocateAcc1()
+	LocateAcc(1)
+EndFunc   ;==>btnLocateAcc1
+Func btnLocateAcc2()
+	LocateAcc(2)
+EndFunc   ;==>btnLocateAcc2
+Func btnLocateAcc3()
+	LocateAcc(3)
+EndFunc   ;==>btnLocateAcc3
+Func btnLocateAcc4()
+	LocateAcc(4)
+EndFunc   ;==>btnLocateAcc4
+Func btnLocateAcc5()
+	LocateAcc(5)
+EndFunc   ;==>btnLocateAcc5
+Func btnLocateAcc6()
+	LocateAcc(6)
+EndFunc   ;==>btnLocateAcc6
+
+Func LocateAcc($AccNo)
+	Local $stext, $MsgBox, $sErrorText = ""
+
+	SetLog("Locating Y-Coordinate of CoC Account No. " & $AccNo & ", please wait...", $COLOR_BLUE)
+	WinGetAndroidHandle()
+
+	Zoomout()
+
+	Click(820, 585, 1, 0, "Click Setting")      ;Click setting
+	Sleep(500)
+
+	$idx = 0
+	While $idx < 10
+		If _ColorCheck(_GetPixelColor(431, 434, True), "5FA42F", 20) Then 		;Hex(4284458031, 6)
+			PureClick(431, 434, 1, 0, "Click Connected")      ;Click Connect
+			ExitLoop
+		Else
+			Sleep(500)
+			$idx += 1
+		EndIf
+	WEnd
+	Sleep(2000)
+	PureClick(431, 434, 1, 0, "Click DisConnect")      ;Click DisConnect
+	Sleep(5000)
+
+	While 1
+		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
+		$stext = $sErrorText & @CRLF & "Click OK then click on your Account No. " & $AccNo & @CRLF & @CRLF & _
+				GetTranslated(640,26,"Do not move mouse quickly after clicking location") & @CRLF & @CRLF & "Please note that you have only 1 chance to click" & @CRLF
+		$MsgBox = _ExtMsgBox(0, GetTranslated(640,1,"Ok|Cancel"), "Locate CoC Account No. " & $AccNo, $stext, 15, $frmBot)
+		If $MsgBox = 1 Then
+			WinGetAndroidHandle()
+			Local $aPos = FindPos()
+			$aAccPosY[$AccNo-1] = Int($aPos[1])
+			ClickP($aAway, 1, 0, "#0379")
+		Else
+			SetLog("Locate CoC Account Cancelled", $COLOR_BLUE)
+			ClickP($aAway, 1, 0, "#0382")
+			Return
+		EndIf
+		SetLog("Locate CoC Account Success: " & "(383, " & $aAccPosY[$AccNo-1] & ")", $COLOR_GREEN)
+
+		ExitLoop
+	WEnd
+	Clickp($aAway, 2, 0, "#0207")
+	saveConfig()
+
+EndFunc   ;==>LocateAcc
+
+Func btnClearAccLocation()
+	For $i = 1 to 6
+		$aAccPosY[$i-1] = -1
+	Next
+	Setlog("Position of all accounts cleared")
+	saveConfig()
+EndFunc
+; ============= SwitchAcc Mode ============= - DEMEN
+
+
 ; Classic FourFingers
 Func cmbDeployAB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
    If _GUICtrlCombobox_GetCurSel($cmbDeployAB) = 4 Then

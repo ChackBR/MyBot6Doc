@@ -16,18 +16,19 @@
 ;TAB Profile Stats - SwitchAcc Mode - DEMEN
 $hGUI_STATS_TAB_ITEM4 = GUICtrlCreateTabItem("Profile Stats")
 
-	Local $xStart = 25, $yStart = 45
-	$x = $xStart
-	$y = $yStart
 
-	Global $aGoldTotalAcc[8], $aElixirTotalAcc[8], $aDarkTotalAcc[8], $aAttackedCountAcc[8], $aSkippedVillageCountAcc[8]
-	Global $aGoldCurrentAcc[8], $aElixirCurrentAcc[8], $aGoldCurrentAcc[8],$aDarkCurrentAcc[8], $aTrophyCurrentAcc[8], $aGemAmountAcc[8], $aFreeBuilderCountAcc[8], $aTotalBuilderCountAcc[8]
-	Global $lblGoldLootAcc[8], $lblElixirLootAcc[8], $lblDarkLootAcc[8], $lblHourlyStatsGoldAcc[8], $lblHourlyStatsElixirAcc[8], $lblHourlyStatsDarkAcc[8]
-	Global $grpVillageAcc[8], $lblResultGoldNowAcc[8], $lblResultElixirNowAcc[8], $lblResultDENowAcc[8], $lblResultTrophyNowAcc[8], $lblResultBuilderNowAcc[8], $lblResultGemNowAcc[8]
-	Global $aStartHide[8]
+Local $xStart = 25, $yStart = 45
+$x = $xStart
+$y = $yStart
 
-	$grpProfileStats = GUICtrlCreateGroup("Gain stats per Profile", $x - 22, $y - 15, 427, 330)
-	For $i = 0 To 3
+Global $aGoldTotalAcc[8], $aElixirTotalAcc[8], $aDarkTotalAcc[8], $aAttackedCountAcc[8], $aSkippedVillageCountAcc[8]
+Global $aGoldCurrentAcc[8], $aElixirCurrentAcc[8], $aGoldCurrentAcc[8],$aDarkCurrentAcc[8], $aTrophyCurrentAcc[8], $aGemAmountAcc[8], $aFreeBuilderCountAcc[8], $aTotalBuilderCountAcc[8]
+Global $lblGoldLootAcc[8], $lblElixirLootAcc[8], $lblDarkLootAcc[8], $lblHourlyStatsGoldAcc[8], $lblHourlyStatsElixirAcc[8], $lblHourlyStatsDarkAcc[8]
+Global $grpVillageAcc[8], $lblResultGoldNowAcc[8], $lblResultElixirNowAcc[8], $lblResultDENowAcc[8], $lblResultTrophyNowAcc[8], $lblResultBuilderNowAcc[8], $lblResultGemNowAcc[8]
+Global $aStartHide[8]
+
+$grpProfileStats = GUICtrlCreateGroup("Gain stats per Profile", $x - 22, $y - 15, 427, 330)
+   For $i = 0 To 3
 	   $x = $xStart - 60
 	   $y = $yStart
 
@@ -92,5 +93,5 @@ $hGUI_STATS_TAB_ITEM4 = GUICtrlCreateTabItem("Profile Stats")
 
    Next
 
-	GUICtrlCreateGroup("", -99, -99, 1, 1)
+GUICtrlCreateGroup("", -99, -99, 1, 1)
 ;-->TAB Gain Separate - Stats Per Profile - SwitchAcc Mode - DEMEN

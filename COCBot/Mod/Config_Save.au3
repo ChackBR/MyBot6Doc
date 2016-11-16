@@ -1,3 +1,18 @@
+; #FUNCTION# ====================================================================================================================
+; Name ..........: Config save
+; Description ...: Extension of saveConfig() for Mod
+; Syntax ........: saveConfig()
+; Parameters ....: NA
+; Return values .: NA
+; Author ........:
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
+
 ;
 ; MOD Config - Save Data
 ;
@@ -95,3 +110,7 @@
 	Else
 		IniWrite($profile, "Switch Account", "Sleep Combo", 0)
 	EndIf
+
+	For $i = 1 to 6
+		IniWriteS($profile, "Acc Location", "yAccNo." & $i, $aAccPosY[$i-1])
+	Next
