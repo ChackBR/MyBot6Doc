@@ -42,10 +42,12 @@ DROP  |V-Y        |1-6        |8          |Heal       |100        |0          |5
 DROP  |N          |1          |1          |Warden     |20         |0          |200-400    |           |Drop Warden
 DROP  |N          |1          |4          |Wiza       |10-50      |0          |5-10       |           |Drop Wizards
 WAIT  |2000-4000  |           |           |           |           |           |           |           |Wait
+DROP  |K          |1          |1          |PSpell     |0          |0          |200-300    |           |Drop PSpell
 DROP  |I          |2-3        |1          |RSpell     |0          |0          |100-200    |           |Drop RSpell
 DROP  |J          |2-3        |1          |RSpell     |0          |0          |3000-5000  |           |Drop RSpell
 DROP  |K          |1          |1          |PSpell     |0          |0          |200-300    |           |Drop PSpell
 DROP  |N          |1          |1          |Warden     |0          |0          |0          |           |Drop Warden
+DROP  |K          |1          |1          |PSpell     |0          |0          |200-300    |           |Drop PSpell
 WAIT  |4000-6000  |           |           |           |           |           |           |           |Wait
 DROP  |L          |1          |1          |RSpell     |0          |0          |0          |           |Drop RSpell
 WAIT  |4000-5500  |           |           |           |           |           |           |           |Wait

@@ -13,6 +13,25 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
+; Classic FourFingers
+Func cmbDeployAB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
+   If _GUICtrlCombobox_GetCurSel($cmbDeployAB) = 4 Then
+	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_UNCHECKED)
+	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_DISABLE)
+   Else
+	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_ENABLE)
+   EndIf
+EndFunc
+
+Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
+   If _GUICtrlCombobox_GetCurSel($cmbDeployDB) = 4 Then
+	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_UNCHECKED)
+	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_DISABLE)
+   Else
+	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_ENABLE)
+   EndIf
+EndFunc
+
 ; GUI Control for SwitchAcc Mode - DEMEN
 
  Func radProfileType()
@@ -177,25 +196,11 @@ Func LocateAcc($AccNo)
 	Click(820, 585, 1, 0, "Click Setting")      ;Click setting
 	Sleep(500)
 
-	$idx = 0
-	While $idx < 10
-		If _ColorCheck(_GetPixelColor(431, 434, True), "5FA42F", 20) Then 		;Hex(4284458031, 6)
-			PureClick(431, 434, 1, 0, "Click Connected")      ;Click Connect
-			ExitLoop
-		Else
-			Sleep(500)
-			$idx += 1
-		EndIf
-	WEnd
-	Sleep(2000)
-	PureClick(431, 434, 1, 0, "Click DisConnect")      ;Click DisConnect
-	Sleep(5000)
-
 	While 1
 		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
-		$stext = $sErrorText & @CRLF & "Click OK then click on your Account No. " & $AccNo & @CRLF & @CRLF & _
+		$stext = $sErrorText & @CRLF & "Click Connect/Disconnect to show the list of accounts" & @CRLF & "Click OK then click on your Account No. " & $AccNo & @CRLF & @CRLF & _
 				GetTranslated(640,26,"Do not move mouse quickly after clicking location") & @CRLF & @CRLF & "Please note that you have only 1 chance to click" & @CRLF
-		$MsgBox = _ExtMsgBox(0, GetTranslated(640,1,"Ok|Cancel"), "Locate CoC Account No. " & $AccNo, $stext, 15, $frmBot)
+		$MsgBox = _ExtMsgBox(0, GetTranslated(640,1,"Ok|Cancel"), "Locate CoC Account No. " & $AccNo, $stext, 30, $frmBot)
 		If $MsgBox = 1 Then
 			WinGetAndroidHandle()
 			Local $aPos = FindPos()
@@ -222,102 +227,3 @@ Func btnClearAccLocation()
 	Setlog("Position of all accounts cleared")
 	saveConfig()
 EndFunc
-; ============= SwitchAcc Mode ============= - DEMEN
-
-
-; Classic FourFingers
-Func cmbDeployAB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
-   If _GUICtrlCombobox_GetCurSel($cmbDeployAB) = 4 Then
-	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_UNCHECKED)
-	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_DISABLE)
-   Else
-	  GUICtrlSetState($chkSmartAttackRedAreaAB, $GUI_ENABLE)
-   EndIf
-EndFunc
-
-Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
-   If _GUICtrlCombobox_GetCurSel($cmbDeployDB) = 4 Then
-	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_UNCHECKED)
-	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_DISABLE)
-   Else
-	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_ENABLE)
-   EndIf
-EndFunc
-
-; SmartZap Settings
-Func chkSmartLightSpell()
-    If GUICtrlRead($chkSmartLightSpell) = $GUI_CHECKED Then
-        GUICtrlSetState($chkSmartZapDB, $GUI_ENABLE)
-        GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_ENABLE)
-        GUICtrlSetState($txtMinDark, $GUI_ENABLE)
-        $ichkSmartZap = 1
-    Else
-        GUICtrlSetState($chkSmartZapDB, $GUI_DISABLE)
-        GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_DISABLE)
-        GUICtrlSetState($txtMinDark, $GUI_DISABLE)
-        $ichkSmartZap = 0
-    EndIf
-EndFunc   ;==>chkSmartLightSpell
-
-Func chkSmartZapDB()
-    If GUICtrlRead($chkSmartZapDB) = $GUI_CHECKED Then
-        $ichkSmartZapDB = 1
-    Else
-        $ichkSmartZapDB = 0
-    EndIf
-EndFunc   ;==>chkSmartZapDB
-
-Func chkSmartZapSaveHeroes()
-    If GUICtrlRead($chkSmartZapSaveHeroes) = $GUI_CHECKED Then
-        $ichkSmartZapSaveHeroes = 1
-    Else
-        $ichkSmartZapSaveHeroes = 0
-    EndIf
-EndFunc   ;==>chkSmartZapSaveHeroes
-
-Func txtMinDark()
-	$itxtMinDE = GUICtrlRead($txtMinDark)
-EndFunc   ;==>txtMinDark
-
-; CSV Deployment Speed Mod
-Func sldSelectedSpeedDB()
-	$isldSelectedCSVSpeed[$DB] = GUICtrlRead($sldSelectedSpeedDB)
-	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$DB]] & "x";
-	IF $isldSelectedCSVSpeed[$DB] = 4 Then $speedText = "Normal"
-	GUICtrlSetData($lbltxtSelectedSpeedDB, $speedText & " speed")
-EndFunc   ;==>sldSelectedSpeedDB
-
-Func sldSelectedSpeedAB()
-	$isldSelectedCSVSpeed[$LB] = GUICtrlRead($sldSelectedSpeedAB)
-	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$LB]] & "x";
-	IF $isldSelectedCSVSpeed[$LB] = 4 Then $speedText = "Normal"
-	GUICtrlSetData($lbltxtSelectedSpeedAB, $speedText & " speed")
-
-EndFunc   ;==>sldSelectedSpeedAB
-
-; Attack Now Button (Useful for CSV Testing) By MR.ViPeR ;;;;
-Func AttackNowDB()
-	If $RunState Then Return
-	Sleep(2000)
-	$iMatchMode = $DB			; Select Dead Base As Attack Type
-	$iAtkAlgorithm[$DB] = 1		; Select Scripted Attack
-	$scmbDBScriptName = GuiCtrlRead($cmbScriptNameDB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
-	$iMatchMode = $DB			; Select Dead Base As Attack Type
-	$RunState = True
-	PrepareAttack($iMatchMode)	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
-	Attack()					; Fire xD
-	$RunState = False
-EndFunc   ;==>AttackNow Dead Base
-
-Func AttackNowAB()
-	If $RunState Then Return
-	Sleep(2000)
-	$iMatchMode = $LB			; Select Live Base As Attack Type
-	$iAtkAlgorithm[$LB] = 1		; Select Scripted Attack
-	$scmbABScriptName = GuiCtrlRead($cmbScriptNameAB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
-	$iMatchMode = $LB			; Select Live Base As Attack Type
-	$RunState = True
-	PrepareAttack($iMatchMode)	; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
-	Attack()					; Fire xD
-	$RunState = False
-EndFunc   ;==>AttackNow Live Base

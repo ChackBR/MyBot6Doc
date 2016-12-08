@@ -50,18 +50,6 @@ Func UpdateStatsForSwitchAcc()
 
 EndFunc   ;==>UpdateStatsForSwitchAcc
 
-Func UpdateStatsForSmartZap()
-	If $iOldSmartZapGain <> $smartZapGain Then
-		GUICtrlSetData($lblSmartZap, _NumberFormat($smartZapGain, True))
-		$iOldSmartZapGain = $smartZapGain
-	EndIf
-
-	If $iOldNumLTSpellsUsed <> $numLSpellsUsed Then
-		GUICtrlSetData($lblLightningUsed, _NumberFormat($numLSpellsUsed, True))
-		$iOldNumLTSpellsUsed = $numLSpellsUsed
- 	EndIf
-EndFunc    ;==>UpdateStatsForSmartZap
-
 Func ResetStatsForSwitchAcc()
 
 	For $i = 0 To $nTotalProfile-1 ; SwitchAcc Mod - Demen
@@ -74,14 +62,22 @@ Func ResetStatsForSwitchAcc()
 
 EndFunc   ;==>ResetStatsForSwitchAcc
 
+Func UpdateStatsForSmartZap()
+	If $iOldSmartZapGain <> $smartZapGain Then
+		GUICtrlSetData($lblSmartZap, _NumberFormat($smartZapGain, True))
+		$iOldSmartZapGain = $smartZapGain
+	EndIf
+
+	If $iOldNumLTSpellsUsed <> $numLSpellsUsed Then
+		GUICtrlSetData($lblLightningUsed, _NumberFormat($numLSpellsUsed, True))
+		$iOldNumLTSpellsUsed = $numLSpellsUsed
+ 	EndIf
+EndFunc    ;==>UpdateStatsForSmartZap
+
 Func ResetStatsForSmartZap()
 
-	For $i = 0 To $nTotalProfile-1 ; SwitchAcc Mod - Demen
-	   $aGoldTotalAcc[$i] = 0
-	   $aElixirTotalAcc[$i] = 0
-	   $aDarkTotalAcc[$i] = 0
-	   $aAttackedCountAcc[$i] = 0
-	   $aSkippedVillageCountAcc[$i] = 0
-	Next
+	$smartZapGain = 0
+	$numLSpellsUsed = 0
 
 EndFunc   ;==>ResetStatsForSmartZap
+

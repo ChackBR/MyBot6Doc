@@ -13,8 +13,8 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-;Global $txtPresetSaveFilename, $txtSavePresetMessage, $lblLoadPresetMessage,$btnGUIPresetDeleteConf, $chkCheckDeleteConf
-;Global $cmbPresetList, $txtPresetMessage,$btnGUIPresetLoadConf,  $lblLoadPresetMessage,$btnGUIPresetDeleteConf, $chkCheckDeleteConf
+;~ Global $txtPresetSaveFilename, $txtSavePresetMessage, $lblLoadPresetMessage,$btnGUIPresetDeleteConf, $chkCheckDeleteConf
+;~ Global $cmbPresetList, $txtPresetMessage,$btnGUIPresetLoadConf,  $lblLoadPresetMessage,$btnGUIPresetDeleteConf, $chkCheckDeleteConf
 
 ;$hGUI_Profiles = GUICreate("", $_GUI_MAIN_WIDTH - 28, $_GUI_MAIN_HEIGHT - 255 - 28, 5, 25, BitOR($WS_CHILD, $WS_TABSTOP), -1, $hGUI_BOT)
 ;GUISwitch($hGUI_Profiles)
@@ -100,8 +100,7 @@ Local $x = 25, $y = 45
 			GUICtrlSetOnEvent(-1, "btnRenameConfirm")
 			_GUICtrlSetTip(-1, GetTranslated(637,10, "Rename Profile"))
 
-; Adding GUI for SwitchAcc Mode - DEMEN
-#include "..\MOD\MBR GUI Design Child Bot - Profiles.au3"
+		#include "..\MOD\GUI Design - Profiles Mod.au3"					; Adding GUI for SwitchAcc Mode - DEMEN
 
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 ;GUISetState()

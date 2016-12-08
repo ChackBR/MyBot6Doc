@@ -75,10 +75,10 @@ Func InitiateSwitchAcc() ; Checking profiles setup in Mybot, First matching CoC 
 
 
    ; Locating CoC Accounts
-   If _ArrayMax($aAccPosY) <> -1 Then
+   If _ArrayMax($aAccPosY) > 0 Then
 	   $MaxIdx = _ArrayMaxIndex($aAccPosY)
 	   For $i = 1 to $nTotalCoCAcc
-		   If $aAccPosY[$i-1] = -1 Then $aAccPosY[$i-1] = $aAccPosY[$MaxIdx] + 73*($i-1-$MaxIdx)
+		   If $aAccPosY[$i-1] <= 0 Then $aAccPosY[$i-1] = $aAccPosY[$MaxIdx] + 73*($i-1-$MaxIdx)
 		   Setlog("  >>> Y-coordinate Acc No. " & $i & " is located at: " & $aAccPosY[$i-1])
 	   Next
    EndIf
@@ -307,7 +307,7 @@ Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 	  EndIf
 
 	  If $SwitchCase <> 3 Then
-		 If $aProfileType[$nCurProfile-1] = 1 And $iPlannedRequestCCHoursEnable = 1 Then
+		 If $aProfileType[$nCurProfile-1] = 1 And $iPlannedRequestCCHoursEnable = 1 And $canRequestCC = True Then
 			Setlog("Try Request troops before switching account", $COLOR_BLUE)
 			RequestCC()
 		 EndIf
@@ -321,7 +321,7 @@ Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 	  If $ichkCloseTraining >= 1 And $nMinRemainTrain > 3 And $SwitchCase <> 2 Then
 		 VillageReport()
 		 ReArm()
-		 If $iPlannedRequestCCHoursEnable = 1 Then
+		 If $iPlannedRequestCCHoursEnable = 1 And $canRequestCC = True Then
 			Setlog("Try Request troops before going to sleep", $COLOR_BLUE)
 			RequestCC()
 		 EndIf
@@ -346,6 +346,7 @@ Func CheckSwitchAcc(); Switch CoC Account with or without sleep combo - DEMEN
 	  If $SwitchCase <> 3 Then runBot()
    Else
 	  Setlog("Army is getting ready soon, skip switching account")
+	  If _Sleep(1000) Then Return
    EndIf
 
 EndFunc; ==> Check & Switch CoC Account with / without sleep combo - DEMEN
@@ -375,7 +376,7 @@ Func SwitchCOCAcc()
    $nCurCoCAcc = $aMatchProfileAcc[$nCurProfile-1]
    Setlog ("Switching to Account [" & $nCurCoCAcc & "]")
 
-   If $aAccPosY[$nCurCoCAcc-1] <> -1 Then
+   If $aAccPosY[$nCurCoCAcc-1] > 0 Then
 	   Click(383, $aAccPosY[$nCurCoCAcc-1], 1, 0, "Click Account " & $nCurCoCAcc)      ;Click Account - DEMEN
    Else
 	   Click(383, 373.5 - ($nTotalCoCAcc - 1)*36.5 + 73*($nCurCoCAcc - 1), 1, 0, "Click Account " & $nCurCoCAcc)      ;Click Account - DEMEN

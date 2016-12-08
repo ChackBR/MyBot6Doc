@@ -138,23 +138,23 @@ Func AttackReport()
 		ElseIf StringInStr($LeagueShort, "3") > 1 Then
 			GUICtrlSetData($lblLeague, "3")
 		EndIf
-		_GUI_Value_STATE("HIDE",$groupLeague)
+		_GUI_Value_STATE("HIDE", $groupLeague)
 		If StringInStr($LeagueShort, "B") > 0 Then
-			GUICtrlSetState($BronzeLeague,$GUI_SHOW)
+			GUICtrlSetState($BronzeLeague, $GUI_SHOW)
 		ElseIf StringInStr($LeagueShort, "S") > 0 Then
-			GUICtrlSetState($SilverLeague,$GUI_SHOW)
+			GUICtrlSetState($SilverLeague, $GUI_SHOW)
 		ElseIf StringInStr($LeagueShort, "G") > 0 Then
-			GUICtrlSetState($GoldLeague,$GUI_SHOW)
-		ElseIf StringInStr($LeagueShort, "c") > 0 Then
-			GUICtrlSetState($CrystalLeague,$GUI_SHOW)
+			GUICtrlSetState($GoldLeague, $GUI_SHOW)
+		ElseIf StringInStr($LeagueShort, "c", $STR_CASESENSE) > 0 Then
+			GUICtrlSetState($CrystalLeague, $GUI_SHOW)
 		ElseIf StringInStr($LeagueShort, "M") > 0 Then
-			GUICtrlSetState($MasterLeague,$GUI_SHOW)
-		ElseIf StringInStr($LeagueShort, "C") > 0 Then
-			GUICtrlSetState($ChampionLeague,$GUI_SHOW)
+			GUICtrlSetState($MasterLeague, $GUI_SHOW)
+		ElseIf StringInStr($LeagueShort, "C", $STR_CASESENSE) > 0 Then
+			GUICtrlSetState($ChampionLeague, $GUI_SHOW)
 		ElseIf StringInStr($LeagueShort, "T") > 0 Then
-			GUICtrlSetState($TitanLeague,$GUI_SHOW)
+			GUICtrlSetState($TitanLeague, $GUI_SHOW)
 		ElseIf StringInStr($LeagueShort, "LE") > 0 Then
-			GUICtrlSetState($LegendLeague,$GUI_SHOW)
+			GUICtrlSetState($LegendLeague, $GUI_SHOW)
 		Else
 			GUICtrlSetState($UnrankedLeague,$GUI_SHOW)
 		EndIf
@@ -174,7 +174,7 @@ Func AttackReport()
 	SetLog("Stars earned: " & $starsearned)
 
 	Local $AtkLogTxt
-	$AtkLogTxt = String($nCurProfile) & " |" & _NowTime(4) & "|"  ; adding Acc No. in Attack Log - SwitchAcc - DEMEN
+	$AtkLogTxt = "" & _NowTime(4) & "|"
 	$AtkLogTxt &= StringFormat("%5d", $iTrophyCurrent) & "|"
 	$AtkLogTxt &= StringFormat("%6d", $SearchCount) & "|"
 	$AtkLogTxt &= StringFormat("%7d", $iGoldLast) & "|"
@@ -214,18 +214,12 @@ Func AttackReport()
 
 	If $FirstAttack = 0 Then $FirstAttack = 1
 	$iGoldTotal += $iGoldLast + $iGoldLastBonus
-	If $ichkSwitchAcc = 1 Then $aGoldTotalAcc[$nCurProfile-1] += $iGoldLast + $iGoldLastBonus 		; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
-
 	$iTotalGoldGain[$iMatchMode] += $iGoldLast + $iGoldLastBonus
 	$iElixirTotal += $iElixirLast + $iElixirLastBonus
-	If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] += $iElixirLast + $iElixirLastBonus ; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
-
 	$iTotalElixirGain[$iMatchMode] += $iElixirLast + $iElixirLastBonus
 	If $iDarkStart <> "" Then
 		$iDarkTotal += $iDarkLast + $iDarkLastBonus
 		$iTotalDarkGain[$iMatchMode] += $iDarkLast + $iDarkLastBonus
-		If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile-1] += $iDarkLast + $iDarkLastBonus 	; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
-
 	EndIf
 	$iTrophyTotal += $iTrophyLast
 	$iTotalTrophyGain[$iMatchMode] += $iTrophyLast
@@ -237,8 +231,6 @@ Func AttackReport()
 		EndIf
 	EndIf
 	$iAttackedVillageCount[$iMatchMode] += 1
-	If $ichkSwitchAcc = 1 Then $aAttackedCountAcc[$nCurProfile-1] += 1 								; SwitchAcc Mod - DEMEN
-
 	UpdateStats()
 	$troops_maked_after_fullarmy = False ; reset variable due to used troops for attack
 	$actual_train_skip = 0 ;

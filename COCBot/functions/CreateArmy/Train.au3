@@ -15,7 +15,7 @@
 Global $LastBarrackTrainDonatedTroop = 1
 Global $LastDarkBarrackTrainDonatedTroop = 1
 
-
+#cs
 Func Train()
 
 	If $iAtkAlgorithm[$LB] = 2 Then
@@ -210,10 +210,10 @@ Func Train()
 
 	If $iChkUseQuickTrain = 1 Then
 		QuickTrain($iCmbCurrentArmy, False)
+		If _Sleep($iDelayTrain4) Then Return
 		ClickP($aAway, 2, $iDelayTrain5, "#0504"); Click away twice with 250ms delay
-		_Sleep(1000)
+		$FirstStart = False
 
-; ============ Update stats after Quick Train	-	DEMEN
 		;;;;;; Protect Army cost stats from being missed up by DC and other errors ;;;;;;;
 		If _Sleep($iDelayTrain4) Then Return
 		VillageReport(True, True)
@@ -229,19 +229,15 @@ Func Train()
 			$tempElixirSpent = ($tempElixir - $iElixirCurrent)
 			$iTrainCostElixir += $tempElixirSpent
 			$iElixirTotal -= $tempElixirSpent
-			If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] -= $tempElixirSpent 	; Separate stats per account - SwitchAcc - DEMEN
 		EndIf
 
 		If $tempDElixir <> "" And $iDarkCurrent <> "" Then
 			$tempDElixirSpent = ($tempDElixir - $iDarkCurrent)
 			$iTrainCostDElixir += $tempDElixirSpent
 			$iDarkTotal -= $tempDElixirSpent
-			If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile - 1] -= $tempDElixirSpent 	; Separate stats per account - SwitchAcc -  DEMEN
 		EndIf
 
 		UpdateStats()
-; ============= Update stats after Quick Train	-	DEMEN
-
 		Return
 	EndIf
 
@@ -1240,16 +1236,15 @@ Func Train()
 		$tempElixirSpent = ($tempElixir - $iElixirCurrent)
 		$iTrainCostElixir += $tempElixirSpent
 		$iElixirTotal -= $tempElixirSpent
-		If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] -= $tempElixirSpent 	; Separate stats per account - SwitchAcc - DEMEN
 	EndIf
 
 	If $tempDElixir <> "" And $iDarkCurrent <> "" Then
 		$tempDElixirSpent = ($tempDElixir - $iDarkCurrent)
 		$iTrainCostDElixir += $tempDElixirSpent
 		$iDarkTotal -= $tempDElixirSpent
-		If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile - 1] -= $tempDElixirSpent 	; Separate stats per account - SwitchAcc -  DEMEN
 	EndIf
 
 	UpdateStats()
 
 EndFunc   ;==>Train
+#ce
