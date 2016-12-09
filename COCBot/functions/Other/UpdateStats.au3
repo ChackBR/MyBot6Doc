@@ -491,12 +491,6 @@ Func ResetStats()
 	$iGoldFromMines = 0
 	$iElixirFromCollectors = 0
 	$iDElixirFromDrills = 0
-
-; ======================= SmartZap - Added by NTS team =======================
-	$smartZapGain = 0
-	$numLSpellsUsed = 0
-; ======================= SmartZap - Added by NTS team =======================
-
 	For $i = 0 To $iModeCount
 		$iAttackedVillageCount[$i] = 0
 		$iTotalGoldGain[$i] = 0
@@ -507,6 +501,11 @@ Func ResetStats()
 		$iNbrOfDetectedCollectors[$i] = 0
 		$iNbrOfDetectedDrills[$i] = 0
 	Next
+
+; ======================= SmartZap - Added by NTS team =======================
+	$smartZapGain = 0
+	$numLSpellsUsed = 0
+; ======================= SmartZap - Added by NTS team =======================
 
 	If $ichkSwitchAcc = 1 Then ResetStatsForSwitchAcc()		;	SwitchAcc Mode - Demen
 
