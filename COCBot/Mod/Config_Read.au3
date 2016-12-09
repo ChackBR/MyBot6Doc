@@ -21,6 +21,9 @@
 	$TrainLogoutMaxTime = IniRead($config, "TrainLogout", "TrainLogoutMaxTime", "0")
 	$TrainLogoutMaxTimeTXT = IniRead($config, "TrainLogout", "TrainLogoutMaxTimeTXT", "20")
 
+	; Multi Finger (LunaEclipse)
+	$iMultiFingerStyle = IniRead($config, "MultiFinger", "Select", "1")
+
 ;
 ; DEMEN
 ;

@@ -25,6 +25,9 @@
 	EndIf
 	IniWrite($config, "TrainLogout", "TrainLogoutMaxTimeTXT", GUICtrlRead($txtTrainLogoutMaxTime))
 
+	; Multi Finger (LunaEclipse)
+	IniWrite($config, "MultiFinger", "Select", _GUICtrlComboBox_GetCurSel($cmbDBMultiFinger))
+
 ;
 ; DEMEN
 ;
