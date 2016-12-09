@@ -58,7 +58,7 @@ Local $sModversion
 ; "2323" ; MyBot v6.3.0 Beta 8 ( FFC, SmartZap, Max Time for CCWT ) + Fix for Load Strategies
 $sModversion = "2324" ; MyBot v6.3.0 Beta 8 ( FFC, Multi Finger, SmartZap, ... ) + Fix for Load Strategies
 $sBotVersion = "v6.3.u8" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
-$sBotTitle = "My Bot " & $sBotVersion & ".r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+$sBotTitle = "My Bot " & $sBotVersion & ".m" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
 #include "COCBot\MBR Global Variables.au3"
