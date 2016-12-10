@@ -128,6 +128,3 @@ Func _Restart()
 
 	Return SetError(2, 0, 0)
 EndFunc   ;==>_Restart
-
-
-
