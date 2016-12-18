@@ -61,7 +61,6 @@ Func getArmyCCStatus($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		; EndIf
 	EndIf
 
-	; samm0d
 	RequestCC(False)
 
 	If $bCloseArmyWindow = True Then
