@@ -935,5 +935,7 @@ $hGUI_STATS_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,40,"Attacks"))
 
 ;--> TAB Attacks
 
+#include "../MOD/GUI Design - Stats Mod.au3"			; Adding GUI Profile Stats for SwitchAcc Mode - Demen
+
 GUICtrlCreateTabItem("")
 ;GUISetState()

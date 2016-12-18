@@ -54,6 +54,12 @@ Func _checkObstacles() ;Checks if something is in the way for mainscreen
 		$hCocReconnectingTimer = 0
 	EndIf
 
+	; SwitchAcc - DEMEN
+    If _ColorCheck(_GetPixelColor(383, 405), Hex(0xF0BE70, 6), 20) Then
+		SetLog("Found SwitchAcc Dialog")
+		PureClick(383, 405, 1, 0, "Click Cancel")      ;Click Cancel
+	EndIf		; SwitchAcc - DEMEN
+
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	; Detect All Reload Button errors => 1- Another device, 2- Take a break, 3- Connection lost or error, 4- Out of sync, 5- Inactive, 6- Maintenance
 	Local $aMessage = _PixelSearch($aIsReloadError[0], $aIsReloadError[1], $aIsReloadError[0] + 3, $aIsReloadError[1] + 11, Hex($aIsReloadError[2], 6), $aIsReloadError[3], $bNoCapturePixel)
@@ -113,8 +119,16 @@ Func _checkObstacles() ;Checks if something is in the way for mainscreen
 					Return checkObstacles_StopBot($msg) ; stop bot
 				EndIf
 				SetLog("Connection lost, Reloading CoC...", $COLOR_ERROR)
+
+				PureClickP($aReloadButton, 1, 0, "#0131")			; Click for connection lost - DEMEN
+				Return True											; Click for connection lost - DEMEN
+
 			Case _CheckPixel($aIsCheckOOS, $bNoCapturePixel) ; Check OoS
 				SetLog("Out of Sync Error, Reloading CoC...", $COLOR_ERROR)
+
+				PureClickP($aReloadButton, 1, 0, "#0131")			; Click for OOS - DEMEN
+				Return True											; Click for OOS - DEMEN
+
 			Case _CheckPixel($aIsMaintenance, $bNoCapturePixel) ; Check Maintenance
 				$result = getOcrMaintenanceTime(171, 345 + $midOffsetY, "Check Obstacles OCR Maintenance Break=") ; OCR text to find wait time
 				Local $iMaintenanceWaitTime = 0
