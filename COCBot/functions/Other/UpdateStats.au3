@@ -38,7 +38,7 @@ Func UpdateStats()
 		GUICtrlSetState($picResultElixirTemp, $GUI_HIDE)
 		GUICtrlSetState($picResultDETemp, $GUI_HIDE)
 
-		GUICtrlSetState($lblResultGoldNow, $GUI_SHOW)
+		GUICtrlSetState($lblResultGoldNow, $GUI_SHOW + $GUI_DISABLE) ; $GUI_DISABLE to trigger default view in btnVillageStat
 		GUICtrlSetState($picResultGoldNow, $GUI_SHOW)
 		GUICtrlSetState($lblResultElixirNow, $GUI_SHOW)
 		GUICtrlSetState($picResultElixirNow, $GUI_SHOW)
@@ -54,6 +54,7 @@ Func UpdateStats()
 		GUICtrlSetState($lblResultTrophyNow, $GUI_SHOW)
 		GUICtrlSetState($lblResultBuilderNow, $GUI_SHOW)
 		GUICtrlSetState($lblResultGemNow, $GUI_SHOW)
+		btnVillageStat("UpdateStats")
 		$iGoldStart = $iGoldCurrent
 		$iElixirStart = $iElixirCurrent
 		$iDarkStart = $iDarkCurrent
@@ -240,7 +241,7 @@ Func UpdateStats()
 
 	If $iOldSkippedVillageCount <> $iSkippedVillageCount Then
 		GUICtrlSetData($lblresultvillagesskipped, _NumberFormat($iSkippedVillageCount, True))
-		If $ichkSwitchAcc <> 1 Then GUICtrlSetData($lblResultSkippedHourNow, _NumberFormat($iSkippedVillageCount, True))		; SwitchAcc Mode unchecked - Demen
+		GUICtrlSetData($lblResultSkippedHourNow, _NumberFormat($iSkippedVillageCount, True))
 		$iOldSkippedVillageCount = $iSkippedVillageCount
 	EndIf
 
@@ -373,7 +374,7 @@ Func UpdateStats()
 
 	If $iOldAttackedCount <> $iAttackedCount Then
 		GUICtrlSetData($lblresultvillagesattacked, _NumberFormat($iAttackedCount, True))
-		If $ichkSwitchAcc <> 1 Then GUICtrlSetData($lblResultAttackedHourNow, _NumberFormat($iAttackedCount, True))		; SwitchAcc Mode unchecked - Demen
+		GUICtrlSetData($lblResultAttackedHourNow, _NumberFormat($iAttackedCount, True))
 		$iOldAttackedCount = $iAttackedCount
 	EndIf
 
@@ -406,13 +407,11 @@ Func UpdateStats()
 		EndIf
 		GUICtrlSetData($lblHourlyStatsTrophy, _NumberFormat(Round($iTrophyTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600 * 1000)) & " / h")
 
-		If $ichkSwitchAcc <> 1 Then 		; 	SwitchAcc Mode - Demen
-			GUICtrlSetData($lblResultGoldHourNow, _NumberFormat(Round($iGoldTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600)) & "K / h") ;GUI BOTTOM
-			GUICtrlSetData($lblResultElixirHourNow, _NumberFormat(Round($iElixirTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600)) & "K / h") ;GUI BOTTOM
-			If $iDarkStart <> "" Then
-				GUICtrlSetData($lblResultDEHourNow, _NumberFormat(Round($iDarkTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600 * 1000)) & " / h") ;GUI BOTTOM
-			EndIf
-		EndIf								; 	SwitchAcc Mode - Demen
+		GUICtrlSetData($lblResultGoldHourNow, _NumberFormat(Round($iGoldTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600)) & "K / h") ;GUI BOTTOM
+		GUICtrlSetData($lblResultElixirHourNow, _NumberFormat(Round($iElixirTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600)) & "K / h") ;GUI BOTTOM
+		If $iDarkStart <> "" Then
+			GUICtrlSetData($lblResultDEHourNow, _NumberFormat(Round($iDarkTotal / (Int(TimerDiff($sTimer) + $iTimePassed)) * 3600 * 1000)) & " / h") ;GUI BOTTOM
+		EndIf
 
 	EndIf
 
@@ -435,8 +434,6 @@ Func UpdateStats()
 		$topTrophyloot = $iTrophylast
 		GUICtrlSetData($lbltopTrophyloot,_NumberFormat($topTrophyloot))
 	EndIf
-
-	If $ichkSwitchAcc = 1 Then UpdateStatsForSwitchAcc()	;	SwitchAcc Mode - Demen
 
 	If $ResetStats = 1 Then
 		$ResetStats = 0
@@ -507,7 +504,16 @@ Func ResetStats()
 	$numLSpellsUsed = 0
 ; ======================= SmartZap - Added by NTS team =======================
 
-	If $ichkSwitchAcc = 1 Then ResetStatsForSwitchAcc()		;	SwitchAcc Mode - Demen
+	For $i = 0 To 23
+		$TroopsDonQ[$i] = 0
+		GUICtrlSetData($lblDonQ[$i], $TroopsDonQ[$i])
+		$TroopsDonXP[$i] = 0
+	Next
+
+	GUICtrlSetData($lblTotalTroopsQ, "Total Donated : 0")
+	GUICtrlSetData($lblTotalSpellsQ, "Total Donated : 0")
+	GUICtrlSetData($lblTotalTroopsXP, "XP Won : 0")
+	GUICtrlSetData($lblTotalSpellsXP, "XP Won : 0")
 
 	UpdateStats()
 EndFunc   ;==>ResetStats

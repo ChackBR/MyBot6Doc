@@ -1,9 +1,9 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: Config apply - Mod.au3
-; Description ...: Extension of applyConfig() for Mod
-; Syntax ........: applyConfig()
+; Name ..........: applyConfig.au3
+; Description ...: Applies all of the  variable to the GUI
+; Syntax ........:
 ; Parameters ....:
-; Return values .:
+; Return values .: NA
 ; Author ........:
 ; Modified ......:
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
@@ -16,58 +16,42 @@
 ;
 ; MOD Config - Save Data
 ;
-	
+
 	;Max logout time
 	If $TrainLogoutMaxTime = 1 Then
 		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_CHECKED)
 	ElseIf $TrainLogoutMaxTime = 0 Then
 		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_UNCHECKED)
 	EndIf
-	GUICtrlSetData($txtTrainLogoutMaxTime, $TrainLogoutMaxTimeTXT)	
+	GUICtrlSetData($txtTrainLogoutMaxTime, $TrainLogoutMaxTimeTXT)
 
 	; Multi Finger (LunaEclipse)
 	_GUICtrlComboBox_SetCurSel($cmbDBMultiFinger,$iMultiFingerStyle)
 	cmbDBMultiFinger()
 
-;
-; DEMEN
-;
+	;
+	; SSA
+	;
 
-	; Config Apply for SwitchAcc Mode - DEMEN
-	Switch $ProfileType
-	Case 1
-	   GUICtrlSetState($radActiveProfile, $GUI_CHECKED)
-	Case 2
-	   GUICtrlSetState($radDonateProfile, $GUI_CHECKED)
-	Case 3
-	   GUICtrlSetState($radIdleProfile, $GUI_CHECKED)
-	EndSwitch
-
-	_GUICtrlCombobox_SetCurSel($cmbMatchProfileAcc, $MatchProfileAcc)
-
- 	If $ichkSwitchAcc = 1 Then
- 		GUICtrlSetState($chkSwitchAcc, $GUI_CHECKED)
- 	Else
- 		GUICtrlSetState($chkSwitchAcc, $GUI_UNCHECKED)
- 	EndIf
-
-	If $ichkSmartSwitch = 1 Then
-	   GUICtrlSetState($radSmartSwitch, $GUI_CHECKED)
- 	Else
-	   GUICtrlSetState($radNormalSwitch, $GUI_CHECKED)
- 	EndIf
-
-	chkSwitchAcc()
-
-	_GUICtrlCombobox_SetCurSel($cmbTotalAccount, $icmbTotalCoCAcc)	; 0 = AutoDetect
-
-	If $ichkCloseTraining >= 1 Then
-		GUICtrlSetState($chkUseTrainingClose, $GUI_CHECKED)
-		If $ichkCloseTraining = 1 Then
-			GUICtrlSetState($radCloseCoC, $GUI_CHECKED)
-		Else
-			GUICtrlSetState($radCloseAndroid, $GUI_CHECKED)
-		EndIf
+	If $ichkSwitchAccount = 1 Then
+		GUICtrlSetState($chkEnableSwitchAccount, $GUI_CHECKED)
 	Else
-		GUICtrlSetState($chkUseTrainingClose, $GUI_UNCHECKED)
+		GUICtrlSetState($chkEnableSwitchAccount, $GUI_UNCHECKED)
 	EndIf
+	_GUICtrlComboBox_SetCurSel($cmbAccountsQuantity, $icmbAccountsQuantity)
+
+	For $i = 1 To 5
+		If $ichkCanUse[$i] = 1 Then
+			GUICtrlSetState($chkCanUse[$i], $GUI_CHECKED)
+		Else
+			GUICtrlSetState($chkCanUse[$i], $GUI_UNCHECKED)
+		EndIf
+		If $ichkDonateAccount[$i] = 1 Then
+			GUICtrlSetState($chkDonateAccount[$i], $GUI_CHECKED)
+		Else
+			GUICtrlSetState($chkDonateAccount[$i], $GUI_UNCHECKED)
+		EndIf
+		_GUICtrlComboBox_SetCurSel($cmbAccount[$i], $icmbAccount[$i])
+	Next
+
+	chkSwitchAccount()

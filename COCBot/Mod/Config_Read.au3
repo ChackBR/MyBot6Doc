@@ -1,6 +1,6 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: Config read - Mod.au3
-; Description ...: Extension of readConfig() for Mod
+; Name ..........: readConfig.au3
+; Description ...: Reads config file and sets variables
 ; Syntax ........: readConfig()
 ; Parameters ....: NA
 ; Return values .: NA
@@ -24,19 +24,13 @@
 	; Multi Finger (LunaEclipse)
 	$iMultiFingerStyle = IniRead($config, "MultiFinger", "Select", "1")
 
-;
-; DEMEN
-;
-
-	; Config Read for SwitchAcc Mode - DEMEN
-		$ichkSwitchAcc = IniRead($profile, "Switch Account", "Enable", "0")
-		$icmbTotalCoCAcc = IniRead($profile, "Switch Account", "Total Coc Account", "0")	; 0 = AutoDetect
-		$ichkSmartSwitch = IniRead($profile, "Switch Account", "Smart Switch", "1")
-		$ichkCloseTraining = Number(IniRead($profile, "Switch Account", "Sleep Combo", "0"))	; Sleep Combo, 1 = Close CoC, 2 = Close Android, 0 = No sleep
-
-		$ProfileType = IniRead($config, "Switch Account", "Profile Type", "")
-		$MatchProfileAcc = IniRead($config, "Switch Account", "Match Profile Acc", "")
-
-	For $i = 1 to 6
-		IniReadS($aAccPosY[$i - 1], $profile, "Acc Location", "yAccNo." & $i, "-1")
+	;
+	; SSA
+	;
+	IniReadS($ichkSwitchAccount, $SSAConfig, "SwitchAccount", "chkEnableSwitchAccount", "0")
+	IniReadS($icmbAccountsQuantity, $SSAConfig, "SwitchAccount", "cmbAccountsQuantity", "0")
+	For $i = 1 To 5
+		IniReadS($ichkCanUse[$i], $SSAConfig, "SwitchAccount", "chkCanUse[" & $i & "]", "0")
+		IniReadS($ichkDonateAccount[$i], $SSAConfig, "SwitchAccount", "chkDonateAccount[" & $i & "]", "0")
+		IniReadS($icmbAccount[$i], $SSAConfig, "SwitchAccount", "cmbAccount[" & $i & "]", "0")
 	Next

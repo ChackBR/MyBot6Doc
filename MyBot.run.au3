@@ -1,4 +1,4 @@
-; #FUNCTION# ====================================================================================================================
+﻿; #FUNCTION# ====================================================================================================================
 ; Name ..........: MBR Bot
 ; Description ...: This file contens the Sequence that runs all MBR Bot
 ; Author ........:  (2014)
@@ -19,8 +19,8 @@
 #pragma compile(Icon, "Images\MyBot.ico")
 #pragma compile(FileDescription, Clash of Clans Bot - A Free Clash of Clans bot - https://mybot.run)
 #pragma compile(ProductName, My Bot)
-#pragma compile(ProductVersion, 6.4)
-#pragma compile(FileVersion, 6.4.1)
+#pragma compile(ProductVersion, 6.5)
+#pragma compile(FileVersion, 6.5)
 #pragma compile(LegalCopyright, © https://mybot.run)
 #pragma compile(Out, MyBot.run.exe) ; Required
 
@@ -51,8 +51,8 @@ Local $sModversion
 ; "2311" ; MyBot v6.3.0 Beta 7 + Telegram + SwitchAcc
 ; "2321" ; MyBot v6.3.0 Beta 8 + FFC + SmartZap + Max Time for CCWT
 ; "2401" ; MyBot v6.4.0 ( FFC, Multi Finger, SmartZap, ... )
-$sModversion = "2411" ; MyBot v6.4.1
-$sBotVersion = "v6.4.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
+$sModversion = "2501" ; MyBot v6.5
+$sBotVersion = "v6.5" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".m" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
@@ -216,8 +216,6 @@ $iGUIEnabled = 1
 ;~ InitializeVariables();initialize variables used in extrawindows
 CheckVersion() ; check latest version on mybot.run site
 
-btnUpdateProfile() ; SwitchAcc - DEMEN
-
 ;~ Remember time in Milliseconds bot launched
 $iBotLaunchTime = TimerDiff($hBotLaunchTime)
 SetDebugLog("MyBot.run launch time " & Round($iBotLaunchTime) & " ms.")
@@ -257,12 +255,7 @@ WEnd
 
 Func runBot() ;Bot that runs everything in order
 
-	If $ichkSwitchAcc = 1 And $bReMatchAcc = True Then 				; SwitchAcc - DEMEN
-		$nCurProfile = _GUICtrlCombobox_GetCurSel($cmbProfile) + 1
-		Setlog("Rematching Profile [" & $nCurProfile &"] - " & $ProfileList[$nCurProfile] & " (CoC Acc. " & $aMatchProfileAcc[$nCurProfile-1] & ")")
-		SwitchCoCAcc()
-		$bReMatchAcc = False
-	EndIf
+	If $FirstInit Then SwitchAccount(True)
 
 	$TotalTrainedTroops = 0
 	Local $Quickattack = False
@@ -375,9 +368,6 @@ Func runBot() ;Bot that runs everything in order
 				UpgradeWall()
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
-
-				If $ichkSwitchAcc = 1 And $aProfileType[$nCurProfile-1] = 2 Then checkSwitchAcc()  		;  Switching to active account after donation - SwitchAcc for  - DEMEN
-
 				Idle()
 				;$fullArmy1 = $fullArmy
 				If _Sleep($iDelayRunBot3) Then Return
@@ -445,10 +435,9 @@ Func Idle() ;Sequence that runs until Full Army
 		If $CommandStop = -1 Then SetLog("====== Waiting for full army ======", $COLOR_SUCCESS)
 		Local $hTimer = TimerInit()
 		Local $iReHere = 0
-		PrepareDonateCC()
 
 		;If $iSkipDonateNearFulLTroopsEnable = 1 Then getArmyCapacity(true,true)
-		If $bDonate = True Then
+		If $bActiveDonate = True Then
 			Local $aHeroResult = CheckArmyCamp(True, True, True)
 			While $iReHere < 7
 				$iReHere += 1
@@ -498,6 +487,7 @@ Func Idle() ;Sequence that runs until Full Army
 			$iCollectCounter = 0
 		EndIf
 		$iCollectCounter = $iCollectCounter + 1
+		SwitchAccount()
 		AddIdleTime()
 		checkMainScreen(False) ; required here due to many possible exits
 		If $CommandStop = -1 Then
@@ -568,13 +558,7 @@ Func Idle() ;Sequence that runs until Full Army
 		If $iChkSnipeWhileTrain = 1 Then SnipeWhileTrain() ;snipe while train
 
 		If $CommandStop = -1 Then ; Check if closing bot/emulator while training and not in halt mode
-
-			If $ichkSwitchAcc = 1 Then				; SwitchAcc - DEMEN
-				checkSwitchAcc()					; SwitchAcc - DEMEN
-			Else									; SwitchAcc - DEMEN
-				SmartWait4Train()
-			EndIf
-
+			SmartWait4Train()
 			If $Restart = True Then ExitLoop ; if smart wait activated, exit to runbot in case user adjusted GUI or left emulator/bot in bad state
 		EndIf
 
@@ -622,15 +606,6 @@ Func AttackMain() ;Main control for attack functions
 			$Is_SearchLimit = False
 			$Is_ClientSyncError = False
 			$Quickattack = False
-
-		; SwitchAcc - DEMEN
-			If $ichkSwitchAcc = 1 Then
-				checkSwitchAcc()
-			Else
-				SmartWait4Train()
-			EndIf
-		; ============ SwitchAcc - DEMEN
-
 		EndIf
 	Else
 		SetLog("Attacking Not Planned, Skipped..", $COLOR_WARNING)
@@ -712,14 +687,14 @@ Func _RunFunction($action)
 			NotifyReport()
 			_Sleep($iDelayRunBot3)
 		Case "DonateCC"
-			If $bDonate = True Then
+			If $bActiveDonate = True Then
 				;If $iSkipDonateNearFulLTroopsEnable = 1 and $FirstStart = False Then getArmyCapacity(True, True)
 				If SkipDonateNearFullTroops(True) = False Then DonateCC()
 				If _Sleep($iDelayRunBot1) = False Then checkMainScreen(False)
 			EndIF
 		Case "DonateCC,Train"
 			If $iSkipDonateNearFulLTroopsEnable = 1 and $FirstStart = true Then getArmyCapacity(True, True)
-			If $bDonate = True Then
+			If $bActiveDonate = True Then
 				If SkipDonateNearFullTroops(True) = False Then DonateCC()
 			EndIF
 			If _Sleep($iDelayRunBot1) = False Then checkMainScreen(False)

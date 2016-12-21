@@ -37,44 +37,39 @@ Global $iMultiFingerStyle = 0
 
 Global Enum  $eCCSpell = $eHaSpell + 1
 
-;
-; DEMEN
-;
+; ================================================== SmartSwitchAccount PART ================================================== ;
 
-Global $profile = $sProfilePath & "\Profile.ini"
-Global $aconfig[8]
-Global $ichkSwitchAcc = 0
+Global $chkCanUse[6] = [0, 0, 0, 0, 0, 0]
+Global $chkDonateAccount[6] = [0, 0, 0, 0, 0, 0]
+Global $cmbAccount[6] = [0, 0, 0, 0, 0, 0]
 
-Global $icmbTotalCoCAcc		; 1 = 1 account, 2 = 2 accounts
-Global $nTotalCoCAcc = 6
-Global $ichkSmartSwitch = 1
+Global $ichkCanUse[6] = [0, 0, 0, 0, 0, 0]
+Global $ichkDonateAccount[6] = [0, 0, 0, 0, 0, 0]
+Global $icmbAccount[6] = [0, 0, 0, 0, 0, 0]
 
-Global $ichkCloseTraining = 0
+Global $icmbAccountsQuantity = 0
 
-Global $nCurProfile = 1
-Global $ProfileList
-Global $nTotalProfile = 1
+Global $AllAccountsWaitTimeDiff[6] = [0, 0, 0, 0, 0, 0]
+Global $AllAccountsWaitTime[6] = [0, 0, 0, 0, 0, 0]
 
-Global $ProfileType			; Type of the Current Profile, 1 = active, 2 = donate, 3 = idle
-Global $aProfileType[8]		; Type of the all Profiles, 1 = active, 2 = donate, 3 = idle
+Global $CurrentAccountWaitTime = 0
 
-Global $MatchProfileAcc		; Account match with Current Profile
-Global $aMatchProfileAcc[8]	; Accounts match with All Profiles
+Global $TimerDiffStart[6] = [0, 0, 0, 0, 0, 0]
+Global $TimerDiffEnd[6] = [0, 0, 0, 0, 0, 0]
 
-Global $DonateSwitchCounter = 0
+Global $Init = False
+Global $TotalAccountsOnEmu = 0
+Global $CurrentAccount = 1
+Global $CurrentDAccount = 1
+Global $FirstLoop = 0
+Global $FirstInit = True
+Global $MustGoToDonateAccount = 0
+Global $yCoord, $HeroesRemainingWait, $TotalAccountsInUse, $TotalDAccountsInUse, $ichkSwitchAccount, $NextAccount, $NextProfile
+Global $cycleCount = 0
+Global $IsDonateAccount = 0
 
-Global $bReMatchAcc = False
+Global $SSAConfig = $sProfilePath & "\Profile.ini"
 
-Global $aTimerStart[8]
-Global $aTimerEnd[8]
-Global $aRemainTrainTime[8]
-Global $aUpdateRemainTrainTime[8]
-Global $nNexProfile
-Global $nMinRemainTrain
+Global 	$profileString = ""
 
-Global $aCCRemainTime[8]
-Global $aUpdateCCRemainTime[8]
-Global $nMinCCRemain
-Global $nNexProfileReqCC
-
-Global $aAccPosY[6]
+; ================================================== SmartSwitchAccount END ================================================== ;

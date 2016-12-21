@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........:
+; Name ..........: 
 ; Description ...: This function will update the statistics in the GUI.
 ; Syntax ........: 
 ; Parameters ....: None
@@ -47,21 +47,18 @@ Func EndGainCost($Type)
 				$tempGoldCollected = $iGoldCurrent - $TempGainCost[0]
 				$iGoldFromMines += $tempGoldCollected
 				$iGoldTotal += $tempGoldCollected
-				If $ichkSwitchAcc = 1 Then $aGoldTotalAcc[$nCurProfile -1] += $tempGoldCollected 		; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
 			EndIf
 
 			If $TempGainCost[1] <> "" And $iElixirCurrent <> "" And $TempGainCost[1] <> $iElixirCurrent Then
 				$tempElixirCollected = $iElixirCurrent - $TempGainCost[1]
 				$iElixirFromCollectors += $tempElixirCollected
 				$iElixirTotal += $tempElixirCollected
-				If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile -1] += $tempElixirCollected 	; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
 			EndIf
 
 			If $TempGainCost[2] <> "" And $iDarkCurrent <> "" And $TempGainCost[2] <> $iDarkCurrent Then
 				$tempDElixirCollected = $iDarkCurrent - $TempGainCost[2]
 				$iDElixirFromDrills += $tempDElixirCollected
 				$iDarkTotal += $tempDElixirCollected
-				If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile -1] += $tempDElixirCollected  	; Separate Stats per Each Account - SwitchAcc Mode - DEMEN
 			EndIf
 		Case "Train"
 			Local $tempElixirSpent = 0
@@ -70,14 +67,12 @@ Func EndGainCost($Type)
 				$tempElixirSpent = ($TempGainCost[1] - $iElixirCurrent)
 				$iTrainCostElixir += $tempElixirSpent
 				$iElixirTotal -= $tempElixirSpent
-			If $ichkSwitchAcc = 1 Then $aElixirTotalAcc[$nCurProfile-1] -= $tempElixirSpent 	; Separate stats per account - SwitchAcc - DEMEN
 			EndIf
 
 			If $TempGainCost[2] <> "" And $iDarkCurrent <> ""  And $TempGainCost[2] <> $iDarkCurrent Then
 				$tempDElixirSpent = ($TempGainCost[2] - $iDarkCurrent)
 				$iTrainCostDElixir += $tempDElixirSpent
 				$iDarkTotal -= $tempDElixirSpent
-			If $ichkSwitchAcc = 1 Then $aDarkTotalAcc[$nCurProfile - 1] -= $tempDElixirSpent 	; Separate stats per account - SwitchAcc -  DEMEN
 			EndIf
 	EndSwitch
 

@@ -39,10 +39,5 @@
 #include "Multi Fingers\multiFinger.au3"
 #include "Multi Fingers\unitInfo.au3"
 
-;
-; DEMEN
-;
-
-; SwitchAcc
-#include "SwitchAcc\SwitchAcc.au3"
-#include "SwitchAcc\UpdateStats.au3"
+; SSA
+#include "SmartSwitchAcc.au3"
