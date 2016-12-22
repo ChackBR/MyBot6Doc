@@ -37,8 +37,9 @@ Global $iMultiFingerStyle = 0
 
 Global Enum  $eCCSpell = $eHaSpell + 1
 
+;
 ; ================================================== SmartSwitchAccount PART ================================================== ;
-
+;
 Global $chkCanUse[6] = [0, 0, 0, 0, 0, 0]
 Global $chkDonateAccount[6] = [0, 0, 0, 0, 0, 0]
 Global $cmbAccount[6] = [0, 0, 0, 0, 0, 0]
