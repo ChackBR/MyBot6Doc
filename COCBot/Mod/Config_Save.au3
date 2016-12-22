@@ -28,7 +28,9 @@
 	; Multi Finger (LunaEclipse)
 	IniWrite($config, "MultiFinger", "Select", _GUICtrlComboBox_GetCurSel($cmbDBMultiFinger))
 
+	;
 	; SSA
+	;
 	IniWrite($SSAConfig, "SwitchAccount", "chkEnableSwitchAccount", $ichkSwitchAccount)
 	IniWrite($SSAConfig, "SwitchAccount", "cmbAccountsQuantity", _GUICtrlComboBox_GetCurSel($cmbAccountsQuantity))
 	For $i = 1 To 5
