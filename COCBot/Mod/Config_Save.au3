@@ -17,24 +17,29 @@
 ; MOD Config - Save Data
 ;
 
-	; Max logout time
-	If GUICtrlRead($chkTrainLogoutMaxTime) = $GUI_CHECKED Then
-		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 1)
-	Else
-		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 0)
-	EndIf
-	IniWrite($config, "TrainLogout", "TrainLogoutMaxTimeTXT", GUICtrlRead($txtTrainLogoutMaxTime))
+; Max logout time
+If GUICtrlRead($chkTrainLogoutMaxTime) = $GUI_CHECKED Then
+	IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 1)
+Else
+	IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 0)
+EndIf
+IniWrite($config, "TrainLogout", "TrainLogoutMaxTimeTXT", GUICtrlRead($txtTrainLogoutMaxTime))
 
-	; Multi Finger (LunaEclipse)
-	IniWrite($config, "MultiFinger", "Select", _GUICtrlComboBox_GetCurSel($cmbDBMultiFinger))
+; Multi Finger (LunaEclipse)
+IniWrite($config, "MultiFinger", "Select", _GUICtrlComboBox_GetCurSel($cmbDBMultiFinger))
 
-	;
-	; SSA
-	;
-	IniWrite($SSAConfig, "SwitchAccount", "chkEnableSwitchAccount", $ichkSwitchAccount)
-	IniWrite($SSAConfig, "SwitchAccount", "cmbAccountsQuantity", _GUICtrlComboBox_GetCurSel($cmbAccountsQuantity))
-	For $i = 1 To 5
-		IniWrite($SSAConfig, "SwitchAccount", "chkCanUse[" & $i & "]", $ichkCanUse[$i])
-		IniWrite($SSAConfig, "SwitchAccount", "chkDonateAccount[" & $i & "]", $ichkDonateAccount[$i])
-		IniWrite($SSAConfig, "SwitchAccount", "cmbAccount[" & $i & "]", _GUICtrlComboBox_GetCurSel($cmbAccount[$i]))
-	Next
+; CSV Deployment Speed Mod
+IniWriteS($config, "attack", "CSVSpeedDB", $isldSelectedCSVSpeed[$DB])
+IniWriteS($config, "attack", "CSVSpeedAB", $isldSelectedCSVSpeed[$LB])
+
+;
+; AwesomeGamer
+;
+
+; DEB
+If GUICtrlRead($chkDontRemove) = $GUI_CHECKED Then
+	IniWrite($config, "troop", "DontRemove", 1)
+Else
+	IniWrite($config, "troop", "DontRemove", 0)
+EndIf
+

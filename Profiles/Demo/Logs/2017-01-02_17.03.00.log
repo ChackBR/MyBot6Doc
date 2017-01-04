@@ -1,0 +1,39 @@
+D [2017-01-02 17:03:00.901] Save Config C:\CDR\MyBot6_5x\Profiles\Demo\config.ini
+D [2017-01-02 17:03:02.781] Save Building Config C:\CDR\MyBot6_5x\Profiles\Demo\building.ini
+D [2017-01-02 17:03:03.355] Read Building Config C:\CDR\MyBot6_5x\Profiles\Demo\building.ini
+D [2017-01-02 17:03:03.368] Read Config C:\CDR\MyBot6_5x\Profiles\Demo\config.ini
+D [2017-01-02 17:03:03.447] Apply Config
+D [2017-01-02 17:03:03.721] Disable GUI Controls
+D [2017-01-02 17:03:05.216] Redraw MyBot Window
+D [2017-01-02 17:03:05.311] Android Window Handle: 0x018E0990
+D [2017-01-02 17:03:05.311] InitiateLayout: MEmu_4 Android-ClientSize: 860 x 732
+D [2017-01-02 17:03:05.314] CheckScreenAndroid: Window size 908 x 770
+D [2017-01-02 17:03:05.568] MEmu font_scale = 1
+D [2017-01-02 17:03:05.674] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 17:03:05.931] Restore bot window to 3364, 269, caller: GUIControl_WM_NCACTIVATE
+D [2017-01-02 17:03:05.934] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2017-01-02 17:03:06.187]  My Bot v6.5.2.d2602 (MEmu_4) Powered by MyBot.run ~
+L [2017-01-02 17:03:06.194] MyBot.run.exe Executable running on WIN_10  X64
+L [2017-01-02 17:03:06.195] =================== Bot Start ====================
+L [2017-01-02 17:03:06.196] ------------------------  Current Profile: Demo -------------------------
+L [2017-01-02 17:03:06.197] Trying to locate Main Screen
+D [2017-01-02 17:03:07.252] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 17:03:07.306] GetVillageSize measured: 455.798999358032, Zoom factor: 0.96240767846457, Offset: 7, -10
+D [2017-01-02 17:03:07.306] Center Village by: 7, -10
+D [2017-01-02 17:03:08.497] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 17:03:08.911] GetVillageSize measured: 455.17484597837, Zoom factor: 0.961089794910696, Offset: -2, -2
+D [2017-01-02 17:03:08.911] Village Offset updated to -2, -2, 0.961089794910696
+D [2017-01-02 17:03:08.915] Centered Village Offset: -2, -2, change: -9, 8
+L [2017-01-02 17:03:08.916] Main Screen Located
+D [2017-01-02 17:03:09.069] GetVillageSize measured: 455.17484597837, Zoom factor: 0.961089794910696, Offset: -2, -2
+L [2017-01-02 17:03:09.072] 6 profiles available
+L [2017-01-02 17:03:09.078] Profile [1]: Chack - Active - Match with Account [8]
+L [2017-01-02 17:03:09.079] Profile [2]: Demo - Idle   - Match with Account [0]
+L [2017-01-02 17:03:09.080] Profile [3]: Gary - Active - Match with Account [7]
+L [2017-01-02 17:03:09.080] Profile [4]: Jake - Idle   - Match with Account [0]
+L [2017-01-02 17:03:09.081] Profile [5]: Lipe - Active - Match with Account [5]
+L [2017-01-02 17:03:09.082] Profile [6]: Rafa - Idle   - Match with Account [0]
+L [2017-01-02 17:03:09.082] Total CoC Account is declared: 8
+L [2017-01-02 17:03:09.083] First starting with an active Profile [1] - CoC Acc [8]
+D [2017-01-02 17:03:09.097] Save Config C:\CDR\MyBot6_5x\Profiles\Demo\config.ini
+D [2017-01-02 17:03:10.998] Save Building Config C:\CDR\MyBot6_5x\Profiles\Demo\building.ini

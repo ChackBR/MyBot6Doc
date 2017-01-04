@@ -18,6 +18,7 @@ Func LoadLanguagesComboBox()
 	Local $hFileSearch = FileFindFirstFile($dirLanguages & "*.ini")
 	Local $sFilename, $sLangDisplayName = "", $iFileIndex = 0
 
+	If $hLangIcons Then _GUIImageList_Destroy($hLangIcons)
 	$hLangIcons = _GUIImageList_Create(16, 16, 5)
 
 	While 1
@@ -27,35 +28,7 @@ Func LoadLanguagesComboBox()
 		$aLanguageFile[$iFileIndex][0] = StringLeft($sFilename, StringLen($sFilename) - 4)
 		Local $LangIcons
 		; All Language Icons are made by YummyGum and can be found here: https://www.iconfinder.com/iconsets/142-mini-country-flags-16x16px
-		Switch $aLanguageFile[$iFileIndex][0]
-				Case "BahasaIND"
-					$LangIcons = 192
-				Case "Chinese_S"
-					$LangIcons = 193
-				Case "Chinese_T"
-					$LangIcons = 194
-				Case "English"
-					$LangIcons = 195
-				Case "French"
-					$LangIcons = 196
-				Case "German"
-					$LangIcons = 197
-				Case "Italian"
-					$LangIcons = 198
-				Case "Persian"
-					$LangIcons = 199
-				Case "Russian"
-					$LangIcons = 200
-				Case "Spanish"
-					$LangIcons = 201
-				Case "Turkish"
-					$LangIcons = 202
-				Case "Portuguese"
-					$LangIcons = 205
-				Case Else
-					$LangIcons = 203 ; Use Grey Icon when none of the Languages is matching
-		EndSwitch
-		$aLanguageFile[$iFileIndex][2] = _GUIImageList_AddIcon($hLangIcons, @ScriptDir & "\lib\MBRBot.dll", $LangIcons)
+		$aLanguageFile[$iFileIndex][2] = _GUIImageList_AddIcon($hLangIcons, @ScriptDir & "\lib\MBRBot.dll", Eval("e" & $aLanguageFile[$iFileIndex][0]) - 1 )
 		$sLangDisplayName = IniRead($dirLanguages & $sFilename, "Language", "DisplayName", "Unknown")
 		$aLanguageFile[$iFileIndex][1] = $sLangDisplayName
 		If $sLangDisplayName = "Unknown" Then
@@ -75,7 +48,11 @@ Func LoadLanguagesComboBox()
 	;set combo box
 	_GUICtrlComboBoxEx_SetImageList($cmbLanguage, $hLangIcons)
 	For $i = 0 to UBound($aLanguageFile) - 1
-		_GUICtrlComboBoxEx_AddString($cmbLanguage, $aLanguageFile[$i][1], $aLanguageFile[$i][2], $aLanguageFile[$i][2])
+		If $aLanguageFile[$i][2] <> -1 Then
+			_GUICtrlComboBoxEx_AddString($cmbLanguage, $aLanguageFile[$i][1], $aLanguageFile[$i][2], $aLanguageFile[$i][2])
+		Else
+			_GUICtrlComboBoxEx_AddString($cmbLanguage, $aLanguageFile[$i][1], $eMissingLangIcon, $eMissingLangIcon)
+		EndIf
 	Next
 
 EndFunc   ;==>LoadLanguagesComboBox
@@ -493,7 +470,6 @@ Func btnTestImage()
 		SetLog("Testing image #" & $i & " " & $sImageFile, $COLOR_INFO)
 
 		_CaptureRegion()
-		_CaptureRegion()
 
 		SetLog("Testing checkObstacles...", $COLOR_SUCCESS)
 		$result = checkObstacles()
@@ -781,3 +757,60 @@ Func FixClanCastle($inputString)
 	Return $OutputFinal
 
 EndFunc   ;==>FixClanCastle
+
+Func btnTestSmartZap($directory = $dirTemp)
+	Local $hBMP = 0, $hHBMP = 0
+	Local $sImageFile = FileOpenDialog("Select CoC screenshot to test, cancel to use live screenshot", $directory, "Image (*.png)", $FD_FILEMUSTEXIST, "", $frmBot)
+	If @error <> 0 Then
+		SetLog("Testing image cancelled, taking screenshot from " & $Android, $COLOR_INFO)
+		_CaptureRegion()
+		$hHBMP = $hHBitmap
+		TestCapture($hHBMP)
+	Else
+		SetLog("Testing image " & $sImageFile, $COLOR_INFO)
+		; load test image
+		$hBMP = _GDIPlus_BitmapCreateFromFile($sImageFile)
+		$hHBMP = _GDIPlus_BitmapCreateDIBFromBitmap($hBMP)
+		_GDIPlus_BitmapDispose($hBMP)
+		TestCapture($hHBMP)
+		SetLog("Testing image hHBitmap = " & $hHBMP)
+	EndIf
+
+	Local $currentRunState = $RunState
+	Local $currentDebugSmartZap = $DebugSmartZap
+	Local $currentatkTroops = $atkTroops
+	Local $currentdebugBuildingPos = $debugBuildingPos
+	Local $currentdebugGetLocation = $debugGetLocation
+	
+	$RunState = True
+	$DebugSmartZap = 1
+	$atkTroops[0][0] = $eLSpell
+	$atkTroops[0][1] = 5
+	$atkTroops[1][0] = $eESpell
+	$atkTroops[1][1] = 1
+	$atkTroops[2][0] = $eLSpell
+	$atkTroops[2][1] = 1
+	$GlobalEQSpelllevel  = 4
+	$GlobalLSpelllevel  = 7
+	;$debugBuildingPos = 1
+	;$debugGetLocation = 1
+	
+	SetLog("Testing smartZap()", $COLOR_INFO)
+
+	SearchZoomOut($aCenterEnemyVillageClickDrag, True, "btnTestSmartZap")
+	ResetTHsearch()
+	smartZap()
+
+	SetLog("Testing smartZap() DONE", $COLOR_INFO)
+
+	If $hHBMP <> 0 Then
+		_WinAPI_DeleteObject($hHBMP)
+		TestCapture(0)
+	EndIf
+
+	$DebugSmartZap = $currentDebugSmartZap
+	$atkTroops = $currentatkTroops
+	$debugBuildingPos = $currentdebugBuildingPos
+	$debugGetLocation = $currentdebugGetLocation
+	$RunState = $currentRunState
+EndFunc		;==>btnTestSmartZap

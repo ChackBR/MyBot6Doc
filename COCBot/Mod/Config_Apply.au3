@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: applyConfig.au3
+; Name ..........: Config_Apply.au3
 ; Description ...: Applies all of the  variable to the GUI
 ; Syntax ........:
 ; Parameters ....:
@@ -17,41 +17,30 @@
 ; MOD Config - Save Data
 ;
 
-	;Max logout time
-	If $TrainLogoutMaxTime = 1 Then
-		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_CHECKED)
-	ElseIf $TrainLogoutMaxTime = 0 Then
-		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_UNCHECKED)
-	EndIf
-	GUICtrlSetData($txtTrainLogoutMaxTime, $TrainLogoutMaxTimeTXT)
+;Max logout time
+If $TrainLogoutMaxTime = 1 Then
+	GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_CHECKED)
+ElseIf $TrainLogoutMaxTime = 0 Then
+	GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_UNCHECKED)
+EndIf
+GUICtrlSetData($txtTrainLogoutMaxTime, $TrainLogoutMaxTimeTXT)
 
-	; Multi Finger (LunaEclipse)
-	_GUICtrlComboBox_SetCurSel($cmbDBMultiFinger,$iMultiFingerStyle)
-	cmbDBMultiFinger()
+; Multi Finger (LunaEclipse)
+_GUICtrlComboBox_SetCurSel($cmbDBMultiFinger,$iMultiFingerStyle)
+cmbDBMultiFinger()
 
-	;
-	; SSA
-	;
+; CSV Deployment Speed Mod
+GUICtrlSetData($sldSelectedSpeedDB, $isldSelectedCSVSpeed[$DB])
+GUICtrlSetData($sldSelectedSpeedAB, $isldSelectedCSVSpeed[$LB])
+sldSelectedSpeedDB()
+sldSelectedSpeedAB()
+;
+; AwesomeGamer
+;
 
-	If $ichkSwitchAccount = 1 Then
-		GUICtrlSetState($chkEnableSwitchAccount, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkEnableSwitchAccount, $GUI_UNCHECKED)
-	EndIf
-	_GUICtrlComboBox_SetCurSel($cmbAccountsQuantity, $icmbAccountsQuantity)
-
-	For $i = 1 To 5
-		If $ichkCanUse[$i] = 1 Then
-			GUICtrlSetState($chkCanUse[$i], $GUI_CHECKED)
-		Else
-			GUICtrlSetState($chkCanUse[$i], $GUI_UNCHECKED)
-		EndIf
-		If $ichkDonateAccount[$i] = 1 Then
-			GUICtrlSetState($chkDonateAccount[$i], $GUI_CHECKED)
-		Else
-			GUICtrlSetState($chkDonateAccount[$i], $GUI_UNCHECKED)
-		EndIf
-		_GUICtrlComboBox_SetCurSel($cmbAccount[$i], $icmbAccount[$i])
-	Next
-
-	chkSwitchAccount()
+; DEB
+If $iChkDontRemove = 1 Then
+	GUICtrlSetState($chkDontRemove, $GUI_CHECKED)
+Else
+	GUICtrlSetState($chkDontRemove, $GUI_UNCHECKED)
+EndIf

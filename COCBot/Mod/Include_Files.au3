@@ -38,8 +38,3 @@
 #include "Multi Fingers\eightFinger.au3"
 #include "Multi Fingers\multiFinger.au3"
 #include "Multi Fingers\unitInfo.au3"
-
-;
-; SSA
-;
-#include "SmartSwitchAcc.au3"

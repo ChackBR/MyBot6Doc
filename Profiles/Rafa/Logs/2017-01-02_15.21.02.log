@@ -1,0 +1,110 @@
+D [2017-01-02 15:21:02.312] @AutoItExe: C:\CDR\MyBot6_5x\MyBot.run.exe
+D [2017-01-02 15:21:02.312] @ScriptFullPath: C:\CDR\MyBot6_5x\MyBot.run.exe
+D [2017-01-02 15:21:02.312] @WorkingDir: C:\CDR\MyBot6_5x
+D [2017-01-02 15:21:02.312] @AutoItPID: 4876
+D [2017-01-02 15:21:02.312] @OSArch: X64
+D [2017-01-02 15:21:02.312] @OSVersion: WIN_10
+D [2017-01-02 15:21:02.312] @OSBuild: 14393
+D [2017-01-02 15:21:02.312] @OSServicePack: 
+D [2017-01-02 15:21:02.312] Primary Display: 1920 x 1080 - 32bit
+D [2017-01-02 15:21:02.328] Read Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 15:21:02.328] Read Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 15:21:02.418] MBRfunctions.dll opened.
+D [2017-01-02 15:21:02.418] SplashStep 1 of 11: Initializing Android...
+D [2017-01-02 15:21:02.418] SplashStep 1 of 11: Initializing Android...(MEmu)...
+D [2017-01-02 15:21:02.418] UpdateAndroidConfig("MEmu_2")
+D [2017-01-02 15:21:02.418] InitAndroid(False): MEmu
+D [2017-01-02 15:21:02.760] MEmu phone_layout is 2
+D [2017-01-02 15:21:02.760] Searching MEmu Window: Title = 'MEmu ', Class = '[CLASS:subWin; INSTANCE:1]', Text = ''
+D [2017-01-02 15:21:02.776] ObjGet("winmgmts:\\.\root\cimv2")
+D [2017-01-02 15:21:02.776] WMI Query: Select * from Win32_Process where ExecutablePath like "%E:\\Program Files\\Microvirt\\MEmu\\MEmu.exe%"
+D [2017-01-02 15:21:02.791] Process by CommandLine not found: E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_2
+D [2017-01-02 15:21:02.807] MEmu (MEmu_2) Window not found in list
+D [2017-01-02 15:21:02.807] Android Emulator not launched
+D [2017-01-02 15:21:02.807] Using Window sizes of MEmu 2.6.2
+D [2017-01-02 15:21:02.808] MEmu Tool Bar state is undetermined as treated as visible
+D [2017-01-02 15:21:02.808] MEmu Screen Height updated from 768 to 732
+D [2017-01-02 15:21:02.809] MEmu Window Width updated from 911 to 908
+D [2017-01-02 15:21:02.809] MEmu Window Height updated from 804 to 770
+D [2017-01-02 15:21:02.810] Android: MEmu
+D [2017-01-02 15:21:02.810] Android Config: 0
+D [2017-01-02 15:21:02.810] Android Version: 2.8.6.0
+D [2017-01-02 15:21:02.810] Android Instance: MEmu_2
+D [2017-01-02 15:21:02.811] Android Window Title: MEmu 
+D [2017-01-02 15:21:02.811] Android Program Path: E:\Program Files\Microvirt\MEmu\MEmu.exe
+D [2017-01-02 15:21:02.811] Android Program Parameter: MEmu_2
+D [2017-01-02 15:21:02.811] Android Program FileVersionInfo: 1033,,Microvirt Software Technology Co. Ltd.,MEmu App Player,2.8.6.0,MEmu.exe,Copyright (C) 2016 Microvirt Software Technology Co. Ltd. All rights reserved,,MEmu.exe,MEmu App Player,2.8.6.0,,
+D [2017-01-02 15:21:02.812] Android SecureME setting: 3
+D [2017-01-02 15:21:02.812] Android ADB Path: E:\Program Files\Microvirt\MEmu\adb.exe
+D [2017-01-02 15:21:02.812] Android ADB Device: 127.0.0.1:21523
+D [2017-01-02 15:21:02.812] Android ADB Shared Folder: /mnt/shell/emulated/0/Pictures/
+D [2017-01-02 15:21:02.813] Android ADB Shared Folder on Host: C:\Users\Imation\Pictures\MEmu Photo\
+D [2017-01-02 15:21:02.813] Android ADB Shared SubFolder: 
+D [2017-01-02 15:21:02.813] Android Mouse Device: Microvirt Virtual Input
+D [2017-01-02 15:21:02.813] Android ADB screencap command enabled: True
+D [2017-01-02 15:21:02.813] Android ADB input command enabled: True
+D [2017-01-02 15:21:02.813] Android ADB Mouse Click enabled: False
+D [2017-01-02 15:21:02.813] Android ADB Click Drag enabled: True
+D [2017-01-02 15:21:02.813] Bot Background Mode for screen capture: enabled
+D [2017-01-02 15:21:02.813] No Focus Tampering: False
+D [2017-01-02 15:21:02.813] Searching MEmu Window: Title = 'MEmu ', Class = '[CLASS:subWin; INSTANCE:1]', Text = ''
+D [2017-01-02 15:21:02.813] ObjGet("winmgmts:\\.\root\cimv2")
+D [2017-01-02 15:21:02.813] WMI Query: Select * from Win32_Process where ExecutablePath like "%E:\\Program Files\\Microvirt\\MEmu\\MEmu.exe%"
+D [2017-01-02 15:21:02.829] Process by CommandLine not found: E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_2
+D [2017-01-02 15:21:02.845] MEmu (MEmu_2) Window not found in list
+D [2017-01-02 15:21:02.845] Android Emulator not launched
+D [2017-01-02 15:21:02.845] InitAndroid(False): MEmu END, initialization successful = True, result = True
+D [2017-01-02 15:21:02.845] UpdateAndroidConfig("MEmu_2") END
+D [2017-01-02 15:21:02.845] SplashStep 1 of 11: Initializing Android...(MEmu)
+D [2017-01-02 15:21:02.845] SplashStep 2 of 11: Detecting Android...
+D [2017-01-02 15:21:02.845] UpdateSplashTitle: My Bot v6.5.2.d2602 (MEmu_2), Profile: Rafa
+D [2017-01-02 15:21:02.845] SplashStep 3 of 11: 
+D [2017-01-02 15:21:02.845] My Bot is the only running instance
+D [2017-01-02 15:21:02.860] SplashStep 4 of 11: Loading Main GUI...
+D [2017-01-02 15:21:02.876] SplashStep 5 of 11: Loading GUI Bottom...
+D [2017-01-02 15:21:02.891] SplashStep 6 of 11: Loading General tab...
+D [2017-01-02 15:21:03.177] SplashStep 7 of 11: Loading Village tab...
+D [2017-01-02 15:21:03.631] SplashStep 8 of 11: Loading Attack tab...
+D [2017-01-02 15:21:04.564] SplashStep 9 of 11: Loading Bot tab...
+D [2017-01-02 15:21:04.617] C:\Users\Imation\Pictures\MEmu Photo\ exists
+D [2017-01-02 15:21:06.020] SplashStep 10 of 11: Loading About Us tab...
+D [2017-01-02 15:21:06.036] SplashStep 11 of 11: Initializing GUI...
+D [2017-01-02 15:21:06.067] Redraw MyBot ControlIds (forced): 0x000F2026, 0x000E1E66
+D [2017-01-02 15:21:06.067] Control ID 0x000F2026 Pos: 10, 115, 450, 270
+D [2017-01-02 15:21:06.067] Control ID 0x000E1E66 Pos: 10, 389, 450, 90
+D [2017-01-02 15:21:06.088] $frmBot=0x07E9193E
+D [2017-01-02 15:21:06.088] $frmBotEx=0x003E2CC0
+D [2017-01-02 15:21:06.104] $frmBotBottom=0x004A0C7A
+D [2017-01-02 15:21:06.104] $frmBotEmbeddedShield=0
+D [2017-01-02 15:21:06.104] $frmBotEmbeddedShieldInput=10
+D [2017-01-02 15:21:06.104] $frmBotEmbeddedGarphics=0
+D [2017-01-02 15:21:06.136] Read Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 15:21:06.136] Read Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 15:21:06.205] Apply Config
+D [2017-01-02 15:21:06.367] Redraw MyBot Window
+D [2017-01-02 15:21:06.718] MyBot.run/API/1.0 Message = 49694
+D [2017-01-02 15:21:06.718] MyBot.run/STATE/1.0 Message = 49686
+L [2017-01-02 15:21:06.730] Android Emulator Configuration: MEmu (instance MEmu_2)
+D [2017-01-02 15:21:06.993] Save Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 15:21:08.533] Save Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 15:21:08.997] Read Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 15:21:08.997] Read Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 15:21:09.081] Apply Config
+D [2017-01-02 15:21:09.282] Redraw MyBot Window
+D [2017-01-02 15:21:09.282] MyBot.run launch time 6986 ms.
+L [2017-01-02 15:21:09.298] Watchdog launched
+D [2017-01-02 15:21:09.414] API: $hWind=0x07E9193E,$iMsg=49694,$wParam=0x00000000,$lParam=0x00B510C0
+D [2017-01-02 15:21:09.414] New Bot Host Window Handle registered: 0x00B510C0
+L [2017-01-02 15:21:11.971] Closing My Bot v6.5.2.d2602 (MEmu_2), please wait ...
+L [2017-01-02 15:21:11.971] Closing My Bot v6.5.2.d2602 (MEmu_2) now ...
+D [2017-01-02 15:21:11.971] Searching MEmu Window: Title = 'MEmu ', Class = '[CLASS:subWin; INSTANCE:1]', Text = ''
+D [2017-01-02 15:21:11.971] ObjGet("winmgmts:\\.\root\cimv2")
+D [2017-01-02 15:21:11.971] WMI Query: Select * from Win32_Process where ExecutablePath like "%E:\\Program Files\\Microvirt\\MEmu\\MEmu.exe%"
+D [2017-01-02 15:21:12.002] Process by CommandLine not found: E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_2
+D [2017-01-02 15:21:12.002] MEmu (MEmu_2) Window not found in list
+D [2017-01-02 15:21:13.012] Android Emulator not launched
+D [2017-01-02 15:21:13.044] Save Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 15:21:14.563] Save Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 15:21:15.017] MBRfunctions.dll closed.
+D [2017-01-02 15:21:15.033] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 15:21:15.133] Bot Host Window Handle un-registered: 0x00B510C0

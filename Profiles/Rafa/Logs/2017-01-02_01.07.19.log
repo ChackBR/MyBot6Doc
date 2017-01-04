@@ -1,0 +1,65 @@
+D [2017-01-02 01:07:19.265] @AutoItExe: C:\CDR\MyBot6_5x\MyBot.run.exe
+D [2017-01-02 01:07:19.266] @ScriptFullPath: C:\CDR\MyBot6_5x\MyBot.run.exe
+D [2017-01-02 01:07:19.266] @WorkingDir: C:\CDR\MyBot6_5x
+D [2017-01-02 01:07:19.267] @AutoItPID: 5616
+D [2017-01-02 01:07:19.267] @OSArch: X64
+D [2017-01-02 01:07:19.267] @OSVersion: WIN_10
+D [2017-01-02 01:07:19.268] @OSBuild: 14393
+D [2017-01-02 01:07:19.268] @OSServicePack: 
+D [2017-01-02 01:07:19.268] Primary Display: 1920 x 1080 - 32bit
+D [2017-01-02 01:07:19.277] Read Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 01:07:19.293] Read Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 01:07:19.380] MBRfunctions.dll opened.
+D [2017-01-02 01:07:19.381] SplashStep 1 of 11: Initializing Android...
+D [2017-01-02 01:07:19.382] SplashStep 1 of 11: Initializing Android...(MEmu)...
+D [2017-01-02 01:07:19.383] UpdateAndroidConfig("MEmu_2")
+D [2017-01-02 01:07:19.383] InitAndroid(False): MEmu
+D [2017-01-02 01:07:19.527] MEmu phone_layout is 2
+D [2017-01-02 01:07:19.527] Searching MEmu Window: Title = 'MEmu ', Class = '[CLASS:subWin; INSTANCE:1]', Text = ''
+D [2017-01-02 01:07:19.536] ObjGet("winmgmts:\\.\root\cimv2")
+D [2017-01-02 01:07:19.537] WMI Query: Select * from Win32_Process where ExecutablePath like "%E:\\Program Files\\Microvirt\\MEmu\\MEmu.exe%"
+D [2017-01-02 01:07:19.569] 3004 = E:\Program Files\Microvirt\MEmu\MEmu.exe ("E:\Program Files\Microvirt\MEmu\MEmu.exe" MEmu_2)
+D [2017-01-02 01:07:19.570] 8984 = E:\Program Files\Microvirt\MEmu\MEmu.exe ("E:\Program Files\Microvirt\MEmu\MEmu.exe" MEmu_4)
+D [2017-01-02 01:07:19.570] Found Process 3004 by CommandLine: E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_2
+D [2017-01-02 01:07:19.611] Found MEmu Window 'MEmu_2' (0x001C1708) by PID 3004 ('E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_2')
+D [2017-01-02 01:07:19.612] setAndroidPID: $pid=3004
+D [2017-01-02 01:07:19.954] Android PID=3004 initialized: MEmu_2, MEmu
+D [2017-01-02 01:07:19.955] debugMBRFunctions: $debugSearchArea=0, $debugRedArea=0, $debugOcr=0
+D [2017-01-02 01:07:20.459] Move Android Window 'MEmu_2' to position: 1012, 269
+L [2017-01-02 01:07:20.460] MEmu (MEmu_2) running in window mode
+D [2017-01-02 01:07:20.461] Using Window sizes of MEmu 2.6.2
+D [2017-01-02 01:07:20.462] MEmu Tool Bar is visible
+D [2017-01-02 01:07:20.462] MEmu Screen Height updated from 768 to 732
+D [2017-01-02 01:07:20.463] MEmu Window Width updated from 911 to 908
+D [2017-01-02 01:07:20.463] MEmu Window Height updated from 804 to 770
+D [2017-01-02 01:07:20.464] Android: MEmu
+D [2017-01-02 01:07:20.464] Android Config: 0
+D [2017-01-02 01:07:20.465] Android Version: 2.8.6.0
+D [2017-01-02 01:07:20.465] Android Instance: MEmu_2
+D [2017-01-02 01:07:20.465] Android Window Title: MEmu_2
+D [2017-01-02 01:07:20.465] Android Program Path: E:\Program Files\Microvirt\MEmu\MEmu.exe
+D [2017-01-02 01:07:20.466] Android Program Parameter: MEmu_2
+D [2017-01-02 01:07:20.466] Android Program FileVersionInfo: 1033,,Microvirt Software Technology Co. Ltd.,MEmu App Player,2.8.6.0,MEmu.exe,Copyright (C) 2016 Microvirt Software Technology Co. Ltd. All rights reserved,,MEmu.exe,MEmu App Player,2.8.6.0,,
+D [2017-01-02 01:07:20.466] Android SecureME setting: 3
+D [2017-01-02 01:07:20.467] Android ADB Path: E:\Program Files\Microvirt\MEmu\adb.exe
+D [2017-01-02 01:07:20.467] Android ADB Device: 127.0.0.1:21523
+D [2017-01-02 01:07:20.468] Android ADB Shared Folder: /mnt/shell/emulated/0/Pictures/
+D [2017-01-02 01:07:20.469] Android ADB Shared Folder on Host: C:\Users\Imation\Pictures\MEmu Photo\
+D [2017-01-02 01:07:20.469] Android ADB Shared SubFolder: 
+D [2017-01-02 01:07:20.470] Android Mouse Device: Microvirt Virtual Input
+D [2017-01-02 01:07:20.471] Android ADB screencap command enabled: True
+D [2017-01-02 01:07:20.471] Android ADB input command enabled: True
+D [2017-01-02 01:07:20.471] Android ADB Mouse Click enabled: False
+D [2017-01-02 01:07:20.471] Android ADB Click Drag enabled: True
+D [2017-01-02 01:07:20.472] Bot Background Mode for screen capture: enabled
+D [2017-01-02 01:07:20.472] No Focus Tampering: False
+D [2017-01-02 01:07:20.473] InitAndroid(False): MEmu END, initialization successful = True, result = True
+D [2017-01-02 01:07:20.473] UpdateAndroidConfig("MEmu_2") END
+D [2017-01-02 01:07:20.473] SplashStep 1 of 11: Initializing Android...(MEmu)
+D [2017-01-02 01:07:20.476] SplashStep 2 of 11: Detecting Android...
+D [2017-01-02 01:07:20.477] UpdateSplashTitle: My Bot v6.5.2.r2602 (MEmu_2), Profile: Rafa
+D [2017-01-02 01:07:20.479] SplashStep 3 of 11: 
+D [2017-01-02 01:07:20.481] My Bot is the only running instance
+D [2017-01-02 01:07:20.498] SplashStep 4 of 11: Loading Main GUI...
+D [2017-01-02 01:07:20.512] SplashStep 5 of 11: Loading GUI Bottom...
+D [2017-01-02 01:07:20.537] SplashStep 6 of 11: Loading General tab...

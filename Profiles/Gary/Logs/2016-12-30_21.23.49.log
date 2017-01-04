@@ -1,0 +1,8 @@
+L [2016-12-30 21:23:49.073] Closing My Bot v6.5.1.r2515 (MEmu_1) now ...
+D [2016-12-30 21:23:49.200] Save Config C:\CDR\MyBot6_5x\Profiles\Gary\config.ini
+D [2016-12-30 21:23:50.598] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:23:51.373] API: $hWind=0x01CC18FC,$iMsg=49694,$wParam=0x00000000,$lParam=0x0001185A
+D [2016-12-30 21:23:51.418] Save Building Config C:\CDR\MyBot6_5x\Profiles\Gary\building.ini
+D [2016-12-30 21:23:52.028] ADB shell terminated, PID = 1368
+D [2016-12-30 21:23:52.031] MBRfunctions.dll closed.
+D [2016-12-30 21:23:52.197] Bot Host Window Handle un-registered: 0x0001185A

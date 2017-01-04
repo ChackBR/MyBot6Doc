@@ -99,14 +99,14 @@ Func chkLab()
 		GUICtrlSetState($icnLabUpgrade, $GUI_SHOW)
 		GUICtrlSetState($lblNextUpgrade, $GUI_ENABLE)
 		GUICtrlSetState($cmbLaboratory, $GUI_ENABLE)
-		GUICtrlSetState($btnLocateLaboratory, $GUI_SHOW)
+		;GUICtrlSetState($btnLocateLaboratory, $GUI_SHOW)
 		GUICtrlSetImage($icnLabUpgrade, $pIconLib, $aLabTroops[$icmbLaboratory][4])
 	Else
 		$ichkLab = 0
 		GUICtrlSetState($icnLabUpgrade, $GUI_HIDE)
 		GUICtrlSetState($lblNextUpgrade, $GUI_DISABLE)
 		GUICtrlSetState($cmbLaboratory, $GUI_DISABLE)
-		GUICtrlSetState($btnLocateLaboratory, $GUI_HIDE)
+		;GUICtrlSetState($btnLocateLaboratory, $GUI_HIDE)
 		GUICtrlSetImage($icnLabUpgrade, $pIconLib, $aLabTroops[0][4])
 	EndIf
 	LabStatusGUIUpdate()

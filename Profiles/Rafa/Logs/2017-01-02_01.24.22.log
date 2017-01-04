@@ -1,0 +1,36 @@
+D [2017-01-02 01:24:22.916] Save Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 01:24:24.583] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 01:24:24.814] Save Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 01:24:25.388] Read Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
+D [2017-01-02 01:24:25.402] Read Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
+D [2017-01-02 01:24:25.480] Apply Config
+D [2017-01-02 01:24:25.763] Disable GUI Controls
+D [2017-01-02 01:24:27.292] Redraw MyBot Window
+D [2017-01-02 01:24:27.323] Android Window Handle: 0x001C1708
+D [2017-01-02 01:24:27.324] InitiateLayout: MEmu_2 Android-ClientSize: 860 x 732
+D [2017-01-02 01:24:27.324] CheckScreenAndroid: Window size 908 x 770
+D [2017-01-02 01:24:27.577] MEmu font_scale = 1
+L [2017-01-02 01:24:28.685]  My Bot v6.5.2.r2602 (MEmu_2) Powered by MyBot.run ~
+D [2017-01-02 01:24:28.690] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 01:24:28.693] MyBot.run.exe Executable running on WIN_10  X64
+L [2017-01-02 01:24:28.694] =================== Bot Start ====================
+L [2017-01-02 01:24:28.695] ------------------------  Current Profile: Rafa -------------------------
+L [2017-01-02 01:24:28.696] Trying to locate Main Screen
+D [2017-01-02 01:24:28.921] API: $hWind=0x000A29F8,$iMsg=49694,$wParam=0x00000000,$lParam=0x00CE2E5C
+D [2017-01-02 01:24:28.925] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 21, 9
+D [2017-01-02 01:24:28.925] Center Village by: 21, 9
+D [2017-01-02 01:24:30.566] GetVillageSize measured: 476.57144557659, Zoom factor: 1.00626815593247, Offset: -3, -1
+D [2017-01-02 01:24:30.566] Village Offset updated to -3, -1, 1.00626815593247
+D [2017-01-02 01:24:30.568] Centered Village Offset: -3, -1, change: -24, -10
+L [2017-01-02 01:24:30.569] Main Screen Located
+D [2017-01-02 01:24:30.729] GetVillageSize measured: 476.57144557659, Zoom factor: 1.00626815593247, Offset: -3, -1
+L [2017-01-02 01:24:31.755] Detecting your Buildings..
+L [2017-01-02 01:24:32.757] Detecting your Village Theme
+L [2017-01-02 01:24:33.037] Snow Theme detected
+L [2017-01-02 01:24:34.198] Language setting is English: Correct.
+L [2017-01-02 01:24:35.200] Trying to locate Main Screen
+D [2017-01-02 01:24:35.455] GetVillageSize measured: 476.57144557659, Zoom factor: 1.00626815593247, Offset: -3, -1
+L [2017-01-02 01:24:35.456] Main Screen Located
+D [2017-01-02 01:24:36.225] Enable GUI Controls
+D [2017-01-02 01:24:37.701] Redraw MyBot Window
+L [2017-01-02 01:24:37.987] ==================== Bot Stop ====================

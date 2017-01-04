@@ -1,0 +1,212 @@
+D [2017-01-01 13:20:54.921] @AutoItExe: C:\CDR\MyBot6_5x\MyBot.run.exe
+D [2017-01-01 13:20:54.922] @ScriptFullPath: C:\CDR\MyBot6_5x\MyBot.run.exe
+D [2017-01-01 13:20:54.922] @WorkingDir: C:\CDR\MyBot6_5x
+D [2017-01-01 13:20:54.923] @AutoItPID: 3696
+D [2017-01-01 13:20:54.923] @OSArch: X64
+D [2017-01-01 13:20:54.923] @OSVersion: WIN_10
+D [2017-01-01 13:20:54.923] @OSBuild: 14393
+D [2017-01-01 13:20:54.924] @OSServicePack: 
+D [2017-01-01 13:20:54.924] Primary Display: 1920 x 1080 - 32bit
+D [2017-01-01 13:20:54.934] Read Building Config C:\CDR\MyBot6_5x\Profiles\Demo\building.ini
+D [2017-01-01 13:20:54.950] Read Config C:\CDR\MyBot6_5x\Profiles\Demo\config.ini
+D [2017-01-01 13:20:55.193] MBRfunctions.dll opened.
+D [2017-01-01 13:20:55.194] SplashStep 1 of 11: Initializing Android...
+D [2017-01-01 13:20:55.195] SplashStep 1 of 11: Initializing Android...(MEmu)...
+D [2017-01-01 13:20:55.196] UpdateAndroidConfig("MEmu_4")
+D [2017-01-01 13:20:55.197] InitAndroid(False): MEmu
+D [2017-01-01 13:20:55.392] MEmu phone_layout is 2
+D [2017-01-01 13:20:55.392] Searching MEmu Window: Title = 'MEmu ', Class = '[CLASS:subWin; INSTANCE:1]', Text = ''
+D [2017-01-01 13:20:55.403] ObjGet("winmgmts:\\.\root\cimv2")
+D [2017-01-01 13:20:55.404] WMI Query: Select * from Win32_Process where ExecutablePath like "%E:\\Program Files\\Microvirt\\MEmu\\MEmu.exe%"
+D [2017-01-01 13:20:55.442] 3004 = E:\Program Files\Microvirt\MEmu\MEmu.exe ("E:\Program Files\Microvirt\MEmu\MEmu.exe" MEmu_2)
+D [2017-01-01 13:20:55.442] 7276 = E:\Program Files\Microvirt\MEmu\MEmu.exe ("E:\Program Files\Microvirt\MEmu\MEmu.exe" MEmu_4)
+D [2017-01-01 13:20:55.443] Found Process 7276 by CommandLine: E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_4
+D [2017-01-01 13:20:55.488] Found MEmu Window 'MEmu_4' (0x00672DE0) by PID 7276 ('E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_4')
+D [2017-01-01 13:20:55.489] setAndroidPID: $pid=7276
+D [2017-01-01 13:20:55.838] Android PID=7276 initialized: MEmu_4, MEmu
+D [2017-01-01 13:20:55.838] debugMBRFunctions: $debugSearchArea=0, $debugRedArea=0, $debugOcr=0
+D [2017-01-01 13:20:56.342] Move Android Window 'MEmu_4' to position: 2452, 268
+L [2017-01-01 13:20:56.344] MEmu (MEmu_4) running in window mode
+D [2017-01-01 13:20:56.344] Using Window sizes of MEmu 2.6.2
+D [2017-01-01 13:20:56.345] MEmu Tool Bar is visible
+D [2017-01-01 13:20:56.345] MEmu Screen Height updated from 768 to 732
+D [2017-01-01 13:20:56.346] MEmu Window Width updated from 911 to 908
+D [2017-01-01 13:20:56.346] MEmu Window Height updated from 804 to 770
+D [2017-01-01 13:20:56.347] Android: MEmu
+D [2017-01-01 13:20:56.348] Android Config: 0
+D [2017-01-01 13:20:56.348] Android Version: 2.8.6.0
+D [2017-01-01 13:20:56.348] Android Instance: MEmu_4
+D [2017-01-01 13:20:56.348] Android Window Title: MEmu_4
+D [2017-01-01 13:20:56.349] Android Program Path: E:\Program Files\Microvirt\MEmu\MEmu.exe
+D [2017-01-01 13:20:56.349] Android Program Parameter: MEmu_4
+D [2017-01-01 13:20:56.349] Android Program FileVersionInfo: 1033,,Microvirt Software Technology Co. Ltd.,MEmu App Player,2.8.6.0,MEmu.exe,Copyright (C) 2016 Microvirt Software Technology Co. Ltd. All rights reserved,,MEmu.exe,MEmu App Player,2.8.6.0,,
+D [2017-01-01 13:20:56.350] Android SecureME setting: 3
+D [2017-01-01 13:20:56.350] Android ADB Path: E:\Program Files\Microvirt\MEmu\adb.exe
+D [2017-01-01 13:20:56.350] Android ADB Device: 127.0.0.1:21543
+D [2017-01-01 13:20:56.350] Android ADB Shared Folder: /mnt/shell/emulated/0/Pictures/
+D [2017-01-01 13:20:56.351] Android ADB Shared Folder on Host: C:\Users\Imation\Pictures\MEmu Photo\
+D [2017-01-01 13:20:56.351] Android ADB Shared SubFolder: 
+D [2017-01-01 13:20:56.351] Android Mouse Device: Microvirt Virtual Input
+D [2017-01-01 13:20:56.351] Android ADB screencap command enabled: True
+D [2017-01-01 13:20:56.352] Android ADB input command enabled: True
+D [2017-01-01 13:20:56.352] Android ADB Mouse Click enabled: False
+D [2017-01-01 13:20:56.352] Android ADB Click Drag enabled: True
+D [2017-01-01 13:20:56.353] Bot Background Mode for screen capture: enabled
+D [2017-01-01 13:20:56.353] No Focus Tampering: False
+D [2017-01-01 13:20:56.353] InitAndroid(False): MEmu END, initialization successful = True, result = True
+D [2017-01-01 13:20:56.353] UpdateAndroidConfig("MEmu_4") END
+D [2017-01-01 13:20:56.354] SplashStep 1 of 11: Initializing Android...(MEmu)
+D [2017-01-01 13:20:56.356] SplashStep 2 of 11: Detecting Android...
+D [2017-01-01 13:20:56.357] UpdateSplashTitle: My Bot v6.5.2.r2601 (MEmu_4), Profile: Demo
+D [2017-01-01 13:20:56.358] SplashStep 3 of 11: 
+D [2017-01-01 13:20:56.360] My Bot is the only running instance
+D [2017-01-01 13:20:56.377] SplashStep 4 of 11: Loading Main GUI...
+D [2017-01-01 13:20:56.406] SplashStep 5 of 11: Loading GUI Bottom...
+D [2017-01-01 13:20:56.431] SplashStep 6 of 11: Loading General tab...
+D [2017-01-01 13:20:56.762] SplashStep 7 of 11: Loading Village tab...
+D [2017-01-01 13:20:57.403] SplashStep 8 of 11: Loading Attack tab...
+D [2017-01-01 13:20:58.932] SplashStep 9 of 11: Loading Bot tab...
+D [2017-01-01 13:20:59.054] C:\Users\Imation\Pictures\MEmu Photo\ exists
+D [2017-01-01 13:20:59.237] ADB shell launched, PID = 9440: root@android:/ # PS1=mybot.run:Android Steady Shell PID=2081
+/system/xbin/renice -20 2081
+/system/xbin/renice -20 1921
+D [2017-01-01 13:20:59.343] Using /mnt/shell/emulated/0/Pictures/ for Android shared folder
+D [2017-01-01 13:20:59.634] MEmu getevent -p: add device 1: /dev/input/event7
+  name:     "Microvirt Virtual Input"
+  events:
+    KEY (0001): 0001  0002  0003  0004  0005  0006  0007  0008 
+                0009  000a  000b  000c  000d  000e  000f  0010 
+                0011  0012  0013  0014  0015  0016  0017  0018 
+                0019  001a  001b  001c  001d  001e  001f  0020 
+                0021  0022  0023  0024  0025  0026  0027  0028 
+                0029  002a  002b  002c  002d  002e  002f  0030 
+                0031  0032  0033  0034  0035  0036  0037  0038 
+                0039  003a  003b  003c  003d  003e  003f  0040 
+                0041  0042  0043  0044  0045  0046  0047  0048 
+                0049  004a  004b  004c  004d  004e  004f  0050 
+                0051  0052  0053  0054  0055  0056  0057  0058 
+                0059  005a  005b  005c  005d  005e  005f  0060 
+                0061  0062  0063  0064  0065  0066  0067  0068 
+                0069  006a  006b  006c  006d  006e  006f  0070 
+                0071  0072  0073  0074  0075  0076  0077  0078 
+                0079  007a  007b  007c  007d  007e  007f  0080 
+                0081  0082  0083  0084  0085  0086  0087  0088 
+                0089  008a  008b  008c  008d  008e  008f  0090 
+                0091  0092  0093  0094  0095  0096  0097  0098 
+                0099  009a  009b  009c  009d  009e  009f  00a0 
+                00a1  00a2  00a3  00a4  00a5  00a6  00a7  00a8 
+                00a9  00aa  00ab  00ac  00ad  00ae  00af  00b0 
+                00b1  00b2  00b3  00b4  00b5  00b6  00b7  00b8 
+                00b9  00ba  00bb  00bc  00bd  00be  00bf  00c0 
+                00c1  00c2  00c3  00c4  00c5  00c6  00c7  00c8 
+                00c9  00ca  00cb  00cc  00cd  00ce  00cf  00d0 
+                00d1  00d2  00d3  00d4  00d5  00d6  00d7  00d8 
+                00d9  00da  00db  00dc  00dd  00de  00df  00e0 
+                00e1  00e2  00e3  00e4  00e5  00e6  00e7  00e8 
+                00e9  00ea  00eb  00ec  00ed  00ee  00ef  00f0 
+                00f1  00f2  00f3  00f4  00f5  00f6  00f7  00f8 
+                00f9  00fa  00fb  00fc  00fd  00fe  00ff  0110 
+                0145  014a 
+    REL (0002): 0006  0008 
+    ABS (0003): 0035  : value 0, min 0, max 860, fuzz 0, flat 0, resolution 0
+                0036  : value 0, min 0, max 732, fuzz 0, flat 0, resolution 0
+                003a  : value 0, min 0, max 0, fuzz 0, flat 0, resolution 0
+  input props:
+    <none>
+could not get driver version for /dev/input/mouse3, Not a typewriter
+add device 2: /dev/input/event6
+  name:     "microvirt via VirtualBox PS/2 mouse"
+  events:
+    KEY (0001): 0110  0111  0112  0113  0114 
+    REL (0002): 0000  0001  0006  0008 
+  input props:
+    <none>
+could not get driver version for /dev/input/mouse2, Not a typewriter
+add device 3: /dev/input/event5
+  name:     "MemuHyperv mouse integration"
+  events:
+    KEY (0001): 0110 
+    ABS (0003): 0000  : value 0, min 0, max 65535, fuzz 0, flat 0, resolution 0
+                0001  : value 0, min 0, max 65535, fuzz 0, flat 0, resolution 0
+  input props:
+    <none>
+add device 4: /dev/input/event1
+  name:     "Sleep Button"
+  events:
+    KEY (0001): 008e 
+  input props:
+    <none>
+add device 5: /dev/input/event0
+  name:     "Power Button"
+  events:
+    KEY (0001): 0074 
+  input props:
+    <none>
+could not get driver version for /dev/input/mouse0, Not a typewriter
+add device 6: /dev/input/event3
+  name:     "ImExPS/2 Generic Explorer Mouse"
+  events:
+    KEY (0001): 0110  0111  0112  0113  0114 
+    REL (0002): 0000  0001  0006  0008 
+  input props:
+    <none>
+add device 7: /dev/input/event2
+  name:     "AT Translated Set 2 keyboard"
+  events:
+    KEY (0001): 0001  0002  0003  0004  0005  0006  0007  0008 
+                0009  000a  000b  000c  000d  000e  000f  0010 
+                0011  0012  0013  0014  0015  0016  0017  0018 
+                0019  001a  001b  001c  001d  001e  001f  0020 
+                0021  0022  0023  0024  0025  0026  0027  0028 
+                0029  002a  002b  002c  002d  002e  002f  0030 
+                0031  0032  0033  0034  0035  0036  0037  0038 
+                0039  003a  003b  003c  003d  003e  003f  0040 
+                0041  0042  0043  0044  0045  0046  0047  0048 
+                0049  004a  004b  004c  004d  004e  004f  0050 
+                0051  0052  0053  0055  0056  0057  0058  0059 
+                005a  005b  005c  005d  005e  005f  0060  0061 
+                0062  0063  0064  0066  0067  0068  0069  006a 
+                006b  006c  006d  006e  006f  0070  0071  0072 
+                0073  0074  0075  0076  0077  0079  007a  007b 
+                007c  007d  007e  007f  0080  008c  008e  008f 
+                009b  009c  009d  009e  009f  00a3  00a4  00a5 
+                00a6  00ac  00ad  00b7  00b8  00b9  00d9  00e2 
+    MSC (0004): 0004 
+    LED (0011): 0000  0001  0002 
+  input props:
+    <none>
+could not get driver version for /dev/input/mice, Not a typewriter
+could not get driver version for /dev/input/mouse1, Not a typewriter
+add device 8: /dev/input/event4
+  name:     "MemuHyperv USB Tablet"
+  events:
+    KEY (0001): 0110  0111  0112  0113  0114 
+    REL (0002): 0006  0008 
+    ABS (0003): 0000  : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0
+                0001  : value 0, min 0, max 32767, fuzz 0, flat 0, resolution 0
+    MSC (0004): 0004 
+  input props:
+    <none>
+D [2017-01-01 13:20:59.636] Using /dev/input/event7 for mouse events
+D [2017-01-01 13:21:00.272] SplashStep 10 of 11: Loading About Us tab...
+D [2017-01-01 13:21:00.278] SplashStep 11 of 11: Initializing GUI...
+D [2017-01-01 13:21:00.316] Redraw MyBot ControlIds (forced): 0x00072078, 0x000E22EE
+D [2017-01-01 13:21:00.316] Control ID 0x00072078 Pos: 10, 115, 450, 270
+D [2017-01-01 13:21:00.317] Control ID 0x000E22EE Pos: 10, 389, 450, 90
+D [2017-01-01 13:21:00.346] $frmBot=0x0011269E
+D [2017-01-01 13:21:00.346] $frmBotEx=0x004E1A62
+D [2017-01-01 13:21:00.347] $frmBotBottom=0x00081FEE
+D [2017-01-01 13:21:00.347] $frmBotEmbeddedShield=0
+D [2017-01-01 13:21:00.347] $frmBotEmbeddedShieldInput=10
+D [2017-01-01 13:21:00.347] $frmBotEmbeddedGarphics=0
+D [2017-01-01 13:21:00.381] Read Building Config C:\CDR\MyBot6_5x\Profiles\Demo\building.ini
+D [2017-01-01 13:21:00.394] Read Config C:\CDR\MyBot6_5x\Profiles\Demo\config.ini
+D [2017-01-01 13:21:00.470] Apply Config
+D [2017-01-01 13:21:00.701] Redraw MyBot Window
+D [2017-01-01 13:21:00.709] MyBot.run/API/1.0 Message = 49694
+D [2017-01-01 13:21:00.709] MyBot.run/STATE/1.0 Message = 49686
+L [2017-01-01 13:21:00.719] Android Emulator Configuration: MEmu (instance MEmu_4)
+D [2017-01-01 13:21:00.996] MyBot.run launch time 6087 ms.
+D [2017-01-01 13:21:00.999] Watchdog already running
+D [2017-01-01 13:21:12.014] API: $hWind=0x0011269E,$iMsg=49694,$wParam=0x00000000,$lParam=0x004B2F0A
+D [2017-01-01 13:21:12.014] New Bot Host Window Handle registered: 0x004B2F0A

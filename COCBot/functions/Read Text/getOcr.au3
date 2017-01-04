@@ -103,12 +103,12 @@ Func getProfile($x_start, $y_start);  -> Gets Attack Win/Defense Win/Donated/Rec
 	Return getOcrAndCapture("coc-profile", $x_start, $y_start, 46, 11, True)
 EndFunc   ;==>getProfile
 
-Func getTroopCountSmall($x_start, $y_start);  -> Gets troop amount on Attack Screen for non-selected troop kind
-	Return getOcrAndCapture("coc-t-s", $x_start, $y_start, 53, 15, True)
+Func getTroopCountSmall($x_start, $y_start, $bNeedNewCapture = Default);  -> Gets troop amount on Attack Screen for non-selected troop kind
+	Return getOcrAndCapture("coc-t-s", $x_start, $y_start, 53, 15, True, Default, $bNeedNewCapture)
 EndFunc   ;==>getTroopCountSmall
 
-Func getTroopCountBig($x_start, $y_start);  -> Gets troop amount on Attack Screen for selected troop kind
-	Return getOcrAndCapture("coc-t-b", $x_start, $y_start, 53, 16, True)
+Func getTroopCountBig($x_start, $y_start, $bNeedNewCapture = Default);  -> Gets troop amount on Attack Screen for selected troop kind
+	Return getOcrAndCapture("coc-t-b", $x_start, $y_start, 53, 16, True, Default, $bNeedNewCapture)
 EndFunc   ;==>getTroopCountBig
 
 Func getArmyTroopQuantity($x_start, $y_start);  -> Gets troop amount on army camp or new windows
@@ -260,6 +260,11 @@ Func getBarracksNewTroopQuantity($x_start, $y_start) ;  -> Gets quantity of troo
 	Return getOcrAndCapture("coc-newarmy", $x_start, $y_start, 45, 18, True)
 EndFunc   ;==>getBarracksNewTroopQuantity
 
+Func getTroopsSpellsLevel($x_start, $y_start) ;  -> Gets quantity of troops in army Window
+	Return getOcrAndCapture("coc_Spellslevel", $x_start, $y_start, 20, 14, True)
+EndFunc   ;==>getBarracksNewTroopQuantity
+
+
 Func getArmyCapacityOnTrainTroops($x_start, $y_start) ;  -> Gets quantity of troops in army Window
 	Return getOcrAndCapture("coc-NewCapacity", $x_start, $y_start, 67, 14, True)
 EndFunc   ;==>getArmyCapacityOnTrainTroops
@@ -271,6 +276,49 @@ EndFunc   ;==>getQueueTroopsQuantity
 Func getChatStringChinese($x_start, $y_start) ; -> Get string chat request - Chinese - "DonateCC.au3"
 	Local $bUseOcrImgLoc = True
 	Return getOcrAndCapture("chinese-bundle", $x_start, $y_start, 160, 14, Default, $bUseOcrImgLoc)
+EndFunc   ;==>getChatStringChinese
+
+Func getChatStringPersian($x_start, $y_start, $bConvert = True) ; -> Get string chat request - Persian - "DonateCC.au3"
+	Local $bUseOcrImgLoc = True
+	Local $OCRString = getOcrAndCapture("persian-bundle", $x_start, $y_start, 240, 17, Default, $bUseOcrImgLoc, True)
+	If $bConvert = True Then
+		$OCRString = StringReverse($OCRString)
+		$OCRString = StringReplace($OCRString, "A", "ا")
+		$OCRString = StringReplace($OCRString, "B", "ب")
+		$OCRString = StringReplace($OCRString, "C", "چ")
+		$OCRString = StringReplace($OCRString, "D", "د")
+		$OCRString = StringReplace($OCRString, "F", "ف")
+		$OCRString = StringReplace($OCRString, "G", "گ")
+		$OCRString = StringReplace($OCRString, "J", "ج")
+		$OCRString = StringReplace($OCRString, "H", "ه")
+		$OCRString = StringReplace($OCRString, "R", "ر")
+		$OCRString = StringReplace($OCRString, "K", "ک")
+		$OCRString = StringReplace($OCRString, "K", "ل")
+		$OCRString = StringReplace($OCRString, "M", "م")
+		$OCRString = StringReplace($OCRString, "N", "ن")
+		$OCRString = StringReplace($OCRString, "P", "پ")
+		$OCRString = StringReplace($OCRString, "S", "س")
+		$OCRString = StringReplace($OCRString, "T", "ت")
+		$OCRString = StringReplace($OCRString, "V", "و")
+		$OCRString = StringReplace($OCRString, "Y", "ی")
+		$OCRString = StringReplace($OCRString, "L", "ل")
+		$OCRString = StringReplace($OCRString, "Z", "ز")
+		$OCRString = StringReplace($OCRString, ",", ",")
+		$OCRString = StringReplace($OCRString, "X", "خ")
+		$OCRString = StringReplace($OCRString, "0", " ")
+		$OCRString = StringReplace($OCRString, "1", ".")
+		$OCRString = StringReplace($OCRString, "22", "ع")
+		$OCRString = StringReplace($OCRString, "44", "ش")
+		$OCRString = StringReplace($OCRString, "55", "ح")
+		$OCRString = StringReplace($OCRString, "66", "ض")
+		$OCRString = StringStripWS($OCRString, 1 + 2)
+	EndIf
+	Return $OCRString
+EndFunc   ;==>getChatStringChinese
+
+Func getCurrentXP($x_start, $y_start) ; -> Get Current/Total XP, Used in SuperXP.au3
+	Local $bUseOcrImgLoc = True
+	Return getOcrAndCapture("CurXpOCR-bundle", $x_start, $y_start, 95, 15, True, $bUseOcrImgLoc)
 EndFunc   ;==>getChatStringChinese
 
 Func OcrForceCaptureRegion($bForce = Default)

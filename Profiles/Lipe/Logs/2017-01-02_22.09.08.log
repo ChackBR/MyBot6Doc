@@ -1,0 +1,2214 @@
+D [2017-01-02 22:09:08.398] Save Config C:\CDR\MyBot6_5x\Profiles\Lipe\config.ini
+D [2017-01-02 22:09:10.346] Save Building Config C:\CDR\MyBot6_5x\Profiles\Lipe\building.ini
+D [2017-01-02 22:09:10.892] Read Building Config C:\CDR\MyBot6_5x\Profiles\Lipe\building.ini
+D [2017-01-02 22:09:10.905] Read Config C:\CDR\MyBot6_5x\Profiles\Lipe\config.ini
+D [2017-01-02 22:09:10.982] Apply Config
+D [2017-01-02 22:09:11.235] Disable GUI Controls
+D [2017-01-02 22:09:12.716] Redraw MyBot Window
+D [2017-01-02 22:09:12.749] Android Window Handle: 0x000927FE
+D [2017-01-02 22:09:12.750] InitiateLayout: MEmu_2 Android-ClientSize: 860 x 732
+D [2017-01-02 22:09:12.750] CheckScreenAndroid: Window size 908 x 770
+D [2017-01-02 22:09:13.003] MEmu font_scale = 1
+D [2017-01-02 22:09:13.114] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 22:09:13.380] Restore bot window to 1919, 269, caller: GUIControl_WM_NCACTIVATE
+D [2017-01-02 22:09:13.383] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2017-01-02 22:09:13.636]  My Bot v6.5.2.r2602 (MEmu_2) Powered by MyBot.run ~
+L [2017-01-02 22:09:13.647] MyBot.run.exe Executable running on WIN_10  X64
+L [2017-01-02 22:09:13.647] =================== Bot Start ====================
+L [2017-01-02 22:09:13.648] ------------------------  Current Profile: Lipe -------------------------
+L [2017-01-02 22:09:13.650] Trying to locate Main Screen
+D [2017-01-02 22:09:14.742] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 22:09:14.742] Center Village by: 10, 9
+D [2017-01-02 22:09:16.388] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:09:16.388] Village Offset updated to -1, -2, 1.00593562250845
+D [2017-01-02 22:09:16.392] Centered Village Offset: -1, -2, change: -11, -11
+L [2017-01-02 22:09:16.393] Main Screen Located
+D [2017-01-02 22:09:16.573] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:09:17.305] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:09:17.592] Detecting your Buildings..
+D [2017-01-02 22:09:18.405] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 22:09:18.594] Detecting your Village Theme
+D [2017-01-02 22:09:18.721] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 22:09:18.934] Snow Theme detected
+L [2017-01-02 22:09:21.773] Language setting is English: Correct.
+L [2017-01-02 22:09:22.782] Trying to locate Main Screen
+D [2017-01-02 22:09:23.200] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:09:23.301] Main Screen Located
+D [2017-01-02 22:09:27.398] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:09:28.115] Village Report
+L [2017-01-02 22:09:28.232]  [T]: 2 462
+L [2017-01-02 22:09:28.330]  [G]: 1 845 029 [E]: 1 796 648 [D]: 105 722 [GEM]: 2 898
+D [2017-01-02 22:09:29.108] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:09:29.112] _RunFunction: CleanYard BEGIN
+D [2017-01-02 22:09:29.112] _RunFunction: CleanYard END
+D [2017-01-02 22:09:29.113] _RunFunction: Collect BEGIN
+L [2017-01-02 22:09:29.845] Collecting Resources
+D [2017-01-02 22:09:32.348] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:09:35.041] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:09:35.045] Searching for a Loot Cart..
+L [2017-01-02 22:09:35.560] No Loot Cart found, Yard is clean!
+D [2017-01-02 22:09:37.350] _RunFunction: Collect END
+D [2017-01-02 22:09:37.350] _RunFunction: ReArm BEGIN
+L [2017-01-02 22:09:37.351] Checking if Village needs Rearming..
+L [2017-01-02 22:09:40.002] Rearm not needed!
+D [2017-01-02 22:09:41.844] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:09:42.049] _RunFunction: ReArm END
+D [2017-01-02 22:09:42.050] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 22:09:42.251] _RunFunction: CheckTombs END
+L [2017-01-02 22:09:42.251] Waiting, Add random delay of 27 seconds.
+D [2017-01-02 22:09:47.500] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:10:02.538] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:10:09.285] _RunFunction: NotifyReport BEGIN
+D [2017-01-02 22:10:10.056] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:10:10.261] _RunFunction: NotifyReport END
+D [2017-01-02 22:10:10.261] _RunFunction: BoostKing BEGIN
+D [2017-01-02 22:10:10.262] _RunFunction: BoostKing END
+D [2017-01-02 22:10:10.262] _RunFunction: ReplayShare BEGIN
+D [2017-01-02 22:10:10.463] _RunFunction: ReplayShare END
+D [2017-01-02 22:10:10.464] _RunFunction: RequestCC BEGIN
+L [2017-01-02 22:10:10.465] Requesting Clan Castle Troops
+L [2017-01-02 22:10:14.631] Your Clan Castle is already full or you are not in a clan.
+D [2017-01-02 22:10:16.458] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:10:16.462] _RunFunction: RequestCC END
+D [2017-01-02 22:10:16.462] _RunFunction: DonateCC,Train BEGIN
+D [2017-01-02 22:10:17.458] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:10:18.211] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:10:18.799] » Donation disabled, available troops 100%, limit 95%
+D [2017-01-02 22:10:20.033] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:10:22.004]  - Army Window Opened!
+L [2017-01-02 22:10:23.716] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:10:23.924]  - Archer Queen available
+L [2017-01-02 22:10:24.119] Total Spell(s) Capacity: 11/11
+L [2017-01-02 22:10:24.774] - Castle full/no clan.
+L [2017-01-02 22:10:24.938]  - Army Camp: 240/240
+L [2017-01-02 22:10:24.939]  - Spells: 11/11
+L [2017-01-02 22:10:24.939]  - Clan Castle: 35/35
+L [2017-01-02 22:10:24.940] Chief, are your Army ready for battle? Yes, they are!
+L [2017-01-02 22:10:25.613]  - 48 Archers Available
+L [2017-01-02 22:10:25.621]  - 16 Giants Available
+L [2017-01-02 22:10:25.622]  - 8 Wizards Available
+L [2017-01-02 22:10:25.623]  - 16 Hog Riders Available
+L [2017-01-02 22:10:26.005]  - 5 Lightning Spells Brewed
+L [2017-01-02 22:10:26.006]  - 1 Poison Spell Brewed
+L [2017-01-02 22:10:26.006]  - Your Army is Full, let's make troops before Attack!
+L [2017-01-02 22:10:32.172]  - Opened the Train Troops
+L [2017-01-02 22:10:32.179] Ice Wizard Troop not detected!
+D [2017-01-02 22:10:32.595] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:10:36.591]  - Opened the Brew Spells
+D [2017-01-02 22:10:40.063] AdbScreencap: 77/81/119 ms (all/10/1),115,0,l=815,t=135,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 22:10:45.559]  - Opened the Train Troops
+L [2017-01-02 22:10:45.913]  - Your army is: 240
+L [2017-01-02 22:10:45.914]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 22:10:47.531] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:10:47.602]  - Conditions met: FULL Queue and Not Full Army
+L [2017-01-02 22:10:49.731]  - Opened the Quick Train
+L [2017-01-02 22:10:50.732] Using Quick Train Tab.
+L [2017-01-02 22:10:50.809]  - All ok: Clicked On Army: 1| Pixel was :909090
+L [2017-01-02 22:10:50.810]  - If needed 'edit' the Army 1 before start the BOT!!!
+L [2017-01-02 22:10:51.061] Using Quick Train Tab.
+L [2017-01-02 22:10:51.137]  - All ok: Clicked On Army: 2| Pixel was :8D8D8D
+L [2017-01-02 22:10:51.138]  - If needed 'edit' the Army 2 before start the BOT!!!
+L [2017-01-02 22:10:51.389] Using Quick Train Tab.
+L [2017-01-02 22:10:51.487]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 22:10:51.488]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 22:10:51.739] Using Quick Train Tab.
+L [2017-01-02 22:10:51.837]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 22:10:51.838]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 22:10:52.091] Using Quick Train Tab.
+L [2017-01-02 22:10:52.168]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 22:10:52.193]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 22:10:52.444]  - Do nothing and hope Quick Train fills it
+L [2017-01-02 22:10:52.445]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 22:10:58.717]  - Opened the Train Troops
+D [2017-01-02 22:11:02.553] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:11:02.649]  - Army Window Closed!
+D [2017-01-02 22:11:04.382] _RunFunction: DonateCC,Train END
+D [2017-01-02 22:11:04.398] MEmu time lag is 0 sec/min (avg for 98 sec)
+D [2017-01-02 22:11:04.399] _RunFunction: BoostWarden BEGIN
+D [2017-01-02 22:11:04.400] _RunFunction: BoostWarden END
+D [2017-01-02 22:11:04.400] _RunFunction: BoostBarracks BEGIN
+D [2017-01-02 22:11:04.400] _RunFunction: BoostBarracks END
+D [2017-01-02 22:11:04.401] _RunFunction: BoostQueen BEGIN
+D [2017-01-02 22:11:04.401] _RunFunction: BoostQueen END
+D [2017-01-02 22:11:04.402] _RunFunction: BoostSpellFactory BEGIN
+D [2017-01-02 22:11:04.402] _RunFunction: BoostSpellFactory END
+D [2017-01-02 22:11:04.402] _RunFunction: UpgradeBuilding BEGIN
+D [2017-01-02 22:11:04.604] _RunFunction: UpgradeBuilding END
+D [2017-01-02 22:11:04.605] _RunFunction: UpgradeHeroes BEGIN
+D [2017-01-02 22:11:04.815] _RunFunction: UpgradeHeroes END
+D [2017-01-02 22:11:04.831] _RunFunction: Laboratory BEGIN
+D [2017-01-02 22:11:05.269] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:11:05.273] _RunFunction: Laboratory END
+L [2017-01-02 22:11:05.274] Checking Upgrade Walls
+D [2017-01-02 22:11:06.036] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:11:06.124] Elixir is below minimum, attempt to upgrade using Gold
+L [2017-01-02 22:11:06.125] Gold is below minimum, Skipping Upgrade
+D [2017-01-02 22:11:07.084] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:11:09.309] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:11:09.911] Going to Attack...
+L [2017-01-02 22:11:15.089] ==================================================
+L [2017-01-02 22:11:15.096] Aim:           [G+E]: 279000 [D]:    0 for: Dead Base
+L [2017-01-02 22:11:15.097] ==================================================
+D [2017-01-02 22:11:16.522] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, 9
+D [2017-01-02 22:11:16.522] Village Offset (VillageSearch) updated to 0, 9, 1.00593562250845
+L [2017-01-02 22:11:16.532]   1> [G]:  96897 [E]:  99604 [D]: 1043 [T]:24
+D [2017-01-02 22:11:17.655] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:11:26.757] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2017-01-02 22:11:26.757] Village Offset (VillageSearch) updated to 9, 9, 1.00593562250845
+L [2017-01-02 22:11:26.759]   2> [G]:  45845 [E]: 139727 [D]: 1284 [T]:29
+D [2017-01-02 22:11:32.666] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:11:37.259] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 1, 9
+D [2017-01-02 22:11:37.260] Village Offset (VillageSearch) updated to 1, 9, 1.00593562250845
+L [2017-01-02 22:11:38.181]   3> [G]: 271069 [E]: 334119 [D]: 2749 [T]:20
+L [2017-01-02 22:11:38.189]       Not a Dead Base
+D [2017-01-02 22:11:44.542] AdbScreencap: 75/64/46 ms (all/10/1),42,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:11:47.166] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 23, 9
+D [2017-01-02 22:11:47.166] Village Offset (VillageSearch) updated to 23, 9, 1.00758475874909
+D [2017-01-02 22:11:47.832] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:11:47.922]   4> [G]: 216053 [E]: 134070 [D]: 1733 [T]:24
+L [2017-01-02 22:11:47.929]       Not a Dead Base
+D [2017-01-02 22:11:57.826] GetVillageSize measured: 491.406698493947, Zoom factor: 1.03759240486618, Offset: 12, 8
+D [2017-01-02 22:11:57.827] Village Offset (VillageSearch) updated to 12, 8, 1.03759240486618
+L [2017-01-02 22:11:58.560]   5> [G]: 250576 [E]: 212038 [D]: 1428 [T]:28
+L [2017-01-02 22:11:58.567]       Not a Dead Base
+D [2017-01-02 22:12:02.761] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:12:07.193] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 12, 9
+D [2017-01-02 22:12:07.193] Village Offset (VillageSearch) updated to 12, 9, 1.00758475874909
+L [2017-01-02 22:12:07.885]   6> [G]: 294486 [E]: 484555 [D]: 1717 [T]:16
+L [2017-01-02 22:12:07.892]       Not a Dead Base
+D [2017-01-02 22:12:07.904] MEmu time lag is 0 sec/min (avg for 63 sec)
+D [2017-01-02 22:12:16.302] GetVillageSize measured: 480.787319352344, Zoom factor: 1.01516986326166, Offset: 9, 9
+D [2017-01-02 22:12:16.302] Village Offset (VillageSearch) updated to 9, 9, 1.01516986326166
+L [2017-01-02 22:12:16.304]   7> [G]: 131968 [E]: 140947 [D]: 3086 [T]:20
+D [2017-01-02 22:12:17.723] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:12:27.500] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 4, 9
+D [2017-01-02 22:12:27.500] Village Offset (VillageSearch) updated to 4, 9, 1.00593562250845
+L [2017-01-02 22:12:28.254]   8> [G]: 221697 [E]: 158023 [D]: 1201 [T]:15
+L [2017-01-02 22:12:28.262]       Not a Dead Base
+D [2017-01-02 22:12:32.852] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:12:37.654] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 18, 9
+D [2017-01-02 22:12:37.654] Village Offset (VillageSearch) updated to 18, 9, 1.00758475874909
+L [2017-01-02 22:12:37.656]   9> [G]: 107246 [E]: 123687 [D]:  824 [T]:22
+D [2017-01-02 22:12:46.853] AdbScreencap: 73/71/109 ms (all/10/1),104,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:12:47.914] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:12:48.292] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -21, 9
+D [2017-01-02 22:12:48.293] Village Offset (VillageSearch) updated to -21, 9, 1.00593562250845
+L [2017-01-02 22:12:49.018]  10> [G]: 295421 [E]: 165420 [D]: 3404 [T]:20
+L [2017-01-02 22:12:49.027]       Not a Dead Base
+D [2017-01-02 22:12:57.391] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: -8, 9
+D [2017-01-02 22:12:57.393] Village Offset (VillageSearch) updated to -8, 9, 1.00758475874909
+L [2017-01-02 22:12:58.103]  11> [G]: 433739 [E]: 231817 [D]: 1092 [T]:19
+L [2017-01-02 22:12:58.110]       Not a Dead Base
+D [2017-01-02 22:13:02.969] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:13:08.549] GetVillageSize measured: 477.976693880569, Zoom factor: 1.00923530101134, Offset: 5, 9
+D [2017-01-02 22:13:08.549] Village Offset (VillageSearch) updated to 5, 9, 1.00923530101134
+L [2017-01-02 22:13:09.333]  12> [G]: 132582 [E]: 315281 [D]: 1049 [T]:22
+L [2017-01-02 22:13:09.340]       Not a Dead Base
+D [2017-01-02 22:13:09.351] MEmu time lag is 0 sec/min (avg for 61 sec)
+D [2017-01-02 22:13:17.922] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:13:18.884] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 1, 9
+D [2017-01-02 22:13:18.885] Village Offset (VillageSearch) updated to 1, 9, 1.00593562250845
+L [2017-01-02 22:13:19.578]  13> [G]: 221657 [E]: 180988 [D]: 1427 [T]:18
+L [2017-01-02 22:13:19.585]       Not a Dead Base
+D [2017-01-02 22:13:27.501] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:13:27.502] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:13:28.381]  14> [G]: 404109 [E]: 131676 [D]: 3045 [T]:18
+L [2017-01-02 22:13:28.393]       Not a Dead Base
+D [2017-01-02 22:13:33.002] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:13:38.835] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 20, 9
+D [2017-01-02 22:13:38.836] Village Offset (VillageSearch) updated to 20, 9, 1.00593562250845
+L [2017-01-02 22:13:38.837]  15> [G]:  47038 [E]: 176990 [D]: 1166 [T]:25
+D [2017-01-02 22:13:47.293] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 16, 9
+D [2017-01-02 22:13:47.294] Village Offset (VillageSearch) updated to 16, 9, 1.00593562250845
+D [2017-01-02 22:13:47.980] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:13:47.982]  16> [G]: 299389 [E]: 467714 [D]:  179 [T]:26
+L [2017-01-02 22:13:47.989]       Not a Dead Base
+D [2017-01-02 22:13:54.208] AdbScreencap: 71/62/56 ms (all/10/1),52,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:13:56.024] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: -9, 9
+D [2017-01-02 22:13:56.025] Village Offset (VillageSearch) updated to -9, 9, 1.00758475874909
+L [2017-01-02 22:13:56.715]  17> [G]:  85700 [E]: 393923 [D]: 1165 [T]:25
+L [2017-01-02 22:13:56.722]       Not a Dead Base
+D [2017-01-02 22:14:03.032] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:14:06.398] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 22:14:06.399] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 22:14:07.104]  18> [G]: 280476 [E]: 124259 [D]: 1357 [T]:32
+L [2017-01-02 22:14:07.111]       Not a Dead Base
+D [2017-01-02 22:14:15.312] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 26, 9
+D [2017-01-02 22:14:15.313] Village Offset (VillageSearch) updated to 26, 9, 1.00593562250845
+L [2017-01-02 22:14:16.032]  19> [G]: 121345 [E]: 452183 [D]: 1963 [T]:20
+L [2017-01-02 22:14:16.039]       Not a Dead Base
+D [2017-01-02 22:14:16.051] MEmu time lag is 0 sec/min (avg for 66 sec)
+D [2017-01-02 22:14:18.068] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:14:26.119] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 7, 9
+D [2017-01-02 22:14:26.119] Village Offset (VillageSearch) updated to 7, 9, 1.00593562250845
+L [2017-01-02 22:14:26.836]  20> [G]: 443440 [E]: 274289 [D]: 3706 [T]:23
+L [2017-01-02 22:14:26.844]       Not a Dead Base
+D [2017-01-02 22:14:33.045] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:14:36.621] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 6, 9
+D [2017-01-02 22:14:36.621] Village Offset (VillageSearch) updated to 6, 9, 1.00593562250845
+L [2017-01-02 22:14:36.623]  21> [G]:  23159 [E]: 126436 [D]: 1244 [T]:22
+D [2017-01-02 22:14:45.049] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 17, 9
+D [2017-01-02 22:14:45.049] Village Offset (VillageSearch) updated to 17, 9, 1.00758475874909
+L [2017-01-02 22:14:45.774]  22> [G]: 193282 [E]: 162617 [D]: 3667 [T]:18
+L [2017-01-02 22:14:45.781]       Not a Dead Base
+D [2017-01-02 22:14:48.054] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:14:54.784] GetVillageSize measured: 487.972452678493, Zoom factor: 1.03034108455354, Offset: 1, 8
+D [2017-01-02 22:14:54.785] Village Offset (VillageSearch) updated to 1, 8, 1.03034108455354
+L [2017-01-02 22:14:54.787]  23> [G]:  98727 [E]:  41290 [D]: 3684 [T]:23
+D [2017-01-02 22:15:03.098] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:15:03.503] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:15:03.503] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:15:04.242]  24> [G]: 276420 [E]: 100490 [D]: 1943 [T]:27
+L [2017-01-02 22:15:04.250]       Not a Dead Base
+D [2017-01-02 22:15:10.079] AdbScreencap: 71/80/67 ms (all/10/1),62,0,l=572,t=285,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:15:13.000] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:15:13.001] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:15:13.003]  25> [G]:  45961 [E]: 161479 [D]: 1478 [T]:32
+D [2017-01-02 22:15:18.127] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:15:22.548] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 17, 9
+D [2017-01-02 22:15:22.549] Village Offset (VillageSearch) updated to 17, 9, 1.00758475874909
+L [2017-01-02 22:15:22.550]  26> [G]:  51375 [E]:   8849 [D]:  325 [T]:26
+D [2017-01-02 22:15:22.562] MEmu time lag is 0 sec/min (avg for 66 sec)
+D [2017-01-02 22:15:31.304] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:15:31.304] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:15:31.312]  27> [G]: 115056 [E]: 104289 [D]:  959 [T]:18
+D [2017-01-02 22:15:33.137] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:15:39.328] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 22:15:39.328] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 22:15:40.058]  28> [G]: 106550 [E]: 381814 [D]: 2088 [T]:23
+L [2017-01-02 22:15:40.066]       Not a Dead Base
+D [2017-01-02 22:15:48.187] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:15:50.075] GetVillageSize cannot find stone
+D [2017-01-02 22:15:50.757] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:15:51.758] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:15:51.760]  29> [G]:  67445 [E]: 134559 [D]: 3294 [T]:17
+D [2017-01-02 22:15:59.634] GetVillageSize measured: 492.188217751547, Zoom factor: 1.03924256235982, Offset: 8, 8
+D [2017-01-02 22:16:00.635] Village Offset (VillageSearch) updated to 8, 8, 1.03924256235982
+D [2017-01-02 22:16:01.331] GetVillageSize measured: 492.188217751547, Zoom factor: 1.03924256235982, Offset: 8, 8
+L [2017-01-02 22:16:03.049]  30> [G]: 221425 [E]: 487498 [D]: 2212 [T]:21
+L [2017-01-02 22:16:03.056]       Not a Dead Base
+D [2017-01-02 22:16:03.158] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:16:10.768] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2017-01-02 22:16:11.770] Village Offset (VillageSearch) updated to 9, 9, 1.00593562250845
+L [2017-01-02 22:16:12.479]  31> [G]: 105563 [E]: 288577 [D]: 1788 [T]:24
+L [2017-01-02 22:16:12.485]       Not a Dead Base
+D [2017-01-02 22:16:18.182] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:16:19.467] AdbScreencap: 70/69/67 ms (all/10/1),63,0,l=24,t=605,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:16:21.243] GetVillageSize measured: 491.406698493947, Zoom factor: 1.03759240486618, Offset: 7, 8
+D [2017-01-02 22:16:22.245] Village Offset (VillageSearch) updated to 7, 8, 1.03759240486618
+L [2017-01-02 22:16:22.963]  32> [G]: 302541 [E]: 185997 [D]: 1603 [T]:29
+L [2017-01-02 22:16:22.969]       Not a Dead Base
+D [2017-01-02 22:16:22.981] MEmu time lag is -1 sec/min (avg for 60 sec)
+D [2017-01-02 22:16:33.161] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:16:33.163] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 3, 9
+D [2017-01-02 22:16:34.165] Village Offset (VillageSearch) updated to 3, 9, 1.00593562250845
+L [2017-01-02 22:16:34.167]  33> [G]: 149758 [E]:  86753 [D]: 3615 [T]:24
+D [2017-01-02 22:16:42.957] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 7, 9
+D [2017-01-02 22:16:43.958] Village Offset (VillageSearch) updated to 7, 9, 1.00593562250845
+L [2017-01-02 22:16:44.736]  34> [G]: 373760 [E]: 284356 [D]: 1592 [T]:22
+L [2017-01-02 22:16:44.746]       Not a Dead Base
+D [2017-01-02 22:16:48.188] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:16:53.296] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 11, 9
+D [2017-01-02 22:16:54.297] Village Offset (VillageSearch) updated to 11, 9, 1.00593562250845
+L [2017-01-02 22:16:55.048]  35> [G]: 286770 [E]: 200009 [D]: 3681 [T]:32
+L [2017-01-02 22:16:55.055]       Not a Dead Base
+D [2017-01-02 22:17:03.261] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:17:06.058] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:17:07.059] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:17:07.061]  36> [G]:  98986 [E]: 149872 [D]: 2861 [T]:29
+L [2017-01-02 22:17:07.130] Returning Home
+L [2017-01-02 22:17:12.209] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:17:14.800] Trying to locate Main Screen
+D [2017-01-02 22:17:15.072] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 22:17:15.073] Center Village by: 10, 9
+D [2017-01-02 22:17:16.749] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:17:16.750] Village Offset updated to -1, -1, 1.00461725726901
+D [2017-01-02 22:17:16.751] Centered Village Offset: -1, -1, change: -11, -10
+L [2017-01-02 22:17:16.752] Main Screen Located
+D [2017-01-02 22:17:18.294] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:17:18.956] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:17:19.689] Restarted due search limit
+L [2017-01-02 22:17:21.776] Total Army Camp capacity: 240/240 (100%)
+D [2017-01-02 22:17:21.855] AdbScreencap: 70/86/78 ms (all/10/1),74,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 22:17:22.368] Going to Attack...
+L [2017-01-02 22:17:27.458] ================= Restart To Search ==================
+D [2017-01-02 22:17:28.890] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 7, 9
+D [2017-01-02 22:17:28.890] Village Offset (VillageSearch) updated to 7, 9, 1.00593562250845
+L [2017-01-02 22:17:28.894]  37> [G]:  76847 [E]:  88441 [D]: 1311 [T]:32
+D [2017-01-02 22:17:28.905] MEmu time lag is 0 sec/min (avg for 65 sec)
+D [2017-01-02 22:17:33.258] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:17:38.688] GetVillageSize measured: 490.782920521595, Zoom factor: 1.03627531397503, Offset: 4, 8
+D [2017-01-02 22:17:38.688] Village Offset (VillageSearch) updated to 4, 8, 1.03627531397503
+L [2017-01-02 22:17:38.690]  38> [G]: 132356 [E]:  81824 [D]: 2197 [T]:20
+D [2017-01-02 22:17:48.267] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:17:48.825] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 15, 9
+D [2017-01-02 22:17:48.825] Village Offset (VillageSearch) updated to 15, 9, 1.00593562250845
+L [2017-01-02 22:17:49.525]  39> [G]: 321808 [E]: 342311 [D]: 3667 [T]:30
+L [2017-01-02 22:17:49.532]       Not a Dead Base
+D [2017-01-02 22:17:58.872] GetVillageSize measured: 477.819583099209, Zoom factor: 1.00890356570134, Offset: -3, 10
+D [2017-01-02 22:17:58.872] Village Offset (VillageSearch) updated to -3, 10, 1.00890356570134
+L [2017-01-02 22:17:59.605]  40> [G]: 263564 [E]: 129053 [D]:  587 [T]:21
+L [2017-01-02 22:17:59.611]       Not a Dead Base
+D [2017-01-02 22:18:03.294] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:18:08.742] GetVillageSize measured: 476.57144557659, Zoom factor: 1.00626815593247, Offset: 6, 8
+D [2017-01-02 22:18:08.743] Village Offset (VillageSearch) updated to 6, 8, 1.00626815593247
+L [2017-01-02 22:18:09.467]  41> [G]: 110668 [E]: 315874 [D]: 5660 [T]:18
+L [2017-01-02 22:18:09.473]       Not a Dead Base
+D [2017-01-02 22:18:18.379] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:18:19.129] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 22:18:19.130] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 22:18:19.132]  42> [G]:  25791 [E]:  90331 [D]: 1153 [T]:21
+D [2017-01-02 22:18:26.353] AdbScreencap: 69/78/66 ms (all/10/1),62,0,l=48,t=69,w=90,h=16, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:18:26.669] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:18:26.671] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:18:27.521]  43> [G]: 224152 [E]:  70819 [D]:  361 [T]:32
+L [2017-01-02 22:18:27.528]       Not a Dead Base
+D [2017-01-02 22:18:33.322] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:18:38.021] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 25, 9
+D [2017-01-02 22:18:38.021] Village Offset (VillageSearch) updated to 25, 9, 1.00593562250845
+L [2017-01-02 22:18:38.698]  44> [G]: 242818 [E]: 126613 [D]: 3699 [T]:25
+L [2017-01-02 22:18:38.705]       Not a Dead Base
+D [2017-01-02 22:18:38.717] MEmu time lag is 0 sec/min (avg for 69 sec)
+D [2017-01-02 22:18:47.171] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -21, 9
+D [2017-01-02 22:18:47.172] Village Offset (VillageSearch) updated to -21, 9, 1.00593562250845
+L [2017-01-02 22:18:47.173]  45> [G]: 191368 [E]:  25420 [D]: 1280 [T]:16
+D [2017-01-02 22:18:48.387] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:18:58.267] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2017-01-02 22:18:58.268] Village Offset (VillageSearch) updated to 9, 9, 1.00593562250845
+L [2017-01-02 22:18:58.971]  46> [G]: 169982 [E]: 181017 [D]: 3844 [T]:18
+L [2017-01-02 22:18:58.979]       Not a Dead Base
+D [2017-01-02 22:19:03.379] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:19:08.727] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 22, 9
+D [2017-01-02 22:19:08.727] Village Offset (VillageSearch) updated to 22, 9, 1.00593562250845
+L [2017-01-02 22:19:08.729]  47> [G]: 103675 [E]: 104380 [D]: 1628 [T]:22
+D [2017-01-02 22:19:18.432] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:19:18.805] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:19:18.806] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:19:19.530]  48> [G]:  65476 [E]: 442493 [D]: 3876 [T]:18
+L [2017-01-02 22:19:19.537]       Not a Dead Base
+D [2017-01-02 22:19:28.624] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2017-01-02 22:19:28.624] Village Offset (VillageSearch) updated to 9, 9, 1.00593562250845
+L [2017-01-02 22:19:29.317]  49> [G]:  44604 [E]: 429948 [D]: 3583 [T]:19
+L [2017-01-02 22:19:29.324]       Not a Dead Base
+D [2017-01-02 22:19:33.475] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:19:38.987] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 1, 9
+D [2017-01-02 22:19:38.988] Village Offset (VillageSearch) updated to 1, 9, 1.00758475874909
+L [2017-01-02 22:19:38.000]  50> [G]:  90788 [E]: 182700 [D]: 3500 [T]:19
+D [2017-01-02 22:19:39.011] MEmu time lag is -1 sec/min (avg for 60 sec)
+D [2017-01-02 22:19:45.643] AdbScreencap: 69/65/87 ms (all/10/1),83,0,l=572,t=285,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:19:48.424] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:19:50.061] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:19:50.061] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:19:50.064]  51> [G]: 128903 [E]:  79700 [D]:  161 [T]:20
+D [2017-01-02 22:19:59.401] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 17, 9
+D [2017-01-02 22:19:59.402] Village Offset (VillageSearch) updated to 17, 9, 1.00593562250845
+L [2017-01-02 22:19:59.404]  52> [G]: 132307 [E]:  36620 [D]:  253 [T]:33
+D [2017-01-02 22:20:03.459] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:20:07.523] GetVillageSize measured: 488.595816591347, Zoom factor: 1.03165730116887, Offset: 16, 8
+D [2017-01-02 22:20:07.524] Village Offset (VillageSearch) updated to 16, 8, 1.03165730116887
+L [2017-01-02 22:20:08.246]  53> [G]: 116824 [E]: 338911 [D]:  927 [T]:30
+L [2017-01-02 22:20:08.252]       Not a Dead Base
+D [2017-01-02 22:20:18.405] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 17, 9
+D [2017-01-02 22:20:18.406] Village Offset (VillageSearch) updated to 17, 9, 1.00758475874909
+L [2017-01-02 22:20:18.408]  54> [G]:  84711 [E]:  75678 [D]: 1716 [T]:24
+D [2017-01-02 22:20:18.516] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:20:28.125] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -3, 8
+D [2017-01-02 22:20:28.125] Village Offset (VillageSearch) updated to -3, 8, 1.02110478399074
+L [2017-01-02 22:20:28.838]  55> [G]: 196391 [E]: 145951 [D]: 2516 [T]:33
+L [2017-01-02 22:20:28.848]       Not a Dead Base
+D [2017-01-02 22:20:33.512] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:20:38.605] GetVillageSize measured: 479.381985241978, Zoom factor: 1.01220253700484, Offset: 26, 8
+D [2017-01-02 22:20:38.606] Village Offset (VillageSearch) updated to 26, 8, 1.01220253700484
+L [2017-01-02 22:20:39.294]  56> [G]: 132829 [E]: 203182 [D]: 1192 [T]:22
+L [2017-01-02 22:20:39.302]       Not a Dead Base
+D [2017-01-02 22:20:39.313] MEmu time lag is 0 sec/min (avg for 60 sec)
+D [2017-01-02 22:20:47.407] AdbScreencap: 69/56/45 ms (all/10/1),41,0,l=24,t=605,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:20:48.453] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:20:50.660] GetVillageSize measured: 481.569346462008, Zoom factor: 1.01682109307166, Offset: 5, 9
+D [2017-01-02 22:20:50.661] Village Offset (VillageSearch) updated to 5, 9, 1.01682109307166
+L [2017-01-02 22:20:50.663]  57> [G]:  73884 [E]:  75476 [D]:  377 [T]:23
+D [2017-01-02 22:20:58.045] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 11, 9
+D [2017-01-02 22:20:58.045] Village Offset (VillageSearch) updated to 11, 9, 1.00593562250845
+L [2017-01-02 22:20:58.047]  58> [G]:  95325 [E]: 122301 [D]:  767 [T]:19
+D [2017-01-02 22:21:03.522] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:21:08.440] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 8, 9
+D [2017-01-02 22:21:08.441] Village Offset (VillageSearch) updated to 8, 9, 1.00593562250845
+L [2017-01-02 22:21:09.145]  59> [G]: 178953 [E]: 270304 [D]: 1392 [T]:19
+L [2017-01-02 22:21:09.152]       Not a Dead Base
+D [2017-01-02 22:21:18.522] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:21:20.838] GetVillageSize measured: 489.220204833088, Zoom factor: 1.03297568062789, Offset: 16, 8
+D [2017-01-02 22:21:20.839] Village Offset (VillageSearch) updated to 16, 8, 1.03297568062789
+L [2017-01-02 22:21:20.841]  60> [G]:  65204 [E]: 147537 [D]: 1488 [T]:28
+D [2017-01-02 22:21:29.713] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 12, 9
+D [2017-01-02 22:21:29.714] Village Offset (VillageSearch) updated to 12, 9, 1.00758475874909
+L [2017-01-02 22:21:29.716]  61> [G]: 118391 [E]: 110382 [D]:  966 [T]:16
+D [2017-01-02 22:21:33.546] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:21:37.809] GetVillageSize cannot find stone
+D [2017-01-02 22:21:38.481] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 16, 9
+D [2017-01-02 22:21:39.483] Village Offset (VillageSearch) updated to 16, 9, 1.00593562250845
+L [2017-01-02 22:21:39.485]  62> [G]:  67348 [E]: 155928 [D]:  289 [T]:23
+D [2017-01-02 22:21:39.496] MEmu time lag is 0 sec/min (avg for 60 sec)
+D [2017-01-02 22:21:47.114] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 3, 9
+D [2017-01-02 22:21:48.115] Village Offset (VillageSearch) updated to 3, 9, 1.00593562250845
+D [2017-01-02 22:21:48.853] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:21:48.856]  63> [G]: 441796 [E]: 298709 [D]: 3087 [T]:18
+L [2017-01-02 22:21:48.864]       Not a Dead Base
+D [2017-01-02 22:21:54.600] AdbScreencap: 68/65/66 ms (all/10/1),62,0,l=69,t=607,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:21:57.992] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:21:58.994] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:21:59.688]  64> [G]: 197204 [E]: 151354 [D]: 2136 [T]:22
+L [2017-01-02 22:21:59.696]       Not a Dead Base
+D [2017-01-02 22:22:03.605] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:22:09.118] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:22:10.119] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:22:10.842]  65> [G]: 212570 [E]: 112295 [D]: 4242 [T]:16
+L [2017-01-02 22:22:10.850]       Not a Dead Base
+D [2017-01-02 22:22:18.573] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:22:19.874] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 16, 9
+D [2017-01-02 22:22:20.875] Village Offset (VillageSearch) updated to 16, 9, 1.01648779659513
+D [2017-01-02 22:22:21.567] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 16, 9
+L [2017-01-02 22:22:23.327]  66> [G]: 328210 [E]: 473995 [D]: 3825 [T]:24
+L [2017-01-02 22:22:23.334]       Not a Dead Base
+D [2017-01-02 22:22:31.754] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 22:22:32.755] Village Offset (VillageSearch) updated to 10, 9, 1.00593562250845
+L [2017-01-02 22:22:33.443]  67> [G]:  89045 [E]: 233837 [D]:  356 [T]:23
+L [2017-01-02 22:22:33.450]       Not a Dead Base
+D [2017-01-02 22:22:33.556] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:22:42.309] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 22:22:43.310] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 22:22:43.312]  68> [G]:  74344 [E]:  63510 [D]: 1564 [T]:18
+D [2017-01-02 22:22:43.324] MEmu time lag is 0 sec/min (avg for 63 sec)
+D [2017-01-02 22:22:48.571] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:22:52.089] GetVillageSize measured: 479.381985241978, Zoom factor: 1.01220253700484, Offset: 2, 8
+D [2017-01-02 22:22:53.090] Village Offset (VillageSearch) updated to 2, 8, 1.01220253700484
+L [2017-01-02 22:22:53.846]  69> [G]:  80289 [E]: 322457 [D]: 1951 [T]:25
+L [2017-01-02 22:22:53.853]       Not a Dead Base
+D [2017-01-02 22:23:03.607] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:23:04.682] GetVillageSize measured: 486.409077215769, Zoom factor: 1.02704005811037, Offset: -5, 8
+D [2017-01-02 22:23:05.682] Village Offset (VillageSearch) updated to -5, 8, 1.02704005811037
+L [2017-01-02 22:23:06.447]  70> [G]: 332587 [E]: 345661 [D]: 1380 [T]:29
+L [2017-01-02 22:23:06.457]       Not a Dead Base
+D [2017-01-02 22:23:12.112] AdbScreencap: 68/74/88 ms (all/10/1),83,0,l=24,t=605,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:23:14.163] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 12, 9
+D [2017-01-02 22:23:15.166] Village Offset (VillageSearch) updated to 12, 9, 1.00593562250845
+L [2017-01-02 22:23:15.168]  71> [G]: 113336 [E]: 132971 [D]: 2182 [T]:24
+D [2017-01-02 22:23:18.678] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:23:24.057] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 7, 9
+D [2017-01-02 22:23:25.058] Village Offset (VillageSearch) updated to 7, 9, 1.00593562250845
+L [2017-01-02 22:23:25.791]  72> [G]: 207874 [E]: 249050 [D]: 5814 [T]:21
+L [2017-01-02 22:23:25.798]       Not a Dead Base
+L [2017-01-02 22:23:25.866] Returning Home
+L [2017-01-02 22:23:30.992] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:23:33.083] Trying to locate Main Screen
+D [2017-01-02 22:23:33.335] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 22:23:33.336] Center Village by: 10, 9
+D [2017-01-02 22:23:33.803] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:23:35.055] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:23:35.056] Village Offset updated to -1, -1, 1.00461725726901
+D [2017-01-02 22:23:35.057] Centered Village Offset: -1, -1, change: -11, -10
+L [2017-01-02 22:23:35.058] Main Screen Located
+L [2017-01-02 22:23:37.318] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:23:37.978] Restarted due search limit
+L [2017-01-02 22:23:40.147] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:23:40.727] Going to Attack...
+L [2017-01-02 22:23:45.877] ================= Restart To Search ==================
+D [2017-01-02 22:23:47.307] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 12, 9
+D [2017-01-02 22:23:47.308] Village Offset (VillageSearch) updated to 12, 9, 1.00593562250845
+L [2017-01-02 22:23:47.314]  73> [G]: 119129 [E]: 122317 [D]:  460 [T]:32
+D [2017-01-02 22:23:47.331] MEmu time lag is 0 sec/min (avg for 64 sec)
+D [2017-01-02 22:23:48.839] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:23:56.698] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 18, 9
+D [2017-01-02 22:23:56.699] Village Offset (VillageSearch) updated to 18, 9, 1.00758475874909
+L [2017-01-02 22:23:56.701]  74> [G]: 149169 [E]: 120787 [D]: 1658 [T]:19
+D [2017-01-02 22:24:03.879] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:24:06.285] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:24:06.286] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:24:07.006]  75> [G]: 454554 [E]:   6613 [D]: 3414 [T]:28
+L [2017-01-02 22:24:07.013]       Not a Dead Base
+D [2017-01-02 22:24:14.542] AdbScreencap: 69/67/67 ms (all/10/1),63,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:24:16.766] GetVillageSize measured: 486.409077215769, Zoom factor: 1.02704005811037, Offset: 16, 8
+D [2017-01-02 22:24:16.766] Village Offset (VillageSearch) updated to 16, 8, 1.02704005811037
+L [2017-01-02 22:24:17.573]  76> [G]: 166426 [E]: 168195 [D]: 1213 [T]:32
+L [2017-01-02 22:24:17.582]       Not a Dead Base
+D [2017-01-02 22:24:18.900] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:24:25.713] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 22:24:25.713] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 22:24:26.478]  77> [G]: 189658 [E]: 410598 [D]: 1497 [T]:28
+L [2017-01-02 22:24:26.485]       Not a Dead Base
+D [2017-01-02 22:24:33.864] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:24:36.108] GetVillageSize measured: 476.57144557659, Zoom factor: 1.00626815593247, Offset: -20, 8
+D [2017-01-02 22:24:36.109] Village Offset (VillageSearch) updated to -20, 8, 1.00626815593247
+L [2017-01-02 22:24:36.834]  78> [G]: 181345 [E]: 160459 [D]:  684 [T]:21
+L [2017-01-02 22:24:36.840]       Not a Dead Base
+D [2017-01-02 22:24:46.425] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -6, 9
+D [2017-01-02 22:24:46.426] Village Offset (VillageSearch) updated to -6, 9, 1.00593562250845
+L [2017-01-02 22:24:46.428]  79> [G]:  59545 [E]: 166951 [D]:  584 [T]:21
+D [2017-01-02 22:24:48.944] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:24:55.625] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2017-01-02 22:24:55.626] Village Offset (VillageSearch) updated to 9, 9, 1.00593562250845
+L [2017-01-02 22:24:55.628]  80> [G]: 105099 [E]: 137358 [D]: 2148 [T]:27
+D [2017-01-02 22:24:55.639] MEmu time lag is 0 sec/min (avg for 68 sec)
+D [2017-01-02 22:25:03.964] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:25:04.455] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, 9
+D [2017-01-02 22:25:04.455] Village Offset (VillageSearch) updated to -1, 9, 1.00593562250845
+L [2017-01-02 22:25:05.196]  81> [G]: 168618 [E]: 416416 [D]:  954 [T]:25
+L [2017-01-02 22:25:05.202]       Not a Dead Base
+D [2017-01-02 22:25:16.811] AdbScreencap: 68/63/68 ms (all/10/1),62,0,l=0,t=0,w=860,h=732, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:25:16.921] GetVillageSize measured: 482.817080817202, Zoom factor: 1.01945565156304, Offset: 11, 9
+D [2017-01-02 22:25:16.922] Village Offset (VillageSearch) updated to 11, 9, 1.01945565156304
+L [2017-01-02 22:25:16.925]  82> [G]: 156314 [E]:  81310 [D]: 4295 [T]:26
+D [2017-01-02 22:25:18.904] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:25:26.128] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 11, 9
+D [2017-01-02 22:25:26.128] Village Offset (VillageSearch) updated to 11, 9, 1.00593562250845
+L [2017-01-02 22:25:26.842]  83> [G]: 259172 [E]: 306843 [D]: 4958 [T]:24
+L [2017-01-02 22:25:26.850]       Not a Dead Base
+D [2017-01-02 22:25:33.943] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:25:38.038] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 16, 9
+D [2017-01-02 22:25:38.040] Village Offset (VillageSearch) updated to 16, 9, 1.00593562250845
+L [2017-01-02 22:25:38.728]  84> [G]: 123127 [E]: 291941 [D]:  770 [T]:17
+L [2017-01-02 22:25:38.734]       Not a Dead Base
+D [2017-01-02 22:25:48.181] GetVillageSize measured: 485.003575136208, Zoom factor: 1.02407237719099, Offset: 10, 8
+D [2017-01-02 22:25:48.182] Village Offset (VillageSearch) updated to 10, 8, 1.02407237719099
+D [2017-01-02 22:25:48.949] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:25:49.106]  85> [G]: 326910 [E]: 327500 [D]: 4093 [T]:30
+L [2017-01-02 22:25:49.115]       Dead Base Found!
+L [2017-01-02 22:25:50.553] ================ Search Complete =================
+L [2017-01-02 22:25:50.564] Initiating attack for: Dead Base
+L [2017-01-02 22:25:51.692] 0 » 48 Archers
+L [2017-01-02 22:25:51.693] 1 » 16 Giants
+L [2017-01-02 22:25:51.694] 2 » 8 Wizards
+L [2017-01-02 22:25:51.695] 3 » 16 Hog Riders
+L [2017-01-02 22:25:51.696] 4 » 1 Clan Castle
+L [2017-01-02 22:25:51.697] 5 » 1 Queen
+L [2017-01-02 22:25:51.697]  ====== Start Attack ====== 
+L [2017-01-02 22:25:53.699] Attacking Multi finger fight style
+L [2017-01-02 22:25:54.701] ===============Multi Finger Attack================
+L [2017-01-02 22:25:54.702] Attacking Eight Finger Blossom fight style.
+L [2017-01-02 22:25:54.703] Calculating attack vectors for all troop deployments, please be patient...
+L [2017-01-02 22:26:00.202] Dropping Clan Castle
+L [2017-01-02 22:26:01.501] Dropping Queen
+L [2017-01-02 22:26:02.517] Finished Attacking, waiting for the battle to end
+L [2017-01-02 22:26:02.619] Dropping left over troops
+L [2017-01-02 22:26:02.620] Checking remaining unused troops for: Dead Base
+L [2017-01-02 22:26:03.415] Finished Attacking, waiting for the battle to end
+L [2017-01-02 22:26:03.594] Checking if the battle has finished
+D [2017-01-02 22:26:03.962] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:26:05.985] detected [G]: 290550 [E]: 110783 [DE]: 4093 |  Exit in 18 sec.
+L [2017-01-02 22:26:06.006] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:26:09.414] detected [G]: 255389 [E]: 98649 [DE]: 4064 |  Exit in 18 sec.
+L [2017-01-02 22:26:09.435] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:26:12.804] detected [G]: 233071 [E]: 96225 [DE]: 4006 |  Exit in 18 sec.
+L [2017-01-02 22:26:12.824] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 22:26:13.903] AdbScreencap: 68/79/77 ms (all/10/1),73,0,l=48,t=69,w=90,h=16, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 22:26:16.133] detected [G]: 225793 [E]: 67113 [DE]: 4006 |  Exit in 18 sec.
+L [2017-01-02 22:26:16.154] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 22:26:19.064] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:26:19.432] detected [G]: 217302 [E]: 67113 [DE]: 2714 |  Exit in 18 sec.
+L [2017-01-02 22:26:19.452] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:26:22.777] detected [G]: 208811 [E]: 67113 [DE]: 2714 |  Exit in 18 sec.
+L [2017-01-02 22:26:22.797] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:26:24.581] Queen is getting weak, Activating Queen's power
+L [2017-01-02 22:26:26.375] detected [G]: 208321 [E]: 67113 [DE]: 2714 |  Exit in 18 sec.
+L [2017-01-02 22:26:26.395] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:26:29.792] detected [G]: 208321 [E]: 67113 [DE]: 2714 |  Exit in 18 sec.
+L [2017-01-02 22:26:31.525] detected [G]: 208321 [E]: 67106 [DE]: 2714 |  Exit in 16 sec.
+L [2017-01-02 22:26:31.547] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 22:26:34.068] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:26:34.953] detected [G]: 208321 [E]: 67100 [DE]: 2714 |  Exit in 18 sec.
+L [2017-01-02 22:26:36.653] detected [G]: 208321 [E]: 67100 [DE]: 2714 |  Exit in 16 sec.
+L [2017-01-02 22:26:38.375] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in 14 sec.
+L [2017-01-02 22:26:38.396] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:26:41.793] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in 18 sec.
+L [2017-01-02 22:26:43.494] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in 16 sec.
+L [2017-01-02 22:26:45.208] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in 14 sec.
+L [2017-01-02 22:26:46.911] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in 13 sec.
+L [2017-01-02 22:26:48.612] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in 11 sec.
+D [2017-01-02 22:26:49.037] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:26:50.359] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  9 sec.
+L [2017-01-02 22:26:52.085] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  8 sec.
+L [2017-01-02 22:26:53.793] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  6 sec.
+L [2017-01-02 22:26:55.494] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  4 sec.
+L [2017-01-02 22:26:57.230] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  2 sec.
+L [2017-01-02 22:26:58.921] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  1 sec.
+L [2017-01-02 22:27:00.651] detected [G]: 208320 [E]: 67100 [DE]: 2714 |  Exit in  0 sec.
+L [2017-01-02 22:27:00.672] Gold & Elixir & DE no change detected, exit
+L [2017-01-02 22:27:00.731] Returning Home
+D [2017-01-02 22:27:03.469] MEmu time lag is 0 sec/min (avg for 127 sec)
+D [2017-01-02 22:27:04.054] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:27:07.089] Loot: [G]: 118 590 [E]: 260 400 [DE]: 1 379 [T]: -19
+L [2017-01-02 22:27:07.096] Stars earned: 0
+L [2017-01-02 22:27:13.869] Trying to locate Main Screen
+D [2017-01-02 22:27:14.119] GetVillageSize measured: 484.379807083015, Zoom factor: 1.02275530724389, Offset: 10, 8
+D [2017-01-02 22:27:14.119] Village Offset updated to 10, 8, 1.02275530724389
+L [2017-01-02 22:27:14.121] Zooming Out
+D [2017-01-02 22:27:15.927] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: 11, 9
+D [2017-01-02 22:27:15.928] Center Village by: 11, 9
+D [2017-01-02 22:27:17.648] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+D [2017-01-02 22:27:17.648] Village Offset updated to -2, -3, 1.02110478399074
+D [2017-01-02 22:27:17.655] Centered Village Offset: -2, -3, change: -13, -12
+L [2017-01-02 22:27:17.656] Main Screen Located
+D [2017-01-02 22:27:19.133] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:27:22.395] Total Army Camp capacity: 240/240 (100%)
+D [2017-01-02 22:27:23.083] AdbScreencap: 68/80/98 ms (all/10/1),94,0,l=72,t=85,w=50,h=16, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:27:24.142] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+L [2017-01-02 22:27:24.857] Village Report
+L [2017-01-02 22:27:24.953]  [T]: 2 443
+L [2017-01-02 22:27:25.053]  [G]: 2 061 247 [E]: 2 181 420 [D]: 107 101 [GEM]: 2 898
+D [2017-01-02 22:27:25.882] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+D [2017-01-02 22:27:25.886] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 22:27:26.087] _RunFunction: CheckTombs END
+D [2017-01-02 22:27:26.088] _RunFunction: ReArm BEGIN
+D [2017-01-02 22:27:26.289] _RunFunction: ReArm END
+D [2017-01-02 22:27:26.289] _RunFunction: Collect BEGIN
+L [2017-01-02 22:27:27.076] Collecting Resources
+D [2017-01-02 22:27:33.972] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+L [2017-01-02 22:27:33.977] Searching for a Loot Cart..
+D [2017-01-02 22:27:34.481] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:27:34.484] No Loot Cart found, Yard is clean!
+D [2017-01-02 22:27:36.204] _RunFunction: Collect END
+D [2017-01-02 22:27:36.205] _RunFunction: CleanYard BEGIN
+D [2017-01-02 22:27:36.205] _RunFunction: CleanYard END
+L [2017-01-02 22:27:36.206] Waiting, Add random delay of 29 seconds.
+D [2017-01-02 22:27:49.107] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:28:04.120] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:28:05.232] _RunFunction: BoostKing BEGIN
+D [2017-01-02 22:28:05.233] _RunFunction: BoostKing END
+D [2017-01-02 22:28:05.245] MEmu time lag is 0 sec/min (avg for 61 sec)
+D [2017-01-02 22:28:05.245] _RunFunction: DonateCC,Train BEGIN
+L [2017-01-02 22:28:05.246] » Donation disabled, available troops 100%, limit 95%
+D [2017-01-02 22:28:06.504] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+L [2017-01-02 22:28:08.366]  - Army Window Opened!
+L [2017-01-02 22:28:10.046] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:28:10.391]  - Archer Queen will recover in 00:44:00
+L [2017-01-02 22:28:10.579] Total Spell(s) Capacity: 11/11
+L [2017-01-02 22:28:11.264] Requesting Clan Castle Troops
+D [2017-01-02 22:28:16.773] Page error count increased to 1, source: IsMainPage
+D [2017-01-02 22:28:19.169] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:28:25.948]  - Army Camp: 240/240
+L [2017-01-02 22:28:25.949]  - Spells: 11/11
+L [2017-01-02 22:28:25.950]  - Clan Castle: 0/35
+L [2017-01-02 22:28:25.951] Chief, are your Army ready for battle? Yes, they are!
+L [2017-01-02 22:28:26.590]  - 12 Dragons Available
+L [2017-01-02 22:28:26.963]  - 5 Lightning Spells Brewed
+L [2017-01-02 22:28:26.964]  - 1 Poison Spell Brewed
+L [2017-01-02 22:28:26.965]  - Your Army is Full, let's make troops before Attack!
+L [2017-01-02 22:28:33.150]  - Opened the Train Troops
+D [2017-01-02 22:28:34.239] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:28:34.751] AdbScreencap: 69/84/81 ms (all/10/1),69,0,l=815,t=135,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 22:28:37.583]  - Opened the Brew Spells
+L [2017-01-02 22:28:46.300]  - Opened the Train Troops
+L [2017-01-02 22:28:48.765]  - Opened the Quick Train
+D [2017-01-02 22:28:49.275] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:28:49.767] Using Quick Train Tab.
+L [2017-01-02 22:28:49.854] Making the Army 1
+L [2017-01-02 22:28:51.107] Using Quick Train Tab.
+L [2017-01-02 22:28:51.196] Making the Army 2
+L [2017-01-02 22:28:52.448] Using Quick Train Tab.
+L [2017-01-02 22:28:52.536]  - All ok: Clicked On Army: 3| Pixel was :8B8B8B
+L [2017-01-02 22:28:52.537]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 22:28:52.788] Using Quick Train Tab.
+L [2017-01-02 22:28:52.865]  - All ok: Clicked On Army: 3| Pixel was :8B8B8B
+L [2017-01-02 22:28:52.866]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 22:28:53.118] Using Quick Train Tab.
+L [2017-01-02 22:28:53.195]  - All ok: Clicked On Army: 3| Pixel was :8B8B8B
+L [2017-01-02 22:28:53.196]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 22:28:55.664]  - Army Window Closed!
+D [2017-01-02 22:28:57.409] _RunFunction: DonateCC,Train END
+D [2017-01-02 22:28:57.410] _RunFunction: BoostBarracks BEGIN
+D [2017-01-02 22:28:57.410] _RunFunction: BoostBarracks END
+D [2017-01-02 22:28:57.411] _RunFunction: RequestCC BEGIN
+D [2017-01-02 22:28:58.659] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+D [2017-01-02 22:28:58.663] _RunFunction: RequestCC END
+D [2017-01-02 22:28:58.664] _RunFunction: BoostWarden BEGIN
+D [2017-01-02 22:28:58.664] _RunFunction: BoostWarden END
+D [2017-01-02 22:28:58.664] _RunFunction: BoostQueen BEGIN
+D [2017-01-02 22:28:58.665] _RunFunction: BoostQueen END
+D [2017-01-02 22:28:58.665] _RunFunction: ReplayShare BEGIN
+D [2017-01-02 22:28:58.866] _RunFunction: ReplayShare END
+D [2017-01-02 22:28:58.867] _RunFunction: BoostSpellFactory BEGIN
+D [2017-01-02 22:28:58.867] _RunFunction: BoostSpellFactory END
+D [2017-01-02 22:28:58.868] _RunFunction: NotifyReport BEGIN
+D [2017-01-02 22:28:59.629] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+D [2017-01-02 22:28:59.835] _RunFunction: NotifyReport END
+D [2017-01-02 22:28:59.836] _RunFunction: Laboratory BEGIN
+D [2017-01-02 22:29:00.296] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+D [2017-01-02 22:29:00.300] _RunFunction: Laboratory END
+D [2017-01-02 22:29:00.300] _RunFunction: UpgradeBuilding BEGIN
+D [2017-01-02 22:29:00.501] _RunFunction: UpgradeBuilding END
+D [2017-01-02 22:29:00.502] _RunFunction: UpgradeHeroes BEGIN
+D [2017-01-02 22:29:00.703] _RunFunction: UpgradeHeroes END
+L [2017-01-02 22:29:00.704] Checking Upgrade Walls
+D [2017-01-02 22:29:01.462] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+L [2017-01-02 22:29:01.561] Elixir is below minimum, attempt to upgrade using Gold
+L [2017-01-02 22:29:01.561] Gold is below minimum, Skipping Upgrade
+D [2017-01-02 22:29:02.436] GetVillageSize measured: 483.598114600674, Zoom factor: 1.02110478399074, Offset: -2, -3
+D [2017-01-02 22:29:04.284] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:29:04.684] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:29:05.263] Going to Attack...
+L [2017-01-02 22:29:10.370] ==================================================
+L [2017-01-02 22:29:10.378] Aim:           [G+E]: 279000 [D]:    0 for: Dead Base
+L [2017-01-02 22:29:10.379] ==================================================
+D [2017-01-02 22:29:11.806] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 17, 9
+D [2017-01-02 22:29:11.806] Village Offset (VillageSearch) updated to 17, 9, 1.00593562250845
+L [2017-01-02 22:29:12.519]   1> [G]: 436502 [E]: 246682 [D]: 2849 [T]:20
+L [2017-01-02 22:29:12.527]       Not a Dead Base
+D [2017-01-02 22:29:12.538] MEmu time lag is 0 sec/min (avg for 67 sec)
+D [2017-01-02 22:29:19.363] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:29:21.794] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 30, 9
+D [2017-01-02 22:29:21.795] Village Offset (VillageSearch) updated to 30, 9, 1.00593562250845
+L [2017-01-02 22:29:22.518]   2> [G]: 405473 [E]: 195196 [D]: 1186 [T]:21
+L [2017-01-02 22:29:22.526]       Not a Dead Base
+D [2017-01-02 22:29:30.534] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -4, 9
+D [2017-01-02 22:29:30.534] Village Offset (VillageSearch) updated to -4, 9, 1.00593562250845
+L [2017-01-02 22:29:31.239]   3> [G]: 262339 [E]: 291861 [D]: 3339 [T]:30
+L [2017-01-02 22:29:31.247]       Not a Dead Base
+D [2017-01-02 22:29:34.322] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:29:39.186] GetVillageSize measured: 480.787319352344, Zoom factor: 1.01516986326166, Offset: 9, 9
+D [2017-01-02 22:29:39.186] Village Offset (VillageSearch) updated to 9, 9, 1.01516986326166
+L [2017-01-02 22:29:39.189]   4> [G]:  60327 [E]:  59954 [D]: 1265 [T]:27
+D [2017-01-02 22:29:45.577] AdbScreencap: 69/83/90 ms (all/10/1),86,0,l=24,t=605,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:29:47.998] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, 9
+D [2017-01-02 22:29:47.999] Village Offset (VillageSearch) updated to 0, 9, 1.00593562250845
+L [2017-01-02 22:29:48.705]   5> [G]: 412037 [E]: 412267 [D]: 1264 [T]:25
+L [2017-01-02 22:29:48.713]       Not a Dead Base
+D [2017-01-02 22:29:49.330] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:29:56.553] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 13, 9
+D [2017-01-02 22:29:56.553] Village Offset (VillageSearch) updated to 13, 9, 1.00758475874909
+L [2017-01-02 22:29:57.288]   6> [G]: 126967 [E]: 290340 [D]: 1713 [T]:15
+L [2017-01-02 22:29:57.295]       Not a Dead Base
+D [2017-01-02 22:30:04.407] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:30:06.753] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -21, 9
+D [2017-01-02 22:30:06.754] Village Offset (VillageSearch) updated to -21, 9, 1.00593562250845
+L [2017-01-02 22:30:07.456]   7> [G]: 175900 [E]: 404780 [D]:  557 [T]:18
+L [2017-01-02 22:30:07.464]       Not a Dead Base
+D [2017-01-02 22:30:18.063] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: 14, 9
+D [2017-01-02 22:30:18.064] Village Offset (VillageSearch) updated to 14, 9, 1.01055234955638
+L [2017-01-02 22:30:18.799]   8> [G]: 475839 [E]: 474855 [D]: 1244 [T]:16
+L [2017-01-02 22:30:18.807]       Not a Dead Base
+D [2017-01-02 22:30:18.819] MEmu time lag is 0 sec/min (avg for 66 sec)
+D [2017-01-02 22:30:19.431] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:30:28.399] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:30:28.400] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:30:29.099]   9> [G]: 286129 [E]:  92565 [D]: 1030 [T]:23
+L [2017-01-02 22:30:29.106]       Not a Dead Base
+D [2017-01-02 22:30:34.411] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:30:38.604] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 22:30:38.604] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 22:30:38.606]  10> [G]:  44322 [E]:  36478 [D]:  800 [T]:22
+D [2017-01-02 22:30:49.076] GetVillageSize measured: 491.406698493947, Zoom factor: 1.03759240486618, Offset: 9, 8
+D [2017-01-02 22:30:49.077] Village Offset (VillageSearch) updated to 9, 8, 1.03759240486618
+L [2017-01-02 22:30:49.079]  11> [G]:  43526 [E]:  57744 [D]:  278 [T]:31
+D [2017-01-02 22:30:49.389] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:30:58.500] AdbScreencap: 69/57/56 ms (all/10/1),52,0,l=24,t=605,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:30:59.867] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 8, 9
+D [2017-01-02 22:30:59.868] Village Offset (VillageSearch) updated to 8, 9, 1.00758475874909
+L [2017-01-02 22:30:59.870]  12> [G]:  24754 [E]: 159051 [D]:  344 [T]:22
+D [2017-01-02 22:31:04.400] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:31:07.890] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 2, 9
+D [2017-01-02 22:31:07.890] Village Offset (VillageSearch) updated to 2, 9, 1.00758475874909
+L [2017-01-02 22:31:07.893]  13> [G]:  52025 [E]: 103209 [D]: 1320 [T]:18
+D [2017-01-02 22:31:17.458] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 23, 9
+D [2017-01-02 22:31:17.459] Village Offset (VillageSearch) updated to 23, 9, 1.00758475874909
+L [2017-01-02 22:31:17.461]  14> [G]: 114290 [E]: 140045 [D]: 1161 [T]:33
+D [2017-01-02 22:31:19.543] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:31:25.741] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: 7, 9
+D [2017-01-02 22:31:25.742] Village Offset (VillageSearch) updated to 7, 9, 1.00758475874909
+L [2017-01-02 22:31:26.593]  15> [G]: 295984 [E]:  94794 [D]: 1753 [T]:34
+L [2017-01-02 22:31:26.601]       Not a Dead Base
+D [2017-01-02 22:31:26.613] MEmu time lag is 0 sec/min (avg for 67 sec)
+D [2017-01-02 22:31:34.555] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:31:37.487] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 22, 9
+D [2017-01-02 22:31:37.488] Village Offset (VillageSearch) updated to 22, 9, 1.00593562250845
+L [2017-01-02 22:31:38.236]  16> [G]: 182873 [E]: 424541 [D]: 3310 [T]:26
+L [2017-01-02 22:31:38.245]       Not a Dead Base
+D [2017-01-02 22:31:48.734] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 6, 9
+D [2017-01-02 22:31:48.734] Village Offset (VillageSearch) updated to 6, 9, 1.00593562250845
+D [2017-01-02 22:31:49.537] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:31:49.542]  17> [G]: 358532 [E]: 315734 [D]: 2574 [T]:16
+L [2017-01-02 22:31:49.550]       Not a Dead Base
+D [2017-01-02 22:32:00.847] GetVillageSize measured: 476.57144557659, Zoom factor: 1.00626815593247, Offset: -20, 8
+D [2017-01-02 22:32:00.848] Village Offset (VillageSearch) updated to -20, 8, 1.00626815593247
+L [2017-01-02 22:32:01.521]  18> [G]: 194425 [E]: 111485 [D]: 1365 [T]:25
+L [2017-01-02 22:32:01.528]       Not a Dead Base
+D [2017-01-02 22:32:04.574] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:32:09.133] AdbScreencap: 69/70/66 ms (all/10/1),63,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:32:10.947] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 7, 10
+D [2017-01-02 22:32:10.947] Village Offset (VillageSearch) updated to 7, 10, 1.01648779659513
+L [2017-01-02 22:32:11.853]  19> [G]: 462413 [E]: 425857 [D]: 3080 [T]:33
+L [2017-01-02 22:32:11.860]       Dead Base Found!
+L [2017-01-02 22:32:13.293] ================ Search Complete =================
+L [2017-01-02 22:32:13.303] Initiating attack for: Dead Base
+L [2017-01-02 22:32:14.179] 0 » 12 Dragons
+L [2017-01-02 22:32:14.180]  ====== Start Attack ====== 
+L [2017-01-02 22:32:16.182] Attacking Multi finger fight style
+L [2017-01-02 22:32:17.184] ===============Multi Finger Attack================
+L [2017-01-02 22:32:17.185] Attacking Eight Finger Blossom fight style.
+L [2017-01-02 22:32:17.187] Calculating attack vectors for all troop deployments, please be patient...
+L [2017-01-02 22:32:19.337] Finished Attacking, waiting for the battle to end
+L [2017-01-02 22:32:19.438] Dropping left over troops
+L [2017-01-02 22:32:19.439] Checking remaining unused troops for: Dead Base
+D [2017-01-02 22:32:19.617] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:32:20.340] 0 » 4 Dragons
+L [2017-01-02 22:32:24.349] Dropping last wave of 4 Dragons
+L [2017-01-02 22:32:30.713] Checking remaining unused troops for: Dead Base
+L [2017-01-02 22:32:31.549] 0 » 3 Dragons
+D [2017-01-02 22:32:34.657] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:32:35.559] Dropping last wave of 3 Dragons
+L [2017-01-02 22:32:41.896] Finished Attacking, waiting for the battle to end
+L [2017-01-02 22:32:42.076] Checking if the battle has finished
+L [2017-01-02 22:32:44.437] detected [G]: 184602 [E]: 211956 [DE]: 3080 |  Exit in 18 sec.
+L [2017-01-02 22:32:44.458] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 22:32:45.172] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 22:32:47.868] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in 18 sec.
+D [2017-01-02 22:32:48.297] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 22:32:49.605] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in 16 sec.
+D [2017-01-02 22:32:49.628] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:32:51.312] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in 14 sec.
+L [2017-01-02 22:32:53.017] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in 13 sec.
+L [2017-01-02 22:32:54.785] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in 11 sec.
+L [2017-01-02 22:32:56.490] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in  9 sec.
+L [2017-01-02 22:32:58.206] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in  8 sec.
+L [2017-01-02 22:32:59.932] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in  6 sec.
+L [2017-01-02 22:33:01.651] detected [G]: 168796 [E]: 211956 [DE]: 3080 |  Exit in  4 sec.
+L [2017-01-02 22:33:03.364] detected [G]: 146872 [E]: 211956 [DE]: 2908 |  Exit in  2 sec.
+L [2017-01-02 22:33:03.385] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 22:33:04.697] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:33:06.760] detected [G]: 123704 [E]: 211956 [DE]: 2564 |  Exit in 18 sec.
+L [2017-01-02 22:33:06.780] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:33:10.175] detected [G]: 99291 [E]: 211956 [DE]: 2048 |  Exit in 18 sec.
+L [2017-01-02 22:33:10.196] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:33:13.575] detected [G]: 99291 [E]: 211956 [DE]: 1532 |  Exit in 18 sec.
+L [2017-01-02 22:33:13.594] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 22:33:16.971] detected [G]:  [E]:  [DE]:  |  Exit now 
+L [2017-01-02 22:33:16.972] Gold & Elixir & DE = 0, end battle 
+L [2017-01-02 22:33:17.973] Battle has finished
+L [2017-01-02 22:33:18.139] Returning Home
+D [2017-01-02 22:33:19.698] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:33:19.701] MEmu time lag is 0 sec/min (avg for 113 sec)
+L [2017-01-02 22:33:23.309] Loot: [G]: 363 122 [E]: 213 901 [DE]: 1 548 [T]: -17
+L [2017-01-02 22:33:23.316] Stars earned: 0
+L [2017-01-02 22:33:30.549] Trying to locate Main Screen
+D [2017-01-02 22:33:30.777] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 22:33:30.778] Center Village by: 10, 9
+D [2017-01-02 22:33:32.417] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:33:32.417] Village Offset updated to -1, -1, 1.00461725726901
+D [2017-01-02 22:33:32.419] Centered Village Offset: -1, -1, change: -11, -10
+L [2017-01-02 22:33:32.419] Main Screen Located
+D [2017-01-02 22:33:34.706] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:33:37.172] Total Army Camp capacity: 40/240 (16%)
+D [2017-01-02 22:33:38.916] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 22:33:39.634] Village Report
+L [2017-01-02 22:33:39.730]  [T]: 2 426
+L [2017-01-02 22:33:39.829]  [G]: 2 414 537 [E]: 2 288 775 [D]: 107 302 [GEM]: 2 898
+D [2017-01-02 22:33:40.586] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:33:40.596] _RunFunction: CleanYard BEGIN
+D [2017-01-02 22:33:40.596] _RunFunction: CleanYard END
+D [2017-01-02 22:33:40.597] _RunFunction: ReArm BEGIN
+D [2017-01-02 22:33:40.799] _RunFunction: ReArm END
+D [2017-01-02 22:33:40.799] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 22:33:41.000] _RunFunction: CheckTombs END
+D [2017-01-02 22:33:41.001] _RunFunction: Collect BEGIN
+L [2017-01-02 22:33:41.774] Collecting Resources
+D [2017-01-02 22:33:43.781] AdbScreencap: 68/65/66 ms (all/10/1),62,0,l=282,t=28,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 22:33:43.949] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 22:33:43.953] Searching for a Loot Cart..
+L [2017-01-02 22:33:44.442] No Loot Cart found, Yard is clean!
+D [2017-01-02 22:33:46.147] _RunFunction: Collect END
+L [2017-01-02 22:33:46.147] Waiting, Add random delay of 39 seconds.
+D [2017-01-02 22:33:49.778] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:34:04.796] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:34:19.802] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:34:25.241] _RunFunction: ReplayShare BEGIN
+D [2017-01-02 22:34:25.443] _RunFunction: ReplayShare END
+D [2017-01-02 22:34:25.454] MEmu time lag is 0 sec/min (avg for 65 sec)
+D [2017-01-02 22:34:25.454] _RunFunction: BoostBarracks BEGIN
+D [2017-01-02 22:34:25.455] _RunFunction: BoostBarracks END
+D [2017-01-02 22:34:25.455] _RunFunction: BoostSpellFactory BEGIN
+D [2017-01-02 22:34:25.456] _RunFunction: BoostSpellFactory END
+D [2017-01-02 22:34:25.456] _RunFunction: BoostWarden BEGIN
+D [2017-01-02 22:34:25.456] _RunFunction: BoostWarden END
+D [2017-01-02 22:34:25.457] _RunFunction: RequestCC BEGIN
+D [2017-01-02 22:34:26.685] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:34:26.705] _RunFunction: RequestCC END
+D [2017-01-02 22:34:26.706] _RunFunction: BoostQueen BEGIN
+D [2017-01-02 22:34:26.706] _RunFunction: BoostQueen END
+D [2017-01-02 22:34:26.707] _RunFunction: DonateCC,Train BEGIN
+L [2017-01-02 22:34:26.708] » Donations enabled, available troops 16%, limit 95%
+L [2017-01-02 22:34:26.727] Checking for Donate Requests in Clan Chat
+L [2017-01-02 22:34:28.526] Using OCR to read Latin derived alphabets..
+L [2017-01-02 22:34:29.440] Chat Request: Defesa
+L [2017-01-02 22:34:29.519] Chat Troops: 0/25, Spells: 1/1
+L [2017-01-02 22:34:29.520] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 22:34:31.285] Hog Rider Keyword found: defesa
+L [2017-01-02 22:34:31.433] Wizard Keyword found: defesa
+D [2017-01-02 22:34:34.324] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:34:34.840] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:34:36.206]  - Army Window Opened!
+L [2017-01-02 22:34:37.895] Total Army Camp capacity: 50/240 (20%)
+L [2017-01-02 22:34:37.994] Troops time: 24.00 min
+L [2017-01-02 22:34:38.130]  - Archer Queen will recover in 00:38:00
+L [2017-01-02 22:34:38.314] Total Spell(s) Capacity: 11/11
+L [2017-01-02 22:34:39.078]  - Army Camp: 50/240
+L [2017-01-02 22:34:39.079]  - Spells: 11/11
+L [2017-01-02 22:34:39.079]  - Clan Castle: 0/35
+L [2017-01-02 22:34:39.081] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 22:34:39.082]  - Troops, not Ready!
+L [2017-01-02 22:34:39.733]  - 8 Barbarians Available
+L [2017-01-02 22:34:39.734]  - 22 Archers Available
+L [2017-01-02 22:34:39.734]  - 4 Giants Available
+L [2017-01-02 22:34:40.094]  - 3 Rage Spells Brewed
+L [2017-01-02 22:34:40.095]  - 2 Jump Spells Brewed
+L [2017-01-02 22:34:40.096]  - 1 Poison Spell Brewed
+L [2017-01-02 22:34:40.097]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 22:34:46.232]  - Opened the Train Troops
+L [2017-01-02 22:34:47.861]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 22:34:49.789] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:34:51.980]  - Opened the Quick Train
+L [2017-01-02 22:34:52.981] Using Quick Train Tab.
+L [2017-01-02 22:34:53.090] Making the Army 1
+L [2017-01-02 22:34:54.343] Using Quick Train Tab.
+L [2017-01-02 22:34:54.462] Making the Army 2
+L [2017-01-02 22:34:55.713] Using Quick Train Tab.
+L [2017-01-02 22:34:55.832] Making the Army 3
+L [2017-01-02 22:34:57.084] Using Quick Train Tab.
+L [2017-01-02 22:34:57.172] Making the Army 3
+L [2017-01-02 22:34:58.425] Using Quick Train Tab.
+L [2017-01-02 22:34:58.533] Making the Army 3
+L [2017-01-02 22:35:00.874]  - Army Window Closed!
+D [2017-01-02 22:35:02.583] _RunFunction: DonateCC,Train END
+D [2017-01-02 22:35:02.584] _RunFunction: BoostKing BEGIN
+D [2017-01-02 22:35:02.584] _RunFunction: BoostKing END
+D [2017-01-02 22:35:02.585] _RunFunction: NotifyReport BEGIN
+D [2017-01-02 22:35:03.319] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:35:03.524] _RunFunction: NotifyReport END
+D [2017-01-02 22:35:03.525] _RunFunction: Laboratory BEGIN
+D [2017-01-02 22:35:03.979] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:35:03.983] _RunFunction: Laboratory END
+D [2017-01-02 22:35:03.984] _RunFunction: UpgradeBuilding BEGIN
+D [2017-01-02 22:35:04.185] _RunFunction: UpgradeBuilding END
+D [2017-01-02 22:35:04.185] _RunFunction: UpgradeHeroes BEGIN
+D [2017-01-02 22:35:04.387] _RunFunction: UpgradeHeroes END
+L [2017-01-02 22:35:04.388] Checking Upgrade Walls
+D [2017-01-02 22:35:04.889] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:35:05.137] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 22:35:05.237] Elixir is below minimum, attempt to upgrade using Gold
+L [2017-01-02 22:35:05.238] Gold is below minimum, Skipping Upgrade
+D [2017-01-02 22:35:06.104] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 22:35:06.509] ====== Waiting for full army ======
+L [2017-01-02 22:35:08.389] Total Army Camp capacity: 55/240 (22%)
+L [2017-01-02 22:35:08.497] Troops time: 23.00 min
+L [2017-01-02 22:35:08.654]  - Archer Queen will recover in 00:37:00
+L [2017-01-02 22:35:08.961] Total Spell(s) Capacity: 11/11
+L [2017-01-02 22:35:10.139] » Donations enabled, available troops 22%, limit 95%
+D [2017-01-02 22:35:19.906] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:35:21.770] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 22:35:21.975] Waiting, Add random delay of 37 seconds.
+D [2017-01-02 22:35:34.875] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:35:49.888] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:35:59.330] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:36:00.911] AdbScreencap: 69/71/87 ms (all/10/1),84,0,l=815,t=135,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 22:36:01.173]  - Army Window Opened!
+L [2017-01-02 22:36:02.887] Total Army Camp capacity: 65/240 (27%)
+L [2017-01-02 22:36:03.016] Troops time: 22.00 min
+L [2017-01-02 22:36:03.152]  - Archer Queen will recover in 00:36:00
+L [2017-01-02 22:36:03.325] Total Spell(s) Capacity: 11/11
+L [2017-01-02 22:36:04.181]  - Army Camp: 65/240
+L [2017-01-02 22:36:04.182]  - Spells: 11/11
+L [2017-01-02 22:36:04.183]  - Clan Castle: 8/35
+L [2017-01-02 22:36:04.184] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 22:36:04.184]  - Troops, not Ready!
+L [2017-01-02 22:36:04.855]  - 8 Barbarians Available
+L [2017-01-02 22:36:04.855]  - 22 Archers Available
+L [2017-01-02 22:36:04.856]  - 7 Giants Available
+D [2017-01-02 22:36:04.884] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:36:05.218]  - 3 Rage Spells Brewed
+L [2017-01-02 22:36:05.219]  - 2 Jump Spells Brewed
+L [2017-01-02 22:36:05.220]  - 1 Poison Spell Brewed
+L [2017-01-02 22:36:05.221]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 22:36:11.475]  - Opened the Train Troops
+L [2017-01-02 22:36:13.085]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 22:36:13.093]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 22:36:15.088]  - Your army is: 240
+L [2017-01-02 22:36:15.089]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 22:36:16.749]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 22:36:16.750]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 22:36:19.446]  - Army Window Closed!
+D [2017-01-02 22:36:19.959] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:36:20.600] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 22:36:21.490] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 22:36:21.695] Time Idle: 00:01:15
+L [2017-01-02 22:36:23.333] Troops time: 22.00 min
+L [2017-01-02 22:36:23.866] Smart wait train time = 22.52 Minutes
+D [2017-01-02 22:36:28.751] Enable GUI Controls
+D [2017-01-02 22:36:30.259] Redraw MyBot Window
+L [2017-01-02 22:36:30.266] Enabled bot controls due to long wait time
+L [2017-01-02 22:36:30.527] Waiting 22 minutes 31 seconds before starting CoC
+D [2017-01-02 22:36:34.972] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:36:49.989] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:37:04.999] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:37:20.008] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:37:35.031] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:37:50.043] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:38:05.049] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:38:20.058] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:38:35.069] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:38:50.086] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:39:05.096] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:39:20.108] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:39:35.116] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:39:50.126] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:40:05.136] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:40:20.145] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:40:35.149] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:40:50.158] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:41:05.166] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:41:20.174] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:41:35.184] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:41:50.196] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:42:05.211] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:42:20.221] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:42:35.232] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:42:50.243] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:43:05.263] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:43:20.281] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:43:35.289] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:43:50.301] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:44:05.336] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:44:20.344] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:44:35.356] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:44:50.371] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:45:05.429] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:45:20.441] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:45:35.453] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:45:50.466] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:46:05.492] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:46:20.554] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:46:35.563] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:46:50.568] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:47:05.581] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:47:20.594] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:47:35.605] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:47:50.616] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:48:05.627] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:48:20.634] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:48:35.653] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:48:50.666] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:49:05.683] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:49:20.701] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:49:35.713] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:49:50.723] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:50:05.735] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:50:20.760] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:50:35.770] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:50:50.784] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:51:05.793] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:51:20.803] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:51:35.813] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:51:50.838] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:52:05.852] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:52:20.866] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:52:35.885] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:52:50.896] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:53:05.905] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:53:20.916] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:53:35.927] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:53:50.937] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:54:06.049] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:54:21.062] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:54:36.068] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:54:51.075] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:55:06.093] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:55:21.106] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:55:36.038] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:55:51.145] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:56:06.157] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:56:21.167] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:56:36.217] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:56:51.231] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:57:06.238] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:57:21.250] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:57:36.265] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:57:51.275] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:58:06.292] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:58:21.300] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:58:36.309] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:58:51.321] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 22:59:01.899] Launch Clash of Clans now...
+D [2017-01-02 22:59:01.944] ADB shell terminated, PID = 8644
+D [2017-01-02 22:59:02.238] C:\Users\Imation\Pictures\MEmu Photo\ exists
+D [2017-01-02 22:59:02.509] ADB shell launched, PID = 2500: root@android:/ # PS1=mybot.run:Android Steady Shell PID=4696
+/system/xbin/renice -20 4696
+/system/xbin/renice -20 4603
+D [2017-01-02 22:59:02.599] Using /mnt/shell/emulated/0/Pictures/ for Android shared folder
+D [2017-01-02 22:59:02.600] MEmu ADB use /dev/input/event7 for mouse events
+L [2017-01-02 22:59:02.601] Waiting for Main Screen
+D [2017-01-02 22:59:04.876] checkObstacles: Found Android Screen
+D [2017-01-02 22:59:06.321] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:59:07.111] Save Config C:\CDR\MyBot6_5x\Profiles\Lipe\config.ini
+D [2017-01-02 22:59:09.030] Save Building Config C:\CDR\MyBot6_5x\Profiles\Lipe\building.ini
+D [2017-01-02 22:59:09.571] Read Building Config C:\CDR\MyBot6_5x\Profiles\Lipe\building.ini
+D [2017-01-02 22:59:09.585] Read Config C:\CDR\MyBot6_5x\Profiles\Lipe\config.ini
+D [2017-01-02 22:59:09.665] Apply Config
+D [2017-01-02 22:59:09.943] Redraw MyBot Window
+D [2017-01-02 22:59:09.951] Disable GUI Controls
+D [2017-01-02 22:59:11.406] Redraw MyBot Window
+L [2017-01-02 22:59:12.616] Trying to locate Main Screen
+D [2017-01-02 22:59:12.871] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 22:59:12.872] Center Village by: 10, 9
+D [2017-01-02 22:59:14.535] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:59:14.536] Village Offset updated to -1, -2, 1.00593562250845
+D [2017-01-02 22:59:14.537] Centered Village Offset: -1, -2, change: -11, -11
+L [2017-01-02 22:59:14.538] Main Screen Located
+L [2017-01-02 22:59:16.781] Total Army Camp capacity: 240/240 (100%)
+D [2017-01-02 22:59:17.448] MEmu time lag is 0 sec/min (avg for 1491 sec)
+D [2017-01-02 22:59:17.448] Cleared 1 MEmu page errors
+D [2017-01-02 22:59:18.513] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:59:19.228] Village Report
+L [2017-01-02 22:59:19.323]  [T]: 2 426
+L [2017-01-02 22:59:19.420]  [G]: 2 414 537 [E]: 2 096 775 [D]: 105 892 [GEM]: 2 898
+D [2017-01-02 22:59:20.193] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:59:20.197] _RunFunction: ReArm BEGIN
+D [2017-01-02 22:59:20.398] _RunFunction: ReArm END
+D [2017-01-02 22:59:20.399] _RunFunction: CleanYard BEGIN
+D [2017-01-02 22:59:20.399] _RunFunction: CleanYard END
+D [2017-01-02 22:59:20.399] _RunFunction: Collect BEGIN
+L [2017-01-02 22:59:21.211] Collecting Resources
+D [2017-01-02 22:59:21.314] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:59:28.123] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:59:28.127] Searching for a Loot Cart..
+L [2017-01-02 22:59:28.613] No Loot Cart found, Yard is clean!
+D [2017-01-02 22:59:30.331] _RunFunction: Collect END
+D [2017-01-02 22:59:30.332] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 22:59:30.532] _RunFunction: CheckTombs END
+L [2017-01-02 22:59:30.533] Waiting, Add random delay of 19 seconds.
+D [2017-01-02 22:59:36.382] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:59:49.571] _RunFunction: RequestCC BEGIN
+D [2017-01-02 22:59:50.816] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 22:59:50.820] _RunFunction: RequestCC END
+D [2017-01-02 22:59:50.820] _RunFunction: BoostKing BEGIN
+D [2017-01-02 22:59:50.820] _RunFunction: BoostKing END
+D [2017-01-02 22:59:50.821] _RunFunction: ReplayShare BEGIN
+D [2017-01-02 22:59:51.022] _RunFunction: ReplayShare END
+D [2017-01-02 22:59:51.023] _RunFunction: BoostSpellFactory BEGIN
+D [2017-01-02 22:59:51.023] _RunFunction: BoostSpellFactory END
+D [2017-01-02 22:59:51.024] _RunFunction: BoostQueen BEGIN
+D [2017-01-02 22:59:51.024] _RunFunction: BoostQueen END
+D [2017-01-02 22:59:51.024] _RunFunction: BoostBarracks BEGIN
+D [2017-01-02 22:59:51.025] _RunFunction: BoostBarracks END
+D [2017-01-02 22:59:51.025] _RunFunction: DonateCC,Train BEGIN
+L [2017-01-02 22:59:51.026] » Donation disabled, available troops 100%, limit 95%
+D [2017-01-02 22:59:51.430] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 22:59:52.294] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 22:59:54.332]  - Army Window Opened!
+D [2017-01-02 22:59:55.094] AdbScreencap: 69/78/67 ms (all/10/1),63,0,l=110,t=166,w=82,h=16, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 22:59:55.982] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 22:59:56.333]  - Archer Queen will recover in 00:12:00
+L [2017-01-02 22:59:56.530] Total Spell(s) Capacity: 11/11
+L [2017-01-02 22:59:57.207] - Castle full/no clan.
+L [2017-01-02 22:59:57.368]  - Army Camp: 240/240
+L [2017-01-02 22:59:57.369]  - Spells: 11/11
+L [2017-01-02 22:59:57.370]  - Clan Castle: 35/35
+L [2017-01-02 22:59:57.371] Chief, are your Army ready for battle? Yes, they are!
+L [2017-01-02 22:59:58.057]  - 8 Barbarians Available
+L [2017-01-02 22:59:58.058]  - 40 Archers Available
+L [2017-01-02 22:59:58.058]  - 16 Giants Available
+L [2017-01-02 22:59:58.059]  - 8 Wizards Available
+L [2017-01-02 22:59:58.060]  - 16 Hog Riders Available
+L [2017-01-02 22:59:58.503]  - 3 Rage Spells Brewed
+L [2017-01-02 22:59:58.504]  - 2 Jump Spells Brewed
+L [2017-01-02 22:59:58.505]  - 1 Poison Spell Brewed
+L [2017-01-02 22:59:58.505]  - Your Army is Full, let's make troops before Attack!
+L [2017-01-02 23:00:04.635]  - Opened the Train Troops
+L [2017-01-02 23:00:04.637] Ice Wizard Troop not detected!
+D [2017-01-02 23:00:06.412] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:00:09.067]  - Opened the Brew Spells
+L [2017-01-02 23:00:17.818]  - Opened the Train Troops
+L [2017-01-02 23:00:18.084]  - Your army is: 240
+L [2017-01-02 23:00:18.084]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:00:19.765]  - Conditions met: FULL Queue and Not Full Army
+D [2017-01-02 23:00:21.380] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:00:21.855]  - Opened the Quick Train
+L [2017-01-02 23:00:22.866] Using Quick Train Tab.
+L [2017-01-02 23:00:22.942]  - All ok: Clicked On Army: 1| Pixel was :909090
+L [2017-01-02 23:00:22.951]  - If needed 'edit' the Army 1 before start the BOT!!!
+L [2017-01-02 23:00:23.202] Using Quick Train Tab.
+L [2017-01-02 23:00:23.288]  - All ok: Clicked On Army: 2| Pixel was :8D8D8D
+L [2017-01-02 23:00:23.289]  - If needed 'edit' the Army 2 before start the BOT!!!
+L [2017-01-02 23:00:23.540] Using Quick Train Tab.
+L [2017-01-02 23:00:23.659] Making the Army 3
+L [2017-01-02 23:00:24.910] Using Quick Train Tab.
+L [2017-01-02 23:00:25.049] Making the Army 3
+L [2017-01-02 23:00:26.301] Using Quick Train Tab.
+L [2017-01-02 23:00:26.378]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 23:00:26.379]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 23:00:26.630]  - Do nothing and hope Quick Train fills it
+L [2017-01-02 23:00:26.631]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:00:32.786]  - Opened the Train Troops
+D [2017-01-02 23:00:36.390] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:00:36.586]  - Army Window Closed!
+D [2017-01-02 23:00:38.282] _RunFunction: DonateCC,Train END
+D [2017-01-02 23:00:38.293] MEmu time lag is 0 sec/min (avg for 80 sec)
+D [2017-01-02 23:00:38.293] _RunFunction: BoostWarden BEGIN
+D [2017-01-02 23:00:38.293] _RunFunction: BoostWarden END
+D [2017-01-02 23:00:38.294] _RunFunction: NotifyReport BEGIN
+D [2017-01-02 23:00:39.031] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 23:00:39.238] _RunFunction: NotifyReport END
+D [2017-01-02 23:00:39.238] _RunFunction: UpgradeBuilding BEGIN
+D [2017-01-02 23:00:39.439] _RunFunction: UpgradeBuilding END
+D [2017-01-02 23:00:39.440] _RunFunction: UpgradeHeroes BEGIN
+D [2017-01-02 23:00:39.641] _RunFunction: UpgradeHeroes END
+D [2017-01-02 23:00:39.642] _RunFunction: Laboratory BEGIN
+D [2017-01-02 23:00:40.077] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+D [2017-01-02 23:00:40.082] _RunFunction: Laboratory END
+L [2017-01-02 23:00:40.083] Checking Upgrade Walls
+D [2017-01-02 23:00:40.851] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 23:00:40.955] Elixir is below minimum, attempt to upgrade using Gold
+L [2017-01-02 23:00:40.956] Gold is below minimum, Skipping Upgrade
+D [2017-01-02 23:00:41.805] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: -1, -2
+L [2017-01-02 23:00:43.998] Total Army Camp capacity: 240/240 (100%)
+L [2017-01-02 23:00:44.568] Going to Attack...
+L [2017-01-02 23:00:49.662] ==================================================
+L [2017-01-02 23:00:49.669] Aim:           [G+E]: 279000 [D]:    0 for: Dead Base
+L [2017-01-02 23:00:49.670] ==================================================
+D [2017-01-02 23:00:51.099] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 7, 9
+D [2017-01-02 23:00:51.099] Village Offset (VillageSearch) updated to 7, 9, 1.00593562250845
+L [2017-01-02 23:00:51.101]   1> [G]:  79212 [E]:  44650 [D]: 3453 [T]:27
+D [2017-01-02 23:00:51.404] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:00:57.475] AdbScreencap: 69/60/66 ms (all/10/1),62,0,l=252,t=424,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 23:00:58.915] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 11, 9
+D [2017-01-02 23:00:58.915] Village Offset (VillageSearch) updated to 11, 9, 1.00593562250845
+L [2017-01-02 23:00:59.622]   2> [G]: 188532 [E]: 154285 [D]:  788 [T]:30
+L [2017-01-02 23:00:59.629]       Not a Dead Base
+D [2017-01-02 23:01:06.412] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:01:08.590] GetVillageSize measured: 490.001236849426, Zoom factor: 1.03462480932433, Offset: 18, 8
+D [2017-01-02 23:01:08.590] Village Offset (VillageSearch) updated to 18, 8, 1.03462480932433
+L [2017-01-02 23:01:08.592]   3> [G]: 110182 [E]: 138869 [D]:  823 [T]:33
+D [2017-01-02 23:01:18.982] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 5, 9
+D [2017-01-02 23:01:18.983] Village Offset (VillageSearch) updated to 5, 9, 1.00593562250845
+L [2017-01-02 23:01:19.692]   4> [G]: 144818 [E]: 145391 [D]: 4082 [T]:32
+L [2017-01-02 23:01:19.700]       Not a Dead Base
+D [2017-01-02 23:01:21.513] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:01:27.276] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 16, 9
+D [2017-01-02 23:01:27.277] Village Offset (VillageSearch) updated to 16, 9, 1.00593562250845
+L [2017-01-02 23:01:27.282]   5> [G]:  43590 [E]: 144199 [D]: 1153 [T]:33
+D [2017-01-02 23:01:35.890] GetVillageSize measured: 479.381985241978, Zoom factor: 1.01220253700484, Offset: 9, 8
+D [2017-01-02 23:01:35.891] Village Offset (VillageSearch) updated to 9, 8, 1.01220253700484
+D [2017-01-02 23:01:36.612] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:01:36.615]   6> [G]: 275459 [E]: 128686 [D]: 4109 [T]:19
+L [2017-01-02 23:01:36.623]       Not a Dead Base
+D [2017-01-02 23:01:44.946] GetVillageSize measured: 477.194992395467, Zoom factor: 1.00758475874909, Offset: -3, 9
+D [2017-01-02 23:01:44.946] Village Offset (VillageSearch) updated to -3, 9, 1.00758475874909
+L [2017-01-02 23:01:44.948]   7> [G]: 133612 [E]: 109843 [D]: 1220 [T]:27
+D [2017-01-02 23:01:44.959] MEmu time lag is 0 sec/min (avg for 66 sec)
+D [2017-01-02 23:01:51.458] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:01:54.394] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 6, 9
+D [2017-01-02 23:01:54.394] Village Offset (VillageSearch) updated to 6, 9, 1.00593562250845
+L [2017-01-02 23:01:54.396]   8> [G]: 106163 [E]: 168492 [D]: 3065 [T]:17
+D [2017-01-02 23:02:02.558] AdbScreencap: 69/61/55 ms (all/10/1),51,0,l=24,t=605,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 23:02:03.940] GetVillageSize measured: 481.569346462008, Zoom factor: 1.01682109307166, Offset: 10, 9
+D [2017-01-02 23:02:03.941] Village Offset (VillageSearch) updated to 10, 9, 1.01682109307166
+L [2017-01-02 23:02:04.655]   9> [G]: 394103 [E]: 421281 [D]: 4704 [T]:28
+L [2017-01-02 23:02:04.662]       Not a Dead Base
+D [2017-01-02 23:02:06.478] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:02:14.324] GetVillageSize cannot find stone
+D [2017-01-02 23:02:14.991] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 11, 9
+D [2017-01-02 23:02:15.992] Village Offset (VillageSearch) updated to 11, 9, 1.01648779659513
+D [2017-01-02 23:02:16.659] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 11, 9
+L [2017-01-02 23:02:17.672]  10> [G]: 139745 [E]: 118094 [D]: 2962 [T]:29
+D [2017-01-02 23:02:21.572] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:02:26.219] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2017-01-02 23:02:27.220] Village Offset (VillageSearch) updated to 9, 9, 1.00593562250845
+L [2017-01-02 23:02:27.235]  11> [G]:  60134 [E]:  57991 [D]:  452 [T]:26
+D [2017-01-02 23:02:36.508] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:02:36.511] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: 21, 9
+D [2017-01-02 23:02:37.512] Village Offset (VillageSearch) updated to 21, 9, 1.01055234955638
+L [2017-01-02 23:02:38.377]  12> [G]: 182155 [E]: 198879 [D]:  380 [T]:16
+L [2017-01-02 23:02:38.384]       Dead Base Found!
+L [2017-01-02 23:02:39.820] ================ Search Complete =================
+L [2017-01-02 23:02:39.831] Initiating attack for: Dead Base
+L [2017-01-02 23:02:41.074] 0 » 8 Barbarians
+L [2017-01-02 23:02:41.075] 1 » 40 Archers
+L [2017-01-02 23:02:41.076] 2 » 16 Giants
+L [2017-01-02 23:02:41.077] 3 » 8 Wizards
+L [2017-01-02 23:02:41.078] 4 » 16 Hog Riders
+L [2017-01-02 23:02:41.079] 5 » 1 Clan Castle
+L [2017-01-02 23:02:41.079]  ====== Start Attack ====== 
+L [2017-01-02 23:02:43.080] Attacking Multi finger fight style
+L [2017-01-02 23:02:44.081] ===============Multi Finger Attack================
+L [2017-01-02 23:02:44.082] Attacking Eight Finger Blossom fight style.
+L [2017-01-02 23:02:44.083] Calculating attack vectors for all troop deployments, please be patient...
+L [2017-01-02 23:02:50.702] Dropping Clan Castle
+D [2017-01-02 23:02:51.565] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:02:52.266] Finished Attacking, waiting for the battle to end
+L [2017-01-02 23:02:52.374] Dropping left over troops
+L [2017-01-02 23:02:52.375] Checking remaining unused troops for: Dead Base
+L [2017-01-02 23:02:53.283] Finished Attacking, waiting for the battle to end
+L [2017-01-02 23:02:53.462] Checking if the battle has finished
+L [2017-01-02 23:02:55.826] detected [G]: 121665 [E]: 139296 [DE]: 380 |  Exit in 18 sec.
+L [2017-01-02 23:02:55.857] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:02:59.307] detected [G]: 73737 [E]: 82919 [DE]: 380 |  Exit in 18 sec.
+L [2017-01-02 23:02:59.326] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:02.753] detected [G]: 48624 [E]: 48215 [DE]: 380 |  Exit in 18 sec.
+L [2017-01-02 23:03:02.773] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:06.210] detected [G]: 34966 [E]: 29517 [DE]: 335 |  Exit in 18 sec.
+L [2017-01-02 23:03:06.229] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 23:03:06.642] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:03:09.683] detected [G]: 34966 [E]: 22685 [DE]: 72 |  Exit in 18 sec.
+L [2017-01-02 23:03:09.702] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:13.100] detected [G]: 33404 [E]: 22685 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:13.121] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:16.508] detected [G]: 33404 [E]: 22685 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:18.236] detected [G]: 33404 [E]: 22685 [DE]: 20 |  Exit in 16 sec.
+L [2017-01-02 23:03:19.965] detected [G]: 33404 [E]: 22027 [DE]: 20 |  Exit in 14 sec.
+L [2017-01-02 23:03:19.985] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 23:03:21.063] AdbScreencap: 69/68/76 ms (all/10/1),72,0,l=48,t=69,w=90,h=16, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 23:03:21.613] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:03:23.380] detected [G]: 33391 [E]: 21973 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:23.398] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:26.771] detected [G]: 33391 [E]: 21757 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:26.798] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:30.190] detected [G]: 33391 [E]: 21465 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:30.208] Gold & Elixir & DE change detected, waiting...
+L [2017-01-02 23:03:33.568] detected [G]: 33391 [E]: 20922 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:33.586] Gold & Elixir & DE change detected, waiting...
+D [2017-01-02 23:03:36.588] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:03:36.955] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in 18 sec.
+L [2017-01-02 23:03:38.660] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in 16 sec.
+L [2017-01-02 23:03:40.356] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in 14 sec.
+L [2017-01-02 23:03:42.061] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in 13 sec.
+L [2017-01-02 23:03:43.763] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in 11 sec.
+L [2017-01-02 23:03:45.464] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in  9 sec.
+L [2017-01-02 23:03:47.155] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in  8 sec.
+L [2017-01-02 23:03:48.858] detected [G]: 33391 [E]: 20727 [DE]: 20 |  Exit in  6 sec.
+L [2017-01-02 23:03:50.553] detected [G]:  [E]:  [DE]:  |  Exit now 
+L [2017-01-02 23:03:50.554] Gold & Elixir & DE = 0, end battle 
+L [2017-01-02 23:03:51.556] Battle has finished
+D [2017-01-02 23:03:51.601] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:03:51.726] Returning Home
+D [2017-01-02 23:03:53.295] MEmu time lag is 0 sec/min (avg for 128 sec)
+L [2017-01-02 23:03:56.878] Loot: [G]: 148 764 [E]: 178 152 [DE]: 360 [T]: 5
+L [2017-01-02 23:03:56.893] Bonus Percentage: 96%
+L [2017-01-02 23:03:57.474] Bonus [G]: 67 200 out of 70 000 [E]: 67 200 out of 70 000 [DE]: 307 out of 319.791 666 666 667
+L [2017-01-02 23:03:59.130] Your league level is: Crystal I
+L [2017-01-02 23:03:59.203] Stars earned: 1
+L [2017-01-02 23:04:06.433] Trying to locate Main Screen
+D [2017-01-02 23:04:06.628] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:04:06.683] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 10, 9
+D [2017-01-02 23:04:06.683] Center Village by: 10, 9
+D [2017-01-02 23:04:08.340] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:04:08.341] Village Offset updated to -1, -1, 1.00461725726901
+D [2017-01-02 23:04:08.342] Centered Village Offset: -1, -1, change: -11, -10
+L [2017-01-02 23:04:08.343] Main Screen Located
+L [2017-01-02 23:04:10.490] Total Army Camp capacity: 50/240 (20%)
+D [2017-01-02 23:04:12.222] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:04:12.938] Village Report
+L [2017-01-02 23:04:13.045]  [T]: 2 431
+L [2017-01-02 23:04:13.141]  [G]: 2 632 679 [E]: 2 303 106 [D]: 106 685 [GEM]: 2 898
+D [2017-01-02 23:04:13.885] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:04:13.889] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 23:04:14.090] _RunFunction: CheckTombs END
+D [2017-01-02 23:04:14.091] _RunFunction: Collect BEGIN
+L [2017-01-02 23:04:14.896] Collecting Resources
+D [2017-01-02 23:04:17.078] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:04:17.083] Searching for a Loot Cart..
+L [2017-01-02 23:04:17.572] No Loot Cart found, Yard is clean!
+D [2017-01-02 23:04:19.280] _RunFunction: Collect END
+D [2017-01-02 23:04:19.281] _RunFunction: CleanYard BEGIN
+D [2017-01-02 23:04:19.281] _RunFunction: CleanYard END
+D [2017-01-02 23:04:19.281] _RunFunction: ReArm BEGIN
+D [2017-01-02 23:04:19.482] _RunFunction: ReArm END
+L [2017-01-02 23:04:19.483] Waiting, Add random delay of 41 seconds.
+D [2017-01-02 23:04:21.704] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:04:36.713] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:04:51.720] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:05:00.484] _RunFunction: RequestCC BEGIN
+D [2017-01-02 23:05:01.736] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:05:01.740] _RunFunction: RequestCC END
+D [2017-01-02 23:05:01.751] MEmu time lag is 0 sec/min (avg for 68 sec)
+D [2017-01-02 23:05:01.751] _RunFunction: BoostSpellFactory BEGIN
+D [2017-01-02 23:05:01.752] _RunFunction: BoostSpellFactory END
+D [2017-01-02 23:05:01.752] _RunFunction: BoostWarden BEGIN
+D [2017-01-02 23:05:01.753] _RunFunction: BoostWarden END
+D [2017-01-02 23:05:01.753] _RunFunction: BoostQueen BEGIN
+D [2017-01-02 23:05:01.754] _RunFunction: BoostQueen END
+D [2017-01-02 23:05:01.754] _RunFunction: NotifyReport BEGIN
+D [2017-01-02 23:05:02.501] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:05:02.707] _RunFunction: NotifyReport END
+D [2017-01-02 23:05:02.708] _RunFunction: BoostBarracks BEGIN
+D [2017-01-02 23:05:02.709] _RunFunction: BoostBarracks END
+D [2017-01-02 23:05:02.709] _RunFunction: BoostKing BEGIN
+D [2017-01-02 23:05:02.710] _RunFunction: BoostKing END
+D [2017-01-02 23:05:02.710] _RunFunction: ReplayShare BEGIN
+D [2017-01-02 23:05:02.911] _RunFunction: ReplayShare END
+D [2017-01-02 23:05:02.912] _RunFunction: DonateCC,Train BEGIN
+L [2017-01-02 23:05:02.913] » Donations enabled, available troops 20%, limit 95%
+L [2017-01-02 23:05:02.983] Checking for Donate Requests in Clan Chat
+L [2017-01-02 23:05:04.780] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:05:05.696] Chat Request: Defesa
+L [2017-01-02 23:05:05.773] Chat Troops: 9/25, Spells: 1/1
+L [2017-01-02 23:05:05.774] Clan Castle spells are full, skip spell donation...
+D [2017-01-02 23:05:06.690] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:05:07.532] Hog Rider Keyword found: defesa
+L [2017-01-02 23:05:07.646] No Hog Rider available to donate..
+L [2017-01-02 23:05:07.654] Wizard Keyword found: defesa
+L [2017-01-02 23:05:08.840] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:05:09.764] Chat Request: defesa
+L [2017-01-02 23:05:09.849] Chat Troops: 0/20
+L [2017-01-02 23:05:11.579] Hog Rider Keyword found: defesa
+L [2017-01-02 23:05:11.685] No Hog Rider available to donate..
+L [2017-01-02 23:05:11.696] Wizard Keyword found: defesa
+D [2017-01-02 23:05:12.885] AdbScreencap: 69/65/68 ms (all/10/1),64,0,l=202,t=579,w=22,h=141, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:05:12.894] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:05:13.803] Chat Request: defesas
+L [2017-01-02 23:05:13.870] Chat Troops: 24/35, Spells: 1/1
+L [2017-01-02 23:05:13.870] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:05:15.619] Hog Rider Keyword found: defesa
+L [2017-01-02 23:05:15.750] Wizard Keyword found: defesa
+D [2017-01-02 23:05:18.615] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:05:20.489]  - Army Window Opened!
+D [2017-01-02 23:05:21.799] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:05:22.199] Total Army Camp capacity: 65/240 (27%)
+L [2017-01-02 23:05:22.298] Troops time: 23.00 min
+L [2017-01-02 23:05:22.432]  - Archer Queen will recover in 00:07:00
+L [2017-01-02 23:05:22.626] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:05:23.252] Requesting Clan Castle Troops
+D [2017-01-02 23:05:28.577] Page error count increased to 1, source: IsMainPage
+D [2017-01-02 23:05:36.721] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:05:37.668]  - Army Camp: 65/240
+L [2017-01-02 23:05:37.669]  - Spells: 11/11
+L [2017-01-02 23:05:37.669]  - Clan Castle: 0/35
+L [2017-01-02 23:05:37.670] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:05:37.671]  - Troops, not Ready!
+L [2017-01-02 23:05:38.322]  - 8 Barbarians Available
+L [2017-01-02 23:05:38.323]  - 22 Archers Available
+L [2017-01-02 23:05:38.323]  - 7 Giants Available
+L [2017-01-02 23:05:38.705]  - 3 Rage Spells Brewed
+L [2017-01-02 23:05:38.706]  - 2 Jump Spells Brewed
+L [2017-01-02 23:05:38.707]  - 1 Poison Spell Brewed
+L [2017-01-02 23:05:38.708]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:05:44.871]  - Opened the Train Troops
+L [2017-01-02 23:05:46.459]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:05:50.571]  - Opened the Quick Train
+L [2017-01-02 23:05:51.572] Using Quick Train Tab.
+L [2017-01-02 23:05:51.680] Making the Army 1
+D [2017-01-02 23:05:51.791] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:05:52.932] Using Quick Train Tab.
+L [2017-01-02 23:05:53.032] Making the Army 2
+L [2017-01-02 23:05:54.284] Using Quick Train Tab.
+L [2017-01-02 23:05:54.360]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 23:05:54.361]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 23:05:54.613] Using Quick Train Tab.
+L [2017-01-02 23:05:54.710]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 23:05:54.710]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 23:05:54.962] Using Quick Train Tab.
+L [2017-01-02 23:05:55.039]  - All ok: Clicked On Army: 3| Pixel was :8D8D8D
+L [2017-01-02 23:05:55.056]  - If needed 'edit' the Army 3 before start the BOT!!!
+L [2017-01-02 23:05:56.408]  - Army Window Closed!
+D [2017-01-02 23:05:58.140] _RunFunction: DonateCC,Train END
+D [2017-01-02 23:05:58.141] _RunFunction: Laboratory BEGIN
+D [2017-01-02 23:05:58.478] AdbScreencap: 69/79/67 ms (all/10/1),62,0,l=0,t=0,w=860,h=732, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 23:05:58.584] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:05:58.588] _RunFunction: Laboratory END
+D [2017-01-02 23:05:58.588] _RunFunction: UpgradeHeroes BEGIN
+D [2017-01-02 23:05:58.789] _RunFunction: UpgradeHeroes END
+D [2017-01-02 23:05:58.790] _RunFunction: UpgradeBuilding BEGIN
+D [2017-01-02 23:05:58.992] _RunFunction: UpgradeBuilding END
+L [2017-01-02 23:05:58.993] Checking Upgrade Walls
+D [2017-01-02 23:05:59.732] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:05:59.831] Elixir is below minimum, attempt to upgrade using Gold
+L [2017-01-02 23:05:59.832] Gold is below minimum, Skipping Upgrade
+D [2017-01-02 23:06:00.701] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:06:01.107] ====== Waiting for full army ======
+L [2017-01-02 23:06:02.997] Total Army Camp capacity: 70/240 (29%)
+L [2017-01-02 23:06:03.094] Troops time: 22.00 min
+L [2017-01-02 23:06:03.273]  - Archer Queen will recover in 00:06:00
+L [2017-01-02 23:06:03.555] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:06:04.258]  - Castle request allready made.
+L [2017-01-02 23:06:04.801] » Donations enabled, available troops 29%, limit 95%
+D [2017-01-02 23:06:06.381] MEmu time lag is 0 sec/min (avg for 64 sec)
+D [2017-01-02 23:06:06.841] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:06:16.367] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:06:16.572] Waiting, Add random delay of 13 seconds.
+D [2017-01-02 23:06:21.916] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:06:30.525] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:06:32.448]  - Army Window Opened!
+L [2017-01-02 23:06:34.318] Total Army Camp capacity: 75/240 (31%)
+L [2017-01-02 23:06:34.416] Troops time: 21.00 min
+L [2017-01-02 23:06:34.561]  - Archer Queen will recover in 00:06:00
+L [2017-01-02 23:06:34.766] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:06:35.399]  - Castle request allready made.
+L [2017-01-02 23:06:35.578]  - Army Camp: 75/240
+L [2017-01-02 23:06:35.588]  - Spells: 11/11
+L [2017-01-02 23:06:35.588]  - Clan Castle: 8/35
+L [2017-01-02 23:06:35.589] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:06:35.590]  - Troops, not Ready!
+L [2017-01-02 23:06:36.247]  - 8 Barbarians Available
+L [2017-01-02 23:06:36.263]  - 22 Archers Available
+L [2017-01-02 23:06:36.264]  - 0 Giant Available
+L [2017-01-02 23:06:36.611]  - 3 Rage Spells Brewed
+L [2017-01-02 23:06:36.612]  - 2 Jump Spells Brewed
+L [2017-01-02 23:06:36.613]  - 1 Poison Spell Brewed
+L [2017-01-02 23:06:36.614]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 23:06:36.917] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:06:42.847]  - Opened the Train Troops
+L [2017-01-02 23:06:44.476]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:06:44.477]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:06:46.436]  - Your army is: 240
+L [2017-01-02 23:06:46.438]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:06:48.214]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:06:48.215]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:06:50.954]  - Army Window Closed!
+D [2017-01-02 23:06:51.850] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:06:52.118] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:06:53.021] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:06:53.227] Time Idle: 00:00:52
+L [2017-01-02 23:06:54.800]  - Castle request allready made.
+L [2017-01-02 23:06:55.525] ====== Waiting for full army ======
+L [2017-01-02 23:06:57.345] Total Army Camp capacity: 80/240 (33%)
+L [2017-01-02 23:06:57.474] Troops time: 21.00 min
+L [2017-01-02 23:06:57.629]  - Archer Queen will recover in 00:05:00
+L [2017-01-02 23:06:57.954] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:06:58.554]  - Castle request allready made.
+L [2017-01-02 23:06:59.089] » Donations enabled, available troops 33%, limit 95%
+D [2017-01-02 23:07:06.951] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:07:06.975] MEmu time lag is -1 sec/min (avg for 60 sec)
+D [2017-01-02 23:07:10.740] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:07:10.945] Waiting, Add random delay of 8 seconds.
+D [2017-01-02 23:07:19.287] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:07:19.859] AdbScreencap: 69/74/56 ms (all/10/1),52,0,l=282,t=28,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:07:21.107]  - Army Window Opened!
+D [2017-01-02 23:07:21.879] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:07:22.800] Total Army Camp capacity: 85/240 (35%)
+L [2017-01-02 23:07:22.920] Troops time: 21.00 min
+L [2017-01-02 23:07:23.076]  - Archer Queen will recover in 00:05:00
+L [2017-01-02 23:07:23.282] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:07:23.902]  - Castle request allready made.
+L [2017-01-02 23:07:24.078]  - Army Camp: 85/240
+L [2017-01-02 23:07:24.079]  - Spells: 11/11
+L [2017-01-02 23:07:24.080]  - Clan Castle: 24/35
+L [2017-01-02 23:07:24.081] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:07:24.081]  - Troops, not Ready!
+L [2017-01-02 23:07:24.739]  - 8 Barbarians Available
+L [2017-01-02 23:07:24.739]  - 22 Archers Available
+L [2017-01-02 23:07:24.740]  - 11 Giants Available
+L [2017-01-02 23:07:25.097]  - 3 Rage Spells Brewed
+L [2017-01-02 23:07:25.098]  - 2 Jump Spells Brewed
+L [2017-01-02 23:07:25.099]  - 1 Poison Spell Brewed
+L [2017-01-02 23:07:25.100]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:07:31.419]  - Opened the Train Troops
+L [2017-01-02 23:07:33.015]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:07:33.022]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:07:34.995]  - Your army is: 240
+L [2017-01-02 23:07:34.996]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:07:36.677]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:07:36.677]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:07:36.966] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:07:39.405]  - Army Window Closed!
+D [2017-01-02 23:07:40.537] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:07:41.390] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:07:41.595] Time Idle: 00:01:38
+L [2017-01-02 23:07:43.189]  - Castle request allready made.
+L [2017-01-02 23:07:43.926] ====== Waiting for full army ======
+L [2017-01-02 23:07:45.771] Total Army Camp capacity: 90/240 (37%)
+L [2017-01-02 23:07:45.869] Troops time: 20.00 min
+L [2017-01-02 23:07:46.005]  - Archer Queen will recover in 00:05:00
+L [2017-01-02 23:07:46.299] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:07:46.969]  - Castle request allready made.
+L [2017-01-02 23:07:47.504] » Donations enabled, available troops 37%, limit 95%
+D [2017-01-02 23:07:51.914] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:07:59.049] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:07:59.254] Waiting, Add random delay of 20 seconds.
+D [2017-01-02 23:08:07.015] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:08:19.559] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:08:21.400]  - Army Window Opened!
+D [2017-01-02 23:08:21.977] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:08:23.096] Total Army Camp capacity: 95/240 (39%)
+L [2017-01-02 23:08:23.197] Troops time: 20.00 min
+L [2017-01-02 23:08:23.343]  - Archer Queen will recover in 00:04:00
+L [2017-01-02 23:08:23.537] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:08:24.168]  - Castle request allready made.
+L [2017-01-02 23:08:24.333]  - Army Camp: 95/240
+L [2017-01-02 23:08:24.334]  - Spells: 11/11
+L [2017-01-02 23:08:24.335]  - Clan Castle: 24/35
+L [2017-01-02 23:08:24.336] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:08:24.336]  - Troops, not Ready!
+L [2017-01-02 23:08:24.980]  - 8 Barbarians Available
+L [2017-01-02 23:08:24.981]  - 22 Archers Available
+L [2017-01-02 23:08:24.982]  - 13 Giants Available
+L [2017-01-02 23:08:25.376]  - 3 Rage Spells Brewed
+L [2017-01-02 23:08:25.377]  - 2 Jump Spells Brewed
+L [2017-01-02 23:08:25.378]  - 1 Poison Spell Brewed
+L [2017-01-02 23:08:25.379]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 23:08:29.621] AdbScreencap: 69/79/98 ms (all/10/1),94,0,l=811,t=126,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:08:31.631]  - Opened the Train Troops
+L [2017-01-02 23:08:33.256]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:08:33.264]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:08:35.280]  - Your army is: 240
+L [2017-01-02 23:08:35.282]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 23:08:36.952] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:08:36.957]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:08:36.958]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:08:39.697]  - Army Window Closed!
+D [2017-01-02 23:08:40.842] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:08:41.694] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:08:41.899] Time Idle: 00:02:36
+L [2017-01-02 23:08:43.484]  - Castle request allready made.
+D [2017-01-02 23:08:44.026] MEmu time lag is 0 sec/min (avg for 97 sec)
+L [2017-01-02 23:08:44.227] ====== Waiting for full army ======
+L [2017-01-02 23:08:46.033] Total Army Camp capacity: 100/240 (41%)
+L [2017-01-02 23:08:46.155] Troops time: 19.00 min
+L [2017-01-02 23:08:46.291]  - Archer Queen will recover in 00:04:00
+L [2017-01-02 23:08:46.597] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:08:47.414]  - Castle request allready made.
+L [2017-01-02 23:08:47.956] » Donations enabled, available troops 41%, limit 95%
+D [2017-01-02 23:08:51.997] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:08:59.569] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:08:59.774] Waiting, Add random delay of 39 seconds.
+D [2017-01-02 23:09:07.032] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:09:22.037] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:09:37.043] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:09:39.083] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:09:40.917]  - Army Window Opened!
+L [2017-01-02 23:09:42.575] Total Army Camp capacity: 110/240 (45%)
+L [2017-01-02 23:09:42.672] Troops time: 18.00 min
+L [2017-01-02 23:09:42.798]  - Archer Queen will recover in 00:03:00
+L [2017-01-02 23:09:43.004] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:09:43.565]  - Castle request allready made.
+L [2017-01-02 23:09:43.736]  - Army Camp: 110/240
+L [2017-01-02 23:09:43.737]  - Spells: 11/11
+L [2017-01-02 23:09:43.738]  - Clan Castle: 24/35
+L [2017-01-02 23:09:43.739] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:09:43.739]  - Troops, not Ready!
+L [2017-01-02 23:09:44.401]  - 8 Barbarians Available
+L [2017-01-02 23:09:44.402]  - 22 Archers Available
+L [2017-01-02 23:09:44.403]  - 16 Giants Available
+L [2017-01-02 23:09:44.765]  - 3 Rage Spells Brewed
+L [2017-01-02 23:09:44.766]  - 2 Jump Spells Brewed
+L [2017-01-02 23:09:44.767]  - 1 Poison Spell Brewed
+L [2017-01-02 23:09:44.767]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:09:50.957]  - Opened the Train Troops
+D [2017-01-02 23:09:52.070] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:09:52.575]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:09:52.576]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:09:54.652]  - Your army is: 240
+L [2017-01-02 23:09:54.653]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:09:56.334]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:09:56.335]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:09:59.064]  - Army Window Closed!
+D [2017-01-02 23:10:00.214] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+D [2017-01-02 23:10:01.085] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:10:01.290] Time Idle: 00:03:53
+L [2017-01-02 23:10:02.877]  - Castle request allready made.
+D [2017-01-02 23:10:03.418] MEmu time lag is 0 sec/min (avg for 79 sec)
+L [2017-01-02 23:10:03.619] ====== Waiting for full army ======
+L [2017-01-02 23:10:05.555] Total Army Camp capacity: 110/240 (45%)
+L [2017-01-02 23:10:05.683] Troops time: 18.00 min
+D [2017-01-02 23:10:05.806] AdbScreencap: 70/84/87 ms (all/10/1),84,0,l=811,t=126,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:10:05.839]  - Archer Queen will recover in 00:02:00
+L [2017-01-02 23:10:06.111] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:10:06.729]  - Castle request allready made.
+D [2017-01-02 23:10:07.066] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:10:07.266] » Donations enabled, available troops 45%, limit 95%
+L [2017-01-02 23:10:07.338] Checking for Donate Requests in Clan Chat
+L [2017-01-02 23:10:09.112] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:10:10.024] Chat Request: Defesa
+L [2017-01-02 23:10:10.100] Chat Troops: 9/25, Spells: 1/1
+L [2017-01-02 23:10:10.101] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:10:11.864] Hog Rider Keyword found: defesa
+L [2017-01-02 23:10:11.975] No Hog Rider available to donate..
+L [2017-01-02 23:10:11.984] Wizard Keyword found: defesa
+L [2017-01-02 23:10:13.164] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:10:14.060] Chat Request: defesas
+L [2017-01-02 23:10:14.147] Chat Troops: 32/35, Spells: 1/1
+L [2017-01-02 23:10:14.148] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:10:15.876] Hog Rider Keyword found: defesa
+L [2017-01-02 23:10:15.877] Sorry Chief! Hog Riders don't fit in the remaining space!
+L [2017-01-02 23:10:15.878] Wizard Keyword found: defesa
+L [2017-01-02 23:10:15.879] Sorry Chief! Wizards don't fit in the remaining space!
+L [2017-01-02 23:10:16.869] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:10:17.771] Chat Request: Preciso de reforços
+L [2017-01-02 23:10:17.848] Chat Troops: 0/20
+L [2017-01-02 23:10:19.592] Hog Rider Keyword found: refor
+L [2017-01-02 23:10:19.700] No Hog Rider available to donate..
+L [2017-01-02 23:10:19.710] Wizard Keyword found: refor
+D [2017-01-02 23:10:22.152] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:10:32.840] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:10:33.045] Waiting, Add random delay of 60 seconds.
+D [2017-01-02 23:10:37.183] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:10:52.190] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:11:07.226] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:11:22.237] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:11:33.360] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -1, -1
+L [2017-01-02 23:11:35.171]  - Army Window Opened!
+L [2017-01-02 23:11:36.833] Total Army Camp capacity: 122/240 (50%)
+L [2017-01-02 23:11:36.973] Troops time: 16.00 min
+L [2017-01-02 23:11:37.120]  - Archer Queen will recover in 00:01:00
+D [2017-01-02 23:11:37.162] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:11:37.294] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:11:37.882]  - Castle request allready made.
+L [2017-01-02 23:11:38.046]  - Army Camp: 122/240
+L [2017-01-02 23:11:38.056]  - Spells: 11/11
+L [2017-01-02 23:11:38.057]  - Clan Castle: 30/35
+L [2017-01-02 23:11:38.059] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:11:38.060]  - Troops, not Ready!
+L [2017-01-02 23:11:38.705]  - 8 Barbarians Available
+L [2017-01-02 23:11:38.721]  - 22 Archers Available
+L [2017-01-02 23:11:38.722]  - 16 Giants Available
+L [2017-01-02 23:11:38.722]  - 3 Wizards Available
+L [2017-01-02 23:11:39.065]  - 3 Rage Spells Brewed
+L [2017-01-02 23:11:39.066]  - 2 Jump Spells Brewed
+L [2017-01-02 23:11:39.066]  - 1 Poison Spell Brewed
+L [2017-01-02 23:11:39.067]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:11:45.262]  - Opened the Train Troops
+L [2017-01-02 23:11:46.848]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:11:46.849]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:11:48.925]  - Your army is: 240
+L [2017-01-02 23:11:48.926]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:11:50.599]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:11:50.599]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:11:52.175] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:11:53.330]  - Army Window Closed!
+D [2017-01-02 23:11:54.451] GetVillageSize cannot find stone
+L [2017-01-02 23:11:54.452] Zooming Out
+D [2017-01-02 23:11:56.235] GetVillageSize measured: 457.985626055893, Zoom factor: 0.967024683607016, Offset: -9, 0
+D [2017-01-02 23:11:57.236] Center Village by: -9, 0
+D [2017-01-02 23:11:58.857] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:11:59.860] Village Offset updated to 2, -1, 0.968675285474313
+D [2017-01-02 23:11:59.862] Centered Village Offset: 2, -1, change: 11, -1
+D [2017-01-02 23:12:00.718] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:12:00.925] Time Idle: 00:05:50
+L [2017-01-02 23:12:02.537]  - Castle request allready made.
+D [2017-01-02 23:12:03.071] MEmu time lag is 0 sec/min (avg for 119 sec)
+L [2017-01-02 23:12:03.273] ====== Waiting for full army ======
+D [2017-01-02 23:12:03.535] AdbScreencap: 70/73/77 ms (all/10/1),73,0,l=811,t=126,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:12:05.123] Total Army Camp capacity: 126/240 (52%)
+L [2017-01-02 23:12:05.221] Troops time: 16.00 min
+L [2017-01-02 23:12:05.363]  - Archer Queen will recover in 00:00:47
+L [2017-01-02 23:12:05.658] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:12:06.287]  - Castle request allready made.
+L [2017-01-02 23:12:06.822] » Donations enabled, available troops 52%, limit 95%
+L [2017-01-02 23:12:06.904] Checking for Donate Requests in Clan Chat
+D [2017-01-02 23:12:07.205] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:12:08.739] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:12:09.647] Chat Request: defesas
+L [2017-01-02 23:12:09.724] Chat Troops: 32/35, Spells: 1/1
+L [2017-01-02 23:12:09.725] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:12:11.413] Hog Rider Keyword found: defesa
+L [2017-01-02 23:12:11.414] Sorry Chief! Hog Riders don't fit in the remaining space!
+L [2017-01-02 23:12:11.414] Wizard Keyword found: defesa
+L [2017-01-02 23:12:11.415] Sorry Chief! Wizards don't fit in the remaining space!
+L [2017-01-02 23:12:12.491] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:12:13.405] Chat Request: Preciso de reforços
+L [2017-01-02 23:12:13.509] Chat Troops: 0/20
+L [2017-01-02 23:12:15.261] Hog Rider Keyword found: refor
+L [2017-01-02 23:12:15.391] Wizard Keyword found: refor
+L [2017-01-02 23:12:20.891] Donating 5 Wizards
+L [2017-01-02 23:12:21.903] Using OCR to read Latin derived alphabets..
+D [2017-01-02 23:12:22.355] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:12:22.861] Unable to read Chat Request!
+D [2017-01-02 23:12:35.558] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:12:35.763] Waiting, Add random delay of 24 seconds.
+D [2017-01-02 23:12:37.283] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:12:52.292] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:13:00.122] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:13:01.971]  - Army Window Opened!
+L [2017-01-02 23:13:03.643] Total Army Camp capacity: 114/240 (47%)
+L [2017-01-02 23:13:03.741] Troops time: 17.00 min
+L [2017-01-02 23:13:03.778]  - Archer Queen available
+L [2017-01-02 23:13:03.993] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:13:04.603]  - Castle request allready made.
+L [2017-01-02 23:13:04.766]  - Army Camp: 114/240
+L [2017-01-02 23:13:04.776]  - Spells: 11/11
+L [2017-01-02 23:13:04.776]  - Clan Castle: 30/35
+L [2017-01-02 23:13:04.777] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:13:04.778]  - Troops, not Ready!
+L [2017-01-02 23:13:05.451]  - 8 Barbarians Available
+L [2017-01-02 23:13:05.469]  - 22 Archers Available
+L [2017-01-02 23:13:05.470]  - 16 Giants Available
+L [2017-01-02 23:13:05.470]  - 1 Wizard Available
+L [2017-01-02 23:13:05.831]  - 3 Rage Spells Brewed
+L [2017-01-02 23:13:05.832]  - 2 Jump Spells Brewed
+L [2017-01-02 23:13:05.832]  - 1 Poison Spell Brewed
+L [2017-01-02 23:13:05.833]   making donated troops
+D [2017-01-02 23:13:07.260] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:13:12.106]  - Opened the Train Troops
+L [2017-01-02 23:13:14.834]  - Current Capacity: 460/240
+L [2017-01-02 23:13:14.835]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:13:16.536]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:13:16.537]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:13:18.542]  - Your army is: 240
+L [2017-01-02 23:13:18.543]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:13:20.214]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:13:20.215]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:13:22.292] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:13:22.889]  - Army Window Closed!
+D [2017-01-02 23:13:24.042] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:13:24.902] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:13:25.107] Time Idle: 00:07:12
+D [2017-01-02 23:13:26.041] AdbScreencap: 70/67/66 ms (all/10/1),62,0,l=282,t=28,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:13:26.675]  - Castle request allready made.
+D [2017-01-02 23:13:27.209] MEmu time lag is 0 sec/min (avg for 84 sec)
+L [2017-01-02 23:13:27.411] ====== Waiting for full army ======
+L [2017-01-02 23:13:29.271] Total Army Camp capacity: 118/240 (49%)
+L [2017-01-02 23:13:29.379] Troops time: 16.00 min
+L [2017-01-02 23:13:29.414]  - Archer Queen available
+L [2017-01-02 23:13:29.693] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:13:30.290]  - Castle request allready made.
+L [2017-01-02 23:13:30.825] » Donations enabled, available troops 49%, limit 95%
+D [2017-01-02 23:13:37.279] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:13:42.374] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:13:42.580] Waiting, Add random delay of 29 seconds.
+D [2017-01-02 23:13:52.323] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:14:07.392] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:14:12.141] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:14:13.955]  - Army Window Opened!
+L [2017-01-02 23:14:15.637] Total Army Camp capacity: 122/240 (50%)
+L [2017-01-02 23:14:15.736] Troops time: 16.00 min
+L [2017-01-02 23:14:15.775]  - Archer Queen available
+L [2017-01-02 23:14:15.969] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:14:16.603]  - Castle request allready made.
+L [2017-01-02 23:14:16.771]  - Army Camp: 122/240
+L [2017-01-02 23:14:16.771]  - Spells: 11/11
+L [2017-01-02 23:14:16.772]  - Clan Castle: 30/35
+L [2017-01-02 23:14:16.773] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:14:16.774]  - Troops, not Ready!
+L [2017-01-02 23:14:17.490]  - 8 Barbarians Available
+L [2017-01-02 23:14:17.491]  - 22 Archers Available
+L [2017-01-02 23:14:17.492]  - 16 Giants Available
+L [2017-01-02 23:14:17.493]  - 3 Wizards Available
+L [2017-01-02 23:14:17.886]  - 3 Rage Spells Brewed
+L [2017-01-02 23:14:17.887]  - 2 Jump Spells Brewed
+L [2017-01-02 23:14:17.888]  - 1 Poison Spell Brewed
+L [2017-01-02 23:14:17.889]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 23:14:22.436] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:14:24.109]  - Opened the Train Troops
+L [2017-01-02 23:14:25.697]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:14:25.698]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:14:27.744]  - Your army is: 240
+L [2017-01-02 23:14:27.745]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:14:29.482]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:14:29.490]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:14:32.217]  - Army Window Closed!
+D [2017-01-02 23:14:33.373] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:14:34.224] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:14:34.429] Time Idle: 00:08:19
+L [2017-01-02 23:14:36.276]  - Castle request allready made.
+D [2017-01-02 23:14:36.810] MEmu time lag is 0 sec/min (avg for 69 sec)
+L [2017-01-02 23:14:37.011] ====== Waiting for full army ======
+D [2017-01-02 23:14:37.447] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:14:38.931] Total Army Camp capacity: 127/240 (52%)
+L [2017-01-02 23:14:39.050] Troops time: 15.00 min
+L [2017-01-02 23:14:39.085]  - Archer Queen available
+L [2017-01-02 23:14:39.416] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:14:40.022]  - Castle request allready made.
+L [2017-01-02 23:14:40.557] » Donations enabled, available troops 52%, limit 95%
+D [2017-01-02 23:14:52.181] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:14:52.386] Waiting, Add random delay of 33 seconds.
+D [2017-01-02 23:14:52.489] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:15:07.504] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:15:22.509] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:15:25.668] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:15:27.559] AdbScreencap: 70/73/119 ms (all/10/1),115,0,l=815,t=135,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:15:27.565]  - Army Window Opened!
+L [2017-01-02 23:15:29.293] Total Army Camp capacity: 132/240 (55%)
+L [2017-01-02 23:15:29.413] Troops time: 14.00 min
+L [2017-01-02 23:15:29.447]  - Archer Queen available
+L [2017-01-02 23:15:29.630] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:15:30.228]  - Castle request allready made.
+L [2017-01-02 23:15:30.402]  - Army Camp: 132/240
+L [2017-01-02 23:15:30.403]  - Spells: 11/11
+L [2017-01-02 23:15:30.404]  - Clan Castle: 30/35
+L [2017-01-02 23:15:30.405] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:15:30.406]  - Troops, not Ready!
+L [2017-01-02 23:15:31.101]  - 8 Barbarians Available
+L [2017-01-02 23:15:31.102]  - 22 Archers Available
+L [2017-01-02 23:15:31.103]  - 16 Giants Available
+L [2017-01-02 23:15:31.104]  - 3 Wizards Available
+L [2017-01-02 23:15:31.104]  - 2 Hog Riders Available
+L [2017-01-02 23:15:31.507]  - 3 Rage Spells Brewed
+L [2017-01-02 23:15:31.507]  - 2 Jump Spells Brewed
+L [2017-01-02 23:15:31.508]  - 1 Poison Spell Brewed
+L [2017-01-02 23:15:31.509]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 23:15:37.549] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:15:37.742]  - Opened the Train Troops
+L [2017-01-02 23:15:39.348]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:15:39.355]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:15:41.362]  - Your army is: 240
+L [2017-01-02 23:15:41.363]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:15:43.035]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:15:43.036]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:15:44.556] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 23:15:45.768]  - Army Window Closed!
+D [2017-01-02 23:15:45.886] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 23:15:46.927] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:15:47.794] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:15:48.000] Time Idle: 00:09:30
+L [2017-01-02 23:15:49.615]  - Castle request allready made.
+D [2017-01-02 23:15:50.151] MEmu time lag is 0 sec/min (avg for 73 sec)
+D [2017-01-02 23:15:50.151] Cleared 1 MEmu page errors
+L [2017-01-02 23:15:50.352] ====== Waiting for full army ======
+L [2017-01-02 23:15:52.319] Total Army Camp capacity: 132/240 (55%)
+L [2017-01-02 23:15:52.440] Troops time: 14.00 min
+L [2017-01-02 23:15:52.478]  - Archer Queen available
+D [2017-01-02 23:15:52.534] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:15:52.827] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:15:53.563]  - Castle request allready made.
+L [2017-01-02 23:15:54.100] » Donations enabled, available troops 55%, limit 95%
+D [2017-01-02 23:16:05.757] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:16:05.964] Waiting, Add random delay of 26 seconds.
+D [2017-01-02 23:16:07.583] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:16:22.677] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:16:32.348] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:16:34.196]  - Army Window Opened!
+L [2017-01-02 23:16:35.949] Total Army Camp capacity: 137/240 (57%)
+L [2017-01-02 23:16:36.060] Troops time: 13.00 min
+L [2017-01-02 23:16:36.098]  - Archer Queen available
+L [2017-01-02 23:16:36.336] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:16:36.918]  - Castle request allready made.
+L [2017-01-02 23:16:37.085]  - Army Camp: 137/240
+L [2017-01-02 23:16:37.096]  - Spells: 11/11
+L [2017-01-02 23:16:37.097]  - Clan Castle: 30/35
+L [2017-01-02 23:16:37.098] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:16:37.099]  - Troops, not Ready!
+D [2017-01-02 23:16:37.796] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:16:37.962]  - 8 Barbarians Available
+L [2017-01-02 23:16:37.978]  - 22 Archers Available
+L [2017-01-02 23:16:37.979]  - 16 Giants Available
+L [2017-01-02 23:16:37.980]  - 3 Wizards Available
+L [2017-01-02 23:16:37.981]  - 3 Hog Riders Available
+L [2017-01-02 23:16:38.364]  - 3 Rage Spells Brewed
+L [2017-01-02 23:16:38.365]  - 2 Jump Spells Brewed
+L [2017-01-02 23:16:38.366]  - 1 Poison Spell Brewed
+L [2017-01-02 23:16:38.367]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:16:44.831]  - Opened the Train Troops
+L [2017-01-02 23:16:46.523]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:16:46.524]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:16:48.572]  - Your army is: 240
+L [2017-01-02 23:16:48.573]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:16:50.303]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:16:50.312]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:16:50.391] AdbScreencap: 70/89/77 ms (all/10/1),73,0,l=811,t=126,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 23:16:52.814] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:16:53.009]  - Army Window Closed!
+D [2017-01-02 23:16:54.208] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:16:55.060] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:16:55.266] Time Idle: 00:10:35
+L [2017-01-02 23:16:56.986]  - Castle request allready made.
+D [2017-01-02 23:16:57.522] MEmu time lag is 0 sec/min (avg for 67 sec)
+L [2017-01-02 23:16:57.724] ====== Waiting for full army ======
+L [2017-01-02 23:16:59.588] Total Army Camp capacity: 142/240 (59%)
+L [2017-01-02 23:16:59.697] Troops time: 13.00 min
+L [2017-01-02 23:16:59.732]  - Archer Queen available
+L [2017-01-02 23:17:00.036] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:17:00.646]  - Castle request allready made.
+L [2017-01-02 23:17:01.189] » Donations enabled, available troops 59%, limit 95%
+D [2017-01-02 23:17:07.858] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:17:12.784] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:17:12.999] Waiting, Add random delay of 54 seconds.
+D [2017-01-02 23:17:22.880] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:17:37.893] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:17:52.992] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:18:07.352] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:18:07.957] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:18:09.144]  - Army Window Opened!
+L [2017-01-02 23:18:10.864] Total Army Camp capacity: 147/240 (61%)
+L [2017-01-02 23:18:10.993] Troops time: 12.00 min
+L [2017-01-02 23:18:11.029]  - Archer Queen available
+L [2017-01-02 23:18:11.213] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:18:11.871]  - Castle request allready made.
+L [2017-01-02 23:18:12.036]  - Army Camp: 147/240
+L [2017-01-02 23:18:12.046]  - Spells: 11/11
+L [2017-01-02 23:18:12.047]  - Clan Castle: 30/35
+L [2017-01-02 23:18:12.048] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:18:12.049]  - Troops, not Ready!
+L [2017-01-02 23:18:12.748]  - 8 Barbarians Available
+L [2017-01-02 23:18:12.766]  - 22 Archers Available
+L [2017-01-02 23:18:12.767]  - 16 Giants Available
+L [2017-01-02 23:18:12.767]  - 3 Wizards Available
+L [2017-01-02 23:18:12.768]  - 6 Hog Riders Available
+L [2017-01-02 23:18:13.159]  - 3 Rage Spells Brewed
+L [2017-01-02 23:18:13.160]  - 2 Jump Spells Brewed
+L [2017-01-02 23:18:13.161]  - 1 Poison Spell Brewed
+L [2017-01-02 23:18:13.162]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:18:19.374]  - Opened the Train Troops
+L [2017-01-02 23:18:21.002]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:18:21.010]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:18:23.010] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:18:23.026]  - Your army is: 240
+L [2017-01-02 23:18:23.027]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:18:24.751]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:18:24.759]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:18:27.507]  - Army Window Closed!
+D [2017-01-02 23:18:28.706] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:18:29.607] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:18:29.816] Time Idle: 00:12:07
+L [2017-01-02 23:18:31.428]  - Castle request allready made.
+D [2017-01-02 23:18:31.972] MEmu time lag is 0 sec/min (avg for 94 sec)
+L [2017-01-02 23:18:32.174] ====== Waiting for full army ======
+L [2017-01-02 23:18:34.137] Total Army Camp capacity: 152/240 (63%)
+L [2017-01-02 23:18:34.247] Troops time: 11.00 min
+L [2017-01-02 23:18:34.292]  - Archer Queen available
+L [2017-01-02 23:18:34.666] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:18:35.359]  - Castle request allready made.
+L [2017-01-02 23:18:35.894] » Donations enabled, available troops 63%, limit 95%
+D [2017-01-02 23:18:37.000] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:18:47.393] AdbScreencap: 71/74/69 ms (all/10/1),62,0,l=0,t=0,w=860,h=732, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+D [2017-01-02 23:18:47.503] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:18:47.707] _RunFunction: Collect BEGIN
+L [2017-01-02 23:18:48.484] Collecting Resources
+D [2017-01-02 23:18:53.001] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:18:55.309] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:18:55.314] Searching for a Loot Cart..
+L [2017-01-02 23:18:55.781] No Loot Cart found, Yard is clean!
+D [2017-01-02 23:18:57.492] _RunFunction: Collect END
+D [2017-01-02 23:18:57.492] _RunFunction: DonateCC BEGIN
+L [2017-01-02 23:18:57.494] » Donations enabled, available troops 63%, limit 95%
+L [2017-01-02 23:18:57.580] Checking for Donate Requests in Clan Chat
+L [2017-01-02 23:18:59.442] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:19:00.361] Chat Request: defesas
+L [2017-01-02 23:19:00.437] Chat Troops: 32/35, Spells: 1/1
+L [2017-01-02 23:19:00.438] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:19:02.209] Hog Rider Keyword found: defesa
+L [2017-01-02 23:19:02.210] Sorry Chief! Hog Riders don't fit in the remaining space!
+L [2017-01-02 23:19:02.212] Wizard Keyword found: defesa
+L [2017-01-02 23:19:02.213] Sorry Chief! Wizards don't fit in the remaining space!
+L [2017-01-02 23:19:03.245] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:19:04.184] Chat Request: Defesa
+L [2017-01-02 23:19:04.282] Chat Troops: 18/25, Spells: 1/1
+L [2017-01-02 23:19:04.283] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:19:06.042] Hog Rider Keyword found: defesa
+L [2017-01-02 23:19:07.252] Donating 1 Hog Rider
+L [2017-01-02 23:19:07.262] Wizard Keyword found: defesa
+L [2017-01-02 23:19:07.263] Sorry Chief! Wizards don't fit in the remaining space!
+D [2017-01-02 23:19:08.110] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:19:09.979] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:19:09.984] _RunFunction: DonateCC END
+D [2017-01-02 23:19:09.985] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 23:19:10.186] _RunFunction: CheckTombs END
+D [2017-01-02 23:19:10.187] _RunFunction: CleanYard BEGIN
+D [2017-01-02 23:19:10.187] _RunFunction: CleanYard END
+L [2017-01-02 23:19:10.388] Waiting, Add random delay of 25 seconds.
+D [2017-01-02 23:19:23.083] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:19:35.740] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:19:37.728]  - Army Window Opened!
+D [2017-01-02 23:19:38.053] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:19:39.421] Total Army Camp capacity: 152/240 (63%)
+L [2017-01-02 23:19:39.601] Troops time: 11.00 min
+L [2017-01-02 23:19:39.712]  - Archer Queen available
+L [2017-01-02 23:19:39.989] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:19:40.670]  - Castle request allready made.
+L [2017-01-02 23:19:40.862]  - Army Camp: 152/240
+L [2017-01-02 23:19:40.872]  - Spells: 11/11
+L [2017-01-02 23:19:40.873]  - Clan Castle: 30/35
+L [2017-01-02 23:19:40.875] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:19:40.876]  - Troops, not Ready!
+L [2017-01-02 23:19:41.642]  - 8 Barbarians Available
+L [2017-01-02 23:19:41.663]  - 22 Archers Available
+L [2017-01-02 23:19:41.664]  - 16 Giants Available
+L [2017-01-02 23:19:41.664]  - 3 Wizards Available
+L [2017-01-02 23:19:41.665]  - 6 Hog Riders Available
+L [2017-01-02 23:19:42.063]  - 3 Rage Spells Brewed
+L [2017-01-02 23:19:42.064]  - 2 Jump Spells Brewed
+L [2017-01-02 23:19:42.065]  - 1 Poison Spell Brewed
+L [2017-01-02 23:19:42.066]   making donated troops
+L [2017-01-02 23:19:48.271]  - Opened the Train Troops
+L [2017-01-02 23:19:50.981]  - Current Capacity: 455/240
+L [2017-01-02 23:19:50.988]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:19:52.670]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:19:52.671]  - Checking: Empty Queue and Not Full Army
+D [2017-01-02 23:19:53.200] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:19:54.689]  - Your army is: 240
+L [2017-01-02 23:19:54.693]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:19:56.380]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:19:56.381]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:19:59.089]  - Army Window Closed!
+D [2017-01-02 23:20:00.251] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:20:01.142] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:20:01.347] Time Idle: 00:13:36
+L [2017-01-02 23:20:02.945]  - Castle request allready made.
+D [2017-01-02 23:20:03.487] MEmu time lag is 0 sec/min (avg for 91 sec)
+L [2017-01-02 23:20:03.688] ====== Waiting for full army ======
+L [2017-01-02 23:20:05.595] Total Army Camp capacity: 157/240 (65%)
+L [2017-01-02 23:20:05.696] Troops time: 10.00 min
+L [2017-01-02 23:20:05.730]  - Archer Queen available
+D [2017-01-02 23:20:05.818] AdbScreencap: 71/76/66 ms (all/10/1),63,0,l=811,t=126,w=2,h=2, 523CCD829D80725A7E16D990F4D4CD5753B0CC5E: w=860,h=732,f=1
+L [2017-01-02 23:20:06.053] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:20:06.658]  - Castle request allready made.
+L [2017-01-02 23:20:07.194] » Donations enabled, available troops 65%, limit 95%
+L [2017-01-02 23:20:07.278] Checking for Donate Requests in Clan Chat
+D [2017-01-02 23:20:08.186] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:20:09.122] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:20:10.152] Chat Request: Defesa
+L [2017-01-02 23:20:10.252] Chat Troops: 23/25, Spells: 1/1
+L [2017-01-02 23:20:10.253] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:20:12.275] Hog Rider Keyword found: defesa
+L [2017-01-02 23:20:12.278] Sorry Chief! Hog Riders don't fit in the remaining space!
+L [2017-01-02 23:20:12.279] Wizard Keyword found: defesa
+L [2017-01-02 23:20:12.280] Sorry Chief! Wizards don't fit in the remaining space!
+L [2017-01-02 23:20:13.287] Using OCR to read Latin derived alphabets..
+L [2017-01-02 23:20:14.349] Chat Request: defesas
+L [2017-01-02 23:20:14.425] Chat Troops: 32/35, Spells: 1/1
+L [2017-01-02 23:20:14.426] Clan Castle spells are full, skip spell donation...
+L [2017-01-02 23:20:15.486] Donate Window did not open - Exiting Donate
+D [2017-01-02 23:20:23.172] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:20:27.684] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:20:27.891] Waiting, Add random delay of 47 seconds.
+D [2017-01-02 23:20:36.561] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 23:20:38.275] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:20:53.282] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:21:08.298] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:21:15.191] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:21:17.035]  - Army Window Opened!
+D [2017-01-02 23:21:17.570] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 23:21:18.726] Total Army Camp capacity: 167/240 (69%)
+L [2017-01-02 23:21:18.825] Troops time: 9.00 min
+L [2017-01-02 23:21:18.862]  - Archer Queen available
+L [2017-01-02 23:21:19.057] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:21:19.722] - Castle full/no clan.
+L [2017-01-02 23:21:19.883]  - Army Camp: 167/240
+L [2017-01-02 23:21:19.895]  - Spells: 11/11
+L [2017-01-02 23:21:19.896]  - Clan Castle: 35/35
+L [2017-01-02 23:21:19.898] Chief, are your Army ready for battle? No, Not yet!
+L [2017-01-02 23:21:19.899]  - Troops, not Ready!
+L [2017-01-02 23:21:20.625]  - 8 Barbarians Available
+L [2017-01-02 23:21:20.643]  - 22 Archers Available
+L [2017-01-02 23:21:20.644]  - 16 Giants Available
+L [2017-01-02 23:21:20.645]  - 3 Wizards Available
+L [2017-01-02 23:21:20.645]  - 9 Hog Riders Available
+L [2017-01-02 23:21:21.071]  - 3 Rage Spells Brewed
+L [2017-01-02 23:21:21.072]  - 2 Jump Spells Brewed
+L [2017-01-02 23:21:21.072]  - 1 Poison Spell Brewed
+L [2017-01-02 23:21:21.073]  - Checking: FULL Queue and Not Full Army
+D [2017-01-02 23:21:23.273] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+L [2017-01-02 23:21:27.340]  - Opened the Train Troops
+L [2017-01-02 23:21:28.938]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:21:28.938]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:21:30.952]  - Your army is: 240
+L [2017-01-02 23:21:30.953]  - Checking: FULL Queue and Not Full Army
+L [2017-01-02 23:21:32.657]  - Conditions NOT met: FULL queue and Not Full Army
+L [2017-01-02 23:21:32.658]  - Checking: Empty Queue and Not Full Army
+L [2017-01-02 23:21:35.398]  - Army Window Closed!
+D [2017-01-02 23:21:36.586] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+D [2017-01-02 23:21:37.447] GetVillageSize measured: 458.767355770117, Zoom factor: 0.968675285474313, Offset: 2, -1
+L [2017-01-02 23:21:37.654] Time Idle: 00:15:10
+D [2017-01-02 23:21:38.247] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:21:39.764] MEmu time lag is 0 sec/min (avg for 96 sec)
+L [2017-01-02 23:21:39.967] ====== Waiting for full army ======
+L [2017-01-02 23:21:41.810] Total Army Camp capacity: 167/240 (69%)
+L [2017-01-02 23:21:41.910] Troops time: 9.00 min
+L [2017-01-02 23:21:41.945]  - Archer Queen available
+L [2017-01-02 23:21:42.342] Total Spell(s) Capacity: 11/11
+L [2017-01-02 23:21:42.940] - Castle full/no clan.
+L [2017-01-02 23:21:43.468] » Donations enabled, available troops 69%, limit 95%
+D [2017-01-02 23:21:46.211] Restore bot window to 1919, 269, caller: GUIControl_WM_NCACTIVATE
+D [2017-01-02 23:21:46.215] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2017-01-02 23:21:46.331] Bot was Paused!
+D [2017-01-02 23:21:47.541] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 23:21:53.280] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:22:08.276] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:22:23.289] API: $hWind=0x000C0350,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:22:24.806] Restore bot window to 1919, 269, caller: GUIControl_WM_NCACTIVATE
+D [2017-01-02 23:22:24.809] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2017-01-02 23:22:30.411] Enable GUI Controls
+D [2017-01-02 23:22:31.915] Redraw MyBot Window
+L [2017-01-02 23:22:32.219] ==================== Bot Stop ====================

@@ -393,6 +393,29 @@ Func findMultiple($directory, $sCocDiamond, $redLines, $minLevel = 0, $maxLevel 
 
 EndFunc   ;==>findMultiple
 
+Func ReCheckTile($filePath, $coords, $bForceCapture = True)
+	Local $ToReturn = ""
+
+	If $bForceCapture Then _CaptureRegion2() ;to have FULL screen image to work with
+
+	Local $result = DllCall($hImgLib, "str", "RecheckTile", "handle", $hHBitmap2, "str", $filePath, "str", $coords)
+	$error = @error ; Store error values as they reset at next function call
+	$extError = @extended
+	If $error Then
+		_logErrorDLLCall($pImgLib, $error)
+		If $DebugSetlog = 1 Then SetLog(" imgloc DLL Error : " & $error & " --- " & $extError)
+		SetError(2, $extError, $ToReturn) ; Set external error code = 2 for DLL error
+		Return ""
+	EndIf
+
+	If $result[0] <> "" Then
+		$ToReturn = $result[0]
+	EndIf
+
+	Return $ToReturn
+
+EndFunc   ;==>ReCheckTile
+
 Func GetDiamondFromRect($rect)
 	;receives "StartX,StartY,EndX,EndY" or "StartX,StartY(Width,Height)"
 	;returns "StartX,StartY|EndX,StartY|EndX,EndY|StartX,EndY"

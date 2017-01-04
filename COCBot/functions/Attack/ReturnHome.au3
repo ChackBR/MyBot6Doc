@@ -14,6 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
+	ResetRedLines()
 	If $DebugSetLog = 1 Then Setlog("ReturnHome function... (from matchmode=" & $iMatchMode & " - " & $sModeText[$iMatchMode] & ")", $COLOR_DEBUG)
 	Local $counter = 0
 	Local $hBitmap_Scaled
@@ -30,11 +31,9 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 			While GoldElixirChangeEBO()
 				If _Sleep($iDelayReturnHome1) Then Return
 			WEnd
-
-			If IsAttackPage() Then smartZap() ; Check to see if we should zap the DE Drills
-
+			If IsAttackPage() Then smartZap(); Check to see if we should zap the DE Drills
 			;If Heroes were not activated: Hero Ability activation before End of Battle to restore health
-			If ($checkKPower = True Or $checkQPower = True) And $iActivateKQCondition = "Auto" Then
+			If ($checkKPower = True Or $checkQPower = True Or $checkWPower = True) And $iActivateKQCondition = "Auto" Then
 				;_CaptureRegion()
 				If _ColorCheck(_GetPixelColor($aRtnHomeCheck1[0], $aRtnHomeCheck1[1], True), Hex($aRtnHomeCheck1[2], 6), $aRtnHomeCheck1[3]) = False And _ColorCheck(_GetPixelColor($aRtnHomeCheck2[0], $aRtnHomeCheck2[1], True), Hex($aRtnHomeCheck2[2], 6), $aRtnHomeCheck2[3]) = False Then ; If not already at Return Homescreen
 					If $checkKPower = True Then
@@ -44,6 +43,10 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 					If $checkQPower = True Then
 						SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_INFO)
 						If IsAttackPage() Then SelectDropTroop($Queen) ;If Queen was not activated: Boost Queen before EndBattle to restore some health
+					EndIf
+					If $checkWPower = True Then
+						SetLog("Activating Warden's power to restore some health before EndBattle", $COLOR_INFO)
+						If IsAttackPage() Then SelectDropTroop($Warden) ;If Queen was not activated: Boost Queen before EndBattle to restore some health
 					EndIf
 				EndIf
 			EndIf
@@ -59,6 +62,9 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 	$checkKPower = False
 	$checkQPower = False
 	$checkWPower = False
+	$HeroesTimerActivation[0] = 0
+	$HeroesTimerActivation[1] = 0
+	$HeroesTimerActivation[2] = 0
 
 	If $iTScheck = 1 And $iMatchMode = $TS And $icmbTroopComp <> 8 Then $FirstStart = True ;reset barracks upon return when TH sniping w/custom army
 

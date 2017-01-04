@@ -12,6 +12,7 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func TestImglocTroopBar()
 	$RunState = True
 	$debugSetlog = 1
@@ -29,10 +30,17 @@ EndFunc
 Func AttackBarCheck()
 
 	Local $x = 0, $y = 659, $x1 = 853, $y1 = 698
+	Local $CheckSlot12 = False
+	Local $CheckSlotwHero = False
+
+	; Reset to level one the Spells level
+	$GlobalEQSpelllevel = 1
+	$GlobalLSpelllevel = 1
+
 	; Setup arrays, including default return values for $return
 	Local $aResult[1][5], $aCoordArray[1][2], $aCoords, $aCoordsSplit, $aValue
 	Local $redLines = "FV"
-	Local $directory =  "attackbar-bundle"
+	Local $directory =  @ScriptDir & "\imgxml\AttackBar"
 	If $RunState = False Then Return
 	; Capture the screen for comparison
 	_CaptureRegion2($x, $y, $x1, $y1)
@@ -51,7 +59,7 @@ Func AttackBarCheck()
 			Local $aKeys = StringSplit($res[0], "|", $STR_NOCOUNT)
 
 			; Redimension the result array to allow for the new entries
-			ReDim $aResult[UBound($aKeys)][5]
+			ReDim $aResult[UBound($aKeys)][6]
 
 			; Loop through the array
 			For $i = 0 To UBound($aKeys) - 1
@@ -94,16 +102,33 @@ Func AttackBarCheck()
 
 			_ArraySort($aResult, 0, 0, 0, 1) ; Sort By X position , will be the Slot 0 to $i
 
+			$CheckSlot12 = _ColorCheck(_GetPixelColor(17, 643, True), Hex(0x478AC6, 6), 15) Or _  	; Slot Filled / Background Blue / More than 11 Slots
+						   _ColorCheck(_GetPixelColor(17, 643, True), Hex(0x434343, 6), 10)   		; Slot deployed / Gray / More than 11 Slots
+
+			If $debugSetlog = 1 Then
+				Setlog(" Slot > 12 _ColorCheck 0x478AC6 at (17," & 643 & "): " & $CheckSlot12, $COLOR_DEBUG) ;Debug
+				Local $CheckSlot12Color = _GetPixelColor(17, 643, $bCapturePixel)
+				Setlog(" Slot > 12 _GetPixelColor(17," & 643 & "): " & $CheckSlot12Color, $COLOR_DEBUG) ;Debug
+			EndIf
+
+			For $i = 0 To UBound($aResult) - 1
+				If $aResult[$i][0] = "King" Or $aResult[$i][0] = "Queen" Or $aResult[$i][0] = "Warden" Then
+					$CheckSlotwHero = True
+				EndIf
+			Next
+
+			Local $SlotCompensation = -6
 			For $i = 0 To UBound($aResult) - 1
 				Local $Slottemp
 				If $aResult[$i][1] > 0 Then
 					If $debugSetlog = 1 Then SetLog("SLOT : " & $i, $COLOR_DEBUG) ;Debug
 					If $debugSetlog = 1 Then SetLog("Detection : " & $aResult[$i][0] & "|x" & $aResult[$i][1] & "|y" & $aResult[$i][2], $COLOR_DEBUG) ;Debug
-					$Slottemp = SlotAttack(number($aResult[$i][1]))
+					$Slottemp = SlotAttack(number($aResult[$i][1]), $CheckSlot12, $CheckSlotwHero)
 					If $RunState = False Then Return ; Stop function
 					If _Sleep(20) then return        ; Pause function
 					If Ubound($Slottemp) = 2 then
 						If $debugSetlog = 1 Then SetLog("OCR : " & $Slottemp[0] & "|SLOT: " & $Slottemp[1], $COLOR_DEBUG) ;Debug
+						If $aResult[$i][0] = "King" Or $aResult[$i][0] = "Queen" Or $aResult[$i][0] = "Warden" Then $SlotCompensation = 8
 						If $aResult[$i][0] = "Castle" Or $aResult[$i][0] = "King" Or $aResult[$i][0] = "Queen" Or $aResult[$i][0] = "Warden" Then
 							$aResult[$i][3] = 1
 							$aResult[$i][4] = $Slottemp[1]
@@ -114,6 +139,16 @@ Func AttackBarCheck()
 								$aResult[$i][3] = Number(getTroopCountSmall(Number($Slottemp[0]), 641)) ; For small Numbers
 								$aResult[$i][4] = $Slottemp[1]
 							EndIf
+							If StringInStr($aResult[$i][0], "ESpell") <> 0 and $ichkSmartZap = 1 then
+								$aResult[$i][5] = getTroopsSpellsLevel(Number($Slottemp[0]) + $SlotCompensation, 704)
+								If $aResult[$i][5] <> "" then $GlobalEQSpelllevel = $aResult[$i][5] ; If they aren't empty will store the correct level , or will be level 1 , just in case
+								Setlog("EarthQuake Detected with level " & $aResult[$i][5])
+							EndIF
+							If StringInStr($aResult[$i][0], "LSpell") <> 0 and $ichkSmartZap = 1 then
+								$aResult[$i][5] = getTroopsSpellsLevel(Number($Slottemp[0]) + $SlotCompensation, 704)
+								If $aResult[$i][5] <> "" then $GlobalLSpelllevel = $aResult[$i][5]  ; If they aren't empty will store the correct level , or will be level 1 , just in case
+								Setlog("Lightning Detected with level " & $aResult[$i][5])
+							EndIF
 						EndIf
 					Else
 						Setlog("Problem with Attack bar detection!", $COLOR_RED)
@@ -159,15 +194,7 @@ Func AttackBarCheck()
 
 EndFunc   ;==>AttackBarCheck
 
-Func SlotAttack($PosX)
-
-	Local $CheckSlot11 = _ColorCheck(_GetPixelColor(17, 580 + $bottomOffsetY, True), Hex(0x07202A, 6), 15) ; 15 just in case of the snow theme
-
-	If $debugSetlog = 1 Then
-		Setlog(" Slot < 12 _ColorCheck 0x07202A at (17," & 580 + $bottomOffsetY & "): " & $CheckSlot11, $COLOR_DEBUG) ;Debug
-		Local $SlotPixelColorTemp = _GetPixelColor(17, 580 + $bottomOffsetY, $bCapturePixel)
-		Setlog(" Slot < 12 _GetPixelColo(17," & 580 + $bottomOffsetY & "): " & $SlotPixelColorTemp, $COLOR_DEBUG) ;Debug
-	EndIf
+Func SlotAttack($PosX, $CheckSlot12, $CheckSlotwHero)
 
 	Local $Slottemp[2] = [0, 0]
 
@@ -175,7 +202,11 @@ Func SlotAttack($PosX)
 		If $PosX >= 25 + ($i * 73)  and $PosX < 98 + ($i * 73) then
 			$Slottemp[0] = 35 + ($i * 73)
 			$Slottemp[1] = $i
-			If $CheckSlot11 = False Then $Slottemp[0] -= 13
+			If $CheckSlot12 = True Then
+				$Slottemp[0] -= 13
+			ElseIf $CheckSlotwHero = False Then
+				$Slottemp[0] += 8
+			EndIf
 			If $debugSetlog = 1 Then Setlog("Slot: " & $i & " | $x > " & 25 + ($i * 73) & " and $x < " & 98 + ($i * 73))
 			If $debugSetlog = 1 Then Setlog("Slot: " & $i & " | $PosX: " & $PosX & " |  OCR x position: " & $Slottemp[0] & " | OCR Slot: " & $Slottemp[1])
 			Return $Slottemp

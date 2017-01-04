@@ -71,6 +71,7 @@ Global $ichkDisableSplash = 0 ; Splash screen disabled = 1
 Global $debugDisableZoomout = 0
 Global $debugDisableVillageCentering = 0
 Global $debugDeadBaseImage = 0 ; Enable collection of zombies (capture screenshot of detect DeadBase routine)
+Global $iSearchEnableDebugDeadBaseImage = 200 ; If $debugDeadBaseImage is 0 and more than searches reached, set $debugDeadBaseImage = 1, 0 = disabled
 ; Enabled saving of enemy villages when deadbase is active
 Global $aZombie = ["" _ ; 0=Filename
 	, 0 _  ; 1=Raided Elixir
@@ -94,6 +95,8 @@ Global $debugGetLocation = 0 ;make a image of each structure detected with getlo
 Global $debugOCRdonate = 0 ; when 1 make OCR and simulate but do not donate
 Global $debugAndroidEmbedded = 0
 Global $debugWindowMessages = 0 ; 0=off, 1=most Window Messages, 2=all Window Messages
+Global $DebugSmartZap = 0
+Global $DebugGdiCount = 0 ; monitor bot GDI Handle count, 0 = Disabled, <> 0 = Enabled
 
 Global Const $COLOR_ORANGE = 0xFF7700  ; Used for donate GUI buttons
 Global Const $COLOR_ERROR = $COLOR_RED   ; Error messages
@@ -250,7 +253,8 @@ Global $AndroidEmbed ; Enable Android Docking
 Global $AndroidEmbedMode ; Android Dock Mode: -1 = Not available, 0 = Normal docking, 1 = Simulated docking
 Global $AndroidBackgroundLaunch ; Enabled Android Background launch using Windows Scheduled Task
 Global $AndroidBackgroundLaunched ; True when Android was launched in headless mode without a window
-Global $AndroidControlClickWindow = 1 ; 0 = Click the Android Control, 1 = Click the Android Window
+Global $AndroidControlClickWindow = 0 ; 0 = Click the Android Control, 1 = Click the Android Window
+Global $AndroidControlClickMode = 0 ; 0 = Use AutoIt ControlClick, 1 = Use _SendMessage
 
 Func AndroidAdbClickSupported()
 	Return BitAND($AndroidSupportFeature, 4) = 4
@@ -379,6 +383,7 @@ Global $sProfilePath = @ScriptDir & "\Profiles"
 ;Global $sTemplates = @ScriptDir & "\Templates"
 Global $sPreset = @ScriptDir & "\Strategies"
 Global $aTxtLogInitText[0][6] = [[]]
+Global $aTxtAtkLogInitText[0][6] = [[]]
 Global $hTxtLogTimer = TimerInit() ; Timer Handle of last log
 Global $iTxtLogTimerTimeout = 500 ; Refresh log only every configured Milliseconds
 
@@ -511,7 +516,7 @@ Global Enum $eIcnArcher = 1, $eIcnDonArcher, $eIcnBalloon, $eIcnDonBalloon, $eIc
 		$eWall04, $eWall05, $eWall06, $eWall07, $eWall08, $eWall09, $eWall10, $eWall11, _
 		$eIcnPBNotify, $eIcnCCTroops, $eIcnCCSpells, $eIcnSpellsGroup, _
 		$eBahasaIND, $eChinese_S, $eChinese_T, $eEnglish, $eFrench, $eGerman, $eItalian, $ePersian, $eRussian, $eSpanish, $eTurkish, $eMissingLangIcon, _
-		$eWall12, $ePortuguese
+		$eWall12, $ePortuguese, $eIcnIcew
 
 Global $eIcnDonBlank = $eIcnDonBlacklist
 Global $eIcnOptions = $eIcnDonBlacklist
@@ -537,7 +542,7 @@ Global $iGUIChildTop = 65
 
 Global $hAttackCountDown = 0 ; Timer Handle for 30 Seconds Attack countdown
 
-Global Enum $DB, $LB, $TS, $MA, $TB, $DT ; DeadBase, LiveBase, TownhallSnipe, Milking Attack, TownhallBully, DropTrophy
+Global Enum $DB, $LB, $TS, $MA, $TB, $DT ; DeadBase, ActiveBase, TownhallSnipe, Milking Attack, TownhallBully, DropTrophy
 Global $iModeCount = 3
 Global $iMatchMode ; 0 Dead / 1 Live / 2 TH Snipe / 3 Milking Attack / 4 TH Bully / 5 Drop Trophy
 Global $sModeText[6]
@@ -700,8 +705,7 @@ $iCmbWeakWizTower[$DB] = 4
 $iCmbWeakWizTower[$LB] = 4
 Global $iChkSearchReduction = 0
 Global $ReduceCount = 20, $ReduceGold = 2000, $ReduceElixir = 2000, $ReduceGoldPlusElixir = 4000, $ReduceDark = 100, $ReduceTrophy = 2 ; Reducing values
-;Global $chkConditions[7], $ichkMeetOne ;Conditions (meet gold...)
-;Global $icmbTH
+
 Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iModeCount], $iChkMeetTrophy[$iModeCount], $iChkMeetTH[$iModeCount], $iChkMeetTHO[$iModeCount], $iChkMeetOne[$iModeCount], $iCmbTH[$iModeCount]
 Global $chkDBMeetTHO, $chkABMeetTHO
 Global $THLocation
@@ -717,17 +721,6 @@ $THText[3] = "9"
 $THText[4] = "10"
 $THText[5] = "11"
 
-Global $THImages0, $THImages1, $THImages2, $THImages3, $THImages4, $THImages5
-Global $THImagesStat0, $THImagesStat1, $THImagesStat2, $THImagesStat3, $THImagesStat4, $THImagesStat5
-
-Global $maxElixirLevel = 6
-Global $ElixirImages0, $ElixirImages1, $ElixirImages2, $ElixirImages3, $ElixirImages4, $ElixirImages5, $ElixirImages6
-Global $ElixirImagesStat0, $ElixirImagesStat1, $ElixirImagesStat2, $ElixirImagesStat3, $ElixirImagesStat4, $ElixirImagesStat5, $ElixirImagesStat6
-Global $ElixirImages0_75percent, $ElixirImages1_75percent, $ElixirImages2_75percent, $ElixirImages3_75percent, $ElixirImages4_75percent, $ElixirImages5_75percent, $ElixirImages6_75percent
-Global $ElixirImagesStat0_75percent, $ElixirImagesStat1_75percent, $ElixirImagesStat2_75percent, $ElixirImagesStat3_75percent, $ElixirImagesStat4_75percent, $ElixirImagesStat5_75percent, $ElixirImagesStat6_75percent
-Global $ElixirImages0_50percent, $ElixirImages1_50percent, $ElixirImages2_50percent, $ElixirImages3_50percent, $ElixirImages4_50percent, $ElixirImages5_50percent, $ElixirImages6_50percent
-Global $ElixirImagesStat0_50percent, $ElixirImagesStat1_50percent, $ElixirImagesStat2_50percent, $ElixirImagesStat3_50percent, $ElixirImagesStat4_50percent, $ElixirImagesStat5_50percent, $ElixirImagesStat6_50percent
-
 Global $SearchCount = 0 ;Number of searches
 
 Global $THaddtiles, $THside, $THi
@@ -738,7 +731,7 @@ Global $OptBullyMode = 0
 Global $ATBullyMode = 150
 Global $YourTH
 Global $iTHBullyAttackMode
-;~ Global $icmbAttackTHType
+
 Global $scmbAttackTHType = "Bam"
 Global $txtAttackTHType
 Global $iNbOfSpots
@@ -750,6 +743,7 @@ Global $Log
 Global $CheckHeroes
 Global $KingSlotTH
 Global $QueenSlotTH
+
 ; Attack TH snipe
 Global $icmbDeployBtmTHType
 Global $ichkUseKingTH = 0
@@ -765,10 +759,8 @@ Global $THusedQueen = 0
 Global $THusedWarden = 0
 
 
-Global $TrainSpecial = 1 ;0=Only trains after atk. Setting is automatic
-Global $cBarbarian = 0, $cArcher = 0, $cGoblin = 0, $cGiant = 0, $cWallbreaker = 0, $cWizard = 0, $cBalloon = 0, $cDragon = 0, $cPekka = 0, $cBabyDragon = 0, $cMiner = 0, $cMinion = 0, $cHogs = 0, $cValkyrie = 0, $cGolem = 0, $cWitch = 0, $cLavaHound = 0, $cBowl = 0
 ;Troop types
-Global Enum $eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, _
+Global Enum $eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eIceW, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, _
 	$eMini, $eHogs, $eValk, $eGole, $eWitc, $eLava, $eBowl, $eKing, $eQueen, $eWarden, $eCastle, _
 	$eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell
 ;wall
@@ -778,19 +770,11 @@ Global $WallX = 0, $WallY = 0
 Global $Wall[8]
 Global $iMaxNbWall = 4
 
-;Attack Settings
-; Old coordinates
-#cs
-	Global $TopLeft[5][2] = [[79, 281], [170, 205], [234, 162], [296, 115], [368, 66]]
-	Global $TopRight[5][2] = [[480, 63], [540, 104], [589, 146], [655, 190], [779, 278]]
-	Global $BottomLeft[5][2] = [[79, 342], [142, 389], [210, 446], [276, 492], [339, 539]]
-	Global $BottomRight[5][2] = [[523, 537], [595, 484], [654, 440], [715, 393], [779, 344]]
-#ce
-; New coordinates by Cru34
-Global $TopLeft[5][2] = [[83, 306], [174, 238], [240, 188], [303, 142], [390, 76]]
-Global $TopRight[5][2] = [[466, 66], [556, 134], [622, 184], [684, 231], [775, 300]]
-Global $BottomLeft[5][2] = [[81, 363], [174, 434], [235, 481], [299, 530], [390, 600]]
-Global $BottomRight[5][2] = [[466, 590], [554, 523], [615, 477], [678, 430], [765, 364]]
+;Attack Settings [Dec 2016]
+Global $TopLeft[5][2] = [[62, 306], [156, 238], [221, 188], [288, 142], [383, 76]]
+Global $TopRight[5][2] = [[486, 59], [586, 134], [652, 184], [720, 231], [817, 308]]
+Global $BottomLeft[5][2] = [[20, 373], [101, 430], [171, 481], [244, 535], [346, 615]]
+Global $BottomRight[5][2] = [[530, 615], [632, 535], [704, 481], [781, 430], [848, 373]]
 Global $eThing[1] = [101]
 Global $Edges[4] = [$BottomRight, $TopLeft, $BottomLeft, $TopRight]
 
@@ -809,7 +793,7 @@ $iChkRedArea[$LB] = 1
 $iChkRedArea[$MA] = 1
 
 Global $troopsToBeUsed[12]
-Global $useAllTroops[33] = [$eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, $eMini, $eHogs, $eValk, $eGole, $eWitc, $eLava, $eBowl, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell]
+Global $useAllTroops[34] = [$eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eIceW, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, $eMini, $eHogs, $eValk, $eGole, $eWitc, $eLava, $eBowl, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell]
 Global $useBarracks[26] = [$eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell]
 Global $useBarbs[15] = [$eBarb, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell]
 Global $useArchs[15] = [$eArch, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell]
@@ -847,6 +831,7 @@ Global $iHeroWaitNoBit[$iModeCount][3] ; Heroes wait status for attack
 Global $iHeroAvailable = $HERO_NOHERO ; Hero ready status
 Global $iHeroUpgrading[3] = [0, 0, 0] ; Upgrading Heroes
 Global $iHeroUpgradingBit = $HERO_NOHERO ; Upgrading Heroes
+Global $bHaveAnyHero = -1	; -1 Means not set yet
 Global $bFullArmyHero = False ; = BitAnd($iHeroWait[$iMatchMode], $iHeroAvailable )
 
 Global $KingAttackCSV[$iModeCount] ;King attack settings
@@ -874,11 +859,6 @@ Global $iActivateKQCondition
 Global $iActivateWardenCondition
 Global $delayActivateKQ ; = 9000 ;Delay before activating KQ
 Global $delayActivateW ; Delay before activating Grand Warden Ability
-
-Global $iActivateKQConditionCSV
-Global $iActivateWardenConditionCSV
-Global $delayActivateKQCSV ; = 9000 ;Delay before activating KQ
-
 
 Global $iDropCC[$iModeCount] ; Use Clan Castle settings
 Global $iChkUseCCBalanced ; Use Clan Castle Balanced settings
@@ -978,6 +958,7 @@ Global $B[6] = [116, 111, 98, 111, 116, 46]
 Global $F[8] = [112, 58, 47, 47, 119, 119, 119, 46]
 Global $ichkExtraAlphabets = 0 ; extra alphabets
 Global $ichkExtraChinese = 0 ; extra Chinese alphabets
+Global $ichkExtraPersian = 0 ; extra Persian alphabets
 
 Global $DonBarb = 0, $DonArch = 0, $DonGiant = 0, $DonGobl = 0, $DonWall = 0, $DonBall = 0, $DonWiza = 0, $DonHeal = 0
 Global $DonMini = 0, $DonHogs = 0, $DonValk = 0, $DonGole = 0, $DonWitc = 0, $DonLava = 0, $DonBowl = 0, $DonDrag = 0, $DonPekk = 0, $DonBabyD = 0, $DonMine = 0
@@ -990,9 +971,9 @@ Global $icmbDarkTroopComp = 1
 Global $icmbTroopCap ;Troop Capacity
 Global $BarbComp = 58, $ArchComp = 115, $GoblComp = 19, $GiantComp = 4, $WallComp = 4, $WizaComp = 0, $MiniComp = 0, $HogsComp = 0
 Global $DragComp = 0, $BallComp = 0, $PekkComp = 0, $HealComp = 0, $ValkComp = 0, $GoleComp = 0, $WitcComp = 0, $LavaComp = 0, $BowlComp = 0
-Global $BabyDComp = 0, $MineComp = 0
+Global $BabyDComp = 0, $MineComp = 0 , $IceWComp = 0
 Global $CurBarb = 0, $CurArch = 0, $CurGiant = 0, $CurGobl = 0, $CurWall = 0, $CurBall = 0, $CurWiza = 0, $CurHeal = 0
-Global $CurMini = 0, $CurHogs = 0, $CurValk = 0, $CurGole = 0, $CurWitc = 0, $CurLava = 0, $CurBowl = 0, $CurDrag = 0, $CurPekk = 0, $CurBabyD = 0, $CurMine = 0
+Global $CurMini = 0, $CurHogs = 0, $CurValk = 0, $CurGole = 0, $CurWitc = 0, $CurLava = 0, $CurBowl = 0, $CurDrag = 0, $CurPekk = 0, $CurBabyD = 0, $CurMine = 0 , $CurIceW = 0
 Global $T[1] = [97]
 Global $ArmyComp
 
@@ -1129,11 +1110,11 @@ Global $itxtRestartDark = 500
 
 ;Create troop training variables
 ; notes $DefaultTroopGroup[19][0] = $TroopName | [1] = $TroopNamePosition | [2] = $TroopHeight | [3] = Times | [4] = qty | [5] = marker for DarkTroop or ElixerTroop]
-Global $DefaultTroopGroup[19][6]  = [ ["Arch", 1, 1, 25, 0, "e"], ["Giant", 2, 5, 120, 0, "e"], ["Wall", 4, 2, 60, 0, "e"], ["Barb", 0, 1, 20, 0, "e"], ["Gobl", 3, 1, 30, 0, "e"], ["Heal", 7, 14, 600, 0, "e"], ["Pekk", 9, 25, 900, 0, "e"],  _
-									 ["Ball", 5, 5, 300, 0, "e"], ["Wiza", 6, 4, 300, 0, "e"], ["Drag", 8, 20, 900, 0, "e"], ["BabyD", 10, 10, 600, 0, "e"],["Mine", 11, 5, 300, 0, "e"], _
+Global $DefaultTroopGroup[20][6]  = [ ["Arch", 1, 1, 25, 0, "e"], ["Giant", 2, 5, 120, 0, "e"], ["Wall", 4, 2, 60, 0, "e"], ["Barb", 0, 1, 20, 0, "e"], ["Gobl", 3, 1, 30, 0, "e"], ["Heal", 8, 14, 600, 0, "e"], ["Pekk", 10, 25, 900, 0, "e"],  _
+									 ["Ball", 5, 5, 300, 0, "e"], ["Wiza", 7, 4, 300, 0, "e"], ["Drag", 9, 20, 900, 0, "e"], ["BabyD", 11, 10, 600, 0, "e"], ["Mine", 12, 5, 300, 0, "e"], ["IceW", 6, 4, 300, 0, "e"], _
 									 ["Mini", 0, 2, 45, 0, "d"], ["Hogs", 1, 5, 120, 0, "d"], ["Valk", 2, 8, 300, 0, "d"], ["Gole", 3, 30, 900, 0, "d"], ["Witc", 4, 12, 600, 0, "d"], ["Lava", 5, 30, 900, 0, "d"], ["Bowl", 6, 6, 300, 0, "d"]]
 
-Global $TroopGroup[19][6]  ; Actual training order values determined dynamically based on GUI.
+Global $TroopGroup[20][6]  ; Actual training order values determined dynamically based on GUI.
 Global $TroopName[UBound($DefaultTroopGroup, 1)]
 Global $TroopNamePosition[UBound($DefaultTroopGroup, 1)]
 Global $TroopHeight[UBound($DefaultTroopGroup, 1)]
@@ -1152,20 +1133,12 @@ Global $iCmbCurrentArmy = 0
 
 ; Create custom train order GUI variables
 Global $chkTroopOrder, $ichkTroopOrder, $btnTroopOrderSet
-Global $aTroopOrderIcon[21] = [$eIcnOptions, $eIcnBarbarian, $eIcnArcher, $eIcnGiant, $eIcnGoblin, $eIcnWallBreaker, $eIcnBalloon, $eIcnWizard, $eIcnHealer, $eIcnDragon, $eIcnPekka, $eIcnBabyDragon, $eIcnMiner, $eIcnMinion, $eIcnHogRider, $eIcnValkyrie, $eIcnGolem, $eIcnWitch, $eIcnLavaHound, $eIcnBowler]
+Global $aTroopOrderIcon[22] = [$eIcnOptions, $eIcnBarbarian, $eIcnArcher, $eIcnGiant, $eIcnGoblin, $eIcnWallBreaker, $eIcnBalloon,$eIcnIceW, $eIcnWizard, $eIcnHealer, $eIcnDragon, $eIcnPekka, $eIcnBabyDragon, $eIcnMiner, $eIcnMinion, $eIcnHogRider, $eIcnValkyrie, $eIcnGolem, $eIcnWitch, $eIcnLavaHound, $eIcnBowler]
 Global $cmbTroopOrder[UBound($aTroopOrderIcon)], $icmbTroopOrder[UBound($aTroopOrderIcon)], $lblTroopOrder[UBound($aTroopOrderIcon)], $ImgTroopOrder[UBound($aTroopOrderIcon)]
 Global $chkDarkTroopOrder, $ichkDarkTroopOrder, $btnDarkTroopOrderSet
 Global $aDarkTroopOrderIcon[8] = [$eIcnOptions, $eIcnMinion, $eIcnHogRider, $eIcnValkyrie, $eIcnGolem, $eIcnWitch, $eIcnLavaHound, $eIcnBowler]
 Global $cmbDarkTroopOrder[UBound($aDarkTroopOrderIcon)], $icmbDarkTroopOrder[UBound($aDarkTroopOrderIcon)], $lblDarkTroopOrder[UBound($aDarkTroopOrderIcon)], $ImgDarkTroopOrder[UBound($aDarkTroopOrderIcon)]
 
-#CS ;Create dark troop training variables
-Global $DefaultTroopGroupDark[7][4] = [["Mini", 0, 2, 45], ["Hogs", 1, 5, 120], ["Valk", 2, 8, 300], ["Gole", 3, 30, 900], ["Witc", 4, 12, 600], ["Lava", 5, 30, 900], ["Bowl", 6, 6, 300]]
-Global $TroopGroupDark[7][4]
-Global $TroopDarkName[UBound($DefaultTroopGroupDark, 1)]
-Global $TroopDarkNamePosition[UBound($DefaultTroopGroupDark, 1)]
-Global $TroopDarkHeight[UBound($DefaultTroopGroupDark, 1)]
-Global $TroopDarkTimes[UBound($DefaultTroopGroupDark, 1)]
- #CE; SetDefaultTroopGroupDark(False)
 SetDefaultTroopGroup(False)
 
 ;Global $SpellGroup[4][3] = [["PSpell", 0, 1], ["ESpell", 1, 1], ["HaSpell", 2, 1], ["SkSpell", 3, 1]]
@@ -1461,8 +1434,11 @@ Global $ichkUpgradeQueen = 0
 Global $ichkUpgradeWarden = 0
 
 ; Barbarian King/Queen Upgrade Costs = Dark Elixir in xxxK
-Global $aKingUpgCost[40] = [10, 12.5, 15, 17.5, 20, 22.5, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190]
-Global $aQueenUpgCost[40] = [40, 22.5, 25, 27.5, 30, 32.5, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200]
+Global $iMaxKingLevel = 45
+Global $iMaxQueenLevel = 45
+Global $iMaxWardenLevel = 20
+Global $aKingUpgCost[45] = [10, 12.5, 15, 17.5, 20, 22.5, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 185, 188, 191, 194, 197]
+Global $aQueenUpgCost[45] = [40, 22.5, 25, 27.5, 30, 32.5, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 129, 133, 137, 141, 145, 149, 153, 157, 161, 165, 169, 173, 177, 181, 185, 190, 192, 194, 196, 198]
 ; Grand Warden Upgrade Costs = Elixir in xx.xK
 Global $aWardenUpgCost[20] = [6, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.4, 8.8, 9.1, 9.4, 9.6, 9.8, 10]
 
@@ -1476,6 +1452,7 @@ Global $sLanguageDisp = "English"
 Global $aLanguageFile[1][2]; undimmed language file array [FileName][DisplayName]
 Global Const $sDefaultLanguage = "English"
 Global $aLanguage[1][1] ;undimmed language array
+Global $hLangIcons = 0
 
 ;images
 Global $iDetectedImageType = 0
@@ -1715,7 +1692,7 @@ Global $iAddIdleTimeMax = 60			; maximum time to wait in seconds
 
 Global $ichkFixClanCastle = 0
 
-$iDeadBaseDisableCollectorsFilter = 0 ; 0 default, set 1 to transform deadbase search like a livebase search
+$iDeadBaseDisableCollectorsFilter = 0 ; 0 default, set 1 to transform deadbase search like a ActiveBase search
 
 
 ;imgloc globals for THSearch and also deadbase
@@ -1730,27 +1707,48 @@ Global $IMGLOCTHRDISTANCE
 
 Global $ichkUseQTrain = 0
 Global $iRadio_Army1, $iRadio_Army2, $iRadio_Army3
-;---------------------------------------------------------------
-; SmartZap GUI variables
-;---------------------------------------------------------------
-	Global $ichkSmartZap = 0
-	Global $ichkSmartZapDB = 1
-	Global $ichkSmartZapSaveHeroes = 1
-	Global $itxtMinDE = 250
-	; NoobZap
-	Global $ichkNoobZap = 0
-	Global $itxtExpectedDE = 95
-	; SmartZap stats
-	Global $smartZapGain = 0
-	Global $numLSpellsUsed = 0
-	Global $iOldsmartZapGain = 0, $iOldNumLTSpellsUsed = 0
-	; SmartZap Array to hold Total Amount of DE available from Drill at each level (1-6)
-	Global Const $drillLevelHold[6] = [120, 225, 405, 630, 960, 1350]
-	; SmartZap Array to hold Amount of DE available to steal from Drills at each level (1-6)
-	Global Const $drillLevelSteal[6] = [59, 102, 172, 251, 343, 479]
-;---------------------------------------------------------------
-;End Smart Zap Globals
-;---------------------------------------------------------------
+
+;SmartZap
+;Global $numSpells = 0
+Global $ichkSmartZap = 0
+Global $ichkSmartZapDB = 1
+Global $ichkSmartZapSaveHeroes = 1
+Global $itxtMinDE = 350
+Global $fDarkStealFactor = 0.75
+Global $fDarkFillLevel = 0.70
+
+; NoobZap
+Global $ichkNoobZap = 0
+Global $itxtExpectedDE = 320
+
+; EarthQuakeZap
+Global $ichkEarthQuakeZap = 0
+;Global $EQSpellZap = 0
+
+; SmartZap stats
+Global $iSmartZapGain = 0, $iOldsmartZapGain = 0
+Global $iNumLSpellsUsed = 0, $iOldNumLSpellsUsed = 0
+Global $iNumEQSpellsUsed = 0, $iOldNumEQSpellsUsed = 0
+
+; SmartZap Array to hold Total HP of DE Drills at each level (1-6)
+Global Const $aDrillLevelHP[6] = [800, 860, 920, 980, 1060, 1160]
+
+; SmartZap Array to hold Total Amount of DE available from Drill at each level (1-6)
+Global Const $aDrillLevelTotal[6] = [160, 300, 540, 840, 1280, 1800]
+
+; SmartZap Array to hold Total Damage of Lightning Spell at each level (1-7)
+Global Const $aLSpellDmg[7] = [300, 330, 360, 390, 450, 510, 570]
+
+; SmartZap Array to hold Total Damage of Earthquake Spell at each level (1-4)
+Global Const $aEQSpellDmg[4] = [0.14, 0.17, 0.21, 0.25]
+
+; SmartZap Array to hold stealable Amount of DE available from Drill at each level (1-6)
+; = $aDrillLevelTotal * $fDarkStealFactor
+Global Const $aDrillLevelHold[6] = [120, 225, 405, 630, 960, 1350]
+
+; SmartZap Array to hold Amount of DE available to steal per zap from Drills at each level (1-6)
+; = $aDrillLevelHold/$aDrillLevelHP * $aLSpellDmg (different Lvls, with old values)
+Global Const $aDrillLevelSteal[6] = [59, 102, 172, 251, 343, 479]
 
 ;Wait for Castle
 Global $iChkWaitForCastleSpell[$iModeCount]
@@ -1762,7 +1760,7 @@ Global $ichkForceBrewBeforeAttack = 0
 
 Global $itxtLevBarb = 1, $itxtLevArch = 1, $itxtLevGobl = 1, $itxtLevGiant = 1, $itxtLevWall = 1
 Global $itxtLevHeal = 0, $itxtLevPekk = 0, $itxtLevBall = 0, $itxtLevWiza = 0, $itxtLevDrag = 0
-Global $itxtLevBabyD = 0, $itxtLevMine = 0
+Global $itxtLevBabyD = 0, $itxtLevMine = 0 , $itxtLevIceW = 0
 
 Global $itxtLevMini = 0, $itxtLevHogs = 0, $itxtLevValk = 0, $itxtLevGole = 0
 Global $itxtLevWitc = 0, $itxtLevLava = 0, $itxtLevBowl = 0
@@ -1773,6 +1771,7 @@ Global $LevGiantCost[9] = [0, 500, 750, 1250, 1750, 2250, 3000, 3500, 4000]
 Global $LevGoblCost[8] = [0, 25, 40, 60, 80, 100, 150, 200]
 Global $LevWallCost[7] = [0, 1000, 1500, 2000, 2500, 3000, 3500]
 Global $LevBallCost[8] = [0, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
+Global $LevIceWCost[3] = [0, 1500, 2000]
 Global $LevWizaCost[8] = [0, 1500, 2000, 2500, 3000, 3500, 4000, 4500]
 Global $LevHealCost[5] = [0, 5000, 6000, 8000, 10000]
 Global $LevDragCost[7] = [0, 25000, 29000, 33000, 37000, 42000, 46000]
@@ -1818,6 +1817,51 @@ Global $topTrophyloot = 0
 Global $TroopsDonQ[24] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 Global $TroopsDonXP[24] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 Global $lblDonQ[24] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+Global $isSantaSpellAvailable = -1	; -1 Means not Set
+Global $_CheckIceWizardSlot = True ; Check if Ice Wizard changes normal troop layout (reset to true in readConfig!)
+
+; ================================================== BOT DocOc Version PART ================================================= ;
+Global $lastModversion = "" ;latest version from GIT
+Global $lastModmessage = "" ;message for last version
+Global $oldModversmessage = "" ;warning message for old bot
+
+; ================================================== BOT HUMANIZATION PART ================================================== ;
+Global $MinimumPriority, $MaxActionsNumber, $ActionToDo
+Global $SetActionPriority[13] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+Global $FrequenceChain = GetTranslated(42, 100, "Never|Sometimes|Frequently|Often|Very Often")
+Global $ReplayChain = "1|2|4"
+Global $ichkUseBotHumanization, $ichkUseAltRClick, $icmbMaxActionsNumber, $ichkCollectAchievements, $ichkLookAtRedNotifications
+
+Global $icmbPriority[13] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Global $icmbMaxSpeed[2] = [0, 0]
+Global $icmbPause[2] = [0, 0]
+Global $ihumanMessage[2] = ["", ""]
+
+Global $cmbPriority[13] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Global $cmbMaxSpeed[2] = [0, 0]
+Global $cmbPause[2] = [0, 0]
+Global $humanMessage[2] = ["", ""]
+
+Global $ReplayDuration[2] = [0, 0] ; An array, [0] = Minute | [1] = Seconds
+Global $OnReplayWindow, $ReplayToPause
+
+Global $QuickMISX = 0, $QuickMISY = 0
+Global $LastLayout = 0
+
+Global $CurBaseRedLine[2] = ["", ""]
+Global $DCD = "440,70|825,344|440,640|55,344"
+Global $ECD = "440,22|860,344|440,670|2,344"
+; ================================================== BOT HUMANIZATION END ================================================== ;
+
+Local $HeroesTimerActivation[3] ; to use of Heroes Activation Habilities , Timer  , each Hero
+
+;SuperXP
+Global $ichkEnableSuperXP = 0, $irbSXTraining = 1, $ichkSXBK = 0, $ichkSXAQ = 0, $ichkSXGW = 0, $iStartXP = 0, $iCurrentXP = 0, $iGainedXP = 0, $iGainedXPHour = 0, $itxtMaxXPtoGain = 500
+
+Global $GlobalEQSpelllevel  = Null
+Global $GlobalLSpelllevel  = Null
 
 ;
 ; Global Variables - AwesomeGamer, LunaEclipse, ...

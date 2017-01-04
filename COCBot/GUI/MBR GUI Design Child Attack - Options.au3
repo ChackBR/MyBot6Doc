@@ -28,6 +28,8 @@ $hGUI_AttackOption_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,30,"End Ba
 GUICtrlCreateTabItem("")
 $hGUI_AttackOption_TAB_ITEM4 = GUICtrlCreateTabItem(GetTranslated(600,32,"Trophy Settings"))
 #include "MBR GUI Design Child Attack - Options-TrophySettings.au3"
+$hGUI_AttackOption_TAB_ITEM5 = GUICtrlCreateTabItem(GetTranslated(700, 0, "Goblin XP"))
+#include "MBR GUI Design Child Attack - Options-SuperXP.au3"
 GUICtrlCreateTabItem("")
 
 

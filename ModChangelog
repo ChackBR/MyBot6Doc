@@ -1,0 +1,192 @@
+  _____ ___   _   __  __   ___           ___   ___
+ |_   _| __| /_\ |  \/  | |   \ ___  __ / _ \ / __|
+   | | | _| / _ \| |\/| | | |) / _ \/ _| (_) | (__
+   |_| |___/_/ \_\_|  |_| |___/\___/\__|\___/ \___|
+
+
+			Based on MyBot.run v6.5.2
+
+  _____               ____              ____   _____ __ 
+ |  __ \             / __ \            |___ \ | ____/_ |
+ | |  | | ___   ___ | |  | | ___  __   ____) || |__  | |
+ | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ < |___ \ | |
+ | |__| | (_) | (__ | |__| | (__   \ V /___) | ___) || |
+ |_____/ \___/ \___(_)____/ \___|   \_/|____(_)____(_)_|
+                                                        
+	- Fix the train order with Ice Wizard
+	- Fix the CSV attack error
+	- Fix the EarthQuake spell on Samrt N00b Mode
+	
+                 Doc Oc v3.5                                    
+   - Official 6.5.2  
+   - Fix the Healer Slot , train window
+   - Fix Smart Zap N00b Mode
+   - Fix the Air Def. values on GUI / Weak Base
+   - Fix the GUI glitch on train when the Barbs , Giants , 
+   Arch and Wallb are set to zero and level zero but the input box doesn't disappear
+   - Fix Bully Mode issues on search village
+   - Fix VillageSearch checks for dead base even if dead base search is not activated.
+   - Add Logo
+   - Add Version checker
+   - Add Classic FFF
+   - Add New edges coordinates , used on FFF
+   - Add Persian OCR/Text Support in Donation
+   - Add New detection of Train/Brew slots | image detection (prepared for any new event)
+   - Add CSV new commands ZAP , SideP , DropS, Remain
+   - Warden forced timer Activation, separated from King and Queen
+   - Add Ice Wizard on train and Attack
+   - Improve Standard attack : 
+   changed the CC deploy after deploy Giants, wall breaker before barbarians
+   - Improve The Smart Zap with Spells Level detection on attack Bar
+   - Improve The Logs on Smart Zap and GUI
+   - Bot startup faster
+   
+   Notes :
+   
+    - Add New detection of Train/Brew slots : 
+	All $Train'Troop' variables are empty [-1] , on first loop the imgloc will detect position of troop to train 
+	and store [0] X positiom , [1] Y position , [2] Color to check , [3] Tolerance.
+	If was not detected, because is gray / full , or doesn't exist will store again the [-1].
+	All $Full'Troop' variables are empty , after $train'Troop' routine , will check gray color on [i] symbol in each slot , symbol [i]
+	positions previous stored. If the slot is NOT Full will be Blue not Gray.
+	
+	- Warden forced timer Activation, separated from King and Queen :
+	Warden haves a check/input box to force the activation by timer.
+	All the timers are stored AFTER the Heroes deployment and not on final of script like the old method.
+	Work on standard attack and CSV attack.
+	The function CheckHeroesHealth have the auto and timer routine.
+	
+	- CSV commmnads , DropS , SideP , Zap
+	
+	SideP ...you can say multi side or whatever and each side will calculate current/buildings, you can use this to determine 
+		a new side in csv several times, And SideP using Parallel Search and is more fast than default method
+		AND Rewrite the 'MAKE' command after SIDEP commands are necessary (to update the drop positions)
+		Only Elixir Collectors/Gold Mines/Dark Elixir Drills are Supported, 'Yet'
+	
+	DropS
+		(1). DEFENSE
+		for now only selected buildings can be type:
+		INFERNO
+		ADEFENCE
+		EAGLE
+
+		(2). OPTIONS
+		"R:F,B:T,S:S,L:T" ! Those Named as Options (Or Whatever you want to name/call it)! :
+		 - Options should be entered in this Syntax: "PARAM:VALUE,ParamN:ValueN" 
+		 - Option Parameters Are: "R", "B", "S" and "L"	 
+		 - Values T/F is Turn on/off or True/False	 
+		 - Values For "R" Parameter! is To Randomize Drop Point with Low Values to be More Human Like! after fair play i suggest for 
+		 always randomize	   
+		 - Values For "B" Parameter! is To Drop Spell Between Defense! Useful for Spells Like Freeze Spell, ONLY INFERNO TOWERS 
+		 are Supported for this parameter if its FALSE, Don't Drop Spell Between Defense EVEN If it was possible to affect them with ONE Spell	    
+		 - Values For "S" Parameter!  is Side
+			* "S" Value is SameSide, where 
+			* "O" Value is OppositeSide, ONLY Drop IF The Defense Is Located In The Other Side (Opposite), If MainSide Detected as BOTTOM, 
+			Will Drop Spell ONLY IF The Defense Is Located in TOP
+			* "A" Value is AnySide, Drop Spell And Ignore Where it's Located And It's Side!
+		  - Values For "L" Parameter! is Locate if its true then it will locate location at start (NOTE:it will drop on destroyed buildings 
+		  if enabled)
+	  
+	- ZAP is like DROP command
+		DeploySide i dont have to explain twise ;), Like DropS, BUT In Zap, It Also Support the Drill Index/Number, recommended to put Drill 
+		Index/Number, E.g: 1
+		Lightning and Earth is set to be true/fale or use/dont use
+		LCount and ECount max lightning
+		Check can be set A or Always for check if drill is there or not (destroyed) and N or No for dont check (can drop on destroyed drills)
+		MinDE minimum DE to check if
+
+	Drop - Remain
+	
+		This command will detect the remain troops and drop left over troops
+	
+	
+		    Based on MyBot.run v6.2.2
+			
+					Doc Oc v3.4.1
+  - Removed the zoomout check before attack
+  - Add zoomout at beginning of search conditional
+  - Add Check for waiting connection in village search
+  - Fix the Jump Spell detection on Attack bar
+  - Fix error on variable Getlog
+  - Fix the GoblinXP active and don't attack | Heroes
+  - Fix the smart wait for when the <TH7 and no Heroes
+  - Fix Air Defense images
+  - Fix Console write ... code lost in 3.3 to 3.4
+  - Fix possible crash while stopping bot in Train
+  - Fix DropS L option and AirDefenses images
+
+   					Doc Oc v3.4	
+  - Added New Attack CSV Command - ZAP
+  - Added New Attack CSV Command - SIDEP
+  - Added New DROPS CSV Command Option - 'L'
+  - Added Left Click To Increase and Right Click To Decrease troops
+  - Fixed launch challenges in Bot Humanization
+  - Fixed several others minor issues on Bot Humanization
+  - Fixed Telegram Issue
+  - Fixed the memory leak , removing the Error Trap Mod
+  - Fixed the error TH detection when not detected and return 4-6
+  - Fixed Aim setlog when the DE or Trophies are not selected
+  - Fixed Spells remain time 
+  - Fixed the wall upgrad continuous values
+  - Improvements on TH detection,  TH10 and TH11
+  - Improvements on GoblinXP
+  - Improvements on SmartZap
+  - Improvements on Rearm Village
+  - New Stats tab
+  - New Imgloc from Beta 8 and new image bandles
+  - New Notify Revamp v1.5.3
+  - New search Tab (cosmetic changes)
+
+    					Doc Oc v3.3
+  - Fixed the TH6 detection
+  - Fixed Weakbase conditional problem
+  - Fixed the Donation limit of 5 on Donate to all
+  - Fixed the infinity loop on Upgrade walls
+  - Improve some images on Eagle detection
+  - Add Telegram & PushBullet Revamp 1.3
+  - Add Error Trap Mod
+  - Add GoblinXP
+  - Add Stats charts
+  - Add Humanization routines
+  - Add wait4clouds from beta 7
+  - Removed all unnecessary code an variables
+
+  					Doc Oc v3.2.2
+ - Fixed Castle Spells detection on Attack Bar issue
+ - Fixed Rearm TH with located coordinates
+ - Fixed Drop Trophies with Troops and Heroes issue
+ - Fixed minor issue on secure.me
+ - Fixed Donate All
+ - Fixed some issues on Smart Zap with Drills values
+ - Fixed wait for Spells issue
+ - Add the true train order on Custom Train
+ - Add the Smart Zap N00b mode
+ - Add TH detection with imgloc
+ - Removed Mix Red lines detection, use the official version
+ - Removed the window info about the version
+ - Improved the DropS command
+ - Improved the deploy points* on standard 'smart attack'
+   *In a future release will be selectable on GUI
+ - Improve some images on attack bar detection
+
+					Doc Oc v3.2.1
+- Fixed variable error on train
+- Update the MyBotRunImgLoc.dll from last v.3 beta7
+
+					Doc Oc v3.2
+- Fixed DonatedCC issue with Spells
+- Fixed Wait for with Heroes
+- Fixed the Drop trophies with Heroes
+- Add SmartZap
+- Improved Log's
+- Improved Pushbullet
+- Improved Check for Full Spells
+- Improved the Smart4train
+
+					Doc Oc v3.1.1
+- Fixed the Forced Army Camp
+- Fixed some minor issues related to Wait
+- Fixed check Spells Update for Quick Train Also
+- Fixed Request CC issue for Wait For Spell
+- Add Wait For Spells/Troops In Clan Castle
+- Improve bot's response to the stop function on train

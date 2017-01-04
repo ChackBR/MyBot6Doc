@@ -1,0 +1,16 @@
+D [2017-01-02 23:40:54.724] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:41:09.732] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:41:24.729] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:41:39.829] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:41:54.826] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:42:09.828] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 23:42:10.337] Restore bot window to 3363, 268, caller: GUIControl_WM_NCACTIVATE
+L [2017-01-02 23:42:10.411] Closing My Bot v6.5.2.r2602 (MEmu_3), please wait ...
+D [2017-01-02 23:42:10.411] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2017-01-02 23:42:10.418] Closing My Bot v6.5.2.r2602 (MEmu_3) now ...
+D [2017-01-02 23:42:10.450] Save Config C:\CDR\MyBot6_5x\Profiles\Jake\config.ini
+D [2017-01-02 23:42:12.598] Save Building Config C:\CDR\MyBot6_5x\Profiles\Jake\building.ini
+D [2017-01-02 23:42:13.251] ADB shell terminated, PID = 8648
+D [2017-01-02 23:42:13.255] MBRfunctions.dll closed.
+D [2017-01-02 23:42:13.259] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 23:42:13.452] Bot Host Window Handle un-registered: 0x00011900

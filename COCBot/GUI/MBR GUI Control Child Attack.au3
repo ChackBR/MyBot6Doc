@@ -12,7 +12,18 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-#cs
+
+Func DisableSX()
+	GUICtrlSetState($chkEnableSuperXP, $GUI_UNCHECKED)
+	$ichkEnableSuperXP = 0
+
+	For $i = $grpSuperXP To $lblXPSXWonHour
+		GUICtrlSetState($i, $GUI_DISABLE)
+	Next
+
+	GUICtrlSetState($lblLOCKEDSX, BitOR($GUI_SHOW, $GUI_ENABLE))
+EndFunc   ;==>DisableSX
+
 Func SXSetXP($toSet = "")
 	If $toSet = "S" Or $toSet = "" Then GUICtrlSetData($lblXPatStart, $iStartXP)
 	If $toSet = "C" Or $toSet = "" Then GUICtrlSetData($lblXPCurrent, $iCurrentXP)
@@ -28,15 +39,17 @@ Func chkEnableSuperXP()
 		GUICtrlSetState($chkSXBK, $GUI_ENABLE)
 		GUICtrlSetState($chkSXAQ, $GUI_ENABLE)
 		GUICtrlSetState($chkSXGW, $GUI_ENABLE)
+		GUICtrlSetState($txtMaxXPtoGain, $GUI_ENABLE)
 	Else
 		GUICtrlSetState($rbSXTraining, $GUI_DISABLE)
 		GUICtrlSetState($rbSXIAttacking, $GUI_DISABLE)
 		GUICtrlSetState($chkSXBK, $GUI_DISABLE)
 		GUICtrlSetState($chkSXAQ, $GUI_DISABLE)
 		GUICtrlSetState($chkSXGW, $GUI_DISABLE)
+		GUICtrlSetState($txtMaxXPtoGain, $GUI_DISABLE)
 	EndIf
 EndFunc   ;==>chkEnableSuperXP
-#ce
+
 Func chkDBWaitForCCSpell()
 	If GUICtrlRead($chkDBWaitForCastleSpell) = $GUI_CHECKED Then
 		GUICtrlSetState($cmbDBWaitForCastleSpell, $GUI_ENABLE)
@@ -600,4 +613,14 @@ Func sldVSDelay()
 	Else
 		GUICtrlSetData($lbltxtMaxVSDelay, GetTranslated(603, 8, "seconds"))
 	EndIf
-EndFunc   ;==>sldVSDelay
+ EndFunc   ;==>sldVSDelay
+
+Func CheckWardenTimer()
+
+	If GUICtrlRead($chkUseWardenAbility) = $GUI_CHECKED Then
+		GUICtrlSetState($txtWardenAbility, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($txtWardenAbility, $GUI_DISABLE)
+	EndIf
+
+EndFunc

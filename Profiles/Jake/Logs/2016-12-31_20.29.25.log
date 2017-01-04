@@ -1,0 +1,1137 @@
+D [2016-12-31 20:29:25.195] Save Config C:\CDR\MyBot6_5x\Profiles\Jake\config.ini
+D [2016-12-31 20:29:26.487] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:29:27.498] Save Building Config C:\CDR\MyBot6_5x\Profiles\Jake\building.ini
+D [2016-12-31 20:29:28.038] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:29:28.405] Read Building Config C:\CDR\MyBot6_5x\Profiles\Jake\building.ini
+D [2016-12-31 20:29:28.423] Read Config C:\CDR\MyBot6_5x\Profiles\Jake\config.ini
+D [2016-12-31 20:29:28.511] Apply Config
+D [2016-12-31 20:29:28.842] Disable GUI Controls
+D [2016-12-31 20:29:30.531] Redraw MyBot Window
+D [2016-12-31 20:29:30.570] Android Window Handle: 0x01942EC2
+D [2016-12-31 20:29:30.571] InitiateLayout: MEmu_3 Android-ClientSize: 860 x 732
+D [2016-12-31 20:29:30.572] CheckScreenAndroid: Window size 908 x 770
+D [2016-12-31 20:29:30.825] MEmu font_scale = 1
+L [2016-12-31 20:29:31.434]  My Bot v6.5.2.r2601 (MEmu_3) Powered by MyBot.run ~
+D [2016-12-31 20:29:31.442] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2016-12-31 20:29:31.444] MyBot.run.exe Executable running on WIN_10  X64
+L [2016-12-31 20:29:31.445] =================== Bot Start ====================
+L [2016-12-31 20:29:31.446] ------------------------  Current Profile: Jake -------------------------
+L [2016-12-31 20:29:31.447] Trying to locate Main Screen
+D [2016-12-31 20:29:31.816] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:29:31.818] Main Screen Located
+D [2016-12-31 20:29:32.029] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:29:33.045] Detecting your Buildings..
+L [2016-12-31 20:29:34.046] Detecting your Village Theme
+L [2016-12-31 20:29:34.390] Snow Theme detected
+L [2016-12-31 20:29:35.584] Language setting is English: Correct.
+L [2016-12-31 20:29:36.585] Trying to locate Main Screen
+D [2016-12-31 20:29:36.842] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:29:36.844] Main Screen Located
+L [2016-12-31 20:29:38.961] Total Army Camp capacity: 74/200 (37%)
+D [2016-12-31 20:29:39.716] MEmu time lag is 0 sec/min (avg for 308 sec)
+D [2016-12-31 20:29:40.777] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:29:41.494] Village Report
+D [2016-12-31 20:29:41.507] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:29:41.575] Restore bot window to 3363, 265, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-31 20:29:41.578] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2016-12-31 20:29:41.622]  [T]: 1 612
+L [2016-12-31 20:29:41.726]  [G]: 4 800 000 [E]: 5 869 756 [D]: 1 000 [GEM]: 1 007
+D [2016-12-31 20:29:42.496] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:29:42.501] _RunFunction: CheckTombs BEGIN
+D [2016-12-31 20:29:42.702] _RunFunction: CheckTombs END
+D [2016-12-31 20:29:42.702] _RunFunction: ReArm BEGIN
+D [2016-12-31 20:29:42.903] _RunFunction: ReArm END
+D [2016-12-31 20:29:42.904] _RunFunction: CleanYard BEGIN
+D [2016-12-31 20:29:42.904] _RunFunction: CleanYard END
+D [2016-12-31 20:29:42.904] _RunFunction: Collect BEGIN
+L [2016-12-31 20:29:43.713] Collecting Resources
+D [2016-12-31 20:29:47.593] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:29:47.597] Searching for a Loot Cart..
+L [2016-12-31 20:29:48.040] No Loot Cart found, Yard is clean!
+D [2016-12-31 20:29:49.752] _RunFunction: Collect END
+L [2016-12-31 20:29:49.753] Waiting, Add random delay of 54 seconds.
+D [2016-12-31 20:29:52.375] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:29:56.609] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:30:11.527] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:30:26.539] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:30:41.580] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:30:43.797] _RunFunction: BoostBarracks BEGIN
+D [2016-12-31 20:30:43.798] _RunFunction: BoostBarracks END
+D [2016-12-31 20:30:43.809] MEmu time lag is 0 sec/min (avg for 64 sec)
+D [2016-12-31 20:30:43.809] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-31 20:30:43.810] _RunFunction: BoostSpellFactory END
+D [2016-12-31 20:30:43.810] _RunFunction: RequestCC BEGIN
+D [2016-12-31 20:30:45.100] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:30:45.103] _RunFunction: RequestCC END
+D [2016-12-31 20:30:45.104] _RunFunction: BoostWarden BEGIN
+D [2016-12-31 20:30:45.104] _RunFunction: BoostWarden END
+D [2016-12-31 20:30:45.105] _RunFunction: ReplayShare BEGIN
+D [2016-12-31 20:30:45.306] _RunFunction: ReplayShare END
+D [2016-12-31 20:30:45.307] _RunFunction: NotifyReport BEGIN
+D [2016-12-31 20:30:46.056] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:30:46.272] _RunFunction: NotifyReport END
+D [2016-12-31 20:30:46.273] _RunFunction: BoostKing BEGIN
+D [2016-12-31 20:30:46.274] _RunFunction: BoostKing END
+D [2016-12-31 20:30:46.274] _RunFunction: BoostQueen BEGIN
+D [2016-12-31 20:30:46.275] _RunFunction: BoostQueen END
+D [2016-12-31 20:30:46.275] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-31 20:30:46.365] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:30:46.874] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:30:50.374] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:30:52.284]  - Army Window Opened!
+D [2016-12-31 20:30:52.634] AdbScreencap: 63/74/97 ms (all/10/1),94,0,l=811,t=126,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:30:54.024] Total Army Camp capacity: 87/200 (43%)
+L [2016-12-31 20:30:54.128] Troops time: 12.00 min
+L [2016-12-31 20:30:54.278]  - Barbarian King will recover in 00:01:00
+L [2016-12-31 20:30:54.496] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:30:55.277] - Castle full/no clan.
+L [2016-12-31 20:30:55.457]  - Army Camp: 87/200
+L [2016-12-31 20:30:55.457]  - Spells: 7/7
+L [2016-12-31 20:30:55.460]  - Clan Castle: 25/25
+L [2016-12-31 20:30:55.461] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:30:55.463]  - Troops, not Ready!
+L [2016-12-31 20:30:56.273]  - 16 Barbarians Available
+L [2016-12-31 20:30:56.284]  - 71 Archers Available
+D [2016-12-31 20:30:56.655] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:30:56.681]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:30:56.682]  - 1 Poison Spell Brewed
+L [2016-12-31 20:30:56.683]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:31:02.943]  - Opened the Train Troops
+L [2016-12-31 20:31:02.947] Ice Wizard Troop not detected!
+L [2016-12-31 20:31:04.630]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:31:04.631]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:31:06.687]  - Your army is: 200
+L [2016-12-31 20:31:06.688]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:31:08.411]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:31:08.412]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:31:11.123]  - Army Window Closed!
+D [2016-12-31 20:31:11.699] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:31:12.851] _RunFunction: DonateCC,Train END
+D [2016-12-31 20:31:12.851] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-31 20:31:13.053] _RunFunction: UpgradeBuilding END
+D [2016-12-31 20:31:13.053] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-31 20:31:13.254] _RunFunction: UpgradeHeroes END
+D [2016-12-31 20:31:13.255] _RunFunction: Laboratory BEGIN
+D [2016-12-31 20:31:13.733] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:31:13.738] _RunFunction: Laboratory END
+D [2016-12-31 20:31:14.515] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:31:14.922] ====== Waiting for full army ======
+L [2016-12-31 20:31:16.892] Total Army Camp capacity: 90/200 (45%)
+L [2016-12-31 20:31:17.042] Troops time: 11.00 min
+L [2016-12-31 20:31:17.204]  - Barbarian King will recover in 00:01:00
+L [2016-12-31 20:31:17.627] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:31:18.353] - Castle full/no clan.
+D [2016-12-31 20:31:26.837] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:31:30.690] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:31:30.896] Waiting, Add random delay of 41 seconds.
+D [2016-12-31 20:31:41.784] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:31:56.788] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:32:11.837] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:32:12.217] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:32:14.022]  - Army Window Opened!
+L [2016-12-31 20:32:15.663] Total Army Camp capacity: 100/200 (50%)
+L [2016-12-31 20:32:15.783] Troops time: 10.00 min
+L [2016-12-31 20:32:15.943]  - Barbarian King will recover in 00:00:31
+L [2016-12-31 20:32:16.178] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:32:16.872] - Castle full/no clan.
+L [2016-12-31 20:32:17.047]  - Army Camp: 100/200
+L [2016-12-31 20:32:17.048]  - Spells: 7/7
+L [2016-12-31 20:32:17.048]  - Clan Castle: 25/25
+L [2016-12-31 20:32:17.049] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:32:17.050]  - Troops, not Ready!
+L [2016-12-31 20:32:17.781]  - 16 Barbarians Available
+L [2016-12-31 20:32:17.782]  - 85 Archers Available
+L [2016-12-31 20:32:18.143]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:32:18.144]  - 1 Poison Spell Brewed
+L [2016-12-31 20:32:18.144]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:32:24.489]  - Opened the Train Troops
+L [2016-12-31 20:32:26.099]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:32:26.100]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:32:26.830] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:32:28.181]  - Your army is: 200
+L [2016-12-31 20:32:28.182]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:32:29.911]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:32:29.920]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:32:32.710]  - Army Window Closed!
+D [2016-12-31 20:32:33.439] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:32:33.895] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:32:34.727] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:32:34.945] Time Idle: 00:01:20
+D [2016-12-31 20:32:35.252] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:32:35.503] AdbScreencap: 64/81/56 ms (all/10/1),52,0,l=282,t=28,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:32:36.964] MEmu time lag is 0 sec/min (avg for 113 sec)
+L [2016-12-31 20:32:37.165] ====== Waiting for full army ======
+L [2016-12-31 20:32:38.992] Total Army Camp capacity: 104/200 (52%)
+L [2016-12-31 20:32:39.111] Troops time: 10.00 min
+L [2016-12-31 20:32:39.270]  - Barbarian King will recover in 00:00:07
+L [2016-12-31 20:32:39.585] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:32:40.326] - Castle full/no clan.
+D [2016-12-31 20:32:41.867] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:32:52.444] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:32:52.695] Waiting, Add random delay of 48 seconds.
+D [2016-12-31 20:32:56.527] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:32:56.934] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:33:11.953] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:33:27.003] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:33:40.948] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:33:41.941] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:33:42.806]  - Army Window Opened!
+D [2016-12-31 20:33:43.336] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2016-12-31 20:33:44.457] Total Army Camp capacity: 114/200 (57%)
+L [2016-12-31 20:33:44.706] Troops time: 9.00 min
+L [2016-12-31 20:33:44.765]  - Barbarian King available
+L [2016-12-31 20:33:45.050] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:33:45.608] - Castle full/no clan.
+L [2016-12-31 20:33:45.778]  - Army Camp: 114/200
+L [2016-12-31 20:33:45.779]  - Spells: 7/7
+L [2016-12-31 20:33:45.779]  - Clan Castle: 25/25
+L [2016-12-31 20:33:45.780] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:33:45.781]  - Troops, not Ready!
+L [2016-12-31 20:33:46.449]  - 16 Barbarians Available
+L [2016-12-31 20:33:46.450]  - 98 Archers Available
+L [2016-12-31 20:33:46.887]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:33:46.887]  - 1 Poison Spell Brewed
+L [2016-12-31 20:33:46.888]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:33:53.089]  - Opened the Train Troops
+L [2016-12-31 20:33:54.687]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:33:54.688]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:33:56.716]  - Your army is: 200
+L [2016-12-31 20:33:56.717]  - Checking: FULL Queue and Not Full Army
+D [2016-12-31 20:33:57.004] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:33:58.380]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:33:58.381]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:34:01.060]  - Army Window Closed!
+D [2016-12-31 20:34:02.175] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:34:03.134] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:34:03.341] Time Idle: 00:02:46
+D [2016-12-31 20:34:05.713] MEmu time lag is 0 sec/min (avg for 88 sec)
+L [2016-12-31 20:34:05.915] ====== Waiting for full army ======
+L [2016-12-31 20:34:07.851] Total Army Camp capacity: 119/200 (59%)
+L [2016-12-31 20:34:07.952] Troops time: 9.00 min
+L [2016-12-31 20:34:07.978]  - Barbarian King available
+L [2016-12-31 20:34:08.260] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:34:08.825] - Castle full/no clan.
+D [2016-12-31 20:34:12.003] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:34:20.868] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:34:21.074] _RunFunction: CleanYard BEGIN
+D [2016-12-31 20:34:21.074] _RunFunction: CleanYard END
+D [2016-12-31 20:34:21.074] _RunFunction: Collect BEGIN
+L [2016-12-31 20:34:21.842] Collecting Resources
+D [2016-12-31 20:34:22.181] AdbScreencap: 64/62/79 ms (all/10/1),73,0,l=0,t=0,w=860,h=732, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:34:24.336] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:34:24.340] Searching for a Loot Cart..
+L [2016-12-31 20:34:24.770] No Loot Cart found, Yard is clean!
+D [2016-12-31 20:34:26.482] _RunFunction: Collect END
+D [2016-12-31 20:34:26.482] _RunFunction: CheckTombs BEGIN
+D [2016-12-31 20:34:26.683] _RunFunction: CheckTombs END
+D [2016-12-31 20:34:26.683] _RunFunction: DonateCC BEGIN
+L [2016-12-31 20:34:26.763] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:34:27.037] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:34:30.662] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:34:30.666] _RunFunction: DonateCC END
+L [2016-12-31 20:34:30.868] Waiting, Add random delay of 33 seconds.
+D [2016-12-31 20:34:42.053] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:34:57.067] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:35:04.157] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:35:06.020]  - Army Window Opened!
+L [2016-12-31 20:35:07.603] Total Army Camp capacity: 129/200 (64%)
+L [2016-12-31 20:35:07.689] Troops time: 8.00 min
+L [2016-12-31 20:35:07.716]  - Barbarian King available
+L [2016-12-31 20:35:07.926] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:35:08.482] - Castle full/no clan.
+L [2016-12-31 20:35:08.647]  - Army Camp: 129/200
+L [2016-12-31 20:35:08.656]  - Spells: 7/7
+L [2016-12-31 20:35:08.656]  - Clan Castle: 25/25
+L [2016-12-31 20:35:08.657] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:35:08.658]  - Troops, not Ready!
+L [2016-12-31 20:35:09.337]  - 16 Barbarians Available
+L [2016-12-31 20:35:09.353]  - 98 Archers Available
+L [2016-12-31 20:35:09.354]  - 3 Giants Available
+L [2016-12-31 20:35:09.714]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:35:09.716]  - 1 Poison Spell Brewed
+L [2016-12-31 20:35:09.717]  - Checking: FULL Queue and Not Full Army
+D [2016-12-31 20:35:12.057] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:35:15.917]  - Opened the Train Troops
+L [2016-12-31 20:35:17.523]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:35:17.530]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:35:19.493]  - Your army is: 200
+L [2016-12-31 20:35:19.494]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:35:21.174]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:35:21.175]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:35:23.849]  - Army Window Closed!
+D [2016-12-31 20:35:25.015] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:35:25.856] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:35:26.061] Time Idle: 00:04:06
+D [2016-12-31 20:35:27.070] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:35:28.040] MEmu time lag is 0 sec/min (avg for 82 sec)
+L [2016-12-31 20:35:28.242] ====== Waiting for full army ======
+L [2016-12-31 20:35:30.065] Total Army Camp capacity: 129/200 (64%)
+L [2016-12-31 20:35:30.178] Troops time: 7.00 min
+L [2016-12-31 20:35:30.214]  - Barbarian King available
+L [2016-12-31 20:35:30.550] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:35:31.121] - Castle full/no clan.
+D [2016-12-31 20:35:42.132] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:35:43.175] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:35:43.380] Waiting, Add random delay of 10 seconds.
+D [2016-12-31 20:35:53.685] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:35:55.557]  - Army Window Opened!
+D [2016-12-31 20:35:57.107] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:35:57.206] Total Army Camp capacity: 134/200 (67%)
+D [2016-12-31 20:35:57.304] AdbScreencap: 64/69/76 ms (all/10/1),73,0,l=811,t=126,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:35:57.314] Troops time: 7.00 min
+L [2016-12-31 20:35:57.350]  - Barbarian King available
+L [2016-12-31 20:35:57.560] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:35:58.183] - Castle full/no clan.
+L [2016-12-31 20:35:58.350]  - Army Camp: 134/200
+L [2016-12-31 20:35:58.360]  - Spells: 7/7
+L [2016-12-31 20:35:58.360]  - Clan Castle: 25/25
+L [2016-12-31 20:35:58.361] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:35:58.362]  - Troops, not Ready!
+L [2016-12-31 20:35:59.016]  - 16 Barbarians Available
+L [2016-12-31 20:35:59.033]  - 98 Archers Available
+L [2016-12-31 20:35:59.034]  - 4 Giants Available
+L [2016-12-31 20:35:59.440]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:35:59.441]  - 1 Poison Spell Brewed
+L [2016-12-31 20:35:59.442]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:36:05.634]  - Opened the Train Troops
+L [2016-12-31 20:36:07.239]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:36:07.247]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:36:09.244]  - Your army is: 200
+L [2016-12-31 20:36:09.244]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:36:10.896]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:36:10.896]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:36:12.114] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:36:13.601]  - Army Window Closed!
+D [2016-12-31 20:36:14.763] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:36:15.592] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:36:15.798] Time Idle: 00:04:53
+L [2016-12-31 20:36:18.000] ====== Waiting for full army ======
+L [2016-12-31 20:36:19.798] Total Army Camp capacity: 139/200 (69%)
+L [2016-12-31 20:36:19.895] Troops time: 6.00 min
+L [2016-12-31 20:36:19.923]  - Barbarian King available
+L [2016-12-31 20:36:20.207] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:36:20.749] - Castle full/no clan.
+D [2016-12-31 20:36:27.144] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:36:29.106] MEmu time lag is 0 sec/min (avg for 61 sec)
+D [2016-12-31 20:36:32.787] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:36:32.991] Waiting, Add random delay of 58 seconds.
+D [2016-12-31 20:36:42.163] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:36:57.174] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:37:12.188] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:37:27.262] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:37:31.256] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:37:33.098]  - Army Window Opened!
+L [2016-12-31 20:37:34.734] Total Army Camp capacity: 149/200 (74%)
+L [2016-12-31 20:37:34.832] Troops time: 5.00 min
+L [2016-12-31 20:37:34.858]  - Barbarian King available
+L [2016-12-31 20:37:35.049] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:37:35.654] - Castle full/no clan.
+L [2016-12-31 20:37:35.818]  - Army Camp: 149/200
+L [2016-12-31 20:37:35.827]  - Spells: 7/7
+L [2016-12-31 20:37:35.828]  - Clan Castle: 25/25
+L [2016-12-31 20:37:35.830] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:37:35.831]  - Troops, not Ready!
+L [2016-12-31 20:37:36.492]  - 16 Barbarians Available
+L [2016-12-31 20:37:36.508]  - 98 Archers Available
+L [2016-12-31 20:37:36.509]  - 8 Giants Available
+L [2016-12-31 20:37:36.914]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:37:36.914]  - 1 Poison Spell Brewed
+L [2016-12-31 20:37:36.915]  - Checking: FULL Queue and Not Full Army
+D [2016-12-31 20:37:42.299] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:37:43.079]  - Opened the Train Troops
+L [2016-12-31 20:37:44.657]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:37:44.657]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:37:46.661] AdbScreencap: 64/69/76 ms (all/10/1),73,0,l=48,t=160,w=67,h=14, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:37:46.673]  - Your army is: 200
+L [2016-12-31 20:37:46.673]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:37:48.324]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:37:48.325]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:37:50.991]  - Army Window Closed!
+D [2016-12-31 20:37:52.150] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:37:52.998] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:37:53.204] Time Idle: 00:06:29
+D [2016-12-31 20:37:55.154] MEmu time lag is 0 sec/min (avg for 86 sec)
+L [2016-12-31 20:37:55.355] ====== Waiting for full army ======
+L [2016-12-31 20:37:57.181] Total Army Camp capacity: 154/200 (77%)
+D [2016-12-31 20:37:57.235] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:37:57.291] Troops time: 5.00 min
+L [2016-12-31 20:37:57.315]  - Barbarian King available
+L [2016-12-31 20:37:57.586] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:37:58.128] - Castle full/no clan.
+D [2016-12-31 20:38:10.113] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:38:10.318] Waiting, Add random delay of 34 seconds.
+D [2016-12-31 20:38:12.341] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:38:27.352] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:38:42.304] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:38:44.533] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:38:46.374]  - Army Window Opened!
+L [2016-12-31 20:38:48.038] Total Army Camp capacity: 164/200 (82%)
+L [2016-12-31 20:38:48.170] Troops time: 4.00 min
+L [2016-12-31 20:38:48.197]  - Barbarian King available
+L [2016-12-31 20:38:48.375] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:38:49.018] - Castle full/no clan.
+L [2016-12-31 20:38:49.186]  - Army Camp: 164/200
+L [2016-12-31 20:38:49.186]  - Spells: 7/7
+L [2016-12-31 20:38:49.187]  - Clan Castle: 25/25
+L [2016-12-31 20:38:49.188] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:38:49.188]  - Troops, not Ready!
+L [2016-12-31 20:38:49.948]  - 16 Barbarians Available
+L [2016-12-31 20:38:49.949]  - 98 Archers Available
+L [2016-12-31 20:38:49.950]  - 10 Giants Available
+L [2016-12-31 20:38:50.310]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:38:50.311]  - 1 Poison Spell Brewed
+L [2016-12-31 20:38:50.312]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:38:56.549]  - Opened the Train Troops
+D [2016-12-31 20:38:57.361] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:38:58.128]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:38:58.129]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:39:00.173]  - Your army is: 200
+L [2016-12-31 20:39:00.174]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:39:01.824]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:39:01.824]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:39:04.530]  - Army Window Closed!
+D [2016-12-31 20:39:05.676] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:39:06.569] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:39:06.778] Time Idle: 00:07:40
+D [2016-12-31 20:39:08.753] MEmu time lag is 0 sec/min (avg for 73 sec)
+L [2016-12-31 20:39:08.954] ====== Waiting for full army ======
+L [2016-12-31 20:39:10.731] Total Army Camp capacity: 169/200 (84%)
+L [2016-12-31 20:39:10.850] Troops time: 4.00 min
+L [2016-12-31 20:39:10.876]  - Barbarian King available
+L [2016-12-31 20:39:11.183] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:39:11.734] - Castle full/no clan.
+D [2016-12-31 20:39:12.427] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:39:17.010] AdbScreencap: 64/67/66 ms (all/10/1),62,0,l=25,t=341,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:39:23.762] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:39:23.968] Waiting, Add random delay of 54 seconds.
+D [2016-12-31 20:39:27.400] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:39:42.410] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:39:57.419] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:40:12.416] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:40:18.292] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:40:20.144]  - Army Window Opened!
+L [2016-12-31 20:40:21.799] Total Army Camp capacity: 179/200 (89%)
+L [2016-12-31 20:40:21.896] Troops time: 2.00 min
+L [2016-12-31 20:40:21.923]  - Barbarian King available
+L [2016-12-31 20:40:22.121] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:40:22.717] - Castle full/no clan.
+L [2016-12-31 20:40:22.877]  - Army Camp: 179/200
+L [2016-12-31 20:40:22.887]  - Spells: 7/7
+L [2016-12-31 20:40:22.888]  - Clan Castle: 25/25
+L [2016-12-31 20:40:22.889] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:40:22.889]  - Troops, not Ready!
+L [2016-12-31 20:40:23.545]  - 16 Barbarians Available
+L [2016-12-31 20:40:23.568]  - 98 Archers Available
+L [2016-12-31 20:40:23.569]  - 13 Giants Available
+L [2016-12-31 20:40:24.001]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:40:24.002]  - 1 Poison Spell Brewed
+L [2016-12-31 20:40:24.002]  - Checking: FULL Queue and Not Full Army
+D [2016-12-31 20:40:27.500] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:40:30.248]  - Opened the Train Troops
+L [2016-12-31 20:40:31.826]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:40:31.827]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:40:33.822]  - Your army is: 200
+L [2016-12-31 20:40:33.822]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:40:35.461]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:40:35.461]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:40:38.138]  - Army Window Closed!
+D [2016-12-31 20:40:39.274] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:40:40.104] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:40:40.309] Time Idle: 00:09:11
+D [2016-12-31 20:40:42.425] MEmu time lag is 0 sec/min (avg for 93 sec)
+D [2016-12-31 20:40:42.527] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:40:42.626] ====== Waiting for full army ======
+L [2016-12-31 20:40:44.399] Total Army Camp capacity: 184/200 (92%)
+L [2016-12-31 20:40:44.496] Troops time: 2.00 min
+L [2016-12-31 20:40:44.533]  - Barbarian King available
+L [2016-12-31 20:40:44.802] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:40:45.323] - Castle full/no clan.
+D [2016-12-31 20:40:57.342] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:40:57.547] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:40:57.551] Waiting, Add random delay of 52 seconds.
+D [2016-12-31 20:41:12.564] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:41:27.574] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:41:42.524] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:41:49.837] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:41:51.730]  - Army Window Opened!
+L [2016-12-31 20:41:53.425] Total Army Camp capacity: 196/200 (98%)
+L [2016-12-31 20:41:53.502] Troops time: 0.32 min
+L [2016-12-31 20:41:53.528]  - Barbarian King available
+L [2016-12-31 20:41:53.716] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:41:54.430] - Castle full/no clan.
+L [2016-12-31 20:41:54.597]  - Army Camp: 196/200
+L [2016-12-31 20:41:54.598]  - Spells: 7/7
+L [2016-12-31 20:41:54.599]  - Clan Castle: 25/25
+L [2016-12-31 20:41:54.600] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-31 20:41:55.267]  - 16 Barbarians Available
+L [2016-12-31 20:41:55.268]  - 101 Archers Available
+L [2016-12-31 20:41:55.269]  - 16 Giants Available
+L [2016-12-31 20:41:55.701]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:41:55.701]  - 1 Poison Spell Brewed
+L [2016-12-31 20:41:55.702]  - Your Army is Full, let's make troops before Attack!
+D [2016-12-31 20:41:55.983] AdbScreencap: 64/71/55 ms (all/10/1),52,0,l=815,t=135,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:41:57.575] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:42:01.809]  - Opened the Train Troops
+L [2016-12-31 20:42:06.272]  - Opened the Brew Spells
+D [2016-12-31 20:42:12.537] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:42:15.064]  - Opened the Train Troops
+L [2016-12-31 20:42:15.404]  - Your army is: 200
+L [2016-12-31 20:42:15.405]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:42:17.065]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:42:17.066]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:42:20.906]  - Army Window Closed!
+D [2016-12-31 20:42:22.081] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+D [2016-12-31 20:42:22.905] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: -3, -3
+L [2016-12-31 20:42:23.116] Time Idle: 00:10:52
+L [2016-12-31 20:42:27.063] Total Army Camp capacity: 200/200 (100%)
+D [2016-12-31 20:42:27.548] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:42:27.644] Going to Attack...
+L [2016-12-31 20:42:32.698] ==================================================
+L [2016-12-31 20:42:32.699] Aim:           [G+E]: 279000 [D]:    0 for: Dead Base
+L [2016-12-31 20:42:32.700] ==================================================
+D [2016-12-31 20:42:34.050] GetVillageSize cannot find stone
+D [2016-12-31 20:42:34.716] GetVillageSize measured: 456.580213971436, Zoom factor: 0.964057192709946, Offset: 5, -10
+D [2016-12-31 20:42:35.716] Village Offset (VillageSearch) updated to 5, -10, 0.964057192709946
+L [2016-12-31 20:42:35.718]   1> [G]: 139728 [E]:  59700 [D]:  140 [T]:15
+D [2016-12-31 20:42:35.729] MEmu time lag is 0 sec/min (avg for 113 sec)
+D [2016-12-31 20:42:42.651] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:42:43.454] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 8, -12
+D [2016-12-31 20:42:44.455] Village Offset (VillageSearch) updated to 8, -12, 1.01648779659513
+D [2016-12-31 20:42:45.123] GetVillageSize measured: 481.411496307763, Zoom factor: 1.01648779659513, Offset: 8, -12
+L [2016-12-31 20:42:46.771]   2> [G]: 268679 [E]:  59747 [D]: 1364 [T]:33
+L [2016-12-31 20:42:46.778]       Not a Dead Base
+D [2016-12-31 20:42:56.627] GetVillageSize measured: 480.005953201996, Zoom factor: 1.01352002904998, Offset: 10, 9
+D [2016-12-31 20:42:57.628] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:42:57.632] Village Offset (VillageSearch) updated to 10, 9, 1.01352002904998
+L [2016-12-31 20:42:58.333]   3> [G]: 354196 [E]: 435535 [D]: 1077 [T]:34
+L [2016-12-31 20:42:58.342]       Dead Base Found!
+L [2016-12-31 20:42:59.780] ================ Search Complete =================
+L [2016-12-31 20:42:59.790] Initiating attack for: Dead Base
+L [2016-12-31 20:43:00.896] 0 » 16 Barbarians
+L [2016-12-31 20:43:00.897] 1 » 104 Archers
+L [2016-12-31 20:43:00.898] 2 » 16 Giants
+L [2016-12-31 20:43:00.899] 3 » 1 Clan Castle
+L [2016-12-31 20:43:00.900] 4 » 1 King
+L [2016-12-31 20:43:00.900] 5 » 3 Lightning Spells
+L [2016-12-31 20:43:00.901] 7 » 1 Earthquake Spell
+L [2016-12-31 20:43:00.902]  ====== Start Attack ====== 
+L [2016-12-31 20:43:02.904] Calculating Smart Attack Strategy
+L [2016-12-31 20:43:02.980] Calculated  (in 0.08 seconds) :
+L [2016-12-31 20:43:02.981] Attacking Multi finger fight style
+L [2016-12-31 20:43:03.982] ===============Multi Finger Attack================
+L [2016-12-31 20:43:03.983] Attacking Eight Finger Blossom fight style.
+L [2016-12-31 20:43:03.984] Calculating attack vectors for all troop deployments, please be patient...
+D [2016-12-31 20:43:04.285] AdbScreencap: 64/60/57 ms (all/10/1),53,0,l=69,t=607,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:43:08.470] Dropping Clan Castle
+L [2016-12-31 20:43:09.443] Dropping King
+L [2016-12-31 20:43:10.695] Finished Attacking, waiting for the battle to end
+L [2016-12-31 20:43:10.796] Dropping left over troops
+L [2016-12-31 20:43:10.797] Checking remaining unused troops for: Dead Base
+L [2016-12-31 20:43:12.349] 2 » 4 Giants
+L [2016-12-31 20:43:12.350] 5 » 3 Lightning Spells
+L [2016-12-31 20:43:12.351] 7 » 1 Earthquake Spell
+D [2016-12-31 20:43:12.634] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:43:13.545] Dropping last wave of 4 Giants
+L [2016-12-31 20:43:24.264] Checking remaining unused troops for: Dead Base
+L [2016-12-31 20:43:25.227] 2 » 4 Giants
+L [2016-12-31 20:43:25.228] 5 » 3 Lightning Spells
+L [2016-12-31 20:43:25.229] 7 » 1 Earthquake Spell
+L [2016-12-31 20:43:26.423] Dropping last wave of 4 Giants
+D [2016-12-31 20:43:27.612] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:43:30.637] King is getting weak, Activating King's power
+L [2016-12-31 20:43:36.238] Finished Attacking, waiting for the battle to end
+L [2016-12-31 20:43:36.406] Checking if the battle has finished
+L [2016-12-31 20:43:38.729] detected [G]: 68145 [E]: 14814 [DE]: 1029 |  Exit in 18 sec.
+L [2016-12-31 20:43:38.749] Gold & Elixir & DE change detected, waiting...
+L [2016-12-31 20:43:42.148] detected [G]: 68095 [E]: 14814 [DE]: 969 |  Exit in 18 sec.
+L [2016-12-31 20:43:42.168] Gold & Elixir & DE change detected, waiting...
+D [2016-12-31 20:43:42.684] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:43:45.552] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in 18 sec.
+L [2016-12-31 20:43:45.574] Gold & Elixir & DE change detected, waiting...
+L [2016-12-31 20:43:48.948] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in 18 sec.
+L [2016-12-31 20:43:50.650] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in 16 sec.
+L [2016-12-31 20:43:52.346] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in 14 sec.
+L [2016-12-31 20:43:54.053] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in 13 sec.
+L [2016-12-31 20:43:55.770] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in 11 sec.
+L [2016-12-31 20:43:57.492] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  9 sec.
+D [2016-12-31 20:43:57.715] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:43:59.208] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  8 sec.
+L [2016-12-31 20:44:00.925] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  6 sec.
+L [2016-12-31 20:44:02.611] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  4 sec.
+L [2016-12-31 20:44:04.314] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  2 sec.
+L [2016-12-31 20:44:06.018] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  1 sec.
+L [2016-12-31 20:44:07.710] detected [G]: 68070 [E]: 14814 [DE]: 942 |  Exit in  0 sec.
+L [2016-12-31 20:44:07.732] Gold & Elixir & DE no change detected, exit
+L [2016-12-31 20:44:07.800] ====== You have activated NoobZap Mode ======
+L [2016-12-31 20:44:07.819] Getting the spells Quantities!
+L [2016-12-31 20:44:07.820]  - Number of Lightning Spells: 3
+L [2016-12-31 20:44:07.821]  - Number of Earth Quake Spells: 1
+L [2016-12-31 20:44:08.380]  - Number of Dark Elixir Drills: 2
+L [2016-12-31 20:44:08.458] NoobZap is going to attack any drill.
+L [2016-12-31 20:44:08.459] Dropping Lightning Spell
+L [2016-12-31 20:44:12.592] Getting Dark Elixir Values.
+D [2016-12-31 20:44:12.766] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:44:13.666] Gained: 235. Adjusting amount left in this drill.
+L [2016-12-31 20:44:13.667] DE from last zap: 235, Total DE from SmartZap/NoobZap: 235
+L [2016-12-31 20:44:15.616] NoobZap is going to attack any drill.
+L [2016-12-31 20:44:15.623] Dropping Lightning Spell
+L [2016-12-31 20:44:19.758] Getting Dark Elixir Values.
+L [2016-12-31 20:44:20.835] Gained: 232. Adjusting amount left in this drill.
+L [2016-12-31 20:44:20.836] DE from last zap: 232, Total DE from SmartZap/NoobZap: 467
+L [2016-12-31 20:44:22.744] NoobZap is going to attack any drill.
+L [2016-12-31 20:44:22.752] Dropping Lightning Spell
+D [2016-12-31 20:44:22.873] AdbScreencap: 64/53/46 ms (all/10/1),42,0,l=69,t=607,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:44:26.887] Getting Dark Elixir Values.
+D [2016-12-31 20:44:27.772] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:44:27.961] Gained: 208. Adjusting amount left in this drill.
+L [2016-12-31 20:44:27.961] DE from last zap: 208, Total DE from SmartZap/NoobZap: 675
+L [2016-12-31 20:44:29.790] Removing drill since it wasn't found, so it was probably destroyed.
+L [2016-12-31 20:44:29.797] None valid Drill to check!
+L [2016-12-31 20:44:29.798] Returning Home
+D [2016-12-31 20:44:32.508] MEmu time lag is 0 sec/min (avg for 116 sec)
+L [2016-12-31 20:44:36.086] Loot: [G]: 286 126 [E]: 420 721 [DE]: 810 [T]: 11
+L [2016-12-31 20:44:36.101] Bonus Percentage: 86%
+L [2016-12-31 20:44:36.509] Bonus [G]: 11 610 out of 13 500 [E]: 11 610 out of 13 500
+L [2016-12-31 20:44:37.574] Your league level is: Gold II
+L [2016-12-31 20:44:37.636] Stars earned: 1
+D [2016-12-31 20:44:42.754] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:44:44.848] Trying to locate Main Screen
+D [2016-12-31 20:44:45.104] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: 21, 9
+D [2016-12-31 20:44:45.104] Center Village by: 21, 9
+D [2016-12-31 20:44:46.821] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:44:46.821] Village Offset updated to -3, -1, 1.01055234955638
+D [2016-12-31 20:44:46.824] Centered Village Offset: -3, -1, change: -24, -10
+L [2016-12-31 20:44:46.824] Main Screen Located
+L [2016-12-31 20:44:48.910] Total Army Camp capacity: 43/200 (21%)
+D [2016-12-31 20:44:50.599] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:44:51.316] Village Report
+L [2016-12-31 20:44:51.402]  [T]: 1 623
+L [2016-12-31 20:44:51.505]  [G]: 5 131 983 [E]: 6 000 000 [D]: 1 814 [GEM]: 1 007
+D [2016-12-31 20:44:52.248] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:44:52.252] _RunFunction: Collect BEGIN
+L [2016-12-31 20:44:52.965] Collecting Resources
+D [2016-12-31 20:44:56.733] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:44:56.738] Searching for a Loot Cart..
+L [2016-12-31 20:44:57.198] No Loot Cart found, Yard is clean!
+D [2016-12-31 20:44:57.754] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:44:58.908] _RunFunction: Collect END
+D [2016-12-31 20:44:58.909] _RunFunction: CleanYard BEGIN
+D [2016-12-31 20:44:58.909] _RunFunction: CleanYard END
+D [2016-12-31 20:44:58.909] _RunFunction: CheckTombs BEGIN
+D [2016-12-31 20:44:59.110] _RunFunction: CheckTombs END
+D [2016-12-31 20:44:59.110] _RunFunction: ReArm BEGIN
+D [2016-12-31 20:44:59.312] _RunFunction: ReArm END
+L [2016-12-31 20:44:59.312] Waiting, Add random delay of 31 seconds.
+D [2016-12-31 20:45:12.814] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:45:27.822] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:45:30.346] _RunFunction: BoostKing BEGIN
+D [2016-12-31 20:45:30.346] _RunFunction: BoostKing END
+D [2016-12-31 20:45:30.347] _RunFunction: BoostQueen BEGIN
+D [2016-12-31 20:45:30.347] _RunFunction: BoostQueen END
+D [2016-12-31 20:45:30.348] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-31 20:45:30.348] _RunFunction: BoostSpellFactory END
+D [2016-12-31 20:45:30.348] _RunFunction: BoostBarracks BEGIN
+D [2016-12-31 20:45:30.349] _RunFunction: BoostBarracks END
+D [2016-12-31 20:45:30.349] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-31 20:45:30.420] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:45:34.204] GetVillageSize cannot find stone
+L [2016-12-31 20:45:34.205] Zooming Out
+D [2016-12-31 20:45:35.972] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -2, -1
+D [2016-12-31 20:45:36.973] Center Village by: -2, -1
+D [2016-12-31 20:45:38.585] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:45:39.587] Centered Village Offset: -3, -1, change: -1, 0
+L [2016-12-31 20:45:41.431]  - Army Window Opened!
+D [2016-12-31 20:45:42.838] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:45:43.035] Total Army Camp capacity: 54/200 (27%)
+L [2016-12-31 20:45:43.122] Troops time: 15.00 min
+L [2016-12-31 20:45:43.245]  - Barbarian King will recover in 00:15:00
+L [2016-12-31 20:45:43.421] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:45:43.971] Requesting Clan Castle Troops
+D [2016-12-31 20:45:48.012] AdbScreencap: 64/69/56 ms (all/10/1),52,0,l=282,t=28,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:45:48.913] Page error count increased to 1, source: IsMainPage
+D [2016-12-31 20:45:57.842] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:45:57.913]  - Army Camp: 54/200
+L [2016-12-31 20:45:57.914]  - Spells: 7/7
+L [2016-12-31 20:45:57.915]  - Clan Castle: 0/25
+L [2016-12-31 20:45:57.916] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:45:57.916]  - Troops, not Ready!
+L [2016-12-31 20:45:58.580]  - 16 Barbarians Available
+L [2016-12-31 20:45:58.581]  - 21 Archers Available
+L [2016-12-31 20:45:58.582]  - 4 Giants Available
+L [2016-12-31 20:45:58.993]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:45:58.994]  - 1 Poison Spell Brewed
+L [2016-12-31 20:45:58.995]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:46:10.880]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:46:10.881]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:46:12.831] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:46:12.878]  - Your army is: 200
+L [2016-12-31 20:46:12.879]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:46:14.510]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:46:14.511]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:46:17.198]  - Army Window Closed!
+D [2016-12-31 20:46:18.901] _RunFunction: DonateCC,Train END
+D [2016-12-31 20:46:18.923] MEmu time lag is 0 sec/min (avg for 106 sec)
+D [2016-12-31 20:46:18.923] _RunFunction: NotifyReport BEGIN
+D [2016-12-31 20:46:19.664] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:46:19.880] _RunFunction: NotifyReport END
+D [2016-12-31 20:46:19.881] _RunFunction: RequestCC BEGIN
+D [2016-12-31 20:46:21.104] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:46:21.108] _RunFunction: RequestCC END
+D [2016-12-31 20:46:21.108] _RunFunction: BoostWarden BEGIN
+D [2016-12-31 20:46:21.108] _RunFunction: BoostWarden END
+D [2016-12-31 20:46:21.109] _RunFunction: ReplayShare BEGIN
+D [2016-12-31 20:46:21.310] _RunFunction: ReplayShare END
+D [2016-12-31 20:46:21.310] _RunFunction: Laboratory BEGIN
+D [2016-12-31 20:46:21.737] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:46:21.743] _RunFunction: Laboratory END
+D [2016-12-31 20:46:21.743] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-31 20:46:21.944] _RunFunction: UpgradeHeroes END
+D [2016-12-31 20:46:21.944] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-31 20:46:22.146] _RunFunction: UpgradeBuilding END
+D [2016-12-31 20:46:22.892] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:46:23.297] ====== Waiting for full army ======
+L [2016-12-31 20:46:25.120] Total Army Camp capacity: 61/200 (30%)
+L [2016-12-31 20:46:25.220] Troops time: 14.00 min
+L [2016-12-31 20:46:25.351]  - Barbarian King will recover in 00:15:00
+L [2016-12-31 20:46:25.626] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:46:26.229] - Castle full/no clan.
+L [2016-12-31 20:46:26.816] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:46:27.909] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:46:32.544] Checking for Donate Requests in Clan Chat
+L [2016-12-31 20:46:41.449] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:46:42.852] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:46:43.201] AdbScreencap: 64/57/46 ms (all/10/1),41,0,l=202,t=90,w=22,h=630, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:46:46.152] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:46:46.358] Waiting, Add random delay of 37 seconds.
+D [2016-12-31 20:46:57.948] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:47:12.954] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:47:23.652] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:47:25.499]  - Army Window Opened!
+L [2016-12-31 20:47:27.141] Total Army Camp capacity: 71/200 (35%)
+L [2016-12-31 20:47:27.228] Troops time: 13.00 min
+L [2016-12-31 20:47:27.346]  - Barbarian King will recover in 00:14:00
+L [2016-12-31 20:47:27.521] Total Spell(s) Capacity: 7/7
+D [2016-12-31 20:47:27.898] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:47:28.084] - Castle full/no clan.
+L [2016-12-31 20:47:28.244]  - Army Camp: 71/200
+L [2016-12-31 20:47:28.253]  - Spells: 7/7
+L [2016-12-31 20:47:28.254]  - Clan Castle: 25/25
+L [2016-12-31 20:47:28.255] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:47:28.256]  - Troops, not Ready!
+L [2016-12-31 20:47:28.906]  - 16 Barbarians Available
+L [2016-12-31 20:47:28.922]  - 36 Archers Available
+L [2016-12-31 20:47:28.923]  - 4 Giants Available
+L [2016-12-31 20:47:29.316]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:47:29.317]  - 1 Poison Spell Brewed
+L [2016-12-31 20:47:29.318]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:47:35.494]  - Opened the Train Troops
+L [2016-12-31 20:47:37.080]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:47:37.087]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:47:39.079]  - Your army is: 200
+L [2016-12-31 20:47:39.079]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:47:40.720]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:47:40.720]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:47:42.926] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:47:43.423]  - Army Window Closed!
+D [2016-12-31 20:47:44.567] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:47:45.421] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:47:45.630] Time Idle: 00:01:22
+D [2016-12-31 20:47:47.611] MEmu time lag is 0 sec/min (avg for 88 sec)
+L [2016-12-31 20:47:47.812] ====== Waiting for full army ======
+L [2016-12-31 20:47:49.662] Total Army Camp capacity: 75/200 (37%)
+L [2016-12-31 20:47:49.761] Troops time: 13.00 min
+L [2016-12-31 20:47:49.890]  - Barbarian King will recover in 00:13:00
+L [2016-12-31 20:47:50.160] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:47:50.692] - Castle full/no clan.
+L [2016-12-31 20:47:51.308] Checking for Donate Requests in Clan Chat
+L [2016-12-31 20:47:53.098] Using OCR to read Latin derived alphabets..
+L [2016-12-31 20:47:53.946] Chat Request: Defesa
+L [2016-12-31 20:47:54.033] Chat Troops: 30/35, Spells: 1/1
+L [2016-12-31 20:47:54.033] Clan Castle spells are full, skip spell donation...
+L [2016-12-31 20:47:55.750] Archer Keyword found: defesa
+D [2016-12-31 20:47:58.077] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:48:01.217] Donating 5 Archers
+D [2016-12-31 20:48:13.065] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:48:14.005] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:48:14.211] Waiting, Add random delay of 38 seconds.
+D [2016-12-31 20:48:28.018] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:48:43.027] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:48:52.343] AdbScreencap: 64/54/46 ms (all/10/1),41,0,l=282,t=28,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:48:52.498] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:48:54.329]  - Army Window Opened!
+L [2016-12-31 20:48:55.995] Total Army Camp capacity: 81/200 (40%)
+L [2016-12-31 20:48:56.092] Troops time: 12.00 min
+L [2016-12-31 20:48:56.209]  - Barbarian King will recover in 00:12:00
+L [2016-12-31 20:48:56.473] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:48:57.051] - Castle full/no clan.
+L [2016-12-31 20:48:57.214]  - Army Camp: 81/200
+L [2016-12-31 20:48:57.223]  - Spells: 7/7
+L [2016-12-31 20:48:57.224]  - Clan Castle: 25/25
+L [2016-12-31 20:48:57.225] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:48:57.226]  - Troops, not Ready!
+L [2016-12-31 20:48:57.877]  - 16 Barbarians Available
+L [2016-12-31 20:48:57.893]  - 46 Archers Available
+L [2016-12-31 20:48:57.894]  - 4 Giants Available
+D [2016-12-31 20:48:58.049] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:48:58.298]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:48:58.298]  - 1 Poison Spell Brewed
+L [2016-12-31 20:48:58.299]   making donated troops
+L [2016-12-31 20:49:04.519]  - Opened the Train Troops
+L [2016-12-31 20:49:07.277]  - Current Capacity: 215/200
+L [2016-12-31 20:49:07.284]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:49:08.926]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:49:08.933]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:49:10.919]  - Your army is: 200
+L [2016-12-31 20:49:10.920]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:49:12.570]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:49:12.571]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:49:13.050] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:49:15.237]  - Army Window Closed!
+D [2016-12-31 20:49:16.375] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:49:17.217] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:49:17.422] Time Idle: 00:02:51
+D [2016-12-31 20:49:19.395] MEmu time lag is 0 sec/min (avg for 91 sec)
+L [2016-12-31 20:49:19.596] ====== Waiting for full army ======
+L [2016-12-31 20:49:21.396] Total Army Camp capacity: 85/200 (42%)
+L [2016-12-31 20:49:21.483] Troops time: 12.00 min
+L [2016-12-31 20:49:21.600]  - Barbarian King will recover in 00:12:00
+L [2016-12-31 20:49:21.878] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:49:22.386] - Castle full/no clan.
+L [2016-12-31 20:49:22.987] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:49:28.133] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:49:37.169] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:49:37.413] Waiting, Add random delay of 22 seconds.
+D [2016-12-31 20:49:43.187] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:49:58.198] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:49:59.766] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:50:01.633]  - Army Window Opened!
+L [2016-12-31 20:50:03.283] Total Army Camp capacity: 92/200 (46%)
+L [2016-12-31 20:50:03.372] Troops time: 11.00 min
+L [2016-12-31 20:50:03.493]  - Barbarian King will recover in 00:11:00
+L [2016-12-31 20:50:03.668] Total Spell(s) Capacity: 7/7
+D [2016-12-31 20:50:04.082] AdbScreencap: 64/66/55 ms (all/10/1),52,0,l=811,t=126,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:50:04.230] - Castle full/no clan.
+L [2016-12-31 20:50:04.390]  - Army Camp: 92/200
+L [2016-12-31 20:50:04.399]  - Spells: 7/7
+L [2016-12-31 20:50:04.400]  - Clan Castle: 25/25
+L [2016-12-31 20:50:04.401] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:50:04.401]  - Troops, not Ready!
+L [2016-12-31 20:50:05.047]  - 16 Barbarians Available
+L [2016-12-31 20:50:05.065]  - 57 Archers Available
+L [2016-12-31 20:50:05.066]  - 4 Giants Available
+L [2016-12-31 20:50:05.507]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:50:05.507]  - 1 Poison Spell Brewed
+L [2016-12-31 20:50:05.508]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:50:11.658]  - Opened the Train Troops
+D [2016-12-31 20:50:13.160] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:50:13.247]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:50:13.248]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:50:15.222]  - Your army is: 200
+L [2016-12-31 20:50:15.223]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:50:16.876]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:50:16.877]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:50:19.553]  - Army Window Closed!
+D [2016-12-31 20:50:20.685] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:50:21.514] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:50:21.720] Time Idle: 00:03:54
+D [2016-12-31 20:50:23.719] MEmu time lag is 0 sec/min (avg for 64 sec)
+L [2016-12-31 20:50:23.920] ====== Waiting for full army ======
+L [2016-12-31 20:50:25.739] Total Army Camp capacity: 96/200 (48%)
+L [2016-12-31 20:50:25.837] Troops time: 11.00 min
+L [2016-12-31 20:50:25.953]  - Barbarian King will recover in 00:11:00
+L [2016-12-31 20:50:26.242] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:50:26.778] - Castle full/no clan.
+D [2016-12-31 20:50:28.169] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:50:38.772] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:50:38.978] Waiting, Add random delay of 14 seconds.
+D [2016-12-31 20:50:43.215] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:50:53.221] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:50:55.063]  - Army Window Opened!
+L [2016-12-31 20:50:56.656] Total Army Camp capacity: 101/200 (50%)
+L [2016-12-31 20:50:56.755] Troops time: 10.00 min
+L [2016-12-31 20:50:56.879]  - Barbarian King will recover in 00:10:00
+L [2016-12-31 20:50:57.056] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:50:57.634] - Castle full/no clan.
+L [2016-12-31 20:50:57.797]  - Army Camp: 101/200
+L [2016-12-31 20:50:57.807]  - Spells: 7/7
+L [2016-12-31 20:50:57.807]  - Clan Castle: 25/25
+L [2016-12-31 20:50:57.808] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:50:57.809]  - Troops, not Ready!
+D [2016-12-31 20:50:58.206] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:50:58.512]  - 16 Barbarians Available
+L [2016-12-31 20:50:58.527]  - 66 Archers Available
+L [2016-12-31 20:50:58.528]  - 4 Giants Available
+L [2016-12-31 20:50:58.863]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:50:58.864]  - 1 Poison Spell Brewed
+L [2016-12-31 20:50:58.865]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:51:05.047]  - Opened the Train Troops
+L [2016-12-31 20:51:06.626]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:51:06.627]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:51:08.739]  - Your army is: 200
+L [2016-12-31 20:51:08.740]  - Checking: FULL Queue and Not Full Army
+D [2016-12-31 20:51:10.373] AdbScreencap: 64/71/56 ms (all/10/1),52,0,l=815,t=135,w=2,h=2, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:51:10.394]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:51:10.395]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:51:13.070]  - Army Window Closed!
+D [2016-12-31 20:51:13.284] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:51:14.206] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:51:15.049] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:51:15.256] Time Idle: 00:04:45
+L [2016-12-31 20:51:17.418] ====== Waiting for full army ======
+L [2016-12-31 20:51:19.173] Total Army Camp capacity: 105/200 (52%)
+L [2016-12-31 20:51:19.282] Troops time: 10.00 min
+L [2016-12-31 20:51:19.403]  - Barbarian King will recover in 00:10:00
+L [2016-12-31 20:51:19.685] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:51:20.301] - Castle full/no clan.
+D [2016-12-31 20:51:23.954] MEmu time lag is 0 sec/min (avg for 60 sec)
+D [2016-12-31 20:51:28.328] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:51:32.285] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:51:32.492] Waiting, Add random delay of 54 seconds.
+D [2016-12-31 20:51:43.376] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:51:58.392] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:52:13.404] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:52:26.837] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:52:28.341] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:52:28.705]  - Army Window Opened!
+L [2016-12-31 20:52:30.416] Total Army Camp capacity: 117/200 (58%)
+L [2016-12-31 20:52:30.535] Troops time: 9.00 min
+L [2016-12-31 20:52:30.720]  - Barbarian King will recover in 00:09:00
+L [2016-12-31 20:52:30.962] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:52:31.628] - Castle full/no clan.
+L [2016-12-31 20:52:31.793]  - Army Camp: 117/200
+L [2016-12-31 20:52:31.794]  - Spells: 7/7
+L [2016-12-31 20:52:31.795]  - Clan Castle: 25/25
+L [2016-12-31 20:52:31.796] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:52:31.796]  - Troops, not Ready!
+L [2016-12-31 20:52:32.519]  - 16 Barbarians Available
+L [2016-12-31 20:52:32.520]  - 81 Archers Available
+L [2016-12-31 20:52:32.520]  - 4 Giants Available
+L [2016-12-31 20:52:32.882]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:52:32.883]  - 1 Poison Spell Brewed
+L [2016-12-31 20:52:32.884]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:52:39.195]  - Opened the Train Troops
+L [2016-12-31 20:52:40.803]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:52:40.804]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:52:42.807]  - Your army is: 200
+L [2016-12-31 20:52:42.808]  - Checking: FULL Queue and Not Full Army
+D [2016-12-31 20:52:43.426] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:52:44.542]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:52:44.543]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:52:47.298]  - Army Window Closed!
+D [2016-12-31 20:52:48.540] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:52:49.440] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:52:49.665] Time Idle: 00:06:17
+D [2016-12-31 20:52:51.710] MEmu time lag is 0 sec/min (avg for 87 sec)
+L [2016-12-31 20:52:51.911] ====== Waiting for full army ======
+L [2016-12-31 20:52:53.865] Total Army Camp capacity: 121/200 (60%)
+L [2016-12-31 20:52:53.974] Troops time: 8.00 min
+L [2016-12-31 20:52:54.155]  - Barbarian King will recover in 00:08:00
+L [2016-12-31 20:52:54.446] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:52:55.113] - Castle full/no clan.
+D [2016-12-31 20:52:58.480] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:53:06.939] AdbScreencap: 64/80/100 ms (all/10/1),94,0,l=0,t=0,w=860,h=732, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:53:07.314] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:53:07.525] _RunFunction: CheckTombs BEGIN
+D [2016-12-31 20:53:07.726] _RunFunction: CheckTombs END
+D [2016-12-31 20:53:07.726] _RunFunction: CleanYard BEGIN
+D [2016-12-31 20:53:07.726] _RunFunction: CleanYard END
+D [2016-12-31 20:53:07.727] _RunFunction: DonateCC BEGIN
+L [2016-12-31 20:53:07.812] Checking for Donate Requests in Clan Chat
+D [2016-12-31 20:53:11.879] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:53:11.883] _RunFunction: DonateCC END
+D [2016-12-31 20:53:11.883] _RunFunction: Collect BEGIN
+L [2016-12-31 20:53:12.607] Collecting Resources
+D [2016-12-31 20:53:13.481] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:53:14.880] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:53:14.886] Searching for a Loot Cart..
+L [2016-12-31 20:53:15.387] No Loot Cart found, Yard is clean!
+D [2016-12-31 20:53:17.176] _RunFunction: Collect END
+L [2016-12-31 20:53:17.377] Waiting, Add random delay of 30 seconds.
+D [2016-12-31 20:53:28.587] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:53:43.604] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:53:47.630] GetVillageSize cannot find stone
+L [2016-12-31 20:53:47.630] Zooming Out
+D [2016-12-31 20:53:49.389] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -2, -1
+D [2016-12-31 20:53:50.390] Center Village by: -2, -1
+D [2016-12-31 20:53:52.032] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:53:53.034] Centered Village Offset: -3, -1, change: -1, 0
+L [2016-12-31 20:53:54.879]  - Army Window Opened!
+L [2016-12-31 20:53:56.599] Total Army Camp capacity: 131/200 (65%)
+L [2016-12-31 20:53:56.751] Troops time: 7.00 min
+L [2016-12-31 20:53:56.906]  - Barbarian King will recover in 00:07:00
+L [2016-12-31 20:53:57.116] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:53:57.723] - Castle full/no clan.
+L [2016-12-31 20:53:57.892]  - Army Camp: 131/200
+L [2016-12-31 20:53:57.893]  - Spells: 7/7
+L [2016-12-31 20:53:57.894]  - Clan Castle: 25/25
+L [2016-12-31 20:53:57.895] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:53:57.895]  - Troops, not Ready!
+D [2016-12-31 20:53:58.534] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:53:58.560]  - 16 Barbarians Available
+L [2016-12-31 20:53:58.561]  - 96 Archers Available
+L [2016-12-31 20:53:58.562]  - 4 Giants Available
+L [2016-12-31 20:53:58.954]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:53:58.955]  - 1 Poison Spell Brewed
+L [2016-12-31 20:53:58.955]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:54:05.253]  - Opened the Train Troops
+L [2016-12-31 20:54:06.856]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:54:06.863]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:54:08.911]  - Your army is: 200
+L [2016-12-31 20:54:08.918]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:54:10.632]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:54:10.633]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:54:13.342]  - Army Window Closed!
+D [2016-12-31 20:54:13.555] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:54:14.539] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:54:15.386] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:54:15.590] Time Idle: 00:07:41
+D [2016-12-31 20:54:17.769] MEmu time lag is 0 sec/min (avg for 86 sec)
+L [2016-12-31 20:54:17.969] ====== Waiting for full army ======
+L [2016-12-31 20:54:19.874] Total Army Camp capacity: 135/200 (67%)
+L [2016-12-31 20:54:20.010] Troops time: 7.00 min
+L [2016-12-31 20:54:20.142]  - Barbarian King will recover in 00:07:00
+L [2016-12-31 20:54:20.475] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:54:21.070] - Castle full/no clan.
+D [2016-12-31 20:54:28.601] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:54:33.286] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:54:33.494] Waiting, Add random delay of 51 seconds.
+D [2016-12-31 20:54:43.675] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:54:58.595] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:55:13.605] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:55:24.911] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:55:27.047]  - Army Window Opened!
+D [2016-12-31 20:55:28.182] AdbScreencap: 64/88/66 ms (all/10/1),63,0,l=110,t=166,w=82,h=16, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+D [2016-12-31 20:55:28.713] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:55:28.716] Total Army Camp capacity: 145/200 (72%)
+L [2016-12-31 20:55:28.836] Troops time: 6.00 min
+L [2016-12-31 20:55:29.022]  - Barbarian King will recover in 00:06:00
+L [2016-12-31 20:55:29.234] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:55:29.917] - Castle full/no clan.
+L [2016-12-31 20:55:30.085]  - Army Camp: 145/200
+L [2016-12-31 20:55:30.086]  - Spells: 7/7
+L [2016-12-31 20:55:30.087]  - Clan Castle: 25/25
+L [2016-12-31 20:55:30.087] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:55:30.088]  - Troops, not Ready!
+L [2016-12-31 20:55:30.764]  - 16 Barbarians Available
+L [2016-12-31 20:55:30.765]  - 99 Archers Available
+L [2016-12-31 20:55:30.765]  - 6 Giants Available
+L [2016-12-31 20:55:31.179]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:55:31.180]  - 1 Poison Spell Brewed
+L [2016-12-31 20:55:31.181]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:55:37.479]  - Opened the Train Troops
+L [2016-12-31 20:55:39.119]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:55:39.120]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:55:41.100]  - Your army is: 200
+L [2016-12-31 20:55:41.100]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:55:42.834]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:55:42.835]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:55:43.755] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:55:45.618]  - Army Window Closed!
+D [2016-12-31 20:55:46.848] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:55:47.684] GetVillageSize cannot find stone
+L [2016-12-31 20:55:47.685] Zooming Out
+D [2016-12-31 20:55:49.486] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -2, -1
+D [2016-12-31 20:55:50.487] Center Village by: -2, -1
+D [2016-12-31 20:55:52.128] GetVillageSize cannot find tree
+D [2016-12-31 20:55:53.130] Centered Village Offset: 0, 0, change: 2, 1
+D [2016-12-31 20:55:53.549] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:55:54.756] Time Idle: 00:09:18
+D [2016-12-31 20:55:56.760] MEmu time lag is 0 sec/min (avg for 98 sec)
+D [2016-12-31 20:55:56.760] Cleared 1 MEmu page errors
+L [2016-12-31 20:55:56.961] ====== Waiting for full army ======
+D [2016-12-31 20:55:58.747] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:55:58.844] Total Army Camp capacity: 150/200 (75%)
+L [2016-12-31 20:55:58.941] Troops time: 5.00 min
+L [2016-12-31 20:55:59.083]  - Barbarian King will recover in 00:05:00
+L [2016-12-31 20:55:59.384] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:56:00.022] - Castle full/no clan.
+L [2016-12-31 20:56:00.630] Checking for Donate Requests in Clan Chat
+L [2016-12-31 20:56:02.429] Using OCR to read Latin derived alphabets..
+L [2016-12-31 20:56:03.289] Chat Request: Defesa
+L [2016-12-31 20:56:03.365] Chat Troops: 25/35, Spells: 1/1
+L [2016-12-31 20:56:03.367] Clan Castle spells are full, skip spell donation...
+L [2016-12-31 20:56:05.170] Archer Keyword found: defesa
+L [2016-12-31 20:56:11.814] Donating 6 Archers
+D [2016-12-31 20:56:13.726] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:56:24.842] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:56:25.048] Waiting, Add random delay of 10 seconds.
+D [2016-12-31 20:56:28.782] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:56:35.430] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:56:37.442]  - Army Window Opened!
+L [2016-12-31 20:56:39.182] Total Army Camp capacity: 149/200 (74%)
+L [2016-12-31 20:56:39.292] Troops time: 5.00 min
+L [2016-12-31 20:56:39.475]  - Barbarian King will recover in 00:04:00
+L [2016-12-31 20:56:39.740] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:56:40.396] - Castle full/no clan.
+L [2016-12-31 20:56:40.563]  - Army Camp: 149/200
+L [2016-12-31 20:56:40.572]  - Spells: 7/7
+L [2016-12-31 20:56:40.573]  - Clan Castle: 25/25
+L [2016-12-31 20:56:40.574] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:56:40.574]  - Troops, not Ready!
+L [2016-12-31 20:56:41.268]  - 16 Barbarians Available
+L [2016-12-31 20:56:41.286]  - 93 Archers Available
+L [2016-12-31 20:56:41.287]  - 8 Giants Available
+D [2016-12-31 20:56:41.710] AdbScreencap: 64/93/77 ms (all/10/1),73,0,l=40,t=341,w=45,h=18, 1A453AF6F3D77E14D80D2ED92B79B7F1ECAEAE61: w=860,h=732,f=1
+L [2016-12-31 20:56:41.730]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:56:41.731]  - 1 Poison Spell Brewed
+L [2016-12-31 20:56:41.732]   making donated troops
+D [2016-12-31 20:56:43.770] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:56:48.064]  - Opened the Train Troops
+L [2016-12-31 20:56:50.795]  - Current Capacity: 209/200
+L [2016-12-31 20:56:50.795]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:56:52.517]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:56:52.518]  - Checking: Empty Queue and Not Full Army
+L [2016-12-31 20:56:54.597]  - Your army is: 200
+L [2016-12-31 20:56:54.598]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:56:56.290]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:56:56.291]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:56:58.775] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:56:58.971]  - Army Window Closed!
+D [2016-12-31 20:57:00.132] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:57:00.987] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:57:01.194] Time Idle: 00:10:22
+D [2016-12-31 20:57:03.214] MEmu time lag is 0 sec/min (avg for 66 sec)
+L [2016-12-31 20:57:03.417] ====== Waiting for full army ======
+L [2016-12-31 20:57:05.204] Total Army Camp capacity: 154/200 (77%)
+L [2016-12-31 20:57:05.323] Troops time: 5.00 min
+L [2016-12-31 20:57:05.451]  - Barbarian King will recover in 00:04:00
+L [2016-12-31 20:57:05.729] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:57:06.339] - Castle full/no clan.
+D [2016-12-31 20:57:13.766] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:57:18.455] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+L [2016-12-31 20:57:18.663] Waiting, Add random delay of 24 seconds.
+D [2016-12-31 20:57:28.847] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:57:43.041] GetVillageSize measured: 478.600451797684, Zoom factor: 1.01055234955638, Offset: -3, -1
+D [2016-12-31 20:57:43.888] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:57:45.038]  - Army Window Opened!
+L [2016-12-31 20:57:46.779] Total Army Camp capacity: 159/200 (79%)
+L [2016-12-31 20:57:46.911] Troops time: 4.00 min
+L [2016-12-31 20:57:47.066]  - Barbarian King will recover in 00:03:00
+L [2016-12-31 20:57:47.289] Total Spell(s) Capacity: 7/7
+L [2016-12-31 20:57:47.961] - Castle full/no clan.
+L [2016-12-31 20:57:48.126]  - Army Camp: 159/200
+L [2016-12-31 20:57:48.136]  - Spells: 7/7
+L [2016-12-31 20:57:48.137]  - Clan Castle: 25/25
+L [2016-12-31 20:57:48.138] Chief, are your Army ready for battle? No, Not yet!
+L [2016-12-31 20:57:48.138]  - Troops, not Ready!
+L [2016-12-31 20:57:48.815]  - 16 Barbarians Available
+L [2016-12-31 20:57:48.830]  - 93 Archers Available
+L [2016-12-31 20:57:48.831]  - 11 Giants Available
+L [2016-12-31 20:57:49.251]  - 3 Lightning Spells Brewed
+L [2016-12-31 20:57:49.252]  - 1 Poison Spell Brewed
+L [2016-12-31 20:57:49.252]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:57:55.482]  - Opened the Train Troops
+L [2016-12-31 20:57:57.079]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:57:57.080]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:57:58.867] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+L [2016-12-31 20:57:59.138]  - Your army is: 200
+L [2016-12-31 20:57:59.139]  - Checking: FULL Queue and Not Full Army
+L [2016-12-31 20:58:00.848]  - Conditions NOT met: FULL queue and Not Full Army
+L [2016-12-31 20:58:00.849]  - Checking: Empty Queue and Not Full Army
+D [2016-12-31 20:58:01.643] Restore bot window to 3363, 265, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-31 20:58:01.688] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2016-12-31 20:58:01.850] Enable GUI Controls
+D [2016-12-31 20:58:03.320] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 20:58:03.472] Redraw MyBot Window
+L [2016-12-31 20:58:03.768] ==================== Bot Stop ====================
+D [2016-12-31 20:58:03.773] GUIControl_WM_NCACTIVATE: Deactivate Bot

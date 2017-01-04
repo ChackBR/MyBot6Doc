@@ -1,0 +1,4 @@
+D [2017-01-02 02:47:19.816] API: $hWind=0x00901BCE,$iMsg=49694,$wParam=0x00000000,$lParam=0x00CE2E5C
+D [2017-01-02 02:47:21.739] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 02:47:28.294] Restore bot window to 3364, 269, caller: GUIControl_WM_NCACTIVATE
+D [2017-01-02 02:47:28.297] GUIControl_WM_NCACTIVATE: Activate Bot

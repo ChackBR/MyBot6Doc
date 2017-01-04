@@ -36,8 +36,8 @@ Local $x = 25, $y = 20
 			$txtTip =  GetTranslated(607,5, -1)
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, 'UpdateComboScriptNameAB') ; Run this function when the secondary GUI [X] is clicked
-		$y +=25
-		$lblNotesScriptAB =  GUICtrlCreateLabel("", $x, $y + 5, 200, 200)
+		$y +=20
+		$lblNotesScriptAB =  GUICtrlCreateLabel("", $x, $y + 5, 230, 112)
 		$cmbScriptRedlineImplAB = GUICtrlCreateCombo("", $x, $y + 205, 230, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, GetTranslated(607,9, "ImgLoc Raw Redline (default)|ImgLoc Redline Drop Points|Original Redline"))
 			_GUICtrlComboBox_SetCurSel(-1, $iRedlineRoutine[$LB])
@@ -66,6 +66,27 @@ Local $x = 25, $y = 20
 			$txtTip =  GetTranslated(607,8, -1)
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "DuplicateScriptAB")
+
+	; Attack Now (CSV) By MR.ViPeR
+	$y += 106
+	$btnAttNowLB = GUICtrlCreateButton(GetTranslated(671, 58, "Attack Now: Testing CSV File"), $x, $y-30, -1, 25)
+		_GUICtrlSetTip(-1, "Attack Now Button (Useful for CSV Testing)")
+		;GUISetState(@SW_SHOW)
+		GUICtrlSetOnEvent(-1, "AttackNowLB")
+
+	; CSV Deployment Speed Mod
+	$y -=4
+	$grpScriptSpeedAB = GUICtrlCreateGroup(GetTranslated(671, 57, "CSV Deployment Speed - Alive Base "), $x, $y, 230, 50)
+		$lbltxtSelectedSpeedAB = GUICtrlCreateLabel("Normal speed", $x + 10, $y+20, 75, 25)
+			$txtTip = GetTranslated(671, 56, "Increase or decrease the speed at which the CSV attack script deploys troops and waves.")
+			_GUICtrlSetTip(-1, $txtTip)
+		$sldSelectedSpeedAB = GUICtrlCreateSlider($x + 98, $y + 20, 125, 25, BitOR($TBS_TOOLTIPS, $TBS_AUTOTICKS))
+			_GUICtrlSetTip(-1, $txtTip)
+			_GUICtrlSlider_SetTipSide(-1, $TBTS_BOTTOM)
+			_GUICtrlSlider_SetTicFreq(-1, 1)
+			GUICtrlSetLimit(-1, 18, 0) ; change max/min value
+			GUICtrlSetData(-1, 5) ; default value
+			GUICtrlSetOnEvent(-1, "sldSelectedSpeedAB")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 ;GUISetState()

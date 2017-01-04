@@ -1,6 +1,6 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: Global Variables - Mod.au3
-; Description ...: Extension of MBR Global Variables for Mod
+; Name ..........: Global_Variables.au3
+; Description ...: Extension of MBR Global Variables
 ; Syntax ........: #include , Global
 ; Parameters ....: None
 ; Return values .: None
@@ -37,40 +37,39 @@ Global $iMultiFingerStyle = 0
 
 Global Enum  $eCCSpell = $eHaSpell + 1
 
+; CSV Deployment Speed Mod
+Global $isldSelectedCSVSpeed[$iModeCount], $iCSVSpeeds[19]
+$isldSelectedCSVSpeed[$DB] = 4
+$isldSelectedCSVSpeed[$LB] = 4
+$iCSVSpeeds[0] = .1
+$iCSVSpeeds[1] = .25
+$iCSVSpeeds[2] = .5
+$iCSVSpeeds[3] = .75
+$iCSVSpeeds[4] = 1
+$iCSVSpeeds[5] = 1.25
+$iCSVSpeeds[6] = 1.5
+$iCSVSpeeds[7] = 1.75
+$iCSVSpeeds[8] = 2
+$iCSVSpeeds[9] = 2.25
+$iCSVSpeeds[10] = 2.5
+$iCSVSpeeds[11] = 2.75
+$iCSVSpeeds[12] = 3
+$iCSVSpeeds[13] = 5
+$iCSVSpeeds[14] = 8
+$iCSVSpeeds[15] = 10
+$iCSVSpeeds[16] = 20
+$iCSVSpeeds[17] = 50
+$iCSVSpeeds[18] = 99
+
 ;
-; ================================================== SmartSwitchAccount PART ================================================== ;
+; AwesomeGamer
 ;
-Global $chkCanUse[6] = [0, 0, 0, 0, 0, 0]
-Global $chkDonateAccount[6] = [0, 0, 0, 0, 0, 0]
-Global $cmbAccount[6] = [0, 0, 0, 0, 0, 0]
 
-Global $ichkCanUse[6] = [0, 0, 0, 0, 0, 0]
-Global $ichkDonateAccount[6] = [0, 0, 0, 0, 0, 0]
-Global $icmbAccount[6] = [0, 0, 0, 0, 0, 0]
+; DEB
+Global $iChkDontRemove = 1
+Global $chkDontRemove = True
 
-Global $icmbAccountsQuantity = 0
+; No League Search
+Global $aNoLeague[4] = [30, 30, 0x616568, 20] ; No League Shield
+Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$iModeCount]
 
-Global $AllAccountsWaitTimeDiff[6] = [0, 0, 0, 0, 0, 0]
-Global $AllAccountsWaitTime[6] = [0, 0, 0, 0, 0, 0]
-
-Global $CurrentAccountWaitTime = 0
-
-Global $TimerDiffStart[6] = [0, 0, 0, 0, 0, 0]
-Global $TimerDiffEnd[6] = [0, 0, 0, 0, 0, 0]
-
-Global $Init = False
-Global $TotalAccountsOnEmu = 0
-Global $CurrentAccount = 1
-Global $CurrentDAccount = 1
-Global $FirstLoop = 0
-Global $FirstInit = True
-Global $MustGoToDonateAccount = 0
-Global $yCoord, $HeroesRemainingWait, $TotalAccountsInUse, $TotalDAccountsInUse, $ichkSwitchAccount, $NextAccount, $NextProfile
-Global $cycleCount = 0
-Global $IsDonateAccount = 0
-
-Global $SSAConfig = $sProfilePath & "\Profile.ini"
-
-Global 	$profileString = ""
-
-; ================================================== SmartSwitchAccount END ================================================== ;

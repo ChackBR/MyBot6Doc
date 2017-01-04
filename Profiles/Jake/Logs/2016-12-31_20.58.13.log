@@ -1,0 +1,37 @@
+D [2016-12-31 20:58:13.859] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:58:28.861] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:58:43.856] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:58:58.959] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:59:13.953] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:59:28.950] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:59:43.950] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 20:59:58.947] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:00:13.940] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:00:29.043] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:00:44.041] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:00:59.036] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:01:14.032] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:01:29.208] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:01:44.304] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:01:59.639] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:02:14.624] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:02:29.606] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:02:44.593] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:02:59.678] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:03:14.664] API: $hWind=0x00401864,$iMsg=49694,$wParam=0x00000000,$lParam=0x00041398
+D [2016-12-31 21:03:21.200] Restore bot window to 3363, 265, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-31 21:03:21.203] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2016-12-31 21:03:22.762] Closing My Bot v6.5.2.r2601 (MEmu_3), please wait ...
+L [2016-12-31 21:03:22.762] Closing My Bot v6.5.2.r2601 (MEmu_3) now ...
+D [2016-12-31 21:03:22.762] Searching MEmu Window: Title = 'MEmu_3', Class = '[CLASS:subWin; INSTANCE:1]', Text = ''
+D [2016-12-31 21:03:22.762] ObjGet("winmgmts:\\.\root\cimv2")
+D [2016-12-31 21:03:22.762] WMI Query: Select * from Win32_Process where ExecutablePath like "%E:\\Program Files\\Microvirt\\MEmu\\MEmu.exe%"
+D [2016-12-31 21:03:22.800] Process by CommandLine not found: E:\Program Files\Microvirt\MEmu\MEmu.exe MEmu_3
+D [2016-12-31 21:03:22.800] MEmu (MEmu_3) Window not found in list
+D [2016-12-31 21:03:23.816] Android Emulator not launched
+D [2016-12-31 21:03:23.847] Save Config C:\CDR\MyBot6_5x\Profiles\Jake\config.ini
+D [2016-12-31 21:03:25.351] Save Building Config C:\CDR\MyBot6_5x\Profiles\Jake\building.ini
+D [2016-12-31 21:03:25.799] ADB shell not terminated, PID = 10392
+D [2016-12-31 21:03:25.800] MBRfunctions.dll closed.
+D [2016-12-31 21:03:25.805] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-31 21:03:25.905] Bot Host Window Handle un-registered: 0x00041398

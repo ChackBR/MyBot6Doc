@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: readConfig.au3
+; Name ..........: Config_Read.au3
 ; Description ...: Reads config file and sets variables
 ; Syntax ........: readConfig()
 ; Parameters ....: NA
@@ -17,20 +17,20 @@
 ; MOD Config - Save Data
 ;
 
-	;Max logout time
-	$TrainLogoutMaxTime = IniRead($config, "TrainLogout", "TrainLogoutMaxTime", "0")
-	$TrainLogoutMaxTimeTXT = IniRead($config, "TrainLogout", "TrainLogoutMaxTimeTXT", "20")
+; Max logout time
+$TrainLogoutMaxTime = IniRead($config, "TrainLogout", "TrainLogoutMaxTime", "0")
+$TrainLogoutMaxTimeTXT = IniRead($config, "TrainLogout", "TrainLogoutMaxTimeTXT", "20")
 
-	; Multi Finger (LunaEclipse)
-	$iMultiFingerStyle = IniRead($config, "MultiFinger", "Select", "1")
+; Multi Finger (LunaEclipse)
+$iMultiFingerStyle = IniRead($config, "MultiFinger", "Select", "1")
 
-	;
-	; SSA
-	;
-	IniReadS($ichkSwitchAccount, $SSAConfig, "SwitchAccount", "chkEnableSwitchAccount", "0")
-	IniReadS($icmbAccountsQuantity, $SSAConfig, "SwitchAccount", "cmbAccountsQuantity", "0")
-	For $i = 1 To 5
-		IniReadS($ichkCanUse[$i], $SSAConfig, "SwitchAccount", "chkCanUse[" & $i & "]", "0")
-		IniReadS($ichkDonateAccount[$i], $SSAConfig, "SwitchAccount", "chkDonateAccount[" & $i & "]", "0")
-		IniReadS($icmbAccount[$i], $SSAConfig, "SwitchAccount", "cmbAccount[" & $i & "]", "0")
-	Next
+; CSV Deployment Speed Mod
+IniReadS($isldSelectedCSVSpeed[$DB], $config, "attack", "CSVSpeedDB", 4)
+IniReadS($isldSelectedCSVSpeed[$LB], $config, "attack", "CSVSpeedAB", 4)
+
+;
+; AwesomeGamer
+;
+
+; DEB
+$iChkDontRemove = IniRead($config, "troop", "DontRemove", "0")

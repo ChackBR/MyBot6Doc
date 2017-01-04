@@ -279,6 +279,12 @@ Global Const $iDelayDropTrophy2 = 2000
 Global Const $iDelayDropTrophy3 = 1500
 Global Const $iDelayDropTrophy4 = 250
 
+;SuperXP / GoblinXP
+Global Const $iDelayDropSuperXP1 = 500
+Global Const $iDelayDropSuperXP2 = 1000
+Global Const $iDelayDropSuperXP3 = 250
+Global Const $iDelayPrepareSearchSuperXP = 500
+
 ;GetTownHallLevel
 Global Const $iDelayGetTownHallLevel1 = 1000
 Global Const $iDelayGetTownHallLevel2 = 1500
@@ -454,3 +460,9 @@ Global Const $iDelayCloseOpen1000 = 1000
 Global Const $iDelayCloseOpen1500 = 1500
 Global Const $iDelayCloseOpen2000 = 2000
 Global Const $iDelayCloseOpen3000 = 3000
+
+;Smart Zap
+Global $DelaySmartZap1 = 1000
+Global $DelaySmartZap2 = 2000
+Global $DelaySmartZap3 = 3000
+Global $DelaySmartZap4 = 4000

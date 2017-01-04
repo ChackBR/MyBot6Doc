@@ -19,6 +19,8 @@
 ;			Get pixel next the "out zone" , indeed the red color is very different and more uncertain
 ;			Sort each sides
 ;			Add each sides in one array (not use, but it can help to get closer pixel of all the red area)
+Global $CurBaseRedLine[2] = ["", ""]
+
 
 Func _GetRedArea($iMode = $REDLINE_IMGLOC)
 	$nameFunc = "[_GetRedArea] "
@@ -29,10 +31,10 @@ Func _GetRedArea($iMode = $REDLINE_IMGLOC)
 	Local $ySkip = 5
 	Local $result = 0
 
-	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 Then ; Used for DES Side Attack (need to know the side the DES is on)
+	If $iMatchMode = $LB And $iAtkAlgorithm[$LB] <> 1 And $iChkDeploySettings[$LB] = 4 Then ; Used for DES Side Attack (need to know the side the DES is on)
 		$result = DllCall($hFuncLib, "str", "getRedAreaSideBuilding", "ptr", $hHBitmap2, "int", $xSkip, "int", $ySkip, "int", $colorVariation, "int", $eSideBuildingDES)
 		If $debugSetlog Then Setlog("Debug: Redline with DES Side chosen")
-	ElseIf $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 Then ; Used for TH Side Attack (need to know the side the TH is on)
+	ElseIf $iMatchMode = $LB And $iAtkAlgorithm[$LB] <> 1 And $iChkDeploySettings[$LB] = 5 Then ; Used for TH Side Attack (need to know the side the TH is on)
 		$result = DllCall($hFuncLib, "str", "getRedAreaSideBuilding", "ptr", $hHBitmap2, "int", $xSkip, "int", $ySkip, "int", $colorVariation, "int", $eSideBuildingTH)
 		If $debugSetlog Then Setlog("Debug: Redline with TH Side chosen")
 	Else ; Normal getRedArea
@@ -43,10 +45,12 @@ Func _GetRedArea($iMode = $REDLINE_IMGLOC)
 			Case $REDLINE_IMGLOC_RAW ; ImgLoc raw red line routine
 				; ensure redline exists
 				SearchRedLines()
+				StoreRedLines($IMGLOCREDLINE)
 				Local $listPixelBySide = getRedAreaSideBuilding()
 			Case $REDLINE_IMGLOC ; New ImgLoc based deployable red line routine
 				; ensure redline exists
 				SearchRedLines()
+				StoreRedLines($IMGLOCREDLINE)
 				Local $dropPoints = GetOffSetRedline("TL") & "|" & GetOffSetRedline("BL") & "|" & GetOffSetRedline("BR") & "|" & GetOffSetRedline("TR")
 				Local $listPixelBySide = getRedAreaSideBuilding($dropPoints)
 				#cs
@@ -379,3 +383,27 @@ Func FindClosestToAxis(Const ByRef $PixelList)
 	Next
 	Return $Search
 EndFunc   ;==>FindClosestToAxis
+
+Func StoreRedLines($redLines)
+	If IsArray($redLines) Then
+		If StringLen($CurBaseRedLine[0]) > 30 Then Return $CurBaseRedLine
+		Local $result = $redLines
+		If IsArray($result) Then
+			$CurBaseRedLine[0] = $result[0]
+		EndIf
+	Else
+		If StringLen($CurBaseRedLine[0]) > 30 Then Return $CurBaseRedLine
+		$CurBaseRedLine[0] = $redLines
+	EndIf
+	Return $CurBaseRedLine
+EndFunc
+
+Func IsRedLineAvailable()
+	If StringLen($CurBaseRedLine[0]) > 30 Then Return True
+	Return False
+EndFunc
+
+Func ResetRedLines()
+	_ArrayClear($CurBaseRedLine)
+	Return True
+EndFunc

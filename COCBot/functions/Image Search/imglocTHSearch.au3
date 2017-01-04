@@ -32,6 +32,7 @@ Func imglocTHSearch($bReTest = False, $myVillage = False, $bForceCapture = True)
 	Else
 		$redLines = "ECD" ;needed for searching your own village
 	EndIf
+    
 
 
 	;aux data
@@ -147,7 +148,7 @@ Func imglocTHSearch($bReTest = False, $myVillage = False, $bForceCapture = True)
 			If $debugImageSave = 1 and $retry > 0 Then DebugImageSave("imglocTHSearch_NoTHFound_", True)
 			If $debugsetlog = 1 and $retry > 0 Then SetLog("imgloc THSearch Calculated  (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
 		EndIf
-
+		
 		If $IMGLOCTHLEVEL > 0 Then
 			ExitLoop ; TH was found
 		Else

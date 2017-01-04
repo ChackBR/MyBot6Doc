@@ -1251,27 +1251,6 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 GUICtrlSetData($txtSkipDonateNearFulLTroopsPercentual, $sSkipDonateNearFulLTroopsPercentual)
 chkskipDonateNearFulLTroopsEnable()
 
-
-
-
-
-
-
-;~ 	Switch $iActivateKQConditionCSV
-;~ 		Case "Manual"
-;~ 			GUICtrlSetState($radManAbilitiesCSV, $GUI_CHECKED)
-;~ 		Case "Auto"
-;~ 			GUICtrlSetState($radAutoAbilitiesCSV, $GUI_CHECKED)
-;~ 	EndSwitch
-
-;~ 	If $iActivateWardenConditionCSV = 1 Then
-;~ 		GUICtrlSetState($chkUseWardenAbilityCSV, $GUI_CHECKED)
-;~ 	Else
-;~ 		GUICtrlSetState($chkUseWardenAbilityCSV, $GUI_UNCHECKED)
-;~ 	EndIf
-
-;~ 	GUICtrlSetData($txtManAbilitiesCSV, ($delayActivateKQCSV / 1000))
-
 	If $iShareAttack = 1 Then
 		GUICtrlSetState($chkShareAttack, $GUI_CHECKED)
 	Else
@@ -1400,7 +1379,6 @@ chkskipDonateNearFulLTroopsEnable()
 	chkDonateMinions()
 	If $configLoaded Then GUICtrlSetData($txtDonateMinions, $sTxtDonateMinions)
 	If $configLoaded Then GUICtrlSetData($txtBlacklistMinions, $sTxtBlacklistMinions)
-
 	If $ichkDonateHogRiders = 1 Then
 		GUICtrlSetState($chkDonateHogRiders, $GUI_CHECKED)
 	Else
@@ -1685,7 +1663,7 @@ chkskipDonateNearFulLTroopsEnable()
 
 	If $ichkDonateAllSkeletonSpells = 1 Then
 		GUICtrlSetState($chkDonateAllSkeletonSpells, $GUI_CHECKED)
-		_DonateAllControlsSpell(2, True)
+		_DonateAllControlsSpell(3, True)
 	Else
 		GUICtrlSetState($chkDonateAllSkeletonSpells, $GUI_UNCHECKED)
 	EndIf
@@ -1704,7 +1682,7 @@ chkskipDonateNearFulLTroopsEnable()
 		GUICtrlSetState($chkDonateAllCustomB, $GUI_UNCHECKED)
 	EndIf
 
-	; Extra Alphabets, Cyrillic, Chinese
+	; Extra Alphabets, Cyrillic, Chinese, Persian
 	If $ichkExtraAlphabets = 0 Then
 		GUICtrlSetState($chkExtraAlphabets, $GUI_UNCHECKED)
 	ElseIf $ichkExtraAlphabets = 1 Then
@@ -1712,8 +1690,13 @@ chkskipDonateNearFulLTroopsEnable()
 	EndIf
 	If $ichkExtraChinese = 0 Then
 		GUICtrlSetState($chkExtraChinese, $GUI_UNCHECKED)
-	ElseIf $ichkExtraChinese = 1 Then
+	Else
 		GUICtrlSetState($chkExtraChinese, $GUI_CHECKED)
+	EndIf
+	If $ichkExtraPersian = 0 Then
+		GUICtrlSetState($chkExtraPersian, $GUI_UNCHECKED)
+	Else
+		GUICtrlSetState($chkExtraPersian, $GUI_CHECKED)
 	EndIf
 
 	_GUICtrlComboBox_SetCurSel($cmbFilterDonationsCC, $icmbFilterDonationsCC)
@@ -2114,10 +2097,7 @@ chkskipDonateNearFulLTroopsEnable()
 	_GUICtrlComboBox_SetCurSel($cmbDisposeWindowsCond, $icmbDisposeWindowsPos)
 	GUICtrlSetData($txtWAOffsetX, $iWAOffsetX)
 	GUICtrlSetData($txtWAOffsetY, $iWAOffsetY)
-	#cs
-		_GUICtrlComboBox_SetCurSel($cmbGUIStyle, $iGUIStyle)
-	#ce
-
+	;_GUICtrlComboBox_SetCurSel($cmbGUIStyle, $iGUIStyle)
 	;debug
 	If $debugClick = 1 Then
 		GUICtrlSetState($chkDebugClick, $GUI_CHECKED)
@@ -2544,7 +2524,7 @@ chkskipDonateNearFulLTroopsEnable()
 	Local $tempindex = _GUICtrlComboBox_FindStringExact($cmbMilkingCSVScriptName, $MilkAttackCSVscript)
 	If $tempindex = -1 Then
 		$tempindex = 0
-		Setlog("Previous saved Scripted Attack not found (deleted, renamed?)", $COLOR_ERROR)
+		Setlog("Previous saved Milking Scripted Attack not found (deleted, renamed?)", $COLOR_ERROR)
 		Setlog("Automatically setted a default script, please check your config", $COLOR_ERROR)
 	EndIf
 	_GUICtrlComboBox_SetCurSel($cmbMilkingCSVScriptName, $tempindex)
@@ -2589,6 +2569,38 @@ chkskipDonateNearFulLTroopsEnable()
 	Else
 		GUICtrlSetState($chkAttackNearDarkElixirDrillDB, $GUI_UNCHECKED)
 	EndIf
+
+	; SuperXP
+	If $ichkEnableSuperXP = 1 Then
+		GUICtrlSetState($chkEnableSuperXP, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkEnableSuperXP, $GUI_UNCHECKED)
+	EndIf
+	chkEnableSuperXP()
+	If $irbSXTraining = 1 Then
+		GUICtrlSetState($rbSXTraining, $GUI_CHECKED)
+		GUICtrlSetState($rbSXIAttacking, $GUI_UNCHECKED)
+	Else
+		GUICtrlSetState($rbSXIAttacking, $GUI_CHECKED)
+		GUICtrlSetState($rbSXTraining, $GUI_UNCHECKED)
+	EndIf
+	GUICtrlSetData($txtMaxXPtoGain, $itxtMaxXPtoGain)
+	If $ichkSXBK = $HERO_KING Then
+		GUICtrlSetState($chkSXBK, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkSXBK, $GUI_UNCHECKED)
+	EndIf
+	If $ichkSXAQ = $HERO_QUEEN Then
+		GUICtrlSetState($chkSXAQ, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkSXAQ, $GUI_UNCHECKED)
+	EndIf
+	If $ichkSXGW = $HERO_WARDEN Then
+		GUICtrlSetState($chkSXGW, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkSXGW, $GUI_UNCHECKED)
+	EndIf
+
 ;~ 	If $chkATH = 1 Then
 ;~ 		GUICtrlSetState($chkAttackTH, $GUI_CHECKED)
 ;~ 	Else
@@ -2820,8 +2832,10 @@ chkskipDonateNearFulLTroopsEnable()
 	Else
 		GUICtrlSetState($hRadio_Army3, $GUI_UNCHECKED)
 	EndIf
-;~ #Cs
-	;SmartZap
+
+; ============================================================================
+; ================================= SmartZap =================================
+; ============================================================================
 	If $ichkSmartZap = 1 Then
 		GUICtrlSetState($chkSmartLightSpell, $GUI_CHECKED)
 		GUICtrlSetState($chkSmartZapDB, $GUI_ENABLE)
@@ -2842,6 +2856,11 @@ chkskipDonateNearFulLTroopsEnable()
 		GUICtrlSetState($chkNoobZap, $GUI_UNCHECKED)
 		GUICtrlSetState($txtExpectedDE, $GUI_DISABLE)
 	EndIf
+	If $ichkEarthQuakeZap = 1 Then
+		GUICtrlSetState($chkEarthQuakeZap, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkEarthQuakeZap, $GUI_UNCHECKED)
+	EndIf
 	If $ichkSmartZapDB = 1 Then
 		GUICtrlSetState($chkSmartZapDB, $GUI_CHECKED)
 	Else
@@ -2852,16 +2871,21 @@ chkskipDonateNearFulLTroopsEnable()
 	Else
 		GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_UNCHECKED)
 	EndIf
+	If $DebugSmartZap = 1 Then
+		GUICtrlSetState($chkDebugSmartZap, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDebugSmartZap, $GUI_UNCHECKED)
+	EndIf
 	GUICtrlSetData($txtMinDark, $itxtMinDE)
 	GUICtrlSetData($txtExpectedDE, $itxtExpectedDE)
-;~ #Ce
+; ============================================================================
+; ================================= SmartZap =================================
+; ============================================================================
 
 ;
 ; MOD
 ;
 #include "..\..\MOD\Config_Apply.au3"
-
-	; Reenabling window redraw - Keep this last....
 
 	IF $iGUIEnabled = 0 Then
 		lblTotalCount2()
@@ -2877,6 +2901,7 @@ chkskipDonateNearFulLTroopsEnable()
 		; Next
 			$iGUIEnabled = 1
 	EndIf
-	If $bRedrawAtExit Then SetRedrawBotWindow(True)
 
+	; Reenabling window redraw - Keep this last....
+	If $bRedrawAtExit Then SetRedrawBotWindow(True)
 EndFunc   ;==>applyConfig

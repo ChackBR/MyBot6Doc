@@ -17,17 +17,17 @@ Local $x = 25, $y = 45
 	$grpRoyalAbilitiesCSV = GUICtrlCreateGroup(GetTranslated(634,1, "Hero Abilities"), $x - 20, $y - 20, 420, 60)
 		GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x-10, $y, 24, 24)
 		GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x+ 15, $y, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x+ 40, $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x + 40, $y, 24, 24)
 
 	$x += 70
 	$y -= 4
-		$radAutoAbilities = GUICtrlCreateRadio(GetTranslated(634,2, "Auto activate (red zone)"), $x, $y-4 , 160, -1)
-		$txtTip = GetTranslated(634,3, "Activate the Ability when the Hero becomes weak.") & @CRLF & GetTranslated(634,4, "Heroes are checked and activated individually.")
+		$radAutoAbilities = GUICtrlCreateRadio(GetTranslated(634,2, "Auto activate (red zone)"), $x, $y-4 , 140, -1)
+		$txtTip = GetTranslated(634,3, "Activate the Ability when the Hero becomes weak.") & @CRLF & GetTranslated(634,4, "ALL are checked and activated individually.")
 		_GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetState(-1, $GUI_CHECKED)
 	$y += 15
 		$radManAbilities = GUICtrlCreateRadio(GetTranslated(634,5, "Timed after") & ":", $x , $y , -1, -1)
-			$txtTip = GetTranslated(634,6, "Activate the Ability on a timer.") & @CRLF & GetTranslated(634,7, "All Heroes are activated at the same time.")
+			$txtTip = GetTranslated(634,6, "Activate the Ability on a timer.") & @CRLF & GetTranslated(634,7, "ALL Heroes are activated at the same time.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_UNCHECKED)
 
@@ -36,21 +36,38 @@ Local $x = 25, $y = 45
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
 		$lblRoyalAbilitiesSec = GUICtrlCreateLabel(GetTranslated(603,6, "sec."), $x + 115, $y + 4, -1, -1)
-	$y += 40
-		$chkUseWardenAbility = GUICtrlCreateCheckbox(GetTranslated(634,9, "Timed activation of Warden Ability after") & ":", $x, $y, -1, -1)
+	$x += 150
+	$y -= 15
+		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x - 7, $y + 2, 32, 32)
+	$y += 12
+		$chkUseWardenAbility = GUICtrlCreateCheckbox(GetTranslated(634,9, "Force after") & ":", $x + 30, $y , -1, -1)
 			$txtTip = GetTranslated(634,10, "Use the ability of the Grand Warden on a timer.")
 			_GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_UNCHECKED+$GUI_DISABLE+$GUI_HIDE)
-			GUICtrlSetColor (-1,$COLOR_ERROR)
-		$txtWardenAbility = GUICtrlCreateInput("25", $x + 260, $y, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-			$txtTip = GetTranslated(634,11, "Set the time in seconds for Timed Activation of Grand Warden Ability.")
+			GUICtrlSetOnEvent(-1, "CheckWardenTimer")
+			GUICtrlSetState(-1, $GUI_UNCHECKED)
+
+		$txtWardenAbility = GUICtrlCreateInput("9", $x + 110, $y+3, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			$txtTip = GetTranslated(634,8, "Set the time in seconds for Timed Activation of Warden Ability.")
 			_GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
 			GUICtrlSetLimit(-1, 2)
-			GUICtrlSetColor (-1,$COLOR_ERROR)
-		$lblWardenAbilitiesSec = GUICtrlCreateLabel(GetTranslated(603,6, -1), $x + 293, $y, -1, -1)
-			GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
-			GUICtrlSetColor (-1,$COLOR_ERROR)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$lblWardenAbilitiesSec = GUICtrlCreateLabel(GetTranslated(603,6, "sec."), $x + 145, $y + 4, -1, -1)
+
+
+;~ 		$chkUseWardenAbility = GUICtrlCreateCheckbox(GetTranslated(634,9, "Timed after") & ":", $x + 25, $y + 15, -1, -1)
+;~ 			$txtTip = GetTranslated(634,10, "Use the ability of the Grand Warden on a timer.")
+;~ 			_GUICtrlSetTip(-1, $txtTip)
+;~ 			;GUICtrlSetState(-1, $GUI_UNCHECKED+$GUI_DISABLE+$GUI_HIDE)
+;~ 			GUICtrlSetColor (-1,$COLOR_ERROR)
+;~ 		$txtWardenAbility = GUICtrlCreateInput("25", $x + 80, $y + 18, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+;~ 			$txtTip = GetTranslated(634,11, "Set the time in seconds for Timed Activation of Grand Warden Ability.")
+;~ 			_GUICtrlSetTip(-1, $txtTip)
+;~ 			;GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
+;~ 			GUICtrlSetLimit(-1, 2)
+;~ 			GUICtrlSetColor (-1,$COLOR_ERROR)
+;~ 		$lblWardenAbilitiesSec = GUICtrlCreateLabel(GetTranslated(603,6, -1), $x + 150, $y, -1, -1)
+;~ 			;GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
+;~ 			GUICtrlSetColor (-1,$COLOR_ERROR)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 25, $y = 110

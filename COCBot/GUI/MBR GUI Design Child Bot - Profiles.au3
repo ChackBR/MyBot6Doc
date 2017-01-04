@@ -99,47 +99,5 @@ Local $x = 25, $y = 45
 			_GUICtrlButton_SetImageList($btnRename, $bIconEdit, 4)
 			GUICtrlSetOnEvent(-1, "btnRenameConfirm")
 			_GUICtrlSetTip(-1, GetTranslated(637,10, "Rename Profile"))
-
-			GUICtrlCreateGroup("Smart Switch Accounts", 10, 90, 416, 201)
-				$chkEnableSwitchAccount = GUICtrlCreateCheckbox("Use Smart Switch Accounts", 20, 110, 152, 17)
-					GUICtrlSetOnEvent(-1, "chkSwitchAccount")
-
-				$lblNB = GUICtrlCreateLabel("Number of accounts on Emulator", 210, 110, 159, 17)
-				$cmbAccountsQuantity = GUICtrlCreateCombo("", 370, 105, 45, 25, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
-					GUICtrlSetOnEvent(-1, "cmbAccountsQuantity")
-					GUICtrlSetData(-1, "2|3|4|5", "2")
-
-				$chkCanUse[1] = GUICtrlCreateCheckbox("Use Account 1 with Profile :", 20, 140, 157, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-				$cmbAccount[1] = GUICtrlCreateCombo("", 180, 140, 145, 25, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
-				$chkDonateAccount[1] = GUICtrlCreateCheckbox("Donate only", 335, 140, 77, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-
-				$chkCanUse[2] = GUICtrlCreateCheckbox("Use Account 2 with Profile :", 20, 170, 157, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-				$cmbAccount[2] = GUICtrlCreateCombo("", 180, 170, 145, 25, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
-				$chkDonateAccount[2] = GUICtrlCreateCheckbox("Donate only", 335, 170, 77, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-
-				$chkCanUse[3] = GUICtrlCreateCheckbox("Use Account 3 with Profile :", 20, 200, 157, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-				$cmbAccount[3] = GUICtrlCreateCombo("", 180, 200, 145, 25, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
-				$chkDonateAccount[3] = GUICtrlCreateCheckbox("Donate only", 335, 200, 77, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-
-				$chkCanUse[4] = GUICtrlCreateCheckbox("Use Account 4 with Profile :", 20, 230, 157, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-				$cmbAccount[4] = GUICtrlCreateCombo("", 180, 230, 145, 25, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
-				$chkDonateAccount[4] = GUICtrlCreateCheckbox("Donate only", 335, 230, 77, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-
-				$chkCanUse[5] = GUICtrlCreateCheckbox("Use Account 5 with Profile :", 20, 260, 157, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-				$cmbAccount[5] = GUICtrlCreateCombo("", 180, 260, 145, 25, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
-				$chkDonateAccount[5] = GUICtrlCreateCheckbox("Donate only", 335, 260, 77, 17)
-					GUICtrlSetOnEvent(-1, "chkAccountsProperties")
-			GUICtrlCreateGroup("", -99, -99, 1, 1)
-			setupProfileComboBoxswitch()
-
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 ;GUISetState()

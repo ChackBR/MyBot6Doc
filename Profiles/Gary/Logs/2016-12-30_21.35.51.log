@@ -1,0 +1,1254 @@
+D [2016-12-30 21:35:51.675] Save Config C:\CDR\MyBot6_5x\Profiles\Gary\config.ini
+D [2016-12-30 21:35:53.658] Save Building Config C:\CDR\MyBot6_5x\Profiles\Gary\building.ini
+D [2016-12-30 21:35:53.788] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:35:54.257] Read Building Config C:\CDR\MyBot6_5x\Profiles\Gary\building.ini
+D [2016-12-30 21:35:54.270] Read Config C:\CDR\MyBot6_5x\Profiles\Gary\config.ini
+D [2016-12-30 21:35:54.350] Apply Config
+D [2016-12-30 21:35:54.997] Disable GUI Controls
+D [2016-12-30 21:35:56.678] Redraw MyBot Window
+D [2016-12-30 21:35:56.711] Android Window Handle: 0x0005187C
+D [2016-12-30 21:35:56.711] InitiateLayout: MEmu_1 Android-ClientSize: 860 x 732
+D [2016-12-30 21:35:56.712] CheckScreenAndroid: Window size 908 x 770
+D [2016-12-30 21:35:56.965] MEmu font_scale = 1
+L [2016-12-30 21:35:57.572]  My Bot v6.5.2.r2601 (MEmu_1) Powered by MyBot.run ~
+D [2016-12-30 21:35:57.578] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2016-12-30 21:35:57.580] MyBot.run.exe Executable running on WIN_10  X64
+L [2016-12-30 21:35:57.581] =================== Bot Start ====================
+L [2016-12-30 21:35:57.582] ------------------------  Current Profile: Gary -------------------------
+L [2016-12-30 21:35:57.583] Trying to locate Main Screen
+D [2016-12-30 21:35:58.716] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 9, 9
+D [2016-12-30 21:35:58.716] Center Village by: 9, 9
+D [2016-12-30 21:36:00.426] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:36:00.426] Village Offset updated to 0, -2, 1.00593562250845
+D [2016-12-30 21:36:00.433] Centered Village Offset: 0, -2, change: -9, -11
+L [2016-12-30 21:36:00.434] Main Screen Located
+D [2016-12-30 21:36:00.607] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:36:01.622] Detecting your Buildings..
+L [2016-12-30 21:36:02.624] Detecting your Village Theme
+L [2016-12-30 21:36:02.971] Snow Theme detected
+D [2016-12-30 21:36:03.480] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:36:05.827] Language setting is English: Correct.
+L [2016-12-30 21:36:06.838] Trying to locate Main Screen
+D [2016-12-30 21:36:07.132] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:36:07.134] Main Screen Located
+L [2016-12-30 21:36:10.537] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:36:12.174] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:36:12.890] Village Report
+L [2016-12-30 21:36:12.986]  [T]: 2 521
+L [2016-12-30 21:36:13.091]  [G]: 3 391 026 [E]: 2 531 639 [D]: 148 228 [GEM]: 1 339
+D [2016-12-30 21:36:13.966] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:36:13.970] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:36:14.171] _RunFunction: CheckTombs END
+D [2016-12-30 21:36:14.171] _RunFunction: ReArm BEGIN
+L [2016-12-30 21:36:14.172] Checking if Village needs Rearming..
+L [2016-12-30 21:36:16.633] Rearm not needed!
+D [2016-12-30 21:36:18.443] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:36:18.549] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:36:18.649] _RunFunction: ReArm END
+D [2016-12-30 21:36:18.649] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:36:18.649] _RunFunction: CleanYard END
+D [2016-12-30 21:36:18.650] _RunFunction: Collect BEGIN
+L [2016-12-30 21:36:19.477] Collecting Resources
+D [2016-12-30 21:36:26.608] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:36:26.612] Searching for a Loot Cart..
+L [2016-12-30 21:36:27.126] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:36:28.856] _RunFunction: Collect END
+L [2016-12-30 21:36:28.857] Waiting, Add random delay of 19 seconds.
+D [2016-12-30 21:36:33.599] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:36:47.905] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:36:47.905] _RunFunction: BoostKing END
+D [2016-12-30 21:36:47.906] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:36:47.906] _RunFunction: BoostBarracks END
+D [2016-12-30 21:36:47.906] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:36:47.907] _RunFunction: BoostQueen END
+D [2016-12-30 21:36:47.907] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:36:47.907] _RunFunction: BoostWarden END
+D [2016-12-30 21:36:47.908] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:36:48.575] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:36:48.741] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:36:48.946] _RunFunction: NotifyReport END
+D [2016-12-30 21:36:48.947] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:36:49.148] _RunFunction: ReplayShare END
+D [2016-12-30 21:36:49.149] _RunFunction: RequestCC BEGIN
+L [2016-12-30 21:36:49.149] Requesting Clan Castle Troops
+L [2016-12-30 21:36:53.326] Your Clan Castle is already full or you are not in a clan.
+D [2016-12-30 21:36:55.307] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:36:55.310] _RunFunction: RequestCC END
+D [2016-12-30 21:36:55.311] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:36:55.325] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:36:57.218] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:36:58.117] Chat Request: Mago e aceleração
+L [2016-12-30 21:36:58.227] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:36:58.228] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:37:02.687] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:37:03.625] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:37:04.516]  - Army Window Opened!
+L [2016-12-30 21:37:06.253] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:37:06.500]  - Barbarian King available
+L [2016-12-30 21:37:06.509]  - Archer Queen available
+L [2016-12-30 21:37:06.761] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:37:07.458] - Castle full/no clan.
+L [2016-12-30 21:37:07.633]  - Army Camp: 240/240
+L [2016-12-30 21:37:07.633]  - Spells: 11/11
+L [2016-12-30 21:37:07.634]  - Clan Castle: 35/35
+L [2016-12-30 21:37:07.635] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:37:07.637] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:37:08.639] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:37:08.639] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:37:08.639] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:37:08.640] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:37:10.055] checkObstacles: Found gray Window to close
+L [2016-12-30 21:37:11.067] Waiting for Main Screen
+D [2016-12-30 21:37:11.358] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:37:11.362] _RunFunction: Laboratory END
+D [2016-12-30 21:37:11.374] MEmu time lag is 0 sec/min (avg for 61 sec)
+D [2016-12-30 21:37:11.374] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:37:11.575] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:37:11.576] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:37:11.777] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:37:12.550] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:37:13.960] Trying to locate Main Screen
+D [2016-12-30 21:37:14.274] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:37:14.276] Main Screen Located
+L [2016-12-30 21:37:16.371] Total Army Camp capacity: 240/240 (100%)
+D [2016-12-30 21:37:17.102] AdbScreencap: 90/91/98 ms (all/10/1),94,0,l=72,t=85,w=50,h=16, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+L [2016-12-30 21:37:17.627] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:37:18.637] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:37:19.195] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:37:19.910] Village Report
+L [2016-12-30 21:37:20.040]  [T]: 2 521
+L [2016-12-30 21:37:20.138]  [G]: 3 402 280 [E]: 2 542 892 [D]: 148 363 [GEM]: 1 339
+D [2016-12-30 21:37:20.922] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:37:20.926] _RunFunction: Collect BEGIN
+L [2016-12-30 21:37:21.652] Collecting Resources
+D [2016-12-30 21:37:22.970] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:37:22.974] Searching for a Loot Cart..
+L [2016-12-30 21:37:23.489] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:37:25.217] _RunFunction: Collect END
+D [2016-12-30 21:37:25.218] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:37:25.218] _RunFunction: CleanYard END
+D [2016-12-30 21:37:25.219] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:37:25.419] _RunFunction: ReArm END
+D [2016-12-30 21:37:25.419] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:37:25.621] _RunFunction: CheckTombs END
+L [2016-12-30 21:37:25.621] Waiting, Add random delay of 23 seconds.
+D [2016-12-30 21:37:33.700] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:37:48.659] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:37:48.761] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:37:49.492] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:37:49.696] _RunFunction: NotifyReport END
+D [2016-12-30 21:37:49.697] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:37:49.697] _RunFunction: BoostBarracks END
+D [2016-12-30 21:37:49.697] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:37:50.991] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:37:50.996] _RunFunction: RequestCC END
+D [2016-12-30 21:37:50.996] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:37:50.997] _RunFunction: BoostWarden END
+D [2016-12-30 21:37:50.997] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:37:50.997] _RunFunction: BoostKing END
+D [2016-12-30 21:37:50.998] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:37:51.011] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:37:52.910] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:37:53.805] Chat Request: Mago e aceleração
+L [2016-12-30 21:37:53.946] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:37:53.947] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:37:58.539] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:00.414]  - Army Window Opened!
+L [2016-12-30 21:38:02.149] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:38:02.388]  - Barbarian King available
+L [2016-12-30 21:38:02.398]  - Archer Queen available
+L [2016-12-30 21:38:02.610] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:38:03.273] - Castle full/no clan.
+L [2016-12-30 21:38:03.455]  - Army Camp: 240/240
+L [2016-12-30 21:38:03.456]  - Spells: 11/11
+L [2016-12-30 21:38:03.457]  - Clan Castle: 35/35
+L [2016-12-30 21:38:03.458] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:38:03.458] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:38:03.778] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:38:04.459] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:38:04.460] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:38:04.460] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:38:04.461] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:38:04.461] _RunFunction: BoostQueen END
+D [2016-12-30 21:38:04.461] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:38:04.663] _RunFunction: ReplayShare END
+D [2016-12-30 21:38:04.663] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:38:06.068] checkObstacles: Found gray Window to close
+L [2016-12-30 21:38:07.079] Waiting for Main Screen
+D [2016-12-30 21:38:07.418] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:07.422] _RunFunction: Laboratory END
+D [2016-12-30 21:38:07.423] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:38:07.623] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:38:07.624] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:38:07.825] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:38:08.633] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:10.040] Trying to locate Main Screen
+D [2016-12-30 21:38:10.384] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:10.386] Main Screen Located
+L [2016-12-30 21:38:12.510] Total Army Camp capacity: 240/240 (100%)
+D [2016-12-30 21:38:13.222] MEmu time lag is 0 sec/min (avg for 61 sec)
+L [2016-12-30 21:38:13.737] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:38:15.319] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:16.035] Village Report
+L [2016-12-30 21:38:16.163]  [T]: 2 521
+L [2016-12-30 21:38:16.266]  [G]: 3 402 280 [E]: 2 542 892 [D]: 148 363 [GEM]: 1 339
+D [2016-12-30 21:38:17.083] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:17.087] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:38:17.088] _RunFunction: CleanYard END
+D [2016-12-30 21:38:17.089] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:38:17.289] _RunFunction: ReArm END
+D [2016-12-30 21:38:17.290] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:38:17.491] _RunFunction: CheckTombs END
+D [2016-12-30 21:38:17.491] _RunFunction: Collect BEGIN
+L [2016-12-30 21:38:18.317] Collecting Resources
+D [2016-12-30 21:38:18.840] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:38:19.615] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:19.618] Searching for a Loot Cart..
+L [2016-12-30 21:38:20.129] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:38:21.842] _RunFunction: Collect END
+L [2016-12-30 21:38:21.843] Waiting, Add random delay of 6 seconds.
+D [2016-12-30 21:38:27.892] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:38:28.694] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:28.899] _RunFunction: NotifyReport END
+D [2016-12-30 21:38:28.899] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:38:28.900] _RunFunction: BoostKing END
+D [2016-12-30 21:38:28.900] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:38:28.900] _RunFunction: BoostQueen END
+D [2016-12-30 21:38:28.901] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:38:28.901] _RunFunction: BoostBarracks END
+D [2016-12-30 21:38:28.901] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:38:28.902] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:38:28.902] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:38:28.903] _RunFunction: BoostWarden END
+D [2016-12-30 21:38:28.903] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:38:30.225] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:30.229] _RunFunction: RequestCC END
+D [2016-12-30 21:38:30.230] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:38:30.244] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:38:32.117] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:38:33.022] Chat Request: Mago e aceleração
+L [2016-12-30 21:38:33.120] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:38:33.121] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:38:33.838] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:38:38.068] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:39.994]  - Army Window Opened!
+L [2016-12-30 21:38:41.716] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:38:42.009]  - Barbarian King available
+L [2016-12-30 21:38:42.019]  - Archer Queen available
+L [2016-12-30 21:38:42.250] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:38:42.981] - Castle full/no clan.
+L [2016-12-30 21:38:43.156]  - Army Camp: 240/240
+L [2016-12-30 21:38:43.165]  - Spells: 11/11
+L [2016-12-30 21:38:43.166]  - Clan Castle: 35/35
+L [2016-12-30 21:38:43.166] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:38:43.167] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:38:44.168] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:38:44.169] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:38:44.370] _RunFunction: ReplayShare END
+D [2016-12-30 21:38:44.370] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:38:45.815] AdbScreencap: 93/117/99 ms (all/10/1),94,0,l=0,t=0,w=860,h=732, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+D [2016-12-30 21:38:45.850] checkObstacles: Found gray Window to close
+L [2016-12-30 21:38:46.862] Waiting for Main Screen
+D [2016-12-30 21:38:47.232] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:47.235] _RunFunction: Laboratory END
+D [2016-12-30 21:38:47.236] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:38:47.436] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:38:47.437] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:38:47.638] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:38:48.410] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:48.816] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:38:49.821] Trying to locate Main Screen
+D [2016-12-30 21:38:50.145] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:50.147] Main Screen Located
+L [2016-12-30 21:38:52.406] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:38:53.640] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:38:55.234] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:38:55.950] Village Report
+L [2016-12-30 21:38:56.070]  [T]: 2 521
+L [2016-12-30 21:38:56.169]  [G]: 3 402 280 [E]: 2 542 892 [D]: 148 363 [GEM]: 1 339
+D [2016-12-30 21:38:56.994] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:38:56.998] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:38:56.998] _RunFunction: CleanYard END
+D [2016-12-30 21:38:56.998] _RunFunction: Collect BEGIN
+L [2016-12-30 21:38:57.763] Collecting Resources
+D [2016-12-30 21:39:00.087] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:39:00.093] Searching for a Loot Cart..
+L [2016-12-30 21:39:00.608] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:39:02.334] _RunFunction: Collect END
+D [2016-12-30 21:39:02.335] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:39:02.536] _RunFunction: CheckTombs END
+D [2016-12-30 21:39:02.536] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:39:02.737] _RunFunction: ReArm END
+L [2016-12-30 21:39:02.738] Waiting, Add random delay of 57 seconds.
+D [2016-12-30 21:39:03.854] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:39:18.860] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:39:33.967] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:39:48.975] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:39:59.753] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:39:59.754] _RunFunction: BoostBarracks END
+D [2016-12-30 21:39:59.765] MEmu time lag is 0 sec/min (avg for 106 sec)
+D [2016-12-30 21:39:59.765] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:39:59.866] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:40:01.752] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:40:02.641] Chat Request: Mago e aceleração
+L [2016-12-30 21:40:02.710] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:40:02.710] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:40:04.016] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:40:07.208] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:40:09.250]  - Army Window Opened!
+L [2016-12-30 21:40:11.026] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:40:11.265]  - Barbarian King available
+L [2016-12-30 21:40:11.275]  - Archer Queen available
+L [2016-12-30 21:40:11.455] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:40:12.124] - Castle full/no clan.
+L [2016-12-30 21:40:12.296]  - Army Camp: 240/240
+L [2016-12-30 21:40:12.297]  - Spells: 11/11
+L [2016-12-30 21:40:12.298]  - Clan Castle: 35/35
+L [2016-12-30 21:40:12.299] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:40:12.299] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:40:13.301] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:40:13.301] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:40:13.302] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:40:13.302] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:40:15.555] checkObstacles: Found gray Window to close
+L [2016-12-30 21:40:16.567] Waiting for Main Screen
+D [2016-12-30 21:40:16.875] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:40:16.878] _RunFunction: RequestCC END
+D [2016-12-30 21:40:16.879] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:40:16.879] _RunFunction: BoostWarden END
+D [2016-12-30 21:40:16.880] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:40:16.880] _RunFunction: BoostKing END
+D [2016-12-30 21:40:16.880] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:40:16.881] _RunFunction: BoostQueen END
+D [2016-12-30 21:40:16.881] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:40:17.656] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:40:17.860] _RunFunction: NotifyReport END
+D [2016-12-30 21:40:17.861] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:40:18.063] _RunFunction: ReplayShare END
+D [2016-12-30 21:40:18.063] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:40:18.263] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:40:18.264] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:40:18.737] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:40:18.740] _RunFunction: Laboratory END
+D [2016-12-30 21:40:18.741] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:40:18.942] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:40:19.043] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:40:19.734] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:40:21.140] Trying to locate Main Screen
+D [2016-12-30 21:40:21.449] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:40:21.451] Main Screen Located
+L [2016-12-30 21:40:23.577] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:40:24.799] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:40:26.394] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:40:27.115] Village Report
+L [2016-12-30 21:40:27.233]  [T]: 2 521
+L [2016-12-30 21:40:27.336]  [G]: 3 402 280 [E]: 2 542 892 [D]: 148 372 [GEM]: 1 339
+D [2016-12-30 21:40:28.106] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:40:28.121] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:40:28.322] _RunFunction: ReArm END
+D [2016-12-30 21:40:28.323] _RunFunction: Collect BEGIN
+L [2016-12-30 21:40:29.186] Collecting Resources
+D [2016-12-30 21:40:30.345] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:40:30.349] Searching for a Loot Cart..
+L [2016-12-30 21:40:30.862] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:40:32.606] _RunFunction: Collect END
+D [2016-12-30 21:40:32.607] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:40:32.607] _RunFunction: CleanYard END
+D [2016-12-30 21:40:32.608] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:40:32.809] _RunFunction: CheckTombs END
+L [2016-12-30 21:40:32.809] Waiting, Add random delay of 15 seconds.
+D [2016-12-30 21:40:34.032] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:40:47.864] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:40:47.864] _RunFunction: BoostQueen END
+D [2016-12-30 21:40:47.865] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:40:47.865] _RunFunction: BoostKing END
+D [2016-12-30 21:40:47.867] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:40:47.867] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:40:47.871] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:40:47.872] _RunFunction: BoostBarracks END
+D [2016-12-30 21:40:47.872] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:40:48.073] _RunFunction: ReplayShare END
+D [2016-12-30 21:40:48.074] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:40:48.887] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:40:49.092] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:40:49.094] _RunFunction: NotifyReport END
+D [2016-12-30 21:40:49.094] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:40:49.109] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:40:50.969] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:40:51.891] Chat Request: Mago e aceleração
+L [2016-12-30 21:40:52.014] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:40:52.015] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:40:55.126] AdbScreencap: 92/97/87 ms (all/10/1),83,0,l=202,t=278,w=22,h=442, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+L [2016-12-30 21:40:55.149] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:40:56.052] Chat Request: Preciso de reforços
+L [2016-12-30 21:40:56.130] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:40:56.131] Clan Castle spells are full, skip spell donation...
+L [2016-12-30 21:40:58.132] Archer Keyword found: refor
+D [2016-12-30 21:41:04.143] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:41:05.027] Donating 6 Archers
+D [2016-12-30 21:41:07.978] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:41:09.831]  - Army Window Opened!
+L [2016-12-30 21:41:11.529] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:41:11.758]  - Barbarian King available
+L [2016-12-30 21:41:11.767]  - Archer Queen available
+L [2016-12-30 21:41:11.974] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:41:12.672] - Castle full/no clan.
+L [2016-12-30 21:41:12.856]  - Army Camp: 240/240
+L [2016-12-30 21:41:12.857]  - Spells: 11/11
+L [2016-12-30 21:41:12.857]  - Clan Castle: 35/35
+L [2016-12-30 21:41:12.859] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:41:12.859] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:41:13.861] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:41:13.872] MEmu time lag is 0 sec/min (avg for 74 sec)
+D [2016-12-30 21:41:13.872] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:41:13.872] _RunFunction: BoostWarden END
+D [2016-12-30 21:41:13.873] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:41:16.110] checkObstacles: Found gray Window to close
+L [2016-12-30 21:41:17.122] Waiting for Main Screen
+D [2016-12-30 21:41:17.442] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:41:17.447] _RunFunction: RequestCC END
+D [2016-12-30 21:41:17.447] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:41:17.648] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:41:17.649] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:41:17.850] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:41:17.850] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:41:18.356] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:41:18.360] _RunFunction: Laboratory END
+D [2016-12-30 21:41:19.151] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:41:19.154] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:41:20.561] Trying to locate Main Screen
+D [2016-12-30 21:41:20.844] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:41:20.845] Main Screen Located
+L [2016-12-30 21:41:23.023] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:41:24.215] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:41:25.790] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:41:26.505] Village Report
+L [2016-12-30 21:41:26.612]  [T]: 2 521
+L [2016-12-30 21:41:26.716]  [G]: 3 402 280 [E]: 2 543 492 [D]: 148 372 [GEM]: 1 339
+D [2016-12-30 21:41:27.502] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:41:27.505] _RunFunction: Collect BEGIN
+L [2016-12-30 21:41:28.258] Collecting Resources
+D [2016-12-30 21:41:30.535] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:41:30.538] Searching for a Loot Cart..
+L [2016-12-30 21:41:31.061] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:41:32.821] _RunFunction: Collect END
+D [2016-12-30 21:41:32.821] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:41:33.023] _RunFunction: ReArm END
+D [2016-12-30 21:41:33.023] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:41:33.024] _RunFunction: CleanYard END
+D [2016-12-30 21:41:33.025] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:41:33.226] _RunFunction: CheckTombs END
+L [2016-12-30 21:41:33.227] Waiting, Add random delay of 14 seconds.
+D [2016-12-30 21:41:34.146] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:41:47.241] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:41:48.530] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:41:48.534] _RunFunction: RequestCC END
+D [2016-12-30 21:41:48.534] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:41:49.143] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:41:49.354] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:41:49.560] _RunFunction: NotifyReport END
+D [2016-12-30 21:41:49.560] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:41:49.561] _RunFunction: BoostKing END
+D [2016-12-30 21:41:49.561] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:41:49.561] _RunFunction: BoostWarden END
+D [2016-12-30 21:41:49.562] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:41:49.763] _RunFunction: ReplayShare END
+D [2016-12-30 21:41:49.764] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:41:49.764] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:41:49.764] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:41:49.765] _RunFunction: BoostQueen END
+D [2016-12-30 21:41:49.765] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:41:49.865] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:41:51.800] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:41:52.704] Chat Request: Mago e aceleração
+L [2016-12-30 21:41:52.781] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:41:52.781] Clan Castle spells are full, skip spell donation...
+L [2016-12-30 21:41:55.577] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:41:56.396] Chat Request: Mago e aceleração
+L [2016-12-30 21:41:56.533] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:41:56.535] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:42:01.168] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:42:03.058]  - Army Window Opened!
+D [2016-12-30 21:42:03.694] Restore bot window to 909, 2, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-30 21:42:03.697] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2016-12-30 21:42:04.177] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:42:04.847] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:42:05.076]  - Barbarian King available
+L [2016-12-30 21:42:05.085]  - Archer Queen available
+L [2016-12-30 21:42:05.284] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:42:06.026] - Castle full/no clan.
+L [2016-12-30 21:42:06.199]  - Army Camp: 240/240
+L [2016-12-30 21:42:06.199]  - Spells: 11/11
+L [2016-12-30 21:42:06.200]  - Clan Castle: 35/35
+L [2016-12-30 21:42:06.201] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:42:06.202] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:42:07.203] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:42:07.203] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:42:07.204] _RunFunction: BoostBarracks END
+D [2016-12-30 21:42:07.204] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:42:07.406] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:42:07.406] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:42:07.607] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:42:07.608] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:42:07.920] AdbScreencap: 92/111/110 ms (all/10/1),105,0,l=282,t=28,w=2,h=2, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+D [2016-12-30 21:42:08.122] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:42:09.088] checkObstacles: Found gray Window to close
+L [2016-12-30 21:42:10.102] Waiting for Main Screen
+D [2016-12-30 21:42:10.375] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:42:10.380] _RunFunction: Laboratory END
+D [2016-12-30 21:42:10.387] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:42:11.228] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:42:12.636] Trying to locate Main Screen
+D [2016-12-30 21:42:12.896] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:42:12.898] Main Screen Located
+L [2016-12-30 21:42:15.018] Total Army Camp capacity: 240/240 (100%)
+D [2016-12-30 21:42:15.706] MEmu time lag is 0 sec/min (avg for 61 sec)
+L [2016-12-30 21:42:16.220] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:42:17.790] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:42:18.506] Village Report
+L [2016-12-30 21:42:18.604]  [T]: 2 521
+L [2016-12-30 21:42:18.707]  [G]: 3 402 280 [E]: 2 543 492 [D]: 148 381 [GEM]: 1 339
+D [2016-12-30 21:42:19.211] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:42:19.443] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:42:19.446] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:42:19.447] _RunFunction: CleanYard END
+D [2016-12-30 21:42:19.447] _RunFunction: Collect BEGIN
+L [2016-12-30 21:42:20.170] Collecting Resources
+D [2016-12-30 21:42:21.494] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:42:21.499] Searching for a Loot Cart..
+L [2016-12-30 21:42:22.025] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:42:23.812] _RunFunction: Collect END
+D [2016-12-30 21:42:23.813] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:42:24.014] _RunFunction: ReArm END
+D [2016-12-30 21:42:24.014] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:42:24.215] _RunFunction: CheckTombs END
+L [2016-12-30 21:42:24.216] Waiting, Add random delay of 49 seconds.
+D [2016-12-30 21:42:34.196] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:42:49.233] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:43:04.244] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:43:13.310] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:43:13.311] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:43:13.311] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:43:14.614] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:43:14.619] _RunFunction: RequestCC END
+D [2016-12-30 21:43:14.620] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:43:14.634] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:43:16.495] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:43:17.382] Chat Request: Mago e aceleração
+L [2016-12-30 21:43:17.460] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:43:17.461] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:43:19.293] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:43:20.529] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:43:21.433] Chat Request: Defesa
+L [2016-12-30 21:43:21.521] Chat Troops: 6/35, Spells: 1/1
+L [2016-12-30 21:43:21.522] Clan Castle spells are full, skip spell donation...
+L [2016-12-30 21:43:23.262] Archer Keyword found: defesa
+L [2016-12-30 21:43:29.966] Donating 6 Archers
+D [2016-12-30 21:43:32.677] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:43:34.290] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:43:34.643]  - Army Window Opened!
+L [2016-12-30 21:43:36.329] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:43:36.542]  - Barbarian King available
+L [2016-12-30 21:43:36.560]  - Archer Queen available
+L [2016-12-30 21:43:36.778] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:43:37.515] - Castle full/no clan.
+L [2016-12-30 21:43:37.688]  - Army Camp: 240/240
+L [2016-12-30 21:43:37.698]  - Spells: 11/11
+L [2016-12-30 21:43:37.699]  - Clan Castle: 35/35
+L [2016-12-30 21:43:37.700] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:43:37.701] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:43:38.701] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:43:38.713] MEmu time lag is 0 sec/min (avg for 83 sec)
+D [2016-12-30 21:43:38.713] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:43:38.914] _RunFunction: ReplayShare END
+D [2016-12-30 21:43:38.914] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:43:38.915] _RunFunction: BoostWarden END
+D [2016-12-30 21:43:38.915] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:43:40.619] checkObstacles: Found gray Window to close
+L [2016-12-30 21:43:41.632] Waiting for Main Screen
+D [2016-12-30 21:43:41.886] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:43:42.091] _RunFunction: NotifyReport END
+D [2016-12-30 21:43:42.092] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:43:42.092] _RunFunction: BoostBarracks END
+D [2016-12-30 21:43:42.093] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:43:42.093] _RunFunction: BoostKing END
+D [2016-12-30 21:43:42.093] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:43:42.094] _RunFunction: BoostQueen END
+D [2016-12-30 21:43:42.094] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:43:42.295] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:43:42.296] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:43:42.496] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:43:42.497] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:43:42.969] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:43:42.973] _RunFunction: Laboratory END
+D [2016-12-30 21:43:43.746] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:43:45.155] Trying to locate Main Screen
+D [2016-12-30 21:43:45.420] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:43:45.422] Main Screen Located
+L [2016-12-30 21:43:47.626] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:43:48.899] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:43:49.309] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:43:50.453] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:43:51.174] Village Report
+L [2016-12-30 21:43:51.259]  [T]: 2 521
+L [2016-12-30 21:43:51.359]  [G]: 3 402 280 [E]: 2 544 092 [D]: 148 381 [GEM]: 1 339
+D [2016-12-30 21:43:52.146] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:43:52.151] _RunFunction: Collect BEGIN
+L [2016-12-30 21:43:52.897] Collecting Resources
+D [2016-12-30 21:43:55.105] AdbScreencap: 91/82/79 ms (all/10/1),73,0,l=0,t=0,w=860,h=732, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+D [2016-12-30 21:43:55.221] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:43:55.230] Searching for a Loot Cart..
+L [2016-12-30 21:43:55.740] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:43:57.479] _RunFunction: Collect END
+D [2016-12-30 21:43:57.479] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:43:57.680] _RunFunction: ReArm END
+D [2016-12-30 21:43:57.681] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:43:57.681] _RunFunction: CleanYard END
+D [2016-12-30 21:43:57.682] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:43:57.883] _RunFunction: CheckTombs END
+L [2016-12-30 21:43:57.884] Waiting, Add random delay of 18 seconds.
+D [2016-12-30 21:44:04.336] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:44:15.919] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:44:17.170] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:44:17.173] _RunFunction: RequestCC END
+D [2016-12-30 21:44:17.174] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:44:17.174] _RunFunction: BoostQueen END
+D [2016-12-30 21:44:17.175] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:44:17.175] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:44:17.175] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:44:17.376] _RunFunction: ReplayShare END
+D [2016-12-30 21:44:17.377] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:44:17.377] _RunFunction: BoostWarden END
+D [2016-12-30 21:44:17.378] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:44:17.378] _RunFunction: BoostBarracks END
+D [2016-12-30 21:44:17.378] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:44:17.379] _RunFunction: BoostKing END
+D [2016-12-30 21:44:17.380] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:44:17.461] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:44:19.293] Using OCR to read Latin derived alphabets..
+D [2016-12-30 21:44:19.493] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:44:20.177] Chat Request: Mago e aceleração
+L [2016-12-30 21:44:20.265] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:44:20.266] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:44:24.755] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:44:26.574]  - Army Window Opened!
+L [2016-12-30 21:44:28.252] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:44:28.470]  - Barbarian King available
+L [2016-12-30 21:44:28.479]  - Archer Queen available
+L [2016-12-30 21:44:28.690] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:44:29.309] - Castle full/no clan.
+L [2016-12-30 21:44:29.489]  - Army Camp: 240/240
+L [2016-12-30 21:44:29.490]  - Spells: 11/11
+L [2016-12-30 21:44:29.490]  - Clan Castle: 35/35
+L [2016-12-30 21:44:29.491] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:44:29.493] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:44:30.493] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:44:30.494] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:44:32.263] checkObstacles: Found gray Window to close
+L [2016-12-30 21:44:33.275] Waiting for Main Screen
+D [2016-12-30 21:44:33.533] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:44:33.738] _RunFunction: NotifyReport END
+D [2016-12-30 21:44:33.738] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:44:33.941] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:44:33.941] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:44:34.382] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:44:34.453] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:44:34.457] _RunFunction: Laboratory END
+D [2016-12-30 21:44:34.457] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:44:34.658] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:44:35.423] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:44:36.836] Trying to locate Main Screen
+D [2016-12-30 21:44:37.110] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:44:37.111] Main Screen Located
+L [2016-12-30 21:44:39.190] Total Army Camp capacity: 240/240 (100%)
+D [2016-12-30 21:44:39.898] MEmu time lag is 0 sec/min (avg for 61 sec)
+L [2016-12-30 21:44:40.411] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:44:41.974] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:44:42.692] Village Report
+L [2016-12-30 21:44:42.810]  [T]: 2 521
+L [2016-12-30 21:44:42.910]  [G]: 3 402 280 [E]: 2 544 092 [D]: 148 390 [GEM]: 1 339
+D [2016-12-30 21:44:43.685] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:44:43.688] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:44:43.689] _RunFunction: CleanYard END
+D [2016-12-30 21:44:43.689] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:44:43.890] _RunFunction: ReArm END
+D [2016-12-30 21:44:43.891] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:44:44.092] _RunFunction: CheckTombs END
+D [2016-12-30 21:44:44.092] _RunFunction: Collect BEGIN
+L [2016-12-30 21:44:44.927] Collecting Resources
+D [2016-12-30 21:44:46.166] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:44:46.170] Searching for a Loot Cart..
+D [2016-12-30 21:44:46.689] Restore bot window to 909, 2, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-30 21:44:46.692] GUIControl_WM_NCACTIVATE: Activate Bot
+L [2016-12-30 21:44:46.694] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:44:48.415] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:44:48.419] _RunFunction: Collect END
+L [2016-12-30 21:44:48.423] Waiting, Add random delay of 60 seconds.
+D [2016-12-30 21:44:48.733] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:44:49.350] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:45:04.353] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:45:19.466] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:45:34.487] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:45:48.465] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:45:48.743] _RunFunction: ReplayShare END
+D [2016-12-30 21:45:48.771] MEmu time lag is 0 sec/min (avg for 68 sec)
+D [2016-12-30 21:45:48.775] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:45:48.776] _RunFunction: BoostKing END
+D [2016-12-30 21:45:48.781] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:45:49.467] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:45:49.599] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:45:49.803] _RunFunction: NotifyReport END
+D [2016-12-30 21:45:49.804] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:45:51.057] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:45:51.062] _RunFunction: RequestCC END
+D [2016-12-30 21:45:51.062] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:45:51.063] _RunFunction: BoostWarden END
+D [2016-12-30 21:45:51.063] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:45:51.064] _RunFunction: BoostQueen END
+D [2016-12-30 21:45:51.064] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:45:51.064] _RunFunction: BoostBarracks END
+D [2016-12-30 21:45:51.065] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:45:51.065] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:45:51.066] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:45:51.079] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:45:52.910] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:45:53.834] Chat Request: Mago e aceleração
+L [2016-12-30 21:45:53.931] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:45:53.932] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:45:58.931] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:46:00.787]  - Army Window Opened!
+L [2016-12-30 21:46:02.509] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:46:02.750]  - Barbarian King available
+L [2016-12-30 21:46:02.762]  - Archer Queen available
+L [2016-12-30 21:46:02.986] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:46:03.810] - Castle full/no clan.
+L [2016-12-30 21:46:04.020]  - Army Camp: 240/240
+L [2016-12-30 21:46:04.021]  - Spells: 11/11
+L [2016-12-30 21:46:04.022]  - Clan Castle: 35/35
+L [2016-12-30 21:46:04.023] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:46:04.023] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:46:04.549] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:46:05.025] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:46:05.025] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:46:05.226] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:46:05.227] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:46:05.429] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:46:05.429] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:46:06.984] checkObstacles: Found gray Window to close
+L [2016-12-30 21:46:07.996] Waiting for Main Screen
+D [2016-12-30 21:46:08.314] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:46:08.317] _RunFunction: Laboratory END
+D [2016-12-30 21:46:09.122] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:46:10.529] Trying to locate Main Screen
+D [2016-12-30 21:46:10.862] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:46:10.864] Main Screen Located
+D [2016-12-30 21:46:11.023] AdbScreencap: 90/103/67 ms (all/10/1),63,0,l=282,t=28,w=2,h=2, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+L [2016-12-30 21:46:12.977] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:46:14.171] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:46:15.814] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:46:16.530] Village Report
+L [2016-12-30 21:46:16.637]  [T]: 2 521
+L [2016-12-30 21:46:16.738]  [G]: 3 402 280 [E]: 2 544 092 [D]: 148 390 [GEM]: 1 339
+D [2016-12-30 21:46:17.513] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:46:17.517] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:46:17.517] _RunFunction: CleanYard END
+D [2016-12-30 21:46:17.517] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:46:17.718] _RunFunction: CheckTombs END
+D [2016-12-30 21:46:17.719] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:46:17.920] _RunFunction: ReArm END
+D [2016-12-30 21:46:17.921] _RunFunction: Collect BEGIN
+L [2016-12-30 21:46:18.729] Collecting Resources
+D [2016-12-30 21:46:19.553] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:46:20.992] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+L [2016-12-30 21:46:20.996] Searching for a Loot Cart..
+L [2016-12-30 21:46:21.500] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:46:23.214] _RunFunction: Collect END
+L [2016-12-30 21:46:23.214] Waiting, Add random delay of 31 seconds.
+D [2016-12-30 21:46:34.601] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:46:38.682] Restore bot window to 909, 2, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-30 21:46:38.685] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2016-12-30 21:46:39.799] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:46:49.561] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:46:51.982] Restore bot window to 909, 2, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-30 21:46:51.984] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2016-12-30 21:46:54.304] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:46:54.505] _RunFunction: ReplayShare END
+D [2016-12-30 21:46:54.516] MEmu time lag is 0 sec/min (avg for 65 sec)
+D [2016-12-30 21:46:54.516] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:46:55.808] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:46:55.811] _RunFunction: RequestCC END
+D [2016-12-30 21:46:55.812] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:46:55.812] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:46:55.812] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:46:55.813] _RunFunction: BoostKing END
+D [2016-12-30 21:46:55.813] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:46:55.814] _RunFunction: BoostBarracks END
+D [2016-12-30 21:46:55.814] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:46:55.814] _RunFunction: BoostQueen END
+D [2016-12-30 21:46:55.815] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:46:55.815] _RunFunction: BoostWarden END
+D [2016-12-30 21:46:55.816] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:46:56.612] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 0, -2
+D [2016-12-30 21:46:56.817] _RunFunction: NotifyReport END
+D [2016-12-30 21:46:56.818] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:46:56.929] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:46:58.770] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:46:59.680] Chat Request: Mago e aceleração
+L [2016-12-30 21:46:59.770] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:46:59.770] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:47:03.096] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:47:04.446] GetVillageSize cannot find stone
+L [2016-12-30 21:47:04.447] Zooming Out
+D [2016-12-30 21:47:04.454] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:47:04.658] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:47:06.363] GetVillageSize measured: 443.77397352713, Zoom factor: 0.937017150600985, Offset: 1, -9
+D [2016-12-30 21:47:07.364] Center Village by: 1, -9
+D [2016-12-30 21:47:09.028] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:47:10.029] Village Offset updated to 0, -9, 0.938335477401814
+D [2016-12-30 21:47:10.030] Centered Village Offset: 0, -9, change: -1, 0
+L [2016-12-30 21:47:11.878]  - Army Window Opened!
+L [2016-12-30 21:47:13.583] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:47:13.819]  - Barbarian King available
+L [2016-12-30 21:47:13.828]  - Archer Queen available
+L [2016-12-30 21:47:14.086] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:47:14.819] - Castle full/no clan.
+L [2016-12-30 21:47:14.993]  - Army Camp: 240/240
+L [2016-12-30 21:47:14.994]  - Spells: 11/11
+L [2016-12-30 21:47:14.994]  - Clan Castle: 35/35
+L [2016-12-30 21:47:14.996] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:47:14.996] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:47:15.998] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:47:15.999] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:47:16.200] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:47:16.200] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:47:16.402] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:47:16.402] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:47:17.822] checkObstacles: Found gray Window to close
+L [2016-12-30 21:47:18.834] Waiting for Main Screen
+D [2016-12-30 21:47:19.119] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:47:19.122] _RunFunction: Laboratory END
+D [2016-12-30 21:47:19.636] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:47:19.889] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:47:21.296] Trying to locate Main Screen
+D [2016-12-30 21:47:21.564] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:47:21.566] Main Screen Located
+L [2016-12-30 21:47:23.703] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:47:24.915] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:47:26.494] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:47:27.210] Village Report
+L [2016-12-30 21:47:27.316]  [T]: 2 521
+L [2016-12-30 21:47:27.419]  [G]: 3 402 280 [E]: 2 544 092 [D]: 148 399 [GEM]: 1 339
+D [2016-12-30 21:47:28.181] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:47:28.185] _RunFunction: Collect BEGIN
+L [2016-12-30 21:47:28.907] Collecting Resources
+D [2016-12-30 21:47:34.644] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:47:34.817] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:47:34.822] Searching for a Loot Cart..
+L [2016-12-30 21:47:35.925] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:47:37.708] _RunFunction: Collect END
+D [2016-12-30 21:47:37.708] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:47:37.708] _RunFunction: CleanYard END
+D [2016-12-30 21:47:37.709] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:47:37.910] _RunFunction: ReArm END
+D [2016-12-30 21:47:37.910] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:47:38.111] _RunFunction: CheckTombs END
+L [2016-12-30 21:47:38.111] Waiting, Add random delay of 39 seconds.
+D [2016-12-30 21:47:49.703] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:48:04.714] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:48:17.207] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:48:18.510] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:48:18.526] _RunFunction: RequestCC END
+D [2016-12-30 21:48:18.538] MEmu time lag is 0 sec/min (avg for 84 sec)
+D [2016-12-30 21:48:18.538] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:48:18.538] _RunFunction: BoostBarracks END
+D [2016-12-30 21:48:18.539] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:48:18.539] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:48:18.539] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:48:18.540] _RunFunction: BoostQueen END
+D [2016-12-30 21:48:18.540] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:48:18.554] Checking for Donate Requests in Clan Chat
+D [2016-12-30 21:48:19.748] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:48:20.411] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:48:21.278] Chat Request: Mago e aceleração
+L [2016-12-30 21:48:21.381] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:48:21.382] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:48:22.439] AdbScreencap: 89/83/56 ms (all/10/1),52,0,l=202,t=224,w=22,h=21, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+D [2016-12-30 21:48:25.940] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:48:27.985]  - Army Window Opened!
+L [2016-12-30 21:48:29.611] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:48:29.850]  - Barbarian King available
+L [2016-12-30 21:48:29.862]  - Archer Queen available
+L [2016-12-30 21:48:30.113] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:48:30.876] - Castle full/no clan.
+L [2016-12-30 21:48:31.108]  - Army Camp: 240/240
+L [2016-12-30 21:48:31.109]  - Spells: 11/11
+L [2016-12-30 21:48:31.109]  - Clan Castle: 35/35
+L [2016-12-30 21:48:31.110] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:48:31.111] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:48:32.113] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:48:32.113] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:48:32.113] _RunFunction: BoostKing END
+D [2016-12-30 21:48:32.114] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:48:32.114] _RunFunction: BoostWarden END
+D [2016-12-30 21:48:32.114] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:48:33.903] checkObstacles: Found gray Window to close
+D [2016-12-30 21:48:34.722] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:48:34.919] Waiting for Main Screen
+D [2016-12-30 21:48:35.222] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:48:35.426] _RunFunction: NotifyReport END
+D [2016-12-30 21:48:35.426] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:48:35.627] _RunFunction: ReplayShare END
+D [2016-12-30 21:48:35.628] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:48:36.095] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:48:36.099] _RunFunction: Laboratory END
+D [2016-12-30 21:48:36.099] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:48:36.300] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:48:36.300] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:48:36.502] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:48:37.308] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:48:38.718] Trying to locate Main Screen
+D [2016-12-30 21:48:38.986] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:48:38.988] Main Screen Located
+L [2016-12-30 21:48:41.165] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:48:42.355] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:48:43.943] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:48:44.659] Village Report
+L [2016-12-30 21:48:44.744]  [T]: 2 521
+L [2016-12-30 21:48:44.843]  [G]: 3 406 818 [E]: 2 548 622 [D]: 148 399 [GEM]: 1 339
+D [2016-12-30 21:48:45.551] GetVillageSize cannot find stone
+L [2016-12-30 21:48:45.552] Zooming Out
+D [2016-12-30 21:48:47.339] GetVillageSize measured: 443.77397352713, Zoom factor: 0.937017150600985, Offset: 1, -9
+D [2016-12-30 21:48:48.340] Center Village by: 1, -9
+D [2016-12-30 21:48:49.770] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:48:50.008] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:48:51.010] Centered Village Offset: 0, -9, change: -1, 0
+D [2016-12-30 21:48:51.013] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:48:51.214] _RunFunction: CheckTombs END
+D [2016-12-30 21:48:51.215] _RunFunction: Collect BEGIN
+L [2016-12-30 21:48:52.017] Collecting Resources
+D [2016-12-30 21:48:54.221] GetVillageSize cannot find stone
+L [2016-12-30 21:48:54.222] Zooming Out
+D [2016-12-30 21:48:56.022] GetVillageSize measured: 443.77397352713, Zoom factor: 0.937017150600985, Offset: 1, -9
+D [2016-12-30 21:48:57.025] Center Village by: 1, -9
+D [2016-12-30 21:48:58.878] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:48:59.882] Centered Village Offset: 0, -9, change: -1, 0
+L [2016-12-30 21:48:59.887] Searching for a Loot Cart..
+L [2016-12-30 21:49:00.432] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:49:02.194] _RunFunction: Collect END
+D [2016-12-30 21:49:02.195] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:49:02.395] _RunFunction: ReArm END
+D [2016-12-30 21:49:02.396] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:49:02.396] _RunFunction: CleanYard END
+L [2016-12-30 21:49:02.397] Waiting, Add random delay of 42 seconds.
+D [2016-12-30 21:49:04.736] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:49:19.752] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:49:34.783] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:49:44.457] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:49:44.658] _RunFunction: ReplayShare END
+D [2016-12-30 21:49:44.680] MEmu time lag is 0 sec/min (avg for 86 sec)
+D [2016-12-30 21:49:44.681] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:49:44.812] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:49:46.645] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:49:47.570] Chat Request: Mago e aceleração
+L [2016-12-30 21:49:47.647] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:49:47.648] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:49:49.829] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:49:52.177] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:49:54.032]  - Army Window Opened!
+L [2016-12-30 21:49:55.690] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:49:55.911]  - Barbarian King available
+L [2016-12-30 21:49:55.921]  - Archer Queen available
+L [2016-12-30 21:49:56.131] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:49:56.767] - Castle full/no clan.
+L [2016-12-30 21:49:56.938]  - Army Camp: 240/240
+L [2016-12-30 21:49:56.939]  - Spells: 11/11
+L [2016-12-30 21:49:56.940]  - Clan Castle: 35/35
+L [2016-12-30 21:49:56.941] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:49:56.942] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:49:57.942] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:49:57.943] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:49:59.638] checkObstacles: Found gray Window to close
+L [2016-12-30 21:50:00.650] Waiting for Main Screen
+D [2016-12-30 21:50:00.921] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:50:01.126] _RunFunction: NotifyReport END
+D [2016-12-30 21:50:01.126] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:50:01.126] _RunFunction: BoostWarden END
+D [2016-12-30 21:50:01.127] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:50:01.127] _RunFunction: BoostBarracks END
+D [2016-12-30 21:50:01.128] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:50:02.448] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:50:02.451] _RunFunction: RequestCC END
+D [2016-12-30 21:50:02.452] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:50:02.452] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:50:02.453] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:50:02.453] _RunFunction: BoostQueen END
+D [2016-12-30 21:50:02.453] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:50:02.454] _RunFunction: BoostKing END
+D [2016-12-30 21:50:02.454] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:50:02.655] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:50:02.655] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:50:03.126] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:50:03.131] _RunFunction: Laboratory END
+D [2016-12-30 21:50:03.131] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:50:03.332] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:50:04.091] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:50:04.800] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:50:05.499] Trying to locate Main Screen
+D [2016-12-30 21:50:05.752] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:50:05.754] Main Screen Located
+D [2016-12-30 21:50:06.117] AdbScreencap: 88/75/66 ms (all/10/1),63,0,l=282,t=28,w=2,h=2, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+L [2016-12-30 21:50:07.873] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:50:09.094] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:50:10.650] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:50:11.368] Village Report
+L [2016-12-30 21:50:11.463]  [T]: 2 521
+L [2016-12-30 21:50:11.561]  [G]: 3 406 818 [E]: 2 548 622 [D]: 148 408 [GEM]: 1 339
+D [2016-12-30 21:50:12.342] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:50:12.346] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:50:12.346] _RunFunction: CleanYard END
+D [2016-12-30 21:50:12.346] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:50:12.547] _RunFunction: ReArm END
+D [2016-12-30 21:50:12.548] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:50:12.749] _RunFunction: CheckTombs END
+D [2016-12-30 21:50:12.749] _RunFunction: Collect BEGIN
+L [2016-12-30 21:50:13.576] Collecting Resources
+D [2016-12-30 21:50:14.810] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:50:14.814] Searching for a Loot Cart..
+L [2016-12-30 21:50:15.283] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:50:17.008] _RunFunction: Collect END
+L [2016-12-30 21:50:17.009] Waiting, Add random delay of 46 seconds.
+D [2016-12-30 21:50:19.831] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:50:28.805] Restore bot window to 909, 2, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-30 21:50:28.810] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2016-12-30 21:50:32.942] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:50:34.858] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:50:49.940] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:51:03.078] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:51:03.279] _RunFunction: ReplayShare END
+D [2016-12-30 21:51:03.312] MEmu time lag is 0 sec/min (avg for 78 sec)
+D [2016-12-30 21:51:03.312] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:51:04.911] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:51:05.531] checkObstacles: Found gray Window to close
+L [2016-12-30 21:51:06.543] Waiting for Main Screen
+D [2016-12-30 21:51:06.823] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:51:06.842] _RunFunction: RequestCC END
+D [2016-12-30 21:51:06.843] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:51:06.843] _RunFunction: BoostKing END
+D [2016-12-30 21:51:06.843] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:51:06.844] _RunFunction: BoostWarden END
+D [2016-12-30 21:51:06.844] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:51:06.844] _RunFunction: BoostBarracks END
+D [2016-12-30 21:51:06.845] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:51:06.845] _RunFunction: BoostQueen END
+D [2016-12-30 21:51:06.845] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:51:06.851] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:51:07.664] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:51:07.869] _RunFunction: NotifyReport END
+D [2016-12-30 21:51:07.870] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:51:07.870] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:51:07.870] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:51:07.960] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:51:09.817] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:51:10.724] Chat Request: Mago e aceleração
+L [2016-12-30 21:51:10.813] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:51:10.813] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:51:15.316] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:51:17.193]  - Army Window Opened!
+L [2016-12-30 21:51:19.113] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:51:19.378]  - Barbarian King available
+L [2016-12-30 21:51:19.389]  - Archer Queen available
+L [2016-12-30 21:51:19.674] Total Spell(s) Capacity: 11/11
+D [2016-12-30 21:51:19.948] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:51:20.405] - Castle full/no clan.
+L [2016-12-30 21:51:20.580]  - Army Camp: 240/240
+L [2016-12-30 21:51:20.581]  - Spells: 11/11
+L [2016-12-30 21:51:20.582]  - Clan Castle: 35/35
+L [2016-12-30 21:51:20.583] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:51:20.583] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:51:21.585] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:51:21.585] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:51:22.981] checkObstacles: Found gray Window to close
+L [2016-12-30 21:51:23.994] Waiting for Main Screen
+D [2016-12-30 21:51:24.305] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:51:24.309] _RunFunction: Laboratory END
+D [2016-12-30 21:51:24.310] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:51:24.511] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:51:24.512] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:51:24.712] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:51:25.513] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:51:26.927] Trying to locate Main Screen
+D [2016-12-30 21:51:27.253] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:51:27.256] Main Screen Located
+L [2016-12-30 21:51:29.797] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:51:31.026] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:51:32.633] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:51:33.349] Village Report
+L [2016-12-30 21:51:33.475]  [T]: 2 521
+L [2016-12-30 21:51:33.587]  [G]: 3 406 818 [E]: 2 548 622 [D]: 148 408 [GEM]: 1 339
+D [2016-12-30 21:51:34.352] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:51:34.356] _RunFunction: Collect BEGIN
+D [2016-12-30 21:51:34.979] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:51:35.086] Collecting Resources
+D [2016-12-30 21:51:37.440] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:51:37.446] Searching for a Loot Cart..
+L [2016-12-30 21:51:38.041] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:51:39.799] _RunFunction: Collect END
+D [2016-12-30 21:51:39.799] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:51:39.800] _RunFunction: CleanYard END
+D [2016-12-30 21:51:39.800] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:51:40.000] _RunFunction: CheckTombs END
+D [2016-12-30 21:51:40.001] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:51:40.202] _RunFunction: ReArm END
+L [2016-12-30 21:51:40.203] Waiting, Add random delay of 49 seconds.
+D [2016-12-30 21:51:50.080] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:52:05.094] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:52:20.078] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:52:29.231] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:52:29.232] _RunFunction: BoostQueen END
+D [2016-12-30 21:52:29.243] MEmu time lag is 0 sec/min (avg for 85 sec)
+D [2016-12-30 21:52:29.244] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:52:29.334] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:52:31.169] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:52:32.052] Chat Request: Mago e aceleração
+L [2016-12-30 21:52:32.140] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:52:32.141] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:52:35.055] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:52:36.709] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:52:38.483]  - Army Window Opened!
+D [2016-12-30 21:52:39.321] AdbScreencap: 89/86/80 ms (all/10/1),74,0,l=110,t=166,w=82,h=16, 23AEA134B5E5638F5C87BF7B4993E73524D48266: w=860,h=732,f=1
+L [2016-12-30 21:52:40.223] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:52:40.483]  - Barbarian King available
+L [2016-12-30 21:52:40.502]  - Archer Queen available
+L [2016-12-30 21:52:40.744] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:52:41.406] - Castle full/no clan.
+L [2016-12-30 21:52:41.586]  - Army Camp: 240/240
+L [2016-12-30 21:52:41.587]  - Spells: 11/11
+L [2016-12-30 21:52:41.587]  - Clan Castle: 35/35
+L [2016-12-30 21:52:41.589] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:52:41.589] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:52:42.591] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:52:42.592] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:52:44.851] checkObstacles: Found gray Window to close
+L [2016-12-30 21:52:45.864] Waiting for Main Screen
+D [2016-12-30 21:52:46.171] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:52:46.174] _RunFunction: RequestCC END
+D [2016-12-30 21:52:46.175] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:52:46.175] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:52:46.176] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:52:47.009] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:52:47.214] _RunFunction: NotifyReport END
+D [2016-12-30 21:52:47.214] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:52:47.215] _RunFunction: BoostKing END
+D [2016-12-30 21:52:47.215] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:52:47.216] _RunFunction: BoostBarracks END
+D [2016-12-30 21:52:47.216] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:52:47.418] _RunFunction: ReplayShare END
+D [2016-12-30 21:52:47.418] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:52:47.418] _RunFunction: BoostWarden END
+D [2016-12-30 21:52:47.419] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:52:47.620] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:52:47.620] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:52:47.821] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:52:47.822] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:52:48.311] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:52:48.316] _RunFunction: Laboratory END
+D [2016-12-30 21:52:49.105] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:52:50.114] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+L [2016-12-30 21:52:50.512] Trying to locate Main Screen
+D [2016-12-30 21:52:50.786] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:52:50.788] Main Screen Located
+L [2016-12-30 21:52:53.033] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:52:54.278] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:52:55.931] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:52:56.647] Village Report
+L [2016-12-30 21:52:56.744]  [T]: 2 521
+L [2016-12-30 21:52:56.843]  [G]: 3 406 818 [E]: 2 548 622 [D]: 148 420 [GEM]: 1 339
+D [2016-12-30 21:52:57.603] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:52:57.607] _RunFunction: CheckTombs BEGIN
+D [2016-12-30 21:52:57.808] _RunFunction: CheckTombs END
+D [2016-12-30 21:52:57.809] _RunFunction: CleanYard BEGIN
+D [2016-12-30 21:52:57.809] _RunFunction: CleanYard END
+D [2016-12-30 21:52:57.809] _RunFunction: Collect BEGIN
+L [2016-12-30 21:52:58.661] Collecting Resources
+D [2016-12-30 21:52:59.942] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:52:59.949] Searching for a Loot Cart..
+L [2016-12-30 21:53:00.405] No Loot Cart found, Yard is clean!
+D [2016-12-30 21:53:02.168] _RunFunction: Collect END
+D [2016-12-30 21:53:02.168] _RunFunction: ReArm BEGIN
+D [2016-12-30 21:53:02.369] _RunFunction: ReArm END
+L [2016-12-30 21:53:02.370] Waiting, Add random delay of 59 seconds.
+D [2016-12-30 21:53:05.095] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:53:20.108] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:53:35.160] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:53:50.205] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:54:01.431] _RunFunction: BoostKing BEGIN
+D [2016-12-30 21:54:01.432] _RunFunction: BoostKing END
+D [2016-12-30 21:54:01.443] MEmu time lag is 0 sec/min (avg for 92 sec)
+D [2016-12-30 21:54:01.444] _RunFunction: BoostSpellFactory BEGIN
+D [2016-12-30 21:54:01.444] _RunFunction: BoostSpellFactory END
+D [2016-12-30 21:54:01.445] _RunFunction: BoostQueen BEGIN
+D [2016-12-30 21:54:01.445] _RunFunction: BoostQueen END
+D [2016-12-30 21:54:01.445] _RunFunction: DonateCC,Train BEGIN
+L [2016-12-30 21:54:01.577] Checking for Donate Requests in Clan Chat
+L [2016-12-30 21:54:03.523] Using OCR to read Latin derived alphabets..
+L [2016-12-30 21:54:04.427] Chat Request: Mago e aceleração
+L [2016-12-30 21:54:04.590] Chat Troops: 0/25, Spells: 1/1
+L [2016-12-30 21:54:04.591] Clan Castle spells are full, skip spell donation...
+D [2016-12-30 21:54:05.207] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:54:09.515] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:54:11.415]  - Army Window Opened!
+L [2016-12-30 21:54:13.156] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:54:13.423]  - Barbarian King available
+L [2016-12-30 21:54:13.432]  - Archer Queen available
+L [2016-12-30 21:54:13.644] Total Spell(s) Capacity: 11/11
+L [2016-12-30 21:54:14.256] - Castle full/no clan.
+L [2016-12-30 21:54:14.430]  - Army Camp: 240/240
+L [2016-12-30 21:54:14.440]  - Spells: 11/11
+L [2016-12-30 21:54:14.441]  - Clan Castle: 35/35
+L [2016-12-30 21:54:14.441] Chief, are your Army ready for battle? Yes, they are!
+L [2016-12-30 21:54:14.442] You are in halt attack mode and your Army is prepared!
+D [2016-12-30 21:54:15.443] _RunFunction: DonateCC,Train END
+D [2016-12-30 21:54:15.443] _RunFunction: NotifyReport BEGIN
+D [2016-12-30 21:54:17.182] checkObstacles: Found gray Window to close
+L [2016-12-30 21:54:18.193] Waiting for Main Screen
+D [2016-12-30 21:54:18.456] GetVillageSize measured: 443.77397352713, Zoom factor: 0.937017150600985, Offset: 0, -9
+D [2016-12-30 21:54:18.457] Village Offset updated to 0, -9, 0.937017150600985
+D [2016-12-30 21:54:18.662] _RunFunction: NotifyReport END
+D [2016-12-30 21:54:18.663] _RunFunction: BoostWarden BEGIN
+D [2016-12-30 21:54:18.663] _RunFunction: BoostWarden END
+D [2016-12-30 21:54:18.664] _RunFunction: BoostBarracks BEGIN
+D [2016-12-30 21:54:18.664] _RunFunction: BoostBarracks END
+D [2016-12-30 21:54:18.665] _RunFunction: RequestCC BEGIN
+D [2016-12-30 21:54:20.106] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:54:20.108] Village Offset updated to 0, -9, 0.938335477401814
+D [2016-12-30 21:54:20.112] _RunFunction: RequestCC END
+D [2016-12-30 21:54:20.112] _RunFunction: ReplayShare BEGIN
+D [2016-12-30 21:54:20.213] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:54:20.313] _RunFunction: ReplayShare END
+D [2016-12-30 21:54:20.313] _RunFunction: UpgradeHeroes BEGIN
+D [2016-12-30 21:54:20.514] _RunFunction: UpgradeHeroes END
+D [2016-12-30 21:54:20.515] _RunFunction: UpgradeBuilding BEGIN
+D [2016-12-30 21:54:20.716] _RunFunction: UpgradeBuilding END
+D [2016-12-30 21:54:20.717] _RunFunction: Laboratory BEGIN
+D [2016-12-30 21:54:21.179] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:54:21.182] _RunFunction: Laboratory END
+D [2016-12-30 21:54:21.956] GetVillageSize cannot find tree
+L [2016-12-30 21:54:21.957] Zooming Out
+D [2016-12-30 21:54:23.801] GetVillageSize measured: 443.77397352713, Zoom factor: 0.937017150600985, Offset: 1, -9
+D [2016-12-30 21:54:24.802] Center Village by: 1, -9
+D [2016-12-30 21:54:26.560] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:54:27.562] Centered Village Offset: 0, -9, change: -1, 0
+L [2016-12-30 21:54:28.969] Trying to locate Main Screen
+D [2016-12-30 21:54:29.476] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+L [2016-12-30 21:54:29.478] Main Screen Located
+L [2016-12-30 21:54:31.723] Total Army Camp capacity: 240/240 (100%)
+L [2016-12-30 21:54:32.970] Halt Attack, Stay Online/Train/Collect/Donate...
+D [2016-12-30 21:54:34.561] GetVillageSize measured: 444.398336829804, Zoom factor: 0.938335477401814, Offset: 0, -9
+D [2016-12-30 21:54:34.978] Restore bot window to 909, 2, caller: GUIControl_WM_NCACTIVATE
+D [2016-12-30 21:54:34.983] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2016-12-30 21:54:35.227] API: $hWind=0x00072E72,$iMsg=49694,$wParam=0x00000000,$lParam=0x004304AA
+D [2016-12-30 21:54:35.265] Enable GUI Controls
+D [2016-12-30 21:54:36.600] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2016-12-30 21:54:36.881] Redraw MyBot Window
+L [2016-12-30 21:54:37.187] ==================== Bot Stop ====================
+D [2016-12-30 21:54:37.193] GUIControl_WM_NCACTIVATE: Deactivate Bot

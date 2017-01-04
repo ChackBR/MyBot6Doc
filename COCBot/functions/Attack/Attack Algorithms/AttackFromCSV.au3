@@ -455,6 +455,101 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 	Setlog("> Drop Lines located in  " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
 	If _Sleep($iDelayRespond) Then Return
 
+
+	; 06 - EAGLEARTILLERY ------------------------------------------------------------------------
+
+	$EagleArtilleryPos[0] = "" ; reset pixel position to null
+	$EagleArtilleryPos[1] = ""
+	If $searchTH = "-" Or Int($searchTH) > 10 Then
+		If $attackcsv_locate_Eagle = 1 Then
+			$hTimer = TimerInit()
+			SuspendAndroid()
+			Local $result = returnSingleMatch(@ScriptDir & "\imgxml\WeakBase\Eagle")
+			ResumeAndroid()
+			If UBound($result) > 1 Then
+				Local $tempeaglePos = $result[1][5] ;assign eagle x,y sub array to temp variable
+				If $debugsetlog = 1 Then
+					Setlog(": ImageName: " & $result[1][0], $COLOR_DEBUG)
+					Setlog(": ObjectName: " & $result[1][1], $COLOR_DEBUG)
+					Setlog(": ObjectLevel: " & $result[1][2], $COLOR_DEBUG)
+				EndIf
+				If $tempeaglePos[0][0] <> "" Then
+					$EagleArtilleryPos[0] = $tempeaglePos[0][0]
+					$EagleArtilleryPos[1] = $tempeaglePos[0][1]
+					Setlog("> Eagle located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
+					If $debugsetlog = 1 Then
+						Setlog(": $EagleArtilleryPosition X:Y= " & $EagleArtilleryPos[0] & ":" & $EagleArtilleryPos[1], $COLOR_DEBUG)
+					EndIf
+				Else
+					Setlog("> Eagle detection error", $COLOR_WARNING)
+				EndIf
+			Else
+				Setlog("> Eagle detection error", $COLOR_WARNING)
+			EndIf
+		Else
+			Setlog("> Eagle Artillery detection not need, skip", $COLOR_INFO)
+		EndIf
+	Else
+		Setlog("> TH Level to low for Eagle detection, skip", $COLOR_INFO)
+	EndIf
+
+	Setlog(">> Total time: " & Round(TimerDiff($hTimerTOTAL) / 1000, 2) & " seconds", $COLOR_INFO)
+
+	; 06 - DEBUGIMAGE ------------------------------------------------------------------------
+	If $makeIMGCSV = 1 Then AttackCSVDEBUGIMAGE() ;make IMG debug
+
+	; 07 - START TH SNIPE BEFORE ATTACK CSV IF NEED ------------------------------------------
+	If $THSnipeBeforeDBEnable = 1 And $searchTH = "-" Then FindTownHall(True) ;search townhall if no previous detect
+	If $THSnipeBeforeDBEnable = 1 Then
+		If $searchTH <> "-" Then
+			If SearchTownHallLoc() Then
+				Setlog(_PadStringCenter(" TH snipe Before Scripted Attack ", 54, "="), $COLOR_INFO)
+				$THusedKing = 0
+				$THusedQueen = 0
+				AttackTHParseCSV()
+			Else
+				If $debugsetlog = 1 Then Setlog("TH snipe before scripted attack skip, th internal village", $COLOR_DEBUG)
+			EndIf
+		Else
+			If $debugsetlog = 1 Then Setlog("TH snipe before scripted attack skip, no th found", $COLOR_DEBUG)
+		EndIf
+	EndIf
+
+	; 08 - LAUNCH PARSE FUNCTION -------------------------------------------------------------
+	SetSlotSpecialTroops()
+	If _Sleep($iDelayRespond) Then Return
+
+	If TestCapture() = True Then
+		; no launch when testing with image
+		Return
+	EndIf
+
+	ParseAttackCSV($testattack)
+
+EndFunc   ;==>Algorithm_AttackCSV
+
+; #FUNCTION# ====================================================================================================================
+; Name ..........: UpdateResourcesLocations
+; Description ...: Recalculate and Get New Positions For Gold Mines/Elixir Collectors/Drills/Dark Elixir Storage
+; Syntax ........: UpdateResourcesLocations([$lineContent])
+; Parameters ....: $lineContent          - The Line That's Currently Processing In Attack CSV File
+; Return values .: None
+; Author ........: Sardo (2016)
+; Modified ......: MR.ViPER (Just moved Sardo Codes in Separate Function, 5-10-2016)
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
+Func UpdateResourcesLocations($lineContent)
+	;$debugBuildingPos = 1
+	;$debugGetLocation = 1
+	Local $hTimerTOTAL = TimerInit()
+	ParseAttackCSV_Read_SIDE_variables($lineContent)
+
+	_CaptureRegion2() ; ensure full screen is captured (not ideal for debugging as clean image was already saved, but...)
+
 	; 03 - TOWNHALL ------------------------------------------------------------------------
 	If $searchTH = "-" Then
 
@@ -668,74 +763,8 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 		Setlog("> Dark Elixir Storage detection not need, skip", $COLOR_INFO)
 	EndIf
 
-	; 06 - EAGLEARTILLERY ------------------------------------------------------------------------
-
-	$EagleArtilleryPos[0] = "" ; reset pixel position to null
-	$EagleArtilleryPos[1] = ""
-	If $searchTH = "-" Or Int($searchTH) > 10 Then
-		If $attackcsv_locate_Eagle = 1 Then
-			$hTimer = TimerInit()
-			SuspendAndroid()
-			Local $result = returnSingleMatch(@ScriptDir & "\imgxml\WeakBase\Eagle")
-			ResumeAndroid()
-			If UBound($result) > 1 Then
-				Local $tempeaglePos = $result[1][5] ;assign eagle x,y sub array to temp variable
-				If $debugsetlog = 1 Then
-					Setlog(": ImageName: " & $result[1][0], $COLOR_DEBUG)
-					Setlog(": ObjectName: " & $result[1][1], $COLOR_DEBUG)
-					Setlog(": ObjectLevel: " & $result[1][2], $COLOR_DEBUG)
-				EndIf
-				If $tempeaglePos[0][0] <> "" Then
-					$EagleArtilleryPos[0] = $tempeaglePos[0][0]
-					$EagleArtilleryPos[1] = $tempeaglePos[0][1]
-					Setlog("> Eagle located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_INFO)
-					If $debugsetlog = 1 Then
-						Setlog(": $EagleArtilleryPosition X:Y= " & $EagleArtilleryPos[0] & ":" & $EagleArtilleryPos[1], $COLOR_DEBUG)
-					EndIf
-				Else
-					Setlog("> Eagle detection error", $COLOR_WARNING)
-				EndIf
-			Else
-				Setlog("> Eagle detection error", $COLOR_WARNING)
-			EndIf
-		Else
-			Setlog("> Eagle Artillery detection not need, skip", $COLOR_INFO)
-		EndIf
-	Else
-		Setlog("> TH Level to low for Eagle detection, skip", $COLOR_INFO)
-	EndIf
-
-	Setlog(">> Total time: " & Round(TimerDiff($hTimerTOTAL) / 1000, 2) & " seconds", $COLOR_INFO)
-
-	; 06 - DEBUGIMAGE ------------------------------------------------------------------------
-	If $makeIMGCSV = 1 Then AttackCSVDEBUGIMAGE() ;make IMG debug
-
-	; 07 - START TH SNIPE BEFORE ATTACK CSV IF NEED ------------------------------------------
-	If $THSnipeBeforeDBEnable = 1 And $searchTH = "-" Then FindTownHall(True) ;search townhall if no previous detect
-	If $THSnipeBeforeDBEnable = 1 Then
-		If $searchTH <> "-" Then
-			If SearchTownHallLoc() Then
-				Setlog(_PadStringCenter(" TH snipe Before Scripted Attack ", 54, "="), $COLOR_INFO)
-				$THusedKing = 0
-				$THusedQueen = 0
-				AttackTHParseCSV()
-			Else
-				If $debugsetlog = 1 Then Setlog("TH snipe before scripted attack skip, th internal village", $COLOR_DEBUG)
-			EndIf
-		Else
-			If $debugsetlog = 1 Then Setlog("TH snipe before scripted attack skip, no th found", $COLOR_DEBUG)
-		EndIf
-	EndIf
-
-	; 08 - LAUNCH PARSE FUNCTION -------------------------------------------------------------
-	SetSlotSpecialTroops()
+	Setlog(">> Total time: " & Round(TimerDiff($hTimerTOTAL) / 1000, 2) & " seconds", $COLOR_BLUE)
 	If _Sleep($iDelayRespond) Then Return
-
-	If TestCapture() = True Then
-		; no launch when testing with image
-		Return
-	EndIf
-
-	ParseAttackCSV($testattack)
-
-EndFunc   ;==>Algorithm_AttackCSV
+	;$debugBuildingPos = 0
+	;$debugGetLocation = 0
+EndFunc   ;==>UpdateResourcesLocations

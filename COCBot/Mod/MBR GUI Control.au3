@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: GUI Control - Mod
+; Name ..........: MBR GUI Control.au3
 ; Description ...: Extended GUI Control for Mod
 ; Syntax ........:
 ; Parameters ....: None
@@ -23,7 +23,7 @@ Func cmbDeployAB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
    EndIf
 EndFunc
 
-Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
+Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack
    If _GUICtrlCombobox_GetCurSel($cmbDeployDB) = 4 Then
 	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_UNCHECKED)
 	  GUICtrlSetState($chkSmartAttackRedAreaDB, $GUI_DISABLE)
@@ -33,22 +33,72 @@ Func cmbDeployDB() ; avoid conflict between FourFinger and SmartAttack - DEMEN
    EndIf
 EndFunc
 
-Func setupProfileComboBoxswitch()
-	For $x = 0 To 5
-		GUICtrlSetData($cmbAccount[$x], "", "")
-	Next
+; CSV Deployment Speed Mod
+Func sldSelectedSpeedDB()
+	$isldSelectedCSVSpeed[$DB] = GUICtrlRead($sldSelectedSpeedDB)
+	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$DB]] & "x";
+	IF $isldSelectedCSVSpeed[$DB] = 4 Then $speedText = "Normal"
+	GUICtrlSetData($lbltxtSelectedSpeedDB, $speedText & " speed")
+EndFunc   ;==>sldSelectedSpeedDB
 
-	For $x = 0 To 5
-		GUICtrlSetData($cmbAccount[$x], $profileString, "<No Profiles>")
-	Next
-EndFunc   ;==>setupProfileComboBoxswitch
+Func sldSelectedSpeedAB()
+	$isldSelectedCSVSpeed[$LB] = GUICtrlRead($sldSelectedSpeedAB)
+	Local $speedText = $iCSVSpeeds[$isldSelectedCSVSpeed[$LB]] & "x";
+	IF $isldSelectedCSVSpeed[$LB] = 4 Then $speedText = "Normal"
+	GUICtrlSetData($lbltxtSelectedSpeedAB, $speedText & " speed")
+EndFunc   ;
 
-Func randomSleep($SleepTime, $Range = 0)
+Func AttackNowLB()
+	Setlog("Begin Live Base Attack TEST")
+	$iMatchMode = $LB			; Select Live Base As Attack Type
+	$iAtkAlgorithm[$LB] = 1			; Select Scripted Attack
+	$scmbABScriptName = GuiCtrlRead($cmbScriptNameAB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
+	$iMatchMode = 1			; Select Live Base As Attack Type
+	$RunState = True
 
-	If $RunState = False Then Return
-	If $Range = 0 Then $Range = Round($SleepTime / 5)
-	$SleepTimeF = Random($SleepTime - $Range, $SleepTime + $Range, 1)
-	If $DebugClick = 1 Then Setlog("Default sleep : " & $SleepTime & " - Random sleep : " & $SleepTimeF, $COLOR_ORANGE)
-	If _Sleep($SleepTimeF) Then Return
+	ForceCaptureRegion()
+	_CaptureRegion2()
 
-EndFunc   ;==>randomSleep
+	If CheckZoomOut("VillageSearch", True, False) = False Then
+		$i = 0
+		Local $bMeasured
+		Do
+			$i += 1
+			If _Sleep($iDelayPrepareSearch3) Then Return ; wait 500 ms
+			ForceCaptureRegion()
+			$bMeasured = CheckZoomOut("VillageSearch", $i < 2, True)
+		Until $bMeasured = True Or $i >= 2
+		If $bMeasured = False Then Return ; exit func
+	EndIf
+
+	PrepareAttack($iMatchMode)			; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
+	Attack()			; Fire xD
+	Setlog("End Live Base Attack TEST")
+EndFunc   ;==>AttackNowLB
+
+Func AttackNowDB()
+	Setlog("Begin Dead Base Attack TEST")
+	$iMatchMode = $DB			; Select Dead Base As Attack Type
+	$iAtkAlgorithm[$DB] = 1			; Select Scripted Attack
+	$scmbABScriptName = GuiCtrlRead($cmbScriptNameDB)		; Select Scripted Attack File From The Combo Box, Cos it wasn't refreshing until pressing Start button
+	$iMatchMode = 0			; Select Dead Base As Attack Type
+	$RunState = True
+	ForceCaptureRegion()
+	_CaptureRegion2()
+
+	If CheckZoomOut("VillageSearch", True, False) = False Then
+		$i = 0
+		Local $bMeasured
+		Do
+			$i += 1
+			If _Sleep($iDelayPrepareSearch3) Then Return ; wait 500 ms
+			ForceCaptureRegion()
+			$bMeasured = CheckZoomOut("VillageSearch", $i < 2, True)
+		Until $bMeasured = True Or $i >= 2
+		If $bMeasured = False Then Return ; exit func
+	EndIf
+
+	PrepareAttack($iMatchMode)			; lol I think it's not needed for Scripted attack, But i just Used this to be sure of my code
+	Attack()			; Fire xD
+	Setlog("End Dead Base Attack TEST")
+EndFunc   ;==>AttackNowLB

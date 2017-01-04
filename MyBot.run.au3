@@ -29,34 +29,38 @@
 #include <Process.au3>
 
 ;~ Boost launch time by increasing process priority (will be restored again when finished launching)
-Local $iBotProcessPriority = _ProcessGetPriority(@AutoItPID)
+Global $iBotProcessPriority = _ProcessGetPriority(@AutoItPID)
 ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
 
 Global $iBotLaunchTime = 0
-Local $hBotLaunchTime = TimerInit()
+Global $hBotLaunchTime = TimerInit()
 
-Local $sModversion
+Global $sBotVersion
+Global $sBotTitle
+Global $sModversion
+Global $sModSupportUrl = "https://mybot.run/forums/index.php?/topic/24893-mybotrun-dococ-v322-oct-sc-update/" ;<== Our Website Link Or Link Download
+
 ; "0001" ; MyBot v6.0.0
 ; "1001" ; MyBot v6.1.0
 ; "2001" ; MyBot v6.2.0
 ; "2101" ; MyBot v6.2.1
 ; "2201" ; MyBot v6.2.2
 ; "2301" ; MyBot v6.3.0
-; "2302" ; Enable CSV Speed Mode ( AwesomeGamer + MikeMikeCoc )
-; "2303" ; Fix for CSV Attack Files
-; "2304" ; MyBot v6.3.0 Beta 3
-; "2305" ; MyBot v6.3.0 Beta 4
-; "2306" ; MyBot v6.3.0 Beta 5
-; "2309" ; MyBot v6.3.0 Beta 6
-; "2311" ; MyBot v6.3.0 Beta 7 + Telegram + SwitchAcc
-; "2321" ; MyBot v6.3.0 Beta 8 + FFC + SmartZap + Max Time for CCWT
 ; "2401" ; MyBot v6.4.0 ( FFC, Multi Finger, SmartZap, ... )
 ; "2501" ; MyBot v6.5
 ; "2502" ; MyBot v6.5 + Fix for Quick Train
 ; "2503" ; MyBot v6.5 + Heroes Power Fix
-$sModversion = "2504" ; MyBot v6.5 + SmartZap Fix
-$sBotVersion = "v6.5" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
-$sBotTitle = "My Bot " & $sBotVersion & ".m" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+; "2504" ; MyBot v6.5 + SmartZap Fix
+; "2505" ; MyBot v6.5 + Demem Switch Acc
+; "2511" ; MyBot v6.5.1
+; "2512" ; MyBot v6.5.1 + Fix Donate + Fix for Train Golem
+; "2513" ; MyBot v6.5.1 + Fix for QuickTrain
+; "2514" ; MyBot v6.5.1 + DEB( Don't Empty Barracks )
+; "2601" ; MyBot v6.5.2
+; "2602" ; MyBot v6.5.2 + SmartZap Fix
+$sModversion = "2603" ; MyBot v6.5.2 + SmartZap Fix
+$sBotVersion = "v6.5.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
+$sBotTitle = "My Bot " & $sBotVersion & ".d" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
 #include "COCBot\MBR Global Variables.au3"
@@ -208,20 +212,11 @@ SetLog(GetTranslated(500, 8, "Android Emulator Configuration: %s", $sAndroidInfo
 
 CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
 
-;LoadTHImage() ; Load TH images
-;LoadElixirImage() ; Load Elixir images
-;LoadElixirImage75Percent() ; Load Elixir images full at 75%
-;LoadElixirImage50Percent() ; Load Elixir images full at 50%
-LoadAmountOfResourcesImages()
-
 $iGUIEnabled = 1
 
 ;~ InitializeVariables();initialize variables used in extrawindows
 CheckVersion() ; check latest version on mybot.run site
 
-;~ Remember time in Milliseconds bot launched
-$iBotLaunchTime = TimerDiff($hBotLaunchTime)
-SetDebugLog("MyBot.run launch time " & Round($iBotLaunchTime) & " ms.")
 
 $sMsg = GetTranslated(500, 9, "Android Shield not available for %s", @OSVersion)
 If $AndroidShieldEnabled = False Then
@@ -234,7 +229,11 @@ DisableProcessWindowsGhosting()
 ProcessSetPriority(@AutoItPID, $iBotProcessPriority)
 
 ; ensure watchdog is launched
-LaunchWatchdog()
+; LaunchWatchdog()
+
+;~ Remember time in Milliseconds bot launched
+$iBotLaunchTime = TimerDiff($hBotLaunchTime)
+Setlog("MyBot.run launch time " & Round($iBotLaunchTime) & " ms.", $COLOR_INFO)
 
 ;AutoStart Bot if request
 AutoStart()
@@ -257,9 +256,6 @@ While 1
 WEnd
 
 Func runBot() ;Bot that runs everything in order
-
-	If $FirstInit Then SwitchAccount(True)
-
 	$TotalTrainedTroops = 0
 	Local $Quickattack = False
 	Local $iWaitTime
@@ -328,7 +324,7 @@ Func runBot() ;Bot that runs everything in order
 			If $RunState = False Then Return
 			If $Restart = True Then ContinueLoop
 			If IsSearchAttackEnabled() Then ; if attack is disabled skip reporting, requesting, donating, training, and boosting
-				Local $aRndFuncList = ['ReplayShare', 'NotifyReport', 'DonateCC,Train', 'BoostBarracks', 'BoostSpellFactory', 'BoostDarkSpellFactory', 'BoostKing', 'BoostQueen', 'BoostWarden', 'RequestCC']
+				Local $aRndFuncList = ['ReplayShare', 'NotifyReport', 'DonateCC,Train', 'BoostBarracks', 'BoostSpellFactory', 'BoostKing', 'BoostQueen', 'BoostWarden', 'RequestCC']
 				While 1
 					If $RunState = False Then Return
 					If $Restart = True Then ContinueLoop 2 ; must be level 2 due to loop-in-loop
@@ -349,6 +345,7 @@ Func runBot() ;Bot that runs everything in order
 					If Unbreakable() = True Then ContinueLoop
 				EndIf
 			EndIf
+			MainSuperXPHandler()
 			Local $aRndFuncList = ['Laboratory', 'UpgradeHeroes', 'UpgradeBuilding']
 			While 1
 				If $RunState = False Then Return
@@ -375,8 +372,8 @@ Func runBot() ;Bot that runs everything in order
 				;$fullArmy1 = $fullArmy
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
-				SaveStatChkTownHall()
-				SaveStatChkDeadBase()
+				;SaveStatChkTownHall()
+				;SaveStatChkDeadBase()
 				If $CommandStop <> 0 And $CommandStop <> 3 Then
 					AttackMain()
 					$SkipFirstZoomout = False
@@ -490,7 +487,6 @@ Func Idle() ;Sequence that runs until Full Army
 			$iCollectCounter = 0
 		EndIf
 		$iCollectCounter = $iCollectCounter + 1
-		SwitchAccount()
 		AddIdleTime()
 		checkMainScreen(False) ; required here due to many possible exits
 		If $CommandStop = -1 Then
@@ -498,6 +494,7 @@ Func Idle() ;Sequence that runs until Full Army
 				$troops_maked_after_fullarmy = False
 				;Train()
 				TrainRevamp()
+				MainSuperXPHandler()
 				If $Restart = True Then ExitLoop
 				If _Sleep($iDelayIdle1) Then ExitLoop
 				checkMainScreen(False)
@@ -529,6 +526,7 @@ Func Idle() ;Sequence that runs until Full Army
 					EndIf
 					CheckArmyCamp(True, True)
 				EndIf
+				MainSuperXPHandler()
 			EndIf
 			If $fullArmy Then
 				SetLog("Army Camp and Barracks are full, stop Training...", $COLOR_ACTION)
@@ -549,10 +547,6 @@ Func Idle() ;Sequence that runs until Full Army
 
 		If $canRequestCC = True Then RequestCC()
 
-		If $CurCamp >= $TotalCamp * $iEnableAfterArmyCamps[$DB] / 100 And $iEnableSearchCamps[$DB] = 1 And IsSearchModeActive($DB) Then ExitLoop
-		If $CurCamp >= $TotalCamp * $iEnableAfterArmyCamps[$LB] / 100 And $iEnableSearchCamps[$LB] = 1 And IsSearchModeActive($LB) Then ExitLoop
-		If $CurCamp >= $TotalCamp * $iEnableAfterArmyCamps[$TS] / 100 And $iEnableSearchCamps[$TS] = 1 And IsSearchModeActive($TS) Then ExitLoop
-
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 
 		If $OutOfGold = 1 Or $OutOfElixir = 1 Then Return ; Halt mode due low resources, only 1 idle loop
@@ -570,6 +564,10 @@ EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
 	;LoadAmountOfResourcesImages() ; for debug
+	If $ichkEnableSuperXP = 1 And $irbSXTraining = 2 Then
+		MainSuperXPHandler()
+		Return
+	EndIf
 	getArmyCapacity(True, True)
 	If IsSearchAttackEnabled() Then
 		If (IsSearchModeActive($DB) And checkCollectors(True, False)) Or IsSearchModeActive($LB) Or IsSearchModeActive($TS) Then
@@ -605,7 +603,7 @@ Func AttackMain() ;Main control for attack functions
 			Return True
 		Else
 			Setlog("No one of search condition match:", $COLOR_WARNING)
-			Setlog("Waiting on troops, heroes and/or CC/spells according to search settings", $COLOR_WARNING)
+			Setlog("Waiting on troops, heroes and/or spells according to search settings", $COLOR_WARNING)
 			$Is_SearchLimit = False
 			$Is_ClientSyncError = False
 			$Quickattack = False
@@ -622,7 +620,7 @@ Func Attack() ;Selects which algorithm
 		Algorithm_AttackCSV()
 	ElseIf $iMatchMode = $DB And $iAtkAlgorithm[$DB] = 2 Then
 		If $debugsetlog = 1 Then Setlog("start milking attack", $COLOR_ERROR)
-		Alogrithm_MilkingAttack()
+		Algorithm_MilkingAttack()
 	Else
 		If $debugsetlog = 1 Then Setlog("start standard attack", $COLOR_ERROR)
 		algorithm_AllTroops()
@@ -718,11 +716,9 @@ Func _RunFunction($action)
 				getArmySpellCount(False, True) ; use true parameter to close train overview window
 			EndIf
 		Case "BoostBarracks"
-			BoostBarracks2()
+			BoostBarracks()
 		Case "BoostSpellFactory"
 			BoostSpellFactory()
-		Case "BoostDarkSpellFactory"
-			BoostDarkSpellFactory()
 		Case "BoostKing"
 			BoostKing()
 		Case "BoostQueen"
@@ -740,6 +736,9 @@ Func _RunFunction($action)
 			_Sleep($iDelayRunBot3)
 		Case "UpgradeBuilding"
 			UpgradeBuilding()
+			_Sleep($iDelayRunBot3)
+		Case "SuperXP"
+			MainSuperXPHandler()
 			_Sleep($iDelayRunBot3)
 		Case ""
 			SetDebugLog("Function call doesn't support empty string, please review array size", $COLOR_ERROR)

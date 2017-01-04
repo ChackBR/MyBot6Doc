@@ -1,0 +1,61 @@
+D [2017-01-02 17:29:25.815] Save Config C:\CDR\MyBot6_5x\Profiles\Jake\config.ini
+D [2017-01-02 17:29:27.090] GUIControl_WM_NCACTIVATE: Deactivate Bot
+D [2017-01-02 17:29:27.171] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 17:29:27.758] Save Building Config C:\CDR\MyBot6_5x\Profiles\Jake\building.ini
+D [2017-01-02 17:29:28.296] Read Building Config C:\CDR\MyBot6_5x\Profiles\Jake\building.ini
+D [2017-01-02 17:29:28.311] Read Config C:\CDR\MyBot6_5x\Profiles\Jake\config.ini
+D [2017-01-02 17:29:28.395] Apply Config
+D [2017-01-02 17:29:28.667] Disable GUI Controls
+D [2017-01-02 17:29:30.131] Redraw MyBot Window
+D [2017-01-02 17:29:30.162] Android Window Handle: 0x00040372
+D [2017-01-02 17:29:30.162] InitiateLayout: MEmu_3 Android-ClientSize: 860 x 732
+D [2017-01-02 17:29:30.163] CheckScreenAndroid: Window size 908 x 770
+D [2017-01-02 17:29:30.436] MEmu font_scale = 1
+L [2017-01-02 17:29:31.044]  My Bot v6.5.2.r2602 (MEmu_3) Powered by MyBot.run ~
+D [2017-01-02 17:29:31.049] GUIControl_WM_NCACTIVATE: Deactivate Bot
+L [2017-01-02 17:29:31.053] MyBot.run.exe Executable running on WIN_10  X64
+L [2017-01-02 17:29:31.054] =================== Bot Start ====================
+L [2017-01-02 17:29:31.054] ------------------------  Current Profile: Jake -------------------------
+L [2017-01-02 17:29:31.055] Trying to locate Main Screen
+D [2017-01-02 17:29:32.418] GetVillageSize measured: 476.413956806172, Zoom factor: 1.00593562250845, Offset: 20, 9
+D [2017-01-02 17:29:32.418] Center Village by: 20, 9
+D [2017-01-02 17:29:34.040] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+D [2017-01-02 17:29:34.040] Village Offset updated to -2, -1, 1.00461725726901
+D [2017-01-02 17:29:34.044] Centered Village Offset: -2, -1, change: -22, -10
+L [2017-01-02 17:29:34.045] Main Screen Located
+D [2017-01-02 17:29:34.212] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+L [2017-01-02 17:29:35.227] Detecting your Buildings..
+L [2017-01-02 17:29:36.230] Detecting your Village Theme
+L [2017-01-02 17:29:36.548] Snow Theme detected
+L [2017-01-02 17:29:39.722] Language setting is English: Correct.
+L [2017-01-02 17:29:40.728] Trying to locate Main Screen
+D [2017-01-02 17:29:40.949] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+L [2017-01-02 17:29:40.951] Main Screen Located
+D [2017-01-02 17:29:42.189] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 17:29:44.763] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+L [2017-01-02 17:29:45.478] Village Report
+L [2017-01-02 17:29:45.564]  [T]: 1 577
+L [2017-01-02 17:29:45.660]  [G]: 4 072 173 [E]: 3 406 976 [D]: 3 095 [GEM]: 1 041
+D [2017-01-02 17:29:46.436] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+D [2017-01-02 17:29:46.441] _RunFunction: CleanYard BEGIN
+D [2017-01-02 17:29:46.441] _RunFunction: CleanYard END
+D [2017-01-02 17:29:46.442] _RunFunction: Collect BEGIN
+L [2017-01-02 17:29:47.139] Collecting Resources
+D [2017-01-02 17:29:52.761] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+L [2017-01-02 17:29:52.765] Searching for a Loot Cart..
+L [2017-01-02 17:29:53.222] No Loot Cart found, Yard is clean!
+D [2017-01-02 17:29:54.918] _RunFunction: Collect END
+D [2017-01-02 17:29:54.918] _RunFunction: ReArm BEGIN
+L [2017-01-02 17:29:54.919] Checking if Village needs Rearming..
+L [2017-01-02 17:29:56.923] Rearm not needed!
+D [2017-01-02 17:29:57.245] API: $hWind=0x00230404,$iMsg=49665,$wParam=0x00000000,$lParam=0x00011900
+D [2017-01-02 17:29:58.667] GetVillageSize measured: 475.789575298868, Zoom factor: 1.00461725726901, Offset: -2, -1
+D [2017-01-02 17:29:58.871] _RunFunction: ReArm END
+D [2017-01-02 17:29:58.872] _RunFunction: CheckTombs BEGIN
+D [2017-01-02 17:29:59.073] _RunFunction: CheckTombs END
+L [2017-01-02 17:29:59.073] Waiting, Add random delay of 60 seconds.
+D [2017-01-02 17:30:02.719] Restore bot window to 1919, 267, caller: GUIControl_WM_NCACTIVATE
+D [2017-01-02 17:30:02.723] GUIControl_WM_NCACTIVATE: Activate Bot
+D [2017-01-02 17:30:02.972] Enable GUI Controls
+D [2017-01-02 17:30:04.416] Redraw MyBot Window
+L [2017-01-02 17:30:04.703] ==================== Bot Stop ====================
