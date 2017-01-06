@@ -50,7 +50,7 @@ Func TrainRevamp()
 	If $Runstate = False Then Return
 
 	If $ichkUseQTrain = 1 Then
-		QT_ClickCamp( True, 0 )
+		QT_ClickTrain( True, 0 )
 		SetLog(" - Do nothing and hope Quick Train fills it")
 	Else
 		If ($IsFullArmywithHeroesAndSpells = True) Or ($CurCamp = 0 And $FirstStart) Then
@@ -109,7 +109,7 @@ Func CheckCamp($NeedOpenArmy = False, $CloseCheckCamp = False)
 	If $ReturnCamp = 1 Then
 		OpenTrainTabNumber($QuickTrainTAB)
 		If _Sleep(1000) Then Return
-		QT_ClickCamp( False, $Num )
+		QT_ClickTrain( False, $Num )
 	EndIf
 	If $ReturnCamp = 0 Then
 		; The number of troops is not correct
@@ -1043,6 +1043,7 @@ Func RemoveExtraTroops($toRemove)
 			If IsSpellToBrew($toRemove[$j][0]) Then ExitLoop
 			$CounterToRemove += 1
 			For $i = 0 To (UBound($rGetSlotNumber) - 1) ; Loop through All available slots
+				; $toRemove[$j][0] = Troop name, E.g: Barb, $toRemove[$j][1] = Quantity to remove
 				If $toRemove[$j][0] = $rGetSlotNumber[$i] Then ; If $toRemove Troop Was the same as The Slot Troop
 					$pos = GetSlotRemoveBtnPosition($i + 1) ; Get positions of - Button to remove troop
 					ClickRemoveTroop($pos, $toRemove[$j][1], $isldTrainITDelay) ; Click on Remove button as much as needed
@@ -1053,6 +1054,7 @@ Func RemoveExtraTroops($toRemove)
 		If TotalSpellsToBrewInGUI() > 0 Then
 			For $j = $CounterToRemove To (UBound($toRemove) - 1)
 				For $i = 0 To (UBound($rGetSlotNumberSpells) - 1) ; Loop through All available slots
+					; $toRemove[$j][0] = Troop name, E.g: Barb, $toRemove[$j][1] = Quantity to remove
 					If $toRemove[$j][0] = $rGetSlotNumberSpells[$i] Then ; If $toRemove Troop Was the same as The Slot Troop
 						$pos = GetSlotRemoveBtnPosition($i + 1, True) ; Get positions of - Button to remove troop
 						ClickRemoveTroop($pos, $toRemove[$j][1], $isldTrainITDelay) ; Click on Remove button as much as needed
@@ -2367,7 +2369,7 @@ Func ThSnipesSkiptrain()
 EndFunc   ;==>ThSnipesSkiptrain
 
 
-Func QT_ClickCamp( $NeedOpenArmy = False, $Num = 0 )
+Func QT_ClickTrain( $NeedOpenArmy = False, $Num = 0 )
 	Local $i
 	Setlog("Simple Quick Train")
 	If $Runstate = False Then Return
@@ -2382,18 +2384,19 @@ Func QT_ClickCamp( $NeedOpenArmy = False, $Num = 0 )
 		OpenTrainTabNumber($QuickTrainTAB)
 	EndIf
 	If _Sleep(1000) Then Return
-	If $Num > 1 Then
-		If $Num > 2 Then
-			TrainArmyNumber( $Num - 2 )
+	For $i = 1 TO 3
+		If $Num > 1 Then
+			If $Num > 2 Then
+				TrainArmyNumber( $Num - 2 )
+				If _Sleep(250) Then Return
+			EndIf
+			TrainArmyNumber( $Num - 1 )
 			If _Sleep(250) Then Return
 		EndIf
-		TrainArmyNumber( $Num - 1 )
-		If _Sleep(250) Then Return
-	EndIf
-	TrainArmyNumber($Num)
-	If _Sleep(700) Then Return
-
+		TrainArmyNumber($Num)
+		If _Sleep(700) Then Return
+	Next
 	ClickP($aAway, 2, 0, "#0346") ;Click Away
 	If _Sleep(250) Then Return
 
-EndFunc	;==>QT_ClickCamp
+EndFunc	;==>QT_ClickTrain
