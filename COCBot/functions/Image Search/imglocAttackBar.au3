@@ -12,7 +12,6 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-
 Func TestImglocTroopBar()
 	$RunState = True
 	$debugSetlog = 1

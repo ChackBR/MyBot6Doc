@@ -1,5 +1,0 @@
-D [2017-01-03 14:47:54.935] GUIControl_WM_NCACTIVATE: Deactivate Bot
-D [2017-01-03 14:48:05.603] Restore bot window to 1919, 269, caller: GUIControl_WM_NCACTIVATE
-D [2017-01-03 14:48:05.605] GUIControl_WM_NCACTIVATE: Activate Bot
-D [2017-01-03 14:48:20.673] Redraw MyBot ControlId: 65
-D [2017-01-03 14:48:20.674] Control ID 65 Pos: 15, 140, 440, 365

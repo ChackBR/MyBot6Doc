@@ -1,8 +1,0 @@
-L [2017-01-02 12:41:11.403] Closing My Bot v6.5.2.r2602 (MEmu_2), please wait ...
-L [2017-01-02 12:41:11.405] Closing My Bot v6.5.2.r2602 (MEmu_2) now ...
-D [2017-01-02 12:41:11.438] Save Config C:\CDR\MyBot6_5x\Profiles\Rafa\config.ini
-D [2017-01-02 12:41:13.506] Save Building Config C:\CDR\MyBot6_5x\Profiles\Rafa\building.ini
-D [2017-01-02 12:41:14.076] ADB shell terminated, PID = 11740
-D [2017-01-02 12:41:14.077] MBRfunctions.dll closed.
-D [2017-01-02 12:41:14.081] GUIControl_WM_NCACTIVATE: Deactivate Bot
-D [2017-01-02 12:41:14.249] Bot Host Window Handle un-registered: 0x00CE2E5C

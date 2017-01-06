@@ -58,9 +58,10 @@ Global $sModSupportUrl = "https://mybot.run/forums/index.php?/topic/24893-mybotr
 ; "2514" ; MyBot v6.5.1 + DEB( Don't Empty Barracks )
 ; "2601" ; MyBot v6.5.2
 ; "2602" ; MyBot v6.5.2 + SmartZap Fix
-$sModversion = "2603" ; MyBot v6.5.2 + SmartZap Fix
+; "2603" ; MyBot v6.5.2 + SmartZap Fix
+$sModversion = "2604" ; MyBot v6.5.2 + QuickTrain Update
 $sBotVersion = "v6.5.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
-$sBotTitle = "My Bot " & $sBotVersion & ".d" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+$sBotTitle = "My Bot " & $sBotVersion & ".Doc" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
 #include "COCBot\MBR Global Variables.au3"
@@ -603,7 +604,7 @@ Func AttackMain() ;Main control for attack functions
 			Return True
 		Else
 			Setlog("No one of search condition match:", $COLOR_WARNING)
-			Setlog("Waiting on troops, heroes and/or spells according to search settings", $COLOR_WARNING)
+			Setlog("Waiting on troops, heroes and/or CC/spells according to search settings", $COLOR_WARNING)
 			$Is_SearchLimit = False
 			$Is_ClientSyncError = False
 			$Quickattack = False

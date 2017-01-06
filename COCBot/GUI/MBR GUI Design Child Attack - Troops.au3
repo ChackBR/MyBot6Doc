@@ -382,9 +382,9 @@ $Y -= 23
 $x -= 195
 $Y += 35
 
-;~
-;~ ( Move this control )
-;~
+	;~
+	;~ ( control Moved )
+	;~
 	$LblRemovecamp = GUICtrlCreateLabel(GetTranslated(621, 41, "Remove Army"), $x + 200, $y + 4, -1, -1, $SS_LEFT)
 	$icnRemovecamp = GUICtrlCreateIcon($pIconLib, $eIcnResetButton, $x + 270, $y - 2, 24, 24)
 	GUICtrlSetOnEvent(-1, "Removecamp")
@@ -1034,7 +1034,7 @@ $x = $xStart + 28
 $y = $yStart + 28
 
 	;max logout time
-	$y += 280
+	$y += 492
 		$chkTrainLogoutMaxTime = GUICtrlCreateCheckbox("Max Logout Time: ", $x+140, $y-190, -1, -1)
 			$txtTip = "Only allow logout for a maximum amount of time: "
 			GUICtrlSetTip(-1, $txtTip)
@@ -1042,7 +1042,6 @@ $y = $yStart + 28
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
 		$lblTrainLogoutMaxTime= GUICtrlCreateLabel("min", $x + 285, $y - 188, -1, -1)
-		GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
