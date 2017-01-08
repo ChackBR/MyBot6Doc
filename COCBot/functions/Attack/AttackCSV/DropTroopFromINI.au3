@@ -25,8 +25,7 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $qtaMax, $troopName, $delayPointmin, $delayPointmax, $delayDropMin, $delayDropMax, $sleepafterMin, $sleepAfterMax, $debug = False)
-
+Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $qtaMax, $troopName, $delayPointmin, $delayPointmax, $delayDropMin, $delayDropMax, $sleepafterMin, $sleepAfterMax, $sleepBeforeMin, $sleepBeforeMax, $debug = False)
 	Local $delayPoint = 0
 	Local $delayDropLast = 0
 
@@ -127,6 +126,30 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 			$lastTroopPositionDropTroopFromINI = $troopPosition
 			ReleaseClicks()
 		EndIf
+		
+		;sleep time Before deploy all troops
+		Local $sleepBefore = 0
+		If $sleepBeforeMin <> $sleepBeforeMax Then
+			$sleepBefore = Random($sleepBeforeMin, $sleepBeforeMax, 1)
+		Else
+			$sleepBefore = Int($sleepBeforeMin)
+		EndIf
+
+		If $sleepBefore > 50 And IsKeepClicksActive() = False Then
+			debugAttackCSV(">> delay Before drop all troops: " & $sleepBefore)
+			If $sleepBefore <= 1000 Then  ; check SLEEPBefore value is less than 1 second?
+				If _Sleep($sleepBefore) Then Return
+				CheckHeroesHealth()  ; check hero health == does nothing if hero not dropped
+			Else  ; $sleepBefore is More than 1 second, then improve pause/stop button response with max 1 second delays
+				For $z = 1 To Int($sleepBefore/1000) ; Check hero health every second while while sleeping
+					If _Sleep(980) Then Return  ; sleep 1 second minus estimated herohealthcheck time when heroes not activiated
+					CheckHeroesHealth()  ; check hero health == does nothing if hero not dropped
+				Next
+				If _Sleep(Mod($sleepBefore,1000)) Then Return  ; $sleepBefore must be integer for MOD function return correct value!
+				CheckHeroesHealth() ; check hero health == does nothing if hero not dropped
+			EndIf
+		EndIf
+
 		;drop
 		For $i = $indexStart To $indexEnd
 			Local $delayDrop = 0

@@ -84,10 +84,6 @@ DROP  |A          |1              |1          |queen      |30-50      |100      
       |DEFENSE____|OPTIONS________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|____________|
 DROPS |EAGLE      |R:T,B:F,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
       |           |               |           |           |           |           |           |            |
-WAIT  |7900-9900  |               |           |           |           |           |           |            |
-      |           |               |           |           |           |           |           |            |
-DROP  |A          |1              |1          |King       |1          |100        |100-200    |Force King  |
-      |           |               |           |           |           |           |           |            |
 WAIT  |1000-2000  |               |           |           |           |           |           |            |
       |           |               |           |           |           |           |           |            |
 DROP  |C          |1              |10         |Arch       |10-30      |100        |100-200    |            |

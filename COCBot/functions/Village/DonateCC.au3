@@ -223,9 +223,9 @@ Func DonateCC($Check = False)
 				If $ichkExtraPersian = 1 Then
 					Setlog("Using OCR to read the Persian alphabet..", $COLOR_ACTION)
 					If $ClanString = "" Then
-						$ClanString = getChatStringPersian(30, $DonatePixel[1] - 29)
+						$ClanString = getChatStringPersian(30, $DonatePixel[1] - 31)
 					Else
-						$ClanString &= " " & getChatStringPersian(30, $DonatePixel[1] - 29)
+						$ClanString &= " " & getChatStringPersian(30, $DonatePixel[1] - 31)
 					EndIf
 					If _Sleep($iDelayDonateCC2) Then ExitLoop
 				EndIf

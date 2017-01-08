@@ -22,7 +22,7 @@ Local $btnColor = False
 ;~ Buttons
 Local $y_bottom = 0 ; 515
 Local $x = 10, $y = $y_bottom + 10
-$grpButtons = GUICtrlCreateGroup("https://mybot.run " & GetTranslated(602,0, "- freeware bot -"), $x - 5, $y - 10, 190, 108)
+$grpButtons = GUICtrlCreateGroup("https://mybot.run " & GetTranslated(602,0, "- freeware bot -"), $x - 5, $y - 10, 190, 110)
 	$btnStart = GUICtrlCreateButton(GetTranslated(602,1, "Start Bot"), $x, $y + 2 +5, 90, 40-5)
 		$txtTip = GetTranslated(602,30, "Use this to START the bot.")
 		_GUICtrlSetTip(-1, $txtTip)
@@ -64,12 +64,18 @@ $grpButtons = GUICtrlCreateGroup("https://mybot.run " & GetTranslated(602,0, "- 
 		_GUICtrlSetTip(-1, $txtTip)
 		IF $btnColor Then GUICtrlSetBkColor(-1, 0x22C4F5)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$chkBackground = GUICtrlCreateCheckbox(GetTranslated(602,14, "Background Mode"), $x + 1, $y + 72, 180, 24)
+	$chkBackground = GUICtrlCreateCheckbox(GetTranslated(602,14, "Background Mode"), $x + 1, $y + 72, 90, 24)
 		$txtTip = GetTranslated(602,16, "Check this to ENABLE the Background Mode of the Bot.") & @CRLF & GetTranslated(602,17, "With this you can also hide the Android Emulator window out of sight.")
 		GUICtrlSetFont(-1, 7)
 		_GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetOnEvent(-1, "chkBackground")
 		GUICtrlSetState(-1, (($AndroidAdbScreencap = True) ? ($GUI_CHECKED) : ($GUI_UNCHECKED)))
+	$btnDebug = GUICtrlCreateButton(GetTranslated(602,100, "Debug"), $x + 100, $y + 72, 80, -1)
+		$txtTip = GetTranslated(602,101, "Use this to make a zip with necessary folders to report a issue!.")
+		_GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetBkColor(-1, 0xf7754e)
+		;GUICtrlSetState(-1, $GUI_DISABLE)
+		GUICtrlSetOnEvent($btnDebug, "btnReport")
 	$lblDonate = GUICtrlCreateLabel(GetTranslated(601,19,"Support the development"), $x + 224, $y + 80, 220, 24, $SS_RIGHT)
 		GUICtrlSetCursor(-1, 0) ; https://www.autoitscript.com/autoit3/docs/functions/MouseGetCursor.htm
 		GUICtrlSetFont(-1, 8.5, $FW_BOLD) ;, $GUI_FONTITALIC + $GUI_FONTUNDER)

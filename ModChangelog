@@ -6,13 +6,26 @@
 
 			Based on MyBot.run v6.5.2
 
-  _____               ____              ____   _____ __ 
- |  __ \             / __ \            |___ \ | ____/_ |
- | |  | | ___   ___ | |  | | ___  __   ____) || |__  | |
- | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ < |___ \ | |
- | |__| | (_) | (__ | |__| | (__   \ V /___) | ___) || |
- |_____/ \___/ \___(_)____/ \___|   \_/|____(_)____(_)_|
-                                                        
+  _____               ____              ____   _____  ___  
+ |  __ \             / __ \            |___ \ | ____||__ \ 
+ | |  | | ___   ___ | |  | | ___  __   ____) || |__     ) |
+ | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ < |___ \   / / 
+ | |__| | (_) | (__ | |__| | (__   \ V /___) | ___) | / /_ 
+ |_____/ \___/ \___(_)____/ \___|   \_/|____(_)____(_)____|
+                                                           
+	- Fix Locate brew spells icons for any event 
+	- Fix Bully Mode issues on Search Village (found by @Gerd)
+	- Add Debug Button on GUI with a script to zip all necessary files 
+	and upload directly to 'dropfile'
+	- Add Support for SLEEPBEFORE column in CSV
+	- Add CSV without Redlines , External Edges
+	- Improved Persian OCR
+	- Improve the Lighting Spell detection and Freeze on Train
+	- Improve Smart Zap
+	- Removed the ice Wizard from GUI , but the  code is prepared 
+	
+	
+                 Doc Oc v3.5.1 
 	- Fix the train order with Ice Wizard
 	- Fix the CSV attack error
 	- Fix the EarthQuake spell on Samrt N00b Mode

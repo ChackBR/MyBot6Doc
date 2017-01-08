@@ -32,7 +32,7 @@ $hGUI_DONATE_TAB_ITEM1 = GUICtrlCreateTabItem(GetTranslated(600,11,"Request Troo
 
 		$x += 29 + 30
 		$y += 60
-		$lblRequestCC1 = GUICtrlCreateLabel(GetTranslated(603,30,"Only during these hours of day"), $x + 30, $y, 400, 20, $BS_MULTILINE)
+		$lblRequestCC1 = GUICtrlCreateLabel(GetTranslated(603,30,"Only during these hours of each day"), $x + 30, $y, 400, 20, $BS_MULTILINE)
 
 		$y += 25
 		$lbRequestCCHours1 = GUICtrlCreateLabel(" 0", $x + 30, $y, 13, 15)
@@ -1370,7 +1370,7 @@ $hGUI_DONATE_TAB_ITEM3 = GUICtrlCreateTabItem(GetTranslated(600,13,"Schedule Don
 	$chkDonateHoursE1 = GUICtrlCreateCheckbox("", $x + 211, $y+1, 13, 13, BitOR($BS_PUSHLIKE, $BS_ICON))
 	GUICtrlSetImage(-1, $pIconLib, $eIcnGoldStar, 0)
 	GUICtrlSetState(-1, $GUI_UNCHECKED + $GUI_DISABLE)
-	$txtTip = GetTranslated(603,2, -2)
+	$txtTip = GetTranslated(603,2, -1)
 	_GUICtrlSetTip(-1, $txtTip)
 	GUICtrlSetOnEvent(-1, "chkDonateHoursE1")
 	$lbDonateHoursAM = GUICtrlCreateLabel(GetTranslated(603,3, -1), $x + 10, $y)

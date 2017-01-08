@@ -289,20 +289,20 @@ $x += 38
 	GUICtrlSetOnEvent(-1, "lblTotalCountMine")
 
 $x += 45
-	; Ice Wizard
-	$icnIceW = GUICtrlCreateIcon($pIconLib, $eIcnIcew, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
-	GUICtrlSetOnEvent(-1, "LevIceW")
-	$txtLevIceW = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
-	GUICtrlSetBkColor(-1, $COLOR_WHITE)
-	GUICtrlSetFont(-1, 7, 400)
-	$txtNumIceW = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtIcewizard & " " & $sTxtSetPerc2)
-	GUICtrlSetState(-1, $GUI_HIDE)
-	GUICtrlSetLimit(-1, 2)
-	GUICtrlSetOnEvent(-1, "lblTotalCountIceW")
+;~ 	; Ice Wizard
+;~ 	$icnIceW = GUICtrlCreateIcon($pIconLib, $eIcnIcew, $x, $y - 5, 32, 32)
+;~ 	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+;~ 	GUICtrlSetOnEvent(-1, "LevIceW")
+;~ 	$txtLevIceW = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
+;~ 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
+;~ 	GUICtrlSetFont(-1, 7, 400)
+;~ 	$txtNumIceW = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+;~ 	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtIcewizard & " " & $sTxtSetPerc2)
+;~ 	GUICtrlSetState(-1, $GUI_HIDE)
+;~ 	GUICtrlSetLimit(-1, 2)
+;~ 	GUICtrlSetOnEvent(-1, "lblTotalCountIceW")
 
-$x += 38
+;~ $x += 38
 	; Hogs
 	$icnHogs = GUICtrlCreateIcon($pIconLib, $eIcnHogRider, $x, $y - 5, 32, 32)
 	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))

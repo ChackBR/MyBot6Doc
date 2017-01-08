@@ -31,7 +31,8 @@ Func checkArmyCamp($bOpenArmyWindow = False, $bCloseArmyWindow = False, $bGetHer
 	GetArmyCapacity()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 
-	;getArmyTroopCount()
+	;getArmyTroopCount() ; Old Method
+	If ISArmyWindow(False, $ArmyTAB) then CheckExistentArmy("Troops") ; Imgloc Method
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 
 	getArmyTroopTime()
@@ -46,7 +47,8 @@ Func checkArmyCamp($bOpenArmyWindow = False, $bCloseArmyWindow = False, $bGetHer
 	getArmySpellCapacity()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 
-	getArmySpellCount()
+	;getArmySpellCount() ; Old Method
+	If ISArmyWindow(False, $ArmyTAB) then CheckExistentArmy("Spells") ; Imgloc Method
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 
 	getArmySpellTime()
@@ -54,13 +56,6 @@ Func checkArmyCamp($bOpenArmyWindow = False, $bCloseArmyWindow = False, $bGetHer
 
 	getArmyCCStatus()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
-
-	;call BarracksStatus() to read barracks num
-;~ 	If $FirstStart Then
-;~ 		BarracksStatus(True)
-;~ 	Else
-;~ 		BarracksStatus(False)
-;~ 	EndIf
 
 	If Not $fullArmy Then DeleteExcessTroops()
 

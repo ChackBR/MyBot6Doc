@@ -841,6 +841,7 @@ Func chkSmartLightSpell()
 		GUICtrlSetState($chkSmartZapSaveHeroes, $GUI_ENABLE)
 		GUICtrlSetState($txtMinDark, $GUI_ENABLE)
 		GUICtrlSetState($chkNoobZap, $GUI_ENABLE)
+		GUICtrlSetState($chkEarthQuakeZap, $GUI_ENABLE)
 		GUICtrlSetState($lblLSpell, $GUI_SHOW)
 ;		If GUICtrlRead($chkNoobZap) = $GUI_UNCHECKED Then
 ;			GUICtrlSetState($chkEarthQuakeZap, $GUI_ENABLE)

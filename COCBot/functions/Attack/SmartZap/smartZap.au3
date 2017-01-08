@@ -5,7 +5,7 @@
 ; Parameters ....: None
 ; Return values .: None
 ; Author ........: LunaEclipse(March, 2016)
-; Modified ......: TheRevenor(November, 2016), ProMac(Desember, 2016), TheRevenor(Desember, 2016)
+; Modified ......: TheRevenor(November, 2016), ProMac(December, 2016), TheRevenor(December, 2016), TripleM(January, 2017)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func displayZapLog($aDarkDrills, ByRef $EQSpellZap, ByRef $LSpellZap, ByRef $DLSpellZap)
+Func displayZapLog($aDarkDrills, ByRef $Spells)
 	; Create the log entry string
 	Local $drillStealableString = "Drills Lvl/Estimated Amount left: "
 	Local $spellsLeftString = "Spells left: "
@@ -25,12 +25,12 @@ Func displayZapLog($aDarkDrills, ByRef $EQSpellZap, ByRef $LSpellZap, ByRef $DLS
 			If $aDarkDrills[$i][3] <> -1 Then $drillStealableString &= ", Lvl" & $aDarkDrills[$i][2] & "/" & $aDarkDrills[$i][3]
 		EndIf
 	Next
-	If $EQSpellZap[3] + $LSpellZap[3] = 0 Then
+	If $Spells[0][4] + $Spells[1][4] + $Spells[2][4] = 0 Then
 		$spellsLeftString &= "None"
 	Else
-		If $EQSpellZap[3] > 0 Then $spellsLeftString &= $EQSpellZap[3] & " " & NameOfTroop($EQSpellZap[0], 1)
-		If $EQSpellZap[3] > 0 And $LSpellZap[3] + $DLSpellZap[3] > 0 Then $spellsLeftString &= ", "
-		If $LSpellZap[3] + $DLSpellZap[3] > 0 Then $spellsLeftString &= $LSpellZap[3] + $DLSpellZap[3] & " " & NameOfTroop($LSpellZap[0], 1)
+		If $Spells[2][4] > 0 Then $spellsLeftString &= $Spells[2][4] & " " & NameOfTroop($Spells[2][1], 1)
+		If $Spells[2][4] > 0 And $Spells[0][4] + $Spells[1][4] > 0 Then $spellsLeftString &= ", "
+		If $Spells[0][4] + $Spells[1][4] > 0 Then $spellsLeftString &= $Spells[0][4] + $Spells[1][4] & " " & NameOfTroop($Spells[1][1], 1)
 	EndIf
 	; Display the drill string if it contains any information
 	If $drillStealableString <> "Drills Lvl/Estimated Amount left: " Then
@@ -104,10 +104,10 @@ Func getSpellOffset()
 EndFunc   ;==>getSpellOffset
 
 Func smartZap($minDE = -1)
-	Local $searchDark, $oldSearchDark = 0, $skippedZap = True, $performedZap = False, $dropPoint
-	Local $LSpellZap[4] = [$eLSpell, -1, -1, 0] ; Type, Position, Level, Count
-	Local $DLSpellZap[4] = [$eLSpell, -1, -1, 0] ; Type, Position, Level, Count
-	Local $EQSpellZap[4] = [$eESpell, -1, -1, 0] ; Type, Position, Level, Count
+	Local $searchDark, $oldSearchDark = 0, $performedZap = False, $dropPoint
+	Local $aSpells [3][5] = [["Own", $eLSpell, -1, -1, 0 ] _		; Own/Donated, SpellType, AttackbarPosition, Level, Count
+							, ["Donated", $eLSpell, -1, -1, 0] _
+							, ["Donated", $eESpell, -1, -1, 0]]
 
 	; If smartZap is not checked, exit.
 	If $DebugSmartZap = 1 Then SetLog("$ichkSmartZap = " & $ichkSmartZap & " | $ichkNoobZap = " & $ichkNoobZap, $COLOR_DEBUG)
@@ -171,52 +171,50 @@ Func smartZap($minDE = -1)
 	EndIf
 
 	; Get the number of lightning/EQ spells
-	For $i = 0 To 11
+	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = $eLSpell Then
-			If $LSpellZap[3] = 0 Then
+			If $aSpells[0][4] = 0 Then
 				If $DebugSmartZap = 1 Then SetLog(NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
-				$LSpellZap[1] = $i
-				$LSpellZap[2] = Number($GlobalLSpelllevel)		; Get the Level on Attack bar
-				$LSpellZap[3] = $atkTroops[$i][1]
+				$aSpells[0][2] = $i
+				$aSpells[0][3] = Number($GlobalLSpelllevel)		; Get the Level on Attack bar
+				$aSpells[0][4] = $atkTroops[$i][1]
 			Else
 				If $DebugSmartZap = 1 Then SetLog("Donated " & NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
-				$DLSpellZap[1] = $i
-				$DLSpellZap[2] = Number($GlobalLSpelllevel) 	; Get the Level on Attack bar
-				$DLSpellZap[3] = $atkTroops[$i][1]
+				$aSpells[1][2] = $i
+				$aSpells[1][3] = Number($GlobalLSpelllevel)		; Get the Level on Attack bar
+				$aSpells[1][4] = $atkTroops[$i][1]
 			EndIf
 		EndIf
 		If $atkTroops[$i][0] = $eESpell Then
 			If $DebugSmartZap = 1 Then SetLog(NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
-			$EQSpellZap[1] = $i
-			$EQSpellZap[2] = Number($GlobalEQSpelllevel)		; Get the Level on Attack bar
-			$EQSpellZap[3]= $atkTroops[$i][1]
+			$aSpells[2][2] = $i
+			$aSpells[2][3] = Number($GlobalEQSpelllevel)		; Get the Level on Attack bar
+			$aSpells[2][4]= $atkTroops[$i][1]
 		EndIf
 	Next
 
-	If $LSpellZap[3] + $DLSpellZap[3] = 0 Then
+	If $aSpells[0][4] + $aSpells[1][4] = 0 Then
 		SetLog("No lightning spells trained, time to go home!", $COLOR_ERROR)
 		Return $performedZap
 	Else
-		If $LSpellZap[3] > 0 Then
-			SetLog(" - Number of " & NameOfTroop($LSpellZap[0], 1) & " (Lvl " & $LSpellZap[2] & "): " & Number($LSpellZap[3]), $COLOR_INFO)
+		If $aSpells[0][4] > 0 Then
+			SetLog(" - Number of " & NameOfTroop($aSpells[0][1], 1) & " (Lvl " & $aSpells[0][3] & "): " & Number($aSpells[0][4]), $COLOR_INFO)
 		EndIf
-		If $DLSpellZap[3] > 0 Then
-			SetLog(" - Number of Donated " & NameOfTroop($DLSpellZap[0], 1) & ": " & Number($DLSpellZap[3]), $COLOR_INFO)
+		If $aSpells[1][4] > 0 Then
+			SetLog(" - Number of Donated " & NameOfTroop($aSpells[1][1], 1) & " (Lvl " & $aSpells[1][3] & "): " & Number($aSpells[1][4]), $COLOR_INFO)
 		EndIf
 	EndIf
 
-	If $EQSpellZap[3] > 0 And $ichkEarthQuakeZap = 1 Then
-		SetLog(" - Number of " & NameOfTroop($EQSpellZap[0], 1) & " (Lvl " & $EQSpellZap[2] & "): " & Number($EQSpellZap[3]), $COLOR_INFO)
-		;SetLog(" - Number of Earthquake Spells: " & Number($EQSpellZap[3]), $COLOR_INFO)
+	If $aSpells[2][4] > 0 And $ichkEarthQuakeZap = 1 Then
+		SetLog(" - Number of " & NameOfTroop($aSpells[2][1], 1) & " (Lvl " & $aSpells[2][3] & "): " & Number($aSpells[2][4]), $COLOR_INFO)
     Else
-		$EQSpellZap[3] = 0 ; remove the EQ , is not to use it
+		$aSpells[2][4] = 0 ; remove the EQ , is not to use it
 	EndIf
 
 	; Get Drill locations and info
-	Local $listPixelByLevel = getDrillArray()
-	Local $aDarkDrills = drillSearch($listPixelByLevel)
-
-	Local $strikeOffsets = [7, 10]
+	Local $aDarkDrills = drillSearch()
+	
+	Local $strikeOffsets = [0, 12]
 	Local $drillLvlOffset, $spellAdjust, $numDrills, $testX, $testY, $tempTestX, $tempTestY, $strikeGain, $expectedDE
 	Local $error = 5 ; 5 pixel error margin for DE drill search
 
@@ -241,9 +239,9 @@ Func smartZap($minDE = -1)
 	Local $itotalStrikeGain = 0
 
 	; Loop while you still have spells and the first drill in the array has Dark Elixir, if you are town hall 7 or higher
-	While IsAttackPage() And $LSpellZap[3] + $DLSpellZap[3] + $EQSpellZap[3] > 0 And $aDarkDrills[0][3] <> -1 And $spellAdjust <> -1
-		Local $_EQSpellused = False
-		Local $_DLSpellused = False
+	While IsAttackPage() And $aSpells[0][4] + $aSpells[1][4] + $aSpells[2][4] > 0 And UBound($aDarkDrills) > 0 And $spellAdjust <> -1
+		Local $Spellused = $eLSpell
+		Local $skippedZap = True
 		; Store the DE value before any Zaps are done.
 		Local $oldSearchDark = $searchDark
 		CheckHeroesHealth()
@@ -254,92 +252,48 @@ Func smartZap($minDE = -1)
 		EndIf
 
 		; Create the log entry string for amount stealable
-		displayZapLog($aDarkDrills, $EQSpellZap, $LSpellZap, $DLSpellZap)
+		displayZapLog($aDarkDrills, $aSpells)
 
 		; If you activate N00bZap, drop lightning on any DE drill
 		If $ichkNoobZap = 1 Then
 			SetLog("NoobZap is going to attack any drill.", $COLOR_ACTION)
-			If $EQSpellZap[3] > 0 Then
-				zapDrill($EQSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-				$_EQSpellused = True
-				If _Sleep($DelaySmartZap3) Then Return
-			ElseIf $DLSpellZap[3] > 0 Then
-				zapDrill($DLSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-				$_DLSpellused = True
-				If _Sleep($DelaySmartZap4) Then Return
-			Else
-				zapDrill($LSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-				If _Sleep($DelaySmartZap4) Then Return
-			EndIf
+			$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
 
 			$performedZap = True
 			$skippedZap = False
-
 			If _Sleep($DelaySmartZap4) Then Return
 		Else
 			; If you have max lightning spells, drop lightning on any level DE drill
-			If $LSpellZap[3] + $DLSpellZap[3] + $EQSpellZap[3] > (4 - $spellAdjust) Then
+			If $aSpells[0][4] + $aSpells[1][4] + $aSpells[2][4] > (4 - $spellAdjust) Then
 				SetLog("First condition: " & 4 - $spellAdjust & "+ Spells so attack any drill.", $COLOR_INFO)
-				If  $EQSpellZap[3] > 0 And $aDarkDrills[0][2] > 4 Then
-					zapDrill($EQSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					$_EQSpellused = True
-					If _Sleep($DelaySmartZap3) Then Return
-				ElseIf $DLSpellZap[3] > 0 Then
-					zapDrill($DLSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					$_DLSpellused = True
-					If _Sleep($DelaySmartZap4) Then Return
-				Else
-					zapDrill($LSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					If _Sleep($DelaySmartZap4) Then Return
-				EndIf
+				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
 
 				$performedZap = True
 				$skippedZap = False
+				If _Sleep($DelaySmartZap4) Then Return
 
 				; If you have one less then max, drop it on drills level (3 - drill offset)
-			ElseIf $LSpellZap[3] + $DLSpellZap[3] + $EQSpellZap[3] > (3 - $spellAdjust) And $aDarkDrills[0][2] > (3 - $drillLvlOffset) Then
+			ElseIf $aSpells[0][4] + $aSpells[1][4] + $aSpells[2][4] > (3 - $spellAdjust) And $aDarkDrills[0][2] > (3 - $drillLvlOffset) Then
 				SetLog("Second condition: Attack Lvl " & 3 - Number($drillLvlOffset) & "+ drills if you have " & 3 - Number($spellAdjust) & "+ spells", $COLOR_INFO)
-				If  $EQSpellZap[3] > 0 And $aDarkDrills[0][2] > 4 Then
-					zapDrill($EQSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					$_EQSpellused = True
-					If _Sleep($DelaySmartZap3) Then Return
-				ElseIf $DLSpellZap[3] > 0 Then
-					zapDrill($DLSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					$_DLSpellused = True
-					If _Sleep($DelaySmartZap4) Then Return
-				Else
-					zapDrill($LSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					If _Sleep($DelaySmartZap4) Then Return
-				EndIf
+				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
 
 				$performedZap = True
 				$skippedZap = False
+				If _Sleep($DelaySmartZap4) Then Return
 
 				; If the collector is higher than lvl (4 - drill offset) and collector is estimated more than 30% full
 			ElseIf $aDarkDrills[0][2] > (4 - $drillLvlOffset) And ($aDarkDrills[0][3] / $aDrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 Then
 				SetLog("Third condition: Attack Lvl " & 4 - Number($drillLvlOffset) & "+ drills with more then 30% estimated DE if you have less than " & 4 - Number($spellAdjust) & " spells", $COLOR_INFO)
-				If  $EQSpellZap[3] > 0 And $aDarkDrills[0][2] > 4 Then
-					zapDrill($EQSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					$_EQSpellused = True
-					If _Sleep($DelaySmartZap3) Then Return
-				ElseIf $DLSpellZap[3] > 0 Then
-					zapDrill($DLSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					$_DLSpellused = True
-					If _Sleep($DelaySmartZap4) Then Return
-				Else
-					zapDrill($LSpellZap, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
-					If _Sleep($DelaySmartZap4) Then Return
-				EndIf
+				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
 
 				$performedZap = True
 				$skippedZap = False
+				If _Sleep($DelaySmartZap4) Then Return
 
 			Else
 				$skippedZap = True
 				SetLog("Drill did not match any attack conditions, so we will remove it from the list.", $COLOR_ACTION)
-				For $i = 0 To UBound($aDarkDrills, 2) - 1
-					$aDarkDrills[0][$i] = -1
-				Next
+				_ArrayDelete($aDarkDrills, 0)
 			EndIf
 		EndIf
 
@@ -360,54 +314,41 @@ Func smartZap($minDE = -1)
 			If $DebugSmartZap = 1 Then Setlog("$oldSearchDark = [" & Number($oldSearchDark) & "] - $searchDark = [" & Number($searchDark) & "]", $COLOR_DEBUG)
 			$strikeGain = Number($oldSearchDark - $searchDark)
 			If $DebugSmartZap = 1 Then Setlog("$strikeGain = " & Number($strikeGain), $COLOR_DEBUG)
-			If $aDarkDrills[0][2] <> -1 Then
-				If $_EQSpellused = True  Then
-					$iNumEQSpellsUsed += 1
-					$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$EQSpellZap[2] - 1] * $fDarkFillLevel))
-				Else
-					$iNumLSpellsUsed += 1
-					If $ichkNoobZap = 0 Then
-						If $_DLSpellused Then
-							$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $aDrillLevelHP[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$DLSpellZap[2] - 1] * $fDarkFillLevel))
-						Else
-							$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $aDrillLevelHP[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$LSpellZap[2] - 1] * $fDarkFillLevel))
-						EndIf
-					Else
-						$expectedDE = $itxtExpectedDE
-					EndIf
-				EndIf
+
+			If $Spellused = $eESpell  Then
+				$iNumEQSpellsUsed += 1
+				$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$aSpells[2][3] - 1] * $fDarkFillLevel))
 			Else
-				$expectedDE = -1
+				$iNumLSpellsUsed += 1
+				If $ichkNoobZap = 0 Then
+					$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $aDrillLevelHP[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel))
+				Else
+					$expectedDE = $itxtExpectedDE
+				EndIf
 			EndIf
+
 			If $DebugSmartZap = 1 Then Setlog("$expectedDE = " & Number($expectedDE), $COLOR_DEBUG)
 
 			; If change in DE is less than expected, remove the Drill from list. else, subtract change from assumed total
 			If $strikeGain < $expectedDE And $expectedDE <> -1 Then
-				For $i = 0 To UBound($aDarkDrills, 2) - 1
-					$aDarkDrills[0][$i] = -1
-				Next
+				_ArrayDelete($aDarkDrills, 0)
 				SetLog("Gained: " & $strikeGain & ", Expected: " & $expectedDE, $COLOR_INFO)
 				SetLog("Last zap gained less DE then expected, removing the drill from the list.", $COLOR_ACTION)
+			ElseIf Not ReCheckDrillExist($aDarkDrills[0][0], $aDarkDrills[0][1]) Then ; Recheck will detect IF exist the drill or was destroyed
+				; Was destroyed let's remove the drill from array
+				_ArrayDelete($aDarkDrills, 0)
+				SetLog("Gained: " & Number($strikeGain) & ", drill was destroyed.", $COLOR_INFO)
 			Else
 				$aDarkDrills[0][3] -= $strikeGain
-				SetLog("Gained: " & Number($strikeGain) & ". Adjusting amount left in this drill.", $COLOR_INFO)
+				SetLog("Gained: " & Number($strikeGain) & ", adjusting amount left in this drill.", $COLOR_INFO)
 			EndIf
 
 			$itotalStrikeGain += $strikeGain
 			$iSmartZapGain += $strikeGain
 			SetLog("Total DE from SmartZap/NoobZap: " & Number($itotalStrikeGain), $COLOR_INFO)
+
 		EndIf
 
-		If $aDarkDrills[0][2] <> -1 Then
-			; Recheck will detect IF exist the drill or was destroyed
-			If Not ReCheckDrillExist($aDarkDrills[0][0], $aDarkDrills[0][1]) Then
-				; Was destroyed let's remove the values from array
-				For $i = 0 To UBound($aDarkDrills, 2) - 1
-					$aDarkDrills[0][$i] = -1
-				Next
-				SetLog("Removing drill since it wasn't found, so it was probably destroyed.", $COLOR_ACTION)
-			EndIf
-		EndIf
 		; Resort the array
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)
 
@@ -418,34 +359,38 @@ Func smartZap($minDE = -1)
 EndFunc   ;==>smartZap
 
 ; This function taken and modified by the CastSpell function to make Zapping works
-Func zapDrill(ByRef $Spell, $x, $y)
-	If $Spell[1] > -1 Then
-		SetLog("Dropping " & String(NameOfTroop($Spell[0], 0)), $COLOR_ACTION)
-		SelectDropTroop($Spell[1])
+Func zapDrill(ByRef $Spells, $x, $y)
+	Local $iSpell
+	For $i = 0 to UBound($Spells) - 1
+		If $Spells[$i][4] > 0 Then
+			$iSpell = $i
+		EndIf
+	Next 
+	If $Spells[$iSpell][2] > -1 Then
+		SetLog("Dropping " & $Spells[$iSpell][0] & " " & String(NameOfTroop($Spells[$iSpell][1], 0)), $COLOR_ACTION)
+		SelectDropTroop($Spells[$iSpell][2])
 		If _Sleep($iDelayCastSpell1) Then Return
 		If IsAttackPage() Then Click($x, $y, 1, 0, "#0029")
-		$Spell[3] -= 1
+		$Spells[$iSpell][4] -= 1
 	Else
-		If $DebugSmartZap = 1 Then SetLog("No " & String(NameOfTroop($Spell[0], 0)) & " Found", $COLOR_DEBUG)
+		If $DebugSmartZap = 1 Then SetLog("No " & String(NameOfTroop($Spells[$iSpell][1], 0)) & " Found", $COLOR_DEBUG)
 	EndIf
+	Return $Spells[$iSpell][1]
 EndFunc   ;==>zapDrill
 
 Func ReCheckDrillExist($x, $y)
-	Local $result
-	If _Sleep($DelaySmartZap3) Then Return ; 3 seconds to disapear green bars
-	_CaptureRegion2($x - 50, $y - 50, $x + 40, $y + 40)
+	If _Sleep($DelaySmartZap4) Then Return ; 4 seconds to disappear dust and bars
+	_CaptureRegion2($x - 25, $y - 25, $x + 25, $y + 25)
 	Local $directory = @ScriptDir & "\imgxml\Storages\Drills"
 	Local $Maxpositions = 1
 
-	Local $aResult = multiMatches($directory, $Maxpositions, "FV", "FV")
-	$result = ConvertImgloc2MBR($aResult, $Maxpositions)
+	Local $aResult = multiMatches($directory, $Maxpositions, "FV", "FV", "", 0, 1000, False) ; Setting Force Captureregion to false, else it will recapture the whole screen, finding any drill
 
-	If StringLen($result) > 3 Then
-		If $DebugSmartZap = 1 Then SetLog("ReCheckDrillExist: Yes| " & $result, $COLOR_SUCCESS)
+	If UBound($aResult) > 1 Then
+		If $DebugSmartZap = 1 Then SetLog("ReCheckDrillExist: Yes| " & UBound($aResult), $COLOR_SUCCESS)
 		Return True
 	Else
-		If $DebugSmartZap = 1 Then SetLog("ReCheckDrillExist: No| " & $result, $COLOR_ERROR)
-		Return False
+		If $DebugSmartZap = 1 Then SetLog("ReCheckDrillExist: No| " & UBound($aResult), $COLOR_ERROR)
 	EndIf
 	Return False
 EndFunc   ;==>ReCheckDrillExist

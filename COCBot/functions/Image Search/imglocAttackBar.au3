@@ -12,6 +12,7 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func TestImglocTroopBar()
 	$RunState = True
 	$debugSetlog = 1
@@ -141,12 +142,12 @@ Func AttackBarCheck()
 							If StringInStr($aResult[$i][0], "ESpell") <> 0 and $ichkSmartZap = 1 then
 								$aResult[$i][5] = getTroopsSpellsLevel(Number($Slottemp[0]) + $SlotCompensation, 704)
 								If $aResult[$i][5] <> "" then $GlobalEQSpelllevel = $aResult[$i][5] ; If they aren't empty will store the correct level , or will be level 1 , just in case
-								Setlog("EarthQuake Detected with level " & $aResult[$i][5])
+								If $DebugSmartZap = 1 Then Setlog("EarthQuake Detected with level " & $aResult[$i][5], $COLOR_DEBUG)
 							EndIF
 							If StringInStr($aResult[$i][0], "LSpell") <> 0 and $ichkSmartZap = 1 then
 								$aResult[$i][5] = getTroopsSpellsLevel(Number($Slottemp[0]) + $SlotCompensation, 704)
 								If $aResult[$i][5] <> "" then $GlobalLSpelllevel = $aResult[$i][5]  ; If they aren't empty will store the correct level , or will be level 1 , just in case
-								Setlog("Lightning Detected with level " & $aResult[$i][5])
+								If $DebugSmartZap = 1 Then Setlog("Lightning Detected with level " & $aResult[$i][5], $COLOR_DEBUG)
 							EndIF
 						EndIf
 					Else

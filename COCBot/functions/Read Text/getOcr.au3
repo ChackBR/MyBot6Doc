@@ -11,15 +11,15 @@
 ; ===============================================================================================================================
 
 
-Func getNameBuilding($x_start, $y_start); getNameBuilding(242,520) -> Gets complete name and level of the buildings, bottom of screen
+Func getNameBuilding($x_start, $y_start) ; getNameBuilding(242,520) -> Gets complete name and level of the buildings, bottom of screen
 	Return getOcrAndCapture("coc-build", $x_start, $y_start, 377, 27)
 EndFunc   ;==>getNameBuilding
 
-Func getGoldVillageSearch($x_start, $y_start);48, 69 -> Gets complete value of gold xxx,xxx while searching, top left, Getresources.au3
+Func getGoldVillageSearch($x_start, $y_start) ;48, 69 -> Gets complete value of gold xxx,xxx while searching, top left, Getresources.au3
 	Return getOcrAndCapture("coc-v-g", $x_start, $y_start, 90, 16, True)
 EndFunc   ;==>getGoldVillageSearch
 
-Func getRemainTrainTimer($x_start, $y_start);
+Func getRemainTrainTimer($x_start, $y_start) ;
 	Return getOcrAndCapture("coc-RemainTrain", $x_start, $y_start, 70, 12, True)
 EndFunc   ;==>getRemainTrainTimer
 
@@ -95,51 +95,51 @@ Func getChatString($x_start, $y_start, $language) ; -> Get string chat request -
 	Return getOcrAndCapture($language, $x_start, $y_start, 280, 16)
 EndFunc   ;==>getChatString
 
-Func getBuilders($x_start, $y_start);  -> Gets Builders number - main screen --> getBuilders(324,23)  coc-profile
+Func getBuilders($x_start, $y_start) ;  -> Gets Builders number - main screen --> getBuilders(324,23)  coc-profile
 	Return getOcrAndCapture("coc-Builders", $x_start, $y_start, 40, 18, True)
 EndFunc   ;==>getBuilders
 
-Func getProfile($x_start, $y_start);  -> Gets Attack Win/Defense Win/Donated/Received values - profile screen --> getProfile(160,268)  troops donation
+Func getProfile($x_start, $y_start) ;  -> Gets Attack Win/Defense Win/Donated/Received values - profile screen --> getProfile(160,268)  troops donation
 	Return getOcrAndCapture("coc-profile", $x_start, $y_start, 46, 11, True)
 EndFunc   ;==>getProfile
 
-Func getTroopCountSmall($x_start, $y_start, $bNeedNewCapture = Default);  -> Gets troop amount on Attack Screen for non-selected troop kind
+Func getTroopCountSmall($x_start, $y_start, $bNeedNewCapture = Default) ;  -> Gets troop amount on Attack Screen for non-selected troop kind
 	Return getOcrAndCapture("coc-t-s", $x_start, $y_start, 53, 15, True, Default, $bNeedNewCapture)
 EndFunc   ;==>getTroopCountSmall
 
-Func getTroopCountBig($x_start, $y_start, $bNeedNewCapture = Default);  -> Gets troop amount on Attack Screen for selected troop kind
+Func getTroopCountBig($x_start, $y_start, $bNeedNewCapture = Default) ;  -> Gets troop amount on Attack Screen for selected troop kind
 	Return getOcrAndCapture("coc-t-b", $x_start, $y_start, 53, 16, True, Default, $bNeedNewCapture)
 EndFunc   ;==>getTroopCountBig
 
-Func getArmyTroopQuantity($x_start, $y_start);  -> Gets troop amount on army camp or new windows
+Func getArmyTroopQuantity($x_start, $y_start) ;  -> Gets troop amount on army camp or new windows
 	Return getOcrAndCapture("coc-train-quant", $x_start, $y_start, 45, 12, True)
 EndFunc   ;==>getArmyTroopQuantity
 
-Func getArmyTroopKind($x_start, $y_start);  -> Gets kind of troop on army camp or new windows
+Func getArmyTroopKind($x_start, $y_start) ;  -> Gets kind of troop on army camp or new windows
 	Return getOcrAndCapture("coc-train-t-kind", $x_start, $y_start, 59, 11, True)
 EndFunc   ;==>getArmyTroopKind
 
-Func getArmyCampCap($x_start, $y_start);  -> Gets army camp capacity --> train.au3, and used to read CC request time remaining
+Func getArmyCampCap($x_start, $y_start) ;  -> Gets army camp capacity --> train.au3, and used to read CC request time remaining
 	Return getOcrAndCapture("coc-ms", $x_start, $y_start, 82, 16, True)
 EndFunc   ;==>getArmyCampCap
 
-Func getCastleDonateCap($x_start, $y_start);  -> Gets clan castle capacity,  --> donatecc.au3
+Func getCastleDonateCap($x_start, $y_start) ;  -> Gets clan castle capacity,  --> donatecc.au3
 	Return getOcrAndCapture("coc-army", $x_start, $y_start, 30, 14, True)
 EndFunc   ;==>getCastleDonateCap
 
-Func getBarracksTroopQuantity($x_start, $y_start);  -> Gets quantity of troops in training --> train.au3
+Func getBarracksTroopQuantity($x_start, $y_start) ;  -> Gets quantity of troops in training --> train.au3
 	Return getOcrAndCapture("coc-train", $x_start, $y_start, 52, 16, True)
 EndFunc   ;==>getBarracksTroopQuantity
 
-Func getAttackDisable($x_start, $y_start);  -> 346, 182 - Gets red text disabled for early warning of Personal Break
+Func getAttackDisable($x_start, $y_start) ;  -> 346, 182 - Gets red text disabled for early warning of Personal Break
 	Return getOcrAndCapture("coc-dis", $x_start, $y_start, 118, 24, True)
 EndFunc   ;==>getAttackDisable
 
-Func getOcrLanguage($x_start, $y_start);  -> Get english language - main screen - "Attack" text on attack button
+Func getOcrLanguage($x_start, $y_start) ;  -> Get english language - main screen - "Attack" text on attack button
 	Return getOcrAndCapture("coc-ms-testl", $x_start, $y_start, 93, 16, True)
 EndFunc   ;==>getOcrLanguage
 
-Func getOcrSpellDetection($x_start, $y_start);  -> Recognition of the Spells in Armyoverview window
+Func getOcrSpellDetection($x_start, $y_start) ;  -> Recognition of the Spells in Armyoverview window
 	;remove text after § (if dll return heal§2 we return heal, if dll return heal§3 we return heal, if dll return heal we return heal)
 	Local $result = getOcrAndCapture("coc-t-spells2", $x_start, $y_start, 50, 30, True)
 	Local $PositionSpecialCaracter = 0 ; search position of § into result, if no found return 0
@@ -151,19 +151,19 @@ Func getOcrSpellDetection($x_start, $y_start);  -> Recognition of the Spells in 
 	EndIf
 EndFunc   ;==>getOcrSpellDetection
 
-Func getOcrSpellQuantity($x_start, $y_start);  -> Get the Spells quantity in Armyoverview window
+Func getOcrSpellQuantity($x_start, $y_start) ;  -> Get the Spells quantity in Armyoverview window
 	Return getOcrAndCapture("coc-t-t", $x_start, $y_start, 25, 12, True)
 EndFunc   ;==>getOcrSpellQuantity
 
-Func getOcrClanLevel($x_start, $y_start);  -> Get the clan level from clan info page
+Func getOcrClanLevel($x_start, $y_start) ;  -> Get the clan level from clan info page
 	Return getOcrAndCapture("coc-clanlevel", $x_start, $y_start, 20, 19, True)
 EndFunc   ;==>getOcrClanLevel
 
-Func getOcrSpaceCastleDonate($x_start, $y_start);  -> Get the number of troops donated/capacity from a request
+Func getOcrSpaceCastleDonate($x_start, $y_start) ;  -> Get the number of troops donated/capacity from a request
 	Return getOcrAndCapture("coc-totalreq", $x_start, $y_start, 45, 12, True)
 EndFunc   ;==>getOcrSpaceCastleDonate
 
-Func getOcrDonationTroopsDetection($x_start, $y_start);  -> Get the type of troop from the donate window
+Func getOcrDonationTroopsDetection($x_start, $y_start) ;  -> Get the type of troop from the donate window
 	Local $result = getOcrAndCapture("coc-donationtroop", $x_start, $y_start, 45, 30, True)
 	Local $PositionSpecialCaracter = 0 ; search position of § into result, if no found return 0
 	$PositionSpecialCaracter = StringInStr($result, "§")
@@ -174,15 +174,15 @@ Func getOcrDonationTroopsDetection($x_start, $y_start);  -> Get the type of troo
 	EndIf
 EndFunc   ;==>getOcrDonationTroopsDetection
 
-Func getOcrOverAllDamage($x_start, $y_start);  -> Get the Overall Damage %
+Func getOcrOverAllDamage($x_start, $y_start) ;  -> Get the Overall Damage %
 	Return getOcrAndCapture("coc-overalldamage", $x_start, $y_start, 50, 20, True)
 EndFunc   ;==>getOcrOverAllDamage
 
-Func getOcrGuardShield($x_start, $y_start);  -> Get the guard/shield time left, middle top of the screen
+Func getOcrGuardShield($x_start, $y_start) ;  -> Get the guard/shield time left, middle top of the screen
 	Return getOcrAndCapture("coc-guardshield", $x_start, $y_start, 68, 15)
 EndFunc   ;==>getOcrGuardShield
 
-Func getOcrPBTtime($x_start, $y_start);  -> Get the Time until PBT starts from PBT info window
+Func getOcrPBTtime($x_start, $y_start) ;  -> Get the Time until PBT starts from PBT info window
 	Return getOcrAndCapture("coc-pbttime", $x_start, $y_start, 59, 15)
 EndFunc   ;==>getOcrPBTtime
 
@@ -198,7 +198,7 @@ Func getOcrMaintenanceTime($x_start, $y_start, $sLogText = Default, $LogTextColo
 		SetDebugLog($String, $LogTextColor, $bSilentSetLog)
 	ElseIf $result <> "" Then ;
 		SetDebugLog($String, $LogTextColor, True) ; if result found, add to log file
-	EndIF
+	EndIf
 	Return $result
 EndFunc   ;==>getOcrMaintenanceTime
 
@@ -232,7 +232,7 @@ EndFunc   ;==>getHeroStatus
 
 Func getRequestRemainTime($x_start, $y_start) ; Get Remain Time To request Troops
 	Return getOcrAndCapture("coc-CCremainTime", $x_start, $y_start, 30, 14)
-EndFunc   ;==>getHeroStatus
+EndFunc   ;==>getRequestRemainTime
 
 Func getCloudTextShort($x_start, $y_start, $sLogText = Default, $LogTextColor = Default, $bSilentSetLog = Default)
 	; Get 3 characters of yellow text in center of attack search window during extended cloud waiting (388,378)
@@ -261,8 +261,8 @@ Func getBarracksNewTroopQuantity($x_start, $y_start) ;  -> Gets quantity of troo
 EndFunc   ;==>getBarracksNewTroopQuantity
 
 Func getTroopsSpellsLevel($x_start, $y_start) ;  -> Gets quantity of troops in army Window
-	Return getOcrAndCapture("coc_Spellslevel", $x_start, $y_start, 20, 14, True)
-EndFunc   ;==>getBarracksNewTroopQuantity
+	Return getOcrAndCapture("coc-spellslevel", $x_start, $y_start, 20, 14, True)
+EndFunc   ;==>getTroopsSpellsLevel
 
 
 Func getArmyCapacityOnTrainTroops($x_start, $y_start) ;  -> Gets quantity of troops in army Window
@@ -280,7 +280,7 @@ EndFunc   ;==>getChatStringChinese
 
 Func getChatStringPersian($x_start, $y_start, $bConvert = True) ; -> Get string chat request - Persian - "DonateCC.au3"
 	Local $bUseOcrImgLoc = True
-	Local $OCRString = getOcrAndCapture("persian-bundle", $x_start, $y_start, 240, 17, Default, $bUseOcrImgLoc, True)
+	Local $OCRString = getOcrAndCapture("persian-bundle", $x_start, $y_start, 240, 20, Default, $bUseOcrImgLoc, True)
 	If $bConvert = True Then
 		$OCRString = StringReverse($OCRString)
 		$OCRString = StringReplace($OCRString, "A", "ا")
@@ -303,23 +303,27 @@ Func getChatStringPersian($x_start, $y_start, $bConvert = True) ; -> Get string 
 		$OCRString = StringReplace($OCRString, "Y", "ی")
 		$OCRString = StringReplace($OCRString, "L", "ل")
 		$OCRString = StringReplace($OCRString, "Z", "ز")
-		$OCRString = StringReplace($OCRString, ",", ",")
 		$OCRString = StringReplace($OCRString, "X", "خ")
+		$OCRString = StringReplace($OCRString, "Q", "ق")
+		$OCRString = StringReplace($OCRString, ",", ",")
 		$OCRString = StringReplace($OCRString, "0", " ")
 		$OCRString = StringReplace($OCRString, "1", ".")
 		$OCRString = StringReplace($OCRString, "22", "ع")
 		$OCRString = StringReplace($OCRString, "44", "ش")
 		$OCRString = StringReplace($OCRString, "55", "ح")
 		$OCRString = StringReplace($OCRString, "66", "ض")
+		$OCRString = StringReplace($OCRString, "77", "ط")
+		$OCRString = StringReplace($OCRString, "88", "لا")
+		$OCRString = StringReplace($OCRString, "99", "ث")
 		$OCRString = StringStripWS($OCRString, 1 + 2)
 	EndIf
 	Return $OCRString
-EndFunc   ;==>getChatStringChinese
+EndFunc   ;==>getChatStringPersian
 
 Func getCurrentXP($x_start, $y_start) ; -> Get Current/Total XP, Used in SuperXP.au3
 	Local $bUseOcrImgLoc = True
 	Return getOcrAndCapture("CurXpOCR-bundle", $x_start, $y_start, 95, 15, True, $bUseOcrImgLoc)
-EndFunc   ;==>getChatStringChinese
+EndFunc   ;==>getCurrentXP
 
 Func OcrForceCaptureRegion($bForce = Default)
 	If $bForce = Default Then Return $bOcrForceCaptureRegion
@@ -371,9 +375,9 @@ Func getOcrImgLoc($hBitmap, $sLanguage)
 	Local $extError = @extended
 	If $error Then
 		_logErrorDLLCall($pImgLib, $error)
-		If $DebugSetlog = 1 Then SetLog(" imgloc DLL Error : " & $error & " --- "  & $extError)
-		Return SetError(2, $extError , "") ; Set external error code = 2 for DLL error
-	EndIF
+		If $debugSetlog = 1 Then SetLog(" imgloc DLL Error : " & $error & " --- " & $extError)
+		Return SetError(2, $extError, "") ; Set external error code = 2 for DLL error
+	EndIf
 	If $debugImageSave = 1 Then DebugImageSave($sLanguage, False)
 
 	If IsArray($result) Then

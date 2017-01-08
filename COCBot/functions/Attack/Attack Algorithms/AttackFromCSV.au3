@@ -239,6 +239,8 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 
 	_CaptureRegion2() ; ensure full screen is captured (not ideal for debugging as clean image was already saved, but...)
 	If $captureredarea Then _GetRedArea($iRedlineRoutine[$iMatchMode])
+	debugAttackCSV("$iMatchMode: " & $iMatchMode)
+	debugAttackCSV("$iRedlineRoutine: " & $iRedlineRoutine[$iMatchMode])
 	If _Sleep($iDelayRespond) Then Return
 
 	Local $htimerREDAREA = Round(TimerDiff($hTimer) / 1000, 2)
@@ -248,129 +250,137 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 	debugAttackCSV("	[" & UBound($PixelBottomLeft) & "] pixels BottomLeft")
 	debugAttackCSV("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
 
-	If $iDroplineEdge[$iMatchMode] = $DROPLINE_DROPPOINTS_ONLY Then
 
-		$PixelTopLeftDropLine = $PixelTopLeft
-		$PixelTopRightDropLine = $PixelTopRight
-		$PixelBottomLeftDropLine = $PixelBottomLeft
-		$PixelBottomRightDropLine = $PixelBottomRight
+		If $iDroplineEdge[$iMatchMode] = $DROPLINE_DROPPOINTS_ONLY Then
 
-	Else
+			$PixelTopLeftDropLine = $PixelTopLeft
+			$PixelTopRightDropLine = $PixelTopRight
+			$PixelBottomLeftDropLine = $PixelBottomLeft
+			$PixelBottomRightDropLine = $PixelBottomRight
 
-		;02.02  - CLEAN REDAREA BAD POINTS -----------------------------------------------------------------------------------------------------------------------
-		CleanRedArea($PixelTopLeft)
-		CleanRedArea($PixelTopRight)
-		CleanRedArea($PixelBottomLeft)
-		CleanRedArea($PixelBottomRight)
-		debugAttackCSV("RedArea cleaned")
-		debugAttackCSV("	[" & UBound($PixelTopLeft) & "] pixels TopLeft")
-		debugAttackCSV("	[" & UBound($PixelTopRight) & "] pixels TopRight")
-		debugAttackCSV("	[" & UBound($PixelBottomLeft) & "] pixels BottomLeft")
-		debugAttackCSV("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
-		If _Sleep($iDelayRespond) Then Return
+		Else
 
-		;02.03 - MAKE FULL DROP LINE EDGE--------------------------------------------------------------------------------------------------------------------------
-		; default inner area edges
-		Local $coordLeft = [$ExternalArea[0][0], $ExternalArea[0][1]]
-		Local $coordTop = [$ExternalArea[2][0], $ExternalArea[2][1]]
-		Local $coordRight = [$ExternalArea[1][0], $ExternalArea[1][1]]
-		Local $coordBottom = [$ExternalArea[3][0], $ExternalArea[3][1]]
-		Switch $iDroplineEdge[$iMatchMode]
-		Case $DROPLINE_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIXED ; default inner area edges
-			; nothing to do here
-		Case $DROPLINE_EDGE_FIRST, $DROPLINE_FULL_EDGE_FIRST ; use first red point
-			Local $newAxis
-			; left
-			Local $aPoint1 = GetMaxPoint($PixelTopLeft, 1)
-			Local $aPoint2 = GetMinPoint($PixelBottomLeft, 1)
-			$newAxis = (($aPoint1[0] < $aPoint2[0]) ? ($aPoint1[0]) : ($aPoint2[0]))
-			If Abs($newAxis) < 9999 Then $coordLeft[0] = $newAxis
-			; top
-			Local $aPoint1 = GetMaxPoint($PixelTopLeft, 0)
-			Local $aPoint2 = GetMinPoint($PixelTopRight, 0)
-			$newAxis = (($aPoint1[1] < $aPoint2[1]) ? ($aPoint1[1]) : ($aPoint2[1]))
-			If Abs($newAxis) < 9999 Then $coordTop[1] = $newAxis
-			; right
-			Local $aPoint1 = GetMaxPoint($PixelTopRight, 1)
-			Local $aPoint2 = GetMinPoint($PixelBottomRight, 1)
-			$newAxis = (($aPoint1[0] > $aPoint2[0]) ? ($aPoint1[0]) : ($aPoint2[0]))
-			If Abs($newAxis) < 9999 Then $coordRight[0] = $newAxis
-			; bottom
-			Local $aPoint1 = GetMaxPoint($PixelBottomLeft, 0)
-			Local $aPoint2 = GetMinPoint($PixelBottomRight, 0)
-			$newAxis = (($aPoint1[1] > $aPoint2[1]) ? ($aPoint1[1]) : ($aPoint2[1]))
-			If Abs($newAxis) < 9999 Then $coordBottom[1] = $newAxis
-		EndSwitch
+			;02.02  - CLEAN REDAREA BAD POINTS -----------------------------------------------------------------------------------------------------------------------
+			CleanRedArea($PixelTopLeft)
+			CleanRedArea($PixelTopRight)
+			CleanRedArea($PixelBottomLeft)
+			CleanRedArea($PixelBottomRight)
+			debugAttackCSV("RedArea cleaned")
+			debugAttackCSV("	[" & UBound($PixelTopLeft) & "] pixels TopLeft")
+			debugAttackCSV("	[" & UBound($PixelTopRight) & "] pixels TopRight")
+			debugAttackCSV("	[" & UBound($PixelBottomLeft) & "] pixels BottomLeft")
+			debugAttackCSV("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
+			If _Sleep($iDelayRespond) Then Return
 
-		Local $StartEndTopLeft = [$coordLeft, $coordTop]
-		Local $StartEndTopRight = [$coordTop, $coordRight]
-		Local $StartEndBottomLeft = [$coordLeft, $coordBottom]
-		Local $StartEndBottomRight = [$coordBottom, $coordRight]
+			;02.03 - MAKE FULL DROP LINE EDGE--------------------------------------------------------------------------------------------------------------------------
+			; default inner area edges
+			debugAttackCSV("02.03 - MAKE FULL DROP LINE EDGE")
+			Local $coordLeft = [$ExternalArea[0][0], $ExternalArea[0][1]]
+			Local $coordTop = [$ExternalArea[2][0], $ExternalArea[2][1]]
+			Local $coordRight = [$ExternalArea[1][0], $ExternalArea[1][1]]
+			Local $coordBottom = [$ExternalArea[3][0], $ExternalArea[3][1]]
+			Switch $iDroplineEdge[$iMatchMode]
+				Case $DROPLINE_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIXED ; default inner area edges
+					debugAttackCSV("$DROPLINE_EDGE_FIXED")
+					; nothing to do here
+				Case $DROPLINE_EDGE_FIRST, $DROPLINE_FULL_EDGE_FIRST ; use first red point
+					debugAttackCSV("$DROPLINE_EDGE_FIRST")
+					Local $newAxis
+					; left
+					Local $aPoint1 = GetMaxPoint($PixelTopLeft, 1)
+					Local $aPoint2 = GetMinPoint($PixelBottomLeft, 1)
+					$newAxis = (($aPoint1[0] < $aPoint2[0]) ? ($aPoint1[0]) : ($aPoint2[0]))
+					If Abs($newAxis) < 9999 Then $coordLeft[0] = $newAxis
+					; top
+					Local $aPoint1 = GetMaxPoint($PixelTopLeft, 0)
+					Local $aPoint2 = GetMinPoint($PixelTopRight, 0)
+					$newAxis = (($aPoint1[1] < $aPoint2[1]) ? ($aPoint1[1]) : ($aPoint2[1]))
+					If Abs($newAxis) < 9999 Then $coordTop[1] = $newAxis
+					; right
+					Local $aPoint1 = GetMaxPoint($PixelTopRight, 1)
+					Local $aPoint2 = GetMinPoint($PixelBottomRight, 1)
+					$newAxis = (($aPoint1[0] > $aPoint2[0]) ? ($aPoint1[0]) : ($aPoint2[0]))
+					If Abs($newAxis) < 9999 Then $coordRight[0] = $newAxis
+					; bottom
+					Local $aPoint1 = GetMaxPoint($PixelBottomLeft, 0)
+					Local $aPoint2 = GetMinPoint($PixelBottomRight, 0)
+					$newAxis = (($aPoint1[1] > $aPoint2[1]) ? ($aPoint1[1]) : ($aPoint2[1]))
+					If Abs($newAxis) < 9999 Then $coordBottom[1] = $newAxis
+			EndSwitch
 
-		SetDebugLog("MakeDropLines, StartEndTopLeft     = " & PixelArrayToString($StartEndTopLeft, ","))
-		SetDebugLog("MakeDropLines, StartEndTopRight    = " & PixelArrayToString($StartEndTopRight, ","))
-		SetDebugLog("MakeDropLines, StartEndBottomLeft  = " & PixelArrayToString($StartEndBottomLeft, ","))
-		SetDebugLog("MakeDropLines, StartEndBottomRight = " & PixelArrayToString($StartEndBottomRight, ","))
-
-		Local $startPoint, $endPoint, $invalid1, $invalid2
-		$startPoint = $StartEndTopLeft[0]
-		$endPoint = $StartEndTopLeft[1]
-		Local $PixelTopLeft1 = SortByDistance($PixelTopLeft, $startPoint, $endPoint, $invalid1)
-		$startPoint = $StartEndTopLeft[1]
-		$endPoint = $StartEndTopLeft[0]
-		Local $PixelTopLeft2 = SortByDistance($PixelTopLeft, $startPoint, $endPoint, $invalid2)
-		$PixelTopLeft = SortByDistance((($invalid1 >= $invalid2) ? ($PixelTopLeft1) : ($PixelTopLeft2)), $StartEndTopLeft[0], $StartEndTopLeft[1], $invalid1)
-		$startPoint = $StartEndTopRight[0]
-		$endPoint = $StartEndTopRight[1]
-		Local $PixelTopRight1 = SortByDistance($PixelTopRight, $startPoint, $endPoint, $invalid1)
-		$startPoint = $StartEndTopRight[1]
-		$endPoint = $StartEndTopRight[0]
-		Local $PixelTopRight2 = SortByDistance($PixelTopRight, $startPoint, $endPoint, $invalid2)
-		$PixelTopRight = SortByDistance((($invalid1 >= $invalid2) ? ($PixelTopRight1) : ($PixelTopRight2)), $StartEndTopRight[0], $StartEndTopRight[1], $invalid1)
-		$startPoint = $StartEndBottomLeft[0]
-		$endPoint = $StartEndBottomLeft[1]
-		Local $PixelBottomLeft1 = SortByDistance($PixelBottomLeft, $startPoint, $endPoint, $invalid1)
-		$startPoint = $StartEndBottomLeft[1]
-		$endPoint = $StartEndBottomLeft[0]
-		Local $PixelBottomLeft2 = SortByDistance($PixelBottomLeft, $startPoint, $endPoint, $invalid2)
-		$PixelBottomLeft = SortByDistance((($invalid1 >= $invalid2) ? ($PixelBottomLeft1) : ($PixelBottomLeft2)), $StartEndBottomLeft[0], $StartEndBottomLeft[1], $invalid1)
-		$startPoint = $StartEndBottomRight[0]
-		$endPoint = $StartEndBottomRight[1]
-		Local $PixelBottomRight1 = SortByDistance($PixelBottomRight, $startPoint, $endPoint, $invalid1)
-		$startPoint = $StartEndBottomRight[1]
-		$endPoint = $StartEndBottomRight[0]
-		Local $PixelBottomRight2 = SortByDistance($PixelBottomRight, $startPoint, $endPoint, $invalid2)
-		$PixelBottomRight = SortByDistance((($invalid1 >= $invalid2) ? ($PixelBottomRight1) : ($PixelBottomRight2)), $StartEndBottomRight[0], $StartEndBottomRight[1], $invalid1)
-
-		Switch $iDroplineEdge[$iMatchMode]
-		Case $DROPLINE_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIXED ; default inner area edges
-			; reset fix corners
 			Local $StartEndTopLeft = [$coordLeft, $coordTop]
 			Local $StartEndTopRight = [$coordTop, $coordRight]
 			Local $StartEndBottomLeft = [$coordLeft, $coordBottom]
 			Local $StartEndBottomRight = [$coordBottom, $coordRight]
-		EndSwitch
 
-		SetDebugLog("MakeDropLines, StartEndTopLeft     = " & PixelArrayToString($StartEndTopLeft, ","))
-		SetDebugLog("MakeDropLines, StartEndTopRight    = " & PixelArrayToString($StartEndTopRight, ","))
-		SetDebugLog("MakeDropLines, StartEndBottomLeft  = " & PixelArrayToString($StartEndBottomLeft, ","))
-		SetDebugLog("MakeDropLines, StartEndBottomRight = " & PixelArrayToString($StartEndBottomRight, ","))
+			SetDebugLog("MakeDropLines, StartEndTopLeft     = " & PixelArrayToString($StartEndTopLeft, ","))
+			SetDebugLog("MakeDropLines, StartEndTopRight    = " & PixelArrayToString($StartEndTopRight, ","))
+			SetDebugLog("MakeDropLines, StartEndBottomLeft  = " & PixelArrayToString($StartEndBottomLeft, ","))
+			SetDebugLog("MakeDropLines, StartEndBottomRight = " & PixelArrayToString($StartEndBottomRight, ","))
 
-		Switch $iDroplineEdge[$iMatchMode]
-		Case $DROPLINE_EDGE_FIXED, $DROPLINE_EDGE_FIRST ; default drop line
-			$PixelTopLeftDropLine = MakeDropLineOriginal($PixelTopLeft, $StartEndTopLeft[0], $StartEndTopLeft[1])
-			$PixelTopRightDropLine = MakeDropLineOriginal($PixelTopRight, $StartEndTopRight[0], $StartEndTopRight[1])
-			$PixelBottomLeftDropLine = MakeDropLineOriginal($PixelBottomLeft, $StartEndBottomLeft[0], $StartEndBottomLeft[1])
-			$PixelBottomRightDropLine = MakeDropLineOriginal($PixelBottomRight, $StartEndBottomRight[0], $StartEndBottomRight[1])
-		Case $DROPLINE_FULL_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIRST ; full drop line
-			Local $iLineDistanceThreshold = 75
-			If $iRedlineRoutine[$iMatchMode] = $REDLINE_IMGLOC Then $iLineDistanceThreshold = 25
-			$PixelTopLeftDropLine = MakeDropLine($PixelTopLeft, $StartEndTopLeft[0], $StartEndTopLeft[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
-			$PixelTopRightDropLine = MakeDropLine($PixelTopRight, $StartEndTopRight[0], $StartEndTopRight[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
-			$PixelBottomLeftDropLine = MakeDropLine($PixelBottomLeft, $StartEndBottomLeft[0], $StartEndBottomLeft[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
-			$PixelBottomRightDropLine = MakeDropLine($PixelBottomRight, $StartEndBottomRight[0], $StartEndBottomRight[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
-		EndSwitch
-	EndIf
+			Local $startPoint, $endPoint, $invalid1, $invalid2
+			$startPoint = $StartEndTopLeft[0]
+			$endPoint = $StartEndTopLeft[1]
+			Local $PixelTopLeft1 = SortByDistance($PixelTopLeft, $startPoint, $endPoint, $invalid1)
+			$startPoint = $StartEndTopLeft[1]
+			$endPoint = $StartEndTopLeft[0]
+			Local $PixelTopLeft2 = SortByDistance($PixelTopLeft, $startPoint, $endPoint, $invalid2)
+			$PixelTopLeft = SortByDistance((($invalid1 >= $invalid2) ? ($PixelTopLeft1) : ($PixelTopLeft2)), $StartEndTopLeft[0], $StartEndTopLeft[1], $invalid1)
+			$startPoint = $StartEndTopRight[0]
+			$endPoint = $StartEndTopRight[1]
+			Local $PixelTopRight1 = SortByDistance($PixelTopRight, $startPoint, $endPoint, $invalid1)
+			$startPoint = $StartEndTopRight[1]
+			$endPoint = $StartEndTopRight[0]
+			Local $PixelTopRight2 = SortByDistance($PixelTopRight, $startPoint, $endPoint, $invalid2)
+			$PixelTopRight = SortByDistance((($invalid1 >= $invalid2) ? ($PixelTopRight1) : ($PixelTopRight2)), $StartEndTopRight[0], $StartEndTopRight[1], $invalid1)
+			$startPoint = $StartEndBottomLeft[0]
+			$endPoint = $StartEndBottomLeft[1]
+			Local $PixelBottomLeft1 = SortByDistance($PixelBottomLeft, $startPoint, $endPoint, $invalid1)
+			$startPoint = $StartEndBottomLeft[1]
+			$endPoint = $StartEndBottomLeft[0]
+			Local $PixelBottomLeft2 = SortByDistance($PixelBottomLeft, $startPoint, $endPoint, $invalid2)
+			$PixelBottomLeft = SortByDistance((($invalid1 >= $invalid2) ? ($PixelBottomLeft1) : ($PixelBottomLeft2)), $StartEndBottomLeft[0], $StartEndBottomLeft[1], $invalid1)
+			$startPoint = $StartEndBottomRight[0]
+			$endPoint = $StartEndBottomRight[1]
+			Local $PixelBottomRight1 = SortByDistance($PixelBottomRight, $startPoint, $endPoint, $invalid1)
+			$startPoint = $StartEndBottomRight[1]
+			$endPoint = $StartEndBottomRight[0]
+			Local $PixelBottomRight2 = SortByDistance($PixelBottomRight, $startPoint, $endPoint, $invalid2)
+			$PixelBottomRight = SortByDistance((($invalid1 >= $invalid2) ? ($PixelBottomRight1) : ($PixelBottomRight2)), $StartEndBottomRight[0], $StartEndBottomRight[1], $invalid1)
+
+			Switch $iDroplineEdge[$iMatchMode]
+				Case $DROPLINE_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIXED ; default inner area edges
+					debugAttackCSV("$DROPLINE_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIXED")
+					; reset fix corners
+					Local $StartEndTopLeft = [$coordLeft, $coordTop]
+					Local $StartEndTopRight = [$coordTop, $coordRight]
+					Local $StartEndBottomLeft = [$coordLeft, $coordBottom]
+					Local $StartEndBottomRight = [$coordBottom, $coordRight]
+				EndSwitch
+
+				SetDebugLog("MakeDropLines, StartEndTopLeft     = " & PixelArrayToString($StartEndTopLeft, ","))
+				SetDebugLog("MakeDropLines, StartEndTopRight    = " & PixelArrayToString($StartEndTopRight, ","))
+				SetDebugLog("MakeDropLines, StartEndBottomLeft  = " & PixelArrayToString($StartEndBottomLeft, ","))
+				SetDebugLog("MakeDropLines, StartEndBottomRight = " & PixelArrayToString($StartEndBottomRight, ","))
+
+			Switch $iDroplineEdge[$iMatchMode]
+				Case $DROPLINE_EDGE_FIXED, $DROPLINE_EDGE_FIRST ; default drop line
+					debugAttackCSV("$DROPLINE_EDGE_FIXED, $DROPLINE_EDGE_FIRST")
+					$PixelTopLeftDropLine = MakeDropLineOriginal($PixelTopLeft, $StartEndTopLeft[0], $StartEndTopLeft[1])
+					$PixelTopRightDropLine = MakeDropLineOriginal($PixelTopRight, $StartEndTopRight[0], $StartEndTopRight[1])
+					$PixelBottomLeftDropLine = MakeDropLineOriginal($PixelBottomLeft, $StartEndBottomLeft[0], $StartEndBottomLeft[1])
+					$PixelBottomRightDropLine = MakeDropLineOriginal($PixelBottomRight, $StartEndBottomRight[0], $StartEndBottomRight[1])
+				Case $DROPLINE_FULL_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIRST ; full drop line
+					debugAttackCSV("$DROPLINE_FULL_EDGE_FIXED, $DROPLINE_FULL_EDGE_FIRST")
+					Local $iLineDistanceThreshold = 75
+					If $iRedlineRoutine[$iMatchMode] = $REDLINE_IMGLOC Then $iLineDistanceThreshold = 25
+					$PixelTopLeftDropLine = MakeDropLine($PixelTopLeft, $StartEndTopLeft[0], $StartEndTopLeft[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
+					$PixelTopRightDropLine = MakeDropLine($PixelTopRight, $StartEndTopRight[0], $StartEndTopRight[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
+					$PixelBottomLeftDropLine = MakeDropLine($PixelBottomLeft, $StartEndBottomLeft[0], $StartEndBottomLeft[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
+					$PixelBottomRightDropLine = MakeDropLine($PixelBottomRight, $StartEndBottomRight[0], $StartEndBottomRight[1], $iLineDistanceThreshold, $iDroplineEdge[$iMatchMode] = $DROPLINE_FULL_EDGE_FIXED)
+			EndSwitch
+		EndIf
+
 
 	;02.04 - MAKE DROP LINE SLICE ----------------------------------------------------------------------------------------------------------------------------
 	;-- TOP LEFT

@@ -13,12 +13,6 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Global Enum $ArmyTAB, $TrainTroopsTAB, $BrewSpellsTAB, $QuickTrainTAB
-Global $checkSpells = False
-Global $fullcastlespells = False
-Global $fullcastletroops = False
-Global $ErrorReadCamp = True
-
 Func TrainRevamp()
 	StartGainCost()
 
@@ -43,14 +37,14 @@ Func TrainRevamp()
 	EndIf
 
 	;Load Troop and Spell counts in "Cur"
-	CheckExistentArmy("Troops")
-	CheckExistentArmy("Spells")
+	;CheckExistentArmy("Troops")
+	;CheckExistentArmy("Spells")
 	CountNumberDarkSpells() ; needed value for spell donate
 
 	If $Runstate = False Then Return
 
 	If $ichkUseQTrain = 1 Then
-		QT_ClickTrain( True, 0 )
+		QT_ClickTrain( True, 0, 3 )
 		SetLog(" - Do nothing and hope Quick Train fills it")
 	Else
 		If ($IsFullArmywithHeroesAndSpells = True) Or ($CurCamp = 0 And $FirstStart) Then
@@ -109,7 +103,8 @@ Func CheckCamp($NeedOpenArmy = False, $CloseCheckCamp = False)
 	If $ReturnCamp = 1 Then
 		OpenTrainTabNumber($QuickTrainTAB)
 		If _Sleep(1000) Then Return
-		QT_ClickTrain( False, $Num )
+		TrainArmyNumber($Num)
+		If _Sleep(700) Then Return
 	EndIf
 	If $ReturnCamp = 0 Then
 		; The number of troops is not correct
@@ -146,6 +141,8 @@ EndFunc   ;==>TestMaxCamp
 Func TrainRevampOldStyle()
 	If $debugsetlogTrain = 1 Then Setlog(" - Initial Custom train Function")
 
+	Local $setlog = True
+
 	;If $bDonateTrain = -1 Then SetbDonateTrain()
 	If $bActiveDonate = -1 Then PrepareDonateCC()
 
@@ -160,8 +157,10 @@ Func TrainRevampOldStyle()
 
 	If ThSnipesSkiptrain() Then Return
 
+	If $IsFullArmywithHeroesAndSpells Then $setlog = False
+
 	If $Runstate = False Then Return
-	Local $rWhatToTrain = WhatToTrain(True) ; r in First means Result! Result of What To Train Function
+	Local $rWhatToTrain = WhatToTrain($setlog) ; r in First means Result! Result of What To Train Function
 	Local $rRemoveExtraTroops = RemoveExtraTroops($rWhatToTrain)
 
 	If $rRemoveExtraTroops = 1 Or $rRemoveExtraTroops = 2 Then
@@ -227,7 +226,7 @@ Func CheckArmySpellCastel()
 	SetLog(" - Army Window Opened!", $COLOR_ACTION1)
 	If _Sleep(250) Then Return
 	If $Runstate = False Then Return
-	checkArmyCamp(False, False)
+	checkArmyCamp(False, False) ; CheckExistentArmy (troops and spells )
 
 	If $debugsetlogTrain = 1 Then $debugOcr = 1
 	Local $sSpells = getArmyCampCap(99, 313) ; OCR read Spells trained and total
@@ -277,8 +276,8 @@ Func CheckArmySpellCastel()
 		Return
 	EndIf
 
-	Setlog(" - Army Camp: " & $CurCamp & "/" & $TotalCamp, $COLOR_GREEN) ; coc-ms
-	If $aGetSpellsSize[0] <> "" And $aGetSpellsSize[1] <> "" Then Setlog(" - Spells: " & $aGetSpellsSize[0] & "/" & $aGetSpellsSize[1], $COLOR_GREEN) ; coc-ms
+	;Setlog(" - Army Camp: " & $CurCamp & "/" & $TotalCamp, $COLOR_GREEN) ; coc-ms
+	;If $aGetSpellsSize[0] <> "" And $aGetSpellsSize[1] <> "" Then Setlog(" - Spells: " & $aGetSpellsSize[0] & "/" & $aGetSpellsSize[1], $COLOR_GREEN) ; coc-ms
 	If $aGetCastleSize[0] <> "" And $aGetCastleSize[1] <> "" Then Setlog(" - Clan Castle: " & $aGetCastleSize[0] & "/" & $aGetCastleSize[1], $COLOR_GREEN) ; coc-ms
 
 	; If Drop Trophy with Heroes is checked and a Hero is Available or under the trophies range, then set $bFullArmyHero to True
@@ -554,7 +553,6 @@ Func GetCurCCSpell()
 	Local $directory = "armytspells-bundle"
 	Local $res = SearchArmy($directory, 508, 518, 585, 570, "", True)
 	If ValidateSearchArmyResult($res) Then
-		IF $res[0][0] = "LSpell" Then $res[0][0] = "FSpell" ; ChackBR temp fix
 		Setlog(" - " & NameOfTroop(Eval("e" & $res[0][0])), $COLOR_GREEN)
 		Return $res[0][0]
 	EndIf
@@ -1012,12 +1010,12 @@ Func RemoveExtraTroops($toRemove)
 		$rGetSlotNumber = GetSlotNumber() ; Get all available Slot numbers with troops assigned on them
 		$rGetSlotNumberSpells = GetSlotNumber(True)
 
-		SetLog("Troops To Remove: ", $COLOR_GREEN)
 		$CounterToRemove = 0
 		; Loop through Troops needed to get removed Just to write some Logs
 		For $i = 0 To (UBound($toRemove) - 1)
 			If IsSpellToBrew($toRemove[$i][0]) Then ExitLoop
 			$CounterToRemove += 1
+			If $CounterToRemove = 1 then SetLog("Troops To Remove: ", $COLOR_GREEN)
 			SetLog("  " & NameOfTroop(Eval("e" & $toRemove[$i][0])) & ": " & $toRemove[$i][1] & "x", $COLOR_GREEN)
 		Next
 
@@ -1288,13 +1286,18 @@ Func WhatToTrain($ReturnExtraTroopsOnly = False, $showlog = True)
 	If ISArmyWindow(False, $ArmyTAB) = False Then OpenTrainTabNumber($ArmyTAB)
 	Local $ToReturn[1][2] = [["Arch", 0]]
 
+	; Get Current available troops
+	CheckExistentArmy("Troops", $showlog) ; Update the $Cur variables
+	CheckExistentArmy("Spells", $showlog) ; Update the $Cur variables
+
 	If $IsFullArmywithHeroesAndSpells And $ReturnExtraTroopsOnly = False Then
 		If $CommandStop = 3 Or $CommandStop = 0 Then
 			If $FirstStart Then $FirstStart = False
 			Return $ToReturn
 		EndIf
-		Setlog(" - Your Army is Full, let's make troops before Attack!")
-		; Elixir Troops
+		If $showlog then Setlog(" - Your Army is Full, let's make troops before Attack!")
+
+		; Troops
 		For $i = 0 To (UBound($TroopName) - 1)
 			If Number(Eval($TroopName[$i] & "Comp")) > 0 Then
 				$ToReturn[UBound($ToReturn) - 1][0] = $TroopName[$i]
@@ -1302,16 +1305,7 @@ Func WhatToTrain($ReturnExtraTroopsOnly = False, $showlog = True)
 				ReDim $ToReturn[UBound($ToReturn) + 1][2]
 			EndIf
 		Next
-		#CS		This Codes Not Needed With New 'True' Train Order and new Training System ;)
-			; Dark Troops
-			For $i = 0 To (UBound($TroopDarkName) - 1)
-			If Number(Eval($TroopDarkName[$i] & "Comp")) > 0 Then
-			$ToReturn[UBound($ToReturn) - 1][0] = $TroopDarkName[$i]
-			$ToReturn[UBound($ToReturn) - 1][1] = Number(Eval($TroopDarkName[$i] & "Comp"))
-			ReDim $ToReturn[UBound($ToReturn) + 1][2]
-			EndIf
-			Next
-		#CE
+
 		; Spells
 		For $i = 0 To (UBound($SpellName) - 1)
 			If $Runstate = False Then Return
@@ -1338,13 +1332,9 @@ Func WhatToTrain($ReturnExtraTroopsOnly = False, $showlog = True)
 		Return $ToReturn
 	EndIf
 
-	; Get Current available troops
-	CheckExistentArmy("Troops", $showlog)
-	CheckExistentArmy("Spells", $showlog)
-
 	Switch $ReturnExtraTroopsOnly
 		Case False
-			; Check Elixir Troops needed quantity to Train
+			; Check Troops needed quantity to Train
 			For $i = 0 To (UBound($TroopName) - 1)
 				If $Runstate = False Then Return
 				If Number(Eval($TroopName[$i] & "Comp")) > 0 Then
@@ -1353,18 +1343,6 @@ Func WhatToTrain($ReturnExtraTroopsOnly = False, $showlog = True)
 					ReDim $ToReturn[UBound($ToReturn) + 1][2]
 				EndIf
 			Next
-
-			#CS		This Codes Not Needed With New 'True' Train Order and new Training System ;)
-				; Check DARK Elixir Troops needed quantity to Train
-				For $i = 0 To (UBound($TroopDarkName) - 1)
-				If $Runstate = False Then Return
-				If Number(Eval($TroopDarkName[$i] & "Comp")) > 0 Then
-				$ToReturn[UBound($ToReturn) - 1][0] = $TroopDarkName[$i]
-				$ToReturn[UBound($ToReturn) - 1][1] = Number(Number(Eval($TroopDarkName[$i] & "Comp")) - Number(Eval("Cur" & $TroopDarkName[$i])))
-				ReDim $ToReturn[UBound($ToReturn) + 1][2]
-				EndIf
-				Next
-			#CE
 
 			; Check Spells needed quantity to Brew
 			For $i = 0 To (UBound($SpellName) - 1)
@@ -1377,7 +1355,7 @@ Func WhatToTrain($ReturnExtraTroopsOnly = False, $showlog = True)
 				EndIf
 			Next
 		Case Else
-			; Check Elixir Troops Extra Quantity
+			; Check Troops Extra Quantity
 			For $i = 0 To (UBound($TroopName) - 1)
 				If $Runstate = False Then Return
 				If Number(Eval("Cur" & $TroopName[$i])) > 0 Then
@@ -1388,20 +1366,6 @@ Func WhatToTrain($ReturnExtraTroopsOnly = False, $showlog = True)
 					EndIf
 				EndIf
 			Next
-
-			#CS		This Codes Not Needed With New 'True' Train Order and new Training System ;)
-				; Check DARK Elixir Troops Extra Quantity
-				For $i = 0 To (UBound($TroopDarkName) - 1)
-				If $Runstate = False Then Return
-				If Number(Eval("Cur" & $TroopDarkName[$i])) > 0 Then
-				If StringInStr(Number(Number(Eval($TroopDarkName[$i] & "Comp")) - Number(Eval("Cur" & $TroopDarkName[$i]))), "-") > 0 Then
-				$ToReturn[UBound($ToReturn) - 1][0] = $TroopDarkName[$i]
-				$ToReturn[UBound($ToReturn) - 1][1] = StringReplace(Number(Number(Eval($TroopDarkName[$i] & "Comp")) - Number(Eval("Cur" & $TroopDarkName[$i]))), "-", "")
-				ReDim $ToReturn[UBound($ToReturn) + 1][2]
-				EndIf
-				EndIf
-				Next
-			#CE
 
 			; Check Spells Extra Quantity
 			For $i = 0 To (UBound($SpellName) - 1)
@@ -1797,11 +1761,8 @@ Func SearchArmy($directory = "", $x = 0, $y = 0, $x1 = 0, $y1 = 0, $txt = "", $s
 	EndIf
 	If $txt = "Spells" Then
 		For $i = 0 To UBound($aResult) - 1
-			If $aResult[$i][0] = "LSpell" Then 
-				$aResult[$i][3] = 0
-			Else
-				$aResult[$i][3] = Number(getBarracksNewTroopQuantity(Slot($aResult[$i][1], "spells"), 341)) ; coc-newarmy
-			EndIf
+			$aResult[$i][3] = Number(getBarracksNewTroopQuantity(Slot($aResult[$i][1], "spells"), 341)) ; coc-newarmy
+			;Setlog("$aResult: " & $aResult[$i][0] & "|" & $aResult[$i][1] & "|" & $aResult[$i][2] & "|" & $aResult[$i][3])
 		Next
 	EndIf
 	If $txt = "Heroes" Then
@@ -2368,8 +2329,7 @@ Func ThSnipesSkiptrain()
 	EndIf
 EndFunc   ;==>ThSnipesSkiptrain
 
-
-Func QT_ClickTrain( $NeedOpenArmy = False, $Num = 0 )
+Func QT_ClickTrain( $NeedOpenArmy = False, $Num = 0, $nLoop = 3 )
 	Local $i
 	Setlog("Simple Quick Train")
 	If $Runstate = False Then Return
@@ -2384,7 +2344,7 @@ Func QT_ClickTrain( $NeedOpenArmy = False, $Num = 0 )
 		OpenTrainTabNumber($QuickTrainTAB)
 	EndIf
 	If _Sleep(1000) Then Return
-	For $i = 1 TO 3
+	For $i = 1 TO $nLoop
 		If $Num > 1 Then
 			If $Num > 2 Then
 				TrainArmyNumber( $Num - 2 )

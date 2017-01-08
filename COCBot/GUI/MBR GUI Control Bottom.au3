@@ -180,6 +180,12 @@ Func btnResume()
 	TogglePause()
 EndFunc   ;==>btnResume
 
+Func btnReport()
+
+	Run (@ScriptDir & "\Bug Reporter.exe","")
+
+EndFunc
+
 Func btnAttackNowDB()
 	If $RunState Then
 		$bBtnAttackNowPressed = True

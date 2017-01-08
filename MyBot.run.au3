@@ -1,4 +1,4 @@
-; #FUNCTION# ====================================================================================================================
+﻿; #FUNCTION# ====================================================================================================================
 ; Name ..........: MBR Bot
 ; Description ...: This file contens the Sequence that runs all MBR Bot
 ; Author ........:  (2014)
@@ -36,9 +36,9 @@ Global $iBotLaunchTime = 0
 Global $hBotLaunchTime = TimerInit()
 
 Global $sBotVersion
-Global $sBotTitle
 Global $sModversion
 Global $sModSupportUrl = "https://mybot.run/forums/index.php?/topic/24893-mybotrun-dococ-v322-oct-sc-update/" ;<== Our Website Link Or Link Download
+Global $sBotTitle
 
 ; "0001" ; MyBot v6.0.0
 ; "1001" ; MyBot v6.1.0
@@ -59,7 +59,8 @@ Global $sModSupportUrl = "https://mybot.run/forums/index.php?/topic/24893-mybotr
 ; "2601" ; MyBot v6.5.2
 ; "2602" ; MyBot v6.5.2 + SmartZap Fix
 ; "2603" ; MyBot v6.5.2 + SmartZap Fix
-$sModversion = "2604" ; MyBot v6.5.2 + QuickTrain Update
+; "2604" ; MyBot v6.5.2 + QuickTrain Update
+$sModversion = "2605" ; MyBot v6.5.2 + Doc Octopus v3.5.2
 $sBotVersion = "v6.5.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".Doc" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
