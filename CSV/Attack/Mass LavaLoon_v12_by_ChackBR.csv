@@ -47,12 +47,12 @@ DROP  |O          |1              |1          |CSpell     |0          |0        
 WAIT  |1500-4000  |               |           |           |           |           |           |            |
       |           |               |           |           |           |           |           |            |
       |DEFENSE____|OPTIONS________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|____________|
-DROPS |INFERNO    |R:T,B:T,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
+DROPS |INFERNO    |R:T,B:F,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
       |           |               |           |           |           |           |           |            |
 WAIT  |5000-8000  |               |           |           |           |           |           |            |
       |           |               |           |           |           |           |           |            |
       |DEFENSE____|OPTIONS________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|____________|
-DROPS |INFERNO    |R:T,B:F,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
+DROPS |INFERNO    |R:T,B:T,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
       |           |               |           |           |           |           |           |            |
 WAIT  |5000-8000  |               |           |           |           |           |           |            |
       |           |               |           |           |           |           |           |            |
@@ -72,8 +72,11 @@ DROP  |C          |1              |1          |queen      |30-50      |100      
       |DEFENSE____|OPTIONS________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|____________|
 DROPS |EAGLE      |R:T,B:F,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
       |           |               |           |           |           |           |           |            |
-WAIT  |1000-2000  |               |           |           |           |           |           |            |
+WAIT  |2000-4000  |               |           |           |           |           |           |            |
       |           |               |           |           |           |           |           |            |
 DROP  |C          |1              |10         |Arch       |10-30      |100        |100-200    |            |
 DROP  |A          |1              |10         |Remain     |0          |0          |100-500    |            |
       |           |               |           |           |           |           |           |            |
+WAIT  |6000-8000  |               |           |           |           |           |           |            |
+      |           |               |           |           |           |           |           |            |
+DROP  |A          |1              |1          |king       |30-50      |0          |50-100     |            |
