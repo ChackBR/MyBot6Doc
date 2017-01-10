@@ -156,7 +156,7 @@ Func TrainRevampOldStyle()
 
 	If ThSnipesSkiptrain() Then Return
 
-	If $IsFullArmywithHeroesAndSpells Then $setlog = False
+	; If $IsFullArmywithHeroesAndSpells Then $setlog = False
 
 	If $Runstate = False Then Return
 	Local $rWhatToTrain = WhatToTrain($setlog) ; r in First means Result! Result of What To Train Function
@@ -1858,7 +1858,7 @@ Func TrainArmyNumber($Num)
 			SetLog("Making the Army " & $Num + 1, $COLOR_INFO)
 			If _Sleep(1000) Then Return
 		Else
-			Setlog(" - All ok: No Clic On Army: " & $Num + 1 & "| Pixel was :" & _GetPixelColor($a_TrainArmy[$Num][0], $a_TrainArmy[$Num][1], True), $COLOR_ORANGE)
+			Setlog(" - No Click needed at Army: " & $Num + 1 & "| Pixel was :" & _GetPixelColor($a_TrainArmy[$Num][0], $a_TrainArmy[$Num][1], True), $COLOR_ORANGE)
 			;BotStop()
 		EndIf
 	Else
