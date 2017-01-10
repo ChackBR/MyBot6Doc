@@ -17,12 +17,12 @@ MAKE  |A          |FRONT-LEFT     |10         |1          |INT-EXT    |0        
 MAKE  |B          |FRONT-RIGHT    |10         |1          |INT-EXT    |0          |2          |            |
 MAKE  |C          |FRONT-LEFT     |10         |2          |EXT-INT    |0          |2          |            |
 MAKE  |D          |FRONT-RIGHT    |10         |2          |EXT-INT    |0          |2          |            |
-MAKE  |I          |FRONT-LEFT     |10         |-6         |INT-EXT    |0          |0          |            |
-MAKE  |J          |FRONT-RIGHT    |10         |-6         |INT-EXT    |0          |0          |            |
-MAKE  |M          |FRONT-LEFT     |10         |-13        |INT-EXT    |0          |0          |            |
-MAKE  |N          |FRONT-Right    |10         |-13        |INT-EXT    |0          |0          |            |
-MAKE  |O          |FRONT-Right    |10         |-17        |INT-EXT    |0          |0          |            |
-MAKE  |P          |FRONT-Right    |10         |-17        |INT-EXT    |0          |0          |            |
+MAKE  |I          |FRONT-LEFT     |10         |-8         |INT-EXT    |0          |0          |            |
+MAKE  |J          |FRONT-RIGHT    |10         |-8         |INT-EXT    |0          |0          |            |
+MAKE  |M          |FRONT-LEFT     |10         |-16        |INT-EXT    |0          |0          |            |
+MAKE  |N          |FRONT-Right    |10         |-16        |INT-EXT    |0          |0          |            |
+MAKE  |O          |FRONT-Right    |10         |-18        |INT-EXT    |0          |0          |            |
+MAKE  |P          |FRONT-Right    |10         |-18        |INT-EXT    |0          |0          |            |
       |           |               |           |           |           |           |           |            |
       |VECTOR_____|INDEX__________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|            |
 DROP  |A-B        |4              |1          |Lava       |20-30      |20         |300-800    |            |
