@@ -38,4 +38,3 @@
 
 	; DEB
 	$iChkDontRemove = IniRead($config, "troop", "DontRemove", "0")
-
