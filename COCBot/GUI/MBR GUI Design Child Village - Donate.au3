@@ -157,48 +157,48 @@ $sTxtDonateTipAll = GetTranslated(612,82, "to ALL Chat Requests.")
 $x = 25
 $y = 45
 Local $Offx = 38
-$grpTroopselection = GUICtrlCreateGroup(GetTranslated(612,22, "Donate Troops Selection Menu"), $x - 20, $y - 20, 430, 145)
+$grpTroopselection = GUICtrlCreateGroup(GetTranslated(612,22, "Donate Troops Selection Menu"), $x - 20, $y - 20, 430, 185)
 $x = 7
 	$lblBtnBarbarians = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnBarbarians = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonBarbarian, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnBarbarian, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateBarbarians")
 $x += $Offx
 	$lblBtnArchers = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnArchers = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonArcher, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnArcher, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateArchers")
 $x += $Offx
 	$lblBtnGiants = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnGiants = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonGiant, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnGiant, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateGiants")
 $x += $Offx
 	$lblBtnGoblins = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnGoblins = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonGoblin, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnGoblin, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateGoblins")
 $x += $Offx
 	$lblBtnWallBreakers = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnWallBreakers = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonWallBreaker, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnWallBreaker, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateWallBreakers")
 $x += $Offx
 	$lblBtnBalloons = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnBalloons = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonBalloon, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnBalloon, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateBalloons")
 
 $x += $Offx
@@ -207,35 +207,35 @@ $x += 4
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnMinions = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonMinion, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnMinion, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateMinions")
 $x += $Offx
 	$lblBtnHogRiders = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnHogRiders = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonHogRider, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnHogRider, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateHogRiders")
 $x += $Offx
 	$lblBtnValkyries = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnValkyries = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonValkyrie, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnValkyrie, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateValkyries")
 $x += $Offx
 	$lblBtnGolems = GUICtrlCreateLabel("", $x, $y - 2, 40, 40)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnGolems = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonGolem, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnGolem, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateGolems")
 $x += $Offx
 	$lblBtnWitches = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnWitches = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonWitch, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnWitch, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateWitches")
 
 
@@ -245,42 +245,42 @@ $y += 40
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnWizards = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonWizard, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnWizard, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateWizards")
 $x += $Offx
 	$lblBtnHealers = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnHealers = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonHealer, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnHealer, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateHealers")
 $x += $Offx
 	$lblBtnDragons = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnDragons = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage(-1, $pIconLib, $eIcnDonDragon, 1)
+		GUICtrlSetImage(-1, $pIconLib, $eIcnDragon, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateDragons")
 $x += $Offx
 	$lblBtnPekkas = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnPekkas = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonPekka, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnPekka, 1)
 		GUICtrlSetOnEvent(-1, "btnDonatePekkas")
 $x += $Offx
 	$lblBtnBabyDragons= GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnBabyDreagons = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonBabyDragon, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnBabyDragon, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateBabyDragons")
 $x += $Offx
 	$lblBtnMiners= GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnMiners= GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonMiner, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnMiner, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateMiners")
 
 $x += $Offx
@@ -289,14 +289,14 @@ $x += 4
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnLavaHounds = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonLavaHound, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnLavaHound, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateLavaHounds")
 $x += $Offx
 	$lblBtnBowlers = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$btnBowlers = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonBowler, 1)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnBowler, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateBowlers")
 
 $x += $Offx
@@ -306,7 +306,7 @@ $x += $Offx
 	$btnTBD1 = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 ;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
-;		GUICtrlSetOnEvent(-1, "btnDonateNameOfTroop")
+;		GUICtrlSetOnEvent(-1, "btnateNameOfTroop")
 $x += $Offx
 	$lblBtnTBD2 = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
@@ -326,63 +326,51 @@ $x += $Offx
 
 $x = 7
 $y += 40
-	$btnBlacklist = GUICtrlCreateButton("", $x + 4, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonBlacklist, 1)
-		GUICtrlSetOnEvent(-1, "btnDonateBlacklist")
-$x += $Offx
-; Button Not Active - future expansion?
-	$lblBtnCustomC = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+	$lblBtnLightningSpells = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$btnCustomC = GUICtrlCreateButton("", $x + 4, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetState(-1, $GUI_DISABLE)
-;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
-;		GUICtrlSetOnEvent(-1, "btnDonateCustomC")
+	$btnLightningSpells = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnLightSpell, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateLightningSpells")
 $x += $Offx
-	;;; Custom Combination Donate by ChiefM3, edit my MonkeyHunter
-	$lblBtnCustomA = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+	$lblBtnHealSpells = GUICtrlCreateLabel("", $x , $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$btnCustomA = GUICtrlCreateButton("", $x + 4, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonCustom, 1)
-		GUICtrlSetOnEvent(-1, "btnDonateCustomA")
+	$btnHealSpells = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnHealSpell, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateHealSpells")
 $x += $Offx
-	;;; Custom Combination Donate #2 added by MonkeyHunter
-	$lblBtnCustomB = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+	$lblBtnRageSpells = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$btnCustomB = GUICtrlCreateButton("", $x + 4, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetImage (-1, $pIconLib, $eIcnDonCustomB, 1)
-		GUICtrlSetOnEvent(-1, "btnDonateCustomB")
+	$btnRageSpell = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnRageSpell, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateRageSpells")
 $x += $Offx
-; Button Not Active - future expansion?
-	$lblBtnCustomD = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+	$lblBtnJumpSpells = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$btnCustomD = GUICtrlCreateButton("", $x + 4, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+	$btnJumpSpells = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnJumpSpell, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateJumpSpells")
+$x += $Offx
+	$lblBtnFreezeSpells = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
-;		GUICtrlSetOnEvent(-1, "btnDonateCustomD")
+	$btnFreezeSpells = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnFreezeSpell, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateFreezeSpells")
 $x += $Offx
 ; Button Not Active - future expansion?
 	$lblBtnCustomE = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$btnCustomE = GUICtrlCreateButton("", $x + 4, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+	$btnCustomE = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 ;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
 ;		GUICtrlSetOnEvent(-1, "btnDonateCustomE")
 
 $x += 4
-$x += $Offx
-; Button Not Active - future expansion?
-	$lblBtnSpellTBD1 = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
-		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
-		GUICtrlSetState(-1, $GUI_DISABLE)
-	$btnSpellTBD1 = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
-		GUICtrlSetState(-1, $GUI_DISABLE)
-;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
-;		GUICtrlSetOnEvent(-1, "btnDonateNameOfSpell")
 $x += $Offx
 	$lblBtnPoisonSpells = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
@@ -411,15 +399,120 @@ $x += $Offx
 	$btnSkeletonSpells = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
 		GUICtrlSetImage (-1, $pIconLib, $eIcnSkeletonSpell, 1)
 		GUICtrlSetOnEvent(-1, "btnDonateSkeletonSpells")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnSpellTBD1 = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnSpellTBD1 = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
+;		GUICtrlSetOnEvent(-1, "btnDonateNameOfSpell")
 
+$x = 7
+$y += 40
+	$lblBtnCostumI = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCostumI = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+		;GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 1)
+		;GUICtrlSetOnEvent(-1, "btnDonateCostumI")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnCustomC = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCustomC = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
+;		GUICtrlSetOnEvent(-1, "btnDonateCustomC")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnCostumG = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCostumG = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	;	GUICtrlSetImage(-1, $pIconLib, $eIcnTroops, 1)
+	;	GUICtrlSetOnEvent(-1, "btnDonateCostumG")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnCostumH = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCostumH = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+		;GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 1)
+		;GUICtrlSetOnEvent(-1, "btnDonateCostumH")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnCustomD = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCustomD = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
+;		GUICtrlSetOnEvent(-1, "btnDonateCustomD")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnCustomE = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCustomE = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
+;		GUICtrlSetOnEvent(-1, "btnDonateCustomE")
+
+$x += 4
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnSpellTBD1 = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnSpellTBD1 = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+;		GUICtrlSetImage (-1, $pIconLib, $eIcnTroops, 0)
+;		GUICtrlSetOnEvent(-1, "btnDonateNameOfSpell")
+$x += $Offx
+	;;; Custom Combination Donate by ChiefM3, edit my MonkeyHunter
+	$lblBtnCustomA = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCustomA = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnDonCustom, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateCustomA")
+$x += $Offx
+    ;;; Custom Combination Donate #2 by MonkeyHunter
+	$lblBtnCustomB = GUICtrlCreateLabel("", $x + 2, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnCustomB = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnDonCustomB, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateCustomB")
+$x += $Offx
+; Button Not Active - future expansion?
+	$lblBtnCostumF = GUICtrlCreateLabel("", $x, $y - 2, $Offx + 2, $Offx + 2)
+		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	$btnPCostumF = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+	;	GUICtrlSetImage(-1, $pIconLib, $eIcnTroops, 1)
+	;	GUICtrlSetOnEvent(-1, "btnDonateCostumF")
+$x += $Offx
+	$btnBlacklist = GUICtrlCreateButton("", $x + 2, $y, $Offx - 2, $Offx - 2, $BS_ICON)
+		GUICtrlSetImage (-1, $pIconLib, $eIcnDonBlacklist, 1)
+		GUICtrlSetOnEvent(-1, "btnDonateBlacklist")
+
+	Local $yDon = 231
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$chkExtraAlphabets = GUICtrlCreateCheckbox(GetTranslated(612,25, "Enable Cyrillic Alphabet"), $x - 15 , $y +149, -1, -1)
-	_GUICtrlSetTip(-1, GetTranslated(612,26, "Check this to enable the Cyrillic Alphabet Recognition."))
+		_GUICtrlSetTip(-1, GetTranslated(612,26, "Check this to enable the Cyrillic Alphabet Recognition."))
 	$chkExtraChinese = GUICtrlCreateCheckbox(GetTranslated(612,103, "Enable Chinese Alphabet"), $x + 125, $y + 149, -1, -1)
-	_GUICtrlSetTip(-1, GetTranslated(612,104, "Check this to enable the Chinese Alphabet Recognition."))
+		_GUICtrlSetTip(-1, GetTranslated(612,104, "Check this to enable the Chinese Alphabet Recognition."))
 	$chkExtraPersian = GUICtrlCreateCheckbox(GetTranslated(612,105, "Enable Persian Alphabet"), $x + 270, $y + 149, -1, -1)
-	_GUICtrlSetTip(-1, GetTranslated(612,106, "Check this to enable the Persian Alphabet Recognition."))
+		_GUICtrlSetTip(-1, GetTranslated(612,106, "Check this to enable the Persian Alphabet Recognition."))
 	$grpBarbarians = GUICtrlCreateGroup($sTxtBarbarians, $x - 20, $y - 20, 430, 169)
 		$x -= 10
 		$y -= 4
@@ -443,7 +536,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpArchers = GUICtrlCreateGroup($sTxtArchers, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -475,7 +568,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpGiants = GUICtrlCreateGroup($sTxtGiants, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -507,7 +600,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpGoblins = GUICtrlCreateGroup($sTxtGoblins, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -539,7 +632,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpWallBreakers = GUICtrlCreateGroup($sTxtWallBreakers, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -571,7 +664,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpBalloons = GUICtrlCreateGroup($sTxtBalloons, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -603,7 +696,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpWizards = GUICtrlCreateGroup($sTxtWizards, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -635,7 +728,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpHealers = GUICtrlCreateGroup($sTxtHealers, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -667,7 +760,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpDragons = GUICtrlCreateGroup($sTxtDragons, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -699,7 +792,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpPekkas = GUICtrlCreateGroup($sTxtPekkas, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -731,7 +824,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpBabyDragons = GUICtrlCreateGroup($sTxtBabyDragons, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -763,7 +856,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpMiners = GUICtrlCreateGroup($sTxtMiners, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -795,7 +888,167 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
+	$grpLightningSpells = GUICtrlCreateGroup($sTxtLightningSpells, $x - 20, $y - 20, 430, 169)
+	$x -= 10
+	$y -= 4
+		GUICtrlSetState(-1, $GUI_HIDE)
+		$picDonateLightningSpells = GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 215, $y, 64, 64, $BS_ICON)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$chkDonateLightningSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtLightningSpells, $x + 285, $y + 10, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtLightningSpells & " " & $sTxtDonateTipTroop)
+			GUICtrlSetOnEvent(-1, "chkDonateLightningSpells")
+		$chkDonateAllLightningSpells = GUICtrlCreateCheckbox($sTxtDonateAll, $x + 285, $y + 30, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtLightningSpells & " " & $sTxtDonateTipAll & @CRLF & $sTxtIgnoreAll)
+			GUICtrlSetOnEvent(-1, "chkDonateAllLightningSpells")
+		$lblDonateLightningSpells = GUICtrlCreateLabel($sTxtKeywords & " " & $sTxtLightningSpells & ":" , $x - 5, $y + 5, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtDonateLightningSpells = GUICtrlCreateEdit("", $x - 5, $y + 20, 205, 125, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,105, "lightning")))
+			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sTxtLightningSpells)
+		$lblBlacklistLightningSpells = GUICtrlCreateLabel($sTxtKeywordsNo & ":", $x + 215, $y + 70, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtBlacklistLightningSpells = GUICtrlCreateEdit("", $x + 215, $y + 85, 200, 60, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetBkColor ( -1, 0x505050)
+			GUICtrlSetColor ( -1, $COLOR_WHITE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,106, "no lightning\r\nlightning no")))
+			_GUICtrlSetTip(-1, $sTxtKeywordsNoTip & " " & $sTxtLightningSpells)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	$x = 25
+	$y = $yDon
+	$grpHealSpells = GUICtrlCreateGroup($sTxtHealSpells, $x - 20, $y - 20, 430, 169)
+	$x -= 10
+	$y -= 4
+		GUICtrlSetState(-1, $GUI_HIDE)
+		$picDonateHealSpells = GUICtrlCreateIcon($pIconLib, $eIcnHealSpell, $x + 215, $y, 64, 64, $BS_ICON)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$chkDonateHealSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtHealSpells, $x + 285, $y + 10, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtHealSpells & " " & $sTxtDonateTipTroop)
+			GUICtrlSetOnEvent(-1, "chkDonateHealSpells")
+		$chkDonateAllHealSpells = GUICtrlCreateCheckbox($sTxtDonateAll, $x + 285, $y + 30, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtHealSpells & " " & $sTxtDonateTipAll & @CRLF & $sTxtIgnoreAll)
+			GUICtrlSetOnEvent(-1, "chkDonateAllHealSpells")
+		$lblDonateHealSpells = 	GUICtrlCreateLabel($sTxtKeywords & " " & $sTxtHealSpells & ":" , $x - 5, $y + 5, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtDonateHealSpells = GUICtrlCreateEdit("", $x - 5, $y + 20, 205, 125, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,107, "heal")))
+			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sTxtHealSpells)
+		$lblBlacklistHealSpells = GUICtrlCreateLabel($sTxtKeywordsNo & ":", $x + 215, $y + 70, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtBlacklistHealSpells = GUICtrlCreateEdit("", $x + 215, $y + 85, 200, 60, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetBkColor ( -1, 0x505050)
+			GUICtrlSetColor ( -1, $COLOR_WHITE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,108, "no heal\r\nheal no")))
+			_GUICtrlSetTip(-1, $sTxtKeywordsNoTip & " " & $sTxtHealSpells)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	$x = 25
+	$y = $yDon
+	$grpRageSpells = GUICtrlCreateGroup($sTxtRageSpells, $x - 20, $y - 20, 430, 169)
+	$x -= 10
+	$y -= 4
+		GUICtrlSetState(-1, $GUI_HIDE)
+		$picDonateRageSpells = GUICtrlCreateIcon($pIconLib, $eIcnRageSpell, $x + 215, $y, 64, 64, $BS_ICON)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$chkDonateRageSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtRageSpells, $x + 285, $y + 10, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtRageSpells & " " & $sTxtDonateTipTroop)
+			GUICtrlSetOnEvent(-1, "chkDonateRageSpells")
+		$chkDonateAllRageSpells = GUICtrlCreateCheckbox($sTxtDonateAll, $x + 285, $y + 30, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtRageSpells & " " & $sTxtDonateTipAll & @CRLF & $sTxtIgnoreAll)
+			GUICtrlSetOnEvent(-1, "chkDonateAllRageSpells")
+		$lblDonateRageSpells = 	GUICtrlCreateLabel($sTxtKeywords & " " & $sTxtRageSpells & ":" , $x - 5, $y + 5, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtDonateRageSpells = GUICtrlCreateEdit("", $x - 5, $y + 20, 205, 125, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,109, "rage")))
+			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sTxtRageSpells)
+		$lblBlacklistRageSpells = GUICtrlCreateLabel($sTxtKeywordsNo & ":", $x + 215, $y + 70, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtBlacklistRageSpells = GUICtrlCreateEdit("", $x + 215, $y + 85, 200, 60, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetBkColor ( -1, 0x505050)
+			GUICtrlSetColor ( -1, $COLOR_WHITE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,110, "no rage\r\nrage no")))
+			_GUICtrlSetTip(-1, $sTxtKeywordsNoTip & " " & $sTxtRageSpells)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	$x = 25
+	$y = $yDon
+	$grpJumpSpells = GUICtrlCreateGroup($sTxtJumpSpells, $x - 20, $y - 20, 430, 169)
+	$x -= 10
+	$y -= 4
+		GUICtrlSetState(-1, $GUI_HIDE)
+		$picDonateJumpSpells = GUICtrlCreateIcon($pIconLib, $eIcnJumpSpell, $x + 215, $y, 64, 64, $BS_ICON)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$chkDonateJumpSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtJumpSpells, $x + 285, $y + 10, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtJumpSpells & " " & $sTxtDonateTipTroop)
+			GUICtrlSetOnEvent(-1, "chkDonateJumpSpells")
+		$chkDonateAllJumpSpells = GUICtrlCreateCheckbox($sTxtDonateAll, $x + 285, $y + 30, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtJumpSpells & " " & $sTxtDonateTipAll & @CRLF & $sTxtIgnoreAll)
+			GUICtrlSetOnEvent(-1, "chkDonateAllJumpSpells")
+		$lblDonateJumpSpells = 	GUICtrlCreateLabel($sTxtKeywords & " " & $sTxtJumpSpells & ":" , $x - 5, $y + 5, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtDonateJumpSpells = GUICtrlCreateEdit("", $x - 5, $y + 20, 205, 125, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,111, "jump")))
+			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sTxtJumpSpells)
+		$lblBlacklistJumpSpells = GUICtrlCreateLabel($sTxtKeywordsNo & ":", $x + 215, $y + 70, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtBlacklistJumpSpells = GUICtrlCreateEdit("", $x + 215, $y + 85, 200, 60, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetBkColor ( -1, 0x505050)
+			GUICtrlSetColor ( -1, $COLOR_WHITE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,112, "no jump\r\njump no")))
+			_GUICtrlSetTip(-1, $sTxtKeywordsNoTip & " " & $sTxtJumpSpells)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+		$x = 25
+	$y = $yDon
+	$grpFreezeSpells = GUICtrlCreateGroup($sTxtFreezeSpells, $x - 20, $y - 20, 430, 169)
+	$x -= 10
+	$y -= 4
+		GUICtrlSetState(-1, $GUI_HIDE)
+		$picDonateFreezeSpells = GUICtrlCreateIcon($pIconLib, $eIcnFreezeSpell, $x + 215, $y, 64, 64, $BS_ICON)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$chkDonateFreezeSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtFreezeSpells, $x + 285, $y + 10, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtFreezeSpells & " " & $sTxtDonateTipTroop)
+			GUICtrlSetOnEvent(-1, "chkDonateFreezeSpells")
+		$chkDonateAllFreezeSpells = GUICtrlCreateCheckbox($sTxtDonateAll, $x + 285, $y + 30, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			_GUICtrlSetTip(-1, $sTxtDonateTip & " " & $sTxtFreezeSpells & " " & $sTxtDonateTipAll & @CRLF & $sTxtIgnoreAll)
+			GUICtrlSetOnEvent(-1, "chkDonateAllFreezeSpells")
+		$lblDonateFreezeSpells = 	GUICtrlCreateLabel($sTxtKeywords & " " & $sTxtFreezeSpells & ":" , $x - 5, $y + 5, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtDonateFreezeSpells = GUICtrlCreateEdit("", $x - 5, $y + 20, 205, 125, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,113, "freeze")))
+			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sTxtFreezeSpells)
+		$lblBlacklistFreezeSpells = GUICtrlCreateLabel($sTxtKeywordsNo & ":", $x + 215, $y + 70, -1, -1)
+			GUICtrlSetState(-1, $GUI_HIDE)
+		$txtBlacklistFreezeSpells = GUICtrlCreateEdit("", $x + 215, $y + 85, 200, 60, BitOR($ES_WANTRETURN, $ES_CENTER, $ES_AUTOVSCROLL))
+			GUICtrlSetState(-1, $GUI_HIDE)
+			GUICtrlSetBkColor ( -1, 0x505050)
+			GUICtrlSetColor ( -1, $COLOR_WHITE)
+			GUICtrlSetData(-1, StringFormat(GetTranslated(612,114, "no freeze\r\nfreeze no")))
+			_GUICtrlSetTip(-1, $sTxtKeywordsNoTip & " " & $sTxtFreezeSpells)
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	$x = 25
+	$y = $yDon
 	$grpMinions = GUICtrlCreateGroup($sTxtMinions, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -827,7 +1080,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpHogRiders = GUICtrlCreateGroup($sTxtHogRiders, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -859,7 +1112,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpValkyries = GUICtrlCreateGroup($sTxtValkyries, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -891,7 +1144,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpGolems = GUICtrlCreateGroup($sTxtGolems, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -923,7 +1176,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpWitches = GUICtrlCreateGroup($sTxtWitches, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -955,7 +1208,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpLavaHounds = GUICtrlCreateGroup($sTxtLavaHounds, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -987,7 +1240,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpBowlers = GUICtrlCreateGroup($sTxtBowlers, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
@@ -1019,12 +1272,12 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpPoisonSpells = GUICtrlCreateGroup($sTxtPoisonSpells, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
 		GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonatePoisonSpells = GUICtrlCreateIcon($pIconLib, $eIcnPoisonSpell, $x + 215, $y, 64, 64, $BS_ICON)
+		$picDonatePoisonSpells = GUICtrlCreateIcon($pIconLib, $eIcnDonPoisonSpell, $x + 215, $y, 64, 64, $BS_ICON)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$chkDonatePoisonSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtPoisonSpells, $x + 285, $y + 10, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
@@ -1051,12 +1304,12 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpEarthQuakeSpells = GUICtrlCreateGroup($sTxtEarthQuakeSpells, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
 		GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateEarthQuakeSpells = GUICtrlCreateIcon($pIconLib, $eIcnEarthQuakeSpell, $x + 215, $y, 64, 64, $BS_ICON)
+		$picDonateEarthQuakeSpells = GUICtrlCreateIcon($pIconLib, $eIcnDonEarthQuakeSpell, $x + 215, $y, 64, 64, $BS_ICON)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$chkDonateEarthQuakeSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtEarthQuakeSpells, $x + 285, $y + 10, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
@@ -1083,12 +1336,12 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpHasteSpells = GUICtrlCreateGroup($sTxtHasteSpells, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
 		GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateHasteSpells = GUICtrlCreateIcon($pIconLib, $eIcnHasteSpell, $x + 215, $y, 64, 64, $BS_ICON)
+		$picDonateHasteSpells = GUICtrlCreateIcon($pIconLib, $eIcnDonHasteSpell, $x + 215, $y, 64, 64, $BS_ICON)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$chkDonateHasteSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtHasteSpells, $x + 285, $y + 10, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
@@ -1115,12 +1368,12 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpSkeletonSpells = GUICtrlCreateGroup($sTxtSkeletonSpells, $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4
 		GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateSkeletonSpells = GUICtrlCreateIcon($pIconLib, $eIcnSkeletonSpell, $x + 215, $y, 64, 64, $BS_ICON)
+		$picDonateSkeletonSpells = GUICtrlCreateIcon($pIconLib, $eIcnDonSkeletonSpell, $x + 215, $y, 64, 64, $BS_ICON)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$chkDonateSkeletonSpells = GUICtrlCreateCheckbox($sTxtDonate & " " & $sTxtSkeletonSpells, $x + 285, $y + 10, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
@@ -1147,7 +1400,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 ;;; Custom Combination Donate by ChiefM3, edit by Hervidero
 	$grpCustomA = GUICtrlCreateGroup($sDonateTxtCustomA, $x - 20, $y - 20, 430, 169)
 	$x -= 10
@@ -1171,7 +1424,7 @@ $x += $Offx
 			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sDonateTxtCustomA)
 		$lblDonateCustomA1 = GUICtrlCreateLabel(GetTranslated(612,72, "1st") & ":", $x, $y + 4, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateCustomA1 = GUICtrlCreateIcon($pIconLib, $eIcnDonWizard, $x + 25, $y, 24, 24)
+		$picDonateCustomA1 = GUICtrlCreateIcon($pIconLib, $eIcnWizard, $x + 25, $y, 24, 24)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$cmbDonateCustomA1 = GUICtrlCreateCombo("", $x + 60, $y, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers & "|" & $sTxtDragons & "|" & $sTxtPekkas & "|" & $sTxtBabyDragons & "|" & $sTxtMiners & "|" & $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|" & $sTxtBowlers & "|" & $sTxtNothing, $sTxtWizards)
@@ -1183,7 +1436,7 @@ $x += $Offx
 
 		$lblDonateCustomA2 = GUICtrlCreateLabel(GetTranslated(612,73, "2nd") & ":", $x, $y + 29, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateCustomA2 = GUICtrlCreateIcon($pIconLib, $eIcnDonArcher, $x + 25, $y + 25, 24, 24)
+		$picDonateCustomA2 = GUICtrlCreateIcon($pIconLib, $eIcnArcher, $x + 25, $y + 25, 24, 24)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$cmbDonateCustomA2 = GUICtrlCreateCombo("", $x + 60, $y + 25, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers & "|" & $sTxtDragons & "|" & $sTxtPekkas & "|" & $sTxtBabyDragons & "|" & $sTxtMiners & "|" & $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|" & $sTxtBowlers & "|" & $sTxtNothing, $sTxtArchers)
@@ -1195,7 +1448,7 @@ $x += $Offx
 
 		$lblDonateCustomA3 = GUICtrlCreateLabel(GetTranslated(612,74, "3rd") & ":", $x, $y + 54, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateCustomA3 = GUICtrlCreateIcon($pIconLib, $eIcnDonBarbarian, $x + 25, $y + 50, 24, 24)
+		$picDonateCustomA3 = GUICtrlCreateIcon($pIconLib, $eIcnBarbarian, $x + 25, $y + 50, 24, 24)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$cmbDonateCustomA3 = GUICtrlCreateCombo("", $x + 60, $y + 50, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers & "|" & $sTxtDragons & "|" & $sTxtPekkas & "|" & $sTxtBabyDragons & "|" & $sTxtMiners & "|" & $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|" & $sTxtBowlers & "|" & $sTxtNothing, $sTxtBarbarians)
@@ -1216,7 +1469,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 ;;; Custom Combination Donate added by MonkeyHunter
 	$grpCustomB = GUICtrlCreateGroup($sDonateTxtCustomB, $x - 20, $y - 20, 430, 169)
 	$x -= 10
@@ -1240,7 +1493,7 @@ $x += $Offx
 			_GUICtrlSetTip(-1, $sTxtKeywords & " " & $sDonateTxtCustomB)
 		$lblDonateCustomB1 = GUICtrlCreateLabel(GetTranslated(612,72, "1st") & ":", $x, $y + 4, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateCustomB1 = GUICtrlCreateIcon($pIconLib, $eIcnDonBabyDragon, $x + 25, $y, 24, 24)
+		$picDonateCustomB1 = GUICtrlCreateIcon($pIconLib, $eIcnBabyDragon, $x + 25, $y, 24, 24)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$cmbDonateCustomB1 = GUICtrlCreateCombo("", $x + 60, $y, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers & "|" & $sTxtDragons & "|" & $sTxtPekkas & "|" & $sTxtBabyDragons & "|" & $sTxtMiners & "|" & $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|" & $sTxtBowlers & "|" & $sTxtNothing, $sTxtBabyDragons)
@@ -1252,7 +1505,7 @@ $x += $Offx
 
 		$lblDonateCustomB2 = GUICtrlCreateLabel(GetTranslated(612,73, "2nd") & ":", $x, $y + 29, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateCustomB2 = GUICtrlCreateIcon($pIconLib, $eIcnDonBalloon, $x + 25, $y + 25, 24, 24)
+		$picDonateCustomB2 = GUICtrlCreateIcon($pIconLib, $eIcnBalloon, $x + 25, $y + 25, 24, 24)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$cmbDonateCustomB2 = GUICtrlCreateCombo("", $x + 60, $y + 25, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers & "|" & $sTxtDragons & "|" & $sTxtPekkas & "|" & $sTxtBabyDragons & "|" & $sTxtMiners & "|" & $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|" & $sTxtBowlers & "|" & $sTxtNothing, $sTxtBalloons)
@@ -1264,7 +1517,7 @@ $x += $Offx
 
 		$lblDonateCustomB3 = GUICtrlCreateLabel(GetTranslated(612,74, "3rd") & ":", $x, $y + 54, -1, -1)
 			GUICtrlSetState(-1, $GUI_HIDE)
-		$picDonateCustomB3 = GUICtrlCreateIcon($pIconLib, $eIcnDonMinion, $x + 25, $y + 50, 24, 24)
+		$picDonateCustomB3 = GUICtrlCreateIcon($pIconLib, $eIcnMinion, $x + 25, $y + 50, 24, 24)
 			GUICtrlSetState(-1, $GUI_HIDE)
 		$cmbDonateCustomB3 = GUICtrlCreateCombo("", $x + 60, $y + 50, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers & "|" & $sTxtDragons & "|" & $sTxtPekkas & "|" & $sTxtBabyDragons & "|" & $sTxtMiners & "|" & $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|" & $sTxtBowlers & "|" & $sTxtNothing, $sTxtMinions)
@@ -1285,7 +1538,7 @@ $x += $Offx
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 191
+	$y = $yDon
 	$grpBlacklist = GUICtrlCreateGroup(GetTranslated(612,78, "General Blacklist"), $x - 20, $y - 20, 430, 169)
 	$x -= 10
 	$y -= 4

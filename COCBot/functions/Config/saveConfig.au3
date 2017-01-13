@@ -101,6 +101,41 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	$sTxtDonateMiners = GUICtrlRead($txtDonateMiners)
 	$sTxtBlacklistMiners = GUICtrlRead($txtBlacklistMiners)
+	If GUICtrlRead($chkDonateLightningSpells) = $GUI_CHECKED Then
+		$ichkDonateLightningSpells = 1
+	Else
+		$ichkDonateLightningSpells = 0
+	EndIf
+	$sTxtDonateLightningSpells = GUICtrlRead($txtDonateLightningSpells)
+	$sTxtBlacklistLightningSpells = GUICtrlRead($txtBlacklistLightningSpells)
+	If GUICtrlRead($chkDonateHealSpells) = $GUI_CHECKED Then
+		$ichkDonateHealSpells = 1
+	Else
+		$ichkDonateHealSpells = 0
+	EndIf
+	$sTxtDonateHealSpells = GUICtrlRead($txtDonateHealSpells)
+	$sTxtBlacklistHealSpells = GUICtrlRead($txtBlacklistHealSpells)
+	If GUICtrlRead($chkDonateRageSpells) = $GUI_CHECKED Then
+		$ichkDonateRageSpells = 1
+	Else
+		$ichkDonateRageSpells = 0
+	EndIf
+	$sTxtDonateRageSpells = GUICtrlRead($txtDonateRageSpells)
+	$sTxtBlacklistRageSpells = GUICtrlRead($txtBlacklistRageSpells)
+	If GUICtrlRead($chkDonateJumpSpells) = $GUI_CHECKED Then
+		$ichkDonateJumpSpells = 1
+	Else
+		$ichkDonateJumpSpells = 0
+	EndIf
+	$sTxtDonateJumpSpells = GUICtrlRead($txtDonateJumpSpells)
+	$sTxtBlacklistJumpSpells = GUICtrlRead($txtBlacklistJumpSpells)
+	If GUICtrlRead($chkDonateFreezeSpells) = $GUI_CHECKED Then
+		$ichkDonateFreezeSpells = 1
+	Else
+		$ichkDonateFreezeSpells = 0
+	EndIf
+	$sTxtDonateFreezeSpells = GUICtrlRead($txtDonateFreezeSpells)
+	$sTxtBlacklistFreezeSpells = GUICtrlRead($txtBlacklistFreezeSpells)
 	If GUICtrlRead($chkDonateMinions) = $GUI_CHECKED Then
 		$ichkDonateMinions = 1
 	Else
@@ -271,6 +306,31 @@ Func saveConfig() ;Saves the controls settings to the config
 		$ichkDonateAllMiners = 1
 	Else
 		$ichkDonateAllMiners = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllLightningSpells) = $GUI_CHECKED Then
+		$ichkDonateAllLightningSpells = 1
+	Else
+		$ichkDonateAllLightningSpells = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllHealSpells) = $GUI_CHECKED Then
+		$ichkDonateAllHealSpells = 1
+	Else
+		$ichkDonateAllHealSpells = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllRageSpells) = $GUI_CHECKED Then
+		$ichkDonateAllRageSpells = 1
+	Else
+		$ichkDonateAllRageSpells = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllJumpSpells) = $GUI_CHECKED Then
+		$ichkDonateAllJumpSpells = 1
+	Else
+		$ichkDonateAllJumpSpells = 0
+	EndIf
+	If GUICtrlRead($chkDonateAllFreezeSpells) = $GUI_CHECKED Then
+		$ichkDonateAllFreezeSpells = 1
+	Else
+		$ichkDonateAllFreezeSpells = 0
 	EndIf
 	If GUICtrlRead($chkDonateAllMinions) = $GUI_CHECKED Then
 		$ichkDonateAllMinions = 1
@@ -673,6 +733,11 @@ Func saveConfig() ;Saves the controls settings to the config
 			$debugDeadbaseImage = 1
 		Else
 			$debugDeadbaseImage = 0
+		EndIf
+		If GUICtrlRead($chkDebugSmartZap) = $GUI_CHECKED Then
+			$DebugSmartZap = 1
+		Else
+			$DebugSmartZap = 0
 		EndIf
 		If GUICtrlRead($chkDebugOcr) = $GUI_CHECKED Then
 			$debugOcr = 1
@@ -2020,6 +2085,26 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "donate", "chkDonateAllMiners", $ichkDonateAllMiners)
 	IniWriteS($config, "donate", "txtDonateMiners", StringReplace($sTxtDonateMiners, @CRLF, "|"))
 	IniWriteS($config, "donate", "txtBlacklistMiners", StringReplace($sTxtBlacklistMiners, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateLightningSpells", $ichkDonateLightningSpells)
+	IniWriteS($config, "donate", "chkDonateAllLightningSpells", $ichkDonateAllLightningSpells)
+	IniWriteS($config, "donate", "txtDonateLightningSpells", StringReplace($sTxtDonateLightningSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistLightningSpells", StringReplace($sTxtBlacklistLightningSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateHealSpells", $ichkDonateHealSpells)
+	IniWriteS($config, "donate", "chkDonateAllHealSpells", $ichkDonateAllHealSpells)
+	IniWriteS($config, "donate", "txtDonateHealSpells", StringReplace($sTxtDonateHealSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistHealSpells", StringReplace($sTxtBlacklistHealSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateRageSpells", $ichkDonateRageSpells)
+	IniWriteS($config, "donate", "chkDonateAllRageSpells", $ichkDonateAllRageSpells)
+	IniWriteS($config, "donate", "txtDonateRageSpells", StringReplace($sTxtDonateRageSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistRageSpells", StringReplace($sTxtBlacklistRageSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateJumpSpells", $ichkDonateJumpSpells)
+	IniWriteS($config, "donate", "chkDonateAllJumpSpells", $ichkDonateAllJumpSpells)
+	IniWriteS($config, "donate", "txtDonateJumpSpells", StringReplace($sTxtDonateJumpSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistJumpSpells", StringReplace($sTxtBlacklistJumpSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "chkDonateFreezeSpells", $ichkDonateFreezeSpells)
+	IniWriteS($config, "donate", "chkDonateAllFreezeSpells", $ichkDonateAllFreezeSpells)
+	IniWriteS($config, "donate", "txtDonateFreezeSpells", StringReplace($sTxtDonateFreezeSpells, @CRLF, "|"))
+	IniWriteS($config, "donate", "txtBlacklistFreezeSpells", StringReplace($sTxtBlacklistFreezeSpells, @CRLF, "|"))
 	IniWriteS($config, "donate", "chkDonateMinions", $ichkDonateMinions)
 	IniWriteS($config, "donate", "chkDonateAllMinions", $ichkDonateAllMinions)
 	IniWriteS($config, "donate", "txtDonateMinions", StringReplace($sTxtDonateMinions, @CRLF, "|"))
@@ -2094,6 +2179,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "donate", "chkExtraAlphabets", $ichkExtraAlphabets)
 	IniWriteS($config, "donate", "chkExtraChinese", $ichkExtraChinese)
 	IniWriteS($config, "donate", "chkExtraPersian", $ichkExtraPersian)
+	IniWriteS($config, "donate", "cmbFilterDonationsCC", $icmbFilterDonationsCC)
 
 	;Troop and Spells Settings--------------------------------------------------------------------------
 	Local $tempTroop
@@ -2111,6 +2197,22 @@ Func saveConfig() ;Saves the controls settings to the config
 		Assign($SpellName[$S] & "Comp", $tempSpell)
 		IniWriteS($config, "LevelSpell", $SpellName[$S], Eval("itxtLev" & $SpellName[$S]))
 	Next
+
+	If GUICtrlRead($hRadio_Army1) = $GUI_CHECKED Then
+		$iChkQuickArmy1 = 1
+	Else
+		$iChkQuickArmy1 = 0
+	EndIf
+	If GUICtrlRead($hRadio_Army2) = $GUI_CHECKED Then
+		$iChkQuickArmy2 = 1
+	Else
+		$iChkQuickArmy2 = 0
+	EndIf
+	If GUICtrlRead($hRadio_Army3) = $GUI_CHECKED Then
+		$iChkQuickArmy3 = 1
+	Else
+		$iChkQuickArmy3 = 0
+	EndIf
 
 	IniWriteS($config, "troop", "fulltroop", GUICtrlRead($txtFullTroop))
 	IniWriteS($config, "other", "TrainITDelay", $isldTrainITDelay)
@@ -2725,8 +2827,9 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "search", "ChkABCastleTroopsWait", 0)
 	EndIf
 	IniWriteS($config, "search", "cmbDBWaitForCastleSpell", _GUICtrlComboBox_GetCurSel($cmbDBWaitForCastleSpell))
+	IniWriteS($config, "search", "cmbDBWaitForCastleSpell2", _GUICtrlComboBox_GetCurSel($cmbDBWaitForCastleSpell2))
 	IniWriteS($config, "search", "cmbABWaitForCastleSpell", _GUICtrlComboBox_GetCurSel($cmbABWaitForCastleSpell))
-
+	IniWriteS($config, "search", "cmbABWaitForCastleSpell2", _GUICtrlComboBox_GetCurSel($cmbABWaitForCastleSpell2))
 
 	;Add idle phase during training	, save variables to config file
 	If GUICtrlRead($chkAddDelayIdlePhaseEnable) = $GUI_CHECKED Then
@@ -2736,26 +2839,9 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWriteS($config, "other", "txtAddDelayIdlePhaseTimeMin", GUICtrlRead($txtAddDelayIdlePhaseTimeMin))
 	IniWriteS($config, "other", "txtAddDelayIdlePhaseTimeMax", GUICtrlRead($txtAddDelayIdlePhaseTimeMax))
-
-	;;Train Radio/QuickTrain
-	If GUICtrlRead($hRadio_Army1) = $GUI_CHECKED Then
-		IniWriteS($config, "troop", "QuickTrain1", 1)
-	Else
-		IniWriteS($config, "troop", "QuickTrain1", 0)
-	EndIf
-
-	If GUICtrlRead($hRadio_Army2) = $GUI_CHECKED Then
-		IniWriteS($config, "troop", "QuickTrain2", 1)
-	Else
-		IniWriteS($config, "troop", "QuickTrain2", 0)
-	EndIf
-
-	If GUICtrlRead($hRadio_Army3) = $GUI_CHECKED Then
-		IniWriteS($config, "troop", "QuickTrain3", 1)
-	Else
-		IniWriteS($config, "troop", "QuickTrain3", 0)
-	EndIf
-
+	IniWriteS($config, "troop", "QuickTrain1", $iChkQuickArmy1)
+	IniWriteS($config, "troop", "QuickTrain2", $iChkQuickArmy2)
+	IniWriteS($config, "troop", "QuickTrain3", $iChkQuickArmy3)
 ; ============================================================================
 ; ================================= SmartZap =================================
 ; ============================================================================
@@ -2794,6 +2880,27 @@ Func saveConfig() ;Saves the controls settings to the config
 ; ============================================================================
 ; ================================= SmartZap =================================
 ; ============================================================================
+
+	IniWrite($config, "Humanization", "chkUseBotHumanization", $ichkUseBotHumanization)
+	IniWrite($config, "Humanization", "chkUseAltRClick", $ichkUseAltRClick)
+	IniWrite($config, "Humanization", "chkCollectAchievements", $ichkCollectAchievements)
+	IniWrite($config, "Humanization", "chkLookAtRedNotifications", $ichkLookAtRedNotifications)
+
+	For $i = 0 To 12
+		IniWrite($config, "Humanization", "cmbPriority[" & $i & "]", _GUICtrlComboBox_GetCurSel($cmbPriority[$i]))
+	Next
+	For $i = 0 To 1
+		IniWrite($config, "Humanization", "cmbMaxSpeed[" & $i & "]", _GUICtrlComboBox_GetCurSel($cmbMaxSpeed[$i]))
+	Next
+	For $i = 0 To 1
+		IniWrite($config, "Humanization", "cmbPause[" & $i & "]", _GUICtrlComboBox_GetCurSel($cmbPause[$i]))
+	Next
+
+	For $i = 0 To 1
+		IniWrite($config, "Humanization", "humanMessage[" & $i & "]", GUICtrlRead($humanMessage[$i]))
+	Next
+
+	IniWrite($config, "Humanization", "cmbMaxActionsNumber", _GUICtrlComboBox_GetCurSel($cmbMaxActionsNumber))
 
 ;
 ; MOD

@@ -37,6 +37,7 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 	debugAttackCSV(" - delay for multiple troops in same point: " & $delayPointmin & "-" & $delayPointmax)
 	debugAttackCSV(" - delay when  change deploy point : " & $delayDropMin & "-" & $delayDropMax)
 	debugAttackCSV(" - delay after drop all troops : " & $sleepafterMin & "-" & $sleepAfterMax)
+	debugAttackCSV(" - delay before drop all troops : " & $sleepBeforeMin & "-" & $sleepBeforeMax)
 	;how many vectors need to manage...
 	Local $temp = StringSplit($vectors, "-")
 	Local $numbersOfVectors

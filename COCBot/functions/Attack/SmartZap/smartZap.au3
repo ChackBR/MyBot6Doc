@@ -213,8 +213,8 @@ Func smartZap($minDE = -1)
 
 	; Get Drill locations and info
 	Local $aDarkDrills = drillSearch()
-	
-	Local $strikeOffsets = [0, 12]
+
+	Local $strikeOffsets = [-1, 12]
 	Local $drillLvlOffset, $spellAdjust, $numDrills, $testX, $testY, $tempTestX, $tempTestY, $strikeGain, $expectedDE
 	Local $error = 5 ; 5 pixel error margin for DE drill search
 
@@ -254,10 +254,20 @@ Func smartZap($minDE = -1)
 		; Create the log entry string for amount stealable
 		displayZapLog($aDarkDrills, $aSpells)
 
+		Local $aCluster = getDrillCluster($aDarkDrills)
+		If $aCluster <> -1 Then
+			If $DebugSmartZap = 1 Then SetLog("Cluster Hold: " & $aCluster[2] & ", First Drill Hold: " & $aDarkDrills[0][3], $COLOR_DEBUG)
+			If $aCluster[2] < $aDarkDrills[0][3] Then $aCluster = -1
+		EndIf
+
 		; If you activate N00bZap, drop lightning on any DE drill
 		If $ichkNoobZap = 1 Then
 			SetLog("NoobZap is going to attack any drill.", $COLOR_ACTION)
-			$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+			If $aCluster <> -1 Then
+				$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
+			Else
+				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+			EndIf
 
 			$performedZap = True
 			$skippedZap = False
@@ -265,26 +275,48 @@ Func smartZap($minDE = -1)
 		Else
 			; If you have max lightning spells, drop lightning on any level DE drill
 			If $aSpells[0][4] + $aSpells[1][4] + $aSpells[2][4] > (4 - $spellAdjust) Then
-				SetLog("First condition: " & 4 - $spellAdjust & "+ Spells so attack any drill.", $COLOR_INFO)
-				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+				SetLog("First condition: More than " & 4 - $spellAdjust & " Spells so attack any drill.", $COLOR_INFO)
+				If $aCluster <> -1 Then
+					$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
+				Else
+					$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+				EndIf
 
 				$performedZap = True
 				$skippedZap = False
 				If _Sleep($DelaySmartZap4) Then Return
 
-				; If you have one less then max, drop it on drills level (3 - drill offset)
+				; If you have one less then max, drop it on drills with level (4 - drill offset) and higher
 			ElseIf $aSpells[0][4] + $aSpells[1][4] + $aSpells[2][4] > (3 - $spellAdjust) And $aDarkDrills[0][2] > (3 - $drillLvlOffset) Then
-				SetLog("Second condition: Attack Lvl " & 3 - Number($drillLvlOffset) & "+ drills if you have " & 3 - Number($spellAdjust) & "+ spells", $COLOR_INFO)
-				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+				SetLog("Second condition: Attack Lvl " & 4 - Number($drillLvlOffset) & " and greater drills if you have more than " & 3 - Number($spellAdjust) & " spells", $COLOR_INFO)
+				If $aCluster <> -1 Then
+					$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
+				Else
+					$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+				EndIf
 
 				$performedZap = True
 				$skippedZap = False
 				If _Sleep($DelaySmartZap4) Then Return
 
-				; If the collector is higher than lvl (4 - drill offset) and collector is estimated more than 30% full
-			ElseIf $aDarkDrills[0][2] > (4 - $drillLvlOffset) And ($aDarkDrills[0][3] / $aDrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 Then
-				SetLog("Third condition: Attack Lvl " & 4 - Number($drillLvlOffset) & "+ drills with more then 30% estimated DE if you have less than " & 4 - Number($spellAdjust) & " spells", $COLOR_INFO)
-				$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+				; If the collector or cluster has more content left than a lvl (5 - drill offset) drill would give to a single zap
+			ElseIf $aDarkDrills[0][2] > (4 - $drillLvlOffset) And ($aDarkDrills[0][3] / ($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor)) > 0.3 Then
+				SetLog("Third condition: Attack Lvl " & 5 - Number($drillLvlOffset) & " drills with more then 30% estimated DE left", $COLOR_INFO)
+				If $aCluster <> -1 Then
+					$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
+				Else
+					$Spellused = zapDrill($aSpells, $aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
+				EndIf
+
+				$performedZap = True
+				$skippedZap = False
+				If _Sleep($DelaySmartZap4) Then Return
+
+			ElseIf $aCluster <> -1 Then
+				If $aCluster[2] >= ($aDrillLevelTotal[5 - $drillLvlOffset] / $aDrillLevelHP[5 - $drillLvlOffset] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel) Then
+					SetLog("Fourth condition: Attack, when potential left content in cluster is greater than gain for a single Lvl " & 5 - Number($drillLvlOffset) & " drill", $COLOR_INFO)
+					$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
+				EndIf
 
 				$performedZap = True
 				$skippedZap = False
@@ -315,13 +347,27 @@ Func smartZap($minDE = -1)
 			$strikeGain = Number($oldSearchDark - $searchDark)
 			If $DebugSmartZap = 1 Then Setlog("$strikeGain = " & Number($strikeGain), $COLOR_DEBUG)
 
+			$expectedDE = -1
+
 			If $Spellused = $eESpell  Then
 				$iNumEQSpellsUsed += 1
-				$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$aSpells[2][3] - 1] * $fDarkFillLevel))
+				If $aCluster <> -1 Then
+					For $i = 0 To UBound($aCluster[3]) - 1
+						$expectedDE = _Max(Number($expectedDE), Ceiling(Number($aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$aSpells[2][3] - 1] * $fDarkFillLevel)))
+					Next
+				Else
+					$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$aSpells[2][3] - 1] * $fDarkFillLevel))
+				EndIf
 			Else
 				$iNumLSpellsUsed += 1
 				If $ichkNoobZap = 0 Then
-					$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $aDrillLevelHP[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel))
+					If $aCluster <> -1 Then
+						For $i = 0 To UBound($aCluster[3]) - 1
+							$expectedDE = _Max(Number($expectedDE), Ceiling(Number($aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] / $aDrillLevelHP[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel)))
+						Next
+					Else
+						$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $aDrillLevelHP[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel))
+					EndIf
 				Else
 					$expectedDE = $itxtExpectedDE
 				EndIf
@@ -331,16 +377,63 @@ Func smartZap($minDE = -1)
 
 			; If change in DE is less than expected, remove the Drill from list. else, subtract change from assumed total
 			If $strikeGain < $expectedDE And $expectedDE <> -1 Then
-				_ArrayDelete($aDarkDrills, 0)
 				SetLog("Gained: " & $strikeGain & ", Expected: " & $expectedDE, $COLOR_INFO)
-				SetLog("Last zap gained less DE then expected, removing the drill from the list.", $COLOR_ACTION)
-			ElseIf Not ReCheckDrillExist($aDarkDrills[0][0], $aDarkDrills[0][1]) Then ; Recheck will detect IF exist the drill or was destroyed
-				; Was destroyed let's remove the drill from array
-				_ArrayDelete($aDarkDrills, 0)
-				SetLog("Gained: " & Number($strikeGain) & ", drill was destroyed.", $COLOR_INFO)
+				If $aCluster <> -1 Then
+					_ArrayDelete($aDarkDrills, _ArrayToString($aCluster[3], ";"))
+					SetLog("Last zap gained less DE then expected, removing the drills from the list.", $COLOR_ACTION)
+				Else
+					_ArrayDelete($aDarkDrills, 0)
+					SetLog("Last zap gained less DE then expected, removing the drill from the list.", $COLOR_ACTION)
+				EndIf
 			Else
-				$aDarkDrills[0][3] -= $strikeGain
-				SetLog("Gained: " & Number($strikeGain) & ", adjusting amount left in this drill.", $COLOR_INFO)
+				If _Sleep($DelaySmartZap4) Then Return ; 4 seconds to disappear dust and bars
+				If $aCluster <> -1 Then
+					Local $iSumTotalHP = 0
+					Local $sToDelete = ""
+					If UBound($aCluster[3]) = 2 Then 	; Formula for Individual Drill DE1 = DE * Total1 * HP2 / (Total1 * HP2 + Total2 * HP1)
+						For $i = 0 To 1
+							$iSumTotalHP += $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 2) ]][2] - 1]
+						Next
+						For $i = 0 To 1
+							Local $iSubGain = Ceiling(Number($strikeGain * $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 2) ]][2] - 1] / $iSumTotalHP))
+							If ReCheckDrillExist($aDarkDrills[($aCluster[3])[$i]][0], $aDarkDrills[($aCluster[3])[$i]][1]) Then
+								$aDarkDrills[($aCluster[3])[$i]][3] -= $iSubGain
+								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", adjusting amount left in this drill.", $COLOR_INFO)
+							ElseIf $sToDelete = "" Then
+								$sToDelete &= ($aCluster[3])[$i]
+								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", drill was destroyed.", $COLOR_INFO)
+							Else
+								$sToDelete &= ";" & ($aCluster[3])[$i]
+								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", drill was destroyed.", $COLOR_INFO)
+							EndIf
+						Next
+					Else  								; Formula for Individual Drill DE1 = DE * Total1 * HP2 * HP3 / (Total1 * HP2 * HP3 + Total2 * HP1 * HP3 + Total3 * HP1 * HP2)
+						For $i = 0 To 2
+							$iSumTotalHP += $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 3) ]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 2, 3) ]][2] - 1]
+						Next
+						For $i = 0 To 2
+							Local $iSubGain = Ceiling(Number($strikeGain * $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 3) ]][2] - 1]  * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 2, 3) ]][2] - 1]/ $iSumTotalHP))
+							If ReCheckDrillExist($aDarkDrills[($aCluster[3])[$i]][0], $aDarkDrills[($aCluster[3])[$i]][1]) Then
+								$aDarkDrills[($aCluster[3])[$i]][3] -= $iSubGain
+								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", adjusting amount left in this drill.", $COLOR_INFO)
+							ElseIf $sToDelete = "" Then
+								$sToDelete &= ($aCluster[3])[$i]
+								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", drill was destroyed.", $COLOR_INFO)
+							Else
+								$sToDelete &= ";" & ($aCluster[3])[$i]
+								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", drill was destroyed.", $COLOR_INFO)
+							EndIf
+						Next
+					EndIf
+					If $sToDelete <> "" Then _ArrayDelete($aDarkDrills, $sToDelete)
+				ElseIf Not ReCheckDrillExist($aDarkDrills[0][0], $aDarkDrills[0][1]) Then ; Recheck will detect IF exist the drill or was destroyed
+					; Was destroyed let's remove the drill from array
+					_ArrayDelete($aDarkDrills, 0)
+					SetLog("Gained: " & Number($strikeGain) & ", drill was destroyed.", $COLOR_INFO)
+				Else
+					$aDarkDrills[0][3] -= $strikeGain
+					SetLog("Gained: " & Number($strikeGain) & ", adjusting amount left in this drill.", $COLOR_INFO)
+				EndIf
 			EndIf
 
 			$itotalStrikeGain += $strikeGain
@@ -365,7 +458,7 @@ Func zapDrill(ByRef $Spells, $x, $y)
 		If $Spells[$i][4] > 0 Then
 			$iSpell = $i
 		EndIf
-	Next 
+	Next
 	If $Spells[$iSpell][2] > -1 Then
 		SetLog("Dropping " & $Spells[$iSpell][0] & " " & String(NameOfTroop($Spells[$iSpell][1], 0)), $COLOR_ACTION)
 		SelectDropTroop($Spells[$iSpell][2])
@@ -379,7 +472,6 @@ Func zapDrill(ByRef $Spells, $x, $y)
 EndFunc   ;==>zapDrill
 
 Func ReCheckDrillExist($x, $y)
-	If _Sleep($DelaySmartZap4) Then Return ; 4 seconds to disappear dust and bars
 	_CaptureRegion2($x - 25, $y - 25, $x + 25, $y + 25)
 	Local $directory = @ScriptDir & "\imgxml\Storages\Drills"
 	Local $Maxpositions = 1

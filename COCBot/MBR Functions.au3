@@ -283,12 +283,12 @@
 ; Added by DocOC team
 ;==============================================================
 
-;~ #include "functions\BotHumanization\BotHumanization.au3"
-;~ #include "functions\BotHumanization\AttackNDefenseActions.au3"
-;~ #include "functions\BotHumanization\BestClansNPlayersActions.au3"
-;~ #include "functions\BotHumanization\ChatActions.au3"
-;~ #include "functions\BotHumanization\ClanActions.au3"
-;~ #include "functions\BotHumanization\ClanWarActions.au3"
+#include "functions\BotHumanization\BotHumanization.au3"
+#include "functions\BotHumanization\AttackNDefenseActions.au3"
+#include "functions\BotHumanization\BestClansNPlayersActions.au3"
+#include "functions\BotHumanization\ChatActions.au3"
+#include "functions\BotHumanization\ClanActions.au3"
+#include "functions\BotHumanization\ClanWarActions.au3"
 
 
 ;OLD CODE

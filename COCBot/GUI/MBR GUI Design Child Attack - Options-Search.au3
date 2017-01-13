@@ -15,7 +15,7 @@
 
 Global $txtSearchReduceCount, $txtSearchReduceGold,$txtSearchReduceElixir, $txtSearchReduceGoldPlusElixir,  $txtSearchReduceDark, $txtSearchReduceTrophy
 
-Local $x = 25, $y = 45
+Local $x = 25, $y = 70
 
 	$grpSearchReduction = GUICtrlCreateGroup(GetTranslated(630,1, "Search Reduction"), $x - 20, $y - 20, 223, 165)
 	$x -=13
@@ -84,7 +84,7 @@ Local $x = 25, $y = 45
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 25
-	$y = 212
+	$y = 237
 	$grpVSDelay = GUICtrlCreateGroup(GetTranslated(636,75, "Village Search Delay"), $x - 20, $y - 20, 223, 72)
 		$x += 20
 		$txtTip = GetTranslated(636,76, "Use this slider to change the time to wait between Next clicks when searching for a Village to Attack.") & @CRLF & GetTranslated(636,77, "This might compensate for Out of Sync errors on some PC's.") & @CRLF & GetTranslated(636,78, "NO GUARANTEES! This will not always have the same results!")
@@ -119,7 +119,7 @@ Local $x = 25, $y = 45
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x = 253
-	$y = 45
+	$y = 70
 	$grpAtkOptions = GUICtrlCreateGroup(GetTranslated(630,16, "Search Options"), $x - 20, $y - 20, 189, 165)
 	$x -= 5
 	   $chkAttackNow = GUICtrlCreateCheckbox(GetTranslated(630,17, "Attack Now! option."), $x-5, $y -4, -1, -1)

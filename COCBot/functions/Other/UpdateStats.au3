@@ -93,22 +93,22 @@ Func UpdateStats()
 
 	If Number($iGoldLast) > Number($topgoldloot) Then
 		$topgoldloot = $iGoldLast
-		GUICtrlSetData($lbltopgoldloot,_NumberFormat($topgoldloot))
+		GUICtrlSetData($lbltopgoldloot, _NumberFormat($topgoldloot))
 	EndIf
 
 	If Number($iElixirLast) > Number($topelixirloot) Then
 		$topelixirloot = $iElixirLast
-		GUICtrlSetData($lbltopelixirloot,_NumberFormat($topelixirloot))
+		GUICtrlSetData($lbltopelixirloot, _NumberFormat($topelixirloot))
 	EndIf
 
 	If Number($iDarkLast) > Number($topdarkloot) Then
 		$topdarkloot = $iDarkLast
-		GUICtrlSetData($lbltopdarkloot,_NumberFormat($topdarkloot))
+		GUICtrlSetData($lbltopdarkloot, _NumberFormat($topdarkloot))
 	EndIf
 
 	If Number($iTrophyLast) > Number($topTrophyloot) Then
 		$topTrophyloot = $iTrophylast
-		GUICtrlSetData($lbltopTrophyloot,_NumberFormat($topTrophyloot))
+		GUICtrlSetData($lbltopTrophyloot, _NumberFormat($topTrophyloot))
 	EndIf
 
 	If $ResetStats = 1 Then
@@ -123,7 +123,7 @@ Func UpdateStats()
 		GUICtrlSetData($lblHourlyStatsDark, "")
 		GUICtrlSetData($lblHourlyStatsTrophy, "")
 		GUICtrlSetData($lblResultGoldHourNow, "") ;GUI BOTTOM
-		GUICtrlSetData($lblResultElixirHourNow, "");GUI BOTTOM
+		GUICtrlSetData($lblResultElixirHourNow, "") ;GUI BOTTOM
 		GUICtrlSetData($lblResultDEHourNow, "") ;GUI BOTTOM
 
 	EndIf
@@ -322,12 +322,12 @@ Func UpdateStats()
 		$iOldDElixirFromDrills = $iDElixirFromDrills
 	EndIf
 
-; ============================================================================
-; ================================= SmartZap =================================
-; ============================================================================
-   ; SmartZap DE Gain
+	; ============================================================================
+	; ================================= SmartZap =================================
+	; ============================================================================
+	; SmartZap DE Gain
 	If $iOldSmartZapGain <> $iSmartZapGain Then
-		GUICtrlSetData($lblSmartZap, _NumberFormat($iSmartZapGain, True))
+		GUICtrlSetData($lblSmartZapGain, _NumberFormat($iSmartZapGain, True))
 		$iOldSmartZapGain = $iSmartZapGain
 	EndIf
 
@@ -335,16 +335,16 @@ Func UpdateStats()
 	If $iOldNumLSpellsUsed <> $iNumLSpellsUsed Then
 		GUICtrlSetData($lblLightningUsed, _NumberFormat($iNumLSpellsUsed, True))
 		$iOldNumLSpellsUsed = $iNumLSpellsUsed
- 	EndIf
+	EndIf
 
 	; EarthQuake Spells Used
 	If $iOldNumEQSpellsUsed <> $iNumEQSpellsUsed Then
 		GUICtrlSetData($lblEarthQuakeUsed, _NumberFormat($iNumEQSpellsUsed, True))
 		$iOldNumEQSpellsUsed = $iNumEQSpellsUsed
- 	EndIf
-; ============================================================================
-; ================================= SmartZap =================================
-; ============================================================================
+	EndIf
+	; ============================================================================
+	; ================================= SmartZap =================================
+	; ============================================================================
 
 	$iAttackedCount = 0
 
@@ -423,22 +423,22 @@ Func UpdateStats()
 
 	If Number($iGoldLast) > Number($topgoldloot) Then
 		$topgoldloot = $iGoldLast
-		GUICtrlSetData($lbltopgoldloot,_NumberFormat($topgoldloot))
+		GUICtrlSetData($lbltopgoldloot, _NumberFormat($topgoldloot))
 	EndIf
 
 	If Number($iElixirLast) > Number($topelixirloot) Then
 		$topelixirloot = $iElixirLast
-		GUICtrlSetData($lbltopelixirloot,_NumberFormat($topelixirloot))
+		GUICtrlSetData($lbltopelixirloot, _NumberFormat($topelixirloot))
 	EndIf
 
 	If Number($iDarkLast) > Number($topdarkloot) Then
 		$topdarkloot = $idarklast
-		GUICtrlSetData($lbltopdarkloot,_NumberFormat($topdarkloot))
+		GUICtrlSetData($lbltopdarkloot, _NumberFormat($topdarkloot))
 	EndIf
 
 	If Number($iTrophyLast) > Number($topTrophyloot) Then
 		$topTrophyloot = $iTrophylast
-		GUICtrlSetData($lbltopTrophyloot,_NumberFormat($topTrophyloot))
+		GUICtrlSetData($lbltopTrophyloot, _NumberFormat($topTrophyloot))
 	EndIf
 
 	If $ResetStats = 1 Then
@@ -494,11 +494,11 @@ Func ResetStats()
 	$iGoldFromMines = 0
 	$iElixirFromCollectors = 0
 	$iDElixirFromDrills = 0
-; ======================= SmartZap =======================
+	; ======================= SmartZap =======================
 	$iSmartZapGain = 0
 	$iNumLSpellsUsed = 0
 	$iNumEQSpellsUsed = 0
-; ======================= SmartZap =======================
+	; ======================= SmartZap =======================
 	For $i = 0 To $iModeCount
 		$iAttackedVillageCount[$i] = 0
 		$iTotalGoldGain[$i] = 0
@@ -510,7 +510,7 @@ Func ResetStats()
 		$iNbrOfDetectedDrills[$i] = 0
 	Next
 
-	For $i = 0 To 23
+	For $i = 0 To 28
 		$TroopsDonQ[$i] = 0
 		GUICtrlSetData($lblDonQ[$i], $TroopsDonQ[$i])
 		$TroopsDonXP[$i] = 0

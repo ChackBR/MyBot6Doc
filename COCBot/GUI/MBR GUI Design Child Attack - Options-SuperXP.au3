@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Local $x = 25, $y = 45, $xStart = 25, $yStart = 45
+Local $x = 25, $y = 70, $xStart = 25, $yStart = 70
 
 	$grpSuperXP = GUICtrlCreateGroup(GetTranslated(700, 1, "Goblin XP"), $x - 20, $y - 20, 420, 305)
 		$chkEnableSuperXP = GUICtrlCreateCheckbox(GetTranslated(700, 2, "Enable Goblin XP"), $x, $y, 102, 17)

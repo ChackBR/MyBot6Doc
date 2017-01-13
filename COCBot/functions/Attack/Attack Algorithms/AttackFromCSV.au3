@@ -128,7 +128,10 @@ Func CheckAttackLocation(ByRef $x, ByRef $y)
 	;If $x < 1 Then $x = 1
 	;If $x > $GAME_WIDTH - 1 Then $x = $GAME_WIDTH - 1
 	;If $y < 1 Then $y = 1
-	If $y > $DeployableLRTB[3] Then $y = $DeployableLRTB[3]
+	If $y > $DeployableLRTB[3] Then
+		$y = $DeployableLRTB[3]
+		Return False
+	EndIf
 	Return True
 	#cs
 	Local $sPoints = GetDeployableNextTo($x & "," & $y)
@@ -237,10 +240,11 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 	;02.01 - REDAREA -----------------------------------------------------------------------------------------------------------------------------------------
 	Local $hTimer = TimerInit()
 
+	SetDebugLog("Redline mode: " & $iRedlineRoutine[$iMatchMode])
+	SetDebugLog("Dropline mode: " & $iDroplineEdge[$iMatchMode])
+
 	_CaptureRegion2() ; ensure full screen is captured (not ideal for debugging as clean image was already saved, but...)
 	If $captureredarea Then _GetRedArea($iRedlineRoutine[$iMatchMode])
-	debugAttackCSV("$iMatchMode: " & $iMatchMode)
-	debugAttackCSV("$iRedlineRoutine: " & $iRedlineRoutine[$iMatchMode])
 	If _Sleep($iDelayRespond) Then Return
 
 	Local $htimerREDAREA = Round(TimerDiff($hTimer) / 1000, 2)
@@ -249,7 +253,6 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 	debugAttackCSV("	[" & UBound($PixelTopRight) & "] pixels TopRight")
 	debugAttackCSV("	[" & UBound($PixelBottomLeft) & "] pixels BottomLeft")
 	debugAttackCSV("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
-
 
 		If $iDroplineEdge[$iMatchMode] = $DROPLINE_DROPPOINTS_ONLY Then
 

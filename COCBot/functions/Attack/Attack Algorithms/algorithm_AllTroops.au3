@@ -44,7 +44,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		EndIf
 	EndIf
 
-	If $iMatchMode = $TS Then; Return ;Exit attacking if trophy hunting and not bullymode
+	If $iMatchMode = $TS Then ; Return ;Exit attacking if trophy hunting and not bullymode
 		If ($THusedKing = 1 Or $THusedQueen = 1) And ($ichkSmartZap = 1 And $ichkSmartZapSaveHeroes = 1) Then
 			SetLog("King and/or Queen dropped, close attack")
 			If $ichkSmartZap = 1 Then SetLog("Skipping SmartZap to protect your royals!", $COLOR_FUCHSIA)
@@ -81,8 +81,8 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		Case 3 ;All sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking on all sides", $COLOR_INFO)
 			$nbSides = 4
-		Case 4 ;Classic Four Finger ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking four finger fight style", $COLOR_BLUE)
+		Case 4 ;Classic Four Fingers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			SetLog("Attacking four finger fight style", $COLOR_INFO)
 			$nbSides = 5
 		Case 5 ;Multi Fingers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking Multi finger fight style", $COLOR_INFO)
@@ -100,10 +100,10 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	If _Sleep($iDelayalgorithm_AllTroops2) Then Return
 
 	; $ListInfoDeploy = [Troop, No. of Sides, $WaveNb, $MaxWaveNb, $slotsPerEdge]
-	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 Then ; Customise DE side wave deployment here
+	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 Then ; Customise DE side wave deployment here
 		Switch $icmbStandardAlgorithm[$iMatchMode]
 			Case 0
-				Local $listInfoDeploy[22][5] = [[$eGole, $nbSides, 1, 1, 2] _
+				Local $listInfoDeploy[21][5] = [[$eGole, $nbSides, 1, 1, 2] _
 						, [$eLava, $nbSides, 1, 1, 2] _
 						, [$eGiant, $nbSides, 1, 1, 2] _
 						, [$eDrag, $nbSides, 1, 1, 0] _
@@ -112,7 +112,6 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 						, [$eBabyD, $nbSides, 1, 1, 1] _
 						, [$eHogs, $nbSides, 1, 1, 1] _
 						, [$eValk, $nbSides, 1, 1, 0] _
-						, [$eIceW, $nbSides, 1, 1, 0] _
 						, [$eBowl, $nbSides, 1, 1, 0] _
 						, [$eMine, $nbSides, 1, 1, 0] _
 						, [$eWall, $nbSides, 1, 1, 1] _
@@ -165,7 +164,6 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 				[$eMine, $nbSides, 1, 1, 0], _
 				[$ePekk, $nbSides, 1, 1, 2], _
 				[$eDrag, $nbSides, 1, 1, 2], _
-				[$eIceW, $nbSides, 1, 1, 0], _
 				[$eBall, $nbSides, 1, 1, 2], _
 				[$eBabyD, $nbSides, 1, 1, 1], _
 				[$eWiza, $nbSides, 1, 1, 2], _
@@ -177,7 +175,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		If $debugSetlog = 1 Then SetLog("listdeploy standard for attack", $COLOR_DEBUG)
 		Switch $icmbStandardAlgorithm[$iMatchMode]
 			Case 0
-				Local $listInfoDeploy[22][5] = [[$eGole, $nbSides, 1, 1, 2] _
+				Local $listInfoDeploy[21][5] = [[$eGole, $nbSides, 1, 1, 2] _
 						, [$eLava, $nbSides, 1, 1, 2] _
 						, [$eGiant, $nbSides, 1, 1, 2] _
 						, ["CC", 1, 1, 1, 1] _
@@ -186,7 +184,6 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 						, [$eBabyD, $nbSides, 1, 1, 0] _
 						, [$eHogs, $nbSides, 1, 1, 1] _
 						, [$eValk, $nbSides, 1, 1, 0] _
-						, [$eIceW, $nbSides, 1, 1, 0] _
 						, [$eBowl, $nbSides, 1, 1, 0] _
 						, [$eMine, $nbSides, 1, 1, 0] _
 						, [$eWall, $nbSides, 1, 1, 1] _

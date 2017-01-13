@@ -22,7 +22,7 @@ $chkUseAltRClick = GUICtrlCreateCheckbox(GetTranslated(42, 1, "Make ALL BOT clic
 	GUICtrlSetOnEvent(-1, "chkUseAltRClick")
 	GUICtrlSetState(-1, $GUI_UNCHECKED)
 
-$Group1 = GUICtrlCreateGroup(GetTranslated(42, 2, "Settings"), 4, 55, 440, 335)
+GUICtrlCreateGroup(GetTranslated(42, 2, "Settings"), 4, 55, 440, 335)
 
 Local $x = 0, $y = 20
 

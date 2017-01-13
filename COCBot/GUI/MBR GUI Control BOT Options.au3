@@ -26,7 +26,6 @@ Func LoadLanguagesComboBox()
 		If @error Then ExitLoop ; exit when no more files are found
 		ReDim $aLanguageFile[$iFileIndex + 1][3]
 		$aLanguageFile[$iFileIndex][0] = StringLeft($sFilename, StringLen($sFilename) - 4)
-		Local $LangIcons
 		; All Language Icons are made by YummyGum and can be found here: https://www.iconfinder.com/iconsets/142-mini-country-flags-16x16px
 		$aLanguageFile[$iFileIndex][2] = _GUIImageList_AddIcon($hLangIcons, @ScriptDir & "\lib\MBRBot.dll", Eval("e" & $aLanguageFile[$iFileIndex][0]) - 1 )
 		$sLangDisplayName = IniRead($dirLanguages & $sFilename, "Language", "DisplayName", "Unknown")
@@ -54,7 +53,7 @@ Func LoadLanguagesComboBox()
 			_GUICtrlComboBoxEx_AddString($cmbLanguage, $aLanguageFile[$i][1], $eMissingLangIcon, $eMissingLangIcon)
 		EndIf
 	Next
-
+_GUICtrlComboBox_SetCurSel($cmbLanguage, _GUICtrlComboBox_FindStringExact($cmbLanguage, $aLanguageFile[_ArraySearch($aLanguageFile, $sLanguage)][1]))
 EndFunc   ;==>LoadLanguagesComboBox
 
 Func cmbLanguage()
@@ -225,6 +224,15 @@ Func chkDebugDeadbaseImage()
 	SetDebugLog("DebugDeadbaseImage " & ($debugDeadbaseImage = 1 ? "enabled" : "disabled"))
 EndFunc   ;==>chkDebugDeadbaseImage
 
+Func chkDebugSmartZap()
+	If GUICtrlRead($chkDebugSmartZap) = $GUI_CHECKED Then
+		$DebugSmartZap = 1
+	Else
+		$DebugSmartZap = 0
+	EndIf
+	SetDebugLog("DebugSmartZap " & ($DebugSmartZap = 1 ? "enabled" : "disabled"))
+EndFunc
+
 Func chkDebugOcr()
 	If GUICtrlRead($chkDebugOcr) = $GUI_CHECKED Then
 		$debugOcr = 1
@@ -291,20 +299,6 @@ EndFunc   ;==>chkmakeIMGCSV
 Func btnTestTrain()
 	Local $currentOCR = $debugOcr
 	Local $currentRunState = $RunState
-	#cs
-	_GUICtrlTab_ClickTab($tabMain, 0)
-	$debugOcr = 1
-	$RunState = True
-	ForceCaptureRegion()
-	DebugImageSave("train_")
-	SetLog(_PadStringCenter(" Test Train begin (" & $sBotVersion & ")", 54, "="), $COLOR_INFO)
-	getArmyTroopCount(False, False, True)
-	getArmySpellCount(False, False, True)
-	getArmyHeroCount(False, False)
-	SetLog(_PadStringCenter(" Test Train end ", 54, "="), $COLOR_INFO)
-	Run("Explorer.exe " & $LibDir & "\debug\ocr\")
-	Run("Explorer.exe " & $dirTempDebug & "train_")
-	#ce
 
 	$RunState = True
 	BeginImageTest()
@@ -553,25 +547,6 @@ Func btnTestVillageSize()
 	$RunState = $currentRunState
 EndFunc   ;==>btnTestVillageSize
 
-#cs
-Func btnTestDeadBase()
-	Local $test = 0
-	LoadTHImage()
-	LoadElixirImage()
-	LoadElixirImage75Percent()
-	LoadElixirImage50Percent()
-	Zoomout()
-	If $debugBuildingPos = 0 Then
-		$test = 1
-		$debugBuildingPos = 1
-	EndIf
-	SETLOG("DEADBASE CHECK..................")
-	$dbBase = checkDeadBase()
-	SETLOG("TOWNHALL CHECK. imgloc.................")
-	$searchTH = imgloccheckTownhallADV2()
-	If $test = 1 Then $debugBuildingPos = 0
-EndFunc   ;==>btnTestDeadBase
-#ce
 
 Func btnTestDeadBase()
 	Local $hBMP = 0, $hHBMP = 0
@@ -700,6 +675,11 @@ Func btnTestCleanYard()
 	$result = ((IsArray($result)) ? (_ArrayToString($result, ",")) : ($result))
 	If @error Then $result = "Error " & @error & ", " & @extended & ", "
 	SetLog("Result CleanYard", $COLOR_INFO)
+	SetLog("Testing CheckTombs", $COLOR_INFO)
+	$result = CheckTombs()
+	$result = ((IsArray($result)) ? (_ArrayToString($result, ",")) : ($result))
+	If @error Then $result = "Error " & @error & ", " & @extended & ", "
+	SetLog("Result CheckTombs", $COLOR_INFO)
 	SetLog("Testing CleanYard DONE" , $COLOR_INFO)
 	EndImageTest()
 	; restore original state
@@ -781,7 +761,7 @@ Func btnTestSmartZap($directory = $dirTemp)
 	Local $currentatkTroops = $atkTroops
 	Local $currentdebugBuildingPos = $debugBuildingPos
 	Local $currentdebugGetLocation = $debugGetLocation
-	
+
 	$RunState = True
 	$DebugSmartZap = 1
 	$atkTroops[0][0] = $eLSpell
@@ -794,7 +774,7 @@ Func btnTestSmartZap($directory = $dirTemp)
 	$GlobalLSpelllevel  = 7
 	;$debugBuildingPos = 1
 	;$debugGetLocation = 1
-	
+
 	SetLog("Testing smartZap()", $COLOR_INFO)
 
 	SearchZoomOut($aCenterEnemyVillageClickDrag, True, "btnTestSmartZap")

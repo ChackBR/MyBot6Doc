@@ -27,8 +27,6 @@ Func NameOfTroop($iKind, $iPlural = 0)
 			$sTroopname = "Giant"
 		Case $eWall
 			$sTroopname = "Wall Breaker"
-		Case $eIceW
-			$sTroopname = "Ice Wizard"
 		Case $eWiza
 			$sTroopname = "Wizard"
 		Case $eBall

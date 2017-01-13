@@ -16,7 +16,7 @@
 
 ; ================================================== RANDOM CLICK/SLEEP PART ================================================== ;
 
-Func _Click($x, $y, $times = 1, $speed = 0, $debugtxt = "")
+Func Click($x, $y, $times = 1, $speed = 0, $debugtxt = "")
 
 	; !!! Not original function but randomization calculation which is linked to original function renamed FClick !!!
 	; !!! Still compatible with all original function parameters !!!
@@ -33,51 +33,9 @@ Func _Click($x, $y, $times = 1, $speed = 0, $debugtxt = "")
 		FClick($x, $y, $times, $speed, $debugtxt)
 	EndIf
 
-EndFunc   ;==>Click
+EndFunc   ;==>_Click
 
-Func FClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
-    If $debugClick = 1 Then
-		Local $txt = _DecodeDebug($debugtxt)
-		SetLog("Click " & $x & "," & $y & "," & $times & "," & $speed & " " & $debugtxt & $txt, $COLOR_ORANGE, "Verdana", "7.5", 0)
-	EndIf
-
-    If $AndroidAdbClick = True Then
-		AndroidClick($x, $y, $times, $speed)
-	EndIf
-	If $AndroidAdbClick = True Then
-	   Return
-    EndIf
-
-    Local $SuspendMode = ResumeAndroid()
-    ;getBSPos()
-    $x = $x  + $BSrpos[0]
-	$y = $y  + $BSrpos[1]
-	If $times <> 1 Then
-		For $i = 0 To ($times - 1)
-			If isProblemAffectBeforeClick($i) Then
-				If $debugClick = 1 Then Setlog("VOIDED Click " & $x & "," & $y & "," & $times & "," & $speed & " " & $debugtxt & $txt, $COLOR_RED, "Verdana", "7.5", 0)
-				checkMainScreen(False)
-				SuspendAndroid($SuspendMode)
-				Return  ; if need to clear screen do not click
-			EndIf
-			MoveMouseOutBS()
-			_ControlClick($x, $y)
-			If _Sleep($speed, False) Then ExitLoop
-		Next
-	Else
-		If isProblemAffectBeforeClick() Then
-			If $debugClick = 1 Then Setlog("VOIDED Click " & $x & "," & $y & "," & $times & "," & $speed & " " & $debugtxt & $txt, $COLOR_RED, "Verdana", "7.5", 0)
-			checkMainScreen(False)
-			SuspendAndroid($SuspendMode)
-			Return  ; if need to clear screen do not click
-		EndIf
-		MoveMouseOutBS()
-		_ControlClick($x, $y)
-	EndIf
-    SuspendAndroid($SuspendMode)
-EndFunc   ;==>Click
-
-Func _PureClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
+Func PureClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
 
 	; !!! Not original function but randomization calculation which is linked to original function renamed FPureClick !!!
 	; !!! Still compatible with all original function parameters !!!
@@ -94,37 +52,9 @@ Func _PureClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
 		FPureClick($x, $y, $times, $speed, $debugtxt)
 	EndIf
 
-EndFunc   ;==>PureClick
+EndFunc   ;==>_PureClick
 
-Func FPureClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
-	If $debugClick = 1 Then
-		Local $txt = _DecodeDebug($debugtxt)
-		SetLog("PureClick " & $x & "," & $y & "," & $times & "," & $speed & " " & $debugtxt & $txt, $COLOR_ORANGE, "Verdana", "7.5", 0)
-	EndIf
-
-    If $AndroidAdbClick = True Then
-	   AndroidClick($x, $y, $times, $speed, False)
-	   Return
-	EndIf
-
-    Local $SuspendMode = ResumeAndroid()
-    ;getBSPos()
-    $x = $x  + $BSrpos[0]
-	$y = $y  + $BSrpos[1]
-	If $times <> 1 Then
-		For $i = 0 To ($times - 1)
-			MoveMouseOutBS()
-			_ControlClick($x, $y)
-			If _Sleep($speed, False) Then ExitLoop
-		Next
-	Else
-		MoveMouseOutBS()
-		_ControlClick($x, $y)
-	EndIf
-    SuspendAndroid($SuspendMode)
-EndFunc   ;==>PureClick
-
-Func _GemClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
+Func GemClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
 
 	; !!! Not original function but randomization calculation which is linked to original function renamed FGemClick !!!
 	; !!! Still compatible with all original function parameters !!!
@@ -141,31 +71,19 @@ Func _GemClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
 		FGemClick($x, $y, $times, $speed, $debugtxt)
 	EndIf
 
-EndFunc   ;==>GemClick
+EndFunc   ;==>_GemClick
 
 Func randomSleep($SleepTime, $Range = 0)
 
 	If $RunState = False Then Return
 	If $Range = 0 Then $Range = Round($SleepTime / 5)
 	$SleepTimeF = Random($SleepTime - $Range, $SleepTime + $Range, 1)
-	If $DebugClick = 1 Then Setlog("Default sleep : " & $SleepTime & " - Random sleep : " & $SleepTimeF, $COLOR_ORANGE)
+	If $debugClick = 1 Then Setlog("Default sleep : " & $SleepTime & " - Random sleep : " & $SleepTimeF, $COLOR_ORANGE)
 	If _Sleep($SleepTimeF) Then Return
 
 EndFunc   ;==>randomSleep
 
 ; ================================================== QuickMIS PART ================================================== ;
-
-Func QuickMISDebug()
-
-	$RunState = True
-
-	$ValueReturned = InputBox("$ValueReturned", "Enter Return value tou want : BC1 - CX - N1 - NX - Q")
-	$Folder = FileSelectFolder("Select File", @ScriptDir)
-
-	SetLog(QuickMIS($ValueReturned, $Folder, 0, 0, $GAME_WIDTH, $GAME_HEIGHT, True))
-	SetLog("X=" & $QuickMISX & " - Y=" & $QuickMISY, $COLOR_ORANGE)
-
-EndFunc   ;==>QuickMISDebug
 
 Func QuickMIS($ValueReturned, $directory, $Left = 0, $Top = 0, $Right = $GAME_WIDTH, $Bottom = $GAME_HEIGHT, $Debug = False)
 
@@ -283,9 +201,9 @@ Func BotHumanization()
 
 		SetLog("Now, let the DocOc Team make your BOT more human ... :)", $COLOR_SUCCESS1)
 
-		ReturnAtHome()
 		If $ichkLookAtRedNotifications = 1 Then LookAtRedNotifications()
 		If $ichkCollectAchievements = 1 Then CollectAchievements()
+		ReturnAtHome()
 
 		For $i = 0 To 12
 			$ActionEnabled = _GUICtrlComboBox_GetCurSel($cmbPriority[$i])
@@ -599,14 +517,14 @@ Func VisitAPlayer()
 
 		For $i = 0 To Random(1, 4, 1)
 			SetLog("We will click on a random builing...", $COLOR_ACTION1)
-			$xInfo = Random(250, 650, 1)
-			$yInfo = Random(200, 500, 1)
+			$xInfo = Random(300, 500, 1)
+			$yInfo = Random(300, 432, 1)
 			Click($xInfo, $yInfo) ; click on a random builing
 			randomSleep(1500)
 			SetLog("... and open his Info window...", $COLOR_ACTION1)
 			Click(430, 660) ; open the info window about building
 			randomSleep(8000)
-			Click(750, 100) ;Click Away
+			Click(685, 175) ;Click Away
 			randomSleep(3000)
 		Next
 
@@ -625,100 +543,120 @@ EndFunc   ;==>DoNothing
 
 Func LookAtRedNotifications()
 
-	SetLog("Looking for red notifications...", $COLOR_INFO)
+	SetLog("Looking for notifications...", $COLOR_INFO)
+	Local $NoNotif = 0
 
-	$NotificationsFound = QuickMIS("NX", @ScriptDir & "\imgxml\Resources\Humanization Pics\RedNotifications")
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(55, 142, True), "D00818", 20) Then
+		SetLog("You have a new message...", $COLOR_ACTION1)
+		Click(40, 150) ; open Messages button
+		randomSleep(8000, 3000)
+		Click(760, 120) ; close window
+		randomSleep(2000)
+	Else
+		$NoNotif += 1
+	EndIf
 
-	If $NotificationsFound <> "none" Then
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(54, 83, True), "D00818", 20) Then
+		SetLog("You changed of league...", $COLOR_ACTION1)
+		Click(40, 80) ; open Cup button
+		randomSleep(4000)
+		Click(445, 610) ; click Okay
+		randomSleep(1500)
+		Click(830, 80) ; close window
+		randomSleep(2000)
+	Else
+		$NoNotif += 1
+	EndIf
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "RedMessages") Then
-			SetLog("You have a new message...", $COLOR_ACTION1)
-			Click(40, 150) ; open Messages button
-			randomSleep(8000, 3000)
-			Click(760, 120) ; close window
-			randomSleep(2000)
-		EndIf
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(56, 511, True), "D00818", 20) Then
+		SetLog("Current War to look at...", $COLOR_ACTION1)
+		Click(40, 520) ; open War menu
+		randomSleep(8000, 3000)
+		Click(70, 680) ; return home
+		randomSleep(2000)
+	Else
+		$NoNotif += 1
+	EndIf
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "RedCup") Then
-			SetLog("You changed of league...", $COLOR_ACTION1)
-			Click(40, 80) ; open Cup button
-			randomSleep(4000)
-			Click(830, 80) ; close window
-			randomSleep(2000)
-		EndIf
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(28, 353, True), "D00818", 20) Then
+		SetLog("New messages on the chat room...", $COLOR_ACTION1)
+		Click(20, 380) ; open chat
+		randomSleep(3000)
+		Click(330, 380) ; close chat
+		randomSleep(2000)
+	Else
+		$NoNotif += 1
+	EndIf
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "RedWar") Then
-			SetLog("Current War to look at...", $COLOR_ACTION1)
-			Click(40, 520) ; open War menu
-			randomSleep(8000, 3000)
-			Click(70, 680) ; return home
-			randomSleep(2000)
-		EndIf
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(834, 512, True), "D00818", 20) Then
+		SetLog("New messages or events from SC to read...", $COLOR_ACTION1)
+		Click(820, 520) ; open events
+		randomSleep(3000)
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "RedChat") Then
-			SetLog("New messages on the chat room...", $COLOR_ACTION1)
-			Click(20, 380) ; open chat
+		If _ColorCheck(_GetPixelColor(245, 110, True), "F0F4F0", 20) Then ; check if we are on events/news tab
+			Click(435, 110) ; open new tab
 			randomSleep(3000)
-			Click(330, 380) ; close chat
-			randomSleep(2000)
+		Else
+			Click(245, 110) ; open events tab
+			randomSleep(3000)
 		EndIf
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "RedSettings") Then
-			SetLog("New messages from SC to read...", $COLOR_ACTION1)
-			Click(820, 590) ; open settings
-			randomSleep(1500)
-			Click(120, 250) ; looking at news tab
-			randomSleep(4000)
-			Click(760, 120) ; close settings
-			randomSleep(2000)
-		EndIf
+		Click(760, 120) ; close settings
+		randomSleep(2000)
+	Else
+		$NoNotif += 1
+	EndIf
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "PurpleShop") Or StringInStr($NotificationsFound, "RedShop") Then
-			SetLog("There is something new on the shop...", $COLOR_ACTION1)
-			Click(800, 670) ; open Shop
-			randomSleep(2000)
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(832, 638, True), "683072", 20) Or _ColorCheck(_GetPixelColor(832, 637, True), "D00818", 20) Then
+		SetLog("There is something new on the shop...", $COLOR_ACTION1)
+		Click(800, 670) ; open Shop
+		randomSleep(2000)
 
-			$NeedScroll = Random(0, 1, 1)
-			$NeedScroll2 = Random(0, 1, 1)
-			If $NeedScroll = 1 Then
-				$xStart = Random(300, 800, 1)
-				$xEnd = Random($xStart - 250, $xStart - 220, 1)
+		$NeedScroll = Random(0, 1, 1)
+		$NeedScroll2 = Random(0, 1, 1)
+		If $NeedScroll = 1 Then
+			$xStart = Random(300, 800, 1)
+			$xEnd = Random($xStart - 250, $xStart - 220, 1)
+			$y = Random(360 - 10, 360 + 10, 1)
+			ClickDrag($xStart, $y, $xEnd, $y) ; scroll the shop
+			If $NeedScroll2 = 1 Then
+				randomSleep(2000)
+				$xEnd = Random(300, 800, 1)
+				$xStart = Random($xEnd - 250, $xEnd - 220, 1)
 				$y = Random(360 - 10, 360 + 10, 1)
 				ClickDrag($xStart, $y, $xEnd, $y) ; scroll the shop
-				If $NeedScroll2 = 1 Then
-					randomSleep(2000)
-					$xEnd = Random(300, 800, 1)
-					$xStart = Random($xEnd - 250, $xEnd - 220, 1)
-					$y = Random(360 - 10, 360 + 10, 1)
-					ClickDrag($xStart, $y, $xEnd, $y) ; scroll the shop
-				EndIf
 			EndIf
-
-			randomSleep(2000)
-			Click(820, 40) ; return home
-			randomSleep(2000)
 		EndIf
 
-		ReturnAtHome()
-		If StringInStr($NotificationsFound, "NewFriend") Then
-			SetLog("You have a new friend request, we will accept it...", $COLOR_ACTION1)
-			Click(190, 30) ; open Shop
-			randomSleep(2000)
+		randomSleep(2000)
+		Click(820, 40) ; return home
+		randomSleep(2000)
+	Else
+		$NoNotif += 1
+	EndIf
 
-			If IsClanOverview() Then
+	ReturnAtHome()
+	If _ColorCheck(_GetPixelColor(53, 24, True), "D00818", 20) Then
+		SetLog("Maybe you have a new friend request, lemme check...", $COLOR_ACTION1)
+		Click(40, 40) ; open profile
+		randomSleep(2000)
+
+		If IsClanOverview() Then
+			If _ColorCheck(_GetPixelColor(772, 70, True), "D00818", 20) Then
+				SetLog("It's confirmed, you have a new friend request, lemme check...", $COLOR_ACTION1)
 				Click(700, 80)
-				randomSleep(1500)
-				If QuickMIS("BC1", @ScriptDir & "\images\Resources\Humanization Pics\Friend") Then
-					Click($QuickMISX, $QuickMISY)
+				randomSleep(2000)
+				If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\Friend", 720, 165, 780, 600) Then
+					Click($QuickMISX + 720, $QuickMISY + 165)
 					randomSleep(1500)
-					If QuickMIS("BC1", @ScriptDir & "\images\Resources\Humanization Pics\Friend") Then
-						Click($QuickMISX, $QuickMISY)
+					If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\Friend", 440, 380, 590, 470) Then
+						Click($QuickMISX + 440, $QuickMISY + 380)
 					Else
 						SetLog("Error when trying to find Okay button... skipping...", $COLOR_WARNING)
 					EndIf
@@ -726,15 +664,17 @@ Func LookAtRedNotifications()
 					SetLog("Error when trying to find friend request... skipping...", $COLOR_WARNING)
 				EndIf
 			Else
-				SetLog("Error when trying to open Social tab... skipping...", $COLOR_WARNING)
+				SetLog("No friend request found... skipping...", $COLOR_WARNING)
 			EndIf
-
-			randomSleep(2000)
+		Else
+			SetLog("Error when trying to open Social tab... skipping...", $COLOR_WARNING)
 		EndIf
-
+		randomSleep(2000)
 	Else
-		SetLog("No notification found, nothing to look at...", $COLOR_ACTION1)
+		$NoNotif += 1
 	EndIf
+
+	If $NoNotif = 7 Then SetLog("No notification found, nothing to look at...", $COLOR_ACTION1)
 
 EndFunc   ;==>LookAtRedNotifications
 
@@ -743,20 +683,31 @@ Func CollectAchievements()
 	SetLog("Looking for achievement to collect...", $COLOR_INFO)
 
 	ReturnAtHome()
-	If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\RedAchievements") Then
-		SetLog("WoW, achievement to collect !!! Lets obtain XP and Gems :D ...", $COLOR_ACTION1)
-		Click(820, 520)
-		randomSleep(3000)
+	If _ColorCheck(_GetPixelColor(53, 24, True), "D00818", 20) Then
+		SetLog("WoW, maybe an achievement to collect !!!", $COLOR_ACTION1)
+		Click(40, 40) ; open profile
+		randomSleep(4000)
 
-		If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\ClaimReward") Then
-			Click($QuickMISX, $QuickMISY)
-			SetLog("Reward collected !!!", $COLOR_SUCCESS)
+		If IsClanOverview() Then
+
+			If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\ClaimReward", 680) Then
+				Click($QuickMISX + 680, $QuickMISY)
+				SetLog("Reward collected !!! Good Job Chief :D !!!", $COLOR_SUCCESS)
+				randomSleep(3000)
+			Else
+				SetLog('No "Claim Reward" button found... Lemme retry...', $COLOR_ERROR)
+				If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\ClaimReward", 680) Then
+					Click($QuickMISX + 680, $QuickMISY)
+					SetLog("Reward collected !!! Good Job Chief :D !!!", $COLOR_SUCCESS)
+					randomSleep(3000)
+				Else
+					SetLog('No "Claim Reward" button found... skipping...', $COLOR_ERROR)
+				EndIf
+			EndIf
+
 		Else
-			SetLog("Error when trying to find ""Claim Reward"" button...", $COLOR_ERROR)
-			Click(680, 180) ; close window
+			SetLog("Error when trying to open Profile tab... skipping...", $COLOR_WARNING)
 		EndIf
-
-		randomSleep(3000)
 	Else
 		SetLog("No achievement to collect...", $COLOR_ACTION1)
 	EndIf
@@ -798,6 +749,13 @@ Func ReturnAtHome()
 	EndIf
 
 EndFunc   ;==>ReturnAtHome
+
+Func IsMainScreen()
+
+	$Result = _ColorCheck(_GetPixelColor(22, 49, True), "04579A", 20)
+	Return $Result
+
+EndFunc   ;==>IsMainScreen
 
 Func IsMessagesReplayWindow()
 
@@ -889,10 +847,3 @@ Func IsWarMenu()
 	Return $Result
 
 EndFunc   ;==>IsWarMenu
-
-Func IsMainScreen()
-
-	$Result = _ColorCheck(_GetPixelColor(191, 27, True), "FFFFFF", 20)
-	Return $Result
-
-EndFunc   ;==>IsMainScreen

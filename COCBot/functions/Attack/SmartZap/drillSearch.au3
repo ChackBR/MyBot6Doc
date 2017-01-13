@@ -79,3 +79,64 @@ Func CheckDrillLvl($x, $y)
 	EndIf
 	Return 0
 EndFunc   ;==>CheckDrillLvl
+
+Func getDrillCluster(Const ByRef $aDarkDrills)
+	Local $iMaxMedianDist = 26
+	Local $aBestCluster[4] = [0, 0, 0, -1]
+	
+	If UBound($aDarkDrills) < 2 Then Return -1
+	
+	If UBound($aDarkDrills) > 2 Then
+		Local $iMedianX = Ceiling(Number(($aDarkDrills[0][0] + $aDarkDrills[1][0] + $aDarkDrills[2][0])/3))
+		Local $iMedianY = Ceiling(Number(($aDarkDrills[0][1] + $aDarkDrills[1][1] + $aDarkDrills[2][1])/3))
+		If $DebugSmartZap = 1 Then SetLog("TripleDrill Unweighted Median Point: x = " & $iMedianX & ", y = " & $iMedianY, $COLOR_DEBUG)
+		For $i = 0 To 2
+			If Abs($aDarkDrills[$i][0] - $iMedianX) > $iMaxMedianDist Or Abs($aDarkDrills[$i][1] - $iMedianY) > $iMaxMedianDist  Then
+				$aBestCluster[3] = -1
+				ExitLoop
+			Else
+				Local $aTemp[3] = [0, 1, 2]
+				$aBestCluster[3] = $aTemp
+			EndIf
+		Next
+		If $DebugSmartZap = 1 And $aBestCluster[3] <> -1 Then SetLog("TripleDrill Cluster found." & $aBestCluster[3], $COLOR_DEBUG)
+	EndIf
+	
+	If $aBestCluster[3] = -1 Then
+		Local $iMaxHold = 0
+		For $i = 0 To UBound($aDarkDrills) - 1
+			Local $iMedianX = Ceiling(Number(($aDarkDrills[$i][0] + $aDarkDrills[Mod($i + 1, UBound($aDarkDrills))][0])/2))
+			Local $iMedianY = Ceiling(Number(($aDarkDrills[$i][1] + $aDarkDrills[Mod($i + 1, UBound($aDarkDrills))][1])/2))
+			If $DebugSmartZap = 1 Then SetLog("[" & $i & "," & Mod($i + 1, UBound($aDarkDrills)) & "] DoubleDrill Unweighted Median Point: x = " & $iMedianX & ", y = " & $iMedianY, $COLOR_DEBUG)
+			If $aDarkDrills[$i][3] + $aDarkDrills[Mod($i + 1, UBound($aDarkDrills))][3] > $iMaxHold Then
+				If Abs($aDarkDrills[$i][0] - $iMedianX) <= $iMaxMedianDist And Abs($aDarkDrills[$i][1] - $iMedianY) <= $iMaxMedianDist _
+				And Abs($aDarkDrills[Mod($i + 1, UBound($aDarkDrills))][0] - $iMedianX) <= $iMaxMedianDist And Abs($aDarkDrills[Mod($i + 1, UBound($aDarkDrills))][1] - $iMedianY) <= $iMaxMedianDist Then
+					$iMaxHold = $aDarkDrills[$i][3] + $aDarkDrills[Mod($i + 1, UBound($aDarkDrills))][3]
+					Local $aTemp[2] = [$i, Mod($i + 1, UBound($aDarkDrills))]
+					$aBestCluster[3] = $aTemp
+				EndIf
+			EndIf
+		Next
+		If $DebugSmartZap = 1 And $aBestCluster[3] <> -1 Then SetLog("DoubleDrill Cluster found: [" & ($aBestCluster[3])[0] & "," & ($aBestCluster[3])[1] & "]", $COLOR_DEBUG)
+	EndIf
+	
+	If $aBestCluster[3] = -1 Then
+		Return -1
+	Else
+		Local $iWeightedMedianX = 0
+		Local $iWeightedMedianY = 0
+		Local $iWeightedMedianDiv = 0
+		Local $iTotalHold = 0
+		For $i = 0 To UBound($aBestCluster[3]) - 1
+			$iWeightedMedianX += $aDarkDrills[($aBestCluster[3])[$i]][0] * $aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
+			$iWeightedMedianY += $aDarkDrills[($aBestCluster[3])[$i]][1] * $aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
+			$iWeightedMedianDiv += $aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
+			$iTotalHold += $aDarkDrills[($aBestCluster[3])[$i]][3]
+		Next
+		$aBestCluster[0] = Ceiling(Number($iWeightedMedianX / $iWeightedMedianDiv))
+		$aBestCluster[1] = Ceiling(Number($iWeightedMedianY / $iWeightedMedianDiv))
+		$aBestCluster[2] = $iTotalHold
+		If $DebugSmartZap = 1 Then SetLog("Best Cluster: weighted x = " & $aBestCluster[0] & ", weighted y = " & $aBestCluster[1] & ", hold = " & $aBestCluster[2], $COLOR_DEBUG)
+		Return $aBestCluster
+	EndIf
+EndFunc   ;==>getDrillCluster

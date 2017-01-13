@@ -4,15 +4,27 @@
    |_| |___/_/ \_\_|  |_| |___/\___/\__|\___/ \___|
 
 
-			Based on MyBot.run v6.5.2
+			Based on MyBot.run v6.5.3
 
-  _____               ____              ____   _____  ___  
- |  __ \             / __ \            |___ \ | ____||__ \ 
- | |  | | ___   ___ | |  | | ___  __   ____) || |__     ) |
- | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ < |___ \   / / 
- | |__| | (_) | (__ | |__| | (__   \ V /___) | ___) | / /_ 
- |_____/ \___/ \___(_)____/ \___|   \_/|____(_)____(_)____|
+  _____               ____              ____   _____  ____  
+ |  __ \             / __ \            |___ \ | ____||___ \ 
+ | |  | | ___   ___ | |  | | ___  __   ____) || |__    __) |
+ | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ < |___ \  |__ < 
+ | |__| | (_) | (__ | |__| | (__   \ V /___) | ___) | ___) |
+ |_____/ \___/ \___(_)____/ \___|   \_/|____(_)____(_)____/
                                                            
+
+	- Official 6.5.3
+	- Fix for Cannot find train Window
+	- Fix Bad pixel check on troop position
+	- Fix for detecting Air Defence in Weak Base
+	- Add Bot Humanization
+	- Add Clusterattack to SmartZap, zapping multiple drills at once
+	- Improve Search Tab
+	- Improve Walls Upgrade Tab
+
+
+				 Doc Oc v3.5.2 
 	- Fix Locate brew spells icons for any event 
 	- Fix Bully Mode issues on Search Village (found by @Gerd)
 	- Add Debug Button on GUI with a script to zip all necessary files 
@@ -23,7 +35,6 @@
 	- Improve the Lighting Spell detection and Freeze on Train
 	- Improve Smart Zap
 	- Removed the ice Wizard from GUI , but the  code is prepared 
-	
 	
                  Doc Oc v3.5.1 
 	- Fix the train order with Ice Wizard

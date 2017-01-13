@@ -649,7 +649,7 @@ Func ChangeTroopTrainOrder()
 	;$TroopGroup[10][3] = [["Arch", 1, 1], ["Giant", 2, 5], ["Wall", 4, 2], ["Barb", 0, 1], ["Gobl", 3, 1], ["Heal", 7, 14], ["Pekk", 9, 25], ["Ball", 5, 5], ["Wiza", 6, 4], ["Drag", 8, 20]]
 
 	Local $sComboText = ""
-	Local $NewTroopGroup[20][6]
+	Local $NewTroopGroup[19][6]
 	Local $iUpdateCount = 0
 
 	If UBound($aTroopOrderList) - 1 <> UBound($TroopGroup) Then ; safety check in case troops are added
@@ -1271,19 +1271,6 @@ Func LevLava()
 	EndIf
 EndFunc   ;==>LevLava
 
-Func LevIceW()
-	If $iGUIEnabled = 1 Then
-		While _IsPressed(01)
-			LevUpDown("IceW")
-			lblTotalCount2()
-			Sleep($iDelayLvUP)
-		WEnd
-	Else
-		LevUpDown("IceW")
-		lblTotalCount2()
-	EndIf
-EndFunc   ;==>LevLava
-
 Func LevBowl()
 	If $iGUIEnabled = 1 Then
 		While _IsPressed(01)
@@ -1586,11 +1573,6 @@ EndFunc   ;==>lblTotalCountWitc
 
 Func lblTotalCountLava()
 	AssignNumberTroopSpell("Lava")
-	lblTotalCount()
-EndFunc   ;==>lblTotalCountLava
-
-Func lblTotalCountIceW()
-	AssignNumberTroopSpell("IceW")
 	lblTotalCount()
 EndFunc   ;==>lblTotalCountLava
 

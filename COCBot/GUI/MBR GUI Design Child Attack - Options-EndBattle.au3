@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 
-Local $x = 20, $y = 45
+Local $x = 20, $y = 70
 Global $hReplayShareGUI, $txtShareMinGold, $txtShareMinElixir, $txtShareMinDark, $txtShareMessage
 	$grpReplayShare = GUICtrlCreateGroup(GetTranslated(633,1,"Share Replay"), $x-15, $y-20, 420, 204)
 		$chkShareAttack = GUICtrlCreateCheckbox(GetTranslated(633,2, "Share Replays in your clan's chat."), $x, $y-7, -1, -1)

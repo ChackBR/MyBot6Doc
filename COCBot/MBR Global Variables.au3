@@ -502,21 +502,28 @@ Global $RedrawBotWindowMode = 2 ; 0 = disabled, 1 = Redraw always entire bot win
 Global $bRedrawBotWindow[3] = [True, False, False] ; [0] = window redraw enabled, [1] = window redraw required, [2] = window redraw requird by some controls, see CheckRedrawControls()
 
 ; enumerated Icons 1-based index to IconLib
-Global Enum $eIcnArcher = 1, $eIcnDonArcher, $eIcnBalloon, $eIcnDonBalloon, $eIcnBarbarian, $eIcnDonBarbarian, $eIcnKingAbility, $eIcnBuilder, $eIcnCC, $eIcnGUI, $eIcnDark, $eIcnDragon, $eIcnDonDragon, $eIcnDrill, $eIcnElixir, $eIcnCollector, $eIcnFreezeSpell, $eIcnGem, $eIcnGiant, $eIcnDonGiant, _
-		$eIcnTrap, $eIcnGoblin, $eIcnDonGoblin, $eIcnGold, $eIcnGolem, $eIcnDonGolem, $eIcnHealer, $eIcnDonHealer, $eIcnHogRider, $eIcnDonHogRider, $eIcnHealSpell, $eIcnInferno, $eIcnJumpSpell, $eIcnLavaHound, $eIcnDonLavaHound, $eIcnLightSpell, $eIcnMinion, $eIcnDonMinion, $eIcnPekka, $eIcnDonPekka, _
-		$eIcnQueenAbility, $eIcnRageSpell, $eIcnTroops, $eIcnHourGlass, $eIcnTH1, $eIcnTH10, $eIcnTrophy, $eIcnValkyrie, $eIcnDonValkyrie, $eIcnWall, $eIcnWallBreaker, $eIcnDonWallBreaker, $eIcnWitch, $eIcnDonWitch, $eIcnWizard, $eIcnDonWizard, $eIcnXbow, $eIcnBarrackBoost, $eIcnMine, $eIcnCamp, _
-		$eIcnBarrack, $eIcnSpellFactory, $eIcnDonBlacklist, $eIcnSpellFactoryBoost, $eIcnMortar, $eIcnWizTower, $eIcnPayPal, $eIcnNotify, $eIcnGreenLight, $eIcnLaboratory, $eIcnRedLight, $eIcnBlank, $eIcnYellowLight, $eIcnDonCustom, $eIcnTombstone, $eIcnSilverStar, $eIcnGoldStar, $eIcnDarkBarrack, _
-		$eIcnCollectorLocate, $eIcnDrillLocate, $eIcnMineLocate, $eIcnBarrackLocate, $eIcnDarkBarrackLocate, $eIcnDarkSpellFactoryLocate, $eIcnDarkSpellFactory, $eIcnEarthQuakeSpell, $eIcnHasteSpell, $eIcnPoisonSpell, $eIcnBldgTarget, $eIcnBldgX, $eIcnRecycle, $eIcnHeroes, _
-		$eIcnBldgElixir, $eIcnBldgGold, $eIcnMagnifier, $eIcnWallElixir, $eIcnWallGold, $eIcnQueen, $eIcnKing, $eIcnDarkSpellBoost, $eIcnQueenBoostLocate, $eIcnKingBoostLocate, $eIcnKingUpgr, $eIcnQueenUpgr, $eIcnWardenAbility, $eIcnWarden, $eIcnWardenBoostLocate, $eIcnKingBoost, _
-		$eIcnQueenBoost, $eIcnWardenBoost, $eIcnWardenUpgr, $eIcnReload, $eIcnCopy, $eIcnAddcvs, $eIcnEdit, $eIcnTreeSnow, $eIcnSleepingQueen, $eIcnSleepingKing, $eIcnGoldElixir, $eIcnBowler, $eIcnDonBowler, $eIcnCCDonate, $eIcnEagleArt, $eIcnGembox, $eIcnInferno4, $eIcnInfo, $eIcnMain, _
-		$eIcnTree, $eIcnProfile, $eIcnCCRequest, $eIcnTelegram, $eIcnTiles, $eIcnXbow3, $eIcnBark, $eIcnDailyProgram, $eIcnLootCart, $eIcnSleepMode, $eIcnTH11, $eIcnTrainMode, $eIcnSleepingWarden, $eIcnCloneSpell, $eIcnSkeletonSpell, $eIcnBabyDragon, $eIcnDonBabyDragon, $eIcnMiner, $eIcnDonMiner, _
-		$eIcnNoShield, $eIcnDonCustomB, $eIcnAirdefense, $eIcnDarkBarrackBoost, $eIcnDarkElixirStorage, $eIcnSpellsCost , $eIcnTroopsCost , $eIcnResetButton, $eIcnNewSmartZap, $eIcnTrain, $eIcnAttack, $eIcnDelay, $eIcnReOrder, $eIcn2Arrow, $eIcnArrowLeft, $eIcnArrowRight, $eIcnAndroid, _
-		$eHdV04, $eHdV05, $eHdV06, $eHdV07, $eHdV08, $eHdV09, $eHdV10, $eHdV11, _
-		$eUnranked, $eBronze, $eSilver, $eGold, $eCrystal, $eMaster, $eChampion, $eTitan, $eLegend, _
-		$eWall04, $eWall05, $eWall06, $eWall07, $eWall08, $eWall09, $eWall10, $eWall11, _
-		$eIcnPBNotify, $eIcnCCTroops, $eIcnCCSpells, $eIcnSpellsGroup, _
-		$eBahasaIND, $eChinese_S, $eChinese_T, $eEnglish, $eFrench, $eGerman, $eItalian, $ePersian, $eRussian, $eSpanish, $eTurkish, $eMissingLangIcon, _
-		$eWall12, $ePortuguese, $eIcnIcew
+Global Enum $eIcnArcher = 1, $eIcnDonArcher, $eIcnBalloon, $eIcnDonBalloon, $eIcnBarbarian, $eIcnDonBarbarian, $eEmpty1, $eIcnBuilder, $eIcnCC, $eIcnGUI, _
+			$eIcnDark, $eIcnDragon, $eIcnDonDragon, $eIcnDrill, $eIcnElixir, $eIcnCollector, $eIcnFreezeSpell, $eIcnGem, $eIcnGiant, $eIcnDonGiant, _
+			$eIcnTrap, $eIcnGoblin, $eIcnDonGoblin, $eIcnGold, $eIcnGolem, $eIcnDonGolem, $eIcnHealer, $eIcnDonHealer, $eIcnHogRider, $eIcnDonHogRider, _
+			$eIcnHealSpell, $eIcnInferno, $eIcnJumpSpell, $eIcnLavaHound, $eIcnDonLavaHound, $eIcnLightSpell, $eIcnMinion, $eIcnDonMinion, $eIcnPekka, $eIcnDonPekka, _
+			$eEmpty2, $eIcnRageSpell, $eIcnTroops, $eIcnHourGlass, $eIcnTH1, $eIcnTH10, $eIcnTrophy, $eIcnValkyrie, $eIcnDonValkyrie, $eIcnWall, $eIcnWallBreaker, _
+			$eIcnDonWallBreaker, $eIcnWitch, $eIcnDonWitch, $eIcnWizard, $eIcnDonWizard, $eIcnXbow, $eIcnBarrackBoost, $eIcnMine, $eIcnCamp, _
+			$eIcnBarrack, $eIcnSpellFactory, $eIcnDonBlacklist, $eIcnSpellFactoryBoost, $eIcnMortar, $eIcnWizTower, $eIcnPayPal, $eIcnNotify, $eIcnGreenLight, $eIcnLaboratory, _
+			$eIcnRedLight, $eIcnBlank, $eIcnYellowLight, $eIcnDonCustom, $eIcnTombstone, $eIcnSilverStar, $eIcnGoldStar, $eIcnDarkBarrack, $eIcnCollectorLocate, $eIcnDrillLocate, _
+			$eIcnMineLocate, $eIcnBarrackLocate, $eIcnDarkBarrackLocate, $eIcnDarkSpellFactoryLocate, $eIcnDarkSpellFactory, $eIcnEarthQuakeSpell, $eIcnHasteSpell, $eIcnPoisonSpell, $eIcnBldgTarget, $eIcnBldgX, _
+			$eIcnRecycle, $eIcnHeroes, $eIcnBldgElixir, $eIcnBldgGold, $eIcnMagnifier, $eIcnWallElixir, $eIcnWallGold, $eIcnKing, $eIcnQueen, $eIcnDarkSpellBoost, _
+			$eIcnQueenBoostLocate, $eIcnKingBoostLocate, $eIcnKingUpgr, $eIcnQueenUpgr, $eIcnWardenUpgr, $eIcnWarden, $eIcnWardenBoostLocate, $eIcnKingBoost, $eIcnQueenBoost, $eIcnWardenBoost, _
+			$eEmpty3, $eIcnReload, $eIcnCopy, $eIcnAddcvs, $eIcnEdit, $eIcnTreeSnow, $eIcnSleepingQueen, $eIcnSleepingKing, $eIcnGoldElixir, $eIcnBowler, $eIcnDonBowler, _
+			$eIcnCCDonate, $eIcnEagleArt, $eIcnGembox, $eIcnInferno4, $eIcnInfo, $eIcnMain, $eIcnTree, $eIcnProfile, $eIcnCCRequest, _
+			$eIcnTelegram, $eIcnTiles, $eIcnXbow3, $eIcnBark, $eIcnDailyProgram, $eIcnLootCart, $eIcnSleepMode, $eIcnTH11, $eIcnTrainMode, $eIcnSleepingWarden, _
+			$eIcnCloneSpell, $eIcnSkeletonSpell, $eIcnBabyDragon, $eIcnDonBabyDragon, $eIcnMiner, $eIcnDonMiner, $eIcnNoShield, $eIcnDonCustomB, $eIcnAirdefense, $eIcnDarkBarrackBoost, _
+			$eIcnDarkElixirStorage, $eIcnSpellsCost , $eIcnTroopsCost , $eIcnResetButton, $eIcnNewSmartZap, $eIcnTrain, $eIcnAttack, $eIcnDelay, $eIcnReOrder, _
+			$eIcn2Arrow, $eIcnArrowLeft, $eIcnArrowRight, $eIcnAndroid, $eHdV04, $eHdV05, $eHdV06, $eHdV07, $eHdV08, $eHdV09, $eHdV10, _
+			$eHdV11, $eUnranked, $eBronze, $eSilver, $eGold, $eCrystal, $eMaster, $eChampion, $eTitan, $eLegend, _
+			$eWall04, $eWall05, $eWall06, $eWall07, $eWall08, $eWall09, $eWall10, $eWall11, $eIcnPBNotify, $eIcnCCTroops, _
+			$eIcnCCSpells, $eIcnSpellsGroup, $eBahasaIND, $eChinese_S, $eChinese_T, $eEnglish, $eFrench, $eGerman, $eItalian, $ePersian, _
+			$eRussian, $eSpanish, $eTurkish, $eMissingLangIcon, $eWall12, $ePortuguese, $eIcnDonPoisonSpell, $eIcnDonEarthQuakeSpell, $eIcnDonHasteSpell, $eIcnDonSkeletonSpell, _
+			$eIcnBrain, $eIcnChat, $eIcnSwords, $eIcnLoop, $eIcnRepeat, $eIcnClan
 
 Global $eIcnDonBlank = $eIcnDonBlacklist
 Global $eIcnOptions = $eIcnDonBlacklist
@@ -556,9 +563,8 @@ $sModeText[$MA] = "Milking Attack"
 Global Const $REDLINE_IMGLOC_RAW = 0
 Global Const $REDLINE_IMGLOC = 1
 Global Const $REDLINE_ORIGINAL = 2
-Global Const $REDLINE_NONE = 3 ; $REDLINE_NONE
-; $iRedlineRoutine[$DB] = Dead Bases , $iRedlineRoutine[$LB] = Live bases ....
-Global $iRedlineRoutine = [$REDLINE_IMGLOC_RAW, $REDLINE_IMGLOC_RAW, 0, 0, 0, 0] ; 3 = don't use red line, 0 = ImgLoc raw red line routine (default), 1 = New ImgLoc based deployable red line routine, 2 = Original red line routine
+Global Const $REDLINE_NONE = 3
+Global $iRedlineRoutine = [$REDLINE_IMGLOC_RAW, $REDLINE_IMGLOC_RAW, 0, 0, 0, 0] ; -1 = don't use red line, 0 = ImgLoc raw red line routine (default), 1 = New ImgLoc based deployable red line routine, 2 = Original red line routine
 
 Global Const $DROPLINE_EDGE_FIXED = 0
 Global Const $DROPLINE_EDGE_FIRST = 1
@@ -569,9 +575,6 @@ Global $iDroplineEdge = [$DROPLINE_EDGE_FIRST, $DROPLINE_EDGE_FIRST, 0, 0, 0, 0]
 
 Global $iAtkAlgorithm[$iModeCount]
 
-;--------------------------------------------------------------------------
-; Notify Revamp - PushBullet/Telegram variables
-;-------------------------------------------------------------------------
 ;PushBullet---------------------------------------------------------------
 Global $NotifyVersion = "Revamp v1.5.1"
 Global $NotifyVersionMSG = $sBotTitle & " | Notify " & $NotifyVersion
@@ -640,10 +643,6 @@ Global $grpNotify, $chkNotifyPBEnabled,$chkNotifyRemote,$chkNotifyDeleteAllPBPus
 Global $txbNotifyPBToken, $txbNotifyTGToken, $txbNotifyOrigin, $chkNotifyAlertMatchFound, $chkNotifyAlertLastRaidIMG, $chkNotifyAlertLastRaidTXT, $chkNotifyAlertCampFull
 Global $chkNotifyAlertUpgradeWall, $chkNotifyAlertOutOfSync, $chkNotifyAlertTakeBreak, $chkNotifyAlertBuilderIdle, $chkNotifyAlertVillageStats, $chkNotifyAlertLastAttack
 Global $chkNotifyAlertAnotherDevice, $chkNotifyAlertMaintenance, $chkNotifyAlertBAN, $chkNotifyBOTUpdate
-;--------------------------------------------------------------------------
-; Notify Revamp - PushBullet/Telegram variables
-;-------------------------------------------------------------------------
-
 Global $sLogFName = ""
 Global $sAttackLogFName = ""
 Global $AttackFile
@@ -759,9 +758,11 @@ Global $THusedKing = 0
 Global $THusedQueen = 0
 Global $THusedWarden = 0
 
+;Train
+Global $iChkQuickArmy1, $iChkQuickArmy2, $iChkQuickArmy3
 
 ;Troop types
-Global Enum $eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eIceW, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, _
+Global Enum $eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, _
 	$eMini, $eHogs, $eValk, $eGole, $eWitc, $eLava, $eBowl, $eKing, $eQueen, $eWarden, $eCastle, _
 	$eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell
 ;wall
@@ -772,10 +773,15 @@ Global $Wall[8]
 Global $iMaxNbWall = 4
 
 ;Attack Settings [Dec 2016]
-Global $TopLeft[5][2] = [[62, 306], [156, 238], [221, 188], [288, 142], [383, 76]]
-Global $TopRight[5][2] = [[486, 59], [586, 134], [652, 184], [720, 231], [817, 308]]
-Global $BottomLeft[5][2] = [[20, 373], [101, 430], [171, 481], [244, 535], [346, 615]]
-Global $BottomRight[5][2] = [[530, 615], [632, 535], [704, 481], [781, 430], [848, 373]]
+;Global $TopLeft[5][2] = [[62, 306], [156, 238], [221, 188], [288, 142], [383, 76]]
+;Global $TopRight[5][2] = [[486, 59], [586, 134], [652, 184], [720, 231], [817, 308]]
+;Global $BottomLeft[5][2] = [[20, 373], [101, 430], [171, 481], [244, 535], [346, 615]]
+;Global $BottomRight[5][2] = [[530, 615], [632, 535], [704, 481], [781, 430], [848, 373]]
+;New coordinates by Samkie
+Global $TopLeft[5][2] = [[75, 306], [154, 246], [233, 186], [312, 126], [391, 66]]
+Global $TopRight[5][2] = [[460, 70], [538, 129], [617, 189], [695, 248], [774, 308]]
+Global $BottomLeft[5][2] = [[80, 394], [148, 446], [217, 497], [286, 549], [354, 600]]
+Global $BottomRight[5][2] = [[515, 610], [589, 554], [663, 497], [737, 443], [811, 384]]
 Global $eThing[1] = [101]
 Global $Edges[4] = [$BottomRight, $TopLeft, $BottomLeft, $TopRight]
 
@@ -794,7 +800,7 @@ $iChkRedArea[$LB] = 1
 $iChkRedArea[$MA] = 1
 
 Global $troopsToBeUsed[12]
-Global $useAllTroops[34] = [$eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eIceW, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, $eMini, $eHogs, $eValk, $eGole, $eWitc, $eLava, $eBowl, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell]
+Global $useAllTroops[33] = [$eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, $eMini, $eHogs, $eValk, $eGole, $eWitc, $eLava, $eBowl, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell]
 Global $useBarracks[26] = [$eBarb, $eArch, $eGiant, $eGobl, $eWall, $eBall, $eWiza, $eHeal, $eDrag, $ePekk, $eBabyD, $eMine, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell]
 Global $useBarbs[15] = [$eBarb, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell]
 Global $useArchs[15] = [$eArch, $eKing, $eQueen, $eWarden, $eCastle, $eLSpell, $eHSpell, $eRSpell, $eJSpell, $eFSpell, $eCSpell, $ePSpell, $eESpell, $eHaSpell, $eSkSpell]
@@ -938,6 +944,11 @@ Global $ichkDonateAllDragons, $ichkDonateDragons, $sTxtDonateDragons, $sTxtBlack
 Global $ichkDonateAllPekkas, $ichkDonatePekkas, $sTxtDonatePekkas, $sTxtBlacklistPekkas, $aDonPekkas, $aBlkPekkas
 Global $ichkDonateAllBabyDragons, $ichkDonateBabyDragons, $sTxtDonateBabyDragons, $sTxtBlacklistBabyDragons, $aDonBabyDragons, $aBlkBabyDragons
 Global $ichkDonateAllMiners, $ichkDonateMiners, $sTxtDonateMiners, $sTxtBlacklistMiners, $aDonMiners, $aBlkMiners
+Global $ichkDonateAllLightningSpells, $ichkDonateLightningSpells, $sTxtDonateLightningSpells, $sTxtBlacklistLightningSpells, $aDonLightningSpells, $aBlkLightningSpells
+Global $ichkDonateAllHealSpells, $ichkDonateHealSpells, $sTxtDonateHealSpells, $sTxtBlacklistHealSpells, $aDonHealSpells, $aBlkHealSpells
+Global $ichkDonateAllRageSpells, $ichkDonateRageSpells, $sTxtDonateRageSpells, $sTxtBlacklistRageSpells, $aDonRageSpells, $aBlkRageSpells
+Global $ichkDonateAllJumpSpells, $ichkDonateJumpSpells, $sTxtDonateJumpSpells, $sTxtBlacklistJumpSpells, $aDonJumpSpells, $aBlkJumpSpells
+Global $ichkDonateAllFreezeSpells, $ichkDonateFreezeSpells, $sTxtDonateFreezeSpells, $sTxtBlacklistFreezeSpells, $aDonFreezeSpells, $aBlkFreezeSpells
 Global $ichkDonateAllMinions, $ichkDonateMinions, $sTxtDonateMinions, $sTxtBlacklistMinions, $aDonMinions, $aBlkMinions
 Global $ichkDonateAllHogRiders, $ichkDonateHogRiders, $sTxtDonateHogRiders, $sTxtBlacklistHogRiders, $aDonHogRiders, $aBlkHogRiders
 Global $ichkDonateAllValkyries, $ichkDonateValkyries, $sTxtDonateValkyries, $sTxtBlacklistValkyries, $aDonValkyries, $aBlkValkyries
@@ -972,9 +983,9 @@ Global $icmbDarkTroopComp = 1
 Global $icmbTroopCap ;Troop Capacity
 Global $BarbComp = 58, $ArchComp = 115, $GoblComp = 19, $GiantComp = 4, $WallComp = 4, $WizaComp = 0, $MiniComp = 0, $HogsComp = 0
 Global $DragComp = 0, $BallComp = 0, $PekkComp = 0, $HealComp = 0, $ValkComp = 0, $GoleComp = 0, $WitcComp = 0, $LavaComp = 0, $BowlComp = 0
-Global $BabyDComp = 0, $MineComp = 0 , $IceWComp = 0
+Global $BabyDComp = 0, $MineComp = 0
 Global $CurBarb = 0, $CurArch = 0, $CurGiant = 0, $CurGobl = 0, $CurWall = 0, $CurBall = 0, $CurWiza = 0, $CurHeal = 0
-Global $CurMini = 0, $CurHogs = 0, $CurValk = 0, $CurGole = 0, $CurWitc = 0, $CurLava = 0, $CurBowl = 0, $CurDrag = 0, $CurPekk = 0, $CurBabyD = 0, $CurMine = 0 , $CurIceW = 0
+Global $CurMini = 0, $CurHogs = 0, $CurValk = 0, $CurGole = 0, $CurWitc = 0, $CurLava = 0, $CurBowl = 0, $CurDrag = 0, $CurPekk = 0, $CurBabyD = 0, $CurMine = 0
 Global $T[1] = [97]
 Global $ArmyComp
 
@@ -987,7 +998,7 @@ Global $TotalSFactory = 0
 Global $CurSFactory = 0
 
 ; Global Variables for the Spells , current Spells done , existen on army
-Global $CurTotalDarkSpell = 0 ; Needed count for existing donate()
+Global $CurTotalDonSpell[2] = [0,0] ; Needed count for existing donate()
 Global $LSpellComp = 0, $HSpellComp = 0, $RSpellComp = 0, $JSpellComp = 0, $FSpellComp = 0, $CSpellComp = 0, $PSpellComp = 0, $ESpellComp = 0, $HaSpellComp = 0, $SkSpellComp = 0
 Global $CurLSpell = 0, $CurHSpell = 0, $CurRSpell = 0, $CurJSpell = 0, $CurFSpell = 0, $CurCSpell = 0, $CurPSpell = 0, $CurESpell = 0, $CurHaSpell = 0, $CurSkSpell = 0
 Global $DonLSpell = 0, $DonHSpell = 0, $DonRSpell = 0, $DonJSpell = 0, $DonFSpell = 0, $DonCSpell = 0, $DonPSpell = 0, $DonESpell = 0, $DonHaSpell = 0, $DonSkSpell = 0
@@ -1111,11 +1122,11 @@ Global $itxtRestartDark = 500
 
 ;Create troop training variables
 ; notes $DefaultTroopGroup[19][0] = $TroopName | [1] = $TroopNamePosition | [2] = $TroopHeight | [3] = Times | [4] = qty | [5] = marker for DarkTroop or ElixerTroop]
-Global $DefaultTroopGroup[20][6]  = [ ["Arch", 1, 1, 25, 0, "e"], ["Giant", 2, 5, 120, 0, "e"], ["Wall", 4, 2, 60, 0, "e"], ["Barb", 0, 1, 20, 0, "e"], ["Gobl", 3, 1, 30, 0, "e"], ["Heal", 8, 14, 600, 0, "e"], ["Pekk", 10, 25, 900, 0, "e"],  _
-									 ["Ball", 5, 5, 300, 0, "e"], ["Wiza", 7, 4, 300, 0, "e"], ["Drag", 9, 20, 900, 0, "e"], ["BabyD", 11, 10, 600, 0, "e"], ["Mine", 12, 5, 300, 0, "e"], ["IceW", 6, 4, 300, 0, "e"], _
+Global $DefaultTroopGroup[19][6]  = [ ["Arch", 1, 1, 25, 0, "e"], ["Giant", 2, 5, 120, 0, "e"], ["Wall", 4, 2, 60, 0, "e"], ["Barb", 0, 1, 20, 0, "e"], ["Gobl", 3, 1, 30, 0, "e"], ["Heal", 7, 14, 600, 0, "e"], ["Pekk", 9, 25, 900, 0, "e"],  _
+									 ["Ball", 5, 5, 300, 0, "e"], ["Wiza", 6, 4, 300, 0, "e"], ["Drag", 8, 20, 900, 0, "e"], ["BabyD", 10, 10, 600, 0, "e"],["Mine", 11, 5, 300, 0, "e"], _
 									 ["Mini", 0, 2, 45, 0, "d"], ["Hogs", 1, 5, 120, 0, "d"], ["Valk", 2, 8, 300, 0, "d"], ["Gole", 3, 30, 900, 0, "d"], ["Witc", 4, 12, 600, 0, "d"], ["Lava", 5, 30, 900, 0, "d"], ["Bowl", 6, 6, 300, 0, "d"]]
 
-Global $TroopGroup[20][6]  ; Actual training order values determined dynamically based on GUI.
+Global $TroopGroup[19][6]  ; Actual training order values determined dynamically based on GUI.
 Global $TroopName[UBound($DefaultTroopGroup, 1)]
 Global $TroopNamePosition[UBound($DefaultTroopGroup, 1)]
 Global $TroopHeight[UBound($DefaultTroopGroup, 1)]
@@ -1134,7 +1145,7 @@ Global $iCmbCurrentArmy = 0
 
 ; Create custom train order GUI variables
 Global $chkTroopOrder, $ichkTroopOrder, $btnTroopOrderSet
-Global $aTroopOrderIcon[22] = [$eIcnOptions, $eIcnBarbarian, $eIcnArcher, $eIcnGiant, $eIcnGoblin, $eIcnWallBreaker, $eIcnBalloon,$eIcnIceW, $eIcnWizard, $eIcnHealer, $eIcnDragon, $eIcnPekka, $eIcnBabyDragon, $eIcnMiner, $eIcnMinion, $eIcnHogRider, $eIcnValkyrie, $eIcnGolem, $eIcnWitch, $eIcnLavaHound, $eIcnBowler]
+Global $aTroopOrderIcon[21] = [$eIcnOptions, $eIcnBarbarian, $eIcnArcher, $eIcnGiant, $eIcnGoblin, $eIcnWallBreaker, $eIcnBalloon, $eIcnWizard, $eIcnHealer, $eIcnDragon, $eIcnPekka, $eIcnBabyDragon, $eIcnMiner, $eIcnMinion, $eIcnHogRider, $eIcnValkyrie, $eIcnGolem, $eIcnWitch, $eIcnLavaHound, $eIcnBowler]
 Global $cmbTroopOrder[UBound($aTroopOrderIcon)], $icmbTroopOrder[UBound($aTroopOrderIcon)], $lblTroopOrder[UBound($aTroopOrderIcon)], $ImgTroopOrder[UBound($aTroopOrderIcon)]
 Global $chkDarkTroopOrder, $ichkDarkTroopOrder, $btnDarkTroopOrderSet
 Global $aDarkTroopOrderIcon[8] = [$eIcnOptions, $eIcnMinion, $eIcnHogRider, $eIcnValkyrie, $eIcnGolem, $eIcnWitch, $eIcnLavaHound, $eIcnBowler]
@@ -1754,6 +1765,7 @@ Global Const $aDrillLevelSteal[6] = [59, 102, 172, 251, 343, 479]
 ;Wait for Castle
 Global $iChkWaitForCastleSpell[$iModeCount]
 Global $iCmbWaitForCastleSpell[$iModeCount]
+Global $iCmbWaitForCastleSpell2[$iModeCount]
 Global $iChkWaitForCastleTroops[$iModeCount]
 
 ; Force brew Spells before attack
@@ -1761,7 +1773,7 @@ Global $ichkForceBrewBeforeAttack = 0
 
 Global $itxtLevBarb = 1, $itxtLevArch = 1, $itxtLevGobl = 1, $itxtLevGiant = 1, $itxtLevWall = 1
 Global $itxtLevHeal = 0, $itxtLevPekk = 0, $itxtLevBall = 0, $itxtLevWiza = 0, $itxtLevDrag = 0
-Global $itxtLevBabyD = 0, $itxtLevMine = 0 , $itxtLevIceW = 0
+Global $itxtLevBabyD = 0, $itxtLevMine = 0
 
 Global $itxtLevMini = 0, $itxtLevHogs = 0, $itxtLevValk = 0, $itxtLevGole = 0
 Global $itxtLevWitc = 0, $itxtLevLava = 0, $itxtLevBowl = 0
@@ -1772,7 +1784,6 @@ Global $LevGiantCost[9] = [0, 500, 750, 1250, 1750, 2250, 3000, 3500, 4000]
 Global $LevGoblCost[8] = [0, 25, 40, 60, 80, 100, 150, 200]
 Global $LevWallCost[7] = [0, 1000, 1500, 2000, 2500, 3000, 3500]
 Global $LevBallCost[8] = [0, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
-Global $LevIceWCost[3] = [0, 1500, 2000]
 Global $LevWizaCost[8] = [0, 1500, 2000, 2500, 3000, 3500, 4000, 4500]
 Global $LevHealCost[5] = [0, 5000, 6000, 8000, 10000]
 Global $LevDragCost[7] = [0, 25000, 29000, 33000, 37000, 42000, 46000]
@@ -1815,9 +1826,9 @@ Global $topdarkloot = 0
 Global $topTrophyloot = 0
 
 ; Donate Stats
-Global $TroopsDonQ[24] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Global $TroopsDonXP[24] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Global $lblDonQ[24] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Global $TroopsDonQ[29] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Global $TroopsDonXP[29] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Global $lblDonQ[29] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 Global $isSantaSpellAvailable = -1	; -1 Means not Set
 Global $_CheckIceWizardSlot = True ; Check if Ice Wizard changes normal troop layout (reset to true in readConfig!)

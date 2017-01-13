@@ -31,34 +31,24 @@ Func _GetRedArea($iMode = $REDLINE_IMGLOC)
 	Local $ySkip = 5
 	Local $result = 0
 
-	If $iMatchMode = $LB And $iAtkAlgorithm[$LB] <> 1 And $iChkDeploySettings[$LB] = 4 Then ; Used for DES Side Attack (need to know the side the DES is on)
+	If $iMatchMode = $LB And $iAtkAlgorithm[$LB] = 0 And $iChkDeploySettings[$LB] = 4 Then ; Used for DES Side Attack (need to know the side the DES is on)
 		$result = DllCall($hFuncLib, "str", "getRedAreaSideBuilding", "ptr", $hHBitmap2, "int", $xSkip, "int", $ySkip, "int", $colorVariation, "int", $eSideBuildingDES)
 		If $debugSetlog Then Setlog("Debug: Redline with DES Side chosen")
-	ElseIf $iMatchMode = $LB And $iAtkAlgorithm[$LB] <> 1 And $iChkDeploySettings[$LB] = 5 Then ; Used for TH Side Attack (need to know the side the TH is on)
+	ElseIf $iMatchMode = $LB And $iAtkAlgorithm[$LB] = 0 And $iChkDeploySettings[$LB] = 5 Then ; Used for TH Side Attack (need to know the side the TH is on)
 		$result = DllCall($hFuncLib, "str", "getRedAreaSideBuilding", "ptr", $hHBitmap2, "int", $xSkip, "int", $ySkip, "int", $colorVariation, "int", $eSideBuildingTH)
 		If $debugSetlog Then Setlog("Debug: Redline with TH Side chosen")
 	Else ; Normal getRedArea
 
 		Switch $iMode
 			Case $REDLINE_NONE ; No red line
-				debugAttackCSV("$REDLINE_NONE")
-				Local $listPixelBySide = ["NoRedLine", "", "", "", ""] ; Edges
-				; previvous external points to deploy
-				 $listPixelBySide[1] = getRedAreaSideBuilding("6,349|10,346|14,343|18,340|22,337|26,334|30,331|34,328|38,325|42,322|46,319|50,316|54,313|58,310|62,307|66,304|70,301|74,298|78,295|82,292|86,289|90,286|94,283|98,280|102,277|106,274|110,271|114,268|118,265|122,262|126,259|130,256|134,253|138,250|142,247|146,244|150,241|154,238|158,235|162,232|166,229|170,226|174,223|178,220|182,217|186,214|190,211|194,208|198,205|202,202|206,199|210,196|214,193|218,190|222,187|226,184|230,181|234,178|238,175|242,172|246,169|250,166|254,163|258,160|262,157|266,154|270,151|274,148|278,145|282,142|286,139|290,136|294,133|298,130|302,127|306,124|310,121|314,118|318,115|322,112|326,109|330,106|334,103|338,100|342,97|346,94|350,91|354,88|358,85|362,82|366,79|370,76|374,73|378,70|382,67|386,64|390,61|394,58|398,55|402,52|406,49|410,46|414,43|418,40|422,37|426,34|430,31")
-				 $listPixelBySide[2] = getRedAreaSideBuilding("444,30|448,33|452,36|456,39|460,42|464,45|468,48|472,51|476,54|480,57|484,60|488,63|492,66|496,69|500,72|504,75|508,78|512,81|516,84|520,87|524,90|528,93|532,96|536,99|540,102|544,105|548,108|552,111|556,114|560,117|564,120|568,123|572,126|576,129|580,132|584,135|588,138|592,141|596,144|600,147|604,150|608,153|612,156|616,159|620,162|624,165|628,168|632,171|636,174|640,177|644,180|648,183|652,186|656,189|660,192|664,195|668,198|672,201|676,204|680,207|684,210|688,213|692,216|696,219|700,222|704,225|708,228|712,231|716,234|720,237|724,240|728,243|732,246|736,249|740,252|744,255|748,258|752,261|756,264|760,267|764,270|768,273|772,276|776,279|780,282|784,285|788,288|792,291|796,294|800,297|804,300|808,303|812,306|816,309|820,312|824,315|828,318|832,321|836,324|840,327|844,330|848,333|852,336|856,339|860,342|864,345|868,348")
-				 $listPixelBySide[3] = getRedAreaSideBuilding("6,349|10,352|14,355|18,358|22,361|26,364|30,367|34,370|38,373|42,376|46,379|50,382|54,385|58,388|62,391|66,394|70,397|74,400|78,403|82,406|86,409|90,412|94,415|98,418|102,421|106,424|110,427|114,430|118,433|122,436|126,439|130,442|134,445|138,448|142,451|146,454|150,457|154,460|158,463|162,466|166,469|170,472|174,475|178,478|182,481|186,484|190,487|194,490|198,493|202,496|206,499|210,502|214,505|218,508|222,511|226,514|230,517|234,520|238,523|242,526|246,529|250,532|254,535|258,538|262,541|266,544|270,547|274,550|278,553|282,556|286,559|290,562|294,565|298,568|302,571|306,574|310,577|314,580|318,583|322,586|326,589|330,592|334,595|338,598|342,601|346,604|350,607|354,610|358,613|362,616|366,619|370,622|374,625")
-				 $listPixelBySide[4] = getRedAreaSideBuilding("444,625|448,622|452,619|456,616|460,613|464,610|468,607|472,604|476,601|480,598|484,595|488,592|492,589|496,586|500,583|504,580|508,577|512,574|516,571|520,568|524,565|528,562|532,559|536,556|540,553|544,550|548,547|552,544|556,541|560,538|564,535|568,532|572,529|576,526|580,523|584,520|588,517|592,514|596,511|600,508|604,505|608,502|612,499|616,496|620,493|624,490|628,487|632,484|636,481|640,478|644,475|648,472|652,469|656,466|660,463|664,460|668,457|672,454|676,451|680,448|684,445|688,442|692,439|696,436|700,433|704,430|708,427|712,424|716,421|720,418|724,415|728,412|732,409|736,406|740,403|744,400|748,397|752,394|756,391|760,388|764,385|768,382|772,379|776,376|780,373|784,370|788,367|792,364|796,361|800,358|804,355|808,352|812,349")
+				Local $listPixelBySide = ["NoRedLine", "", "", "", ""]
 			Case $REDLINE_IMGLOC_RAW ; ImgLoc raw red line routine
-				debugAttackCSV("$REDLINE_IMGLOC_RAW")
 				; ensure redline exists
 				SearchRedLines()
-				StoreRedLines($IMGLOCREDLINE)
 				Local $listPixelBySide = getRedAreaSideBuilding()
 			Case $REDLINE_IMGLOC ; New ImgLoc based deployable red line routine
-				debugAttackCSV("$REDLINE_IMGLOC")
 				; ensure redline exists
 				SearchRedLines()
-				StoreRedLines($IMGLOCREDLINE)
 				Local $dropPoints = GetOffSetRedline("TL") & "|" & GetOffSetRedline("BL") & "|" & GetOffSetRedline("BR") & "|" & GetOffSetRedline("TR")
 				Local $listPixelBySide = getRedAreaSideBuilding($dropPoints)
 				#cs
@@ -69,7 +59,6 @@ Func _GetRedArea($iMode = $REDLINE_IMGLOC)
 					Local $listPixelBySide = ["ImgLoc", $PixelTopLeft, $PixelBottomLeft, $PixelBottomRight, $PixelTopRight]
 				#ce
 			Case $REDLINE_ORIGINAL ; Original red line routine
-				Setlog("$REDLINE_ORIGINAL")
 				Local $result = DllCall($hFuncLib, "str", "getRedArea", "ptr", $hHBitmap2, "int", $xSkip, "int", $ySkip, "int", $colorVariation)
 		EndSwitch
 		If $debugSetlog Then Setlog("Debug: Redline chosen")

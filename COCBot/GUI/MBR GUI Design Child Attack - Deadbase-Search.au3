@@ -127,8 +127,13 @@ Local $x = 25, $y = 45
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkDBWaitForCCSpell")
 
-		$cmbDBWaitForCastleSpell = GUICtrlCreateCombo(GetTranslated(625,76, "Any"), $x, $y + 50, -1, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		$cmbDBWaitForCastleSpell = GUICtrlCreateCombo(GetTranslated(625,76, "Any"), $x, $y + 50, 70, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			$txtTip = GetTranslated(625,77, "Wait until Someone Donate this Spell, Else remove other spells in Castle and Request AGAIN")
+			GUICtrlSetData(-1, $sTxtLightningSpells & "|" & $sTxtHealSpells & "|" & $sTxtRageSpells & "|" & $sTxtJumpSpells & "|" & $sTxtFreezeSpells & "|" & $sTxtPoisonSpells & "|" & $sTxtEarthquakeSpells & "|" & $sTxtHasteSpells & "|" & $sTxtSkeletonSpells)
+			_GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetOnEvent(-1, "cmbDBWaitForCCSpell")
+		$lblDBWaitForCastleSpell = GUICtrlCreateLabel(GetTranslated(641, 40, "And"), $x + 80, $y + 53, -1, -1)
+		$cmbDBWaitForCastleSpell2 = GUICtrlCreateCombo(GetTranslated(625,76, "Any"),$x + 110, $y + 50, 70, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, $sTxtPoisonSpells & "|" & $sTxtEarthquakeSpells & "|" & $sTxtHasteSpells & "|" & $sTxtSkeletonSpells)
 			_GUICtrlSetTip(-1, $txtTip)
 
@@ -290,4 +295,5 @@ Local $x = 220, $y = 45
 		$chkDBMeetOne = GUICtrlCreateCheckbox(GetTranslated(625,40, "Meet One Then Attack"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(625,41, "Just meet only ONE of the above conditions, then Attack.")
 			_GUICtrlSetTip(-1, $txtTip)
+
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

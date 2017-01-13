@@ -55,6 +55,10 @@ Local $y = $yStart + 8
 	GUICtrlSetState(-1, $GUI_DISABLE)
 	$hRadio_Army3 = GUICtrlCreateRadio( "Army 123 + Don't Empty Barracks", $x + 245, $y + 20, -1, 15)
 	GUICtrlSetState(-1, $GUI_DISABLE)
+;	Moved down
+;	$LblRemovecamp = GUICtrlCreateLabel(GetTranslated(621, 41, "Remove Army"), $x + 335, $y + 20, -1, 15, $SS_LEFT)
+;	$icnRemovecamp = GUICtrlCreateIcon($pIconLib, $eIcnResetButton, $x + 405, $y + 17, 24, 24)
+;	GUICtrlSetOnEvent(-1, "Removecamp")
 
 Local $x = 10
 Local $y = 45
@@ -64,12 +68,12 @@ Local $x = 30
 $y += 20
 	; Barbarians
 	$icnBarb = GUICtrlCreateIcon($pIconLib, $eIcnBarbarian, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, "Mouse Left Click to Up level" & @CRLF & "Shift + Mouse Left Click to Down level"))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, "Level") & " " & $sTxtBarbarians & ":" & @CRLF & GetTranslated(621,40, "Mouse Left Click to Up level" & @CRLF & "Shift + Mouse Left Click to Down level"))
 	GUICtrlSetOnEvent(-1, "LevBarb")
-	$txtLevBarb = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
+	$txtLevBarb = GUICtrlCreateLabel("1", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
 	GUICtrlSetFont(-1, 7, 400)
-	$txtNumBarb = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+	$txtNumBarb = GUICtrlCreateInput("58", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtBarbarians & " " & $sTxtSetPerc2)
 	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetLimit(-1, 3)
@@ -78,12 +82,12 @@ $y += 20
 $x += 38
 	; Giants
 	$icnGiant = GUICtrlCreateIcon($pIconLib, $eIcnGiant, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtGiants & ":" & @CRLF & GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevGiant")
-	$txtLevGiant = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
+	$txtLevGiant = GUICtrlCreateLabel("1", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
 	GUICtrlSetFont(-1, 7, 400)
-	$txtNumGiant = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+	$txtNumGiant = GUICtrlCreateInput("4", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtGiants & " " & $sTxtSetPerc2)
 	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetLimit(-1, 2)
@@ -92,12 +96,12 @@ $x += 38
 $x += 38
 	; WallBreakers
 	$icnWall = GUICtrlCreateIcon($pIconLib, $eIcnWallBreaker, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtWallBreakers & ":" & @CRLF & GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevWall")
-	$txtLevWall = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
+	$txtLevWall = GUICtrlCreateLabel("1", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
 	GUICtrlSetFont(-1, 7, 400)
-	$txtNumWall = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+	$txtNumWall = GUICtrlCreateInput("4", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtWallBreakers & " " & $sTxtSetPerc2)
 	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetLimit(-1, 3)
@@ -106,7 +110,7 @@ $x += 38
 $x += 38
 	; Wizards
 	$icnWiza = GUICtrlCreateIcon($pIconLib, $eIcnWizard, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtWizards & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevWiza")
 	$txtLevWiza = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -120,7 +124,7 @@ $x += 38
 $x += 38
 	; Dragon
 	$icnDrag = GUICtrlCreateIcon($pIconLib, $eIcnDragon, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtDragons & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevDrag")
 	$txtLevDrag = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -134,7 +138,7 @@ $x += 38
 $x += 38
 	; BDragon
 	$icnBabyD = GUICtrlCreateIcon($pIconLib, $eIcnBabyDragon, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtBabyDragons & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevBabyD")
 	$txtLevBabyD = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -148,7 +152,7 @@ $x += 38
 $x += 45
 	; Minioons
 	$icnMini = GUICtrlCreateIcon($pIconLib, $eIcnMinion, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtMinions & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevMini")
 	$txtLevMini = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -162,7 +166,7 @@ $x += 45
 $x += 38
 	; Valkyries
 	$icnValk = GUICtrlCreateIcon($pIconLib, $eIcnValkyrie, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtValkyries & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevValk")
 	$txtLevValk = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -176,7 +180,7 @@ $x += 38
 $x += 38
 	; Witches
 	$icnWitc = GUICtrlCreateIcon($pIconLib, $eIcnWitch, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtWitches & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevWitc")
 	$txtLevWitc = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -190,7 +194,7 @@ $x += 38
 $x += 38
 	; Bowlers
 	$icnBowl = GUICtrlCreateIcon($pIconLib, $eIcnBowler, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtBowlers & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevBowl")
 	$txtLevBowl = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -207,12 +211,12 @@ $y += 60
 
 	; Archers
 	$icnArch = GUICtrlCreateIcon($pIconLib, $eIcnArcher, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtArchers & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevArch")
-	$txtLevArch = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
+	$txtLevArch = GUICtrlCreateLabel("1", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
 	GUICtrlSetFont(-1, 7, 400)
-	$txtNumArch = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+	$txtNumArch = GUICtrlCreateInput("115", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtArchers & " " & $sTxtSetPerc2)
 	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetLimit(-1, 3)
@@ -221,12 +225,12 @@ $y += 60
 $x += 38
 	; Goblins
 	$icnGobl = GUICtrlCreateIcon($pIconLib, $eIcnGoblin, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtGoblins & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevGobl")
-	$txtLevGobl = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
+	$txtLevGobl = GUICtrlCreateLabel("1", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
 	GUICtrlSetFont(-1, 7, 400)
-	$txtNumGobl = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+	$txtNumGobl = GUICtrlCreateInput("19", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 	_GUICtrlSetTip(-1, $sTxtSetPerc & " " & $sTxtGoblins & " " & $sTxtSetPerc2)
 	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetLimit(-1, 3)
@@ -235,7 +239,7 @@ $x += 38
 $x += 38
 	; Balloons
 	$icnBall = GUICtrlCreateIcon($pIconLib, $eIcnBalloon, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtBalloons & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevBall")
 	$txtLevBall = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -249,7 +253,7 @@ $x += 38
 $x += 38
 	; Healers
 	$icnHeal = GUICtrlCreateIcon($pIconLib, $eIcnHealer, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtHealers & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevHeal")
 	$txtLevHeal = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -263,7 +267,7 @@ $x += 38
 $x += 38
 	; Pekkas
 	$icnPekk = GUICtrlCreateIcon($pIconLib, $eIcnPekka, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtPekkas & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevPekk")
 	$txtLevPekk = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -277,7 +281,7 @@ $x += 38
 $x += 38
 	; Miners
 	$icnMine = GUICtrlCreateIcon($pIconLib, $eIcnMiner, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1,  GetTranslated(603,39, -1) & " " & $sTxtMiners & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevMine")
 	$txtLevMine = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -289,23 +293,9 @@ $x += 38
 	GUICtrlSetOnEvent(-1, "lblTotalCountMine")
 
 $x += 45
-;~ 	; Ice Wizard
-;~ 	$icnIceW = GUICtrlCreateIcon($pIconLib, $eIcnIcew, $x, $y - 5, 32, 32)
-;~ 	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
-;~ 	GUICtrlSetOnEvent(-1, "LevIceW")
-;~ 	$txtLevIceW = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
-;~ 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
-;~ 	GUICtrlSetFont(-1, 7, 400)
-;~ 	$txtNumIceW = GUICtrlCreateInput("0", $x + 1, $y + 29, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-;~ 	_GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtIcewizard & " " & $sTxtSetPerc2)
-;~ 	GUICtrlSetState(-1, $GUI_HIDE)
-;~ 	GUICtrlSetLimit(-1, 2)
-;~ 	GUICtrlSetOnEvent(-1, "lblTotalCountIceW")
-
-;~ $x += 38
 	; Hogs
 	$icnHogs = GUICtrlCreateIcon($pIconLib, $eIcnHogRider, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtHogRiders & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevHogs")
 	$txtLevHogs = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -319,7 +309,7 @@ $x += 45
 $x += 38
 	; Golems
 	$icnGole = GUICtrlCreateIcon($pIconLib, $eIcnGolem, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtGolems & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevGole")
 	$txtLevGole = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -333,7 +323,7 @@ $x += 38
 $x += 38
 	; Lavas
 	$icnLava = GUICtrlCreateIcon($pIconLib, $eIcnLavaHound, $x, $y - 5, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtLavaHounds & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevLava")
 	$txtLevLava = GUICtrlCreateLabel("0", $x + 2, $y + 14, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -347,19 +337,14 @@ $x += 38
 
 Local $x = 30
 $y += 66
-	;GUICtrlCreateIcon($pIconLib, $eIcnCamp, $x - 10, $y - 15, 24, 24)
+	GUICtrlCreateIcon($pIconLib, $eIcnCamp, $x - 10, $y - 15, 24, 24)
 	$lblFullTroop = GUICtrlCreateLabel(GetTranslated(621, 20, "'Full' Camps"), $x + 16, $y - 7, 55, 17)
-	GUICtrlSetState(-1, $GUI_HIDE)
 	$lblFullTroop2 = GUICtrlCreateLabel(ChrW(8805), $x + 75, $y - 7, -1, 17)
-	GUICtrlSetState(-1, $GUI_HIDE)
 	$txtFullTroop = GUICtrlCreateInput("100", $x + 83, $y - 10, 30, 20, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetOnEvent(-1, "SetComboTroopComp")
 	_GUICtrlSetTip(-1, GetTranslated(621, 21, "Army camps are 'Full' when reaching this %, then start attack."))
-	GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlSetLimit(-1, 3)
 	$lblFullTroop3 = GUICtrlCreateLabel("%", $x + 114, $y - 7, -1, 17)
-	GUICtrlSetState(-1, $GUI_HIDE)
 
 $x += 180
 $Y -= 23
@@ -425,7 +410,7 @@ Local $y = 240
 
 $y += 13
 	$lblLSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtLiSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevLSpell")
 	$txtLevLSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -438,7 +423,7 @@ $y += 13
 
 $x += 38
 	$lblHSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnHealSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtHeSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevHSpell")
 	$txtLevHSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -451,7 +436,7 @@ $x += 38
 
 $x += 38
 	$lblRSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnRageSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtRaSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevRSpell")
 	$txtLevRSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -464,7 +449,7 @@ $x += 38
 
 $x += 38
 	$lblJSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnJumpSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtJuSPell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevJSpell")
 	$txtLevJSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -477,7 +462,7 @@ $x += 38
 
 $x += 38
 	$lblFSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnFreezeSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtFrSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevFSpell")
 	$txtLevFSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -490,7 +475,7 @@ $x += 38
 
 $x += 38
 	$lblCSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnCloneSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtClSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevCSpell")
 	$txtLevCSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -503,7 +488,7 @@ $x += 38
 
 $x += 45
 	$lblPSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnPoisonSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtPoSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevPSpell")
 	$txtLevPSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -516,7 +501,7 @@ $x += 45
 
 $x += 38
 	$lblESpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnEarthquakeSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtEaSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevESpell")
 	$txtLevESpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -529,7 +514,7 @@ $x += 38
 
 $x += 38
 	$lblHaSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnHasteSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtHaSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevHaSpell")
 	$txtLevHaSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -542,7 +527,7 @@ $x += 38
 
 $x += 38
 	$lblSeSpellIcon = GUICtrlCreateIcon($pIconLib, $eIcnSkeletonSpell, $x, $y + 10, 32, 32)
-	_GUICtrlSetTip(-1, GetTranslated(621,40, -1))
+	_GUICtrlSetTip(-1, GetTranslated(603,39, -1) & " " & $sTxtSkSpell & ":" & @CRLF &  GetTranslated(621,40, -1))
 	GUICtrlSetOnEvent(-1, "LevSkSpell")
 	$txtLevSkSpell = GUICtrlCreateLabel("0", $x + 2, $y + 29, 6, 11)
 	GUICtrlSetBkColor(-1, $COLOR_WHITE)
@@ -805,7 +790,7 @@ $y = $yStart + 45
 Local $sComboData = ""
 ; Do Not Use translated names here or ChangeTroopTrainOrder() code breaks
 ;Local $aTroopOrderList[] = ["", $sTxtBarbarians, $sTxtArchers, $sTxtGiants, $sTxtGoblins, $sTxtWallBreakers, $sTxtBalloons, $sTxtWizards, $sTxtHealers, $sTxtDragons, $sTxtPekkas, $sTxtBabyDragons, $sTxtMiners, $sTxtMinions, $sTxtHogRiders, $sTxtValkyries, $sTxtGolems, $sTxtWitches, $sTxtLavaHounds, $sTxtBowlers]
-Local $aTroopOrderList[] = ["", "Barbarians", "Archers", "Giants", "Goblins", "Wall Breakers", "Balloons", "Ice Wizards", "Wizards", "Healers", "Dragons", "Pekkas", "Baby Dragons", "Miners", "Minions", "Hog Riders", "Valkyries", "Golems", "Witches", "Lava Hounds", "Bowlers"]
+Local $aTroopOrderList[] = ["", "Barbarians", "Archers", "Giants", "Goblins", "Wall Breakers", "Balloons", "Wizards", "Healers", "Dragons", "Pekkas", "Baby Dragons", "Miners", "Minions", "Hog Riders", "Valkyries", "Golems", "Witches", "Lava Hounds", "Bowlers"]
 
 ; Create translated list of Troops for combo box
 For $j = 0 To UBound($aTroopOrderList) - 1

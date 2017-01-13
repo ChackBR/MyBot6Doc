@@ -13,11 +13,11 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Local $x = 25, $y = 45
+Local $x = 25, $y = 70
 	$grpRoyalAbilitiesCSV = GUICtrlCreateGroup(GetTranslated(634,1, "Hero Abilities"), $x - 20, $y - 20, 420, 60)
-		GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x-10, $y, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x+ 15, $y, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x + 40, $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnKing, $x-10, $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnQueen, $x+ 15, $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnWarden, $x+ 40, $y, 24, 24)
 
 	$x += 70
 	$y -= 4
@@ -38,7 +38,7 @@ Local $x = 25, $y = 45
 		$lblRoyalAbilitiesSec = GUICtrlCreateLabel(GetTranslated(603,6, "sec."), $x + 115, $y + 4, -1, -1)
 	$x += 150
 	$y -= 15
-		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x - 7, $y + 2, 32, 32)
+		GUICtrlCreateIcon($pIconLib, $eIcnWarden, $x - 7, $y + 2, 32, 32)
 	$y += 12
 		$chkUseWardenAbility = GUICtrlCreateCheckbox(GetTranslated(634,9, "Force after") & ":", $x + 30, $y , -1, -1)
 			$txtTip = GetTranslated(634,10, "Use the ability of the Grand Warden on a timer.")
@@ -70,7 +70,7 @@ Local $x = 25, $y = 45
 ;~ 			GUICtrlSetColor (-1,$COLOR_ERROR)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-Local $x = 25, $y = 110
+Local $x = 25, $y = 135
 Global $chkattackHours0, $chkattackHours1, $chkattackHours2, $chkattackHours3, $chkattackHours4, $chkattackHours5
 Global $chkattackHours6, $chkattackHours7, $chkattackHours8, $chkattackHours9, $chkattackHours10, $chkattackHours11
 Global $chkattackHours12, $chkattackHours13, $chkattackHours14, $chkattackHours15, $chkattackHours16, $chkattackHours17
@@ -338,7 +338,7 @@ Global $cmbAttackPlannerDayMin, $icmbAttackPlannerDayMin, $cmbAttackPlannerDayMa
 
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-Local $x = 25, $y = 245
+Local $x = 25, $y = 270
 	$grpClanCastleBal = GUICtrlCreateGroup(GetTranslated(634,12, "ClanCastle"), $x - 20, $y - 20, 420, 100)
 		GUICtrlCreateIcon($pIconLib, $eIcnCC, $x -10 , $y + 4, 24, 24)
 	$y -= 4
@@ -366,7 +366,7 @@ Local $x = 25, $y = 245
 			GUICtrlSetState(-1, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "cmbBalanceDR")
  	$x += 188
-	$y = 245
+	$y = 270
 		$lblDropCCHours = GUICtrlCreateLabel(GetTranslated(603,30, -1), $x+8, $y)
 	$y += 14
 	$x -= 21

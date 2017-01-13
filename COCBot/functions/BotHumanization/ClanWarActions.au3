@@ -21,7 +21,7 @@ Func LookAtCurrentWar()
 
 	If IsWarMenu() Then
 
-		If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\CurrentWar") Then
+		If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\CurrentWar", 740, 320, 830, 420) Then
 
 			SetLog("Let's examine the map...", $COLOR_ACTION1)
 			Scroll(Random(2, 5, 1)) ; scroll enemy
@@ -76,11 +76,9 @@ Func LookAtCurrentWar()
 			EndIf
 
 		Else
-
 			SetLog("Your Clan is not in active war yet... skipping...", $COLOR_WARNING)
 			randomSleep(1500)
 			Click(70, 680) ; return home
-
 		EndIf
 
 	Else
@@ -94,7 +92,7 @@ Func WatchWarReplays()
 	Click(40, 530) ; open war menu
 	randomSleep(5000)
 
-	If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\WarDetails") And QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\CurrentWar") Then
+	If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\WarDetails", 740, 620, 850, 720) And QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\CurrentWar", 740, 320, 830, 420) Then
 
 		SetLog("Open War details menu...", $COLOR_ACTION1)
 		Click(800, 670) ; go to war details
@@ -108,7 +106,7 @@ Func WatchWarReplays()
 
 			If IsBestClans() Then
 
-				Local $ReplayNumber = QuickMIS("Q1", @ScriptDir & "\imgxml\Resources\Humanization Pics\Replay")
+				Local $ReplayNumber = QuickMIS("Q1", @ScriptDir & "\imgxml\Resources\Humanization Pics\Replay", 780, 240, 840, 670)
 
 				If $ReplayNumber > 0 Then
 

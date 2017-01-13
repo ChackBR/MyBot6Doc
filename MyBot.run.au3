@@ -37,7 +37,7 @@ Global $hBotLaunchTime = TimerInit()
 
 Global $sBotVersion
 Global $sModversion
-Global $sModSupportUrl = "https://mybot.run/forums/index.php?/topic/24893-mybotrun-dococ-v322-oct-sc-update/" ;<== Our Website Link Or Link Download
+Global $sModSupportUrl
 Global $sBotTitle
 
 ; "0001" ; MyBot v6.0.0
@@ -48,20 +48,14 @@ Global $sBotTitle
 ; "2301" ; MyBot v6.3.0
 ; "2401" ; MyBot v6.4.0 ( FFC, Multi Finger, SmartZap, ... )
 ; "2501" ; MyBot v6.5
-; "2502" ; MyBot v6.5 + Fix for Quick Train
-; "2503" ; MyBot v6.5 + Heroes Power Fix
-; "2504" ; MyBot v6.5 + SmartZap Fix
-; "2505" ; MyBot v6.5 + Demem Switch Acc
-; "2511" ; MyBot v6.5.1
-; "2512" ; MyBot v6.5.1 + Fix Donate + Fix for Train Golem
-; "2513" ; MyBot v6.5.1 + Fix for QuickTrain
-; "2514" ; MyBot v6.5.1 + DEB( Don't Empty Barracks )
 ; "2601" ; MyBot v6.5.2
 ; "2602" ; MyBot v6.5.2 + SmartZap Fix
 ; "2603" ; MyBot v6.5.2 + SmartZap Fix
 ; "2604" ; MyBot v6.5.2 + QuickTrain Update
-$sModversion = "2605" ; MyBot v6.5.2 + Doc Octopus v3.5.2
-$sBotVersion = "v6.5.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
+; "2605" ; MyBot v6.5.2 + Doc Octopus v3.5.2
+$sModversion = "2611" ; MyBot v6.5.3 + Doc Octopus v3.5.3
+$sBotVersion = "v6.5.3" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
+$sModSupportUrl = "https://mybot.run/forums"
 $sBotTitle = "My Bot " & $sBotVersion & ".Doc" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 #include "COCBot\functions\Config\DelayTimes.au3"
@@ -438,6 +432,8 @@ Func Idle() ;Sequence that runs until Full Army
 		Local $hTimer = TimerInit()
 		Local $iReHere = 0
 
+		BotHumanization()
+
 		;If $iSkipDonateNearFulLTroopsEnable = 1 Then getArmyCapacity(true,true)
 		If $bActiveDonate = True Then
 			Local $aHeroResult = CheckArmyCamp(True, True, True)
@@ -570,7 +566,7 @@ Func AttackMain() ;Main control for attack functions
 		MainSuperXPHandler()
 		Return
 	EndIf
-	getArmyCapacity(True, True)
+	;getArmyCapacity(True, True)
 	If IsSearchAttackEnabled() Then
 		If (IsSearchModeActive($DB) And checkCollectors(True, False)) Or IsSearchModeActive($LB) Or IsSearchModeActive($TS) Then
 			If $iChkUseCCBalanced = 1 Or $iChkUseCCBalancedCSV = 1 Then ;launch profilereport() only if option balance D/R it's activated

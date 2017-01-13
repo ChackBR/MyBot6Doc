@@ -31,7 +31,7 @@ Func LookAtWarLog()
 
 			If IsClanOverview() Then
 
-				If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\WarLog") Then
+				If QuickMIS("BC1", @ScriptDir & "\imgxml\Resources\Humanization Pics\WarLog", 20, 320, 70, 360) Then
 
 					Click(100, 340) ; open war log
 					randomSleep(1500)

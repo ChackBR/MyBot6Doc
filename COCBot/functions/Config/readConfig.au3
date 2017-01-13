@@ -207,14 +207,32 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($iChkUseQuickTrain, $config, "troop", "UseQuickTrain", 0, "int")
 		IniReadS($iCmbCurrentArmy, $config, "troop", "CurrentArmy", 1, "int")
 
-		IniReadS($iRadio_Army1, $config, "troop", "QuickTrain1", 1, "int")
-		IniReadS($iRadio_Army2, $config, "troop", "QuickTrain2", 0, "int")
-		IniReadS($iRadio_Army3, $config, "troop", "QuickTrain3", 0, "int")
+		IniReadS($iChkQuickArmy1, $config, "troop", "QuickTrain1", 1, "int")
+		IniReadS($iChkQuickArmy2, $config, "troop", "QuickTrain2", 0, "int")
+		IniReadS($iChkQuickArmy3, $config, "troop", "QuickTrain3", 0, "int")
 
 		Local $tempTroop, $tempLevTroop
 		For $T = 0 To UBound($TroopName) - 1
-			IniReadS($tempTroop, $config, "troop", $TroopName[$T], 0, "int")
-			IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 0, "int")
+			Switch $TroopName[$T]
+				Case "Barb"
+					IniReadS($tempTroop, $config, "troop", $TroopName[$T], 58, "int")
+					IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 1, "int")
+				Case "Arch"
+					IniReadS($tempTroop, $config, "troop", $TroopName[$T], 115, "int")
+					IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 1, "int")
+				Case "Gobl"
+					IniReadS($tempTroop, $config, "troop", $TroopName[$T], 19, "int")
+					IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 1, "int")
+				Case "Giant"
+					IniReadS($tempTroop, $config, "troop", $TroopName[$T], 4, "int")
+					IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 1, "int")
+				Case "Wall"
+					IniReadS($tempTroop, $config, "troop", $TroopName[$T], 4, "int")
+					IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 1, "int")
+				Case Else
+					IniReadS($tempTroop, $config, "troop", $TroopName[$T], 0, "int")
+					IniReadS($tempLevTroop, $config, "LevelTroop", $TroopName[$T], 0, "int")
+			EndSwitch
 			Assign($TroopName[$T] & "Comp", $tempTroop)
 			Assign("itxtLev" & $TroopName[$T], $tempLevTroop)
 		Next
@@ -968,6 +986,41 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		$aDonMiners = StringSplit($sTxtDonateMiners, @CRLF, $STR_ENTIRESPLIT)
 		$aBlkMiners = StringSplit($sTxtBlacklistMiners, @CRLF, $STR_ENTIRESPLIT)
 
+		$ichkDonateLightningSpells = Int(IniRead($config, "donate", "chkDonateLightningSpells", 0))
+		$ichkDonateAllLightningSpells = Int(IniRead($config, "donate", "chkDonateAllLightningSpells", 0))
+		$sTxtDonateLightningSpells = StringReplace(IniRead($config, "donate", "txtDonateLightningSpells", "lightning"), "|", @CRLF)
+		$sTxtBlacklistLightningSpells = StringReplace(IniRead($config, "donate", "txtBlacklistLightningSpells", "no lightning|lightning no"), "|", @CRLF)
+		$aDonLightningSpells = StringSplit($sTxtDonateLightningSpells, @CRLF, $STR_ENTIRESPLIT)
+		$aBlkLightningSpells = StringSplit($sTxtBlacklistLightningSpells, @CRLF, $STR_ENTIRESPLIT)
+
+		$ichkDonateHealSpells = Int(IniRead($config, "donate", "chkDonateHealSpells", 0))
+		$ichkDonateAllHealSpells = Int(IniRead($config, "donate", "chkDonateAllHealSpells", 0))
+		$sTxtDonateHealSpells = StringReplace(IniRead($config, "donate", "txtDonateHealSpells", "heal"), "|", @CRLF)
+		$sTxtBlacklistHealSpells = StringReplace(IniRead($config, "donate", "txtBlacklistHealSpells", "no heal|heal no"), "|", @CRLF)
+		$aDonHealSpells = StringSplit($sTxtDonateHealSpells, @CRLF, $STR_ENTIRESPLIT)
+		$aBlkHealSpells = StringSplit($sTxtBlacklistHealSpells, @CRLF, $STR_ENTIRESPLIT)
+
+		$ichkDonateRageSpells = Int(IniRead($config, "donate", "chkDonateRageSpells", 0))
+		$ichkDonateAllRageSpells = Int(IniRead($config, "donate", "chkDonateAllRageSpells", 0))
+		$sTxtDonateRageSpells = StringReplace(IniRead($config, "donate", "txtDonateRageSpells", "rage"), "|", @CRLF)
+		$sTxtBlacklistRageSpells = StringReplace(IniRead($config, "donate", "txtBlacklistRageSpells", "no rage|rage no"), "|", @CRLF)
+		$aDonRageSpells = StringSplit($sTxtDonateRageSpells, @CRLF, $STR_ENTIRESPLIT)
+		$aBlkRageSpells = StringSplit($sTxtBlacklistRageSpells, @CRLF, $STR_ENTIRESPLIT)
+
+		$ichkDonateJumpSpells = Int(IniRead($config, "donate", "chkDonateJumpSpells", 0))
+		$ichkDonateAllJumpSpells = Int(IniRead($config, "donate", "chkDonateAllJumpSpells", 0))
+		$sTxtDonateJumpSpells = StringReplace(IniRead($config, "donate", "txtDonateJumpSpells", "jump"), "|", @CRLF)
+		$sTxtBlacklistJumpSpells = StringReplace(IniRead($config, "donate", "txtBlacklistJumpSpells", "no jump|jump no"), "|", @CRLF)
+		$aDonJumpSpells = StringSplit($sTxtDonateJumpSpells, @CRLF, $STR_ENTIRESPLIT)
+		$aBlkJumpSpells = StringSplit($sTxtBlacklistJumpSpells, @CRLF, $STR_ENTIRESPLIT)
+
+		$ichkDonateFreezeSpells = Int(IniRead($config, "donate", "chkDonateFreezeSpells", 0))
+		$ichkDonateAllFreezeSpells = Int(IniRead($config, "donate", "chkDonateAllFreezeSpells", 0))
+		$sTxtDonateFreezeSpells = StringReplace(IniRead($config, "donate", "txtDonateFreezeSpells", "freeze"), "|", @CRLF)
+		$sTxtBlacklistFreezeSpells = StringReplace(IniRead($config, "donate", "txtBlacklistFreezeSpells", "no freeze|freeze no"), "|", @CRLF)
+		$aDonFreezeSpells = StringSplit($sTxtDonateFreezeSpells, @CRLF, $STR_ENTIRESPLIT)
+		$aBlkFreezeSpells = StringSplit($sTxtBlacklistFreezeSpells, @CRLF, $STR_ENTIRESPLIT)
+
 		$ichkDonateMinions = Int(IniRead($config, "donate", "chkDonateMinions", 0))
 		$ichkDonateAllMinions = Int(IniRead($config, "donate", "chkDonateAllMinions", 0))
 		$sTxtDonateMinions = StringReplace(IniRead($config, "donate", "txtDonateMinions", "minions|minion"), "|", @CRLF)
@@ -1149,7 +1202,9 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($iChkWaitForCastleTroops[$DB], $config, "search", "ChkDBCastleTroopsWait", 0, "int")
 		IniReadS($iChkWaitForCastleTroops[$LB], $config, "search", "ChkABCastleTroopsWait", 0, "int")
 		IniReadS($iCmbWaitForCastleSpell[$DB], $config, "search", "cmbDBWaitForCastleSpell", 0, "int")
+		IniReadS($iCmbWaitForCastleSpell2[$DB], $config, "search", "cmbDBWaitForCastleSpell2", 0, "int")
 		IniReadS($iCmbWaitForCastleSpell[$LB], $config, "search", "cmbABWaitForCastleSpell", 0, "int")
+		IniReadS($iCmbWaitForCastleSpell2[$LB], $config, "search", "cmbABWaitForCastleSpell2", 0, "int")
 
 ; ============================================================================
 ; ================================= SmartZap =================================
@@ -1175,6 +1230,27 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ichkSXBK, $config, "attack", "SXBK", $HERO_NOHERO)
 		IniReadS($ichkSXAQ, $config, "attack", "SXAQ", $HERO_NOHERO)
 		IniReadS($ichkSXGW, $config, "attack", "SXGW", $HERO_NOHERO)
+
+		$ichkUseBotHumanization = IniRead($config, "Humanization", "chkUseBotHumanization", "0")
+		$ichkUseAltRClick = IniRead($config, "Humanization", "chkUseAltRClick", "0")
+		$ichkCollectAchievements = IniRead($config, "Humanization", "chkCollectAchievements", "0")
+		$ichkLookAtRedNotifications = IniRead($config, "Humanization", "chkLookAtRedNotifications", "0")
+
+		For $i = 0 To 12
+			$icmbPriority[$i] = IniRead($config, "Humanization", "cmbPriority[" & $i & "]", "0")
+		Next
+		For $i = 0 To 1
+			$icmbMaxSpeed[$i] = IniRead($config, "Humanization", "cmbMaxSpeed[" & $i & "]", "1")
+		Next
+		For $i = 0 To 1
+			$icmbPause[$i] = IniRead($config, "Humanization", "cmbPause[" & $i & "]", "0")
+		Next
+
+		For $i = 0 To 1
+			$ihumanMessage[$i] = IniRead($config, "Humanization", "humanMessage[" & $i & "]", "")
+		Next
+
+		$icmbMaxActionsNumber = IniRead($config, "Humanization", "cmbMaxActionsNumber", "1")
 
 ;
 ; MOD
