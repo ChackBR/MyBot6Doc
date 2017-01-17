@@ -97,6 +97,7 @@ Global $debugAndroidEmbedded = 0
 Global $debugWindowMessages = 0 ; 0=off, 1=most Window Messages, 2=all Window Messages
 Global $DebugSmartZap = 0
 Global $DebugGdiCount = 0 ; monitor bot GDI Handle count, 0 = Disabled, <> 0 = Enabled
+Global $DebugSX = 0 ; Debug SuperXP
 
 Global Const $COLOR_ORANGE = 0xFF7700  ; Used for donate GUI buttons
 Global Const $COLOR_ERROR = $COLOR_RED   ; Error messages
@@ -1839,6 +1840,7 @@ Global $lastModmessage = "" ;message for last version
 Global $oldModversmessage = "" ;warning message for old bot
 
 ; ================================================== BOT HUMANIZATION PART ================================================== ;
+
 Global $MinimumPriority, $MaxActionsNumber, $ActionToDo
 Global $SetActionPriority[13] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -1862,10 +1864,20 @@ Global $OnReplayWindow, $ReplayToPause
 Global $QuickMISX = 0, $QuickMISY = 0
 Global $LastLayout = 0
 
+; ================================================== BOT HUMANIZATION END ================================================== ;
+
 Global $CurBaseRedLine[2] = ["", ""]
 Global $DCD = "440,70|825,344|440,640|55,344"
 Global $ECD = "440,22|860,344|440,670|2,344"
-; ================================================== BOT HUMANIZATION END ================================================== ;
+
+; ================================================== TREASURY COLLECT PART ================================================== ;
+
+Global $ichkGoldTrCollect, $ichkElxTrCollect, $ichkDarkTrCollect
+Global $ichkFullGoldTrCollect, $ichkFullElxTrCollect, $ichkFullDarkTrCollect
+Global $itxtMinGoldTrCollect, $itxtMinElxTrCollect, $itxtMinDarkTrCollect
+Global $ichkEnableTrCollect, $ichkForceTrCollect
+
+; ================================================== TREASURY COLLECT END ================================================== ;
 
 Local $HeroesTimerActivation[3] ; to use of Heroes Activation Habilities , Timer  , each Hero
 

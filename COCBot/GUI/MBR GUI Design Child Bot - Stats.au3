@@ -1165,5 +1165,7 @@ $y += 45
 
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
+;--> TAB Don Stats
+
 GUICtrlCreateTabItem("")
 ;GUISetState()

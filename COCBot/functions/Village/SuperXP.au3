@@ -13,8 +13,6 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Global $DebugSX = 0
-
 ;Global $ichkEnableSuperXP = 0, $irbSXTraining = 1, $ichkSXBK = 0, $ichkSXAQ = 0, $ichkSXGW = 0
 
 ; [0] = Queen, [1] = Warden, [2] = Barbarian King

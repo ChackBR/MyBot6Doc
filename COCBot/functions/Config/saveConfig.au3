@@ -739,6 +739,11 @@ Func saveConfig() ;Saves the controls settings to the config
 		Else
 			$DebugSmartZap = 0
 		EndIf
+		If GUICtrlRead($chkDebugSX) = $GUI_CHECKED Then
+			$DebugSX = 1
+		Else
+			$DebugSX = 0
+		EndIf
 		If GUICtrlRead($chkDebugOcr) = $GUI_CHECKED Then
 			$debugOcr = 1
 		Else
@@ -769,10 +774,10 @@ Func saveConfig() ;Saves the controls settings to the config
 		Else
 			$debugAttackCSV = 0
 		EndIf
-		If GUICtrlRead($chkmakeIMGCSV ) = $GUI_CHECKED Then
-			$makeIMGCSV  = 1
+		If GUICtrlRead($chkmakeIMGCSV) = $GUI_CHECKED Then
+			$makeIMGCSV = 1
 		Else
-			$makeIMGCSV  = 0
+			$makeIMGCSV = 0
 		EndIf
 	EndIf
 
@@ -880,7 +885,7 @@ Func saveConfig() ;Saves the controls settings to the config
 		$iChkTrophyHeroes = 1
 	Else
 		$iChkTrophyHeroes = 0
-    EndIf
+	EndIf
 	IniWriteS($config, "search", "cmbTrophyHeroesPriority", _GUICtrlComboBox_GetCurSel($cmbTrophyHeroesPriority))
 
 
@@ -1946,22 +1951,22 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "endBattle", "chkABEndNoResources", 0)
 	EndIf
 
-#CS
-	IniWriteS($config, "endBattle", "txtTSTimeStopAtk", GUICtrlRead($txtTSTimeStopAtk))
-	IniWriteS($config, "endBattle", "chkTSTimeStopAtk", GUICtrlRead($chkTSTimeStopAtk))
-	IniWriteS($config, "endBattle", "txtTSTimeStopAtk2", GUICtrlRead($txtTSTimeStopAtk2))
-	IniWriteS($config, "endBattle", "chkTSTimeStopAtk2", GUICtrlRead($chkTSTimeStopAtk2))
-	IniWriteS($config, "endBattle", "txtTSMinGoldStopAtk2", GUICtrlRead($txtTSMinGoldStopAtk2))
-	IniWriteS($config, "endBattle", "txtTSMinElixirStopAtk2", GUICtrlRead($txtTSMinElixirStopAtk2))
-	IniWriteS($config, "endBattle", "txtTSMinDarkElixirStopAtk2", GUICtrlRead($txtTSMinDarkElixirStopAtk2))
-	IniWriteS($config, "endBattle", "chkTSEndOneStar", GUICtrlRead($chkTSEndOneStar))
-	IniWriteS($config, "endBattle", "chkTSEndTwoStars", GUICtrlRead($chkTSEndTwoStars))
-	If GUICtrlRead($chkTSEndNoResources) = $GUI_CHECKED Then
+	#CS
+		IniWriteS($config, "endBattle", "txtTSTimeStopAtk", GUICtrlRead($txtTSTimeStopAtk))
+		IniWriteS($config, "endBattle", "chkTSTimeStopAtk", GUICtrlRead($chkTSTimeStopAtk))
+		IniWriteS($config, "endBattle", "txtTSTimeStopAtk2", GUICtrlRead($txtTSTimeStopAtk2))
+		IniWriteS($config, "endBattle", "chkTSTimeStopAtk2", GUICtrlRead($chkTSTimeStopAtk2))
+		IniWriteS($config, "endBattle", "txtTSMinGoldStopAtk2", GUICtrlRead($txtTSMinGoldStopAtk2))
+		IniWriteS($config, "endBattle", "txtTSMinElixirStopAtk2", GUICtrlRead($txtTSMinElixirStopAtk2))
+		IniWriteS($config, "endBattle", "txtTSMinDarkElixirStopAtk2", GUICtrlRead($txtTSMinDarkElixirStopAtk2))
+		IniWriteS($config, "endBattle", "chkTSEndOneStar", GUICtrlRead($chkTSEndOneStar))
+		IniWriteS($config, "endBattle", "chkTSEndTwoStars", GUICtrlRead($chkTSEndTwoStars))
+		If GUICtrlRead($chkTSEndNoResources) = $GUI_CHECKED Then
 		IniWriteS($config, "endBattle", "chkTSEndNoResources", 1)
-	Else
+		Else
 		IniWriteS($config, "endBattle", "chkTSEndNoResources", 0)
-	EndIf
-#CE
+		EndIf
+	#CE
 
 	; end battle de side
 	IniWriteS($config, "endbattle", "chkDESideEB", $DESideEB)
@@ -2036,7 +2041,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWriteS($config, "donate", "SkipDonateNearFulLTroopsEnable", 0)
 	EndIf
-	IniWriteS($config, "donate", "SkipDonateNearFulLTroopsPercentual", number(GUICtrlRead($txtSkipDonateNearFulLTroopsPercentual)))
+	IniWriteS($config, "donate", "SkipDonateNearFulLTroopsPercentual", Number(GUICtrlRead($txtSkipDonateNearFulLTroopsPercentual)))
 	IniWriteS($config, "donate", "chkDonateBarbarians", $ichkDonateBarbarians)
 	IniWriteS($config, "donate", "chkDonateAllBarbarians", $ichkDonateAllBarbarians)
 	IniWriteS($config, "donate", "txtDonateBarbarians", StringReplace($sTxtDonateBarbarians, @CRLF, "|"))
@@ -2227,35 +2232,35 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "other", "MinimumTimeToClose", GUICtrlRead($cmbMinimumTimeClose))
 
 	IniWriteS($config, "troop", "chkTroopOrder", $ichkTroopOrder)
-	For $z = 0 To UBound($DefaultTroopGroup) -1
+	For $z = 0 To UBound($DefaultTroopGroup) - 1
 		IniWriteS($config, "troop", "cmbTroopOrder" & $z, _GUICtrlComboBox_GetCurSel($cmbTroopOrder[$z]))
 	Next
 
 	; IniWriteS($config, "troop", "chkDarkTroopOrder", $ichkDarkTroopOrder)
 	; For $z = 0 To UBound($DefaultTroopGroupDark) -1
-		; IniWriteS($config, "troop", "cmbDarkTroopOrder" & $z, _GUICtrlComboBox_GetCurSel($cmbDarkTroopOrder[$z]))
+	; IniWriteS($config, "troop", "cmbDarkTroopOrder" & $z, _GUICtrlComboBox_GetCurSel($cmbDarkTroopOrder[$z]))
 	; Next
 
 	;Level Troops
-		; IniWriteS($config, "LevelTroop", "Barb", $itxtLevBarb)
-		; IniWriteS($config, "LevelTroop", "Arch", $itxtLevArch)
-		; IniWriteS($config, "LevelTroop", "Gobl", $itxtLevGobl)
-		; IniWriteS($config, "LevelTroop", "Giant", $itxtLevGiant)
-		; IniWriteS($config, "LevelTroop", "Wall", $itxtLevWall)
-		; IniWriteS($config, "LevelTroop", "Heal", $itxtLevHeal)
-		; IniWriteS($config, "LevelTroop", "Pekk", $itxtLevPekk)
-		; IniWriteS($config, "LevelTroop", "Ball", $itxtLevBall)
-		; IniWriteS($config, "LevelTroop", "Wiza", $itxtLevWiza)
-		; IniWriteS($config, "LevelTroop", "Drag", $itxtLevDrag)
-		; IniWriteS($config, "LevelTroop", "BabyD", $itxtLevBabyD)
-		; IniWriteS($config, "LevelTroop", "Mine", $itxtLevMine)
-		; IniWriteS($config, "LevelTroop", "Mini", $itxtLevMini)
-		; IniWriteS($config, "LevelTroop", "Hogs", $itxtLevHogs)
-		; IniWriteS($config, "LevelTroop", "Valk", $itxtLevValk)
-		; IniWriteS($config, "LevelTroop", "Gole", $itxtLevGole)
-		; IniWriteS($config, "LevelTroop", "Witc", $itxtLevWitc)
-		; IniWriteS($config, "LevelTroop", "Lava", $itxtLevLava)
-		; IniWriteS($config, "LevelTroop", "Bowl", $itxtLevBowl)
+	; IniWriteS($config, "LevelTroop", "Barb", $itxtLevBarb)
+	; IniWriteS($config, "LevelTroop", "Arch", $itxtLevArch)
+	; IniWriteS($config, "LevelTroop", "Gobl", $itxtLevGobl)
+	; IniWriteS($config, "LevelTroop", "Giant", $itxtLevGiant)
+	; IniWriteS($config, "LevelTroop", "Wall", $itxtLevWall)
+	; IniWriteS($config, "LevelTroop", "Heal", $itxtLevHeal)
+	; IniWriteS($config, "LevelTroop", "Pekk", $itxtLevPekk)
+	; IniWriteS($config, "LevelTroop", "Ball", $itxtLevBall)
+	; IniWriteS($config, "LevelTroop", "Wiza", $itxtLevWiza)
+	; IniWriteS($config, "LevelTroop", "Drag", $itxtLevDrag)
+	; IniWriteS($config, "LevelTroop", "BabyD", $itxtLevBabyD)
+	; IniWriteS($config, "LevelTroop", "Mine", $itxtLevMine)
+	; IniWriteS($config, "LevelTroop", "Mini", $itxtLevMini)
+	; IniWriteS($config, "LevelTroop", "Hogs", $itxtLevHogs)
+	; IniWriteS($config, "LevelTroop", "Valk", $itxtLevValk)
+	; IniWriteS($config, "LevelTroop", "Gole", $itxtLevGole)
+	; IniWriteS($config, "LevelTroop", "Witc", $itxtLevWitc)
+	; IniWriteS($config, "LevelTroop", "Lava", $itxtLevLava)
+	; IniWriteS($config, "LevelTroop", "Bowl", $itxtLevBowl)
 	;barracks boost not saved (no use)
 
 	; Spells Creation  ---------------------------------------------------------------------
@@ -2619,6 +2624,8 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWriteS($config, "debug", "disablevillagecentering", $debugDisableVillageCentering)
 		IniWriteS($config, "debug", "debugdeadbaseimage", $debugDeadbaseImage)
 		IniWriteS($config, "debug", "debugocr", $debugOcr)
+		IniWriteS($config, "debug", "DebugSmartZap", $DebugSmartZap)
+		IniWriteS($config, "debug", "DebugSX", $DebugSX)
 		IniWriteS($config, "debug", "debugimagesave", $DebugImageSave)
 		IniWriteS($config, "debug", "debugbuildingpos", $debugBuildingPos)
 		IniWriteS($config, "debug", "debugtrain", $debugsetlogTrain)
@@ -2842,9 +2849,9 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "troop", "QuickTrain1", $iChkQuickArmy1)
 	IniWriteS($config, "troop", "QuickTrain2", $iChkQuickArmy2)
 	IniWriteS($config, "troop", "QuickTrain3", $iChkQuickArmy3)
-; ============================================================================
-; ================================= SmartZap =================================
-; ============================================================================
+	; ============================================================================
+	; ================================= SmartZap =================================
+	; ============================================================================
 	If GUICtrlRead($chkSmartLightSpell) = $GUI_CHECKED Then
 		IniWrite($config, "SmartZap", "UseSmartZap", 1)
 	Else
@@ -2877,9 +2884,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWrite($config, "SmartZap", "MinDE", GUICtrlRead($txtMinDark))
 	IniWrite($config, "SmartZap", "ExpectedDE", GUICtrlRead($txtExpectedDE))
-; ============================================================================
-; ================================= SmartZap =================================
-; ============================================================================
+	; ============================================================================
+	; ================================= SmartZap =================================
+	; ============================================================================
+
+	; ================================================== BOT HUMANIZATION PART ================================================== ;
 
 	IniWrite($config, "Humanization", "chkUseBotHumanization", $ichkUseBotHumanization)
 	IniWrite($config, "Humanization", "chkUseAltRClick", $ichkUseAltRClick)
@@ -2902,11 +2911,31 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	IniWrite($config, "Humanization", "cmbMaxActionsNumber", _GUICtrlComboBox_GetCurSel($cmbMaxActionsNumber))
 
+	; ================================================== BOT HUMANIZATION END ================================================== ;
+
+	; ================================================== TREASURY COLLECT PART ================================================== ;
+
+	IniWrite($config, "Treasury", "chkEnableTrCollect", $ichkEnableTrCollect)
+	IniWrite($config, "Treasury", "chkForceTrCollect", $ichkForceTrCollect)
+
+	IniWrite($config, "Treasury", "chkGoldTrCollect", $ichkGoldTrCollect)
+	IniWrite($config, "Treasury", "chkElxTrCollect", $ichkElxTrCollect)
+	IniWrite($config, "Treasury", "chkDarkTrCollect", $ichkDarkTrCollect)
+
+	IniWrite($config, "Treasury", "txtMinGoldTrCollect", GUICtrlRead($txtMinGoldTrCollect))
+	IniWrite($config, "Treasury", "txtMinElxTrCollect", GUICtrlRead($txtMinElxTrCollect))
+	IniWrite($config, "Treasury", "txtMinDarkTrCollect", GUICtrlRead($txtMinDarkTrCollect))
+
+	IniWrite($config, "Treasury", "chkFullGoldTrCollect", $ichkFullGoldTrCollect)
+	IniWrite($config, "Treasury", "chkFullElxTrCollect", $ichkFullElxTrCollect)
+	IniWrite($config, "Treasury", "chkFullDarkTrCollect", $ichkFullDarkTrCollect)
+
+	; ================================================== TREASURY COLLECT END ================================================== ;
+
 ;
 ; MOD
 ;
 #include "..\..\MOD\Config_Save.au3"
-
 	If $hFile <> -1 Then FileClose($hFile)
 
 EndFunc   ;==>saveConfig

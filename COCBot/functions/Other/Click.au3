@@ -207,6 +207,8 @@ EndFunc   ;==>GemClickP
 
 Func AttackClick($x, $y, $times = 1, $speed = 0, $afterDelay = 0, $debugtxt = "")
    Local $timer = TimerInit()
+   ; Protect the Attack BAR
+   If $y > 555 + $bottomOffsetY Then $y = 555 + $bottomOffsetY
    Local $result = PureClick($x, $y, $times, $speed, $debugtxt)
    Local $delay = $times * $speed + $afterDelay - TimerDiff($timer)
    If IsKeepClicksActive() = False And $delay > 0 Then _Sleep($delay, False)

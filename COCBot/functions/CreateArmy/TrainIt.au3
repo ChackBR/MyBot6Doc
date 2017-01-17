@@ -198,17 +198,30 @@ EndFunc   ;==>GetGemName
 
 Func GetRNDName($troopKind)
 	If $debugsetlogTrain = 1 Then SetLog("Func GetRNDName " & $troopKind, $COLOR_DEBUG)
+	Local $aReturn[4]
 	For $i = 0 To UBound($TroopName) - 1
 		If Eval("e" & $TroopName[$i]) = $troopKind Then
-			Return Eval("Train" & $TroopName[$i] & "RND")
+			Local $aTempCoord = Eval("Train" & $TroopName[$i])
+			$aReturn[0] = $aTempCoord[0] - 5
+			$aReturn[1] = $aTempCoord[1] - 5
+			$aReturn[2] = $aTempCoord[0] + 5
+			$aReturn[3] = $aTempCoord[1] + 5
+			;Assign("Train" & $TroopName[$i] & "RND", $aReturn)
+			Return $aReturn
 		EndIf
 	Next
 	For $i = 0 To UBound($SpellName) - 1
 		If Eval("e" & $SpellName[$i]) = $troopKind Then
-			Return Eval("Train" & $SpellName[$i] & "RND")
+			Local $aTempCoord = Eval("Train" & $SpellName[$i])
+			$aReturn[0] = $aTempCoord[0] - 5
+			$aReturn[1] = $aTempCoord[1] - 5
+			$aReturn[2] = $aTempCoord[0] + 5
+			$aReturn[3] = $aTempCoord[1] + 5
+			;Assign("Train" & $SpellName[$i] & "RND", $aReturn)
+			Return $aReturn
 		EndIf
 	Next
-	SetLog("Don't know how to find the troop " & $troopKind & " yet")
+	SetLog("Don't know how to find the " & $troopKind & " yet!", $COLOR_ERROR)
 	Return 0
 EndFunc   ;==>GetRNDName
 

@@ -6,14 +6,20 @@
 
 			Based on MyBot.run v6.5.3
 
-  _____               ____              ____   _____  ____  
- |  __ \             / __ \            |___ \ | ____||___ \ 
- | |  | | ___   ___ | |  | | ___  __   ____) || |__    __) |
- | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ < |___ \  |__ < 
- | |__| | (_) | (__ | |__| | (__   \ V /___) | ___) | ___) |
- |_____/ \___/ \___(_)____/ \___|   \_/|____(_)____(_)____/
-                                                           
+  _____               ____   _____        ____   _____ _  _   
+ |  __ \             / __ \ / ____|      |___ \ | ____| || |  
+ | |  | | ___   ___ | |  | | |      __   ____) || |__ | || |_ 
+ | |  | |/ _ \ / __|| |  | | |      \ \ / /__ < |___ \|__   _|
+ | |__| | (_) | (__ | |__| | |____   \ V /___) | ___) |  | |  
+ |_____/ \___/ \___(_)____/ \_____|   \_/|____(_)____(_) |_|  
+                                                                 
+	- Fix the Clan Castle Spells capacity
+	- Fix Wait Clan Castle Spells comparing with GUI
+	- Fix TH detection and smart zap
+	- Add code to restart the UxSms on Win_7 on MEMu (Aero Theme Problem and Imgloc)
+	- Add Collect Treasury
 
+				 Doc Oc v3.5.3	
 	- Official 6.5.3
 	- Fix for Cannot find train Window
 	- Fix Bad pixel check on troop position
@@ -22,7 +28,6 @@
 	- Add Clusterattack to SmartZap, zapping multiple drills at once
 	- Improve Search Tab
 	- Improve Walls Upgrade Tab
-
 
 				 Doc Oc v3.5.2 
 	- Fix Locate brew spells icons for any event 

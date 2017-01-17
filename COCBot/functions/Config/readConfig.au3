@@ -29,7 +29,7 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		Local $_ver63u = GetVersionNormalized("6.3.u")
 		Local $_ver63u3 = GetVersionNormalized("6.3.u3")
 		If $buildingVersion < $_ver630 _
-		Or ($buildingVersion >= $_ver63u And $buildingVersion <= $_ver63u3) Then
+				Or ($buildingVersion >= $_ver63u And $buildingVersion <= $_ver63u3) Then
 			SetLog("New MyBot.run version! Re-locate all buildings!", $COLOR_WARNING)
 			$locationsInvalid = True
 		EndIf
@@ -266,13 +266,13 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($icmbMinimumTimeClose, $config, "other", "MinimumTimeToClose", 2, "int")
 
 		IniReadS($ichkTroopOrder, $config, "troop", "chkTroopOrder", 0, "int")
-		For $z = 0 To UBound($DefaultTroopGroup) -1
+		For $z = 0 To UBound($DefaultTroopGroup) - 1
 			IniReadS($icmbTroopOrder[$z], $config, "troop", "cmbTroopOrder" & $z, $z)
 		Next
 
 		; IniReadS($ichkDarkTroopOrder, $config, "troop", "chkDarkTroopOrder", 0, "int")
 		; For $z = 0 To UBound($DefaultTroopGroupDark) -1
-			; IniReadS($icmbDarkTroopOrder[$z], $config, "troop", "cmbDarkTroopOrder" & $z, -1, "int")
+		; IniReadS($icmbDarkTroopOrder[$z], $config, "troop", "cmbDarkTroopOrder" & $z, -1, "int")
 		; Next
 
 		;Level Troops
@@ -457,7 +457,7 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 
 		IniReadS($itxtSWTtiles, $config, "search", "SWTtiles", 1, "int")
 
-		IniReadS($iDeadBaseDisableCollectorsFilter,$config, "search", "chkDisableCollectorsFilter", 0, "int")
+		IniReadS($iDeadBaseDisableCollectorsFilter, $config, "search", "chkDisableCollectorsFilter", 0, "int")
 		;======================================================================================================================
 		;Attack Basics Settings-------------------------------------------------------------------------
 		IniReadS($iAtkAlgorithm[$DB], $config, "attack", "DBAtkAlgorithm", 0, "int")
@@ -692,18 +692,18 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ichkEndTwoStars[$LB], $config, "endbattle", "chkABEndTwoStars", 0, "int")
 		IniReadS($ichkEndNoResources[$LB], $config, "endbattle", "chkABEndNoResources", 0, "int")
 
-#CS
-		IniReadS($sTimeStopAtk[$TS], $config, "endbattle", "txtTSTimeStopAtk", 20, "int")
-		IniReadS($iChkTimeStopAtk[$TS], $config, "endbattle", "chkTSTimeStopAtk", 1, "int")
-		IniReadS($sTimeStopAtk2[$TS], $config, "endbattle", "txtTSTimeStopAtk2", 7, "int")
-		IniReadS($iChkTimeStopAtk2[$TS], $config, "endbattle", "chkTSTimeStopAtk2", 0, "int")
-		IniReadS($stxtMinGoldStopAtk2[$TS], $config, "endbattle", "txtTSMinGoldStopAtk2", 1000, "int")
-		IniReadS($stxtMinElixirStopAtk2[$TS], $config, "endbattle", "txtTSMinElixirStopAtk2", 1000, "int")
-		IniReadS($stxtMinDarkElixirStopAtk2[$TS], $config, "endbattle", "txtTSMinDarkElixirStopAtk2", 50, "int")
-		IniReadS($ichkEndOneStar[$TS], $config, "endbattle", "chkTSEndOneStar", 0, "int")
-		IniReadS($ichkEndTwoStars[$TS], $config, "endbattle", "chkTSEndTwoStars", 0, "int")
-		IniReadS($ichkEndNoResources[$TS], $config, "endbattle", "chkTSEndNoResources", 0, "int")
-#CE
+		#CS
+			IniReadS($sTimeStopAtk[$TS], $config, "endbattle", "txtTSTimeStopAtk", 20, "int")
+			IniReadS($iChkTimeStopAtk[$TS], $config, "endbattle", "chkTSTimeStopAtk", 1, "int")
+			IniReadS($sTimeStopAtk2[$TS], $config, "endbattle", "txtTSTimeStopAtk2", 7, "int")
+			IniReadS($iChkTimeStopAtk2[$TS], $config, "endbattle", "chkTSTimeStopAtk2", 0, "int")
+			IniReadS($stxtMinGoldStopAtk2[$TS], $config, "endbattle", "txtTSMinGoldStopAtk2", 1000, "int")
+			IniReadS($stxtMinElixirStopAtk2[$TS], $config, "endbattle", "txtTSMinElixirStopAtk2", 1000, "int")
+			IniReadS($stxtMinDarkElixirStopAtk2[$TS], $config, "endbattle", "txtTSMinDarkElixirStopAtk2", 50, "int")
+			IniReadS($ichkEndOneStar[$TS], $config, "endbattle", "chkTSEndOneStar", 0, "int")
+			IniReadS($ichkEndTwoStars[$TS], $config, "endbattle", "chkTSEndTwoStars", 0, "int")
+			IniReadS($ichkEndNoResources[$TS], $config, "endbattle", "chkTSEndNoResources", 0, "int")
+		#CE
 		;end battle de side
 		IniReadS($DESideEB, $config, "endbattle", "chkDESideEB", 0, "int")
 		IniReadS($DELowEndMin, $config, "endbattle", "txtDELowEndMin", 25, "int")
@@ -782,9 +782,9 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 
 		;Schedule
 		$NotifyScheduleWeekDaysEnable = Int(IniRead($config, "notify", "NotifyWeekDaysEnable", 0))
-		$NotifyScheduleWeekDays = StringSplit(IniRead($config, "notify", "NotifyWeekDays", "1|1|1|1|1|1|1"),"|", $STR_NOCOUNT)
+		$NotifyScheduleWeekDays = StringSplit(IniRead($config, "notify", "NotifyWeekDays", "1|1|1|1|1|1|1"), "|", $STR_NOCOUNT)
 		$NotifyScheduleHoursEnable = Int(IniRead($config, "notify", "NotifyHoursEnable", 0))
-		$NotifyScheduleHours = StringSplit(IniRead($config, "notify", "NotifyHours", "1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1"),"|", $STR_NOCOUNT)
+		$NotifyScheduleHours = StringSplit(IniRead($config, "notify", "NotifyHours", "1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1"), "|", $STR_NOCOUNT)
 		;==============================================================
 		;NOTIFY CONFIG ================================================
 		;==============================================================
@@ -803,6 +803,8 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 			$DebugDisableZoomout = BitOR($DebugDisableZoomout, Int(IniRead($config, "debug", "disablezoomout", 0)))
 			$DebugDisableVillageCentering = BitOR($DebugDisableVillageCentering, Int(IniRead($config, "debug", "disablevillagecentering", 0)))
 			$DebugDeadbaseImage = BitOR($DebugDeadbaseImage, Int(IniRead($config, "debug", "debugdeadbaseimage", 0)))
+			$DebugSmartZap =  BitOR($DebugSmartZap, Int(IniRead($config, "debug", "DebugSmartZap", 0)))
+			$DebugSX =  BitOR($DebugSX, Int(IniRead($config, "debug", "DebugSX", 0)))
 			$DebugOcr = BitOR($DebugOcr, Int(IniRead($config, "debug", "debugocr", 0)))
 			$DebugImageSave = BitOR($DebugImageSave, Int(IniRead($config, "debug", "debugimagesave", 0)))
 			$debugBuildingPos = BitOR($debugBuildingPos, Int(IniRead($config, "debug", "debugbuildingpos", 0)))
@@ -1206,9 +1208,9 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($iCmbWaitForCastleSpell[$LB], $config, "search", "cmbABWaitForCastleSpell", 0, "int")
 		IniReadS($iCmbWaitForCastleSpell2[$LB], $config, "search", "cmbABWaitForCastleSpell2", 0, "int")
 
-; ============================================================================
-; ================================= SmartZap =================================
-; ============================================================================
+		; ============================================================================
+		; ================================= SmartZap =================================
+		; ============================================================================
 		$ichkSmartZap = IniRead($config, "SmartZap", "UseSmartZap", "0")
 		$ichkSmartZapDB = IniRead($config, "SmartZap", "ZapDBOnly", "1")
 		$ichkSmartZapSaveHeroes = IniRead($config, "SmartZap", "THSnipeSaveHeroes", "1")
@@ -1217,9 +1219,9 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		$ichkEarthQuakeZap = IniRead($config, "SmartZap", "UseEarthQuakeZap", "0")
 		$itxtExpectedDE = IniRead($config, "SmartZap", "ExpectedDE", "320")
 		$DebugSmartZap = IniRead($config, "SmartZap", "DebugSmartZap", "0")
-; ============================================================================
-; ================================= SmartZap =================================
-; ============================================================================
+		; ============================================================================
+		; ================================= SmartZap =================================
+		; ============================================================================
 
 		$_CheckIceWizardSlot = True ; recheck if Ice Wizard exists in Train Window
 
@@ -1230,6 +1232,8 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		IniReadS($ichkSXBK, $config, "attack", "SXBK", $HERO_NOHERO)
 		IniReadS($ichkSXAQ, $config, "attack", "SXAQ", $HERO_NOHERO)
 		IniReadS($ichkSXGW, $config, "attack", "SXGW", $HERO_NOHERO)
+
+		; ================================================== BOT HUMANIZATION PART ================================================== ;
 
 		$ichkUseBotHumanization = IniRead($config, "Humanization", "chkUseBotHumanization", "0")
 		$ichkUseAltRClick = IniRead($config, "Humanization", "chkUseAltRClick", "0")
@@ -1251,6 +1255,27 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		Next
 
 		$icmbMaxActionsNumber = IniRead($config, "Humanization", "cmbMaxActionsNumber", "1")
+
+		; ================================================== BOT HUMANIZATION END ================================================== ;
+
+		; ================================================== TREASURY COLLECT PART ================================================== ;
+
+		$ichkEnableTrCollect = IniRead($config, "Treasury", "chkEnableTrCollect", "0")
+		$ichkForceTrCollect = IniRead($config, "Treasury", "chkForceTrCollect", "0")
+
+		$ichkGoldTrCollect = IniRead($config, "Treasury", "chkGoldTrCollect", "0")
+		$ichkElxTrCollect = IniRead($config, "Treasury", "chkElxTrCollect", "0")
+		$ichkDarkTrCollect = IniRead($config, "Treasury", "chkDarkTrCollect", "0")
+
+		$itxtMinGoldTrCollect = IniRead($config, "Treasury", "txtMinGoldTrCollect", "200000")
+		$itxtMinElxTrCollect = IniRead($config, "Treasury", "txtMinElxTrCollect", "200000")
+		$itxtMinDarkTrCollect = IniRead($config, "Treasury", "txtMinDarkTrCollect", "50000")
+
+		$ichkFullGoldTrCollect = IniRead($config, "Treasury", "chkFullGoldTrCollect", "0")
+		$ichkFullElxTrCollect = IniRead($config, "Treasury", "chkFullElxTrCollect", "0")
+		$ichkFullDarkTrCollect = IniRead($config, "Treasury", "chkFullDarkTrCollect", "0")
+
+		; ================================================== TREASURY COLLECT END ================================================== ;
 
 ;
 ; MOD

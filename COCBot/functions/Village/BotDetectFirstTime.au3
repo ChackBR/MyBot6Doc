@@ -48,9 +48,13 @@ Func BotDetectFirstTime()
 		$Result = GetTownHallLevel(True) ; Get the Users TH level
 		If IsArray($Result) Then $iTownHallLevel = 0 ; Check for error finding TH level, and reset to zero if yes
 	EndIf
-	If Number($iTownHallLevel) > 1 And Number($iTownHallLevel) < 6 Then
-		Setlog("Warning: TownHall level below 6 NOT RECOMMENDED!", $COLOR_ERROR)
-		Setlog("Proceed with caution as errors may occur.", $COLOR_ERROR)
+
+	If $iTownHallLevel < 2 or ( $TownHallPos[1] = "" Or $TownHallPos[1] = -1) then LocateTownHall()
+
+	If Number($iTownHallLevel) > 1 And Number($iTownHallLevel) < 5 Then
+		Setlog("Warning: Your TownHall level is below 5!", $COLOR_ERROR)
+		Setlog("QuickTrain is not available, proceed with Custom Train instead!", $COLOR_ERROR)
+		Setlog("Other Errors can occur!", $COLOR_ERROR)
 	EndIf
 
 	;If _Sleep($iDelayBotDetectFirstTime1) Then Return

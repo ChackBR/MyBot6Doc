@@ -64,6 +64,7 @@ Func OpenMEmu($bRestart = False)
 	  Return False
 	EndIf
 
+	UxSmsService()
     SetLog($Android & " Loaded, took " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds to begin.", $COLOR_SUCCESS)
 
 	Return True
@@ -406,4 +407,27 @@ Func UpdateMEmuWindowState()
    Next
 
    Return $bChanged
+EndFunc
+
+Func UxSmsService()
+
+	Local $CMD ='net stop UxSms && ' & _
+				'net start UxSms'
+
+	; Use to run the command following && only if the
+	; command preceding the symbol is successful.
+	; Cmd.exe runs the first command, and then runs
+	; the second command only if the first command
+	; completed successfully.
+	; Reference:
+	; http://technet.microsoft.com/en-us/library/bb490954.aspx
+
+	; /k keeps the CMD window open.
+	; /c closes the CMD window once the command is complete.
+
+	If @OSVersion = "WIN_7" then
+		Setlog(" - Restarting you UxSms service!", $COLOR_INFO)
+		RunWait('"' & @ComSpec & '" /c ' & $CMD, @SystemDir)
+	EndIf
+
 EndFunc

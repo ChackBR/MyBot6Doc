@@ -75,7 +75,7 @@ Local $x = 15, $y = 45
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 15, $y = 150
-	$grpMisc = GUICtrlCreateGroup(GetTranslated(610,40, "Rearm, Collect, Clear"), $x -10, $y - 20 , 440, 190)
+	$grpMisc = GUICtrlCreateGroup(GetTranslated(610,40, "Rearm, Collect, Clear"), $x -10, $y - 20 , 440, 125)
 		GUICtrlCreateIcon($pIconLib, $eIcnTrap, $x + 7, $y, 24, 24)
 		GUICtrlCreateIcon($pIconLib, $eIcnXbow, $x + 32, $y, 24, 24)
 		GUICtrlCreateIcon($pIconLib, $eIcnInferno, $x + 57, $y, 24, 24)
@@ -93,28 +93,72 @@ Local $x = 15, $y = 150
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_CHECKED)
 	$y += 35
-		GUICtrlCreateIcon($pIconLib, $eIcnTombstone, $x + 32 , $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnTombstone, $x - 5, $y, 24, 24)
 		$chkTombstones = GUICtrlCreateCheckbox(GetTranslated(610,47, "Clear Tombstones"), $x + 100, $y + 4, -1, -1)
 			$txtTip = GetTranslated(610,48, "Check this to automatically clear tombstones after enemy attack.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_UNCHECKED)
-	$y += 35
+;	$y += 35
 		GUICtrlCreateIcon($pIconLib, $eIcnTree, $x + 20, $y, 24, 24)
 		GUICtrlCreateIcon($pIconLib, $eIcnBark, $x + 45, $y, 24, 24)
-		$chkCleanYard = GUICtrlCreateCheckbox(GetTranslated(610,49, "Remove Obstacles"), $x + 100, $y + 4, -1, -1)
+		$chkCleanYard = GUICtrlCreateCheckbox(GetTranslated(610,49, "Remove Obstacles"), $x + 210, $y + 4, -1, -1)
 			$txtTip = GetTranslated(610,50, "Check this to automatically clear Yard from Trees, Trunks, etc.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_UNCHECKED)
-	$y += 35
-		GUICtrlCreateIcon($pIconLib, $eIcnGembox, $x + 32, $y, 24, 24)
-		$chkGemsBox = GUICtrlCreateCheckbox(GetTranslated(610,51, "Remove GemBox"), $x + 100, $y + 4, -1, -1)
+;	$y += 35
+		GUICtrlCreateIcon($pIconLib, $eIcnGembox, $x + 70, $y, 24, 24)
+		$chkGemsBox = GUICtrlCreateCheckbox(GetTranslated(610,51, "Remove GemBox"), $x + 325, $y + 4, -1, -1)
 			$txtTip = GetTranslated(610,52, "Check this to automatically clear GemBox.")
 			_GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_UNCHECKED)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
+Local $x = 5, $y = 258
 
-Local $x = 20, $y = 345
+$Group1 = GUICtrlCreateGroup("Treasury Collect", $x, $y, 440, 105)
+
+	$x -= 2
+
+	GUICtrlCreatePic(@ScriptDir & "\images\Treasury.jpg", $x + 12, $y + 25, 70, 38.6)
+	$chkEnableTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 1, "Enable"), $x + 93, $y + 35, 52, 17)
+	GUICtrlSetOnEvent(-1, "chkEnableTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 50, "Check to enable automatic Treasury collecion"))
+	$chkForceTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 2, "Always collect Treasury"), $x + 15, $y + 75, 127, 17)
+	GUICtrlSetOnEvent(-1, "chkForceTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 51, "Check to force Treasury collection" & _
+	@CRLF & "Treasury will be collected all the time, ignoring any criteria"))
+
+	GUICtrlCreateIcon($pIconLib, $eIcnGold, $x + 160, $y + 15, 24, 24)
+	GUICtrlCreateIcon($pIconLib, $eIcnElixir, $x + 160, $y + 45, 24, 24)
+	GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 160, $y + 75, 24, 24)
+
+	$chkGoldTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 3, "Collect when Gold <"), $x + 190, $y + 18, 112, 17)
+	GUICtrlSetOnEvent(-1, "chkResTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 52, "When your Village Gold is below this value, it will collect Treasury"))
+	$txtMinGoldTrCollect = GUICtrlCreateInput("200000", $x + 305, $y + 17, 56, 21, BitOR($ES_CENTER,$ES_NUMBER))
+	$chkFullGoldTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 4, "When full"), $x + 370, $y + 18, 67, 17)
+	GUICtrlSetOnEvent(-1, "chkFullResTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 53, "When your Gold level in Treasury is full, it will colect it to empty Treasury"))
+
+	$chkElxTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 5, "Collect when Elixir <"), $x + 190, $y + 48, 112, 17)
+	GUICtrlSetOnEvent(-1, "chkResTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 54, "When your Village Elixir is below this value, it will collect Treasury"))
+	$txtMinElxTrCollect = GUICtrlCreateInput("200000", $x + 305, $y + 47, 56, 21, BitOR($ES_CENTER,$ES_NUMBER))
+	$chkFullElxTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 6, "When full"), $x + 370, $y + 48, 67, 17)
+	GUICtrlSetOnEvent(-1, "chkFullResTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 55, "When your Elixir level in Treasury is full, it will colect it to empty Treasury"))
+
+	$chkDarkTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 7, "Collect when Dark <"), $x + 190, $y + 78, 112, 17)
+	GUICtrlSetOnEvent(-1, "chkResTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 56, "When your Village Dark is below this value, it will collect Treasury"))
+	$txtMinDarkTrCollect = GUICtrlCreateInput("200000", $x + 305, $y + 77, 56, 21, BitOR($ES_CENTER,$ES_NUMBER))
+	$chkFullDarkTrCollect = GUICtrlCreateCheckbox(GetTranslated(800, 8, "When full"), $x + 370, $y + 78, 67, 17)
+	GUICtrlSetOnEvent(-1, "chkFullResTrCollect")
+	_GUICtrlSetTip(-1, GetTranslated(800, 57, "When your Dark level in Treasury is full, it will colect it to empty Treasury"))
+
+GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+Local $x = 20, $y = 385
 	$grpLocateBuildings = GUICtrlCreateGroup(GetTranslated(610,53, "Locate Manually"), $x - 15, $y - 20, 440, 65)
 		$X -= 11
 		$y += 0

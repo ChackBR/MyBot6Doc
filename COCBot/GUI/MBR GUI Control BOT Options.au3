@@ -233,6 +233,16 @@ Func chkDebugSmartZap()
 	SetDebugLog("DebugSmartZap " & ($DebugSmartZap = 1 ? "enabled" : "disabled"))
 EndFunc
 
+Func chkDebugSX()
+	If GUICtrlRead($chkDebugSX) = $GUI_CHECKED Then
+		$DebugSX = 1
+	Else
+		$DebugSX = 0
+	EndIf
+	SetDebugLog("DebugSX " & ($DebugSX = 1 ? "enabled" : "disabled"))
+EndFunc
+
+
 Func chkDebugOcr()
 	If GUICtrlRead($chkDebugOcr) = $GUI_CHECKED Then
 		$debugOcr = 1

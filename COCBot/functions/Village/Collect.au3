@@ -57,62 +57,64 @@ Func Collect()
 
 	If _Sleep($iDelayCollect3) Then Return
 	checkMainScreen(False) ; check if errors during function
-		; Loot Cart Collect Function
+	; Loot Cart Collect Function
 
-		Setlog("Searching for a Loot Cart..", $COLOR_INFO)
+	Setlog("Searching for a Loot Cart..", $COLOR_INFO)
 
-		Local $LootCart = @ScriptDir & "\imgxml\Resources\LootCart\loot_cart_0_85.xml"
-		Local $LootCartX, $LootCartY
+	Local $LootCart = @ScriptDir & "\imgxml\Resources\LootCart\loot_cart_0_85.xml"
+	Local $LootCartX, $LootCartY
 
-		$ToleranceImgLoc = 0.850
-		Local $fullCocAreas = "ECD"
-		Local $MaxReturnPoints = 1
+	$ToleranceImgLoc = 0.850
+	Local $fullCocAreas = "ECD"
+	Local $MaxReturnPoints = 1
 
-		_CaptureRegion2()
-		Local $res = DllCall($hImgLib, "str", "FindTile", "handle", $hHBitmap2, "str", $LootCart, "str", $fullCocAreas, "Int", $MaxReturnPoints)
-		If @error Then _logErrorDLLCall($pImgLib, @error)
-		If IsArray($res) Then
-			If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_INFO)
-			If $res[0] = "0" Or $res[0] = "" Then
-				SetLog("No Loot Cart found, Yard is clean!", $COLOR_SUCCESS)
-			ElseIf StringLeft($res[0], 2) = "-1" Then
-				SetLog("DLL Error: " & $res[0], $COLOR_ERROR)
-			Else
-				$expRet = StringSplit($res[0], "|", $STR_NOCOUNT)
-				;$expret contains 2 positions; 0 is the total objects; 1 is the point in X,Y format
-				$posPoint = StringSplit($expRet[1], ",", $STR_NOCOUNT)
-				$LootCartX = Int($posPoint[0])
-				$LootCartY = Int($posPoint[1])
-				If isInsideDiamondXY($LootCartX, $LootCartY) Then
-					If $DebugSetlog Then SetLog("LootCart found (" & $LootCartX & "," & $LootCartY & ")", $COLOR_SUCCESS)
-					If IsMainPage() Then Click($LootCartX, $LootCartY, 1, 0, "#0330")
-					If _Sleep($iDelayCollect1) Then Return
+	_CaptureRegion2()
+	Local $res = DllCall($hImgLib, "str", "FindTile", "handle", $hHBitmap2, "str", $LootCart, "str", $fullCocAreas, "Int", $MaxReturnPoints)
+	If @error Then _logErrorDLLCall($pImgLib, @error)
+	If IsArray($res) Then
+		If $DebugSetLog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_INFO)
+		If $res[0] = "0" Or $res[0] = "" Then
+			SetLog("No Loot Cart found, Yard is clean!", $COLOR_SUCCESS)
+		ElseIf StringLeft($res[0], 2) = "-1" Then
+			SetLog("DLL Error: " & $res[0], $COLOR_ERROR)
+		Else
+			$expRet = StringSplit($res[0], "|", $STR_NOCOUNT)
+			;$expret contains 2 positions; 0 is the total objects; 1 is the point in X,Y format
+			$posPoint = StringSplit($expRet[1], ",", $STR_NOCOUNT)
+			$LootCartX = Int($posPoint[0])
+			$LootCartY = Int($posPoint[1])
+			If isInsideDiamondXY($LootCartX, $LootCartY) Then
+				If $DebugSetLog Then SetLog("LootCart found (" & $LootCartX & "," & $LootCartY & ")", $COLOR_SUCCESS)
+				If IsMainPage() Then Click($LootCartX, $LootCartY, 1, 0, "#0330")
+				If _Sleep($iDelayCollect1) Then Return
 
-					;Get LootCart info confirming the name
-					Local $sInfo = BuildingInfo(242, 520 + $bottomOffsetY); 860x780
+				;Get LootCart info confirming the name
+				Local $sInfo = BuildingInfo(242, 520 + $bottomOffsetY) ; 860x780
+				If @error Then SetError(0, 0, 0)
+				Local $CountGetInfo = 0
+				While IsArray($sInfo) = False
+					$sInfo = BuildingInfo(242, 520 + $bottomOffsetY) ; 860x780
 					If @error Then SetError(0, 0, 0)
-					Local $CountGetInfo = 0
-					While IsArray($sInfo) = False
-						$sInfo = BuildingInfo(242, 520 + $bottomOffsetY); 860x780
-						If @error Then SetError(0, 0, 0)
-						If _Sleep($iDelayCollect1) Then Return
-						$CountGetInfo += 1
-						If $CountGetInfo >= 5 Then Return
-					WEnd
-					If $DebugSetlog Then SetLog(_ArrayToString($sInfo, " "), $COLOR_DEBUG)
-					If @error Then Return SetError(0, 0, 0)
-					If $sInfo[0] > 1 Or $sInfo[0] = "" Then
-						If StringInStr($sInfo[1], "Loot") = 0 Then
-							If $DebugSetlog Then SetLog("Bad Loot Cart location", $COLOR_ACTION)
-						Else
-							If IsMainPage() Then Click($aLootCartBtn[0], $aLootCartBtn[1], 1, 0, "#0331") ;Click loot cart button
-						EndIf
+					If _Sleep($iDelayCollect1) Then Return
+					$CountGetInfo += 1
+					If $CountGetInfo >= 5 Then Return
+				WEnd
+				If $DebugSetLog Then SetLog(_ArrayToString($sInfo, " "), $COLOR_DEBUG)
+				If @error Then Return SetError(0, 0, 0)
+				If $sInfo[0] > 1 Or $sInfo[0] = "" Then
+					If StringInStr($sInfo[1], "Loot") = 0 Then
+						If $DebugSetLog Then SetLog("Bad Loot Cart location", $COLOR_ACTION)
+					Else
+						If IsMainPage() Then Click($aLootCartBtn[0], $aLootCartBtn[1], 1, 0, "#0331") ;Click loot cart button
 					EndIf
-				Else
-					Setlog("Loot Cart not removed, please do manually!", $COLOR_WARNING)
 				EndIf
+			Else
+				Setlog("Loot Cart not removed, please do manually!", $COLOR_WARNING)
 			EndIf
 		EndIf
+	EndIf
+
+	CollectTreasury()
 
 	EndGainCost("Collect")
- EndFunc   ;==>Collect
+EndFunc   ;==>Collect

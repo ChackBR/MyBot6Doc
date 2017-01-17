@@ -75,8 +75,14 @@ _GUICtrlSetTip(-1, GetTranslated(636, 117, "Debug: Saves images of skipped deadb
 GUICtrlSetState(-1, $GUI_DISABLE)
 GUICtrlSetState(-1, $GUI_HIDE)
 $y += 20
-$chkDebugSmartZap = GUICtrlCreateCheckbox(GetTranslated(638, 23,"Debug SmartZap"), $x, $y -5, -1, -1)
-$txtTip = GetTranslated(638, 24, "Use this to debug SmartZap")
+$chkDebugSmartZap = GUICtrlCreateCheckbox(GetTranslated(636, 122,"Debug SmartZap"), $x, $y -5, -1, -1)
+$txtTip = GetTranslated(636, 123, "Use this to debug SmartZap")
+_GUICtrlSetTip(-1, $txtTip)
+GUICtrlSetState(-1, $GUI_DISABLE)
+GUICtrlSetState(-1, $GUI_HIDE)
+$y += 20
+$chkDebugSX = GUICtrlCreateCheckbox(GetTranslated(636, 124,"Debug GoblinXP"), $x, $y -5, -1, -1)
+$txtTip = GetTranslated(636, 125, "Use this to debug GloblinXP function")
 _GUICtrlSetTip(-1, $txtTip)
 GUICtrlSetState(-1, $GUI_DISABLE)
 GUICtrlSetState(-1, $GUI_HIDE)

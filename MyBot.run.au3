@@ -53,7 +53,8 @@ Global $sBotTitle
 ; "2603" ; MyBot v6.5.2 + SmartZap Fix
 ; "2604" ; MyBot v6.5.2 + QuickTrain Update
 ; "2605" ; MyBot v6.5.2 + Doc Octopus v3.5.2
-$sModversion = "2611" ; MyBot v6.5.3 + Doc Octopus v3.5.3
+; "2611" ; MyBot v6.5.3 + Doc Octopus v3.5.3
+$sModversion = "2612" ; MyBot v6.5.3 + Doc Octopus v3.5.4
 $sBotVersion = "v6.5.3" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
 $sModSupportUrl = "https://mybot.run/forums"
 $sBotTitle = "My Bot " & $sBotVersion & ".Doc" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |

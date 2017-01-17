@@ -290,7 +290,6 @@
 #include "functions\BotHumanization\ClanActions.au3"
 #include "functions\BotHumanization\ClanWarActions.au3"
 
-
 ;OLD CODE
 
 ;#include "functions\Image Search\THSearch.au3"
@@ -307,6 +306,7 @@
 ;#include "functions\Village\ClanLevel.au3"
 
 #include "functions\Village\SuperXP.au3"
+#include "functions\Village\TreasuryCollect.au3"
 
 ;
 ; MOD files - AwesomeGamer, LunaEclipse, MikeCoC, ...
