@@ -2024,8 +2024,7 @@ Func TrainArmyNumber($Num)
 			SetLog("Making the Army " & $Num + 1, $COLOR_INFO)
 			If _Sleep(1000) Then Return
 		Else
-			Setlog(" - Error Clicking On Army: " & $Num + 1 & "| Pixel was :" & _GetPixelColor($a_TrainArmy[$Num][0], $a_TrainArmy[$Num][1], True), $COLOR_ORANGE)
-			Setlog(" - Please 'edit' the Army " & $Num + 1 & " before start the BOT!!!", $COLOR_RED)
+			Setlog(" - No Click needed at Army: " & $Num + 1 & "| Pixel was :" & _GetPixelColor($a_TrainArmy[$Num][0], $a_TrainArmy[$Num][1], True), $COLOR_ORANGE)
 			;BotStop()
 		EndIf
 	Else

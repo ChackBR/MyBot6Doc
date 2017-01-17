@@ -1,4 +1,4 @@
-﻿; #FUNCTION# ====================================================================================================================
+; #FUNCTION# ====================================================================================================================
 ; Name ..........: MBR Bot
 ; Description ...: This file contens the Sequence that runs all MBR Bot
 ; Author ........:  (2014)
@@ -212,6 +212,7 @@ CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
 $iGUIEnabled = 1
 
 ;~ InitializeVariables();initialize variables used in extrawindows
+$ichkVersion = 0
 CheckVersion() ; check latest version on mybot.run site
 
 
