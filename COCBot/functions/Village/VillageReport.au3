@@ -45,6 +45,9 @@ Func VillageReport($bBypass = False, $bSuppressLog = False)
 		$iGemAmount = getResourcesMainScreen(719, 123)
 		If Not $bSuppressLog Then SetLog(" [G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [GEM]: " & _NumberFormat($iGemAmount), $COLOR_SUCCESS)
 	EndIf
+	;XP & Level detection
+	$iXPCurrent = getVillageExp(55, 22)
+	$iLevelXPCurrent = getVillageExp(14, 14)
 	If $bBypass = False Then ; update stats
 		UpdateStats()
 	EndIf

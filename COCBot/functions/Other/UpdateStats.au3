@@ -29,6 +29,7 @@ Global $iOldGoldFromMines, $iOldElixirFromCollectors, $iOldDElixirFromDrills ; n
 Global $iOldAttackedCount, $iOldAttackedVillageCount[$iModeCount + 1] ; number of attack villages for DB, LB, TB, TS
 Global $iOldTotalGoldGain[$iModeCount + 1], $iOldTotalElixirGain[$iModeCount + 1], $iOldTotalDarkGain[$iModeCount + 1], $iOldTotalTrophyGain[$iModeCount + 1] ; total resource gains for DB, LB, TB, TS
 Global $iOldNbrOfDetectedMines[$iModeCount + 1], $iOldNbrOfDetectedCollectors[$iModeCount + 1], $iOldNbrOfDetectedDrills[$iModeCount + 1] ; number of mines, collectors, drills detected for DB, LB, TB
+Global $iOldGainedXPHour
 
 Func UpdateStats()
 	If $FirstRun = 1 Then
@@ -59,6 +60,9 @@ Func UpdateStats()
 		$iElixirStart = $iElixirCurrent
 		$iDarkStart = $iDarkCurrent
 		$iTrophyStart = $iTrophyCurrent
+		;XP & Level detection
+		$iXPStart = $iXPCurrent
+		$iLevelXPStart = $iLevelXPCurrent
 		GUICtrlSetData($lblResultGoldStart, _NumberFormat($iGoldCurrent, True))
 		GUICtrlSetData($lblResultGoldNow, _NumberFormat($iGoldCurrent, True))
 		$iOldGoldCurrent = $iGoldCurrent

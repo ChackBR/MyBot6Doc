@@ -6,13 +6,19 @@
 
 			Based on MyBot.run v6.5.3
 
-  _____               ____   _____        ____   _____ _  _   
- |  __ \             / __ \ / ____|      |___ \ | ____| || |  
- | |  | | ___   ___ | |  | | |      __   ____) || |__ | || |_ 
- | |  | |/ _ \ / __|| |  | | |      \ \ / /__ < |___ \|__   _|
- | |__| | (_) | (__ | |__| | |____   \ V /___) | ___) |  | |  
- |_____/ \___/ \___(_)____/ \_____|   \_/|____(_)____(_) |_|  
-                                                                 
+  _____               ____   _____   ____   _____  _____ 
+ |  __ \             / __ \ / ____| |___ \ | ____|| ____|
+ | |  | | ___   ___ | |  | | |        __) || |__  | |__  
+ | |  | |/ _ \ / __|| |  | | |       |__ < |___ \ |___ \ 
+ | |__| | (_) | (__ | |__| | |____   ___) | ___) | ___) |
+ |_____/ \___/ \___(_)____/ \_____| |____(_)____(_)____/ 
+                                                         
+	- Fix GDI issue on SuperXP
+	- Fix Notify v1.5.8
+	- Force Request Clan Castle Troops before the while train
+	- New deploy position for giants on standard attack
+ 
+				 Doc Oc v3.5.4	           
 	- Fix the Clan Castle Spells capacity
 	- Fix Wait Clan Castle Spells comparing with GUI
 	- Fix TH detection and smart zap

@@ -51,7 +51,7 @@ Func AttackBarCheck()
 
 	If IsArray($res) Then
 		If $res[0] = "0" Or $res[0] = "" Then
-			SetLog("Imgloc|AttackBarCheck not found!", $COLOR_RED)
+			SetLog("No Army available on Attack Bar!", $COLOR_INFO)
 		ElseIf StringLeft($res[0], 2) = "-1" Then
 			SetLog("DLL Error: " & $res[0] & ", AttackBarCheck", $COLOR_RED)
 		Else

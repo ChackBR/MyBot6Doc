@@ -576,9 +576,12 @@ Global $iDroplineEdge = [$DROPLINE_EDGE_FIRST, $DROPLINE_EDGE_FIRST, 0, 0, 0, 0]
 
 Global $iAtkAlgorithm[$iModeCount]
 
+;--------------------------------------------------------------------------
+; Notify Revamp - PushBullet/Telegram variables - Added by DocOC team
+;-------------------------------------------------------------------------
 ;PushBullet---------------------------------------------------------------
-Global $NotifyVersion = "Revamp v1.5.1"
-Global $NotifyVersionMSG = $sBotTitle & " | Notify " & $NotifyVersion
+Global $NotifyVersion = "Revamp v1.5.8"
+Global $NotifyVersionMSG = "\ud83d\udc19 Telegram " & $NotifyVersion & " by DocOc Team"
 Global $NotifyPBEnabled = 0
 Global $NotifyPBToken = ""
 
@@ -644,6 +647,9 @@ Global $grpNotify, $chkNotifyPBEnabled,$chkNotifyRemote,$chkNotifyDeleteAllPBPus
 Global $txbNotifyPBToken, $txbNotifyTGToken, $txbNotifyOrigin, $chkNotifyAlertMatchFound, $chkNotifyAlertLastRaidIMG, $chkNotifyAlertLastRaidTXT, $chkNotifyAlertCampFull
 Global $chkNotifyAlertUpgradeWall, $chkNotifyAlertOutOfSync, $chkNotifyAlertTakeBreak, $chkNotifyAlertBuilderIdle, $chkNotifyAlertVillageStats, $chkNotifyAlertLastAttack
 Global $chkNotifyAlertAnotherDevice, $chkNotifyAlertMaintenance, $chkNotifyAlertBAN, $chkNotifyBOTUpdate
+;--------------------------------------------------------------------------
+; Notify Revamp - PushBullet/Telegram variables - Added by DocOC team
+;-------------------------------------------------------------------------
 Global $sLogFName = ""
 Global $sAttackLogFName = ""
 Global $AttackFile
@@ -659,9 +665,9 @@ Global $BSrpos[2] ; Inside Android window positions relative to the window, [x,y
 ;Stats
 Global $iFreeBuilderCount, $iTotalBuilderCount, $iGemAmount ; builder and gem amounts
 Global $iTestFreeBuilderCount = -1 ; used for test cases, -1 = disabled
-Global $iGoldStart, $iElixirStart, $iDarkStart, $iTrophyStart ; stats at the start
+Global $iGoldStart, $iElixirStart, $iDarkStart, $iTrophyStart, $iXPStart, $iLevelXPStart ; stats at the start
 Global $iGoldTotal, $iElixirTotal, $iDarkTotal, $iTrophyTotal ; total stats
-Global $iGoldCurrent, $iElixirCurrent, $iDarkCurrent, $iTrophyCurrent ; current stats
+Global $iGoldCurrent, $iElixirCurrent, $iDarkCurrent, $iTrophyCurrent, $iXPCurrent, $iLevelXPCurrent ; current stats
 Global $iGoldLast, $iElixirLast, $iDarkLast, $iTrophyLast ; loot and trophy gain from last raid
 Global $iGoldLastBonus, $iElixirLastBonus, $iDarkLastBonus ; bonus loot from last raid
 Global $iBonusLast = 0 ; last attack Bonus percentage
@@ -774,15 +780,10 @@ Global $Wall[8]
 Global $iMaxNbWall = 4
 
 ;Attack Settings [Dec 2016]
-;Global $TopLeft[5][2] = [[62, 306], [156, 238], [221, 188], [288, 142], [383, 76]]
-;Global $TopRight[5][2] = [[486, 59], [586, 134], [652, 184], [720, 231], [817, 308]]
-;Global $BottomLeft[5][2] = [[20, 373], [101, 430], [171, 481], [244, 535], [346, 615]]
-;Global $BottomRight[5][2] = [[530, 615], [632, 535], [704, 481], [781, 430], [848, 373]]
-;New coordinates by Samkie
-Global $TopLeft[5][2] = [[75, 306], [154, 246], [233, 186], [312, 126], [391, 66]]
-Global $TopRight[5][2] = [[460, 70], [538, 129], [617, 189], [695, 248], [774, 308]]
-Global $BottomLeft[5][2] = [[80, 394], [148, 446], [217, 497], [286, 549], [354, 600]]
-Global $BottomRight[5][2] = [[515, 610], [589, 554], [663, 497], [737, 443], [811, 384]]
+Global $TopLeft[5][2] = [[62, 306], [156, 238], [221, 188], [288, 142], [383, 76]]
+Global $TopRight[5][2] = [[486, 59], [586, 134], [652, 184], [720, 231], [817, 308]]
+Global $BottomLeft[5][2] = [[20, 373], [101, 430], [171, 481], [244, 535], [346, 615]]
+Global $BottomRight[5][2] = [[530, 615], [632, 535], [704, 481], [781, 430], [848, 373]]
 Global $eThing[1] = [101]
 Global $Edges[4] = [$BottomRight, $TopLeft, $BottomLeft, $TopRight]
 

@@ -695,7 +695,7 @@ EndFunc   ;==>CompareCCSpellWithGUI
 
 Func GetCurCCSpell($SpellNr)
 	If $Runstate = False Then Return
-	Local $directory = "armytspells-bundle"
+	Local $directory = @ScriptDir & "\imgxml\ArmySpells"
 	If $SpellNr = 1 Then
 		$x1 = 508
 		$x2 = 587
@@ -1701,7 +1701,7 @@ Func CheckExistentArmy($txt = "", $showlog = True)
 	EndIf
 	If $txt = "Spells" Then
 		ResetVariables("Spells")
-		Local $directory = "armytspells-bundle"
+		Local $directory = @ScriptDir & "\imgxml\ArmySpells"
 		Local $x = 23, $y = 366, $x1 = 585, $y1 = 400
 	EndIf
 	If $txt = "Heroes" Then
@@ -1999,9 +1999,9 @@ Func OpenTrainTabNumber($Num)
 
 	If IsTrainPage() Then
 		Click($TabNumber[$Num][0], $TabNumber[$Num][1], 2, 200)
+		Setlog(" - Opening the " & $Message[$Num], $COLOR_ACTION1)
 		If _Sleep(1500) Then Return
 		If ISArmyWindow(False, $Num) Then
-			Setlog(" - Opened the " & $Message[$Num], $COLOR_ACTION1)
 			;If $Num = $BrewSpellsTAB Then CheckForSantaSpell() ; Can be Deleted after DEC (in 2017 :P)
 			;If $Num = $TrainTroopsTAB Then ICEWizardDetection() ; Can be Deleted after DEC (in 2017 :P)
 		EndIf
@@ -2391,12 +2391,27 @@ EndFunc   ;==>ValidateSearchArmyResult
 Func CheckValuesCost($txt = "RegularTroops", $Troop = "Arch", $troopQuantity = 1, $decreaseTheCost = True, $DebugLogs = 0)
 	Local $String = ""
 
-	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog("$ElixirCostCamp: " & $ElixirCostCamp)
-	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog("$iElixirCurrent: " & $iElixirCurrent)
-	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog("$DarkCostCamp: " & $DarkCostCamp)
-	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog("$iDarkCurrent: " & $iDarkCurrent)
-	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog("$DarkCostSpell: " & $DarkCostSpell)
-	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog("$ElixirCostSpell: " & $ElixirCostSpell)
+	If _sleep(1000) then return
+	Local $TempColorToCheck = _GetPixelColor(223, 594, True)
+	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog ( "CheckValuesCost|ColorToCheck: " & $TempColorToCheck)
+
+	If _ColorCheck(_GetPixelColor(223, 594, True), Hex(0xE8E8E0, 6), 20) Then ; Gray background window color
+		; Village without DE
+		If ISArmyWindow(False, $TrainTroopsTAB) then $iElixirCurrent = getResourcesValueTrainPage(315,594) ; Elixir - Bottom train Window Page
+	Else
+		; Village with Elixir and Dark Elixir
+		If ISArmyWindow(False, $TrainTroopsTAB) then $iElixirCurrent = getResourcesValueTrainPage(230,594) ; Elixir - Bottom train Window Page
+		If ISArmyWindow(False, $TrainTroopsTAB) then $iDarkCurrent = getResourcesValueTrainPage(382,594) ; DE - Bottom train Window Page
+	EndIf
+
+	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog(" » Current resources:")
+	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog (" - Elixir: " & _NumberFormat($iElixirCurrent) & " / Dark Elixir: " & _NumberFormat($iDarkCurrent), $COLOR_INFO)
+
+	If $debugsetlogTrain = 1 Or $DebugLogs Then Setlog(" » Current costs:")
+	If ($debugsetlogTrain = 1 Or $DebugLogs) and $ElixirCostCamp <> 0 then Setlog(" - Elixir Cost Camp: " & _NumberFormat($ElixirCostCamp))
+	If ($debugsetlogTrain = 1 Or $DebugLogs) and $DarkCostCamp <> 0 then  Setlog(" - DE Cost Camp: " & _NumberFormat($DarkCostCamp))
+	If ($debugsetlogTrain = 1 Or $DebugLogs) and $ElixirCostSpell <> 0 then  Setlog(" - Elixir Cost Spell: " & _NumberFormat($ElixirCostSpell))
+	If ($debugsetlogTrain = 1 Or $DebugLogs) and $DarkCostSpell <> 0 then  Setlog(" - DE Cost Spell: " & _NumberFormat($DarkCostSpell))
 
 	If $txt <> "" Then
 		If $txt = "RegularTroops" Then

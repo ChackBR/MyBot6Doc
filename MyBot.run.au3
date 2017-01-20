@@ -54,7 +54,8 @@ Global $sBotTitle
 ; "2604" ; MyBot v6.5.2 + QuickTrain Update
 ; "2605" ; MyBot v6.5.2 + Doc Octopus v3.5.2
 ; "2611" ; MyBot v6.5.3 + Doc Octopus v3.5.3
-$sModversion = "2612" ; MyBot v6.5.3 + Doc Octopus v3.5.4
+; "2612" ; MyBot v6.5.3 + Doc Octopus v3.5.4
+$sModversion = "2613" ; MyBot v6.5.3 + Doc Octopus v3.5.5
 $sBotVersion = "v6.5.3" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
 $sModSupportUrl = "https://mybot.run/forums"
 $sBotTitle = "My Bot " & $sBotVersion & ".Doc" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
@@ -424,6 +425,8 @@ Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
 	If $debugsetlog = 1 Then SetLog("Func Idle ", $COLOR_DEBUG)
 
+	RequestCC()
+
 	While $IsFullArmywithHeroesAndSpells = False
 		checkAndroidReboot()
 
@@ -712,8 +715,8 @@ Func _RunFunction($action)
 					$troops_maked_after_fullarmy = False
 				EndIf
 				CheckOverviewFullArmy(True, False) ; use true parameter to open train overview window
-				getArmyHeroCount(False, False)
-				getArmySpellCount(False, True) ; use true parameter to close train overview window
+				If ISArmyWindow(False, $ArmyTAB) then CheckExistentArmy("Spells") ; Imgloc Method
+				getArmyHeroCount(False, True)
 			EndIf
 		Case "BoostBarracks"
 			BoostBarracks()

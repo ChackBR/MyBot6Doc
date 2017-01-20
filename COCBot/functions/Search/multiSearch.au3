@@ -200,6 +200,7 @@ Func multiMatchesPixelOnly($directory, $maxReturnPoints = 0, $fullCocAreas = $EC
 		If $saveSourceImg = True Then _GDIPlus_ImageSaveToFile(_GDIPlus_BitmapCreateFromHBITMAP($hClone), @ScriptDir & "\multiMatchesPixelOnly.png")
 		$aValue = DllCall($hImgLib, "str", "GetProperty", "str", "redline", "str", "")
 		$redLines = $aValue[0]
+		_WinAPI_DeleteObject($hClone)
 	EndIf
 
 	If $res[0] <> "" Then
@@ -234,6 +235,11 @@ Func CloneAreaToSearch($x, $y, $x1, $y1)
 	$hImage = _GDIPlus_BitmapCreateFromHBITMAP($hHBitmap2)
 	$hClone = _GDIPlus_BitmapCloneArea($hImage, $x, $y, $iX, $iY)
 	$hBMP = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hClone)
+
+	 _GDIPlus_BitmapDispose($hImage)
+	 _GDIPlus_BitmapDispose($hClone)
+	 _WinAPI_DeleteObject($hHBitmap2)
+
 	Return $hBMP
 EndFunc   ;==>CloneAreaToSearch
 

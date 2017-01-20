@@ -39,6 +39,10 @@ Func getTrophyMainScreen($x_start, $y_start) ; -> Gets trophy value, top left of
 	Return getOcrAndCapture("coc-ms", $x_start, $y_start, 50, 16, True)
 EndFunc   ;==>getTrophyMainScreen
 
+Func getResourcesValueTrainPage($x_start, $y_start) ; -> Gets CheckValuesCost on Train Window
+	Return getOcrAndCapture("coc-ms", $x_start, $y_start, 100, 18, True)
+EndFunc   ;==>getTrophyMainScreen
+
 Func getTrophyLossAttackScreen($x_start, $y_start) ; 48,214 or 48,184 WO/DE -> Gets red number of trophy loss from attack screen, top left
 	Return getOcrAndCapture("coc-t-p", $x_start, $y_start, 50, 16, True)
 EndFunc   ;==>getTrophyLossAttackScreen
@@ -264,7 +268,13 @@ Func getTroopsSpellsLevel($x_start, $y_start) ;  -> Gets quantity of troops in a
 	Return getOcrAndCapture("coc-spellslevel", $x_start, $y_start, 20, 14, True)
 EndFunc   ;==>getTroopsSpellsLevel
 
+Func getVillageExp($x_start, $y_start, $removeSpace = False) ; 55, 20,  -> Gets Exp Value of Village
+	Return getOcrAndCapture("coc-ms", $x_start, $y_start, 70, 22, $removeSpace)
+EndFunc   ;==>getVillageExp
 
+Func getVillageLevelXP($x_start, $y_start, $removeSpace = False) ; 14, 14,  -> Gets Level XP Value of Village
+	Return getOcrAndCapture("coc-ms", $x_start, $y_start, 42, 28, $removeSpace)
+EndFunc   ;==>getVillageExp
 Func getArmyCapacityOnTrainTroops($x_start, $y_start) ;  -> Gets quantity of troops in army Window
 	Return getOcrAndCapture("coc-NewCapacity", $x_start, $y_start, 67, 14, True)
 EndFunc   ;==>getArmyCapacityOnTrainTroops

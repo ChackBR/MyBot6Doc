@@ -10,7 +10,7 @@ NOTE  |Based on AhsanIqbal Lavaloon v2.1
       |----------------------------------------------------------------------------------------------------|
       |                                                                                                    |
       |EXTR. GOLD |EXTR.ELIXIR    |EXTR. DARK |DEPO. GOLD |DEPO.ELIXIR|DEPO. DARK |TOWNHALL   |FORCED SIDE |
-SIDEP |0          |0              |0          |0          |0          |5          |5          |ADefense    |
+SIDEP |0          |0              |0          |0          |0          |0          |10         |EAGLE       |
       |           |               |           |           |           |           |           |            |
       |VECTOR_____|SIDE___________|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|____________|
 MAKE  |A          |FRONT-LEFT     |10         |1          |INT-EXT    |0          |2          |            |
