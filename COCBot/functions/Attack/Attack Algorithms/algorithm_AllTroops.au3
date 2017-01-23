@@ -19,7 +19,13 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	If _Sleep($iDelayalgorithm_AllTroops1) Then Return
 
-	If $iChkDeploySettings[$iMatchMode] <> 4 Then ; ! FourFinger
+	; MultiFinger Check
+	Local $bCFF = False
+	If $iMatchMode = $DB And $iChkDeploySettings[$iMatchMode] = 4 Then
+		$bCFF = True
+	EndIf
+
+	If $bCFF = False Then ; ! MultiFinger
 		SmartAttackStrategy($iMatchMode) ; detect redarea first to drop any troops
 	EndIf
 
@@ -95,8 +101,15 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	Local $SlotsGiants = 1 ; standard on middle of village
 
-	If Number($GiantComp) > 16 Or (Number($GiantComp) >= 8 And $nbSides = 5) Then $SlotsGiants = 2 ; will be split in 2 slots, when >16 or >=8 with FF
-	If Number($GiantComp) > 20 Or (Number($GiantComp) >= 12 And $nbSides = 5) Then $SlotsGiants = 0 ; spread on vector, when >20 or >=12 with FF
+	If $nbSides = 5 Then
+		If Number($GiantComp) > 7 Then $SlotsGiants = 2
+	Else
+		If Number($GiantComp) > 20 Then
+			$SlotsGiants = 0
+		Else
+			If Number($GiantComp) > 16 Then $SlotsGiants = 2
+		Endif
+	EndIf
 
 	; $ListInfoDeploy = [Troop, No. of Sides, $WaveNb, $MaxWaveNb, $slotsPerEdge]
 	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 Then ; Customise DE side wave deployment here
@@ -148,7 +161,8 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 						, [$eGobl, $nbSides, 1, 1, 1] _
 						]
 		EndSwitch
-		; Classic Four Fingers
+
+	; Classic Four Fingers
 	ElseIf $nbSides = 5 Then
 		Local $listInfoDeploy[21][5] = [[$eGiant, $nbSides, 1, 1, $SlotsGiants], _
 				[$eGole, $nbSides, 1, 1, 2], _

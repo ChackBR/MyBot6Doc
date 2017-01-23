@@ -55,7 +55,8 @@ Global $sBotTitle
 ; "2605" ; MyBot v6.5.2 + Doc Octopus v3.5.2
 ; "2611" ; MyBot v6.5.3 + Doc Octopus v3.5.3
 ; "2612" ; MyBot v6.5.3 + Doc Octopus v3.5.4
-$sModversion = "2613" ; MyBot v6.5.3 + Doc Octopus v3.5.5
+; "2613" ; MyBot v6.5.3 + Doc Octopus v3.5.5
+$sModversion = "2614" ; MyBot v6.5.3 + Doc Octopus v3.5.5 + Collectors Outside
 $sBotVersion = "v6.5.3" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
 $sModSupportUrl = "https://mybot.run/forums"
 $sBotTitle = "My Bot " & $sBotVersion & ".Doc" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
@@ -344,6 +345,10 @@ Func runBot() ;Bot that runs everything in order
 					If Unbreakable() = True Then ContinueLoop
 				EndIf
 			EndIf
+
+			; Smart Upgrade
+			SmartUpgrade()
+
 			MainSuperXPHandler()
 			Local $aRndFuncList = ['Laboratory', 'UpgradeHeroes', 'UpgradeBuilding']
 			While 1

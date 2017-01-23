@@ -643,7 +643,7 @@ Func sldVSDelay()
 	Else
 		GUICtrlSetData($lbltxtMaxVSDelay, GetTranslated(603, 8, "seconds"))
 	EndIf
- EndFunc   ;==>sldVSDelay
+EndFunc   ;==>sldVSDelay
 
 Func CheckWardenTimer()
 
