@@ -19,13 +19,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	If _Sleep($iDelayalgorithm_AllTroops1) Then Return
 
-	; MultiFinger Check
-	Local $bCFF = False
-	If $iMatchMode = $DB And $iChkDeploySettings[$iMatchMode] = 4 Then
-		$bCFF = True
-	EndIf
-
-	If $bCFF = False Then ; ! MultiFinger
+	If $iChkDeploySettings[$iMatchMode] <> 4 Then ; ! FourFinger
 		SmartAttackStrategy($iMatchMode) ; detect redarea first to drop any troops
 	EndIf
 
@@ -112,7 +106,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	EndIf
 
 	; $ListInfoDeploy = [Troop, No. of Sides, $WaveNb, $MaxWaveNb, $slotsPerEdge]
-	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 Then ; Customise DE side wave deployment here
+	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 Then ; Customise DE side wave deployment here
 		Switch $icmbStandardAlgorithm[$iMatchMode]
 			Case 0
 				Local $listInfoDeploy[21][5] = [[$eGole, $nbSides, 1, 1, 2] _
