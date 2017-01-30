@@ -465,10 +465,10 @@ Func IsFullCastleSpells($returnOnly = False)
 
 		; Debug
 		If $iMaxCCSpell > 1 Then
-			If $debugsetlogTrain Then Setlog(" Â» Slot 1 to remove: " & $aShouldRemove[0])
-			If $debugsetlogTrain Then Setlog(" Â» Slot 2 to remove: " & $aShouldRemove[1])
+			If $debugsetlogTrain Then Setlog(" » Slot 1 to remove: " & $aShouldRemove[0])
+			If $debugsetlogTrain Then Setlog(" » Slot 2 to remove: " & $aShouldRemove[1])
 		Else
-			If $debugsetlogTrain Then Setlog(" Â» Slot 1 to remove: " & $aShouldRemove[0])
+			If $debugsetlogTrain Then Setlog(" » Slot 1 to remove: " & $aShouldRemove[0])
 		EndIf
 
 		If $aShouldRemove[0] > 0 Or $aShouldRemove[1] > 0 Then
@@ -478,8 +478,8 @@ Func IsFullCastleSpells($returnOnly = False)
 			; Check the Request Clan troops & Spells buttom
 			$canRequestCC = _ColorCheck(_GetPixelColor($aRequestTroopsAO[0], $aRequestTroopsAO[1], True), Hex($aRequestTroopsAO[2], 6), $aRequestTroopsAO[5])
 			; Debug
-			If $debugsetlogTrain Then Setlog(" Â» Clans Castle button available? " & $canRequestCC)
-			; LetÂ´s request Troops & Spells
+			If $debugsetlogTrain Then Setlog(" » Clans Castle button available? " & $canRequestCC)
+			; Let´s request Troops & Spells
 			If $canRequestCC = True Then
 				$rColCheckFullCCTroops = _ColorCheck(_GetPixelColor(24, 470, True), Hex(0x93C230, 6), 30)
 				If $rColCheckFullCCTroops = True Then SetLog("Clan Castle Spell is empty, Requesting for...")

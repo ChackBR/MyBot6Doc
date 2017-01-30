@@ -345,11 +345,11 @@ Func runBot() ;Bot that runs everything in order
 					If Unbreakable() = True Then ContinueLoop
 				EndIf
 			EndIf
+			MainSuperXPHandler()
 
 			; Smart Upgrade
 			SmartUpgrade()
 
-			MainSuperXPHandler()
 			Local $aRndFuncList = ['Laboratory', 'UpgradeHeroes', 'UpgradeBuilding']
 			While 1
 				If $RunState = False Then Return
@@ -458,7 +458,7 @@ Func Idle() ;Sequence that runs until Full Army
 				If $Restart = True Then ExitLoop
 				If checkAndroidReboot() Then ContinueLoop 2
 			WEnd
-		EndIF
+		EndIf
 		If _Sleep($iDelayIdle1) Then ExitLoop
 		checkObstacles() ; trap common error messages also check for reconnecting animation
 		checkMainScreen(False) ; required here due to many possible exits
@@ -700,7 +700,7 @@ Func _RunFunction($action)
 				;If $iSkipDonateNearFulLTroopsEnable = 1 and $FirstStart = False Then getArmyCapacity(True, True)
 				If SkipDonateNearFullTroops(True) = False Then DonateCC()
 				If _Sleep($iDelayRunBot1) = False Then checkMainScreen(False)
-			EndIF
+			EndIf
 		Case "DonateCC,Train"
 			If $iSkipDonateNearFulLTroopsEnable = 1 And $FirstStart = True Then getArmyCapacity(True, True)
 			If $bActiveDonate = True Then
