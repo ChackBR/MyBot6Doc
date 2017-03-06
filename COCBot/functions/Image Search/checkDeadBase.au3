@@ -6,14 +6,14 @@
 ; Parameters ....: None
 ; Return values .: True if it is, returns false if it is not a dead base
 ; Author ........:  AtoZ , DinoBot (01-2015)
-; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+; Modified ......: CodeSlinger69 (2017)
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2017
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-
+#include-once
 
 Func hasElixirStorage($bForceCapture = False)
 
@@ -47,47 +47,47 @@ EndFunc   ;==>hasElixirStorage
 Func setZombie($RaidedElixir = -1, $AvailableElixir = -1, $Matched = -1, $SearchIdx = -1, $redline = "", $Timestamp = @YEAR & "-" & @MON & "-" & @MDAY & "_" & StringReplace(_NowTime(5), ":", "-"))
 	If TestCapture() Then Return ""
 	If $RaidedElixir = -1 And $AvailableElixir = -1 And $Matched = -1 And $SearchIdx = -1 Then
-		$aZombie[0] = ""
-		$aZombie[1] = 0
-		$aZombie[2] = 0
-		$aZombie[3] = 0
-		$aZombie[4] = 0
-		$aZombie[5] = ""
-		$aZombie[6] = ""
+		$g_aZombie[0] = ""
+		$g_aZombie[1] = 0
+		$g_aZombie[2] = 0
+		$g_aZombie[3] = 0
+		$g_aZombie[4] = 0
+		$g_aZombie[5] = ""
+		$g_aZombie[6] = ""
 	Else
-		If $RaidedElixir >= 0 Then $aZombie[1] = Number($RaidedElixir)
-		If $AvailableElixir >= 0 Then $aZombie[2] = Number($AvailableElixir)
-		If $Matched >= 0 Then $aZombie[3] = Number($Matched)
-		If $SearchIdx >= 0 Then $aZombie[4] = Number($SearchIdx)
-		If $aZombie[5] = "" Then $aZombie[5] = $Timestamp
-		If $aZombie[6] = "" Then $aZombie[6] = $redline
-		Local $dbFound = $aZombie[3] >= $iMinCollectorMatches
-		Local $path = $dirTempDebug  & (($dbFound) ? ("Zombies\") : ("SkippedZombies\"))
-		Local $availK = Round($aZombie[2] / 1000)
-		; $ZombieFilename = "DebugDB_xxx%_" & $sCurrProfile & @YEAR & "-" & @MON & "-" & @MDAY & "_" & StringReplace(_NowTime(5), ":", "-") & "_search_" & StringFormat("%03i", $SearchCount) & "_" & StringFormat("%04i", Round($searchElixir / 1000)) & "k_matched_" & $TotalMatched
-		If $aZombie[0] = "" And $aZombie[4] > 0 Then
-			Local $create = $aZombie[0] = "" And ($dbFound = True Or ($aZombie[8] = -1 And $aZombie[9] = -1) Or ($availK >= $aZombie[8] And hasElixirStorage() = False) Or $availK >= $aZombie[9])
+		If $RaidedElixir >= 0 Then $g_aZombie[1] = Number($RaidedElixir)
+		If $AvailableElixir >= 0 Then $g_aZombie[2] = Number($AvailableElixir)
+		If $Matched >= 0 Then $g_aZombie[3] = Number($Matched)
+		If $SearchIdx >= 0 Then $g_aZombie[4] = Number($SearchIdx)
+		If $g_aZombie[5] = "" Then $g_aZombie[5] = $Timestamp
+		If $g_aZombie[6] = "" Then $g_aZombie[6] = $redline
+		Local $dbFound = $g_aZombie[3] >= $g_iCollectorMatchesMin
+		Local $path = $g_sProfileTempDebugPath  & (($dbFound) ? ("Zombies\") : ("SkippedZombies\"))
+		Local $availK = Round($g_aZombie[2] / 1000)
+		; $ZombieFilename = "DebugDB_xxx%_" & $g_sProfileCurrentName & @YEAR & "-" & @MON & "-" & @MDAY & "_" & StringReplace(_NowTime(5), ":", "-") & "_search_" & StringFormat("%03i", $SearchCount) & "_" & StringFormat("%04i", Round($searchElixir / 1000)) & "k_matched_" & $TotalMatched
+        If $g_aZombie[0] = "" And $g_aZombie[4] > 0 Then
+			Local $create = $g_aZombie[0] = "" And ($dbFound = True Or ($g_aZombie[8] = -1 And $g_aZombie[9] = -1) Or ($availK >= $g_aZombie[8] And hasElixirStorage() = False) Or $availK >= $g_aZombie[9])
 			If $create = True Then
-				Local $ZombieFilename = "DebugDB_" & StringFormat("%04i", $availK) & "k_" & $sCurrProfile & "_search_" & StringFormat("%03i", $aZombie[4]) & "_matched_" & $aZombie[3] & "_" & $aZombie[5] & ".png"
+				Local $ZombieFilename = "DebugDB_" & StringFormat("%04i", $availK) & "k_" & $g_sProfileCurrentName & "_search_" & StringFormat("%03i", $g_aZombie[4]) & "_matched_" & $g_aZombie[3] & "_" & $g_aZombie[5] & ".png"
 				SetDebugLog("Saving enemy village screenshot for deadbase validation: " & $ZombieFilename)
-				SetDebugLog("Redline was: " & $aZombie[6])
-				$aZombie[0] = $ZombieFilename
+				SetDebugLog("Redline was: " & $g_aZombie[6])
+				$g_aZombie[0] = $ZombieFilename
 				Local $hBitmapZombie = _GDIPlus_BitmapCreateFromHBITMAP($hHBitmap2)
-				_GDIPlus_ImageSaveToFile($hBitmapZombie, $path & $aZombie[0])
+				_GDIPlus_ImageSaveToFile($hBitmapZombie, $path & $g_aZombie[0])
 				_GDIPlus_BitmapDispose($hBitmapZombie)
 			EndIf
-		ElseIf $aZombie[0] <> "" Then
+		ElseIf $g_aZombie[0] <> "" Then
 			Local $raidPct = 0
-			If $aZombie[2] > 0 And $aZombie[2] >= $aZombie[1] Then
-				$raidPct = Round((100 * $aZombie[1]) / $aZombie[2])
+			If $g_aZombie[2] > 0 And $g_aZombie[2] >= $g_aZombie[1] Then
+				$raidPct = Round((100 * $g_aZombie[1]) / $g_aZombie[2])
 			EndIf
-			If $aZombie[7] <> -1 And $raidPct >= $aZombie[7] And ($aZombie[10] = -1 Or $aZombie[2] >= $aZombie[10]) Then
-				SetDebugLog("Delete enemy village screenshot as base seems dead: " & $aZombie[0])
-				FileDelete($path & $aZombie[0])
+			If $g_aZombie[7] <> -1 And $raidPct >= $g_aZombie[7] And ($g_aZombie[10] = -1 Or $g_aZombie[2] >= $g_aZombie[10]) Then
+				SetDebugLog("Delete enemy village screenshot as base seems dead: " & $g_aZombie[0])
+				FileDelete($path & $g_aZombie[0])
 			Else
-				Local $ZombieFilename = "DebugDB_" & StringFormat("%03i", $raidPct) & "%_" & $sCurrProfile & "_search_" & StringFormat("%03i", $aZombie[4]) & "_matched_" & $aZombie[3] & "_" & StringFormat("%04i", $availK) & "k_" & StringFormat("%04i", Round($aZombie[1] / 1000)) & "k_" & $aZombie[5] & ".png"
+				Local $ZombieFilename = "DebugDB_" & StringFormat("%03i", $raidPct) & "%_" & $g_sProfileCurrentName & "_search_" & StringFormat("%03i", $g_aZombie[4]) & "_matched_" & $g_aZombie[3] & "_" & StringFormat("%04i", $availK) & "k_" & StringFormat("%04i", Round($g_aZombie[1] / 1000)) & "k_" & $g_aZombie[5] & ".png"
 				SetDebugLog("Rename enemy village screenshot as base seems live: " & $ZombieFilename)
-				FileMove($path & $aZombie[0], $path & $ZombieFilename)
+				FileMove($path & $g_aZombie[0], $path & $ZombieFilename)
 			EndIF
 			; clear zombie
 			setZombie()
@@ -96,25 +96,24 @@ Func setZombie($RaidedElixir = -1, $AvailableElixir = -1, $Matched = -1, $Search
 			setZombie()
 		EndIf
 	EndIf
-	Return $aZombie[0]
+	Return $g_aZombie[0]
 EndFunc   ;==>setZombie
 
 Func checkDeadBaseNew()
 
-    If $iDeadBaseDisableCollectorsFilter = 1 Then
+    If $g_bCollectorFilterDisable Then
 		Return True
 	EndIf
 	Local $minCollectorLevel = 0
 	Local $maxCollectorLevel = 0
 	Local $anyFillLevel[2] = [False, False] ; 50% and 100%
-	If $debugsetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START", $COLOR_WARNING)
+	If $g_iDebugSetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START", $COLOR_WARNING)
 
 	For $i = 6 To 12
-		Local $e = Eval("chkLvl" & $i & "Enabled")
-		If $e = 1 Then
+		If $g_abCollectorLevelEnabled[$i] Then
 			If $minCollectorLevel = 0 Then $minCollectorLevel = $i
 			If $i > $maxCollectorLevel Then $maxCollectorLevel = $i
-			$anyFillLevel[Eval("cmbLvl" & $i & "Fill")] = True
+			$anyFillLevel[$g_aiCollectorLevelFill[$i]] = True
 		EndIf
 	Next
 
@@ -122,7 +121,7 @@ Func checkDeadBaseNew()
 		Return True
 	EndIf
 
-	If $debugsetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START", $COLOR_WARNING)
+	If $g_iDebugSetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START", $COLOR_WARNING)
 
 	Local $TotalMatched = 0
 	Local $Matched[2] = [-1, -1]
@@ -137,27 +136,27 @@ Func checkDeadBaseNew()
 		If $Matched[0] > 0 Then $TotalMatched += $Matched[0]
 	EndIf
 
-	If $TotalMatched < $iMinCollectorMatches Then ;retry with imgloc 100% Fill collectors
+	If $TotalMatched < $g_iCollectorMatchesMin Then ;retry with imgloc 100% Fill collectors
 		$Matched[1] = imglocIsDeadBase($aPoints, 100, $minCollectorLevel, $maxCollectorLevel, True, False) ; try full collectors
 		If $Matched[1] > 0 Then $TotalMatched += $Matched[1]
 	EndIf
 
-	Local $dbFound = $TotalMatched >= $iMinCollectorMatches
+	Local $dbFound = $TotalMatched >= $g_iCollectorMatchesMin
 	If $dbFound Then
-		If $debugsetlog = 1 Then SetLog("IMGLOC : FOUND DEADBASE !!! Matched: " & $TotalMatched & "/" & $iMinCollectorMatches & ": " & UBound($aPoints), $COLOR_GREEN)
+		If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : FOUND DEADBASE !!! Matched: " & $TotalMatched & "/" & $g_iCollectorMatchesMin & ": " & UBound($aPoints), $COLOR_GREEN)
 	Else
-		If $debugsetlog = 1 Then
+		If $g_iDebugSetlog = 1 Then
 			If $Matched[0] = -1 And $Matched[1] = -1 Then
 				SetLog("IMGLOC : NOT A DEADBASE!!! ", $COLOR_INFO)
 			Else
-				SetLog("IMGLOC : DEADBASE NOT MATCHED Matched: " & $TotalMatched & "/" & $iMinCollectorMatches , $COLOR_WARNING)
+				SetLog("IMGLOC : DEADBASE NOT MATCHED Matched: " & $TotalMatched & "/" & $g_iCollectorMatchesMin , $COLOR_WARNING)
 			EndIf
 		EndIf
 	EndIF
 
-	; always update $aZombie[3], current matched collectors count
-	$aZombie[3] = $TotalMatched
-	If $debugDeadBaseImage = 1 Then
+	; always update $g_aZombie[3], current matched collectors count
+	$g_aZombie[3] = $TotalMatched
+	If $g_iDebugDeadBaseImage = 1 Then
 		setZombie(0, $searchElixir, $TotalMatched, $SearchCount, $IMGLOCREDLINE)
 	EndIf
 
@@ -165,13 +164,7 @@ Func checkDeadBaseNew()
 EndFunc   ;==>checkDeadBase
 
 Func checkDeadBase()
-	Local $dbFound = checkDeadBaseSuperNew(False)
-	#cs GUI options missing
-	If $dbFound = False Then
-		$dbFound = checkDeadBaseStorage()
-	EndIf
-	#ce
-	Return $dbFound
+    Return checkDeadBaseSuperNew(False)
 EndFunc
 
 Func GetCollectorIndexByFillLevel($level)
@@ -194,7 +187,7 @@ Func imglocIsDeadBase(ByRef $aPos, $FillLevel = 100, $minCollectorLevel = 0, $ma
 	Local $TotalMatched = 0
 	Local $fillIndex = GetCollectorIndexByFillLevel($FillLevel)
 
-	If $debugsetlog = 1 Then SetLog("IMGLOC : Searching Deadbase for FillLevel/MinLevel/MaxLevel: " & $FillLevel & "/" & $minLevel & "/" & $maxLevel & " using "&  $sDirectory, $COLOR_INFO)
+	If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : Searching Deadbase for FillLevel/MinLevel/MaxLevel: " & $FillLevel & "/" & $minLevel & "/" & $maxLevel & " using "&  $sDirectory, $COLOR_INFO)
 
 	Local $result = findMultiple($sDirectory ,$sCocDiamond ,$redLines, $minLevel, $maxLevel, $maxReturnPoints , $returnProps, $bForceCapture)
 	If IsArray($result) then
@@ -204,9 +197,8 @@ Func imglocIsDeadBase(ByRef $aPos, $FillLevel = 100, $minCollectorLevel = 0, $ma
 
 			If $CheckConfig = True Then
 				Local $level = Number($matchedValues[2])
-				Local $e = Eval("chkLvl" & $level & "Enabled")
-				If $e = 1 Then
-					If $fillIndex < Eval("cmbLvl" & $level & "Fill") Then
+				If $g_abCollectorLevelEnabled[$level] Then
+					If $fillIndex < $g_aiCollectorLevelFill[$level] Then
 						; collector fill level not reached
 						$found = 0
 					EndIf
@@ -226,7 +218,7 @@ Func imglocIsDeadBase(ByRef $aPos, $FillLevel = 100, $minCollectorLevel = 0, $ma
 						Local $c = Sqrt($a * $a + $b * $b)
 						If $c < 25 Then
 							; duplicate point: skip
-							If $debugsetlog = 1 Then SetLog("IMGLOC : Searching Deadbase ignore duplicate collector " & $matchedValues[0] & " at " & $aP[0] & ", " & $aP[1], $COLOR_INFO)
+							If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : Searching Deadbase ignore duplicate collector " & $matchedValues[0] & " at " & $aP[0] & ", " & $aP[1], $COLOR_INFO)
 							$bSkipPoint = True
 							$found -= 1
 							ExitLoop
@@ -251,47 +243,22 @@ Func imglocIsDeadBase(ByRef $aPos, $FillLevel = 100, $minCollectorLevel = 0, $ma
 
 EndFunc
 
-; Do it better like here, func AdjustLootForStorages and CalculateLootInStorage: https://github.com/CodeSlinger69/ClAsHbOt/blob/master/Source/ClAsHbOt%20Script/AutoRaid.au3
-Func checkDeadBaseStorage($AvailableElixir = $searchElixir, $RequiredElixir = 250000, $bForceCapture = False)
-
-	Local $dbFound = False
-	If $AvailableElixir < $RequiredElixir Then
-		SetDebugLog("Check Deadbase on Elixir Storage failed, available Elixir of " & $AvailableElixir & " < required of " & $RequiredElixir)
-		Return $dbFound
-	EndIf
-
-	If hasElixirStorage($bForceCapture) = True Then
-		SetDebugLog("Check Deadbase on Elixir Storage failed, loaded Elixir Storage found")
-		Return $dbFound
-	EndIf
-
-	$dbFound = True
-	SetDebugLog("Check Deadbase on Elixir Storage succeeded")
-	Local $path = $dirTempDebug  & (($dbFound) ? ("Zombies\") : ("SkippedZombies\"))
-	Local $ZombieFilename = "DebugDB_checkDeadBaseStorage_" & $sCurrProfile & "_" & @YEAR & "-" & @MON & "-" & @MDAY & "_" & StringReplace(_NowTime(5), ":", "-") & ".png"
-	Local $hBitmapZombie = _GDIPlus_BitmapCreateFromHBITMAP($hHBitmap2)
-	_GDIPlus_ImageSaveToFile($hBitmapZombie, $path & $ZombieFilename)
-	_GDIPlus_BitmapDispose($hBitmapZombie)
-	Return $dbFound
-EndFunc   ;==>checkDeadBaseStorage
-
 Func checkDeadBaseSuperNew($bForceCapture = True, $sFillDirectory = @ScriptDir & "\imgxml\deadbase\elix\fill\", $sLvlDirectory = @ScriptDir & "\imgxml\deadbase\elix\lvl\")
 
-    If $iDeadBaseDisableCollectorsFilter = 1 Then
+    If $g_bCollectorFilterDisable Then
 		Return True
 	EndIf
 
 	Local $minCollectorLevel = 0
 	Local $maxCollectorLevel = 0
 	Local $anyFillLevel[2] = [False, False] ; 50% and 100%
-	If $debugsetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START (super new)", $COLOR_WARNING)
+	If $g_iDebugSetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START (super new)", $COLOR_WARNING)
 
 	For $i = 6 To 12
-		Local $e = Eval("chkLvl" & $i & "Enabled")
-		If $e = 1 Then
+		If $g_abCollectorLevelEnabled[$i] Then
 			If $minCollectorLevel = 0 Then $minCollectorLevel = $i
 			If $i > $maxCollectorLevel Then $maxCollectorLevel = $i
-			$anyFillLevel[Eval("cmbLvl" & $i & "Fill")] = True
+			$anyFillLevel[$g_aiCollectorLevelFill[$i]] = True
 		EndIf
 	Next
 
@@ -299,7 +266,7 @@ Func checkDeadBaseSuperNew($bForceCapture = True, $sFillDirectory = @ScriptDir &
 		Return True
 	EndIf
 
-	If $debugsetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START", $COLOR_WARNING)
+	If $g_iDebugSetlog = 1 Then SetLog("Checking Deadbase With IMGLOC START", $COLOR_WARNING)
 
 	Local $TotalMatched = 0
 	Local $Matched[2] = [-1, -1]
@@ -347,7 +314,7 @@ Func checkDeadBaseSuperNew($bForceCapture = True, $sFillDirectory = @ScriptDir &
 								$aPos[$i] = $aP
 								$aP = $bP ; just for logging
 							EndIf
-							If $debugsetlog = 1 Then SetLog("IMGLOC : Searching Deadbase ignore duplicate collector with fill level " & $aP[2] & " at " & $aP[0] & ", " & $aP[1], $COLOR_INFO)
+							If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : Searching Deadbase ignore duplicate collector with fill level " & $aP[2] & " at " & $aP[0] & ", " & $aP[1], $COLOR_INFO)
 							$bSkipPoint = True
 							$found -= 1
 							ExitLoop
@@ -386,22 +353,21 @@ Func checkDeadBaseSuperNew($bForceCapture = True, $sFillDirectory = @ScriptDir &
 			$lvl = $aP[3] ; update level variable as modified above
 			If $lvl = 0 Then
 				; collector level not identified
-				If $debugsetlog = 1 Then SetLog("IMGLOC : Searching Deadbase no collector identified with fill level " & $fill & " at " & $x & ", " & $y, $COLOR_INFO)
+				If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : Searching Deadbase no collector identified with fill level " & $fill & " at " & $x & ", " & $y, $COLOR_INFO)
 				ContinueLoop ; jump to next collector
 			EndIF
 
 			; check if this collector level with fill level is enabled
-			Local $e = Eval("chkLvl" & $lvl & "Enabled")
-			If $e = 1 Then
+			If $g_abCollectorLevelEnabled[$lvl] Then
 				Local $fillIndex = GetCollectorIndexByFillLevel($fill)
-				If $fillIndex < Eval("cmbLvl" & $lvl & "Fill") Then
+				If $fillIndex < $g_aiCollectorLevelFill[$lvl] Then
 					; collector fill level not reached
-					If $debugsetlog = 1 Then SetLog("IMGLOC : Searching Deadbase collector level " & $lvl & " found but not enough elixir, fill level " & $fill & " at " & $x & ", " & $y, $COLOR_INFO)
+					If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : Searching Deadbase collector level " & $lvl & " found but not enough elixir, fill level " & $fill & " at " & $x & ", " & $y, $COLOR_INFO)
 					ContinueLoop ; jump to next collector
 				EndIf
 			Else
 				; collector is not enabled
-				If $debugsetlog = 1 Then SetLog("IMGLOC : Searching Deadbase collector level " & $lvl & " found but not enabled, fill level " & $fill & " at " & $x & ", " & $y, $COLOR_INFO)
+				If $g_iDebugSetlog = 1 Then SetLog("IMGLOC : Searching Deadbase collector level " & $lvl & " found but not enabled, fill level " & $fill & " at " & $x & ", " & $y, $COLOR_INFO)
 				ContinueLoop ; jump to next collector
 			EndIf
 
@@ -410,20 +376,20 @@ Func checkDeadBaseSuperNew($bForceCapture = True, $sFillDirectory = @ScriptDir &
 		Next
 	EndIf
 
-	Local $dbFound = $TotalMatched >= $iMinCollectorMatches
-	If $debugsetlog = 1 Then
+	Local $dbFound = $TotalMatched >= $g_iCollectorMatchesMin
+	If $g_iDebugSetlog = 1 Then
 		If $foundFilledCollectors = False Then
 			SetLog("IMGLOC : NOT A DEADBASE!!!", $COLOR_INFO)
 		ElseIf $dbFound = False Then
-			SetLog("IMGLOC : DEADBASE NOT MATCHED: " & $TotalMatched & "/" & $iMinCollectorMatches , $COLOR_WARNING)
+			SetLog("IMGLOC : DEADBASE NOT MATCHED: " & $TotalMatched & "/" & $g_iCollectorMatchesMin , $COLOR_WARNING)
 		Else
-			SetLog("IMGLOC : FOUND DEADBASE !!! Matched: " & $TotalMatched & "/" & $iMinCollectorMatches & ": " & UBound($aPoints), $COLOR_GREEN)
+			SetLog("IMGLOC : FOUND DEADBASE !!! Matched: " & $TotalMatched & "/" & $g_iCollectorMatchesMin & ": " & UBound($aPoints), $COLOR_GREEN)
 		EndIf
 	EndIf
 
-	; always update $aZombie[3], current matched collectors count
-	$aZombie[3] = $TotalMatched
-	If $debugDeadBaseImage = 1 Then
+	; always update $g_aZombie[3], current matched collectors count
+	$g_aZombie[3] = $TotalMatched
+	If $g_iDebugDeadBaseImage = 1 Then
 		setZombie(0, $searchElixir, $TotalMatched, $SearchCount, $IMGLOCREDLINE)
 	EndIf
 
@@ -438,8 +404,8 @@ Func checkDeadBaseFolder($directory, $executeOldCode = "checkDeadBaseNew()", $ex
 	If IsArray($aFiles) = 0 Then Return False
 	If $aFiles[0] = 0 Then Return False
 
-	Local $wasDebugsetlog = $debugsetlog
-	$debugsetlog = 0
+	Local $wasDebugsetlog = $g_iDebugSetlog
+	$g_iDebugSetlog = 0
 
 	SetLog("Checking " & $aFiles[0] & " village screenshots for dead base...")
 
@@ -484,7 +450,7 @@ Func checkDeadBaseFolder($directory, $executeOldCode = "checkDeadBaseNew()", $ex
 				Local $iMsNew = TimerDiff($hTimer)
 				$iTotalMsNew += $iMsNew
 				$iMsNew = Round($iMsNew)
-				Local $new = $aZombie[3]
+				Local $new = $g_aZombie[3]
 				$iNewFound += $new
 			Else
 				; checkDeadBaseSuperNew
@@ -493,7 +459,7 @@ Func checkDeadBaseFolder($directory, $executeOldCode = "checkDeadBaseNew()", $ex
 				Local $iMsSuperNew = TimerDiff($hTimer)
 				$iTotalMsSuperNew += $iMsSuperNew
 				$iMsSuperNew = Round($iMsSuperNew)
-				Local $superNew = $aZombie[3]
+				Local $superNew = $g_aZombie[3]
 				$iSuperNewFound += $superNew
 			EndIf
 		Next
@@ -528,7 +494,7 @@ Func checkDeadBaseFolder($directory, $executeOldCode = "checkDeadBaseNew()", $ex
 	SetLog("Collectos found (Super new/new)  : " & $iSuperNewFound & " / " & $iNewFound)
 	SetLog("Duration in ms. (Super new/new)  : " & Round($iTotalMsSuperNew) & " / " & Round($iTotalMsNew))
 
-	$debugsetlog = $wasDebugsetlog
+	$g_iDebugSetlog = $wasDebugsetlog
 
 	Return True
 

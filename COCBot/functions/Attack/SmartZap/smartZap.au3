@@ -6,14 +6,14 @@
 ; Return values .: None
 ; Author ........: LunaEclipse(March, 2016)
 ; Modified ......: TheRevenor(November, 2016), ProMac(December, 2016), TheRevenor(December, 2016), TripleM(January, 2017)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2017
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func displayZapLog($aDarkDrills, ByRef $Spells)
+Func displayZapLog(Const ByRef $aDarkDrills, Const ByRef $Spells)
 	; Create the log entry string
 	Local $drillStealableString = "Drills Lvl/Estimated Amount left: "
 	Local $spellsLeftString = "Spells left: "
@@ -52,9 +52,7 @@ Func getDarkElixir()
 	If _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x282020, 6), 10) Or _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0F0617, 6), 5) Then ; check if the village have a Dark Elixir Storage
 		While $searchDark = ""
 			$searchDark = getDarkElixirVillageSearch(48, 126) ; Get updated Dark Elixir value
-			$oldSearchDark = $searchDark
 			$iCount += 1
-			;If $DebugSmartZap = 1 Then Setlog("$searchDark = " & Number($searchDark) & ", $oldSearchDark = " & Number($oldSearchDark), $COLOR_DEBUG)
 			If $iCount > 15 Then ExitLoop ; Check a couple of times in case troops are blocking the image
 			If _Sleep($DelaySmartZap1) Then Return
 		WEnd
@@ -160,38 +158,41 @@ Func smartZap($minDE = -1)
 
 	If $DebugSmartZap = 1 Then
 		SetLog("$itxtExpectedDE| Expected DE value:" & Number($itxtExpectedDE), $COLOR_DEBUG)
-		SetLog("$ichkTimeStopAtk[$DB] = " & $ichkTimeStopAtk[$DB] & ", $txtDBTimeStopAtk = " & $sTimeStopAtk[$DB] & "s", $COLOR_DEBUG)
+		SetLog("$g_abStopAtkNoLoot1Enable[$DB] = " & $g_abStopAtkNoLoot1Enable[$DB] & ", $txtDBTimeStopAtk = " & $g_aiStopAtkNoLoot1Time[$DB] & "s", $COLOR_DEBUG)
 	EndIf
 
 	; Check match mode
 	If $DebugSmartZap = 1 Then SetLog("$ichkSmartZapDB = " & $ichkSmartZapDB, $COLOR_DEBUG)
-	If $ichkSmartZapDB = 1 And $iMatchMode <> $DB Then
+	If $ichkSmartZapDB = 1 And $g_iMatchMode <> $DB Then
 		SetLog("Not a dead base so lets just go home!", $COLOR_INFO)
 		Return $performedZap
 	EndIf
 
 	; Get the number of lightning/EQ spells
-	For $i = 0 To UBound($atkTroops) - 1
-		If $atkTroops[$i][0] = $eLSpell Then
-			If $aSpells[0][4] = 0 Then
-				If $DebugSmartZap = 1 Then SetLog(NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
-				$aSpells[0][2] = $i
-				$aSpells[0][3] = Number($GlobalLSpelllevel)		; Get the Level on Attack bar
-				$aSpells[0][4] = $atkTroops[$i][1]
-			Else
-				If $DebugSmartZap = 1 Then SetLog("Donated " & NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
-				$aSpells[1][2] = $i
-				$aSpells[1][3] = Number($GlobalLSpelllevel)		; Get the Level on Attack bar
-				$aSpells[1][4] = $atkTroops[$i][1]
+	Local $iTroops = PrepareAttack($g_iMatchMode, True) ; Check remaining troops/spells
+	If $iTroops > 0 Then
+		For $i = 0 To UBound($atkTroops) - 1
+			If $atkTroops[$i][0] = $eLSpell Then
+				If $aSpells[0][4] = 0 Then
+					If $DebugSmartZap = 1 Then SetLog(NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
+					$aSpells[0][2] = $i
+					$aSpells[0][3] = Number($g_iLSpellLevel)		; Get the Level on Attack bar
+					$aSpells[0][4] = $atkTroops[$i][1]
+				Else
+					If $DebugSmartZap = 1 Then SetLog("Donated " & NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
+					$aSpells[1][2] = $i
+					$aSpells[1][3] = Number($g_iLSpellLevel)		; Get the Level on Attack bar
+					$aSpells[1][4] = $atkTroops[$i][1]
+				EndIf
 			EndIf
-		EndIf
-		If $atkTroops[$i][0] = $eESpell Then
-			If $DebugSmartZap = 1 Then SetLog(NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
-			$aSpells[2][2] = $i
-			$aSpells[2][3] = Number($GlobalEQSpelllevel)		; Get the Level on Attack bar
-			$aSpells[2][4]= $atkTroops[$i][1]
-		EndIf
-	Next
+			If $atkTroops[$i][0] = $eESpell Then
+				If $DebugSmartZap = 1 Then SetLog(NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
+				$aSpells[2][2] = $i
+				$aSpells[2][3] = Number($g_iESpellLevel)		; Get the Level on Attack bar
+				$aSpells[2][4]= $atkTroops[$i][1]
+			EndIf
+		Next
+	EndIf
 
 	If $aSpells[0][4] + $aSpells[1][4] = 0 Then
 		SetLog("No lightning spells trained, time to go home!", $COLOR_ERROR)
@@ -214,7 +215,7 @@ Func smartZap($minDE = -1)
 	; Get Drill locations and info
 	Local $aDarkDrills = drillSearch()
 
-	Local $strikeOffsets = [-1, 12]
+	Local $strikeOffsets = [0, 14] ; Adjust according to drill locate pictures in "imgxml\Storages\Drills"
 	Local $drillLvlOffset, $spellAdjust, $numDrills, $testX, $testY, $tempTestX, $tempTestY, $strikeGain, $expectedDE
 	Local $error = 5 ; 5 pixel error margin for DE drill search
 
@@ -300,7 +301,7 @@ Func smartZap($minDE = -1)
 				If _Sleep($DelaySmartZap4) Then Return
 
 				; If the collector or cluster has more content left than a lvl (5 - drill offset) drill would give to a single zap
-			ElseIf $aDarkDrills[0][2] > (4 - $drillLvlOffset) And ($aDarkDrills[0][3] / ($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor)) > 0.3 Then
+			ElseIf $aDarkDrills[0][2] > (4 - $drillLvlOffset) And ($aDarkDrills[0][3] / ($g_aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $g_fDarkStealFactor)) > 0.3 Then
 				SetLog("Third condition: Attack Lvl " & 5 - Number($drillLvlOffset) & " drills with more then 30% estimated DE left", $COLOR_INFO)
 				If $aCluster <> -1 Then
 					$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
@@ -313,7 +314,7 @@ Func smartZap($minDE = -1)
 				If _Sleep($DelaySmartZap4) Then Return
 
 			ElseIf $aCluster <> -1 Then
-				If $aCluster[2] >= ($aDrillLevelTotal[5 - $drillLvlOffset] / $aDrillLevelHP[5 - $drillLvlOffset] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel) Then
+				If $aCluster[2] >= ($g_aDrillLevelTotal[5 - $drillLvlOffset] / $g_aDrillLevelHP[5 - $drillLvlOffset] * $g_fDarkStealFactor * $g_aLSpellDmg[$aSpells[0][3] - 1] * $g_fDarkFillLevel) Then
 					SetLog("Fourth condition: Attack, when potential left content in cluster is greater than gain for a single Lvl " & 5 - Number($drillLvlOffset) & " drill", $COLOR_INFO)
 					$Spellused = zapDrill($aSpells, $aCluster[0] + $strikeOffsets[0], $aCluster[1] + $strikeOffsets[1])
 				EndIf
@@ -350,23 +351,23 @@ Func smartZap($minDE = -1)
 			$expectedDE = -1
 
 			If $Spellused = $eESpell  Then
-				$iNumEQSpellsUsed += 1
+				$g_iNumEQSpellsUsed += 1
 				If $aCluster <> -1 Then
 					For $i = 0 To UBound($aCluster[3]) - 1
-						$expectedDE = _Max(Number($expectedDE), Ceiling(Number($aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$aSpells[2][3] - 1] * $fDarkFillLevel)))
+						$expectedDE = _Max(Number($expectedDE), Ceiling(Number($g_aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $g_fDarkStealFactor * $g_aEQSpellDmg[$aSpells[2][3] - 1] * $g_fDarkFillLevel)))
 					Next
 				Else
-					$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aEQSpellDmg[$aSpells[2][3] - 1] * $fDarkFillLevel))
+					$expectedDE = Ceiling(Number($g_aDrillLevelTotal[$aDarkDrills[0][2] - 1] * $g_fDarkStealFactor * $g_aEQSpellDmg[$aSpells[2][3] - 1] * $g_fDarkFillLevel))
 				EndIf
 			Else
-				$iNumLSpellsUsed += 1
+				$g_iNumLSpellsUsed += 1
 				If $ichkNoobZap = 0 Then
 					If $aCluster <> -1 Then
 						For $i = 0 To UBound($aCluster[3]) - 1
-							$expectedDE = _Max(Number($expectedDE), Ceiling(Number($aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] / $aDrillLevelHP[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel)))
+							$expectedDE = _Max(Number($expectedDE), Ceiling(Number($g_aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] / $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $g_fDarkStealFactor * $g_aLSpellDmg[$aSpells[0][3] - 1] * $g_fDarkFillLevel)))
 						Next
 					Else
-						$expectedDE = Ceiling(Number($aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $aDrillLevelHP[$aDarkDrills[0][2] - 1] * $fDarkStealFactor * $aLSpellDmg[$aSpells[0][3] - 1] * $fDarkFillLevel))
+						$expectedDE = Ceiling(Number($g_aDrillLevelTotal[$aDarkDrills[0][2] - 1] / $g_aDrillLevelHP[$aDarkDrills[0][2] - 1] * $g_fDarkStealFactor * $g_aLSpellDmg[$aSpells[0][3] - 1] * $g_fDarkFillLevel))
 					EndIf
 				Else
 					$expectedDE = $itxtExpectedDE
@@ -392,10 +393,10 @@ Func smartZap($minDE = -1)
 					Local $sToDelete = ""
 					If UBound($aCluster[3]) = 2 Then 	; Formula for Individual Drill DE1 = DE * Total1 * HP2 / (Total1 * HP2 + Total2 * HP1)
 						For $i = 0 To 1
-							$iSumTotalHP += $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 2) ]][2] - 1]
+							$iSumTotalHP += $g_aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 2) ]][2] - 1]
 						Next
 						For $i = 0 To 1
-							Local $iSubGain = Ceiling(Number($strikeGain * $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 2) ]][2] - 1] / $iSumTotalHP))
+							Local $iSubGain = Ceiling(Number($strikeGain * $g_aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 2) ]][2] - 1] / $iSumTotalHP))
 							If ReCheckDrillExist($aDarkDrills[($aCluster[3])[$i]][0], $aDarkDrills[($aCluster[3])[$i]][1]) Then
 								$aDarkDrills[($aCluster[3])[$i]][3] -= $iSubGain
 								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", adjusting amount left in this drill.", $COLOR_INFO)
@@ -409,10 +410,10 @@ Func smartZap($minDE = -1)
 						Next
 					Else  								; Formula for Individual Drill DE1 = DE * Total1 * HP2 * HP3 / (Total1 * HP2 * HP3 + Total2 * HP1 * HP3 + Total3 * HP1 * HP2)
 						For $i = 0 To 2
-							$iSumTotalHP += $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 3) ]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 2, 3) ]][2] - 1]
+							$iSumTotalHP += $g_aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 3) ]][2] - 1] * $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 2, 3) ]][2] - 1]
 						Next
 						For $i = 0 To 2
-							Local $iSubGain = Ceiling(Number($strikeGain * $aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 3) ]][2] - 1]  * $aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 2, 3) ]][2] - 1]/ $iSumTotalHP))
+							Local $iSubGain = Ceiling(Number($strikeGain * $g_aDrillLevelTotal[$aDarkDrills[($aCluster[3])[$i]][2] - 1] * $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 1, 3) ]][2] - 1]  * $g_aDrillLevelHP[$aDarkDrills[($aCluster[3])[Mod($i + 2, 3) ]][2] - 1]/ $iSumTotalHP))
 							If ReCheckDrillExist($aDarkDrills[($aCluster[3])[$i]][0], $aDarkDrills[($aCluster[3])[$i]][1]) Then
 								$aDarkDrills[($aCluster[3])[$i]][3] -= $iSubGain
 								SetLog(($i + 1) & ".Drill Gained: " & $iSubGain & ", adjusting amount left in this drill.", $COLOR_INFO)
@@ -437,7 +438,7 @@ Func smartZap($minDE = -1)
 			EndIf
 
 			$itotalStrikeGain += $strikeGain
-			$iSmartZapGain += $strikeGain
+			$g_iSmartZapGain += $strikeGain
 			SetLog("Total DE from SmartZap/NoobZap: " & Number($itotalStrikeGain), $COLOR_INFO)
 
 		EndIf
@@ -446,6 +447,25 @@ Func smartZap($minDE = -1)
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)
 
 		If _Sleep($DelaySmartZap1) Then Return
+		
+		; Check once again for donated lightning spell, if all own lightning spells are used
+		If $aSpells[0][4] = 0 Then
+			Local $iTroops = PrepareAttack($g_iMatchMode, True) ; Check remaining troops/spells
+			If $iTroops > 0 Then
+				For $i = 0 To UBound($atkTroops) - 1
+					If $atkTroops[$i][0] = $eLSpell Then
+						If $DebugSmartZap = 1 Then SetLog("Donated " & NameOfTroop($atkTroops[$i][0], 0) & ": " & $atkTroops[$i][1], $COLOR_DEBUG)
+						$aSpells[1][2] = $i
+						$aSpells[1][3] = Number($g_iLSpellLevel)		; Get the Level on Attack bar
+						$aSpells[1][4] = $atkTroops[$i][1]
+					EndIf
+				Next
+			EndIf
+			If $aSpells[1][4] > 0 Then
+				SetLog("Woohoo, found a donated " & NameOfTroop($aSpells[1][1], 0) & " (Lvl " & $aSpells[1][3] & ")", $COLOR_INFO)
+			EndIf
+		EndIf
+
 	WEnd
 
 	Return $performedZap

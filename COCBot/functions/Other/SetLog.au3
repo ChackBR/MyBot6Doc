@@ -12,25 +12,37 @@
 ;                  $bConsoleWrite       - [optional] a boolean value. Default is True.
 ; Return values .: None
 ; Author ........:
-; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+; Modified ......: CodeSlinger69 (2017)
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2017
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func SetLog($String, $Color = Default, $Font = Default, $FontSize = Default, $statusbar = Default, $time = Default, $bConsoleWrite = True, $LogPrefix = "L ", $bPostponed = $bCriticalMessageProcessing) ;Sets the text for the log
+#include-once
+
+;Global $aTxtLogInitText[0][6] = [[]]
+Global $aTxtAtkLogInitText[0][6] = [[]]
+
+
+Func SetLog($String, $Color = Default, $Font = Default, $FontSize = Default, $statusbar = Default, $time = Default, $bConsoleWrite = True, _
+			$LogPrefix = "L ", $bPostponed = $g_bCriticalMessageProcessing) ;Sets the text for the log
+
 	If $Color = Default Then $Color = $COLOR_BLACK
 	If $Font = Default Then $Font = "Verdana"
 	If $FontSize = Default Then $FontSize = 7.5
 	If $statusbar = Default Then $statusbar = 1
 	If $time = Default Then $time = Time()
 	Local $log = $LogPrefix & TimeDebug() & $String
-	If $bConsoleWrite = True And $String <> "" Then ConsoleWrite($log & @CRLF) ; Always write any log to console
-	If $hLogFileHandle = "" Then CreateLogFile()
+	If $bConsoleWrite = True And $String <> "" Then
+		Local $sLevel = GetLogLevel($Color)
+		ConsoleWrite($sLevel & $log & @CRLF) ; Always write any log to console
+	EndIf
+	If $g_hLogFile = 0 Then CreateLogFile()
+
 	; write to log file
-	__FileWriteLog($hLogFileHandle, $log)
-	If $SilentSetLog = True Then
+	__FileWriteLog($g_hLogFile, $log)
+	If $g_bSilentSetLog = True Then
 		; Silent mode is active, only write to log file, not to log control
 		Return
 	EndIf
@@ -44,11 +56,48 @@ Func SetLog($String, $Color = Default, $Font = Default, $FontSize = Default, $st
 	$aTxtLogInitText[$iIndex][4] = $statusbar
 	$aTxtLogInitText[$iIndex][5] = $time
 	ReleaseMutex($txtLogMutex)
-	If IsDeclared("txtLog") And $RunState = False Or ($bPostponed = False And TimerDiff($hTxtLogTimer) >= $iTxtLogTimerTimeout) Then
+
+	If $g_hTxtLog <> 0 And $g_bRunState = False Or ($bPostponed = False And TimerDiff($g_hTxtLogTimer) >= $g_iTxtLogTimerTimeout) Then
 		; log now to GUI
 		CheckPostponedLog()
 	EndIf
 EndFunc   ;==>SetLog
+
+Func GetLogLevel($Color)
+	; translate log level
+	Local $sLevel = ""
+	Switch $Color
+	Case $COLOR_ERROR
+		$sLevel = "ERROR    "
+	Case $COLOR_WARNING
+		$sLevel = "WARN     "
+	Case $COLOR_SUCCESS
+		$sLevel = "SUCCESS  "
+	Case $COLOR_SUCCESS1
+		$sLevel = "SUCCESS1 "
+	Case $COLOR_INFO
+		$sLevel = "INFO     "
+	Case $COLOR_DEBUG
+		$sLevel = "DEBUG    "
+	Case $COLOR_DEBUG1
+		$sLevel = "DEBUG1   "
+	Case $COLOR_DEBUG2
+		$sLevel = "DEBUG2   "
+	Case $COLOR_DEBUGS
+		$sLevel = "DEBUGS   "
+	Case $COLOR_ACTION
+		$sLevel = "ACTION   "
+	Case $COLOR_ACTION1
+		$sLevel = "ACTION1  "
+	Case $COLOR_ORANGE
+		$sLevel = "ORANGE   "
+	Case $COLOR_BLACK
+		$sLevel = "NORMAL   "
+	Case Else
+		$sLevel = Hex($Color, 6) & "   "
+	EndSwitch
+	Return $sLevel
+EndFunc   ;==>GetLogLevel
 
 Func SetLogText(ByRef $hTxtLog, ByRef $String, ByRef $Color, ByRef $Font, ByRef $FontSize, ByRef $time) ;Sets the text for the log
 	If $time Then
@@ -66,12 +115,12 @@ Func SetDebugLog($String, $Color = Default, $bSilentSetLog = Default, $Font = De
 
 	Local $LogPrefix = "D "
 	Local $log = $LogPrefix & TimeDebug() & $String
-	If $String <> "" Then ConsoleWrite($log & @CRLF) ; Always write any log to console
-	If $debugSetlog = 1 And $bSilentSetLog = False Then
-		SetLog($String, $Color, $Font, $FontSize, $statusbar, Time(), False, $LogPrefix)
+	If $g_iDebugSetlog = 1 And $bSilentSetLog = False Then
+		SetLog($String, $Color, $Font, $FontSize, $statusbar, Time(), True, $LogPrefix)
 	Else
-		If $hLogFileHandle = "" Then CreateLogFile()
-		__FileWriteLog($hLogFileHandle, $log)
+		If $String <> "" Then ConsoleWrite(GetLogLevel($Color) & $log & @CRLF) ; Always write any log to console
+		If $g_hLogFile = 0 Then CreateLogFile()
+		__FileWriteLog($g_hLogFile, $log)
 	EndIf
 EndFunc   ;==>SetDebugLog
 
@@ -87,7 +136,7 @@ Func FlushGuiLog(ByRef $hTxtLog, ByRef $aTxtLog, $bUpdateStatus = False, $sLogMu
 	Local $wasLock = AndroidShieldLock(True) ; lock Android Shield as shield changes state when focus changes
 	Local $txtLogMutex = AcquireMutex($sLogMutexName) ; synchronize access
 
-	Local $activeBot = _WinAPI_GetActiveWindow() = $frmBot ; different scroll to bottom when bot not active to fix strange bot activation flickering
+	Local $activeBot = _WinAPI_GetActiveWindow() = $g_hFrmBot ; different scroll to bottom when bot not active to fix strange bot activation flickering
 	Local $hCtrl = _WinAPI_GetFocus() ; RichEdit tampers with focus so remember and restore
 	_SendMessage($hTxtLog, $WM_SETREDRAW, False, 0) ; disable redraw so logging has no visiual effect
 	_WinAPI_EnableWindow($hTxtLog, False) ; disable RichEdit
@@ -101,8 +150,8 @@ Func FlushGuiLog(ByRef $hTxtLog, ByRef $aTxtLog, $bUpdateStatus = False, $sLogMu
 		EndIf
 	Next
 	Local $iLogs = UBound($aTxtLog)
-	If $bUpdateStatus = True And $iLogs - 1 >= 0 And $aTxtLog[$iLogs - 1][4] = 1 And IsDeclared("statLog") Then
-		_GUICtrlStatusBar_SetText($statLog, "Status : " & $aTxtLog[$iLogs - 1][0])
+	If $bUpdateStatus = True And $iLogs - 1 >= 0 And $aTxtLog[$iLogs - 1][4] = 1 And $g_hStatusBar <> 0 Then
+		_GUICtrlStatusBar_SetText($g_hStatusBar, "Status : " & $aTxtLog[$iLogs - 1][0])
 	EndIf
 
 	$iLogs = UBound($aTxtLog)
@@ -121,17 +170,17 @@ EndFunc   ;==>FlushGuiLog
 
 Func CheckPostponedLog()
 	Local $iLogs = 0
-	If $bCriticalMessageProcessing Or TimerDiff($hTxtLogTimer) < $iTxtLogTimerTimeout Then Return 0
+	If $g_bCriticalMessageProcessing Or TimerDiff($g_hTxtLogTimer) < $g_iTxtLogTimerTimeout Then Return 0
 
-	If UBound($aTxtLogInitText) > 0 And IsDeclared("txtLog") Then
-		$iLogs += FlushGuiLog($txtLog, $aTxtLogInitText, True, "txtLog")
+	If UBound($aTxtLogInitText) > 0 And $g_hTxtLog <> 0 Then
+		$iLogs += FlushGuiLog($g_hTxtLog, $aTxtLogInitText, True, "txtLog")
 	EndIf
 
-	If UBound($aTxtAtkLogInitText) > 0 And IsDeclared("txtAtkLog") Then
-		$iLogs += FlushGuiLog($txtAtkLog, $aTxtAtkLogInitText, False, "txtAtkLog")
+	If UBound($aTxtAtkLogInitText) > 0 And $g_hTxtAtkLog <> 0 Then
+		$iLogs += FlushGuiLog($g_hTxtAtkLog, $aTxtAtkLogInitText, False, "txtAtkLog")
 	EndIf
 
-	$hTxtLogTimer = TimerInit()
+	$g_hTxtLogTimer = TimerInit()
 	Return $iLogs
 EndFunc   ;==>CheckPostponedLog
 
@@ -149,9 +198,9 @@ Func _ColorConvert($nColor);RGB to BGR or BGR to RGB
 EndFunc   ;==>_ColorConvert
 
 Func SetAtkLog($String1, $String2 = "", $Color = $COLOR_BLACK, $Font = "Lucida Console", $FontSize = 7.5) ;Sets the text for the log
-	If $hAttackLogFileHandle = "" Then CreateAttackLogFile()
+	If $g_hAttackLogFile = 0 Then CreateAttackLogFile()
 	;string1 see in video, string1&string2 put in file
-	_FileWriteLog($hAttackLogFileHandle, $String1 & $String2)
+	_FileWriteLog($g_hAttackLogFile, $String1 & $String2)
 
 	Local $txtLogMutex = AcquireMutex("txtAtkLog")
 	Local $iIndex = UBound($aTxtAtkLogInitText)

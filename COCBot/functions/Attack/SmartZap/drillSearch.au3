@@ -55,7 +55,7 @@ Func drillSearch()
 			$aReturnResult[$iResult][2] = $iDrillLevel
 		EndIf
 		; Adjusting Hold
-		$aReturnResult[$iResult][3] = Ceiling(Number($aDrillLevelTotal[$aReturnResult[$iResult][2] - 1] * $fDarkStealFactor))
+		$aReturnResult[$iResult][3] = Ceiling(Number($g_aDrillLevelTotal[$aReturnResult[$iResult][2] - 1] * $g_fDarkStealFactor))
 		If $DebugSmartZap = 1 Then 
 			SetLog(($iResult + 1) & ". Valid Drill: [" & $aReturnResult[$iResult][0] & "," & $aReturnResult[$iResult][1] & "], Level: " & $aReturnResult[$iResult][2] & ", Hold: " & $aReturnResult[$iResult][3], $COLOR_DEBUG)
 		EndIf
@@ -67,7 +67,7 @@ EndFunc   ;==>drillSearch
 
 Func CheckDrillLvl($x, $y)
 	_CaptureRegion2($x - 25, $y - 25, $x + 25, $y + 25)
-	Local $directory = @ScriptDir & "\imgxml\Storages\Drills_lv"
+	Local $directory = @ScriptDir & "\imgxml\Storages\Drills\Level"
 	Local $Maxpositions = 1
 
 	Local $aResult = multiMatches($directory, $Maxpositions, "FV", "FV", "", 0, 1000, False)
@@ -128,9 +128,9 @@ Func getDrillCluster(Const ByRef $aDarkDrills)
 		Local $iWeightedMedianDiv = 0
 		Local $iTotalHold = 0
 		For $i = 0 To UBound($aBestCluster[3]) - 1
-			$iWeightedMedianX += $aDarkDrills[($aBestCluster[3])[$i]][0] * $aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
-			$iWeightedMedianY += $aDarkDrills[($aBestCluster[3])[$i]][1] * $aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
-			$iWeightedMedianDiv += $aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
+			$iWeightedMedianX += $aDarkDrills[($aBestCluster[3])[$i]][0] * $g_aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
+			$iWeightedMedianY += $aDarkDrills[($aBestCluster[3])[$i]][1] * $g_aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
+			$iWeightedMedianDiv += $g_aDrillLevelHP[$aDarkDrills[($aBestCluster[3])[$i]][2] - 1]
 			$iTotalHold += $aDarkDrills[($aBestCluster[3])[$i]][3]
 		Next
 		$aBestCluster[0] = Ceiling(Number($iWeightedMedianX / $iWeightedMedianDiv))

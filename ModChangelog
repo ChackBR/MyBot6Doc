@@ -4,15 +4,35 @@
    |_| |___/_/ \_\_|  |_| |___/\___/\__|\___/ \___|
 
 
-			Based on MyBot.run v6.5.3
+			Based on MyBot.run v7
 
-  _____               ____   _____   ____   _____  _____ 
- |  __ \             / __ \ / ____| |___ \ | ____|| ____|
- | |  | | ___   ___ | |  | | |        __) || |__  | |__  
- | |  | |/ _ \ / __|| |  | | |       |__ < |___ \ |___ \ 
- | |__| | (_) | (__ | |__| | |____   ___) | ___) | ___) |
- |_____/ \___/ \___(_)____/ \_____| |____(_)____(_)____/ 
-                                                         
+  _____               ____              ____    __  
+ |  __ \             / __ \            |___ \  / /  
+ | |  | | ___   ___ | |  | | ___  __   ____) |/ /_  
+ | |  | |/ _ \ / __|| |  | |/ __| \ \ / /__ <| '_ \ 
+ | |__| | (_) | (__ | |__| | (__   \ V /___) | (_) |
+ |_____/ \___/ \___(_)____/ \___|   \_/|____(_)___/ 
+   
+	- MBR Official v7.0.1
+	- Organize files for DocOC
+	- Added DocOC Logo
+	- Added Mod version check 
+	- Added Debug Button
+	- Added General Mod Tab
+	- Added Treasury TAB
+	- Added Humanization TAB
+	- Added GoblinXP TAB
+	- Added Classic FFF
+	- Added Warden forced timer Activation, separated from King and Queen
+	- Added TH images from DocOC
+	- Added Use imgloc on all detections : Resources
+	- Added CSV commands , DropS , SideP , Zap, Remain
+	- Added Switch Account Tab
+	- Allow Earthquake for NoobZap too
+	- Make Attack Script Dropdown scrollable
+	- Fix SmartZap update statistics on early exit, when DE in attacked base reaches 0
+	
+ 				 Doc Oc v3.5.5                                                        
 	- Fix GDI issue on SuperXP
 	- Fix Notify v1.5.8
 	- Force Request Clan Castle Troops before the while train

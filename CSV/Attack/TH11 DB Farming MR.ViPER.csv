@@ -18,12 +18,12 @@ MAKE  |N          |FRONT-LEFT |15         |2          |INT-EXT    |2          |2
 
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
 DROP  |G          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |G          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |G          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |A          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |M          |4-9        |1-3        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
 DROP  |T          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |T          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |T          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |R          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |N          |4-9        |1-3        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
@@ -46,12 +46,12 @@ MAKE  |N          |FRONT-LEFT |15         |2          |INT-EXT    |2          |2
       
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
 DROP  |G          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |G          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |G          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |A          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |M          |4-9        |1-3        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
 DROP  |T          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |T          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |T          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |R          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |N          |4-9        |1-3        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
@@ -74,12 +74,12 @@ MAKE  |N          |FRONT-LEFT |15         |2          |INT-EXT    |2          |2
       
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
 DROP  |G          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |G          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |G          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |A          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |M          |4-9        |1-3        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
 DROP  |T          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |T          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |T          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |R          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |N          |4-9        |2-4        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
@@ -98,12 +98,12 @@ MAKE  |N          |FRONT-LEFT |15         |2          |INT-EXT    |2          |2
 
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
 DROP  |G          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |G          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |G          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |A          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |M          |4-9        |2-4        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
 DROP  |T          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |T          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |T          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |R          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |N          |4-9        |2-4        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
@@ -128,12 +128,12 @@ MAKE  |N          |FRONT-LEFT |15         |2          |INT-EXT    |2          |2
       
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
 DROP  |G          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |G          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |G          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |A          |4-9        |10-12      |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |M          |4-9        |2-4        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
 DROP  |T          |4-9        |10-12      |barb       |30-50      |30-70      |500-800    |           |     drop Barbarian
-DROP  |T          |5-8        |2-4        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
+DROP  |T          |5-8        |1-2        |giant      |30-50      |30-70      |500-800    |           |        Drop GIANTS
 DROP  |R          |4-9        |11         |arch       |30-50      |30-70      |500-800    |           |        Drop ARCHERS
 DROP  |N          |4-9        |1-3        |mini       |30-50      |30-70      |500-800    |           |        Drop MINIONS
 
@@ -160,4 +160,3 @@ DROP  |A          |4          |1          |Queen      |30-50      |30-70      |5
 DROP  |G          |4          |1          |Warden     |30-50      |30-70      |500-800    |           |        Drop Grand WARDEN
 
 
-      |---------------------------------------- THE END -----------------------------|

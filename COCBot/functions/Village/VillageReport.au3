@@ -7,7 +7,7 @@
 ; Return values .: None
 ; Author ........: Hervidero (2015-feb-10)
 ; Modified ......: Safar46 (2015), Hervidero (2015), KnowJack (June-2015) , ProMac (2015), Sardo 2015-08, MonkeyHunter(6-2106)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2017
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -45,9 +45,6 @@ Func VillageReport($bBypass = False, $bSuppressLog = False)
 		$iGemAmount = getResourcesMainScreen(719, 123)
 		If Not $bSuppressLog Then SetLog(" [G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [GEM]: " & _NumberFormat($iGemAmount), $COLOR_SUCCESS)
 	EndIf
-	;XP & Level detection
-	$iXPCurrent = getVillageExp(55, 22)
-	$iLevelXPCurrent = getVillageExp(14, 14)
 	If $bBypass = False Then ; update stats
 		UpdateStats()
 	EndIf
