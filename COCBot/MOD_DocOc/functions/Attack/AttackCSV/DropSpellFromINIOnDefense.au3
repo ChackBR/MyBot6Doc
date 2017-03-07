@@ -99,11 +99,12 @@ Func DropSpellFromINIOnDefense($Defense, $options, $qtaMin, $qtaMax, $troopName,
 		;drop
 
 		Local $tempquant = 0
+		Local $delayDrop
 
 		If $delayDropMin <> $delayDropMax Then
-			Local $delayDrop = Random($delayDropMin, $delayDropMax, 1)
+			$delayDrop = Random($delayDropMin, $delayDropMax, 1)
 		Else
-			Local $delayDrop = $delayDropMin
+			$delayDrop = $delayDropMin
 		EndIf
 
 		Local $delayDropLast = 0
@@ -377,7 +378,7 @@ Func LocateDefense($Defense, $options)
 			EndSwitch
 			Return $Result
 		Case "INFERNO"
-			$hTimer = TimerInit()
+			Local $hTimer = TimerInit()
 
 			Local $directory = @ScriptDir & "\imgxml\WeakBase\Infernos"
 			Local $return
@@ -528,7 +529,7 @@ Func LocateDefense($Defense, $options)
 			EndSwitch
 			Return $Result
 		Case "ADEFENSE"
-			$hTimer = TimerInit()
+			Local $hTimer = TimerInit()
 
 			Local $directory = @ScriptDir & "\imgxml\WeakBase\ADefense"
 			Local $return
