@@ -393,7 +393,7 @@ Func LocateDefense($Defense, $options)
 			If Not (UBound($splitedPositions) >= 1 And StringLen($splitedPositions[0]) > 2) Then DebugImageSave("InfernoDetection_NotDetected_", True)
 			Local $theInfernoSide = ""
 			Local $NotdetectedInferno = True
-			$Counter = -1
+			Local $Counter = -1
 			For $eachPos In $splitedPositions
 				$splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
@@ -408,7 +408,7 @@ Func LocateDefense($Defense, $options)
 						Case $SideCondition = "SameSide" Or $SideCondition = "OtherSide"
 							;If UBound($splitedEachPos) = 2 Then
 							;If $splitedEachPos[1] >= 1 Then
-							$sliced = Slice8($splitedEachPos)
+							Local $sliced = Slice8($splitedEachPos)
 							If $debugDropSCommand = 1 Then SetLog("$sliced = " & $sliced, $COLOR_BLUE)
 							Switch StringLeft($sliced, 1)
 								Case 1, 2
@@ -420,7 +420,7 @@ Func LocateDefense($Defense, $options)
 								Case 7, 8
 									$theInfernoSide = "BOTTOM"
 							EndSwitch
-							$curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
+							Local $curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
 							If $debugDropSCommand = 1 Then SetLog("$curMainSide = " & $curMainSide, $COLOR_ORANGE)
 							If $debugDropSCommand = 1 Then SetLog("$theInfernoSide = " & $theInfernoSide, $COLOR_ORANGE)
 							If $SideCondition = "SameSide" Then
@@ -544,7 +544,7 @@ Func LocateDefense($Defense, $options)
 			If Not (UBound($splitedPositions) >= 1 And StringLen($splitedPositions[0]) > 2) Then DebugImageSave("AirDefenseDetection_NotDetected_", True)
 			Local $theADefenseSide = ""
 			Local $NotdetectedADefense = True
-			$Counter = -1
+			Local $Counter = -1
 			For $eachPos In $splitedPositions
 				$splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
@@ -559,7 +559,7 @@ Func LocateDefense($Defense, $options)
 						Case $SideCondition = "SameSide" Or $SideCondition = "OtherSide"
 							;If UBound($splitedEachPos) = 2 Then
 							;If $splitedEachPos[1] >= 1 Then
-							$sliced = Slice8($splitedEachPos)
+							Local $sliced = Slice8($splitedEachPos)
 							If $debugDropSCommand = 1 Then SetLog("$sliced = " & $sliced, $COLOR_BLUE)
 							Switch StringLeft($sliced, 1)
 								Case 1, 2
@@ -571,7 +571,7 @@ Func LocateDefense($Defense, $options)
 								Case 7, 8
 									$theADefenseSide = "BOTTOM"
 							EndSwitch
-							$curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
+							Local $curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
 							If $debugDropSCommand = 1 Then SetLog("$curMainSide = " & $curMainSide, $COLOR_ORANGE)
 							If $debugDropSCommand = 1 Then SetLog("$theADefenseSide = " & $theADefenseSide, $COLOR_ORANGE)
 							If $SideCondition = "SameSide" Then
