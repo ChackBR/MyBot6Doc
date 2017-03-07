@@ -20,6 +20,10 @@ Func SimpleQuickTrain( $NeedOpenArmy = False, $nLoop = 3 )
 		OpenArmyWindow()
 		If _Sleep(500) Then Return
 	EndIf
+	If $canRequestCC = False Then
+		$canRequestCC = _ColorCheck(_GetPixelColor($aRequestTroopsAO[0], $aRequestTroopsAO[1], True), Hex($aRequestTroopsAO[2], 6), $aRequestTroopsAO[5])
+		If _Sleep(500) Then Return
+	EndIf
 	OpenTrainTabNumber($QuickTrainTAB, "CheckCamp()")
 	For $i = 1 TO $nLoop
 		If _Sleep(500) Then Return

@@ -1,4 +1,4 @@
-﻿; #FUNCTION# ====================================================================================================================
+; #FUNCTION# ====================================================================================================================
 ; Name ..........: MBR Bot
 ; Description ...: This file contains the initialization and main loop sequences for the MBR Bot
 ; Author ........:  (2014)
@@ -83,7 +83,7 @@ Global $g_sModversion
 ; "2605" ; MyBot v6.5.2 + Sinc with Samkie MultiFinger
 ; "2611" ; MyBot v6.5.3
 ; "2614" ; MyBot v6.5.3 + Doc Octopus v3.5.5 + Collectors Outside
-$g_sBotVersion = "2701" ; MyBot v7.0.1
+$g_sModversion = "2701" ; MyBot v7.0.1
 
 ; All executable code is in a function block, to detect coding errors, such as variable declaration scope problems
 InitializeBot()

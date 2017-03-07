@@ -284,8 +284,9 @@ Func LocateDefense($Defense, $options)
 			Local $theEagleSide = ""
 			Local $NotdetectedEagle = True
 			Local $Counter = -1
+			Local $splitedEachPos
 			For $eachPos In $splitedPositions
-				Local $splitedEachPos = StringSplit($eachPos, ",", 2)
+				$splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
 					$Counter += 1
 					If $debugDropSCommand = 1 Then SetLog("$SideCondition = " & $SideCondition, $COLOR_DEBUG) ;Debug
@@ -394,6 +395,7 @@ Func LocateDefense($Defense, $options)
 			Local $theInfernoSide = ""
 			Local $NotdetectedInferno = True
 			Local $Counter = -1
+			Local $splitedEachPos
 			For $eachPos In $splitedPositions
 				$splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
@@ -545,6 +547,7 @@ Func LocateDefense($Defense, $options)
 			Local $theADefenseSide = ""
 			Local $NotdetectedADefense = True
 			Local $Counter = -1
+			Local $splitedEachPos
 			For $eachPos In $splitedPositions
 				$splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
