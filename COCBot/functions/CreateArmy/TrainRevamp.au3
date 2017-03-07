@@ -54,7 +54,7 @@ Func TrainRevamp()
 	If $g_bRunState = False Then Return
 	
 	If ( $g_bQuickTrainEnable = True ) Then
-		SimpleQuickTrain( True, 1 )
+		SimpleQuickTrain( True, 2 )
 	Else
 
 	If ($IsFullArmywithHeroesAndSpells = True) Or ($CurCamp = 0 And $g_bFirstStart) Then
