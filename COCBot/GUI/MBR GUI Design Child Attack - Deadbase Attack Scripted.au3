@@ -42,7 +42,7 @@ Func CreateAttackSearchDeadBaseScripted()
 			   GUICtrlSetOnEvent(-1, 'UpdateComboScriptNameDB') ; Run this function when the secondary GUI [X] is clicked
 
 		   $y +=25
-		   $g_hLblNotesScriptDB =  GUICtrlCreateLabel("", $x, $y + 5, 200, 180)
+		   $g_hLblNotesScriptDB =  GUICtrlCreateLabel("", $x, $y + 5, 208, 132)
 		   $g_hCmbScriptRedlineImplDB = GUICtrlCreateCombo("", $x, $y + 195, 230, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
                GUICtrlSetData(-1, GetTranslated(607,9, "ImgLoc Raw Redline (default)|ImgLoc Redline Drop Points|Original Redline|External Edges"))
 			   _GUICtrlComboBox_SetCurSel(-1, $g_aiAttackScrRedlineRoutine[$DB])
@@ -70,8 +70,8 @@ Func CreateAttackSearchDeadBaseScripted()
 			   GUICtrlSetOnEvent(-1, "DuplicateScriptDB")
 
 			; Attack Now (CSV) By MR.ViPeR
-			$y += 110
-			$g_hbtnAttNowDB = GUICtrlCreateButton(GetTranslated(607, 34, "Attack Now: Testing CSV File"), $x + 0, $y - 30, -1, 25)
+			$y += 132
+			$g_hbtnAttNowDB = GUICtrlCreateButton(GetTranslated(607, 34, "Attack Now: Testing CSV File"), $x + 0, $y - 30, 230, 25)
 				_GUICtrlSetTip(-1, "Attack Now Button (Useful for CSV Testing)")
 				;GUISetState(@SW_SHOW)
 				GUICtrlSetOnEvent(-1, "AttackNowDB")
