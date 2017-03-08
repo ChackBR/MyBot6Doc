@@ -86,3 +86,4 @@
 #include "functions\CreateArmy\getArmyHeroStatus.au3"
 
 #include "SimpleQuickTrain.au3"
+#include "AttackNowButtom.au3"

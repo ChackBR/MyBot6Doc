@@ -66,6 +66,13 @@ Func CreateAttackSearchActiveBaseScripted()
 		   GUICtrlCreateIcon($g_sLibIconPath, $eIcnCopy, $x + 210, $y + 2, 16, 16)
 			   _GUICtrlSetTip(-1, GetTranslated(607,8, -1))
 			   GUICtrlSetOnEvent(-1, "DuplicateScriptAB")
+
+			; Attack Now (CSV) By MR.ViPeR
+			$btnAttNowLB = GUICtrlCreateButton(GetTranslated(607, 34, "Attack Now: Testing CSV File"), $x + 75, $y - 20, 80, -1)
+				_GUICtrlSetTip(-1, "Attack Now Button (Useful for CSV Testing)")
+				;GUISetState(@SW_SHOW)
+				GUICtrlSetOnEvent(-1, "AttackNowLB")
+
 	   GUICtrlCreateGroup("", -99, -99, 1, 1)
 
    ;GUISetState()
