@@ -17,6 +17,7 @@
 Global $g_hGUI_DEADBASE_ATTACK_SCRIPTED = 0
 Global $g_hCmbScriptNameDB = 0, $g_hCmbScriptRedlineImplDB = 0, $g_hCmbScriptDroplineDB = 0
 Global $g_hLblNotesScriptDB = 0
+Global $g_hbtnAttNowDB = 0
 
 Func CreateAttackSearchDeadBaseScripted()
    $g_hGUI_DEADBASE_ATTACK_SCRIPTED = GUICreate("", $_GUI_MAIN_WIDTH - 195, $_GUI_MAIN_HEIGHT - 344, 150, 25, BitOR($WS_CHILD, $WS_TABSTOP), -1, $g_hGUI_DEADBASE)
@@ -70,7 +71,7 @@ Func CreateAttackSearchDeadBaseScripted()
 
 			; Attack Now (CSV) By MR.ViPeR
 			$y += 110
-			$btnAttNowDB = GUICtrlCreateButton(GetTranslated(607, 34, "Attack Now: Testing CSV File"), $x + 75, $y - 20, 80, -1)
+			$g_hbtnAttNowDB = GUICtrlCreateButton(GetTranslated(607, 34, "Attack Now: Testing CSV File"), $x + 0, $y - 30, -1, 25)
 				_GUICtrlSetTip(-1, "Attack Now Button (Useful for CSV Testing)")
 				;GUISetState(@SW_SHOW)
 				GUICtrlSetOnEvent(-1, "AttackNowDB")

@@ -87,3 +87,4 @@
 
 #include "SimpleQuickTrain.au3"
 #include "AttackNowButtom.au3"
+#include "AutoUpgrade.au3"
