@@ -16,6 +16,7 @@ Func SimpleQuickTrain( $NeedOpenArmy = False, $nLoop = 3 )
 	Setlog("Simple Quick Train")
 	If $g_bRunState = False Then Return
 	$Num = $g_iQuickTrainArmyNum
+	If $canRequestCC = True Then RequestCC()
 	If $NeedOpenArmy Then
 		OpenArmyWindow()
 		If _Sleep(500) Then Return
@@ -40,5 +41,6 @@ Func SimpleQuickTrain( $NeedOpenArmy = False, $nLoop = 3 )
 	Next
 	ClickP($aAway, 2, 0, "#0346") ;Click Away
 	If _Sleep(1000) Then Return ; Delay AFTER the click Away Prevents lots of coc restarts
+	If $canRequestCC = True Then RequestCC()
 
 EndFunc	;==>SimpleQuickTrain
