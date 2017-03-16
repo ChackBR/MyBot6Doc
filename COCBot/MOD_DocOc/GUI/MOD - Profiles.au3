@@ -42,7 +42,6 @@ Func CreateModProfiles()
 			GUICtrlSetFont(-1, 9, 400, 1)
 			_GUICtrlSetTip(-1, GetTranslated(637,5, "Your village/profile's name"))
 			GUICtrlSetState(-1, $GUI_HIDE)
-			; GUICtrlSetOnEvent(-1, "txtVillageName") - No longer needed
 
 		Local $bIconAdd = _GUIImageList_Create(24, 24, 4)
 			_GUIImageList_AddBitmap($bIconAdd, @ScriptDir & "\images\Button\iconAdd.bmp")

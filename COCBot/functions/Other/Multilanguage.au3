@@ -92,9 +92,11 @@ EndFunc   ;==>GetTranslatedParsedText
 
 ;DetectLanguage()
 Func DetectLanguage()
-    Local $decimalCode = "", $countryCode = "", $langName = ""
-	$sLanguage = IniRead($g_sProfileConfigPath, "other", "language", "")
-	If Not FileExists(@ScriptDir & "\Languages\" & $sLanguage & ".ini") Then $sLanguage = ""
+	Local $decimalCode = "", $countryCode = "", $langName = ""
+	If $sLanguage = "" Then
+		$sLanguage = IniRead($g_sProfileConfigPath, "other", "language", "")
+		If Not FileExists(@ScriptDir & "\Languages\" & $sLanguage & ".ini") Then $sLanguage = ""
+	EndIf
 	If $sLanguage = "" Then
 		Local $OSLang = @OSLang
 		If $g_iDebugSetlog Then SetLog("Detected language code: " & $OSLang)

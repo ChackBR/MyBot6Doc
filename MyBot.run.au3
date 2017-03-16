@@ -31,8 +31,7 @@
 Opt("MustDeclareVars", 1)
 
 Global $g_sBotVersion = "v7.0.1" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it is also use on Checkversion()
-Global $g_sModversion = "v3.6" ;<== Just Change This to Version Number
-Global $g_sModSupportUrl = "https://mybot.run/forums/index.php?/topic/27601-mybotrun-dococ-v352/&" ;<== Our Website Link Or Link Download
+Global $g_sModSupportUrl = "https://mybot.run/forums/index.php" ;<== Our Website Link Or Link Download
 Global $g_sBotTitle = "" ;~ Don't assign any title here, use Func UpdateBotTitle()
 Global $g_hFrmBot = 0 ; The main GUI window
 
@@ -83,7 +82,8 @@ Global $g_sModversion
 ; "2605" ; MyBot v6.5.2 + Sinc with Samkie MultiFinger
 ; "2611" ; MyBot v6.5.3
 ; "2614" ; MyBot v6.5.3 + Doc Octopus v3.5.5 + Collectors Outside
-$g_sModversion = "2701" ; MyBot v7.0.1
+; "2701" ; MyBot v7.0.1
+$g_sModversion = "2702" ; MyBot v7.0.1 + Add CSV Test Button
 
 ; All executable code is in a function block, to detect coding errors, such as variable declaration scope problems
 InitializeBot()
@@ -663,6 +663,7 @@ Func runBot() ;Bot that runs everything in order
 					If Unbreakable() = True Then ContinueLoop
 				EndIf
 			EndIf
+			SmartUpgrade()
 			MainSuperXPHandler()
 			Local $aRndFuncList = ['Laboratory', 'UpgradeHeroes', 'UpgradeBuilding']
 			While 1

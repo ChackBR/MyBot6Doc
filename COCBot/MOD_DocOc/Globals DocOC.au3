@@ -186,3 +186,72 @@ Global $TotalAccountsOnEmu = 0, $CurrentDAccount = 1, $FirstLoop = 0
 Global $MustGoToDonateAccount = 0
 Global $yCoord, $HeroesRemainingWait, $TotalAccountsInUse, $TotalDAccountsInUse,  $NextAccount, $NextProfile
 Global $AlreadyConnected, $IsLoadButton, $NextStep, $LastDate = ""
+
+;
+; Global Variables
+;
+
+;
+; mandryd
+;
+
+; Max logout time
+Global $TrainLogoutMaxTime, $TrainLogoutMaxTimeTXT
+
+;
+; LunaEclipse
+;
+
+; Multi Finger Attack Style Setting
+Global Enum $directionLeft, $directionRight
+Global Enum $sideBottomRight, $sideTopLeft, $sideBottomLeft, $sideTopRight
+Global Enum $mfRandom, $mfFFStandard, $mfFFSpiralLeft, $mfFFSpiralRight, $mf8FBlossom, $mf8FImplosion, $mf8FPinWheelLeft, $mf8FPinWheelRight
+
+Global $iMultiFingerStyle = 0
+
+Global Enum  $eCCSpell = $eHaSpell + 1
+
+; CSV Deployment Speed Mod
+Global $isldSelectedCSVSpeed[$g_iModeCount], $iCSVSpeeds[19]
+$isldSelectedCSVSpeed[$DB] = 4
+$isldSelectedCSVSpeed[$LB] = 4
+$iCSVSpeeds[0] = .1
+$iCSVSpeeds[1] = .25
+$iCSVSpeeds[2] = .5
+$iCSVSpeeds[3] = .75
+$iCSVSpeeds[4] = 1
+$iCSVSpeeds[5] = 1.25
+$iCSVSpeeds[6] = 1.5
+$iCSVSpeeds[7] = 1.75
+$iCSVSpeeds[8] = 2
+$iCSVSpeeds[9] = 2.25
+$iCSVSpeeds[10] = 2.5
+$iCSVSpeeds[11] = 2.75
+$iCSVSpeeds[12] = 3
+$iCSVSpeeds[13] = 5
+$iCSVSpeeds[14] = 8
+$iCSVSpeeds[15] = 10
+$iCSVSpeeds[16] = 20
+$iCSVSpeeds[17] = 50
+$iCSVSpeeds[18] = 99
+
+; No League Search
+Global $aNoLeague[4] = [30, 30, 0x616568, 20] ; No League Shield
+Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$g_iModeCount]
+
+; Check Collector Outside (McSlither) - Added by NguyenAnhHD
+#region Check Collectors Outside
+; Collectors outside filter
+Global $ichkDBMeetCollOutside, $iDBMinCollOutsidePercent, $iCollOutsidePercent ; check later if $iCollOutsidePercent obsolete
+
+; SmartUpgrade (Roro-Titi) - Added by NguyenAnhHD
+Global $ichkSmartUpgrade
+Global $ichkIgnoreTH, $ichkIgnoreKing, $ichkIgnoreQueen, $ichkIgnoreWarden, $ichkIgnoreCC, $ichkIgnoreLab
+Global $ichkIgnoreBarrack, $ichkIgnoreDBarrack, $ichkIgnoreFactory, $ichkIgnoreDFactory, $ichkIgnoreGColl, $ichkIgnoreEColl, $ichkIgnoreDColl
+Global $iSmartMinGold, $iSmartMinElixir, $iSmartMinDark
+Global $sBldgText, $sBldgLevel, $aString
+Global $upgradeName[3] = ["", "", ""]
+Global $UpgradeCost
+Global $TypeFound = 0
+Global $UpgradeDuration
+Global $canContinueLoop = True

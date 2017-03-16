@@ -218,24 +218,24 @@ Func ReadRegularConfig()
 	; <><><> Attack Plan / Train Army / Options <><><>
 	ReadConfig_641_1()
 
-   ; <><><><> Attack Plan / Strategies <><><><>
-   ; <<< nothing here >>>
+	; <><><><> Attack Plan / Strategies <><><><>
+	; <<< nothing here >>>
 
-   ; <><><><> Bot / Android <><><><>
-   ; <<< nothing here >>>
+	; <><><><> Bot / Android <><><><>
+	; <<< nothing here >>>
 
-   ; <><><><> Bot / Debug <><><><>
-   ; Settings at top of this function for easy access
+	; <><><><> Bot / Debug <><><><>
+	; Settings at top of this function for easy access
 
-   ; <><><><> Bot / Profiles <><><><>
-   ; <<< nothing here >>>
+	; <><><><> Bot / Profiles <><><><>
+	; <<< nothing here >>>
 
-   ; <><><><> Bot / Stats <><><><>
-   ; <<< nothing here >>>
+	; <><><><> Bot / Stats <><><><>
+	; <<< nothing here >>>
 
-   ; <><><> Attack Plan / Train Army / Options <><><>
-   ReadConfig_DocOc()
-   
+	; <><><> Attack Plan / Train Army / Options <><><>
+	ReadConfig_DocOc()
+
 EndFunc
 
 Func ReadConfig_Debug()

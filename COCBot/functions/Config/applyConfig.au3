@@ -106,7 +106,7 @@ Func applyConfig($bRedrawAtExit = True, $TypeReadSave = "Read") ;Applies the dat
 	ApplyConfig_641_1($TypeReadSave)
 
     ; <><><><> Attack Plan / Strategies <><><><>
-; <<< nothing here >>>
+	; <<< nothing here >>>
 
     ; <><><><> Bot / Profiles <><><><>
 	PopulatePresetComboBox()

@@ -500,24 +500,24 @@ Global Const $g_aiTroopTrainTime[$eTroopCount] = [ _
    36, 90, 180, 600, 360, 600, 120 ]
 ; Zero element contains number of levels, elements 1 thru n contain cost of that level troop
 Global Const $g_aiTroopCostPerLevel[$eTroopCount][9] = [ _
-   [7, 25, 40, 60, 100, 150, 200, 250], _ 				; Archer
-   [7, 50, 80, 120, 200, 300, 400, 500], _ 				;Barbarian
+   [7, 25, 40, 60, 100, 150, 200, 250], _ 				; Barbarian
+   [7, 50, 80, 120, 200, 300, 400, 500], _ 				; Archer
    [8, 250, 750, 1250, 1750, 2250, 3000, 3500, 4000], _ ; Giant
    [7, 25, 40, 60, 80, 100, 150, 200], _ 				; Goblin
    [6, 1000, 1500, 2000, 2500, 3000, 3500], _ 			; WallBreaker
    [7, 2000, 2500, 3000, 3500, 4000, 4500, 5000], _ 	; Balloon
    [7, 1500, 2000, 2500, 3000, 3500, 4000, 4500], _ 	; Wizard
-   [4, 5000, 6000, 8000, 10000], _						 ;Healer
+   [4, 5000, 6000, 8000, 10000], _						; Healer
    [6, 25000, 29000, 33000, 37000, 42000, 46000], _ 	; Dragon
    [5, 28000, 32000, 36000, 40000, 45000], _ 			; Pekka
    [5, 15000, 16000, 17000, 18000, 19000], _ 			; BabyDragon
    [4, 4200, 4800, 5400, 6000], _  						; Miner
    [7, 6, 7, 8, 9, 10, 11, 12], _ 						; Minion
    [7, 40, 45, 52, 58, 65, 90, 115], _					; HogRider
-   [5, 70, 100, 130, 160, 190], _ 						;Valkyrie
+   [5, 70, 100, 130, 160, 190], _ 						; Valkyrie
    [6, 450, 525, 600, 675, 750, 825], _ 				; Golem
    [3, 250, 350, 450], _ 								; Witch
-   [4, 390, 450, 510, 570], _  							;Lavahound
+   [4, 390, 450, 510, 570], _  							; Lavahound
    [3, 130, 150, 170] ] 								; Bowler
 Global Const $g_aiTroopDonateXP[$eTroopCount] = [1,1,5,1,2,5,4,14,20,25,10,5,2,5,8,30,12,30,6]
 
@@ -538,7 +538,7 @@ Global Const $g_aiSpellCostPerLevel[$eSpellCount][8] = [ _
    [4, 38000, 40000, 42000, 44000], _					   ;CloneSpell
    [5, 95, 110, 125, 140, 155], _         				   ;PoisonSpell
    [4, 125, 140, 160, 180], _    						   ;EarthquakeSpell
-   [4, 80, 85, 60, 95], _								   ;HasteSpell
+   [4, 80, 85, 90, 95], _								   ;HasteSpell
    [4, 110, 120, 130, 140] ]   							   ;SkeletonSpell
 Global Const $g_aiSpellDonateXP[$eSpellCount] = [10, 10, 10, 10, 10, 0, 5, 5, 5, 5]
 
