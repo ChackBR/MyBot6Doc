@@ -33,10 +33,9 @@ Func DropSpellFromINIOnDefense($Defense, $options, $qtaMin, $qtaMax, $troopName,
 	debugAttackCSV(" - delay after drop all troops : " & $sleepafterMin & "-" & $sleepAfterMax)
 	Local $FullDefenseName = GetFullDefenseName($Defense)
 	;Qty to drop
+	Local $qty = $qtaMin
 	If $qtaMin <> $qtaMax Then
-		Local $qty = Random($qtaMin, $qtaMax, 1)
-	Else
-		Local $qty = $qtaMin
+		$qty = Random($qtaMin, $qtaMax, 1)
 	EndIf
 	debugAttackCSV(">> qty to deploy: " & $qty)
 
@@ -98,17 +97,13 @@ Func DropSpellFromINIOnDefense($Defense, $options, $qtaMin, $qtaMax, $troopName,
 		SelectDropTroop($troopPosition) ; select the troop...
 		;drop
 
-		Local $tempquant = 0
-		Local $delayDrop
+		Local $tempquant = 0 , $delayDrop = $delayDropMin
 
 		If $delayDropMin <> $delayDropMax Then
 			$delayDrop = Random($delayDropMin, $delayDropMax, 1)
-		Else
-			$delayDrop = $delayDropMin
 		EndIf
 
-		Local $delayDropLast = 0
-		$delayDropLast = $delayDrop
+		Local $delayDropLast = $delayDrop
 		;$pixel = Execute("$" & Eval("vector" & $j) & "[" & $index - 1 & "]")
 
 		Local $DefenseResult = AssignPixelOfDefense($Defense, $options)
@@ -133,10 +128,9 @@ Func DropSpellFromINIOnDefense($Defense, $options, $qtaMin, $qtaMax, $troopName,
 		Local $qty2 = $qtyxpoint
 
 		;delay time between 2 drops in same point
+		Local $delayPoint = $delayPointmin
 		If $delayPointmin <> $delayPointmax Then
-			Local $delayPoint = Random($delayPointmin, $delayPointmax, 1)
-		Else
-			Local $delayPoint = $delayPointmin
+			$delayPoint = Random($delayPointmin, $delayPointmax, 1)
 		EndIf
 
 		Local $plural = 0
@@ -161,11 +155,9 @@ Func DropSpellFromINIOnDefense($Defense, $options, $qtaMin, $qtaMax, $troopName,
 		;SuspendAndroid($SuspendMode)
 
 		;sleep time after deploy all troops
-		Local $sleepafter = 0
+		Local $sleepafter = Int($sleepafterMin)
 		If $sleepafterMin <> $sleepAfterMax Then
 			$sleepafter = Random($sleepafterMin, $sleepAfterMax, 1)
-		Else
-			$sleepafter = Int($sleepafterMin)
 		EndIf
 		If $sleepafter > 0 And IsKeepClicksActive() = False Then
 			debugAttackCSV(">> delay after drop all troops: " & $sleepafter)
@@ -266,13 +258,14 @@ Func LocateDefense($Defense, $options)
 	Local $DropBetween = $ParsedOptions[2] ; Only Can Be TRUE or FALSE
 	Local $useStoredPosition = $ParsedOptions[3] ; Only Can Be TRUE or FALSE
 
+	Local $hTimer = TimerInit()
+	Local $return
+	Local $reLocated = False
+	Local $Counter = -1
+	Local $curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
 	Switch $Defense
 		Case "EAGLE"
-			Local $hTimer = TimerInit()
-
 			Local $directory = @ScriptDir & "\imgxml\WeakBase\Eagle"
-			Local $return
-			Local $reLocated = False
 			If $useStoredPosition = True Then
 				$return = GetStoredPositions($Defense)
 			Else
@@ -283,10 +276,8 @@ Func LocateDefense($Defense, $options)
 			If Not (UBound($splitedPositions) >= 1 And StringLen($splitedPositions[0]) > 2) Then DebugImageSave("EagleDetection_NotDetected_", True)
 			Local $theEagleSide = ""
 			Local $NotdetectedEagle = True
-			Local $Counter = -1
-			Local $splitedEachPos
 			For $eachPos In $splitedPositions
-				$splitedEachPos = StringSplit($eachPos, ",", 2)
+				Local $splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
 					$Counter += 1
 					If $debugDropSCommand = 1 Then SetLog("$SideCondition = " & $SideCondition, $COLOR_DEBUG) ;Debug
@@ -309,7 +300,6 @@ Func LocateDefense($Defense, $options)
 								Case 7, 8
 									$theEagleSide = "BOTTOM"
 							EndSwitch
-							Local $curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
 							If $debugDropSCommand = 1 Then SetLog("$curMainSide = " & $curMainSide, $COLOR_ORANGE)
 							If $debugDropSCommand = 1 Then SetLog("$theEagleSide = " & $theEagleSide, $COLOR_ORANGE)
 							If $SideCondition = "SameSide" Then
@@ -379,11 +369,7 @@ Func LocateDefense($Defense, $options)
 			EndSwitch
 			Return $Result
 		Case "INFERNO"
-			Local $hTimer = TimerInit()
-
 			Local $directory = @ScriptDir & "\imgxml\WeakBase\Infernos"
-			Local $return
-			Local $reLocated = False
 			If $useStoredPosition = True Then
 				$return = GetStoredPositions($Defense)
 			Else
@@ -394,10 +380,8 @@ Func LocateDefense($Defense, $options)
 			If Not (UBound($splitedPositions) >= 1 And StringLen($splitedPositions[0]) > 2) Then DebugImageSave("InfernoDetection_NotDetected_", True)
 			Local $theInfernoSide = ""
 			Local $NotdetectedInferno = True
-			Local $Counter = -1
-			Local $splitedEachPos
 			For $eachPos In $splitedPositions
-				$splitedEachPos = StringSplit($eachPos, ",", 2)
+				Local $splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
 					$Counter += 1
 					If $debugDropSCommand = 1 Then SetLog("$SideCondition = " & $SideCondition, $COLOR_DEBUG) ;Debug
@@ -422,7 +406,6 @@ Func LocateDefense($Defense, $options)
 								Case 7, 8
 									$theInfernoSide = "BOTTOM"
 							EndSwitch
-							Local $curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
 							If $debugDropSCommand = 1 Then SetLog("$curMainSide = " & $curMainSide, $COLOR_ORANGE)
 							If $debugDropSCommand = 1 Then SetLog("$theInfernoSide = " & $theInfernoSide, $COLOR_ORANGE)
 							If $SideCondition = "SameSide" Then
@@ -531,11 +514,7 @@ Func LocateDefense($Defense, $options)
 			EndSwitch
 			Return $Result
 		Case "ADEFENSE"
-			Local $hTimer = TimerInit()
-
 			Local $directory = @ScriptDir & "\imgxml\WeakBase\ADefense"
-			Local $return
-			Local $reLocated = False
 			If $useStoredPosition = True Then
 				$return = GetStoredPositions($Defense)
 			Else
@@ -546,10 +525,8 @@ Func LocateDefense($Defense, $options)
 			If Not (UBound($splitedPositions) >= 1 And StringLen($splitedPositions[0]) > 2) Then DebugImageSave("AirDefenseDetection_NotDetected_", True)
 			Local $theADefenseSide = ""
 			Local $NotdetectedADefense = True
-			Local $Counter = -1
-			Local $splitedEachPos
 			For $eachPos In $splitedPositions
-				$splitedEachPos = StringSplit($eachPos, ",", 2)
+				Local $splitedEachPos = StringSplit($eachPos, ",", 2)
 				If IsArray($splitedEachPos) And UBound($splitedEachPos) > 1 Then
 					$Counter += 1
 					If $debugDropSCommand = 1 Then SetLog("$SideCondition = " & $SideCondition, $COLOR_DEBUG) ;Debug
@@ -574,7 +551,6 @@ Func LocateDefense($Defense, $options)
 								Case 7, 8
 									$theADefenseSide = "BOTTOM"
 							EndSwitch
-							Local $curMainSide = StringSplit($MAINSIDE, "-", 2)[0]
 							If $debugDropSCommand = 1 Then SetLog("$curMainSide = " & $curMainSide, $COLOR_ORANGE)
 							If $debugDropSCommand = 1 Then SetLog("$theADefenseSide = " & $theADefenseSide, $COLOR_ORANGE)
 							If $SideCondition = "SameSide" Then

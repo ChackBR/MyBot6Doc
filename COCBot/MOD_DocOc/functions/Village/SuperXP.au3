@@ -13,6 +13,16 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
+;Global $ichkEnableSuperXP = 0, $irbSXTraining = 1, $ichkSXBK = 0, $ichkSXAQ = 0, $ichkSXGW = 0
+
+; [0] = Queen, [1] = Warden, [2] = Barbarian King
+; [0][0] = X, [0][1] = Y, [0][2] = XRandomOffset, [0][3] = YRandomOffset
+Global $DpGoblinPicnic[3][4] = [[300, 205, 5, 5], [340, 140, 5, 5], [290, 220, 5, 5]]
+Global $BdGoblinPicnic[3] = [0, "5000-7000", "6000-8000"] ; [0] = Queen, [1] = Warden, [2] = Barbarian King
+Global $ActivatedHeroes[3] = [False, False, False] ; [0] = Queen, [1] = Warden, [2] = Barbarian King , Prevent to click on them to Activate Again And Again
+Global Const $minStarsToEnd = 1
+Global $canGainXP = False
+
 Func MainSuperXPHandler()
 	If $ichkEnableSuperXP = 0 Then Return
 	If $g_idebugSetlog Or $DebugSX Then SetLog("Begin MainSuperXPHandler, $irbSXTraining=" & $irbSXTraining & ", $IsFullArmywithHeroesAndSpells=" & $IsFullArmywithHeroesAndSpells, $COLOR_DEBUG)

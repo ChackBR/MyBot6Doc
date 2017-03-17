@@ -1,3 +1,7 @@
+#RequireAdmin
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#Au3Stripper_Parameters=/rsln /MI=3
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: MBR Bot
 ; Description ...: This file contains the initialization and main loop sequences for the MBR Bot
@@ -11,10 +15,6 @@
 ; ===============================================================================================================================
 
 ; AutoIt pragmas
-#RequireAdmin
-#AutoIt3Wrapper_UseX64=7n
-#AutoIt3Wrapper_Run_Au3Stripper=y
-#Au3Stripper_Parameters=/rsln /MI=3
 ;/SV=0
 
 ;#AutoIt3Wrapper_Change2CUI=y
@@ -83,7 +83,8 @@ Global $g_sModversion
 ; "2611" ; MyBot v6.5.3
 ; "2614" ; MyBot v6.5.3 + Doc Octopus v3.5.5 + Collectors Outside
 ; "2701" ; MyBot v7.0.1
-$g_sModversion = "2702" ; MyBot v7.0.1 + Add CSV Test Button
+; "2702" ; MyBot v7.0.1 + Add CSV Test Button
+$g_sModversion = "2703" ; MyBot v7.0.1 + Doc Octopus v3.6.1
 
 ; All executable code is in a function block, to detect coding errors, such as variable declaration scope problems
 InitializeBot()

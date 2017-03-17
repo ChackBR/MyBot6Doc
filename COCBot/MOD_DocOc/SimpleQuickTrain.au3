@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: SimpleQuickTrain
+; Name ..........: Qt_SimpleQuickTrain
 ; Description ...: This file contains the Sequence that runs all MBR Bot
 ; Author ........: Chack++
 ; Modified ......:
@@ -10,7 +10,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func SimpleQuickTrain( $NeedOpenArmy = False, $nLoop = 3 )
+Func Qt_SimpleQuickTrain( $NeedOpenArmy = False, $nLoop = 3 )
 	Local $i
 	Local $Num
 	Setlog("Simple Quick Train")
@@ -43,4 +43,4 @@ Func SimpleQuickTrain( $NeedOpenArmy = False, $nLoop = 3 )
 	If _Sleep(1000) Then Return ; Delay AFTER the click Away Prevents lots of coc restarts
 	If $canRequestCC = True Then RequestCC()
 
-EndFunc	;==>SimpleQuickTrain
+EndFunc	;==> Qt_SimpleQuickTrain

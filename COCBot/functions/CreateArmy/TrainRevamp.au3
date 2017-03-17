@@ -54,7 +54,7 @@ Func TrainRevamp()
 	If $g_bRunState = False Then Return
 	
 	If ( $g_bQuickTrainEnable = True ) Then
-		SimpleQuickTrain( True, 2 )
+		Qt_SimpleQuickTrain( True, 2 )
 	Else
 
 	If ($IsFullArmywithHeroesAndSpells = True) Or ($CurCamp = 0 And $g_bFirstStart) Then
@@ -91,7 +91,7 @@ Func TrainRevamp()
 	ClickP($aAway, 2, 0, "#0346") ;Click Away
 	If _Sleep(1000) Then Return ; Delay AFTER the click Away Prevents lots of coc restarts
 
-	EndIf ; SimpleQuickTrain
+	EndIf ; Qt_SimpleQuickTrain
 
 	SetLog(" - Army Window Closed!", $COLOR_ACTION1)
 

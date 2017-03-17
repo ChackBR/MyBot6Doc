@@ -100,7 +100,7 @@ Func BotCommand()
 						SetLog("Halt Attack, Stay Online/Collect/Donate...", $COLOR_INFO)
 					Else
 						SetLog("Halt Attack, Stay Online/Train/Collect/Donate...", $COLOR_INFO)
-						If ( $g_bQuickTrainEnable = True ) Then SimpleQuickTrain( True, 2 )
+						If ( $g_bQuickTrainEnable = True ) Then Qt_SimpleQuickTrain( True, 2 )
 					EndIf
 					$g_iCommandStop = 0 ; Halt Attack
 					If _Sleep($iDelayBotCommand1) Then Return

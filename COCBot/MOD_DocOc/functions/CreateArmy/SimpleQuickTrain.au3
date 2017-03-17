@@ -20,7 +20,7 @@
 ; 	QuickTrain()
 
 
-Func SimpleQuickTrain()
+Func SimpleDocQuickTrain()
 
 	Setlog("Simple Quick Train")
 
@@ -140,7 +140,7 @@ Func SimpleQuickTrain()
 
 	ClickP($aAway, 2, 0, "#0000") ;Click Away
 
-EndFunc   ;==>SimpleQuickTrain
+EndFunc   ;==>SimpleDocQuickTrain
 
 Func MakeQuickTrain()
 

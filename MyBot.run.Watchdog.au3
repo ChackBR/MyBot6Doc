@@ -1,3 +1,9 @@
+#NoTrayIcon
+#RequireAdmin
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Change2CUI=y
+#Au3Stripper_Parameters=/rsln
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: MBR Bot Watchdog
 ; Description ...: This file contens the Sequence that runs all MBR Bot
@@ -9,13 +15,6 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-
-#NoTrayIcon
-#RequireAdmin
-#AutoIt3Wrapper_UseX64=7n
-#AutoIt3Wrapper_Run_Au3Stripper=y
-#Au3Stripper_Parameters=/rsln
-#AutoIt3Wrapper_Change2CUI=y
 #pragma compile(Console, true)
 #pragma compile(Icon, "Images\MyBot.ico")
 #pragma compile(FileDescription, Clash of Clans Bot - A Free Clash of Clans bot - https://mybot.run)

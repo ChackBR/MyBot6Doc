@@ -61,12 +61,6 @@ Global Const $iDelayDropSuperXP2 = 1000
 Global Const $iDelayDropSuperXP3 = 250
 Global Const $iDelayPrepareSearchSuperXP = 500
 
-Global $DpGoblinPicnic[3][4] = [[300, 205, 5, 5], [340, 140, 5, 5], [290, 220, 5, 5]]
-Global $BdGoblinPicnic[3] = [0, "5000-7000", "6000-8000"] ; [0] = Queen, [1] = Warden, [2] = Barbarian King
-Global $ActivatedHeroes[3] = [False, False, False] ; [0] = Queen, [1] = Warden, [2] = Barbarian King , Prevent to click on them to Activate Again And Again
-Global Const $minStarsToEnd = 1
-Global $canGainXP = False
-
 
 Global $CurBaseRedLine[2] = ["", ""]
 Global $DCD = "440,70|825,344|440,640|55,344"
