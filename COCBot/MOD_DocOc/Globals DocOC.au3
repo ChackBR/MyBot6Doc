@@ -238,6 +238,12 @@ Global $chkDBNoLeague, $chkABNoLeague, $iChkNoLeague[$g_iModeCount]
 ; Collectors outside filter
 Global $ichkDBMeetCollOutside, $iDBMinCollOutsidePercent, $iCollOutsidePercent ; check later if $iCollOutsidePercent obsolete
 
+; constants
+Global Const $THEllipseWidth = 200, $THEllipseHeigth = 150, $CollectorsEllipseWidth = 130, $CollectorsEllipseHeigth = 97.5
+Global Const $centerX = 430, $centerY = 335 ; check later if $THEllipseWidth, $THEllipseHeigth obsolete
+Global $hBitmapFirst
+#endregion
+
 ; SmartUpgrade (Roro-Titi) - Added by NguyenAnhHD
 Global $ichkSmartUpgrade
 Global $ichkIgnoreTH, $ichkIgnoreKing, $ichkIgnoreQueen, $ichkIgnoreWarden, $ichkIgnoreCC, $ichkIgnoreLab
